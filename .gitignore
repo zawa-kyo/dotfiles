@@ -1,0 +1,26 @@
+# ===========================
+# All ignore
+# ===========================
+/*
+/.**
+
+# not ignore
+
+# ===========================
+# Not ignore
+# ===========================
+
+# General
+!/README.md
+!/LICENSE
+!.gitignore
+
+# Vim
+!/.vimrc
+!/.vim/
+!/.vim/*/
+!/.vim/init.vim
+!/.vim/coc-settings.json
+
+# Starship
+!/starship.toml
