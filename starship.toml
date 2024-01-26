@@ -1,0 +1,37 @@
+scan_timeout = 10 # ms
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+# The number of directories the environment path.
+truncation_length = 100
+# Whether or not to truncate to the root of the git repo that you're currently in.
+truncate_to_repo = false
+# The symbol to prefix to truncated paths.
+truncation_symbol = "…/"
+
+[docker_context]
+disabled = false
+format = "via [🐋 $context](blue bold) "
+
+[git_branch]
+disabled = false
+symbol = "" # or " "
+style = "green"
+format = 'on [$symbol$branch(:$remote_branch)]($style) '
+
+[username]
+disabled = true
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user🙋‍♂️]($style) "
+show_always = true
+
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = '%T'
+use_12hr = false
+utc_time_offset = '+9'
