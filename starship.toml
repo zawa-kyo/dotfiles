@@ -14,13 +14,21 @@ truncation_symbol = "…/"
 
 [docker_context]
 disabled = false
-format = "via [🐋 $context](blue bold) "
+format = "via [🐋$context](blue bold) "
 
 [git_branch]
 disabled = false
 symbol = "" # or " "
 style = "green"
 format = 'on [$symbol$branch(:$remote_branch)]($style) '
+
+[package]
+disabled = true
+format = 'via [\udb80\udfd7📦$version](208 bold) '
+
+[cmd_duration]
+min_time = 0 
+format = '[⏳$duration](bold yellow) '
 
 [username]
 disabled = true
