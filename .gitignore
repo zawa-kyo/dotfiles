@@ -1,10 +1,9 @@
 # ===========================
 # All ignore
 # ===========================
+
 /*
 /.**
-
-# not ignore
 
 # ===========================
 # Not ignore
@@ -24,3 +23,6 @@
 
 # Starship
 !/starship.toml
+
+# mise
+!/mise/config.toml
