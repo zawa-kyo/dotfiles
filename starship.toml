@@ -31,13 +31,13 @@ $docker_context
 disabled = true
 format = '[$user ]($style)'
 show_always = true
-style_root = "bg:#9A348E"
-style_user = "bg:#9A348E"
+style_root = "#263238 bg:#9A348E"
+style_user = "#263238 bg:#9A348E"
 
 [os]
 disabled = false
 format = "[$symbol]($style)"
-style = "bg:#9A348E"
+style = "#263238  bg:#9A348E"
 
 [os.symbols]
 Macos = " "
@@ -45,7 +45,7 @@ Ubuntu = ": "
 
 [directory]
 format = "[ $path ]($style)"
-style = "bg:#FFD702"
+style = "#263238 bg:#FFD702"
 truncate_to_repo = false
 truncation_length = 3
 truncation_symbol = "…/"
@@ -58,17 +58,17 @@ truncation_symbol = "…/"
 
 [git_branch]
 format = '[ $symbol $branch]($style)'
-style = "bg:#E06C75"
+style = "#263238 bg:#E06C75"
 symbol = ""
 
 [git_status]
 format = '[$all_status$ahead_behind]($style)'
-style = "bg:#E06C75"
+style = "#263238 bg:#E06C75"
 
 [time]
 disabled = false 
 format = '[ $time ]($style)' 
-style = "bg:#16DDB3" 
+style = "#263238 bg:#16DDB3" 
 time_format = "%R" # Hour:Minute Format
 utc_time_offset = '+9' 
 
@@ -77,7 +77,7 @@ disabled = false
 format = '[ $duration ]($style)'
 min_time = 1
 show_milliseconds = true
-style = "bg:#11B1E0"
+style = "#263238 bg:#11B1E0"
 
 [character]
 error_symbol = "[❯](bold red)"
