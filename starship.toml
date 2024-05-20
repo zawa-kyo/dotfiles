@@ -1,45 +1,135 @@
 scan_timeout = 10 # ms
 
-[character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+format = """
+[](#16DDB3)\
+$time\
+[](fg:#16DDB3 bg:#11B1E0)\
+$cmd_duration\
+[](fg:#11B1E0 bg:#FFD702)\
+$directory\
+[](fg:#FFD702 bg:#E06C75)\
+$git_branch\
+$git_status\
+[](fg:#E06C75 bg:#000)\
+$fill
+$character
+"""
 
-[directory]
-# The number of directories the environment path.
-truncation_length = 100
-# Whether or not to truncate to the root of the git repo that you're currently in.
-truncate_to_repo = false
-# The symbol to prefix to truncated paths.
-truncation_symbol = "…/"
-
-[docker_context]
-disabled = false
-format = "via [🐋$context](blue bold) "
-
-[git_branch]
-disabled = false
-symbol = "" # or " "
-style = "green"
-format = 'on [$symbol$branch(:$remote_branch)]($style) '
-
-[package]
-disabled = true
-format = 'via [\udb80\udfd7📦$version](208 bold) '
-
-[cmd_duration]
-min_time = 0 
-format = '[⏳$duration](bold yellow) '
+right_format = """
+$aws\
+$golang\
+$java\
+$nodejs\
+$rust\
+$dart\
+$bun\
+$python\
+$docker_context
+"""
 
 [username]
 disabled = true
-style_user = "white bold"
-style_root = "black bold"
-format = "[$user🙋‍♂️]($style) "
+format = '[$user ]($style)'
 show_always = true
+style_root = "bg:#9A348E"
+style_user = "bg:#9A348E"
+
+[os]
+disabled = false
+format = "[$symbol]($style)"
+style = "bg:#9A348E"
+
+[os.symbols]
+Macos = " "
+Ubuntu = ": "
+
+[directory]
+format = "[ $path ]($style)"
+style = "bg:#FFD702"
+truncate_to_repo = false
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+format = '[ $symbol $branch]($style)'
+style = "bg:#E06C75"
+symbol = ""
+
+[git_status]
+format = '[$all_status$ahead_behind]($style)'
+style = "bg:#E06C75"
 
 [time]
+disabled = false 
+format = '[ $time ]($style)' 
+style = "bg:#16DDB3" 
+time_format = "%R" # Hour:Minute Format
+utc_time_offset = '+9' 
+
+[cmd_duration]
 disabled = false
-format = "[$time]($style)"
-time_format = '%T'
-use_12hr = false
-utc_time_offset = '+9'
+format = '[ $duration ]($style)'
+min_time = 1
+show_milliseconds = true
+style = "bg:#11B1E0"
+
+[character]
+error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold green)"
+
+[fill]
+style = 'blue'
+symbol = '─'
+
+[docker_context]
+format = '[ $symbol $context ]($style)'
+style = "#1D63ED"
+symbol = ""
+
+[golang]
+format = '[ $symbol ($version) ]($style)'
+style = "bg:#E06C75"
+symbol = ""
+
+[java]
+format = '[ $symbol ($version) ]($style)'
+style = "#F09016"
+symbol = ""
+
+[nodejs]
+detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb']
+format = '[ $symbol ($version) ]($style)'
+style = "#4D8E48"
+symbol = ""
+
+[bun]
+format = '[ $symbol ($version) ]($style)'
+style = "#FBF0DF"
+symbol = "󱨛"
+
+[dart]
+format = '[ $symbol ($version) ]($style)'
+style = "#2BB1EE"
+symbol = ""
+
+[rust]
+format = '[ $symbol ($version) ]($style)'
+style = "#F74C00"
+symbol = ""
+
+[aws]
+format = '[ $symbol ($region) ]($style)'
+style = '#F79400'
+symbol = '󰸏'
+
+[python]
+format = '[ $symbol ($version) ]($style)'
+python_binary = ["./venv/bin/python", "python3", "python", "python2"]
+style = "#FFD743"
+symbol = ''
