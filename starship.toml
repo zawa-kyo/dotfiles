@@ -74,7 +74,7 @@ utc_time_offset = '+9'
 
 [cmd_duration]
 disabled = false
-format = '[ $duration ]($style)'
+format = '[  $duration ]($style)'
 min_time = 1
 show_milliseconds = true
 style = "#263238 bg:#11B1E0"
