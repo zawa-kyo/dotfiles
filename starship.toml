@@ -129,7 +129,7 @@ style = '#F79400'
 symbol = '󰸏'
 
 [python]
-format = '[ $symbol ($version) ]($style)'
-python_binary = ["./venv/bin/python", "python3", "python", "python2"]
+format = '[${symbol} (${version}) (\(${virtualenv}\) )]($style)'
+python_binary = ["./.venv/bin/python", "./.venv/bin/python3", "python", "python2", "python3"]
 style = "#FFD743"
-symbol = ''
+symbol = '󰌠'
