@@ -44,7 +44,7 @@ Macos = " "
 Ubuntu = ": "
 
 [directory]
-format = "[ $path ]($style)"
+format = "[  $path ]($style)"
 style = "#263238 bg:#FFD702"
 truncate_to_repo = false
 truncation_length = 3
