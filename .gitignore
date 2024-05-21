@@ -26,3 +26,6 @@
 
 # mise
 !/mise/config.toml
+
+# wezterm
+!/wezterm/wezterm.lua
