@@ -20,6 +20,7 @@
 !/.vim/*/
 !/.vim/init.vim
 !/.vim/coc-settings.json
+!/nvim
 
 # Starship
 !/starship.toml
