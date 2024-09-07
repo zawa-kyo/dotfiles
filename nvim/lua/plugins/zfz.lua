@@ -11,9 +11,11 @@ return {
 
         local opts = { noremap = true, silent = true }
 
-        -- ファイル検索
+        -- ファイル名検索
         vim.api.nvim_set_keymap("n", "<leader>p", ":FzfLua files<CR>", opts)
-        -- 全体検索
-        vim.api.nvim_set_keymap("n", "<leader>f", ":FzfLua live_grep<CR>", opts)
+        -- 全体ファイル内検索
+        vim.api.nvim_set_keymap("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
+        -- ファイル内検索
+        vim.api.nvim_set_keymap("n", "<leader>f", ":FzfLua lines<CR>", opts)
     end
 }
