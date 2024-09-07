@@ -1,4 +1,7 @@
 return {
   "folke/neoconf.nvim",
-  cmd = "Neoconf"
+  dependencies = { "neovim/nvim-lspconfig" },
+  config = function()
+    require("neoconf").setup()
+  end,
 }
