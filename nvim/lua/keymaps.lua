@@ -18,11 +18,19 @@ vim.g.maplocalleader = " "
 --   command_mode = 'c',
 
 -- NORMAL MODE:
+-- Trial: Better transition to command-line mode
+keymap("n", ";", ":", opts)
+keymap("n", "<leader><leader>", ":", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Make scroll keys intuitive
+keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true })
+keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true })
 
 -- Create new tab
 keymap("n", "te", ":tabedit", opts)
