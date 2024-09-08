@@ -1,4 +1,5 @@
 {
+  "SmoothCursor.nvim": { "branch": "main", "commit": "c082e1e943acec28d95aa05325097426e612047f" },
   "coc.nvim": { "branch": "release", "commit": "69b16f8651b4d92d9ea5d6b000c084f275ed7928" },
   "fzf-lua": { "branch": "main", "commit": "db41613292b88b5306d65caf6ae8996db5498ccb" },
   "lazy.nvim": { "branch": "main", "commit": "48b52b5cfcf8f88ed0aff8fde573a5cc20b1306d" },
