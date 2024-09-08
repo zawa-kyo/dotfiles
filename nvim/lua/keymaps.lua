@@ -61,10 +61,10 @@ keymap("v", ",", "<Esc>ggVG", opts)
 keymap("n", "x", '"_x', opts)
 
 -- ファイル/行の端に行く
-keymap("n", "<Space>j", "G", opts)
-keymap("n", "<Space>k", "gg", opts)
-keymap("n", "<Space>h", "^", opts)
-keymap("n", "<Space>l", "$", opts)
+keymap("n", "<C-j>", "G", opts)
+keymap("n", "<C-k>", "gg", opts)
+keymap("n", "<C-h>", "^", opts)
+keymap("n", "<C-l>", "$", opts)
 
 -- Move effectively
 keymap("n", "J", "10j", opts)
