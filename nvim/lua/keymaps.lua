@@ -19,7 +19,6 @@ vim.g.maplocalleader = " "
 
 -- NORMAL MODE:
 -- Trial: Better transition to command-line mode
-keymap("n", ";", ":", opts)
 keymap("n", "<leader><leader>", ":", opts)
 
 -- Better window navigation
