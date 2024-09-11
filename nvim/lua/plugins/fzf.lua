@@ -6,6 +6,12 @@ return {
             files = {
                 -- POSIX準拠のfind用オプションに変更
                 find_opts = [[-type f]]
+            },
+            keymap = {
+                fzf = {
+                    ["tab"] = "down",
+                    ["shift-tab"] = "up",
+                },
             }
         })
 
