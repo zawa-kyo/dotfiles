@@ -69,8 +69,8 @@ keymap("n", "<C-l>", "$", opts)
 -- Move effectively
 keymap("n", "J", "10j", opts)
 keymap("n", "K", "10k", opts)
-keymap("n", "H", "10h", opts)
-keymap("n", "L", "10l", opts)
+keymap("n", "H", "^", opts)
+keymap("n", "L", "$", opts)
 
 -- Optimize redo
 keymap("n", "U", "<C-r>", opts)
