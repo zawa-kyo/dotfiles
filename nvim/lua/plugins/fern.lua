@@ -1,5 +1,8 @@
 return {
     "lambdalisue/fern.vim",
+    dependencies = {
+        "lambdalisue/fern-hijack.vim", -- Automatically replace netrw with Fern
+    },
     config = function()
         -- leader
         vim.g.mapleader = " "
@@ -8,7 +11,7 @@ return {
         local opts = { noremap = true, silent = true }
 
         -- Toggle Fern file explorer (open/close the drawer)
-        vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>", opts)
+        vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>", opts)
 
         -- Toggle focus between Fern and the editor
         vim.api.nvim_set_keymap("n", "<leader>o", "", {
