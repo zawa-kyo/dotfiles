@@ -54,7 +54,9 @@ vim.cmd("set whichwrap=b,s,h,l,<,>,[,],~")
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	callback = function()
-		local filepath = vim.fn.expand("%:p:h")
-		vim.cmd("cd " .. filepath)
+		if vim.bo.buftype == "" then -- Only execute for normal buffers
+			local filepath = vim.fn.expand("%:p:h")
+			vim.cmd("silent! cd " .. filepath)
+		end
 	end,
 })
