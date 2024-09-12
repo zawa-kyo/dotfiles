@@ -47,5 +47,15 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
--- 行を跨いで左右移動する
+-- Move left and right across lines
 vim.cmd("set whichwrap=b,s,h,l,<,>,[,],~")
+
+-- Automatically change to the file's directory on Vim startup
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    callback = function()
+        local filepath = vim.fn.expand("%:p:h")
+        vim.cmd("cd " .. filepath)
+    end,
+})
+
