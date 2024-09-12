@@ -3,7 +3,6 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      -- ToggleTerm のカスタム設定
       require("toggleterm").setup {
         size = 20,
         open_mapping = [[\]],

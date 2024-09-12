@@ -39,8 +39,8 @@ local options = {
 	scrolloff = 8,
 	sidescrolloff = 8,
 	guifont = "monospace:h17",
-	splitbelow = true, -- 横分割すると新しいウィンドウはカレントウィンドウの下に開かれる
-	splitright = true, -- 縦分割すると新しいウィンドウはカレントウィンドウの右に開かれる
+	splitbelow = true,
+	splitright = true,
 }
 
 for k, v in pairs(options) do
@@ -52,10 +52,9 @@ vim.cmd("set whichwrap=b,s,h,l,<,>,[,],~")
 
 -- Automatically change to the file's directory on Vim startup
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*",
-    callback = function()
-        local filepath = vim.fn.expand("%:p:h")
-        vim.cmd("cd " .. filepath)
-    end,
+	pattern = "*",
+	callback = function()
+		local filepath = vim.fn.expand("%:p:h")
+		vim.cmd("cd " .. filepath)
+	end,
 })
-
