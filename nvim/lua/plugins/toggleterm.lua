@@ -6,7 +6,7 @@ return {
       -- ToggleTerm のカスタム設定
       require("toggleterm").setup {
         size = 20,
-        open_mapping = [[<c-\>]],
+        open_mapping = [[<c-b>]],
         direction = 'float',
       }
 
