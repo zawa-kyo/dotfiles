@@ -24,11 +24,11 @@ return {
         local function footer()
             -- Use Lazy's stats function to get the number of plugins
             local total_plugins = require("lazy").stats().count
-            local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+            local datetime = os.date(" %Y-%m-%d  %H:%M:%S")
             local version = vim.version()
             local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-            return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+            return datetime .. "  󱐮 " .. total_plugins .. " plugins" .. nvim_version_info
         end
 
         -- Set footer
