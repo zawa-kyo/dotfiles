@@ -4,9 +4,6 @@ return {
         "lambdalisue/fern-hijack.vim", -- Automatically replace netrw with Fern
     },
     config = function()
-        -- leader
-        vim.g.mapleader = " "
-
         -- options for key mappings
         local opts = { noremap = true, silent = true }
 
