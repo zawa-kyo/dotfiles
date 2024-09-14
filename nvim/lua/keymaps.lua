@@ -92,3 +92,8 @@ keymap("v", ">", ">gv", opts)
 
 -- ビジュアルモード時vで行末まで選択
 keymap("v", "v", "$h", opts)
+
+-- aで前後のスペースを巻き添えにしない
+for _, quote in ipairs({ '"', "'", "`" }) do
+    keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts)
+end
