@@ -66,12 +66,6 @@ keymap("v", ",", "<Esc>ggVG", opts)
 -- Do not yank with x
 keymap("n", "x", '"_x', opts)
 
--- ファイル/行の端に行く
-keymap("n", "<C-j>", "G", opts)
-keymap("n", "<C-k>", "gg", opts)
-keymap("n", "<C-h>", "^", opts)
-keymap("n", "<C-l>", "$", opts)
-
 -- Move effectively
 keymap("n", "J", "10j", opts)
 keymap("n", "K", "10k", opts)
