@@ -31,6 +31,9 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true })
 keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true })
 
+-- Select all
+keymap("n", "<leader>a", "ggVG", opts)
+
 -- Create new tab
 keymap("n", "te", ":tabedit", opts)
 
