@@ -45,6 +45,9 @@ keymap("n", "gl", "gt", opts)
 keymap("n", "tl", "<c-]>", opts)
 keymap("n", "tl", "<c-t>", opts)
 
+-- Copy to clipboard
+keymap({"n", "v"}, "<leader>y", '"+y', opts)
+
 -- Move tab
 keymap("n", "gh", "gT", opts)
 keymap("n", "gl", "gt", opts)
