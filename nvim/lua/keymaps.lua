@@ -41,6 +41,12 @@ keymap("n", "te", ":tabedit", opts)
 keymap("n", "gh", "gT", opts)
 keymap("n", "gl", "gt", opts)
 
+-- Remap 'j'/'k' for wrapped lines, and 'gj'/'gk' for actual lines
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+keymap("n", "gj", "j", opts)
+keymap("n", "gk", "gk", opts)
+
 -- Optimize jump
 keymap("n", "tl", "<c-]>", opts)
 keymap("n", "tl", "<c-t>", opts)
