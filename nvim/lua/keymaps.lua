@@ -51,6 +51,9 @@ keymap("n", "gk", "gk", opts)
 keymap("n", "tl", "<c-]>", opts)
 keymap("n", "tl", "<c-t>", opts)
 
+-- Optimize to jump to the matching pair
+keymap("n", "M", "%", opts)
+
 -- Copy to clipboard
 keymap({"n", "v"}, "<leader>y", '"+y', opts)
 
