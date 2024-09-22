@@ -7,7 +7,7 @@ return {
   },
   keys = {
     { "<leader>w", "<cmd>HopWord<CR>",               mode = "n",               desc = "Hop Word" },
-    { "<leader>l", "<cmd>HopLine<CR>",               mode = "n",               desc = "Hop Line" },
+    { "<leader>v", "<cmd>HopLine<CR>",               mode = "n",               desc = "Hop Line" },
     { "<leader>c", "<cmp>HopChar1<CR>",              mode = "n",               desc = "Hop Char" },
     -- { "<leader>r", "<cmd>HopPattern<CR>",            mode = "n",               desc = "Hop Pattern" },
     { "f",         "<cmd>HopChar1CurrentLineAC<CR>", mode = { "n", "v", "o" }, desc = "Hop Char in Line (After Cursor)" },
