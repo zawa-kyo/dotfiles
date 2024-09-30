@@ -16,5 +16,4 @@ function M.easy_mode()
     vim.keymap.set("n", "<Right>", "<Right>", opts)
 end
 
--- モジュールを返す
 return M
