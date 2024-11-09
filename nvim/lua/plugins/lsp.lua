@@ -95,6 +95,7 @@ return {
             ]]
         end,
     },
+
     -- Completion settings
     {
         "hrsh7th/nvim-cmp",
