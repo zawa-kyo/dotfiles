@@ -4,26 +4,24 @@ return {
         "lambdalisue/fern-hijack.vim", -- Automatically replace netrw with Fern
     },
     config = function()
-        -- options for key mappings
-        local opts = { noremap = true, silent = true }
+        -- Get the initial working directory as the project root
+        local project_root = vim.fn.getcwd()  -- Store the cwd at the time of NeoVim startup
 
-        -- Toggle Fern file explorer (open/close the drawer)
-        vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>Fern . -reveal=% -drawer -toggle -width=40<CR>", opts)
+        -- Function to open Fern at project root and reveal the current file
+        local function open_fern_with_reveal()
+            if vim.bo.filetype == "fern" then
+                vim.cmd("bd") -- Close Fern and return to previous window
+            else
+                vim.cmd("cd " .. project_root) -- Set cwd to project root
+                vim.cmd("Fern . -drawer -width=40 -reveal=" .. vim.fn.expand("%:p")) -- Reveal the current file
+            end
+        end
 
-        -- Toggle focus between Fern and the editor
-        vim.api.nvim_set_keymap("n", "<leader>o", "", {
-            callback = function()
-                if vim.bo.filetype == "fern" then
-                    vim.cmd.wincmd "p"
-                else
-                    vim.cmd.Fern(".", "-reveal=%", "-drawer", "-width=40")
-                end
-            end,
-            noremap = true,
-            silent = true,
-        })
+        -- Key mappings
+        vim.keymap.set("n", "<leader>b", open_fern_with_reveal, { noremap = true, silent = true }) -- Toggle Fern
+        vim.keymap.set("n", "<leader>o", open_fern_with_reveal, { noremap = true, silent = true }) -- Open Fern with reveal
 
-        -- Set Enter key to open as a child node
+        -- Set Enter key to open as a child node when in Fern buffer
         vim.cmd([[
             augroup FernCustom
                 autocmd!
