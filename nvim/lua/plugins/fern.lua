@@ -22,5 +22,13 @@ return {
             noremap = true,
             silent = true,
         })
+
+        -- Set Enter key to open as a child node
+        vim.cmd([[
+            augroup FernCustom
+                autocmd!
+                autocmd FileType fern nnoremap <buffer> <CR> <Plug>(fern-action-expand)
+            augroup END
+        ]])
     end
 }
