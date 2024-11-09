@@ -1,31 +1,53 @@
 return {
     "lambdalisue/fern.vim",
     dependencies = {
-        "lambdalisue/fern-hijack.vim", -- Automatically replace netrw with Fern
+        "lambdalisue/fern-hijack.vim",
     },
     config = function()
-        -- Get the initial working directory as the project root
-        local project_root = vim.fn.getcwd()  -- Store the cwd at the time of NeoVim startup
+        -- Store the cwd at the time of NeoVim startup
+        local project_root = vim.fn.getcwd()
 
-        -- Function to open Fern at project root and reveal the current file
-        local function open_fern_with_reveal()
+        -- Track last cursor position in file
+        local last_file_position = nil
+
+        -- Function to toggle focus to Fern or reveal current file in Fern
+        local function toggle_fern_with_reveal()
             if vim.bo.filetype == "fern" then
-                vim.cmd("bd") -- Close Fern and return to previous window
+                -- Move focus back to the file without closing Fern
+                vim.cmd.wincmd("p")
+                if last_file_position then
+                    vim.api.nvim_win_set_cursor(0, last_file_position)
+                end
             else
-                vim.cmd("cd " .. project_root) -- Set cwd to project root
-                vim.cmd("Fern . -drawer -width=40 -reveal=" .. vim.fn.expand("%:p")) -- Reveal the current file
+                -- Save the current cursor position in the file
+                last_file_position = vim.api.nvim_win_get_cursor(0)
+                -- Open Fern with the current file revealed
+                vim.cmd("cd " .. project_root)
+                vim.cmd("Fern . -drawer -width=40 -reveal=" .. vim.fn.expand("%:p"))
+            end
+        end
+
+        -- Function to toggle or close Fern
+        local function toggle_or_close_fern()
+            if vim.bo.filetype == "fern" then
+                vim.cmd("bd")                                          -- Close Fern
+                if last_file_position then
+                    vim.api.nvim_win_set_cursor(0, last_file_position) -- Return to last cursor position
+                end
+            else
+                toggle_fern_with_reveal()
             end
         end
 
         -- Key mappings
-        vim.keymap.set("n", "<leader>b", open_fern_with_reveal, { noremap = true, silent = true }) -- Toggle Fern
-        vim.keymap.set("n", "<leader>o", open_fern_with_reveal, { noremap = true, silent = true }) -- Open Fern with reveal
+        vim.keymap.set("n", "<leader>b", toggle_or_close_fern, { noremap = true, silent = true })    -- Toggle Fern or close
+        vim.keymap.set("n", "<leader>o", toggle_fern_with_reveal, { noremap = true, silent = true }) -- Toggle Fern with reveal
 
-        -- Set Enter key to open as a child node when in Fern buffer
+        -- Set Enter key to open file or expand directory when in Fern buffer
         vim.cmd([[
             augroup FernCustom
                 autocmd!
-                autocmd FileType fern nnoremap <buffer> <CR> <Plug>(fern-action-expand)
+                autocmd FileType fern nnoremap <buffer> <CR> <Plug>(fern-action-open) -- Open file or expand directory
             augroup END
         ]])
     end
