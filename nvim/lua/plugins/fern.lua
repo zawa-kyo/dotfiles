@@ -21,9 +21,15 @@ return {
             else
                 -- Save the current cursor position in the file
                 last_file_position = vim.api.nvim_win_get_cursor(0)
-                -- Open Fern with the current file revealed
-                vim.cmd("cd " .. project_root)
-                vim.cmd("Fern . -drawer -width=40 -reveal=" .. vim.fn.expand("%:p"))
+
+                -- Calculate 25% of the current window width
+                local fern_width = math.floor(vim.api.nvim_win_get_width(0) * 0.25)
+
+                -- Defer Fern opening slightly to allow dynamic width to take effect
+                vim.defer_fn(function()
+                    vim.cmd("cd " .. project_root)
+                    vim.cmd("Fern . -drawer -width=" .. fern_width .. " -reveal=" .. vim.fn.expand("%:p"))
+                end, 10)
             end
         end
 
