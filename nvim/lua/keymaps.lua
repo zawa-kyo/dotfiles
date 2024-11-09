@@ -55,7 +55,7 @@ keymap("n", "tl", "<c-t>", opts)
 keymap("n", "M", "%", opts)
 
 -- Copy to clipboard
-keymap({"n", "v"}, "<leader>y", '"+y', opts)
+keymap({ "n", "v" }, "<leader>y", '"+y', opts)
 
 -- Move tab
 keymap("n", "gh", "gT", opts)
