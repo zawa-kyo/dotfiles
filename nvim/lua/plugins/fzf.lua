@@ -29,35 +29,27 @@ return {
 
         local opts = { noremap = true, silent = true }
 
-        -- Local function to display project list with fzf-lua
-        local fzf_project_list = function()
-            local projects = require("project_nvim").get_recent_projects()
-            local items = {}
-
-            -- Format project list for fzf-lua
-            for _, project in ipairs(projects) do
-                table.insert(items, project)
+        -- Function to handle <leader>f with a check for fern buffer
+        local function fzf_lines_or_notify()
+            if vim.bo.filetype == "fern" then
+                vim.notify("Cannot use :FzfLua lines in fern buffer", vim.log.levels.WARN)
+            else
+                vim.cmd("FzfLua lines")
             end
-
-            require("fzf-lua").fzf_exec(items, {
-                prompt = "Projects> ",
-                actions = {
-                    ["default"] = function(selected)
-                        -- Change to the selected project directory permanently
-                        vim.loop.chdir(selected[1])
-                    end,
-                },
-            })
         end
 
         -- Map <leader>p to trigger file search in the current directory
-        vim.api.nvim_set_keymap("n", "<leader>p", ":FzfLua files<CR>", opts)     
+        vim.api.nvim_set_keymap("n", "<leader>p", ":FzfLua files<CR>", opts)
 
         -- Map <leader>g to perform a global search across all files
-        vim.api.nvim_set_keymap("n", "<leader>g", ":FzfLua live_grep<CR>", opts) 
+        vim.api.nvim_set_keymap("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
 
-        -- Map <leader>f to search within the current file's contents
-        vim.api.nvim_set_keymap("n", "<leader>f", ":FzfLua lines<CR>", opts)     
+        -- Map <leader>f to search within the current file's contents, with a fern buffer check
+        vim.api.nvim_set_keymap("n", "<leader>f", "", {
+            noremap = true,
+            silent = true,
+            callback = fzf_lines_or_notify,
+        })
 
         -- Map <leader>P to list and select from recent projects, changing to the selected directory
         vim.api.nvim_set_keymap("n", "<leader>P", "", {
