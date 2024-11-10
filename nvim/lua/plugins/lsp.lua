@@ -64,16 +64,40 @@ return {
                 })
             end
 
+            -- Show hover information for symbol under cursor
             vim.keymap.set("n", "K", hover)
+
+            -- Format the current buffer
+            vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>")
+
+            -- Show references for the symbol under cursor
             vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+
+            -- Go to the definition of the symbol under cursor
             vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+
+            -- Go to the declaration of the symbol under cursor
             vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+
+            -- Go to the implementation of the symbol under cursor
             vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+
+            -- Go to the type definition of the symbol under cursor
             vim.keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+
+            -- Rename the symbol under cursor
             vim.keymap.set("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+
+            -- Show code actions for the current line or selection
             vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+
+            -- Show diagnostics in a floating window
             vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
+
+            -- Go to the next diagnostic
             vim.keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+
+            -- Go to the previous diagnostic
             vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 
             -- Diagnostic settings
