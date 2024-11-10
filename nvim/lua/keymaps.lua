@@ -38,8 +38,10 @@ keymap("n", "<leader>a", "ggVG", opts)
 keymap("n", "te", ":tabedit", opts)
 
 -- Move tab
-keymap("n", "gh", "gT", opts)
-keymap("n", "gl", "gt", opts)
+keymap("n", "<C-Tab>", ":tabnext<CR>", opts)
+keymap("n", "<C-S-Tab>", ":tabprevious<CR>", opts)
+keymap("n", "<C-t>", ":tabnew<CR>", opts)
+keymap("n", "<C-w>", ":tabclose<CR>", opts)
 
 -- Remap 'j'/'k' for wrapped lines, and 'gj'/'gk' for actual lines
 keymap("n", "j", "gj", opts)
