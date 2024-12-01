@@ -432,10 +432,9 @@
     },
     "files.insertFinalNewline": false,
     "javascript.suggest.autoImports": false, // 自動的にimportするか
-    "javascript.preferences.quoteStyle": "single" // クォートスタイル
-  "javascript.inlayHints.parameterNames.enabled": "none", // literals", "all", //引数の名前を表示
+    "javascript.preferences.quoteStyle": "single", // クォートスタイル
+    "javascript.inlayHints.parameterNames.enabled": "none" // literals", "all", //引数の名前を表示
   },
-
 
   // ======= TypeScript ========
   "[typescript]": {
