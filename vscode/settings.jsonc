@@ -188,7 +188,6 @@
     "streetsidesoftware.code-spell-checker", // Spell Checker
     "usernamehw.errorlens", // Error Lens
     "saikou9901.evilinspector", // Evilinspector
-    "genieai.chatgpt-vscode", // Genie AI
     "formulahendry.code-runner", // Code Runner
     "oderwat.indent-rainbow" // indent-rainbow
   ],
@@ -591,71 +590,6 @@
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
 
-  // ====== LaTeX ========
-  // 指定したタイミングで自動的にビルド
-  "latex-workshop.latex.autoBuild.run": "onSave", // "onFileChange",
-  // 利用するPDFビューア
-  "latex-workshop.view.pdf.viewer": "tab",
-  // 通知をポップアップ表示 (Recipe succeeded.など)
-  "latex-workshop.message.information.show": true,
-  // 日本語由来のエラーが出るのでリンターのチェックを停止
-  "latex-workshop.linting.chktex.enabled": false,
-  "latex-workshop.message.latexlog.exclude": [".*"],
-  // 中間ファイルを削除
-  "latex-workshop.latex.autoClean.run": "onBuilt",
-  // 削除対象とする中間ファイル
-  "latex-workshop.latex.clean.fileTypes": [
-    "*.aux",
-    "*.bbl",
-    "*.blg",
-    "*.idx",
-    "*.ind",
-    "*.lof",
-    "*.lot",
-    "*.out",
-    "*.toc",
-    "*.acn",
-    "*.acr",
-    "*.alg",
-    "*.glg",
-    "*.glo",
-    "*.gls",
-    "*.ist",
-    "*.fls",
-    "*.log",
-    "*.fdb_latexmk",
-    "*.synctex.gz",
-    "_minted*",
-    "*.nav",
-    "*.snm",
-    "*.vrb"
-  ],
-  // 実行するコマンドの設定
-  // synctex: エディタとPDFプレビュー画面との相互リンクの仕組み
-  "latex-workshop.latex.tools": [
-    {
-      "command": "ptex2pdf",
-      "args": [
-        "-interaction=nonstopmode", // 文法ミスがあってもコンパイルを終了させる
-        "-l",
-        "-ot",
-        "-kanji=utf8 -synctex=1",
-        "%DOCFILE%.tex"
-      ],
-      "name": "ptex2pdf"
-    }
-  ],
-  // ビルドの実行内容を設定
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "ptex2pdf",
-      "tools": ["ptex2pdf"]
-    }
-  ],
-  "workbench.editorAssociations": {
-    "*.pdf": "latex-workshop-pdf-hook"
-  },
-
   // ====== Lua ========
   "Lua.format.defaultConfig": {
     "indent_style": "space",
@@ -676,12 +610,10 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "markdown-preview-enhanced.plantumlJarPath": "/opt/homebrew/Cellar/plantuml/1.2023.11/libexec/plantuml.jar",
   "sonarlint.pathToNodeExecutable": "$HOME/.local/share/mise/installs/bun/1.1.31/bin/bun",
   "turboConsoleLog.quote": "'",
   "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
-  "genieai.response.showNotification": true,
   "yaml.customTags": [
     "!And",
     "!And sequence",
