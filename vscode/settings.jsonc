@@ -472,7 +472,8 @@
     "xlim",
     "ylabel",
     "ylim",
-    "zenn"
+    "zenn",
+    "ZDOTDIR"
   ],
 
   // ===========================
