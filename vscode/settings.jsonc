@@ -167,6 +167,19 @@
   "terminal.integrated.cursorStyle": "block",
 
   // ===========================
+  // Neovim
+  // ==========================
+
+  // Neovimのパス
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  // init.vimのパス
+  "vscode-neovim.neovimInitVimPaths.darwin": "${userHome}/.config/nvim/init.vim",
+  // 拡張機能を独自スレッドで実行しパフォーマンスが向上する、らしい
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+
+  // ===========================
   // Update
   // ===========================
 
@@ -282,10 +295,6 @@
       "level": "off"
     }
   },
-
-  // neovim
-  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
 
   // ===========================
   // Linter, formatter
@@ -610,12 +619,13 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "sonarlint.pathToNodeExecutable": "$HOME/.local/share/mise/installs/bun/1.1.31/bin/bun",
+  "sonarlint.pathToNodeExecutable": "${userHome}/.local/share/mise/shims/node",
   "turboConsoleLog.quote": "'",
   "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
   "yaml.customTags": [
     "!And",
+    "${userHome}/.local/share/mise/shims/bun",
     "!And sequence",
     "!If",
     "!If sequence",
@@ -693,8 +703,5 @@
     }
   ],
 
-  "lldb.launch.expressions": "native",
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  }
+  "lldb.launch.expressions": "native"
 }
