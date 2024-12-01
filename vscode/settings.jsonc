@@ -1,6 +1,6 @@
 {
   // ===========================
-  // General
+  // Files
   // ===========================
 
   // ファイルの文字コードをUTF-8固定から自動判定に変更
@@ -28,6 +28,11 @@
     "**/.metadata": true,
     "**/poetry.lock": true
   },
+  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
+  "files.watcherExclude": {
+    "**/node_modules/*/**": true,
+    "**/.dart_tool": true
+  },
 
   // ===========================
   // Editor
@@ -41,16 +46,14 @@
   "editor.formatOnPaste": true, // ペースト時
   // 入力候補の1番目を最初に選択しておく
   "editor.suggestSelection": "first",
-  // StickyScrollを有効化、表示する上限値を設定
-  "editor.stickyScroll.enabled": true,
-  "editor.stickyScroll.maxLineCount": 5,
+  // StickyScroll
+  "editor.stickyScroll.enabled": true, // 有効化
+  "editor.stickyScroll.maxLineCount": 5, // 表示する上限値
   // 誤検出を避けるため、スクリーンリーダー(文字読み上げ)をOFFに変更
   "editor.accessibilitySupport": "off",
   // ペアとなる括弧のガイドを表示
   // true: 常に有効, active: アクティブなペアに対してのみ有効
   "editor.guides.bracketPairs": true,
-  // コンソールのフォントサイズ
-  "debug.console.fontSize": 12,
   // フォント
   "editor.fontFamily": "'JetBrains Mono', 'Hack Nerd Font', 'Fira Code'",
   // エディタのフォントサイズ
@@ -141,13 +144,6 @@
     "**/package-lock.json": true,
     "**.svg": false
   },
-
-  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
-  "files.watcherExclude": {
-    "**/node_modules/*/**": true,
-    "**/.dart_tool": true
-  },
-
   // ファイルの削除時に確認する
   "explorer.confirmDelete": false,
 
@@ -165,6 +161,16 @@
   "terminal.integrated.cursorBlinking": true,
   // ターミナルのキャレットのスタイル
   "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+
+  // ===========================
+  // Debug console
+  // ===========================
+
+  // コンソールのフォントサイズ
+  "debug.console.fontSize": 12,
 
   // ===========================
   // Neovim
@@ -194,6 +200,10 @@
   "breadcrumbs.enabled": true,
   "update.mode": "manual",
 
+  // ===========================
+  // Devcontainer
+  // ===========================
+
   // devcontainer起動時もデフォルトでインストールする拡張機能
   "dev.containers.defaultExtensions": [
     "eamodio.gitlens", // GitLens
@@ -204,6 +214,7 @@
     "formulahendry.code-runner", // Code Runner
     "oderwat.indent-rainbow" // indent-rainbow
   ],
+  "dev.containers.dockerComposePath": "docker compose",
 
   // ===========================
   // Speed up
@@ -224,12 +235,15 @@
   // ===========================
   // Extensions
   // ===========================
+
   // Todo Tree
   "todo-tree.general.tags": ["FIXME", "NOTE", "TODO", "CHECK", "DONE"],
   "todo-tree.general.showActivityBarBadge": true,
   "todo-tree.highlights.defaultHighlight": {
     "gutterIcon": true
   },
+  // 検索対象から除くディレクトリ
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/.venv/**"],
   "todo-tree.highlights.customHighlight": {
     "TODO": {
       "icon": "bell",
@@ -252,8 +266,6 @@
       "iconColour": "#32CD32"
     }
   },
-  // 検索対象から除くディレクトリ
-  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/.venv/**"],
   // IndentRainbow
   "indentRainbow.colors": [
     "rgba(255,255,64,0.07)",
@@ -295,6 +307,52 @@
       "level": "off"
     }
   },
+
+  // Peacock
+  "peacock.affectActivityBar": true,
+  "peacock.affectStatusBar": true,
+  "peacock.affectTitleBar": true,
+  "peacock.elementAdjustments": {
+    "activityBar": "lighten"
+  },
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    }
+  ],
 
   // ===========================
   // Linter, formatter
@@ -506,6 +564,7 @@
     "--ignore=E402, E501",
     "--max-line-length=119" // E501のデフォルトの79を上書き
   ],
+  "autopep8.args": ["--max-line-length=150"],
   // 言語サーバ
   "python.languageServer": "Pylance",
   // Pylance
@@ -523,6 +582,8 @@
   },
   // デバッガーのディレクトリ
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+  "lldb.suppressUpdateNotifications": true,
 
   // ======== Jupyter =========
   "[jupyter]": {
@@ -591,6 +652,7 @@
   // ===========================
   // Ignored Settings
   // ===========================
+
   "settingsSync.ignoredExtensions": [
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
@@ -628,56 +690,5 @@
     "!Select sequence",
     "!Split",
     "!Split sequence"
-  ],
-  "autopep8.args": ["--max-line-length=150"],
-  "lldb.suppressUpdateNotifications": true,
-  "cmake.configureOnOpen": true,
-  "vsicons.dontShowNewVersionMessage": true,
-  "dev.containers.dockerComposePath": "docker compose",
-  "peacock.affectActivityBar": true,
-  "peacock.affectStatusBar": true,
-  "peacock.affectTitleBar": true,
-  "peacock.elementAdjustments": {
-    "activityBar": "lighten"
-  },
-  "peacock.favoriteColors": [
-    {
-      "name": "Angular Red",
-      "value": "#dd0531"
-    },
-    {
-      "name": "Azure Blue",
-      "value": "#007fff"
-    },
-    {
-      "name": "JavaScript Yellow",
-      "value": "#f9e64f"
-    },
-    {
-      "name": "Mandalorian Blue",
-      "value": "#1857a4"
-    },
-    {
-      "name": "Node Green",
-      "value": "#215732"
-    },
-    {
-      "name": "React Blue",
-      "value": "#61dafb"
-    },
-    {
-      "name": "Something Different",
-      "value": "#832561"
-    },
-    {
-      "name": "Svelte Orange",
-      "value": "#ff3d00"
-    },
-    {
-      "name": "Vue Green",
-      "value": "#42b883"
-    }
-  ],
-
-  "lldb.launch.expressions": "native"
+  ]
 }
