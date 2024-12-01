@@ -37,7 +37,7 @@
   "editor.mouseWheelZoom": true,
   // 自動的にフォーマットを実行
   "editor.formatOnSave": true, // 保存時
-  "editor.formatOnType": false, // 入力中（改行時）
+  "editor.formatOnType": true, // 入力中（改行時）
   "editor.formatOnPaste": true, // ペースト時
   // 入力候補の1番目を最初に選択しておく
   "editor.suggestSelection": "first",
@@ -427,14 +427,12 @@
   // ========== JSON ===========
   "[json]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // ========== JSONC ==========
   "[jsonc]": {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
@@ -453,7 +451,6 @@
   // ========== Java ==========
   "[java]": {
     "editor.tabSize": 4,
-    "editor.formatOnSave": false,
     "editor.defaultFormatter": "redhat.java"
   },
 
@@ -461,11 +458,6 @@
   "[javascript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false,
-    "editor.formatOnPaste": false,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
-    },
     "files.insertFinalNewline": false,
     "javascript.preferences.quoteStyle": "double"
   },
@@ -473,12 +465,7 @@
   // ======= TypeScript ========
   "[typescript]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
-    }
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // ======= Bun ========
@@ -492,11 +479,7 @@
   // ======== Python ==========
   "[python]": {
     "editor.tabSize": 4,
-    "editor.defaultFormatter": "charliermarsh.ruff", // prettierはPythonに対応していないため外す
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    },
-    "editor.formatOnType": true
+    "editor.defaultFormatter": "charliermarsh.ruff" // prettierはPythonに対応していないため外す
   },
 
   // ======== Python ==========
@@ -550,12 +533,6 @@
 
   // ========= Dart ==========
   "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "always",
-      "source.organizeImports": "always",
-      "source.addMissingImports": "always"
-    },
     "editor.rulers": [80],
     "editor.selectionHighlight": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
