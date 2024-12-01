@@ -1,32 +1,11 @@
-# ===========================
-# All ignore
-# ===========================
+# Folder view configuration files
+.DS_Store
+Desktop.ini
 
-/*
-/.**
+# Thumbnail cache files
+._*
+Thumbs.db
 
-# ===========================
-# Not ignore
-# ===========================
-
-# General
-!/README.md
-!/LICENSE
-!.gitignore
-
-# Vim
-!/.vimrc
-!/.vim/
-!/.vim/*/
-!/.vim/init.vim
-!/.vim/coc-settings.json
-!/nvim
-
-# Starship
-!/starship.toml
-
-# mise
-!/mise/config.toml
-
-# wezterm
-!/wezterm/wezterm.lua
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
