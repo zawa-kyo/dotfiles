@@ -1,0 +1,775 @@
+{
+  // ===========================
+  // General
+  // ===========================
+  // ファイルの文字コードをUTF-8固定から自動判定に変更
+  "files.autoGuessEncoding": true,
+  // 保存時に末尾を空行にする
+  "files.insertFinalNewline": true,
+  // 保存時に最終行以降を削除
+  "files.trimFinalNewlines": true,
+  // 保存時に行末のホワイトスペースを削除
+  "files.trimTrailingWhitespace": true,
+  // Ctrl+スクロールでエディタ文字をズーム
+  "editor.mouseWheelZoom": true,
+
+  // prettier
+  // 自動的にフォーマットを行う
+  "editor.formatOnSave": true, // 保存時
+  "editor.formatOnType": false, // 入力中（改行時）
+  "editor.formatOnPaste": true, // ペースト時
+  // 入力候補の1番目を最初に選択しておく
+  "editor.suggestSelection": "first",
+  // サジェスト一覧の初期表示項目設定。IntelliCodeのおまじない?
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  // StickyScrollを有効化、表示する上限値を設定
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 5,
+  // ペアとなる括弧のガイドを表示
+  // true: 常に有効, active: アクティブなペアに対してのみ有効
+  "editor.guides.bracketPairs": true,
+  // コマンドセンターを有効化
+  // titleBarStyleが"custom"であることが必要
+  "window.commandCenter": false,
+  // プレビューモードを抑制
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // ヒントメッセージを非表示
+  "workbench.editor.untitled.hint": "hidden",
+  // 最後のエディタを閉じたときもウィンドウを閉じない
+  "window.closeWhenEmpty": false,
+  "window.title": "${activeEditorMedium}@${rootName}",
+  // タイトルバーを修正
+  "window.titleBarStyle": "custom",
+  "workbench.colorCustomizations": {
+    "[Evans Dark Theme]": {
+      "titleBar.activeBackground": "#1C262C",
+      "titleBar.activeForeground": "#1C262C"
+    },
+    "statusBar.background": "#1C262C",
+    "statusBar.noFolderBackground": "#1C262C",
+    "statusBar.debuggingBackground": "#1C262C"
+  },
+  // ファイルツリーにインデントのガイド線を表示 / インデントのサイズを変更する
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.tree.indent": 10,
+
+  // 起動時にどのページを開くか
+  "workbench.startupEditor": "none", // "readme",
+
+  // エクスプローラで表示しない項目
+  "files.exclude": {
+    "**/.DS_Store": false,
+    "**/.git": true,
+    "**/.gitignore": false,
+    "**/.classpath": true,
+    "**/.gradle": false,
+    "**/.vscode": false,
+    "**/__pycache__": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.venv": false,
+    "**/.dart_tool": true,
+    "**/.idea": true,
+    "**/.metadata": true,
+    "**/package-lock.json": false,
+    "**/poetry.lock": true
+  },
+
+  // 検索結果から除外する項目
+  "search.exclude": {
+    // ファイルブラウザには表示するが検索から除外する
+    "**/node_modules": true,
+    "**/package-lock.json": true,
+    "**.svg": false
+  },
+  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
+  "files.watcherExclude": {
+    "**/node_modules/*/**": true,
+    "**/.dart_tool": true
+  },
+  // ターミナルに表示する項目の最大行数
+  "terminal.integrated.scrollback": 4000,
+  // ファイルの削除時に確認する
+  "explorer.confirmDelete": false,
+  // 誤検出を避けるため、スクリーンリーダー(文字読み上げ)をOFFに変更
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  // アップデート時にリリースノートを表示
+  "update.showReleaseNotes": false,
+  // 拡張機能のRecommendationを停止
+  "extensions.ignoreRecommendations": true,
+  // タッチバーを無効化
+  "keyboard.touchbar.enabled": false,
+  "diffEditor.diffAlgorithm": "advanced", // 差分アルゴリズムを変更
+  // ===========================
+  // Appearance
+  // ===========================
+  // フォント
+  "editor.fontFamily": "'JetBrains Mono', 'Hack Nerd Font', 'Fira Code'",
+  // エディタのフォントサイズ
+  "editor.fontSize": 12,
+  // ターミナルのフォントサイズ
+  "terminal.integrated.fontSize": 12,
+  // コンソールのフォントサイズ
+  "debug.console.fontSize": 12,
+  // 1行の高さ
+  "editor.lineHeight": 1.35,
+  // キャレット
+  "editor.cursorBlinking": "smooth", // キャレットを点滅させる
+  "editor.cursorSmoothCaretAnimation": "on", // アニメーションをスムーズに
+  "editor.cursorStyle": "line", // block", // エディタのキャレットのスタイル
+  "terminal.integrated.cursorStyle": "block", // ターミナルのキャレットのスタイル
+  // ターミナルのキャレットアニメーション
+  "terminal.integrated.cursorBlinking": true,
+  // 文字間の距離
+  "editor.letterSpacing": 0.1,
+  // フォントの合字機能を有効化
+  "editor.fontLigatures": true,
+  // 制御文字を表示
+  "editor.renderControlCharacters": true,
+  // ミニマップを非表示
+  "editor.minimap.enabled": false,
+  // 「開いているエディター」を非表示に変更
+  "explorer.openEditors.visible": 0,
+  // ブレークポイント表示領域 (グリフマージン) を表示
+  "editor.glyphMargin": true,
+  // 右端で折り返す
+  "editor.wordWrap": "on",
+  // 選択行の行番号をハイライトする
+  "editor.renderLineHighlight": "all",
+  // Breadcrumbsを表示
+  "breadcrumbs.enabled": true,
+  // 選択範囲の角を丸める
+  "editor.roundedSelection": true,
+  // 最終行よりも下へのスクロールを許可
+  "editor.scrollBeyondLastLine": true,
+  // "vscode_custom_css.imports": [
+  //   "https://gist.githubusercontent.com/Crysta1221/24c724fd9f475ef473dcf2c3d551b8c3/raw/a9e6920e39d78eeb43ea448d36a8eb215bbbbf35/style.css"
+  // ],
+
+  // devcontainer起動時もデフォルトでインストールする拡張機能
+  "dev.containers.defaultExtensions": [
+    "eamodio.gitlens", // GitLens
+    "mhutchie.git-graph", // Git Graph
+    "streetsidesoftware.code-spell-checker", // Spell Checker
+    "usernamehw.errorlens", // Error Lens
+    "saikou9901.evilinspector", // Evilinspector
+    "genieai.chatgpt-vscode", // Genie AI
+    "formulahendry.code-runner", // Code Runner
+    "oderwat.indent-rainbow" // indent-rainbow
+  ],
+
+  // ===========================
+  // Speed up
+  // ===========================
+  // 高速化のためビルドタスクフェッチをOFFに変更
+  "typescript.tsc.autoDetect": "off",
+  "grunt.autoDetect": "off",
+  "jake.autoDetect": "off",
+  "npm.autoDetect": "off",
+  "gulp.autoDetect": "off",
+
+  // ===========================
+  // Extensions
+  // ===========================
+  // Todo Tree
+  "todo-tree.general.tags": ["FIXME", "NOTE", "TODO", "CHECK", "DONE"],
+  "todo-tree.general.showActivityBarBadge": true,
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "bell",
+      "foreground": "#eb3055",
+      "iconColour": "#eb3055"
+    },
+    "FIXME": {
+      "icon": "flame",
+      "foreground": "#ff7700",
+      "iconColour": "#ff7700"
+    },
+    "NOTE": {
+      "icon": "bookmark",
+      "foreground": "#15a5ad",
+      "iconColour": "#15a5ad"
+    },
+    "DONE": {
+      "icon": "check",
+      "foreground": "#32CD32",
+      "iconColour": "#32CD32"
+    }
+  },
+  // 検索対象から除くディレクトリ
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/.venv/**"],
+  // IndentRainbow
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.07)",
+    "rgba(127,255,127,0.07)",
+    "rgba(255,127,255,0.07)",
+    "rgba(79,236,236,0.07)"
+  ],
+  "indentRainbow.ignoreErrorLanguages": ["*"],
+  // Auto Rename Tag
+  // HTMLの開始, 終了タグを同時に編集する
+  "editor.linkedEditing": true,
+  // Code Runner
+  // 使用する言語のみ記載。デフォルト値は code-runner.executorMap の補完で出力できる
+  // pythonPath: Python: Select Interpreter で指定した値
+  "code-runner.runInTerminal": true,
+  "code-runner.ignoreSelection": true,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "bun",
+    "java": "cd $workspaceRoot && java $fullFileName", // or "cd $dir && javac $fileName && java $fileNameWithoutExt"
+    // $pythonPath: 指定したインタプリタのパス
+    // $fullFileName: 開いているファイルの絶対パス
+    "python": "$pythonPath -u $fullFileName", // or "python -u",
+    "swift": "swift",
+    "dart": "dart",
+    "go": "go run",
+    "rust": "cd $workspaceRoot && cargo run $fullFileName"
+  },
+  // SonarLint
+  "sonarlint.rules": {
+    "java:S106": {
+      // System.out.printlnに対する警告
+      "level": "off"
+    },
+    "java:S1220": {
+      // Move this file to a named package.
+      "level": "off"
+    },
+    "python:S3776": {
+      // Refactor this function to reduce its Cognitive Complexity
+      "level": "off"
+    }
+  },
+
+  // neovim
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
+
+  // テキスト校正くん
+  "japanese-proofreading.textlint.外来語カタカナ表記": false,
+  "japanese-proofreading.trace.server": "messages",
+
+  // ===========================
+  // Linter, formatter
+  // ===========================
+  // スペリングチェックで無視するワード
+  "cSpell.userWords": [
+    "appbar",
+    "arange",
+    "autopep8",
+    "autolap",
+    "azureus",
+    "chatgpt",
+    "chktex",
+    "classpath",
+    "colour",
+    "consts",
+    "cordova",
+    "dataframe",
+    "denoland",
+    "devcontainer",
+    "deviceready",
+    "disp",
+    "donot",
+    "DOCFILE",
+    "dtype",
+    "dtypes",
+    "eamodio", // GitLens
+    "endwhile",
+    "enduml",
+    "errisinstance",
+    "esbenp",
+    "errorlens", // Error Lens
+    "evilinspector", // Evilinspector
+    "factorypath",
+    "fira",
+    "flac",
+    "fontsize",
+    "formulahendry", // Code Runner
+    "frameon",
+    "fuga",
+    "genieai",
+    "getpid",
+    "gitlens",
+    "gnss",
+    "groupby",
+    "hoge",
+    "httpx",
+    "javac",
+    "jdbc",
+    "jenv",
+    "kyohei",
+    "latexlog",
+    "latexmk",
+    "lat",
+    "latlng",
+    "lng",
+    "longdivider",
+    "mathbb",
+    "mathcal",
+    "matplotlib",
+    "metasyntactic",
+    "mypy",
+    "mytheme",
+    "nanmax",
+    "nanmin",
+    "neovim",
+    "noctis",
+    "nonstopmode",
+    "numpy",
+    "nvim",
+    "ozawa",
+    "plantuml",
+    "plottable",
+    "println",
+    "psutil",
+    "pstmt",
+    "pycache",
+    "pyenv",
+    "pyinstaller",
+    "pyocr",
+    "pylance",
+    "pylint",
+    "pyperclip",
+    "pytest",
+    "qiita",
+    "raycast",
+    "realpath",
+    "revealjs",
+    "rgba",
+    "riverpod",
+    "runtimes",
+    "rustc",
+    "saikou9901", // Evilinspector
+    "savefig",
+    "scrollback",
+    "shellsession",
+    "skiprows",
+    "sonarlint",
+    "startuml",
+    "stringify",
+    "suptitle",
+    "synctex",
+    "tabbar",
+    "tesseract",
+    "textlint",
+    "Traceback",
+    "tqdm",
+    "touchbar",
+    "twinx",
+    "unnecessaries",
+    "usernamehw", // Error Lens
+    "venv",
+    "vsintellicode",
+    "wireframe",
+    "xlabel",
+    "xlim",
+    "ylabel",
+    "ylim",
+    "zenn"
+  ],
+
+  // ===========================
+  // Language specified settings
+  // ===========================
+  // insertSpaces: タブをスペースに変換する
+  // tabSize: タブとして代入するスペースの数
+
+  // ========== JSON ===========
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+
+  // ========== JSON ===========
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ========== HTML ===========
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ========== CSS ============
+  "[css]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  // ========== Java ==========
+  "[java]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "redhat.java"
+  },
+
+  // ======= JavaScript ========
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "never"
+    },
+    "files.insertFinalNewline": false,
+    "javascript.suggest.autoImports": false, // 自動的にimportするか
+    "javascript.preferences.quoteStyle": "single", // クォートスタイル
+    "javascript.inlayHints.parameterNames.enabled": "none" // literals", "all", //引数の名前を表示
+  },
+
+  // ======= TypeScript ========
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "never"
+    }
+  },
+  // ======= Bun ========
+  // Bunのパス
+  "bun.runtime": "$HOME/.local/share/mise/installs/bun/latest/bin/bun",
+  // デバッグターミナルに登録
+  "bun.debugTerminal.enabled": true,
+  // デバッガーがプログラムの最初の行で停止するか
+  "bun.debugTerminal.stopOnEntry": false,
+  // ========== Vue ===========
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "never"
+    },
+    "files.insertFinalNewline": false
+  },
+  // Vetur: Import文をアップデート
+  "vetur.languageFeatures.updateImportOnFileMove": false,
+  // Volar: Import文をアップデート
+  // "volar.updateImportsOnFileMove.enabled": false,
+  // ======== Python ==========
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "charliermarsh.ruff", // prettierはPythonに対応していないため外す
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnType": true
+  },
+  // ======== Python ==========
+  "Lua.format.defaultConfig": {
+    "indent_style": "space",
+    "indent_size": "2"
+  },
+  // pytest
+  // Python標準のunittestモジュールを無効化
+  "python.testing.unittestEnabled": false,
+  // ユニットテストツールとしてpytestを有効化
+  "python.testing.pytestEnabled": true,
+  // ファイル保存時にテスト対象を自動的に探索
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  // --cov: カバレッジ計測の有効化
+  // --cov-report xml: カバレッジ計測レポートをxml形式 (coverage.xml) で出力
+  "python.testing.pytestArgs": ["--cov=src", "--cov-report", "xml"],
+  // エディタ上のカバレッジ表示設定
+  // ガター(ブレークポイント等が表示される場所)でのカバレッジ表示有無(default: true)
+  "coverage-gutters.showGutterCoverage": true,
+  // エディタ行でのカバレッジ表示有無 (default: false)
+  "coverage-gutters.showLineCoverage": false,
+  // ルーラーでのカバレッジ表示有無 (default: false)
+  "coverage-gutters.showRulerCoverage": false,
+  // flake8
+  "flake8.args": [
+    // E402: Module level import not at top of file
+    //  E501: Line too long (82 > 79 characters)
+    "--ignore=E402, E501",
+    "--max-line-length=119" // E501のデフォルトの79を上書き
+  ],
+  // 言語サーバ
+  "python.languageServer": "Pylance",
+  // Pylance
+  // メソッドの丸括弧補完を有効にする
+  "python.analysis.completeFunctionParens": true,
+  // ファイル保存時にテスト対象コードを自動的に探索
+  "python.analysis.diagnosticMode": "workspace",
+  // デフォルトのインタプリタ
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  // ========= Swift ==========
+  "[swift]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  // デバッガーのディレクトリ
+  "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  // ======== Jupyter =========
+  "[jupyter]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  // ========= Dart ==========
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.organizeImports": "always",
+      "source.addMissingImports": "always"
+    },
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "dart.flutterCreateAndroidLanguage": "java",
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  // クロージングラベルを表示
+  "dart.closingLabels": false,
+  // ======= Markdown =========
+  "[markdown]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
+    "editor.snippetSuggestions": "top",
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  // markdownlint
+  "markdownlint.config": {
+    // リンターで無視する項目
+    "MD007": false, // ul-indent - Unordered list indentation
+    "MD010": false, // no-hard-tabs - Hard tabs
+    "MD022": false, //blanks-around-headings/blanks-around-headers: Headings should be surrounded by blank lines
+    "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
+    "MD032": false // blanks-around-lists: Lists should be surrounded by blank lines
+  },
+  // markdown-preview-enhanced
+  "markdown-preview-enhanced.mermaidTheme": "forest",
+  "markdown-preview-enhanced.previewTheme": "vue.css",
+  "markdown-preview-enhanced.mathRenderingOption": "MathJax",
+  "markdown-preview-enhanced.revealjsTheme": "beige.css",
+  "markdown-preview-enhanced.scrollSync": false,
+  "markdown.styles": [
+    "$HOME/Library/CloudStorage/Dropbox/Git/Log/Lifelog/mytheme.css"
+  ],
+  "markdown.preview.scrollEditorWithPreview": false,
+  "markdown.preview.scrollPreviewWithEditor": false,
+  "markdown-pdf.convertOnSave": true,
+  // ====== LaTeX ========
+  // 指定したタイミングで自動的にビルド
+  "latex-workshop.latex.autoBuild.run": "onSave", // "onFileChange",
+  // 利用するPDFビューア
+  "latex-workshop.view.pdf.viewer": "tab",
+  // 通知をポップアップ表示 (Recipe succeeded.など)
+  "latex-workshop.message.information.show": true,
+  // 日本語由来のエラーが出るのでリンターのチェックを停止
+  "latex-workshop.linting.chktex.enabled": false,
+  "latex-workshop.message.latexlog.exclude": [".*"],
+  // 中間ファイルを削除
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  // 削除対象とする中間ファイル
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.synctex.gz",
+    "_minted*",
+    "*.nav",
+    "*.snm",
+    "*.vrb"
+  ],
+  // 実行するコマンドの設定
+  // synctex: エディタとPDFプレビュー画面との相互リンクの仕組み
+  "latex-workshop.latex.tools": [
+    {
+      "command": "ptex2pdf",
+      "args": [
+        "-interaction=nonstopmode", // 文法ミスがあってもコンパイルを終了させる
+        "-l",
+        "-ot",
+        "-kanji=utf8 -synctex=1",
+        "%DOCFILE%.tex"
+      ],
+      "name": "ptex2pdf"
+    }
+  ],
+  // ビルドの実行内容を設定
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "ptex2pdf",
+      "tools": ["ptex2pdf"]
+    }
+  ],
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  // ====== LiveServer ========
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.CustomBrowser": "chrome",
+  "redhat.telemetry.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  // ===========================
+  // Ignored Settings
+  // ===========================
+  "settingsSync.ignoredExtensions": [
+    "sonarlint.pathToNodeExecutable",
+    "markdown-preview-enhanced.plantumlJarPath"
+  ],
+  "markdown-preview-enhanced.plantumlJarPath": "/opt/homebrew/Cellar/plantuml/1.2023.11/libexec/plantuml.jar",
+  "sonarlint.pathToNodeExecutable": "$HOME/.local/share/mise/installs/bun/1.1.31/bin/bun",
+  "workbench.colorTheme": "Nord",
+  "turboConsoleLog.quote": "'",
+  "editor.find.addExtraSpaceOnTop": true,
+  "git.openRepositoryInParentFolders": "never",
+  "genieai.response.showNotification": true,
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
+  "aws.suppressPrompts": {
+    "codeWhispererConnectionExpired": true
+  },
+  "autopep8.args": ["--max-line-length=150"],
+  "lldb.suppressUpdateNotifications": true,
+  "cmake.configureOnOpen": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "dev.containers.dockerComposePath": "docker compose",
+  "workbench.iconTheme": "material-icon-theme",
+  "window.autoDetectColorScheme": true,
+  "workbench.editor.empty.hint": "hidden",
+  "peacock.affectActivityBar": true,
+  "peacock.affectStatusBar": true,
+  "peacock.affectTitleBar": true,
+  "peacock.elementAdjustments": {
+    "activityBar": "lighten"
+  },
+  "peacock.favoriteColors": [
+    {
+      "name": "Runmetrix",
+      "value": "#008AA3"
+    },
+    {
+      "name": "Walkmetrix",
+      "value": "#FD9E1C"
+    },
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    }
+  ],
+
+  "update.mode": "manual",
+  "lldb.launch.expressions": "native",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+  "terminal.integrated.fontWeight": "normal",
+  "dart.sdkPath": "/Users/kyohei/.local/share/mise/installs/flutter/3.16.9-stable/bin/cache/dart-sdk",
+  "workbench.experimental.share.enabled": true,
+  "workbench.preferredLightColorTheme": "Evans Dark Theme",
+  "workbench.activityBar.location": "top",
+  "workbench.preferredDarkColorTheme": "Nord Wave",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
+}
