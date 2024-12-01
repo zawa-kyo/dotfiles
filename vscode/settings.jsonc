@@ -482,7 +482,6 @@
     "editor.defaultFormatter": "charliermarsh.ruff" // prettierはPythonに対応していないため外す
   },
 
-  // ======== Python ==========
   // pytest
   // Python標準のunittestモジュールを無効化
   "python.testing.unittestEnabled": false,
