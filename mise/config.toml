@@ -1,0 +1,9 @@
+[tools]
+node = "20"
+java = "21.0.2"
+bun = "latest"
+deno = "latest"
+go = "latest"
+flutter = "latest"
+rust = "latest"
+python = "3.13.0"
