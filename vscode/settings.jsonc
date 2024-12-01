@@ -2,6 +2,7 @@
   // ===========================
   // General
   // ===========================
+
   // ファイルの文字コードをUTF-8固定から自動判定に変更
   "files.autoGuessEncoding": true,
   // 保存時に末尾を空行にする
@@ -10,54 +11,7 @@
   "files.trimFinalNewlines": true,
   // 保存時に行末のホワイトスペースを削除
   "files.trimTrailingWhitespace": true,
-  // Ctrl+スクロールでエディタ文字をズーム
-  "editor.mouseWheelZoom": true,
-
-  // prettier
-  // 自動的にフォーマットを行う
-  "editor.formatOnSave": true, // 保存時
-  "editor.formatOnType": false, // 入力中（改行時）
-  "editor.formatOnPaste": true, // ペースト時
-  // 入力候補の1番目を最初に選択しておく
-  "editor.suggestSelection": "first",
-  // サジェスト一覧の初期表示項目設定。IntelliCodeのおまじない?
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  // StickyScrollを有効化、表示する上限値を設定
-  "editor.stickyScroll.enabled": true,
-  "editor.stickyScroll.maxLineCount": 5,
-  // ペアとなる括弧のガイドを表示
-  // true: 常に有効, active: アクティブなペアに対してのみ有効
-  "editor.guides.bracketPairs": true,
-  // コマンドセンターを有効化
-  // titleBarStyleが"custom"であることが必要
-  "window.commandCenter": false,
-  // プレビューモードを抑制
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  // ヒントメッセージを非表示
-  "workbench.editor.untitled.hint": "hidden",
-  // 最後のエディタを閉じたときもウィンドウを閉じない
-  "window.closeWhenEmpty": false,
-  "window.title": "${activeEditorMedium}@${rootName}",
-  // タイトルバーを修正
-  "window.titleBarStyle": "custom",
-  "workbench.colorCustomizations": {
-    "[Evans Dark Theme]": {
-      "titleBar.activeBackground": "#1C262C",
-      "titleBar.activeForeground": "#1C262C"
-    },
-    "statusBar.background": "#1C262C",
-    "statusBar.noFolderBackground": "#1C262C",
-    "statusBar.debuggingBackground": "#1C262C"
-  },
-  // ファイルツリーにインデントのガイド線を表示 / インデントのサイズを変更する
-  "workbench.tree.renderIndentGuides": "always",
-  "workbench.tree.indent": 10,
-
-  // 起動時にどのページを開くか
-  "workbench.startupEditor": "none", // "readme",
-
-  // エクスプローラで表示しない項目
+  // Explorerで表示しない項目
   "files.exclude": {
     "**/.DS_Store": false,
     "**/.git": true,
@@ -72,58 +26,43 @@
     "**/.dart_tool": true,
     "**/.idea": true,
     "**/.metadata": true,
-    "**/package-lock.json": false,
     "**/poetry.lock": true
   },
 
-  // 検索結果から除外する項目
-  "search.exclude": {
-    // ファイルブラウザには表示するが検索から除外する
-    "**/node_modules": true,
-    "**/package-lock.json": true,
-    "**.svg": false
-  },
-  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
-  "files.watcherExclude": {
-    "**/node_modules/*/**": true,
-    "**/.dart_tool": true
-  },
-  // ターミナルに表示する項目の最大行数
-  "terminal.integrated.scrollback": 4000,
-  // ファイルの削除時に確認する
-  "explorer.confirmDelete": false,
+  // ===========================
+  // Editor
+  // ===========================
+
+  // Ctrl+スクロールでエディタ文字をズーム
+  "editor.mouseWheelZoom": true,
+  // 自動的にフォーマットを実行
+  "editor.formatOnSave": true, // 保存時
+  "editor.formatOnType": false, // 入力中（改行時）
+  "editor.formatOnPaste": true, // ペースト時
+  // 入力候補の1番目を最初に選択しておく
+  "editor.suggestSelection": "first",
+  // StickyScrollを有効化、表示する上限値を設定
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 5,
   // 誤検出を避けるため、スクリーンリーダー(文字読み上げ)をOFFに変更
   "editor.accessibilitySupport": "off",
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
-  // アップデート時にリリースノートを表示
-  "update.showReleaseNotes": false,
-  // 拡張機能のRecommendationを停止
-  "extensions.ignoreRecommendations": true,
-  // タッチバーを無効化
-  "keyboard.touchbar.enabled": false,
-  "diffEditor.diffAlgorithm": "advanced", // 差分アルゴリズムを変更
-  // ===========================
-  // Appearance
-  // ===========================
+  // ペアとなる括弧のガイドを表示
+  // true: 常に有効, active: アクティブなペアに対してのみ有効
+  "editor.guides.bracketPairs": true,
+  // コンソールのフォントサイズ
+  "debug.console.fontSize": 12,
   // フォント
   "editor.fontFamily": "'JetBrains Mono', 'Hack Nerd Font', 'Fira Code'",
   // エディタのフォントサイズ
   "editor.fontSize": 12,
-  // ターミナルのフォントサイズ
-  "terminal.integrated.fontSize": 12,
-  // コンソールのフォントサイズ
-  "debug.console.fontSize": 12,
   // 1行の高さ
   "editor.lineHeight": 1.35,
-  // キャレット
-  "editor.cursorBlinking": "smooth", // キャレットを点滅させる
-  "editor.cursorSmoothCaretAnimation": "on", // アニメーションをスムーズに
-  "editor.cursorStyle": "line", // block", // エディタのキャレットのスタイル
-  "terminal.integrated.cursorStyle": "block", // ターミナルのキャレットのスタイル
-  // ターミナルのキャレットアニメーション
-  "terminal.integrated.cursorBlinking": true,
+  // キャレットを点滅させる
+  "editor.cursorBlinking": "smooth",
+  // キャレットのアニメーションをスムーズに
+  "editor.cursorSmoothCaretAnimation": "on",
+  // エディタのキャレットのスタイル
+  "editor.cursorStyle": "line", // block",
   // 文字間の距離
   "editor.letterSpacing": 0.1,
   // フォントの合字機能を有効化
@@ -132,23 +71,115 @@
   "editor.renderControlCharacters": true,
   // ミニマップを非表示
   "editor.minimap.enabled": false,
-  // 「開いているエディター」を非表示に変更
-  "explorer.openEditors.visible": 0,
   // ブレークポイント表示領域 (グリフマージン) を表示
   "editor.glyphMargin": true,
   // 右端で折り返す
   "editor.wordWrap": "on",
   // 選択行の行番号をハイライトする
   "editor.renderLineHighlight": "all",
-  // Breadcrumbsを表示
-  "breadcrumbs.enabled": true,
+  // tabの代わりにスペースを挿入
+  "editor.insertSpaces": true,
+  // HTMLの開始, 終了タグを同時に編集する
+  "editor.linkedEditing": true,
   // 選択範囲の角を丸める
   "editor.roundedSelection": true,
   // 最終行よりも下へのスクロールを許可
   "editor.scrollBeyondLastLine": true,
-  // "vscode_custom_css.imports": [
-  //   "https://gist.githubusercontent.com/Crysta1221/24c724fd9f475ef473dcf2c3d551b8c3/raw/a9e6920e39d78eeb43ea448d36a8eb215bbbbf35/style.css"
-  // ],
+
+  // ===========================
+  // Workbench
+  // ===========================
+
+  // プレビューモードを抑制
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // ファイルツリーにインデントのガイド線を表示 / インデントのサイズを変更する
+  "workbench.tree.renderIndentGuides": "always",
+  // 起動時にどのページを開くか
+  "workbench.startupEditor": "none", // "readme",
+  "workbench.tree.indent": 8,
+  "workbench.experimental.share.enabled": true,
+  "workbench.preferredLightColorTheme": "Evans Dark Theme",
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Nord",
+  "workbench.preferredDarkColorTheme": "Nord Wave",
+  "workbench.colorCustomizations": {
+    "[Evans Dark Theme]": {
+      "titleBar.activeBackground": "#1C262C",
+      "titleBar.activeForeground": "#1C262C"
+    },
+    "statusBar.background": "#1C262C",
+    "statusBar.noFolderBackground": "#1C262C",
+    "statusBar.debuggingBackground": "#1C262C"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.empty.hint": "hidden",
+
+  // ===========================
+  // Window
+  // ===========================
+
+  // 最後のエディタを閉じたときもウィンドウを閉じない
+  "window.closeWhenEmpty": false,
+  "window.title": "${activeEditorMedium}@${rootName}",
+  // コマンドセンターを有効化
+  // titleBarStyleが"custom"であることが必要
+  "window.commandCenter": false,
+  // タイトルバーを修正
+  "window.titleBarStyle": "custom",
+  // OSの設定に合わせて自動で配色テーマが変更される
+  "window.autoDetectColorScheme": true,
+
+  // ===========================
+  // Search
+  // ===========================
+
+  // 検索結果から除外する項目
+  "search.exclude": {
+    // ファイルブラウザには表示するが検索から除外する
+    "**/node_modules": true,
+    "**/package-lock.json": true,
+    "**.svg": false
+  },
+
+  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
+  "files.watcherExclude": {
+    "**/node_modules/*/**": true,
+    "**/.dart_tool": true
+  },
+
+  // ファイルの削除時に確認する
+  "explorer.confirmDelete": false,
+
+  // ===========================
+  // Terminal
+  // ===========================
+
+  // ターミナルのフォント設定
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+  // ターミナルに表示する項目の最大行数
+  "terminal.integrated.scrollback": 4000,
+  // ターミナルのキャレットアニメーション
+  "terminal.integrated.cursorBlinking": true,
+  // ターミナルのキャレットのスタイル
+  "terminal.integrated.cursorStyle": "block",
+
+  // ===========================
+  // Update
+  // ===========================
+
+  // アップデート時にリリースノートを表示
+  "update.showReleaseNotes": false,
+  // 拡張機能のRecommendationを停止
+  "extensions.ignoreRecommendations": true,
+  // タッチバーを無効化
+  "keyboard.touchbar.enabled": false,
+  "diffEditor.diffAlgorithm": "advanced", // 差分アルゴリズムを変更
+  // Breadcrumbsを表示
+  "breadcrumbs.enabled": true,
+  "update.mode": "manual",
 
   // devcontainer起動時もデフォルトでインストールする拡張機能
   "dev.containers.defaultExtensions": [
@@ -171,6 +202,12 @@
   "jake.autoDetect": "off",
   "npm.autoDetect": "off",
   "gulp.autoDetect": "off",
+
+  // ===========================
+  // Others
+  // ===========================
+  // サジェスト一覧の初期表示項目設定。IntelliCodeのおまじない?
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   // ===========================
   // Extensions
@@ -213,9 +250,7 @@
     "rgba(79,236,236,0.07)"
   ],
   "indentRainbow.ignoreErrorLanguages": ["*"],
-  // Auto Rename Tag
-  // HTMLの開始, 終了タグを同時に編集する
-  "editor.linkedEditing": true,
+
   // Code Runner
   // 使用する言語のみ記載。デフォルト値は code-runner.executorMap の補完で出力できる
   // pythonPath: Python: Select Interpreter で指定した値
@@ -253,13 +288,10 @@
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
 
-  // テキスト校正くん
-  "japanese-proofreading.textlint.外来語カタカナ表記": false,
-  "japanese-proofreading.trace.server": "messages",
-
   // ===========================
   // Linter, formatter
   // ===========================
+
   // スペリングチェックで無視するワード
   "cSpell.userWords": [
     "appbar",
@@ -380,21 +412,20 @@
   // ===========================
   // Language specified settings
   // ===========================
+
   // insertSpaces: タブをスペースに変換する
   // tabSize: タブとして代入するスペースの数
 
   // ========== JSON ===========
   "[json]": {
     "editor.tabSize": 2,
-    "editor.insertSpaces": true,
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  // ========== JSON ===========
+  // ========== JSONC ==========
   "[jsonc]": {
     "editor.tabSize": 2,
-    "editor.insertSpaces": true,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -402,7 +433,6 @@
   // ========== HTML ===========
   "[html]": {
     "editor.tabSize": 2,
-    "editor.insertSpaces": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
@@ -415,7 +445,6 @@
   // ========== Java ==========
   "[java]": {
     "editor.tabSize": 4,
-    "editor.insertSpaces": true,
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "redhat.java"
   },
@@ -423,7 +452,6 @@
   // ======= JavaScript ========
   "[javascript]": {
     "editor.tabSize": 2,
-    "editor.insertSpaces": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false,
     "editor.formatOnPaste": false,
@@ -431,15 +459,12 @@
       "source.organizeImports": "never"
     },
     "files.insertFinalNewline": false,
-    "javascript.suggest.autoImports": false, // 自動的にimportするか
-    "javascript.preferences.quoteStyle": "single", // クォートスタイル
-    "javascript.inlayHints.parameterNames.enabled": "none" // literals", "all", //引数の名前を表示
+    "javascript.preferences.quoteStyle": "double"
   },
 
   // ======= TypeScript ========
   "[typescript]": {
     "editor.tabSize": 2,
-    "editor.insertSpaces": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
@@ -447,42 +472,26 @@
       "source.organizeImports": "never"
     }
   },
+
   // ======= Bun ========
   // Bunのパス
-  "bun.runtime": "$HOME/.local/share/mise/installs/bun/latest/bin/bun",
+  "bun.runtime": "${userHome}/.local/share/mise/shims/bun",
   // デバッグターミナルに登録
   "bun.debugTerminal.enabled": true,
   // デバッガーがプログラムの最初の行で停止するか
   "bun.debugTerminal.stopOnEntry": false,
-  // ========== Vue ===========
-  "[vue]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "never"
-    },
-    "files.insertFinalNewline": false
-  },
-  // Vetur: Import文をアップデート
-  "vetur.languageFeatures.updateImportOnFileMove": false,
-  // Volar: Import文をアップデート
-  // "volar.updateImportsOnFileMove.enabled": false,
+
   // ======== Python ==========
   "[python]": {
     "editor.tabSize": 4,
-    "editor.insertSpaces": true,
     "editor.defaultFormatter": "charliermarsh.ruff", // prettierはPythonに対応していないため外す
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     },
     "editor.formatOnType": true
   },
+
   // ======== Python ==========
-  "Lua.format.defaultConfig": {
-    "indent_style": "space",
-    "indent_size": "2"
-  },
   // pytest
   // Python標準のunittestモジュールを無効化
   "python.testing.unittestEnabled": false,
@@ -516,6 +525,7 @@
   "python.analysis.diagnosticMode": "workspace",
   // デフォルトのインタプリタ
   "python.defaultInterpreterPath": "./.venv/bin/python",
+
   // ========= Swift ==========
   "[swift]": {
     "editor.tabSize": 2,
@@ -523,11 +533,13 @@
   },
   // デバッガーのディレクトリ
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+
   // ======== Jupyter =========
   "[jupyter]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true
   },
+
   // ========= Dart ==========
   "[dart]": {
     "editor.formatOnSave": true,
@@ -548,10 +560,10 @@
   "dart.previewFlutterUiGuidesCustomTracking": true,
   // クロージングラベルを表示
   "dart.closingLabels": false,
+
   // ======= Markdown =========
   "[markdown]": {
     "editor.tabSize": 4,
-    "editor.insertSpaces": true,
     "editor.wordWrap": "on",
     "editor.quickSuggestions": {
       "comments": "on",
@@ -576,12 +588,9 @@
   "markdown-preview-enhanced.mathRenderingOption": "MathJax",
   "markdown-preview-enhanced.revealjsTheme": "beige.css",
   "markdown-preview-enhanced.scrollSync": false,
-  "markdown.styles": [
-    "$HOME/Library/CloudStorage/Dropbox/Git/Log/Lifelog/mytheme.css"
-  ],
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
-  "markdown-pdf.convertOnSave": true,
+
   // ====== LaTeX ========
   // 指定したタイミングで自動的にビルド
   "latex-workshop.latex.autoBuild.run": "onSave", // "onFileChange",
@@ -646,12 +655,20 @@
   "workbench.editorAssociations": {
     "*.pdf": "latex-workshop-pdf-hook"
   },
+
+  // ====== Lua ========
+  "Lua.format.defaultConfig": {
+    "indent_style": "space",
+    "indent_size": "2"
+  },
+
   // ====== LiveServer ========
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.CustomBrowser": "chrome",
   "redhat.telemetry.enabled": true,
   "explorer.confirmDragAndDrop": false,
   "security.workspace.trust.untrustedFiles": "open",
+
   // ===========================
   // Ignored Settings
   // ===========================
@@ -661,7 +678,6 @@
   ],
   "markdown-preview-enhanced.plantumlJarPath": "/opt/homebrew/Cellar/plantuml/1.2023.11/libexec/plantuml.jar",
   "sonarlint.pathToNodeExecutable": "$HOME/.local/share/mise/installs/bun/1.1.31/bin/bun",
-  "workbench.colorTheme": "Nord",
   "turboConsoleLog.quote": "'",
   "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
@@ -695,18 +711,11 @@
     "!Split",
     "!Split sequence"
   ],
-  "aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
-  "aws.suppressPrompts": {
-    "codeWhispererConnectionExpired": true
-  },
   "autopep8.args": ["--max-line-length=150"],
   "lldb.suppressUpdateNotifications": true,
   "cmake.configureOnOpen": true,
   "vsicons.dontShowNewVersionMessage": true,
   "dev.containers.dockerComposePath": "docker compose",
-  "workbench.iconTheme": "vscode-icons",
-  "window.autoDetectColorScheme": true,
-  "workbench.editor.empty.hint": "hidden",
   "peacock.affectActivityBar": true,
   "peacock.affectStatusBar": true,
   "peacock.affectTitleBar": true,
@@ -714,14 +723,6 @@
     "activityBar": "lighten"
   },
   "peacock.favoriteColors": [
-    {
-      "name": "Runmetrix",
-      "value": "#008AA3"
-    },
-    {
-      "name": "Walkmetrix",
-      "value": "#FD9E1C"
-    },
     {
       "name": "Angular Red",
       "value": "#dd0531"
@@ -760,15 +761,7 @@
     }
   ],
 
-  "update.mode": "manual",
   "lldb.launch.expressions": "native",
-  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
-  "terminal.integrated.fontWeight": "normal",
-  "dart.sdkPath": "/Users/kyohei/.local/share/mise/installs/flutter/3.16.9-stable/bin/cache/dart-sdk",
-  "workbench.experimental.share.enabled": true,
-  "workbench.preferredLightColorTheme": "Evans Dark Theme",
-  "workbench.activityBar.location": "top",
-  "workbench.preferredDarkColorTheme": "Nord Wave",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   }
