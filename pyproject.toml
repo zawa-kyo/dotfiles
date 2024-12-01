@@ -1,0 +1,17 @@
+[tool.poetry]
+authors = ["Kyohei Ozawa <zawazawakyo@gmail.com>"]
+description = ""
+name = "dotfiles"
+package-mode = false
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.0.1"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
