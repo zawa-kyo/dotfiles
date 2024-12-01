@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "aicommits": "^1.11.0",
+    "typescript": "^5.4.5"
+  }
+}

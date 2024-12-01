@@ -25,6 +25,7 @@ $ poetry run pre-commit install
 ## VSCode
 
 ### Caution
+
 If needed, back up the original configuration files before making changes.
 
 ### Synchronizing configuration files
@@ -42,3 +43,18 @@ $ ln -s "$(realpath vscode/settings.jsonc)" "$VSCODE_SETTING_DIR/settings.json"
 $ rm "$VSCODE_SETTING_DIR/keybindings.json"
 $ ln -s "$(realpath vscode/keybindings.jsonc)" "$VSCODE_SETTING_DIR/keybindings.json"
 ```
+
+## Bun
+
+To set up Bun’s global environment managed via this repository, run the following command:
+
+```sh
+sh scripts/install-bun.sh
+```
+
+This script will:
+	1. Create a symbolic link between the Bun global directory and the repository’s managed directory.
+	2. Navigate to the Bun global directory.
+	3. Install dependencies listed in package.json.
+
+After running the script, your Bun global environment will be fully configured and ready to use.
