@@ -2,6 +2,7 @@
 authors = ["Kyohei Ozawa <zawazawakyo@gmail.com>"]
 description = ""
 name = "dotfiles"
+package-mode = false
 readme = "README.md"
 version = "0.1.0"
 
