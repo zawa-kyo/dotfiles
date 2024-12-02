@@ -2,6 +2,20 @@
 
 Personal collection of dotfiles for system configuration and customization.
 
+## Preparation
+
+To get started, clone this repository into your home directory:
+
+```sh
+git clone [repository_url] $HOME/dotfiles
+```
+
+After cloning the repository, navigate to the project directory to execute subsequent commands:
+
+```sh
+cd $HOME/dotfiles
+```
+
 ## Pre-Hook
 
 ### Enabling Pre-Hook for Protecting Sensitive Information
