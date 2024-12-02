@@ -1,6 +1,6 @@
 return {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    event = { "BufRead", "BufNewFile", "LspAttach" },
     opts = {
         -- add any options here
     },
@@ -13,6 +13,10 @@ return {
         "rcarriga/nvim-notify",
     },
     config = function()
+        -- Configure notify first to avoid warnings
+        require("notify").setup({
+            background_colour = "#000000",
+        })
         require("noice").setup({
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -30,13 +34,13 @@ return {
                 inc_rename = false,           -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = false,       -- add a border to hover docs and signature help
             },
+            notify = {
+                enabled = true,
+                backend = "notify",
+            },
             message = {
                 enabled = true, -- leave LSP notifications in message history
             },
         })
-
-        require("notify").setup({
-            background_colour = "#000000",
-        })
-    end
+    end,
 }
