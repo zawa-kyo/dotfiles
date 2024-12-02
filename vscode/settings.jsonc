@@ -13,20 +13,26 @@
   "files.trimTrailingWhitespace": true,
   // Explorerで表示しない項目
   "files.exclude": {
-    "**/.DS_Store": false,
+    // OS
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Git
     "**/.git": true,
     "**/.gitignore": false,
+    // Java
     "**/.classpath": true,
-    "**/.gradle": false,
-    "**/.vscode": false,
+    // Python
     "**/__pycache__": true,
     "**/.mypy_cache": true,
     "**/.pytest_cache": true,
-    "**/.venv": false,
-    "**/.dart_tool": true,
+    "**/poetry.lock": true,
+    // Intellij
     "**/.idea": true,
-    "**/.metadata": true,
-    "**/poetry.lock": true
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    // JavaScript, TypeScript
+    "**/bun.lockb": true,
+    "**/package-lock.json": true
   },
   // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
   "files.watcherExclude": {
