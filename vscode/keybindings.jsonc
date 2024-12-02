@@ -1,20 +1,28 @@
 [
   {
     "key": "cmd+b",
+    // サイドバーをトグル
     "command": "workbench.action.toggleSidebarVisibility"
   },
   {
-    "key": "ctrl+s",
-    "command": "cursorLineStart",
-    "when": "textInputFocus"
+    "key": "ctrl+i",
+    // 次へ進む
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+o",
+    // 前に戻る
+    "command": "workbench.action.navigateBack"
   },
   {
     "key": "space d",
+    // 宣言を参照
     "command": "editor.action.goToDeclaration",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
     "key": "space h",
+    // ホバーを表示
     "command": "editor.action.showHover",
     "when": "neovim.mode == normal && editorTextFocus"
   }
