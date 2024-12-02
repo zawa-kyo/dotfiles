@@ -190,7 +190,7 @@
   // Neovimのパス
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   // init.vimのパス
-  "vscode-neovim.neovimInitVimPaths.darwin": "${userHome}/.config/nvim/init.vim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
   // 拡張機能を独自スレッドで実行しパフォーマンスが向上する、らしい
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
@@ -373,6 +373,7 @@
   "cSpell.userWords": [
     "appbar",
     "arange",
+    "asvetliakov",
     "autopep8",
     "autolap",
     "azureus",
@@ -387,8 +388,8 @@
     "devcontainer",
     "deviceready",
     "disp",
-    "donot",
     "DOCFILE",
+    "donot",
     "dtype",
     "dtypes",
     "eamodio", // GitLens
@@ -412,6 +413,7 @@
     "groupby",
     "hoge",
     "httpx",
+    "IntelliCode",
     "javac",
     "jdbc",
     "jenv",
@@ -421,11 +423,14 @@
     "lat",
     "latlng",
     "lng",
+    "lockb",
     "longdivider",
+    "Mandalorian",
     "mathbb",
     "mathcal",
     "matplotlib",
     "metasyntactic",
+    "mhutchie",
     "mypy",
     "mytheme",
     "nanmax",
@@ -433,8 +438,10 @@
     "neovim",
     "noctis",
     "nonstopmode",
+    "Nord",
     "numpy",
     "nvim",
+    "oderwat",
     "ozawa",
     "plantuml",
     "plottable",
@@ -483,8 +490,11 @@
     "xlim",
     "ylabel",
     "ylim",
+    "yzhang",
     "zenn"
   ],
+  // スペルチェックを無視するファイル
+  "cSpell.ignorePaths": ["**/.gitignore"],
 
   // ===========================
   // Language specified settings
@@ -539,7 +549,7 @@
 
   // ======= Bun ========
   // Bunのパス
-  "bun.runtime": "${userHome}/.local/share/mise/shims/bun",
+  "bun.runtime": "~/.local/share/mise/shims/bun",
   // デバッグターミナルに登録
   "bun.debugTerminal.enabled": true,
   // デバッガーがプログラムの最初の行で停止するか
@@ -547,8 +557,7 @@
 
   // ======== Python ==========
   "[python]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "charliermarsh.ruff" // prettierはPythonに対応していないため外す
+    "editor.tabSize": 4
   },
 
   // pytest
@@ -668,13 +677,13 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "sonarlint.pathToNodeExecutable": "${userHome}/.local/share/mise/shims/node",
+  "sonarlint.pathToNodeExecutable": "~/.local/share/mise/shims/node",
   "turboConsoleLog.quote": "'",
   "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
   "yaml.customTags": [
     "!And",
-    "${userHome}/.local/share/mise/shims/bun",
+    "~/.local/share/mise/shims/bun",
     "!And sequence",
     "!If",
     "!If sequence",
