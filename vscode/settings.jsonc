@@ -13,20 +13,26 @@
   "files.trimTrailingWhitespace": true,
   // Explorerで表示しない項目
   "files.exclude": {
-    "**/.DS_Store": false,
+    // OS
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Git
     "**/.git": true,
     "**/.gitignore": false,
+    // Java
     "**/.classpath": true,
-    "**/.gradle": false,
-    "**/.vscode": false,
+    // Python
     "**/__pycache__": true,
     "**/.mypy_cache": true,
     "**/.pytest_cache": true,
-    "**/.venv": false,
-    "**/.dart_tool": true,
+    "**/poetry.lock": true,
+    // Intellij
     "**/.idea": true,
-    "**/.metadata": true,
-    "**/poetry.lock": true
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    // JavaScript, TypeScript
+    "**/bun.lockb": true,
+    "**/package-lock.json": true
   },
   // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
   "files.watcherExclude": {
@@ -93,6 +99,10 @@
   // Workbench
   // ===========================
 
+  // カラーテーマ
+  "workbench.colorTheme": "Nord",
+  // アイコンテーマ
+  "workbench.iconTheme": "material-icon-theme",
   // プレビューモードを抑制
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -100,12 +110,11 @@
   "workbench.tree.renderIndentGuides": "always",
   // 起動時にどのページを開くか
   "workbench.startupEditor": "none", // "readme",
+  // 新規ファイル作成時のヒントを非表示にする
+  "workbench.editor.empty.hint": "hidden",
+  // ツリーのインデントサイズ
   "workbench.tree.indent": 8,
-  "workbench.experimental.share.enabled": true,
-  "workbench.preferredLightColorTheme": "Evans Dark Theme",
   "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Nord",
-  "workbench.preferredDarkColorTheme": "Nord Wave",
   "workbench.colorCustomizations": {
     "[Evans Dark Theme]": {
       "titleBar.activeBackground": "#1C262C",
@@ -115,8 +124,6 @@
     "statusBar.noFolderBackground": "#1C262C",
     "statusBar.debuggingBackground": "#1C262C"
   },
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.empty.hint": "hidden",
 
   // ===========================
   // Window
@@ -130,8 +137,12 @@
   "window.commandCenter": false,
   // タイトルバーを修正
   "window.titleBarStyle": "custom",
-  // OSの設定に合わせて自動で配色テーマが変更される
-  "window.autoDetectColorScheme": true,
+  // OSの設定に合わせてテーマを切り替え
+  "window.autoDetectColorScheme": false,
+  // ライトモード時のテーマ
+  "workbench.preferredLightColorTheme": "Nord",
+  // ダークモード時のテーマ
+  "workbench.preferredDarkColorTheme": "Nord Deep",
 
   // ===========================
   // Search
