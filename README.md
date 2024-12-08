@@ -95,7 +95,7 @@ To back up the currently installed Homebrew packages into the `Brewfile`:
 1. Navigate to the repository directory:
 
 	```sh
-	cd path/to/repository
+	cd $HOME/dotfiles
 	```
 
 2. Run the following command:
@@ -108,34 +108,21 @@ This will overwrite the existing `Brewfile` with the current list of installed p
 
 ### Useful Brew Commands
 
-Here are some helpful commands for managing Homebrew packages:
+Here are some helpful commands:
 
-- Show explicitly installed packages (leaves):
+```sh
+// Show explicitly installed packages (leaves):
+$ brew leaves
 
-	```sh
-	brew leaves
-	```
+// Clean up unused dependencies:
+brew autoremove
 
-- Clean up unused dependencies:
+// Delete cached software files:
+$ brew cleanup
 
-	```sh
-	brew autoremove
-	```
+// Show dependencies of a specific package:
+$ brew deps [package_name]
 
-- Delete cached software files:
-
-	```sh
-	brew cleanup
-	```
-
-- Show dependencies of a specific package:
-
-	```sh
-	brew deps [package_name]
-	```
-
-- Show packages that depend on a specific package:
-
-	```sh
-	brew uses [package_name]
-	```
+// Show packages that depend on a specific package:
+$ brew uses [package_name]
+```
