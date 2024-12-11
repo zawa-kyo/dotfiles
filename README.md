@@ -1,19 +1,19 @@
 # dotfiles
 
-Personal collection of dotfiles for system configuration and customization.
+Personal collection of .dotfiles for system configuration and customization.
 
 ## Preparation
 
 To get started, clone this repository into your home directory:
 
 ```sh
-git clone [repository_url] $HOME/dotfiles
+git clone [repository_url] $HOME/.dotfiles
 ```
 
 After cloning the repository, navigate to the project directory to execute subsequent commands:
 
 ```sh
-cd $HOME/dotfiles
+cd $HOME/.dotfiles
 ```
 
 ## Pre-Hook
@@ -82,7 +82,7 @@ This section describes how to manage Homebrew packages using the `Brewfile` incl
 To install the Homebrew packages listed in the `Brewfile`, navigate to the repository directory and run the following command:
 
 ```sh
-cd $HOME/dotfiles
+cd $HOME/.dotfiles
 brew bundle --file=homebrew/Brewfile
 ```
 
@@ -95,7 +95,7 @@ To back up the currently installed Homebrew packages into the `Brewfile`:
 1. Navigate to the repository directory:
 
 	```sh
-	cd $HOME/dotfiles
+	cd $HOME/.dotfiles
 	```
 
 2. Run the following command:
