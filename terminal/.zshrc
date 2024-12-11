@@ -1,6 +1,24 @@
 # zshの設定ファイル
 # シェルスクリプトの実行時には読み込まれないことに注意
 
+# Store the current working directory before script execution
+current_dir="$(pwd)"
+
+# Get the actual path of the ~/.zshrc symlink
+ZSHRC_SYMLINK="$(readlink "${HOME}/.zshrc")"
+
+# Change to HOME to handle relative paths
+cd "${HOME}" || return
+
+# Get the absolute path to the directory
+DOTFILES_DIR="$(cd "$(dirname "$ZSHRC_SYMLINK")" && pwd)"
+
+# Execute the script from the scripts directory
+zsh "$DOTFILES_DIR/../scripts/source-zshrc.sh"
+
+# Return to the original working directory
+cd "$current_dir"
+
 # ===========================
 # User configuration
 # ===========================
