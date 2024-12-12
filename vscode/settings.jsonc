@@ -94,6 +94,8 @@
   "editor.roundedSelection": true,
   // 最終行よりも下へのスクロールを許可
   "editor.scrollBeyondLastLine": true,
+  // インデントの大きさを自動検出するか
+  "editor.detectIndentation": false,
 
   // ===========================
   // Workbench
@@ -492,8 +494,7 @@
     "ylabel",
     "ylim",
     "yzhang",
-    "zenn",
-    "ZDOTDIR"
+    "zenn"
   ],
   // スペルチェックを無視するファイル
   "cSpell.ignorePaths": ["**/.gitignore"],
@@ -640,6 +641,13 @@
     "editor.snippetSuggestions": "top",
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
+
+  // ======= ShellScript =========
+  "[shellscript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
   // markdownlint
   "markdownlint.config": {
     // リンターで無視する項目
