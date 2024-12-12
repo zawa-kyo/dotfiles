@@ -492,8 +492,7 @@
     "ylabel",
     "ylim",
     "yzhang",
-    "zenn",
-    "ZDOTDIR"
+    "zenn"
   ],
   // スペルチェックを無視するファイル
   "cSpell.ignorePaths": ["**/.gitignore"],
