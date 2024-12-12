@@ -107,6 +107,10 @@ alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 # AndroidStudio
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 
+# ../../みたいなcdを省略
+alias ...='../../'
+alias ....='../../../'
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
