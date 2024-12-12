@@ -74,7 +74,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh"
 
-# G
+# Go
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
