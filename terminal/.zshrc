@@ -1,8 +1,37 @@
 # zshの設定ファイル
 # シェルスクリプトの実行時には読み込まれないことに注意
 
+# ===========================
+# Homebrew
+# ===========================
+
+# (N-/): もしそのディレクトリが存在していれば PATH に追加し、存在しなければ無視するオプション
+typeset -U path PATH
+path=(
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /Library/Apple/usr/bin
+)
+
 # Sheldon
 eval "$(sheldon source)"
+
+# mise
+eval "$(mise activate zsh)"
+
+# Starthip
+eval "$(starship init zsh)"
+
+
+# ===========================
+# User configuration
+# ===========================
 
 # Store the current working directory before script execution
 current_dir="$(pwd)"
@@ -22,24 +51,6 @@ sh "$DOTFILES_DIR/../scripts/source.sh"
 # Return to the original working directory
 cd "$current_dir"
 
-# ===========================
-# User configuration
-# ===========================
-
-# Homebrew
-# (N-/): もしそのディレクトリが存在していれば PATH に追加し、存在しなければ無視するオプション
-typeset -U path PATH
-path=(
-  /opt/homebrew/bin(N-/)
-  /opt/homebrew/sbin(N-/)
-  /usr/bin
-  /usr/sbin
-  /bin
-  /sbin
-  /usr/local/bin(N-/)
-  /usr/local/sbin(N-/)
-  /Library/Apple/usr/bin
-)
 
 # ===========================
 # Options
@@ -63,6 +74,7 @@ setopt auto_cd
 # cd後に自動でlsする
 function chpwd() { eza --color=always --group-directories-first --icons }
 
+
 # ===========================
 # Others
 # ===========================
@@ -84,9 +96,6 @@ PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Starthip
-eval "$(starship init zsh)"
-
 # NeoVim
 NVIM_CONFIG=$HOME/.config/nvim/init.vim
 
@@ -107,9 +116,6 @@ zstyle ":completion:*:commands" rehash 1
 
 # Option+→を上書き、Shift+Tabでサジェストを一単語だけ受け入れる
 bindkey -s '^[[Z' '^[f'
-
-# mise
-eval "$(mise activate zsh)"
 
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"
