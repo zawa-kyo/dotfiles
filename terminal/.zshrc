@@ -57,6 +57,9 @@ setopt hist_ignore_dups
 # ディレクトリ名でcd
 setopt auto_cd
 
+# cd後に自動でlsする
+function chpwd() { eza --color=always --group-directories-first --icons }
+
 # ===========================
 # Others
 # ===========================
