@@ -17,3 +17,7 @@ github = "z-shell/F-Sy-H"
 # Vim mode
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
+
+# Alias
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
