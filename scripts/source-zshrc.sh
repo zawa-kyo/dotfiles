@@ -10,7 +10,7 @@ source_files_in_dir() {
         break
       }
       source "${conf_file}"
-      echo "✅ Successfully sourced: $conf_file"
+      echo "✅ Sourced: $conf_file"
     done
   else
     # If the configuration directory does not exist

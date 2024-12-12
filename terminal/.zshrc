@@ -155,4 +155,4 @@ export PATH="$HOME/.bun/bin:$PATH"
 export PATH="$HOME/.rd/bin:$PATH"
 
 # Comment
-echo "✅ .zshrc was loaded"
+echo "✅ Loaded: .zshrc"
