@@ -84,6 +84,26 @@ export PATH=$PATH:$GOPATH/bin
 # lsコマンドで常にファイル種別を表示
 alias ls='ls -F'
 
+# eza
+# Replaced "ls" command
+alias ls='eza --color=always --group-directories-first --icons'
+
+# One file per line, with icons.
+alias lS='eza -1 --color=always --group-directories-first --icons'
+
+# Long listing of all files with icons and octal permissions.
+alias l='eza -long --icons --octal-permissions --group-directories-first'
+
+# Show all files in a long list, grouped, with directories first.
+alias la='eza --long --all --group --group-directories-first'
+
+# Show only hidden files.
+alias l.="eza -a | grep -E '^\.'"
+
+# Tree view with directories first and icons.
+# Note: Using "-L" after setting "--level" overrides the previous level value.
+alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
+
 # AndroidStudio
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 
