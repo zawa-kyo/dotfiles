@@ -96,9 +96,6 @@ PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# NeoVim
-NVIM_CONFIG=$HOME/.config/nvim/init.vim
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
