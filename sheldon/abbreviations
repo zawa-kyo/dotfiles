@@ -1,0 +1,40 @@
+# ===========================
+# cd
+# ===========================
+
+abbr '...'='../../'
+abbr '....'='../../../'
+abbr 'desktop'='cd ~/Desktop'
+
+
+# ===========================
+# Vim
+# ===========================
+
+abbr 'vi'='nvim'
+abbr 'vim'='nvim'
+abbr 'view'='nvim -R'
+
+
+# ===========================
+# eza
+# ===========================
+
+# Replaced 'ls' command
+abbr 'ls'='eza --color=always --group-directories-first --icons'
+
+# One file per line, with icons.
+abbr 'lS'='eza -1 --color=always --group-directories-first --icons'
+
+# Long listing of all files with icons and octal permissions.
+abbr 'll'='eza -long --icons --octal-permissions --group-directories-first'
+
+# Show all files in a long list, grouped, with directories first.
+abbr 'la'='eza --long --all --group --group-directories-first'
+
+# Show only hidden files.
+abbr 'l.'='eza -a | grep -E '^\.''
+
+# Tree view with directories first and icons.
+# Note: Using '-L' after setting '--level' overrides the previous level value.
+abbr 'lt'='eza --tree --level=2 --color=always --group-directories-first --icons'
