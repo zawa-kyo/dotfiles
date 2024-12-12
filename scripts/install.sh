@@ -71,6 +71,7 @@ install_file "$HOME/.dotfiles/terminal/.zprofile" "$HOME/.zprofile"
 install_file "$HOME/.dotfiles/terminal/.zlogin" "$HOME/.zlogin"
 install_file "$HOME/.dotfiles/terminal/.zlogout" "$HOME/.zlogout"
 
+install_file "$HOME/.dotfiles/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 install_file "$HOME/.dotfiles/mise/config.toml" "$HOME/.config/mise/config.toml"
 install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
 

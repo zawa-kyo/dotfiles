@@ -1,6 +1,9 @@
 # zshの設定ファイル
 # シェルスクリプトの実行時には読み込まれないことに注意
 
+# Sheldon
+eval "$(sheldon source)"
+
 # Store the current working directory before script execution
 current_dir="$(pwd)"
 
@@ -117,7 +120,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias view="nvim -R"
 NVIM_CONFIG=$HOME/.config/nvim/init.vim
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -133,13 +135,6 @@ fg () {
 
 # 新規にインストールしたコマンドを即座に認識
 zstyle ":completion:*:commands" rehash 1
-
-# zsh-completions, zsh-autosuggestions
-if type brew &>/dev/null; then
-	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-	source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	autoload -Uz compinit && compinit
-fi
 
 # Option+→を上書き、Shift+Tabでサジェストを一単語だけ受け入れる
 bindkey -s '^[[Z' '^[f'

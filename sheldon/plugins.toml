@@ -1,0 +1,19 @@
+shell = "zsh"
+
+[plugins]
+
+# Auto-suggestions
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+# Completions
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+# Syntax highlighting
+[plugins.F-Sy-H]
+github = "z-shell/F-Sy-H"
+
+# Vim mode
+[plugins.zsh-vi-mode]
+github = "jeffreytse/zsh-vi-mode"
