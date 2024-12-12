@@ -1,4 +1,4 @@
-source_files_in_dir() {
+source_files() {
   local config_dir="$1"
   local extension="$2"
 
@@ -18,4 +18,4 @@ source_files_in_dir() {
   fi
 }
 
-source_files_in_dir "$HOME/local.d" ".zsh"
+source_files "$HOME/local.d" ".zsh"

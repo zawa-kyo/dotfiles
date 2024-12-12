@@ -14,7 +14,7 @@ cd "${HOME}" || return
 DOTFILES_DIR="$(cd "$(dirname "$ZSHRC_SYMLINK")" && pwd)"
 
 # Execute the script from the scripts directory
-sh "$DOTFILES_DIR/../scripts/source-zshrc.sh"
+sh "$DOTFILES_DIR/../scripts/source.sh"
 
 # Return to the original working directory
 cd "$current_dir"
