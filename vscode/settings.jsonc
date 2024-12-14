@@ -621,6 +621,12 @@
   // クロージングラベルを表示
   "dart.closingLabels": true,
 
+  // ======= ShellScript =========
+  "[shellscript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
   // ======= Markdown =========
   "[markdown]": {
     "editor.tabSize": 4,
@@ -632,12 +638,6 @@
     },
     "editor.snippetSuggestions": "top",
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  // ======= ShellScript =========
-  "[shellscript]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
 
   // markdownlint
