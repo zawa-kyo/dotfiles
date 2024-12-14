@@ -254,7 +254,6 @@
     "streetsidesoftware.code-spell-checker", // Spell Checker
     "usernamehw.errorlens", // Error Lens
     "saikou9901.evilinspector", // Evilinspector
-    "formulahendry.code-runner", // Code Runner
     "oderwat.indent-rainbow" // indent-rainbow
   ],
   "dev.containers.dockerComposePath": "docker compose",
@@ -318,23 +317,6 @@
   ],
   "indentRainbow.ignoreErrorLanguages": ["*"],
 
-  // Code Runner
-  // 使用する言語のみ記載。デフォルト値は code-runner.executorMap の補完で出力できる
-  // pythonPath: Python: Select Interpreter で指定した値
-  "code-runner.runInTerminal": true,
-  "code-runner.ignoreSelection": true,
-  "code-runner.executorMap": {
-    "javascript": "node",
-    "typescript": "bun",
-    "java": "cd $workspaceRoot && java $fullFileName", // or "cd $dir && javac $fileName && java $fileNameWithoutExt"
-    // $pythonPath: 指定したインタプリタのパス
-    // $fullFileName: 開いているファイルの絶対パス
-    "python": "$pythonPath -u $fullFileName", // or "python -u",
-    "swift": "swift",
-    "dart": "dart",
-    "go": "go run",
-    "rust": "cd $workspaceRoot && cargo run $fullFileName"
-  },
   // SonarLint
   "sonarlint.rules": {
     "java:S106": {
@@ -436,7 +418,6 @@
     "fira",
     "flac",
     "fontsize",
-    "formulahendry", // Code Runner
     "frameon",
     "fuga",
     "genieai",
