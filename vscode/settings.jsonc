@@ -16,6 +16,29 @@
     "**/node_modules/*/**": true,
     "**/.dart_tool": true
   },
+  // 非表示にする項目
+  "files.exclude": {
+    // OS
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Git
+    "**/.git": true,
+    "**/.gitignore": false,
+    // Java
+    "**/.classpath": true,
+    // Python
+    "**/__pycache__": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/poetry.lock": false,
+    // Intellij
+    "**/.idea": true,
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    // JavaScript, TypeScript
+    "**/bun.lockb": false,
+    "**/package-lock.json": false
+  },
 
   // ===========================
   // Editor
@@ -125,29 +148,6 @@
     "*.dart": "${capture}.g.dart, ${capture}.freezed.dart",
     "pubspec.yaml": ".dart_tool, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml"
   },
-  // 非表示にする項目
-  "files.exclude": {
-    // OS
-    "**/.DS_Store": true,
-    "**/.metadata": true,
-    // Git
-    "**/.git": true,
-    "**/.gitignore": false,
-    // Java
-    "**/.classpath": true,
-    // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/poetry.lock": false,
-    // Intellij
-    "**/.idea": true,
-    // Dart, Flutter
-    "**/.dart_tool": true,
-    // JavaScript, TypeScript
-    "**/bun.lockb": false,
-    "**/package-lock.json": false
-  },
   // 空のフォルダーを非表示
   "explorer.compactFolders": false,
   // D&D時に確認ダイアログを表示
@@ -254,7 +254,6 @@
     "streetsidesoftware.code-spell-checker", // Spell Checker
     "usernamehw.errorlens", // Error Lens
     "saikou9901.evilinspector", // Evilinspector
-    "formulahendry.code-runner", // Code Runner
     "oderwat.indent-rainbow" // indent-rainbow
   ],
   "dev.containers.dockerComposePath": "docker compose",
@@ -268,12 +267,6 @@
   "jake.autoDetect": "off",
   "npm.autoDetect": "off",
   "gulp.autoDetect": "off",
-
-  // ===========================
-  // Others
-  // ===========================
-  // サジェスト一覧の初期表示項目設定。IntelliCodeのおまじない?
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   // ===========================
   // Extensions
@@ -317,39 +310,6 @@
     "rgba(79,236,236,0.07)"
   ],
   "indentRainbow.ignoreErrorLanguages": ["*"],
-
-  // Code Runner
-  // 使用する言語のみ記載。デフォルト値は code-runner.executorMap の補完で出力できる
-  // pythonPath: Python: Select Interpreter で指定した値
-  "code-runner.runInTerminal": true,
-  "code-runner.ignoreSelection": true,
-  "code-runner.executorMap": {
-    "javascript": "node",
-    "typescript": "bun",
-    "java": "cd $workspaceRoot && java $fullFileName", // or "cd $dir && javac $fileName && java $fileNameWithoutExt"
-    // $pythonPath: 指定したインタプリタのパス
-    // $fullFileName: 開いているファイルの絶対パス
-    "python": "$pythonPath -u $fullFileName", // or "python -u",
-    "swift": "swift",
-    "dart": "dart",
-    "go": "go run",
-    "rust": "cd $workspaceRoot && cargo run $fullFileName"
-  },
-  // SonarLint
-  "sonarlint.rules": {
-    "java:S106": {
-      // System.out.printlnに対する警告
-      "level": "off"
-    },
-    "java:S1220": {
-      // Move this file to a named package.
-      "level": "off"
-    },
-    "python:S3776": {
-      // Refactor this function to reduce its Cognitive Complexity
-      "level": "off"
-    }
-  },
 
   // Peacock
   "peacock.affectActivityBar": true,
@@ -436,7 +396,6 @@
     "fira",
     "flac",
     "fontsize",
-    "formulahendry", // Code Runner
     "frameon",
     "fuga",
     "genieai",
@@ -669,7 +628,7 @@
       "other": "on"
     },
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // ======= ShellScript =========
@@ -716,9 +675,6 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "sonarlint.pathToNodeExecutable": "~/.local/share/mise/shims/node",
-  "turboConsoleLog.quote": "'",
-  "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
   "yaml.customTags": [
     "!And",
