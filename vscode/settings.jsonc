@@ -109,10 +109,10 @@
   // Workbench
   // ===========================
 
-  // カラーテーマ
+  // テーマ
   "workbench.colorTheme": "Nord",
-  // アイコンテーマ
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.productIconTheme": "fluent-icons",
+  "workbench.iconTheme": "catppuccin-macchiato",
   // プレビューモードを抑制
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
