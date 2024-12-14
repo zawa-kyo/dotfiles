@@ -252,6 +252,15 @@
   "update.mode": "manual",
 
   // ===========================
+  // Git
+  // ===========================
+
+  // リモートリポジトリを自動的にfetch
+  "git.autofetch": true,
+  // 親ディレクトリの.gitファイルを認識する
+  "git.openRepositoryInParentFolders": "always",
+
+  // ===========================
   // Devcontainer
   // ===========================
 
@@ -678,7 +687,6 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "git.openRepositoryInParentFolders": "never",
   "yaml.customTags": [
     "!And",
     "~/.local/share/mise/shims/bun",
