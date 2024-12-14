@@ -101,7 +101,7 @@ fg () {
     file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
-# 新規にインストールしたコマンドを即座に認識
+# brew installしたコマンドを即座に認識
 zstyle ":completion:*:commands" rehash 1
 
 # Bun
