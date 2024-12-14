@@ -16,6 +16,29 @@
     "**/node_modules/*/**": true,
     "**/.dart_tool": true
   },
+  // 非表示にする項目
+  "files.exclude": {
+    // OS
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Git
+    "**/.git": true,
+    "**/.gitignore": false,
+    // Java
+    "**/.classpath": true,
+    // Python
+    "**/__pycache__": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/poetry.lock": false,
+    // Intellij
+    "**/.idea": true,
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    // JavaScript, TypeScript
+    "**/bun.lockb": false,
+    "**/package-lock.json": false
+  },
 
   // ===========================
   // Editor
@@ -124,29 +147,6 @@
     // Dart, Flutter
     "*.dart": "${capture}.g.dart, ${capture}.freezed.dart",
     "pubspec.yaml": ".dart_tool, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml"
-  },
-  // 非表示にする項目
-  "files.exclude": {
-    // OS
-    "**/.DS_Store": true,
-    "**/.metadata": true,
-    // Git
-    "**/.git": true,
-    "**/.gitignore": false,
-    // Java
-    "**/.classpath": true,
-    // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/poetry.lock": false,
-    // Intellij
-    "**/.idea": true,
-    // Dart, Flutter
-    "**/.dart_tool": true,
-    // JavaScript, TypeScript
-    "**/bun.lockb": false,
-    "**/package-lock.json": false
   },
   // 空のフォルダーを非表示
   "explorer.compactFolders": false,
@@ -267,12 +267,6 @@
   "jake.autoDetect": "off",
   "npm.autoDetect": "off",
   "gulp.autoDetect": "off",
-
-  // ===========================
-  // Others
-  // ===========================
-  // サジェスト一覧の初期表示項目設定。IntelliCodeのおまじない?
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   // ===========================
   // Extensions
@@ -681,8 +675,6 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "turboConsoleLog.quote": "'",
-  "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
   "yaml.customTags": [
     "!And",
