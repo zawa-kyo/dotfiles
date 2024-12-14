@@ -317,22 +317,6 @@
   ],
   "indentRainbow.ignoreErrorLanguages": ["*"],
 
-  // SonarLint
-  "sonarlint.rules": {
-    "java:S106": {
-      // System.out.printlnに対する警告
-      "level": "off"
-    },
-    "java:S1220": {
-      // Move this file to a named package.
-      "level": "off"
-    },
-    "python:S3776": {
-      // Refactor this function to reduce its Cognitive Complexity
-      "level": "off"
-    }
-  },
-
   // Peacock
   "peacock.affectActivityBar": true,
   "peacock.affectStatusBar": true,
@@ -697,7 +681,6 @@
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
   ],
-  "sonarlint.pathToNodeExecutable": "~/.local/share/mise/shims/node",
   "turboConsoleLog.quote": "'",
   "editor.find.addExtraSpaceOnTop": true,
   "git.openRepositoryInParentFolders": "never",
