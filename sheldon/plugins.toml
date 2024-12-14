@@ -1,6 +1,12 @@
 shell = "zsh"
 
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
 [plugins]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
 
 # Auto-suggestions
 [plugins.zsh-autosuggestions]
@@ -20,4 +26,5 @@ github = "jeffreytse/zsh-vi-mode"
 
 # Alias
 [plugins.zsh-abbr]
+apply = ["defer"]
 github = "olets/zsh-abbr"

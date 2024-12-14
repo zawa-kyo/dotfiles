@@ -111,9 +111,6 @@ fg () {
 # 新規にインストールしたコマンドを即座に認識
 zstyle ":completion:*:commands" rehash 1
 
-# Option+→を上書き、Shift+Tabでサジェストを一単語だけ受け入れる
-bindkey -s '^[[Z' '^[f'
-
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"
 
