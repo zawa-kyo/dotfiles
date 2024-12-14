@@ -22,13 +22,6 @@ path=(
 # Sheldon
 eval "$(sheldon source)"
 
-# mise
-eval "$(mise activate zsh)"
-
-# Starthip
-eval "$(starship init zsh)"
-
-
 # ===========================
 # User configuration
 # ===========================

@@ -28,3 +28,9 @@ github = "jeffreytse/zsh-vi-mode"
 [plugins.zsh-abbr]
 apply = ["defer"]
 github = "olets/zsh-abbr"
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'
+
+[plugins.mise]
+inline = 'eval "$(mise activate zsh)"'
