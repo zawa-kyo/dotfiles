@@ -650,7 +650,7 @@
       "other": "on"
     },
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // ======= ShellScript =========
