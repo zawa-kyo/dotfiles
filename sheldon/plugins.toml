@@ -10,14 +10,17 @@ github = "romkatv/zsh-defer"
 
 # Auto-suggestions
 [plugins.zsh-autosuggestions]
+apply = ["defer"]
 github = "zsh-users/zsh-autosuggestions"
 
 # Completions
 [plugins.zsh-completions]
+apply = ["defer"]
 github = "zsh-users/zsh-completions"
 
 # Syntax highlighting
 [plugins.F-Sy-H]
+apply = ["defer"]
 github = "z-shell/F-Sy-H"
 
 # Vim mode
