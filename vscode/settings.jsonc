@@ -96,6 +96,14 @@
   "editor.scrollBeyondLastLine": true,
   // インデントの大きさを自動検出するか
   "editor.detectIndentation": false,
+  // 一定文字数ごとにルーラーを表示
+  "editor.rulers": [80, 100, 120],
+  // スニペット提案中でもクイック提案を許可
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  // タブストップ中にも入力補完を有効化
+  "editor.tabCompletion": "onlySnippets",
+  // 単語ベースの補完
+  "editor.wordBasedSuggestions": "matchingDocuments",
 
   // ===========================
   // Workbench
@@ -242,6 +250,15 @@
   // Breadcrumbsを表示
   "breadcrumbs.enabled": true,
   "update.mode": "manual",
+
+  // ===========================
+  // Git
+  // ===========================
+
+  // リモートリポジトリを自動的にfetch
+  "git.autofetch": true,
+  // 親ディレクトリの.gitファイルを認識する
+  "git.openRepositoryInParentFolders": "always",
 
   // ===========================
   // Devcontainer
@@ -515,8 +532,7 @@
 
   // ========== CSS ============
   "[css]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
+    "editor.tabSize": 2
   },
 
   // ========== Java ==========
@@ -589,8 +605,7 @@
 
   // ========= Swift ==========
   "[swift]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
+    "editor.tabSize": 2
   },
   // デバッガーのディレクトリ
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
@@ -599,24 +614,27 @@
 
   // ======== Jupyter =========
   "[jupyter]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true
+    "editor.tabSize": 2
   },
 
   // ========= Dart ==========
   "[dart]": {
-    "editor.rulers": [80],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": "off"
+    "editor.tabSize": 2
   },
+  // Flutterプロジェクト作成時のAndroid言語をJavaに設定
   "dart.flutterCreateAndroidLanguage": "java",
+  // Flutter UI ガイドラインをプレビュー表示
   "dart.previewFlutterUiGuides": true,
+  // Flutter UI ガイドラインのカスタムトラッキングを有効化
   "dart.previewFlutterUiGuidesCustomTracking": true,
   // クロージングラベルを表示
-  "dart.closingLabels": false,
+  "dart.closingLabels": true,
+
+  // ======= ShellScript =========
+  "[shellscript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
 
   // ======= Markdown =========
   "[markdown]": {
@@ -629,12 +647,6 @@
     },
     "editor.snippetSuggestions": "top",
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  // ======= ShellScript =========
-  "[shellscript]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
 
   // markdownlint
@@ -674,36 +686,5 @@
   "settingsSync.ignoredExtensions": [
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
-  ],
-  "git.openRepositoryInParentFolders": "never",
-  "yaml.customTags": [
-    "!And",
-    "~/.local/share/mise/shims/bun",
-    "!And sequence",
-    "!If",
-    "!If sequence",
-    "!Not",
-    "!Not sequence",
-    "!Equals",
-    "!Equals sequence",
-    "!Or",
-    "!Or sequence",
-    "!FindInMap",
-    "!FindInMap sequence",
-    "!Base64",
-    "!Join",
-    "!Join sequence",
-    "!Cidr",
-    "!Ref",
-    "!Sub",
-    "!Sub sequence",
-    "!GetAtt",
-    "!GetAZs",
-    "!ImportValue",
-    "!ImportValue sequence",
-    "!Select",
-    "!Select sequence",
-    "!Split",
-    "!Split sequence"
   ]
 }
