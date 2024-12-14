@@ -1,17 +1,26 @@
 shell = "zsh"
 
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
 [plugins]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
 
 # Auto-suggestions
 [plugins.zsh-autosuggestions]
+apply = ["defer"]
 github = "zsh-users/zsh-autosuggestions"
 
 # Completions
 [plugins.zsh-completions]
+apply = ["defer"]
 github = "zsh-users/zsh-completions"
 
 # Syntax highlighting
 [plugins.F-Sy-H]
+apply = ["defer"]
 github = "z-shell/F-Sy-H"
 
 # Vim mode
@@ -20,4 +29,11 @@ github = "jeffreytse/zsh-vi-mode"
 
 # Alias
 [plugins.zsh-abbr]
+apply = ["defer"]
 github = "olets/zsh-abbr"
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'
+
+[plugins.mise]
+inline = 'eval "$(mise activate zsh)"'

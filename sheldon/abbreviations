@@ -5,7 +5,7 @@
 abbr '...'='../../'
 abbr '....'='../../../'
 abbr 'desktop'='cd ~/Desktop'
-abbr root="cd $(git rev-parse --show-toplevel)"
+abbr 'root'='cd $(git rev-parse --show-toplevel)'
 
 
 # ===========================

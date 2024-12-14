@@ -22,34 +22,41 @@ path=(
 # Sheldon
 eval "$(sheldon source)"
 
-# mise
-eval "$(mise activate zsh)"
-
-# Starthip
-eval "$(starship init zsh)"
-
 
 # ===========================
-# User configuration
+# Source local files
 # ===========================
 
-# Store the current working directory before script execution
-current_dir="$(pwd)"
+# Function to resolve the absolute path of the dotfiles directory
+get_dotfiles_dir() {
+    # Get the actual path of the ~/.zshrc symlink
+    local zshrc_symlink
+    zshrc_symlink="$(readlink "${HOME}/.zshrc")"
 
-# Get the actual path of the ~/.zshrc symlink
-ZSHRC_SYMLINK="$(readlink "${HOME}/.zshrc")"
+    # Change to HOME to handle relative paths
+    cd "${HOME}" || return 1
 
-# Change to HOME to handle relative paths
-cd "${HOME}" || return
+    # Get the absolute path to the dotfiles directory
+    cd "$(dirname "$zshrc_symlink")" && pwd
+}
 
-# Get the absolute path to the directory
-DOTFILES_DIR="$(cd "$(dirname "$ZSHRC_SYMLINK")" && pwd)"
+# Function to execute the source script
+run_source_script() {
+    local current_dir
+    current_dir="$(pwd)"  # Store the current working directory
 
-# Execute the script from the scripts directory
-sh "$DOTFILES_DIR/../scripts/source.sh"
+    # Get the dotfiles directory
+    local dotfiles_dir
+    dotfiles_dir="$(get_dotfiles_dir)" || return 1
 
-# Return to the original working directory
-cd "$current_dir"
+    # Execute the script from the scripts directory
+    sh "$dotfiles_dir/../scripts/source.sh"
+
+    # Return to the original working directory
+    cd "$current_dir"
+}
+
+run_source_script
 
 
 # ===========================
@@ -74,24 +81,34 @@ setopt auto_cd
 # cd後に自動でlsする
 function chpwd() { eza --color=always --group-directories-first --icons }
 
-
-# ===========================
-# Others
-# ===========================
-
 # venv
 # プロンプトに環境名を表示しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-# iTerm2
-test -e "${HOME}/.iterm2_shell_integration.zsh"
+# brew installしたコマンドを即座に認識
+zstyle ":completion:*:commands" rehash 1
+
+
+# ===========================
+# Paths
+# ===========================
+
+# Bun
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Rancher Desktop
+export PATH="$HOME/.rd/bin:$PATH"
 
 # Go
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
 # AndroidStudio
-PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+# ===========================
+# Fzf
+# ===========================
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -103,22 +120,14 @@ fv () {
 	local file
 	file=$(fzf) && nvim "$file"
 }
+
 fg () {
     local file_and_line
     file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
-# 新規にインストールしたコマンドを即座に認識
-zstyle ":completion:*:commands" rehash 1
+# ===========================
+# Comments
+# ===========================
 
-# Option+→を上書き、Shift+Tabでサジェストを一単語だけ受け入れる
-bindkey -s '^[[Z' '^[f'
-
-# Bun
-export PATH="$HOME/.bun/bin:$PATH"
-
-# Rancher Desktop
-export PATH="$HOME/.rd/bin:$PATH"
-
-# Comment
 echo "✅ Loaded: .zshrc"
