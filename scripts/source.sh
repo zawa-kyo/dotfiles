@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source_files() {
   local config_dir="$1"
   local extension="$2"
@@ -9,6 +11,7 @@ source_files() {
         echo "🚧 No configuration files with extension $extension found in $config_dir"
         break
       }
+      # shellcheck disable=SC1090
       source "${conf_file}"
       echo "✅ Sourced: $conf_file"
     done

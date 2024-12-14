@@ -1,14 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Remove old link or directory if it exists
-if [ -L $HOME/.bun/install/global ] || [ -d $HOME/.bun/install/global ]; then
-  rm -rf $HOME/.bun/install/global
+if [ -L "$HOME/.bun/install/global" ] || [ -d "$HOME/.bun/install/global" ]; then
+  rm -rf "$HOME/.bun/install/global"
   echo "✅ Old Bun global directory or link removed."
 fi
 
 # Create a new symbolic link
 if [ -d ~/.dotfiles/bun ]; then
-  ln -s ~/.dotfiles/bun $HOME/.bun/install/global
+  ln -s ~/.dotfiles/bun "$HOME/.bun/install/global"
   echo "✅ Bun directory linked successfully."
 else
   echo "❌ Bun directory not found in dotfiles!"
@@ -16,7 +16,7 @@ else
 fi
 
 # Navigate to the Bun global directory
-if cd $HOME/.bun/install/global; then
+if cd "$HOME/.bun/install/global"; then
   echo "✅ Moved to Bun global directory."
 else
   echo "❌ Failed to move to Bun global directory."

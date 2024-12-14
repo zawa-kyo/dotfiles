@@ -29,8 +29,7 @@ install() {
   local target_parent_dir
   target_parent_dir="$(dirname "$target_file")"
   if [ ! -d "$target_parent_dir" ]; then
-    mkdir -p "$target_parent_dir"
-    if [ $? -eq 0 ]; then
+    if mkdir -p "$target_parent_dir"; then
       echo "✅ Created directory: $target_parent_dir"
     else
       echo "❌ Failed to create directory: $target_parent_dir"
@@ -43,8 +42,7 @@ install() {
     echo "❌ $target_file already exists! Skipping link!"
   else
     # Create symbolic link
-    ln -s "$source_file" "$target_file"
-    if [ $? -eq 0 ]; then
+    if ln -s "$source_file" "$target_file"; then
       echo "✅ $source_basename linked successfully."
     else
       echo "❌ Failed to link $source_basename!"
