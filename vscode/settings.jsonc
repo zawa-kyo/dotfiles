@@ -11,29 +11,6 @@
   "files.trimFinalNewlines": true,
   // 保存時に行末のホワイトスペースを削除
   "files.trimTrailingWhitespace": true,
-  // Explorerで表示しない項目
-  "files.exclude": {
-    // OS
-    "**/.DS_Store": true,
-    "**/.metadata": true,
-    // Git
-    "**/.git": true,
-    "**/.gitignore": false,
-    // Java
-    "**/.classpath": true,
-    // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/poetry.lock": true,
-    // Intellij
-    "**/.idea": true,
-    // Dart, Flutter
-    "**/.dart_tool": true,
-    // JavaScript, TypeScript
-    "**/bun.lockb": true,
-    "**/package-lock.json": true
-  },
   // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
   "files.watcherExclude": {
     "**/node_modules/*/**": true,
@@ -115,7 +92,7 @@
   // 新規ファイル作成時のヒントを非表示にする
   "workbench.editor.empty.hint": "hidden",
   // ツリーのインデントサイズ
-  "workbench.tree.indent": 8,
+  "workbench.tree.indent": 14,
   "workbench.activityBar.location": "top",
   "workbench.colorCustomizations": {
     "[Evans Dark Theme]": {
@@ -126,6 +103,61 @@
     "statusBar.noFolderBackground": "#1C262C",
     "statusBar.debuggingBackground": "#1C262C"
   },
+
+  // ===========================
+  // Explorer
+  // ===========================
+
+  // File nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    // General
+    ".gitignore": ".gitattributes",
+    "readme.*": "authors, changelog*, contributing.md, contributors, license*",
+    // JavaScript, TypeScript
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "tsconfig.json": "tsconfig.*.json",
+    // Python
+    "pyproject.toml": "poetry.lock",
+    // Dart, Flutter
+    "*.dart": "${capture}.g.dart, ${capture}.freezed.dart",
+    "pubspec.yaml": ".dart_tool, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml"
+  },
+  // 非表示にする項目
+  "files.exclude": {
+    // OS
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Git
+    "**/.git": true,
+    "**/.gitignore": false,
+    // Java
+    "**/.classpath": true,
+    // Python
+    "**/__pycache__": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/poetry.lock": false,
+    // Intellij
+    "**/.idea": true,
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    // JavaScript, TypeScript
+    "**/bun.lockb": false,
+    "**/package-lock.json": false
+  },
+  // 空のフォルダーを非表示
+  "explorer.compactFolders": false,
+  // D&D時に確認ダイアログを表示
+  "explorer.confirmDragAndDrop": false,
+  // ファイルの削除時に確認する
+  "explorer.confirmDelete": false,
+  // 開いているファイルなどバッジを表示
+  "explorer.decorations.badges": true,
+  // ディレクトリとファイルをソート
+  "explorer.sortOrder": "foldersNestsFiles",
 
   // ===========================
   // Window
@@ -157,8 +189,6 @@
     "**/package-lock.json": true,
     "**.svg": false
   },
-  // ファイルの削除時に確認する
-  "explorer.confirmDelete": false,
 
   // ===========================
   // Terminal
@@ -676,7 +706,6 @@
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.CustomBrowser": "chrome",
   "redhat.telemetry.enabled": true,
-  "explorer.confirmDragAndDrop": false,
   "security.workspace.trust.untrustedFiles": "open",
 
   // ===========================
