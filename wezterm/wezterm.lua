@@ -39,5 +39,16 @@ config.window_frame = {
 }
 config.window_decorations = 'RESIZE'
 
+-- keybindings
+-- デフォルトの keybindings を無効化
+config.disable_default_key_bindings = true
+-- `keybindings.lua`を読み込み
+local keybindings = require 'keybindings'
+-- keybindingsの設定
+config.keys = keybindings.keys
+config.key_tables = keybindings.key_tables
+-- Leaderキーの設定
+config.leader = { key = ",", mods = "CTRL", timeout_milliseconds = 2000 }
+
 -- and finally, return the configuration to wezterm
 return config
