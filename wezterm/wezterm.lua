@@ -17,11 +17,19 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
--- colors
+
+--[[
+    Colors
+]]
+
 config.color_scheme = "nord"
 config.window_background_opacity = 0.93
 
--- font
+
+--[[
+    Font
+]]
+
 local FONT_SIZE = 13.0
 config.font = wezterm.font("Hack Nerd Font", {
     weight = "Regular",
@@ -29,7 +37,6 @@ config.font = wezterm.font("Hack Nerd Font", {
     italic = false
 })
 config.font_size = FONT_SIZE
-
 config.window_frame = {
     font = wezterm.font("Hack Nerd Font", {
         weight = "Bold",
@@ -39,7 +46,11 @@ config.window_frame = {
 }
 config.window_decorations = 'RESIZE'
 
--- keybindings
+
+--[[
+    Keybindings
+]]
+
 -- デフォルトの keybindings を無効化
 config.disable_default_key_bindings = true
 -- `keybindings.lua`を読み込み
