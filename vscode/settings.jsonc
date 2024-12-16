@@ -630,6 +630,16 @@
   // クロージングラベルを表示
   "dart.closingLabels": true,
 
+  // ====== Lua ========
+  "[lua]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "sumneko.lua"
+  },
+  "Lua.format.defaultConfig": {
+    "indent_style": "space",
+    "quoteStyle": "double"
+  },
+
   // ======= ShellScript =========
   "[shellscript]": {
     "editor.tabSize": 2,
@@ -666,12 +676,6 @@
   "markdown-preview-enhanced.scrollSync": false,
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
-
-  // ====== Lua ========
-  "Lua.format.defaultConfig": {
-    "indent_style": "space",
-    "indent_size": "2"
-  },
 
   // ====== LiveServer ========
   "liveServer.settings.donotShowInfoMsg": true,

@@ -1,22 +1,22 @@
 return {
-  'shaunsingh/nord.nvim',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.cmd [[colorscheme nord]]
+    'shaunsingh/nord.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+        vim.cmd [[colorscheme nord]]
 
-    -- Example config in lua
-    vim.g.nord_contrast = true
-    vim.g.nord_borders = false
-    vim.g.nord_disable_background = true
-    vim.g.nord_italic = false
-    vim.g.nord_uniform_diff_background = true
-    vim.g.nord_bold = false
+        -- Example config in lua
+        vim.g.nord_contrast = true
+        vim.g.nord_borders = false
+        vim.g.nord_disable_background = true
+        vim.g.nord_italic = false
+        vim.g.nord_uniform_diff_background = true
+        vim.g.nord_bold = false
 
-    -- Enable popup menu transparency with 0% opacity
-    vim.opt.pumblend = 0
+        -- Enable popup menu transparency with 0% opacity
+        vim.opt.pumblend = 0
 
-    -- Load the colorscheme
-    require('nord').set()
-  end,
+        -- Load the colorscheme
+        require('nord').set()
+    end,
 }
