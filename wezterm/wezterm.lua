@@ -18,7 +18,7 @@ if wezterm.config_builder then
 end
 
 -- colors
-config.color_scheme = 'Mariana'
+config.color_scheme = "nord"
 config.window_background_opacity = 0.93
 
 -- font
