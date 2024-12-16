@@ -4,17 +4,17 @@ local config = {}
 
 -- show basename
 local function BaseName(s)
-  return string.gsub(s, '(.*[/\\])(.*)', '%2')
+    return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
 wezterm.on('format-window-title', function(tab)
-  return BaseName(tab.active_pane.foreground_process_name)
+    return BaseName(tab.active_pane.foreground_process_name)
 end)
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-  config = wezterm.config_builder()
+    config = wezterm.config_builder()
 end
 
 -- colors
@@ -27,13 +27,13 @@ config.font = wezterm.font("Hack Nerd Font", {
     weight = "Regular",
     stretch = "Normal",
     italic = false
-  })
+})
 config.font_size = FONT_SIZE
 
 config.window_frame = {
     font = wezterm.font("Hack Nerd Font", {
-      weight = "Bold",
-      italic = false,
+        weight = "Bold",
+        italic = false,
     }),
     font_size = FONT_SIZE,
 }
