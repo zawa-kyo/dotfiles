@@ -22,12 +22,36 @@ end
     Colors
 ]]
 
+-- Theme
 config.color_scheme = "nord"
-config.window_background_opacity = 0.93
+-- Opacity and blur
+config.window_background_opacity = 0.90
+config.macos_window_background_blur = 15
+-- Hide title bar
+config.window_decorations = "RESIZE"
+-- Only display tabs when there are two or more
+config.hide_tab_bar_if_only_one_tab = false
+-- Customize tab bar
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local background = "#ae8b2d"
+    local foreground = "#FFFFFF"
+
+    if tab.is_active then
+        background = "#263238"
+        foreground = "#FFFFFF"
+    end
+    local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
+
+    return {
+        { Background = { Color = background } },
+        { Foreground = { Color = foreground } },
+        { Text = title },
+    }
+end)
 
 
 --[[
-    Font
+    Fonts
 ]]
 
 local FONT_SIZE = 13.0
@@ -37,14 +61,16 @@ config.font = wezterm.font("Hack Nerd Font", {
     italic = false
 })
 config.font_size = FONT_SIZE
+-- Make the tab bar transparent
 config.window_frame = {
     font = wezterm.font("Hack Nerd Font", {
         weight = "Bold",
         italic = false,
     }),
     font_size = FONT_SIZE,
+    inactive_titlebar_bg = "none",
+    active_titlebar_bg = "none",
 }
-config.window_decorations = 'RESIZE'
 
 
 --[[
@@ -60,6 +86,19 @@ config.keys = keybindings.keys
 config.key_tables = keybindings.key_tables
 -- Leaderキーの設定
 config.leader = { key = ",", mods = "CTRL", timeout_milliseconds = 2000 }
+
+
+--[[
+    Options
+]]
+
+-- 日本語IMEを有効化
+config.use_ime = true
+
+
+--[[
+    Return configuration
+]]
 
 -- and finally, return the configuration to wezterm
 return config
