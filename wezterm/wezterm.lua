@@ -22,12 +22,15 @@ end
     Colors
 ]]
 
+-- Theme
 config.color_scheme = "nord"
-config.window_background_opacity = 0.93
+-- Opacity and blur
+config.window_background_opacity = 0.90
+config.macos_window_background_blur = 15
 
 
 --[[
-    Font
+    Fonts
 ]]
 
 local FONT_SIZE = 13.0
@@ -60,6 +63,11 @@ config.keys = keybindings.keys
 config.key_tables = keybindings.key_tables
 -- Leaderキーの設定
 config.leader = { key = ",", mods = "CTRL", timeout_milliseconds = 2000 }
+
+
+--[[
+    Return configuration
+]]
 
 -- and finally, return the configuration to wezterm
 return config
