@@ -66,6 +66,14 @@ config.leader = { key = ",", mods = "CTRL", timeout_milliseconds = 2000 }
 
 
 --[[
+    Options
+]]
+
+-- 日本語IMEを有効化
+config.use_ime = true
+
+
+--[[
     Return configuration
 ]]
 
