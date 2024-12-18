@@ -40,12 +40,15 @@ config.font = wezterm.font("Hack Nerd Font", {
     italic = false
 })
 config.font_size = FONT_SIZE
+-- Make the tab bar transparent
 config.window_frame = {
     font = wezterm.font("Hack Nerd Font", {
         weight = "Bold",
         italic = false,
     }),
     font_size = FONT_SIZE,
+    inactive_titlebar_bg = "none",
+    active_titlebar_bg = "none",
 }
 config.window_decorations = 'RESIZE'
 
