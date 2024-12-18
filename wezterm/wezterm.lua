@@ -27,6 +27,27 @@ config.color_scheme = "nord"
 -- Opacity and blur
 config.window_background_opacity = 0.90
 config.macos_window_background_blur = 15
+-- Hide title bar
+config.window_decorations = "RESIZE"
+-- Only display tabs when there are two or more
+config.hide_tab_bar_if_only_one_tab = false
+-- Customize tab bar
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local background = "#ae8b2d"
+    local foreground = "#FFFFFF"
+
+    if tab.is_active then
+        background = "#263238"
+        foreground = "#FFFFFF"
+    end
+    local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
+
+    return {
+        { Background = { Color = background } },
+        { Foreground = { Color = foreground } },
+        { Text = title },
+    }
+end)
 
 
 --[[
@@ -50,7 +71,6 @@ config.window_frame = {
     inactive_titlebar_bg = "none",
     active_titlebar_bg = "none",
 }
-config.window_decorations = 'RESIZE'
 
 
 --[[
