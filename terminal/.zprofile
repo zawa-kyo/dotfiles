@@ -2,4 +2,4 @@
 # インタラクティブシェルやシェルスクリプトでは読み込まれないことに注意
 
 # Comment
-echo "✅ Loaded: .zprofile"
+echo "✅ Sourced: .zprofile"

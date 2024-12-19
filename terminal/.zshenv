@@ -3,4 +3,4 @@
 # 基本的なPATH設定や、どんな状況でも共通して必要な環境変数を記述する
 
 # Comment
-echo "✅ Loaded: .zshenv"
+echo "✅ Sourced: .zshenv"

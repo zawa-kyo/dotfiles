@@ -23,7 +23,7 @@ end
 ]]
 
 -- Theme
-config.color_scheme = "nord"
+config.color_scheme = "Cobalt 2 (Gogh)"
 -- Opacity and blur
 config.window_background_opacity = 0.90
 config.macos_window_background_blur = 15
@@ -31,13 +31,15 @@ config.macos_window_background_blur = 15
 config.window_decorations = "RESIZE"
 -- Only display tabs when there are two or more
 config.hide_tab_bar_if_only_one_tab = false
+-- Render the tab bar in a native style
+config.use_fancy_tab_bar = false
 -- Customize tab bar
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local background = "#ae8b2d"
+    local background = "#122534"
     local foreground = "#FFFFFF"
 
     if tab.is_active then
-        background = "#263238"
+        background = "#ae8b2d"
         foreground = "#FFFFFF"
     end
     local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
@@ -68,8 +70,6 @@ config.window_frame = {
         italic = false,
     }),
     font_size = FONT_SIZE,
-    inactive_titlebar_bg = "none",
-    active_titlebar_bg = "none",
 }
 
 

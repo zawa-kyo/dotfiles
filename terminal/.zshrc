@@ -79,10 +79,16 @@ setopt hist_ignore_dups
 setopt auto_cd
 
 # cd後に自動でlsする
-function chpwd() { eza --color=always --group-directories-first --icons }
+function chpwd() {
+  eza --color=always --group-directories-first --icons
+}
 
-# venv
-# プロンプトに環境名を表示しない
+# カレントディレクトリをターミナルのタブに表示
+precmd() {
+  print -Pn "\e]0;%~\a"
+}
+
+# venv: プロンプトに環境名を表示しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # brew installしたコマンドを即座に認識
@@ -130,4 +136,4 @@ fg () {
 # Comments
 # ===========================
 
-echo "✅ Loaded: .zshrc"
+echo "✅ Sourced: .zshrc"

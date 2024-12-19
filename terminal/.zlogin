@@ -2,4 +2,4 @@
 # 混乱を招くため記述を避ける
 
 # Comment
-echo "✅ Loaded: .zlogin"
+echo "✅ Sourced: .zlogin"
