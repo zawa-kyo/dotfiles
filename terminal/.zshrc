@@ -112,6 +112,7 @@ export PATH=$PATH:$GOPATH/bin
 # AndroidStudio
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
+
 # ===========================
 # Fzf
 # ===========================
@@ -131,6 +132,7 @@ fg () {
     local file_and_line
     file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
+
 
 # ===========================
 # Comments
