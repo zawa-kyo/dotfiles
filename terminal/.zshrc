@@ -81,6 +81,11 @@ setopt auto_cd
 # cd後に自動でlsする
 function chpwd() { eza --color=always --group-directories-first --icons }
 
+# カレントディレクトリをターミナルのタブに表示
+precmd() {
+  print -Pn "\e]0;%~\a"
+}
+
 # venv
 # プロンプトに環境名を表示しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
