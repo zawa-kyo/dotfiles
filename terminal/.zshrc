@@ -136,4 +136,4 @@ fg () {
 # Comments
 # ===========================
 
-echo "✅ Loaded: .zshrc"
+echo "✅ Sourced: .zshrc"
