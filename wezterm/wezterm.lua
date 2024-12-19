@@ -23,7 +23,7 @@ end
 ]]
 
 -- Theme
-config.color_scheme = "Cobalt 2 (Gogh)"
+config.color_scheme = "Catppuccin Frappe"
 -- Opacity and blur
 config.window_background_opacity = 0.90
 config.macos_window_background_blur = 15
