@@ -32,6 +32,10 @@ github = "jeffreytse/zsh-vi-mode"
 apply = ["defer"]
 github = "olets/zsh-abbr"
 
+# History search
+[plugins.zoxide]
+inline = 'eval "$(zoxide init zsh)"'
+
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 
