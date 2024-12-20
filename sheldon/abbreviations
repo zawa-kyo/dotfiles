@@ -39,3 +39,30 @@ abbr 'l.'='eza -a | grep -E '^\.''
 # Tree view with directories first and icons.
 # Note: Using '-L' after setting '--level' overrides the previous level value.
 abbr 'lt'='eza --tree --level=2 --color=always --group-directories-first --icons'
+
+
+# ===========================
+# find
+# ===========================
+
+# Replace 'ls' command
+abbr 'find'='fd'
+
+# Include hidden files, ignore .gitignore rules.
+abbr 'fda'='fd --hidden --no-ignore'
+abbr 'finda'='fd --hidden --no-ignore'
+
+# Perform a case-insensitive search
+abbr 'fds'='fd --case-sensitive'
+
+
+# ===========================
+# grep
+# ===========================
+
+# Replace 'grep' command
+abbr 'grep'='rg'
+
+# Perform a case-insensitive search
+abbr 'greps'='rg --case-sensitive'
+abbr 'rgs'='rg --case-sensitive'
