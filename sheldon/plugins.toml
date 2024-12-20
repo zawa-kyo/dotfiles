@@ -2,6 +2,10 @@ shell = "zsh"
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+# Execute the install script in the cloned repository and add its bin directory to $PATH.
+fzf-install = "{{ dir }}/install --bin > /dev/null \n[[ ! $PATH =~ {{ dir }} ]] && export PATH=\"$PATH:{{ dir }}/bin\"\n"
+# Source all matched script files, integrating them into the shell environment.
+fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 
 [plugins]
 
@@ -27,6 +31,11 @@ github = "z-shell/F-Sy-H"
 # Vim mode
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
+
+# Fuzzy finder
+[plugins.fzf]
+apply = ['fzf-install', 'fzf-source', 'defer']
+github = 'junegunn/fzf'
 
 # Alias
 [plugins.zsh-abbr]
