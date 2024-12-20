@@ -60,6 +60,38 @@ run_source_script
 
 
 # ===========================
+# History
+# ===========================
+
+# 履歴ファイルの保存先
+export HISTFILE="$HOME/.zsh_history"
+
+# メモリに保存される履歴の件数
+export HISTSIZE=1000
+
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000
+
+# 古いコマンドの場合は履歴に追加しない
+setopt hist_ignore_dups
+
+# 開始と終了を記録
+setopt EXTENDED_HISTORY
+
+# 履歴ファイルを共有
+setopt share_history
+
+# ヒストリーに追加されるコマンド行が古いものと同じなら古いものを削除
+setopt hist_ignore_all_dups
+
+# 余分な空白は詰めて記録
+setopt hist_reduce_blanks
+
+# historyコマンドは履歴に登録しない
+setopt hist_no_store
+
+
+# ===========================
 # Options
 # ===========================
 
@@ -71,9 +103,6 @@ setopt magic_equal_subst
 
 # コマンドのスペルミスを指摘
 setopt correct
-
-# 直前と同じコマンドの場合は履歴に追加しない
-setopt hist_ignore_dups
 
 # ディレクトリ名でcd
 setopt auto_cd
