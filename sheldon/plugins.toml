@@ -5,6 +5,7 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 
 [plugins]
 
+# Defer loading of plugins
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
@@ -36,8 +37,10 @@ github = "olets/zsh-abbr"
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh)"'
 
+# Prompt customization
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 
+# Manage shell environment
 [plugins.mise]
 inline = 'eval "$(mise activate zsh)"'
