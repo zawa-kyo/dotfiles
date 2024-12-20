@@ -475,6 +475,7 @@
     "rustc",
     "saikou9901", // Evilinspector
     "savefig",
+    "setopt",
     "scrollback",
     "shellsession",
     "skiprows",
