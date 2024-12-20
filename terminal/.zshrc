@@ -146,12 +146,6 @@ export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 # Fzf
 # ===========================
 
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 fv () {
 	local file
 	file=$(fzf) && nvim "$file"
