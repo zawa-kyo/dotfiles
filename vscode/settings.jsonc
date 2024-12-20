@@ -475,6 +475,7 @@
     "rustc",
     "saikou9901", // Evilinspector
     "savefig",
+    "setopt",
     "scrollback",
     "shellsession",
     "skiprows",
@@ -650,7 +651,6 @@
   // ======= Markdown =========
   "[markdown]": {
     "editor.tabSize": 4,
-    "editor.wordWrap": "on",
     "editor.quickSuggestions": {
       "comments": "on",
       "strings": "on",
