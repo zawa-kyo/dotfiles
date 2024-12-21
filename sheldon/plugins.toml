@@ -28,6 +28,10 @@ github = "zsh-users/zsh-completions"
 apply = ["defer"]
 github = "z-shell/F-Sy-H"
 
+# History Manager
+[plugins.atuin]
+inline = 'eval "$(atuin init zsh)"'
+
 # Vim mode
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
