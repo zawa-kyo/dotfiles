@@ -20,7 +20,7 @@ github = "zsh-users/zsh-autosuggestions"
 
 # Completions
 [plugins.zsh-completions]
-apply = ["defer"]
+apply = ["defer", "fpath"]
 github = "zsh-users/zsh-completions"
 
 # Syntax highlighting
