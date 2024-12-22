@@ -73,25 +73,25 @@ export HISTSIZE=1000
 export SAVEHIST=100000
 
 
-setopt hist_ignore_dups     # 古いコマンドの場合は履歴に追加しない
-setopt hist_save_no_dups    # 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
-setopt EXTENDED_HISTORY     # 開始と終了を記録する
-setopt share_history        # 全てのセッションで履歴を共有する
-setopt hist_ignore_all_dups # 履歴が重複した場合に古い履歴を削除する
-setopt hist_reduce_blanks   # 余分な空白は詰めて記録する
-setopt hist_no_store        # historyコマンドは履歴に登録しない
-setopt inc_append_history  # コマンド実行後すぐ履歴ファイルに追加
+setopt EXTENDED_HISTORY         # 開始と終了を記録する
+setopt hist_ignore_all_dups     # 履歴が重複した場合に古い履歴を削除する
+setopt hist_ignore_dups         # 古いコマンドの場合は履歴に追加しない
+setopt hist_no_store            # historyコマンドは履歴に登録しない
+setopt hist_reduce_blanks       # 余分な空白は詰めて記録する
+setopt hist_save_no_dups        # 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
+setopt inc_append_history       # コマンド実行後すぐ履歴ファイルに追加
 setopt inc_append_history_time  # 実行時間も含めて追加
+setopt share_history            # 全てのセッションで履歴を共有する
 
 
 # ===========================
 # Options
 # ===========================
 
-set -o ignoreeof          # Ctrl+d でシェルを終了しない
-setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
-setopt correct            # コマンドのスペルミスを指摘
 setopt auto_cd            # ディレクトリ名でcdする
+setopt correct            # コマンドのスペルミスを指摘
+setopt ignoreeof          # Ctrl+d でシェルを終了しない
+setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
 
 # cd後に自動でlsする
 function chpwd() {
