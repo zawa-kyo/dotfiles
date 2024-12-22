@@ -39,6 +39,7 @@ brew "tree"
 brew "zoxide"
 cask "android-studio"
 cask "appcleaner"
+cask "bitwarden"
 cask "evernote"
 cask "font-fira-code"
 cask "font-hack-nerd-font"
@@ -52,6 +53,7 @@ cask "openineditor-lite"
 cask "openinterminal-lite"
 cask "postman"
 cask "rancher"
+cask "raycast"
 cask "slack"
 cask "the-unarchiver"
 cask "wezterm"
@@ -60,7 +62,6 @@ cask "zoom"
 mas "Adblock Plus", id: 1432731683
 mas "AdGuard for Safari", id: 1440147259
 mas "BetterSnapTool", id: 417375580
-mas "Bitwarden", id: 1352778147
 mas "CotEditor", id: 1024640650
 mas "GIPHY CAPTURE", id: 668208984
 mas "Keepa - Price Tracker", id: 1533805339
