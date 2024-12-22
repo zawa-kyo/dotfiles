@@ -25,6 +25,7 @@ brew "webp"
 brew "leptonica"
 brew "libarchive"
 brew "lua"
+brew "mas"
 brew "mise"
 brew "neofetch"
 brew "neovim"
@@ -38,6 +39,7 @@ brew "tree"
 brew "zoxide"
 cask "android-studio"
 cask "appcleaner"
+cask "bitwarden"
 cask "evernote"
 cask "font-fira-code"
 cask "font-hack-nerd-font"
@@ -51,11 +53,28 @@ cask "openineditor-lite"
 cask "openinterminal-lite"
 cask "postman"
 cask "rancher"
+cask "raycast"
 cask "slack"
 cask "the-unarchiver"
 cask "wezterm"
 cask "xld"
 cask "zoom"
+mas "Adblock Plus", id: 1432731683
+mas "AdGuard for Safari", id: 1440147259
+mas "BetterSnapTool", id: 417375580
+mas "CotEditor", id: 1024640650
+mas "GIPHY CAPTURE", id: 668208984
+mas "Keepa - Price Tracker", id: 1533805339
+mas "Kindle", id: 302584613
+mas "LINE", id: 539883307
+mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
+mas "PopClip", id: 445189367
+mas "RunCat", id: 1429033973
+mas "Save to Pocket", id: 1477385213
+mas "Spark", id: 1176895641
+mas "Table Tool", id: 1122008420
+mas "Xcode", id: 497799835
 vscode "1yib.rust-bundle"
 vscode "alefragnani.project-manager"
 vscode "anilbeesetti.evans-dark-theme"
