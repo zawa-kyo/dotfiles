@@ -57,6 +57,26 @@ cask "the-unarchiver"
 cask "wezterm"
 cask "xld"
 cask "zoom"
+mas "Adblock Plus", id: 1432731683
+mas "AdGuard for Safari", id: 1440147259
+mas "BetterSnapTool", id: 417375580
+mas "Bitwarden", id: 1352778147
+mas "CotEditor", id: 1024640650
+mas "GIPHY CAPTURE", id: 668208984
+mas "Keepa - Price Tracker", id: 1533805339
+mas "Kindle", id: 302584613
+mas "LINE", id: 539883307
+mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
+mas "Playgrounds", id: 1496833156
+mas "Pocket", id: 568494494
+mas "PopClip", id: 445189367
+mas "RunCat", id: 1429033973
+mas "Save to Pocket", id: 1477385213
+mas "Spark", id: 1176895641
+mas "Table Tool", id: 1122008420
+mas "Uninstall Ghostery", id: 1436953057
+mas "Xcode", id: 497799835
 vscode "1yib.rust-bundle"
 vscode "alefragnani.project-manager"
 vscode "anilbeesetti.evans-dark-theme"
