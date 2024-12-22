@@ -92,6 +92,7 @@ setopt auto_cd            # ディレクトリ名でcdする
 setopt correct            # コマンドのスペルミスを指摘
 setopt ignoreeof          # Ctrl+d でシェルを終了しない
 setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
+setopt no_beep            # ビープ音を鳴らさない
 
 # cd後に自動でlsする
 function chpwd() {
