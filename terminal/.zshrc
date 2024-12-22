@@ -72,42 +72,30 @@ export HISTSIZE=1000
 # 履歴ファイルに保存される履歴の件数
 export SAVEHIST=100000
 
-# 古いコマンドの場合は履歴に追加しない
-setopt hist_ignore_dups
 
-# 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
-setopt hist_save_no_dups
-# 開始と終了を記録
-setopt EXTENDED_HISTORY
-
-# 全てのセッションで履歴を共有する
-setopt share_history
-
-# 履歴が重複した場合に古い履歴を削除する
-setopt hist_ignore_all_dups
-
-# 余分な空白は詰めて記録
-setopt hist_reduce_blanks
-
-# historyコマンドは履歴に登録しない
-setopt hist_no_store
+setopt EXTENDED_HISTORY         # 開始と終了を記録する
+setopt hist_ignore_all_dups     # 履歴が重複した場合に古い履歴を削除する
+setopt hist_ignore_dups         # 古いコマンドの場合は履歴に追加しない
+setopt hist_no_store            # historyコマンドは履歴に登録しない
+setopt hist_reduce_blanks       # 余分な空白は詰めて記録する
+setopt hist_save_no_dups        # 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
+setopt inc_append_history       # コマンド実行後すぐ履歴ファイルに追加
+setopt inc_append_history_time  # 実行時間も含めて追加
+setopt share_history            # 全てのセッションで履歴を共有する
 
 
 # ===========================
 # Options
 # ===========================
 
-# Ctrl+d でシェルを終了しない
-set -o ignoreeof
+setopt auto_cd            # ディレクトリ名でcdする
+setopt correct            # コマンドのスペルミスを指摘
+setopt ignoreeof          # Ctrl+d でシェルを終了しない
+setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
+setopt no_beep            # ビープ音を鳴らさない
 
-# コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
-setopt magic_equal_subst
-
-# コマンドのスペルミスを指摘
-setopt correct
-
-# ディレクトリ名でcd
-setopt auto_cd
+# タブ補完を有効化
+autoload -Uz compinit && compinit
 
 # cd後に自動でlsする
 function chpwd() {
