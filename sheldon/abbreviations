@@ -74,3 +74,10 @@ abbr 'grep'='rg'
 # Perform a case-insensitive search
 abbr 'greps'='rg --case-sensitive'
 abbr 'rgs'='rg --case-sensitive'
+
+# ===========================
+# bat
+# ===========================
+
+# Set the default theme to 'Nord'
+abbr 'bat'='bat --theme="Nord"'
