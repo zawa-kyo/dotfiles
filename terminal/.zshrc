@@ -94,8 +94,6 @@ setopt ignoreeof          # Ctrl+d でシェルを終了しない
 setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
 setopt no_beep            # ビープ音を鳴らさない
 
-# タブ補完を有効化
-autoload -Uz compinit && compinit
 
 # cd後に自動でlsする
 function chpwd() {
