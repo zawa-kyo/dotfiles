@@ -658,8 +658,11 @@
       "strings": "on",
       "other": "on"
     },
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": false,
+    "editor.trimAutoWhitespace": false,
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
 
   // markdownlint
