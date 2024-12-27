@@ -93,7 +93,9 @@
   // 選択範囲の角を丸める
   "editor.roundedSelection": true,
   // 最終行よりも下へのスクロールを許可
-  "editor.scrollBeyondLastLine": true,
+  "editor.scrollBeyondLastLine": false,
+  // 最終行以下をどこまで表示するか
+  "editor.padding.bottom": 200,
   // インデントの大きさを自動検出するか
   "editor.detectIndentation": false,
   // 一定文字数ごとにルーラーを表示
@@ -656,8 +658,11 @@
       "strings": "on",
       "other": "on"
     },
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": false,
+    "editor.trimAutoWhitespace": false,
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
 
   // markdownlint
