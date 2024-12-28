@@ -46,6 +46,7 @@ cask "font-fira-code"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
 cask "fork"
+cask "ghostty"
 cask "karabiner-elements"
 cask "kindle"
 cask "microsoft-teams"
@@ -63,6 +64,7 @@ cask "zoom"
 mas "Adblock Plus", id: 1432731683
 mas "AdGuard for Safari", id: 1440147259
 mas "BetterSnapTool", id: 417375580
+mas "Bitwarden", id: 1352778147
 mas "CotEditor", id: 1024640650
 mas "GIPHY CAPTURE", id: 668208984
 mas "Keepa - Price Tracker", id: 1533805339
@@ -90,6 +92,7 @@ vscode "catppuccin.catppuccin-vsc-icons"
 vscode "christian-kohler.path-intellisense"
 vscode "cstrap.python-snippets"
 vscode "daiyy.quick-html-previewer"
+vscode "darkriszty.markdown-table-prettify"
 vscode "dart-code.dart-code"
 vscode "dart-code.flutter"
 vscode "davidanson.vscode-markdownlint"
