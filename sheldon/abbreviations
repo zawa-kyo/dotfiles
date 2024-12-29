@@ -24,6 +24,12 @@ abbr 'view'='nvim -R'
 abbr ':q'='exit'
 abbr ':wq'='exit'
 
+# ===========================
+# fastfetch
+# ==========================
+
+abbr 'neofetch'='fastfetch'
+
 
 # ===========================
 # eza
