@@ -13,7 +13,7 @@ background-opacity = 0.85
 background-blur-radius = 20
 
 # Titlebar
-macos-titlebar-style = transparent
+macos-titlebar-style = tabs
 
 # Icon
 macos-icon = custom-style
