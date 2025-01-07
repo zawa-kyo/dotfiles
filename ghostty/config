@@ -1,7 +1,26 @@
+# Theme
 theme = catppuccin-frappe
+font-family = JetBrains Mono
+font-size = 14
+
+# Window
 window-padding-x = 20
 window-padding-y = 5
 window-padding-balance = true
+
+# Background
 background-opacity = 0.85
 background-blur-radius = 20
-macos-titlebar-style = transparent
+
+# Titlebar
+macos-titlebar-style = tabs
+
+# Icon
+macos-icon = custom-style
+macos-icon-frame = plastic
+
+# Quick Terminal
+quick-terminal-position = "top"
+quick-terminal-screen = "main"
+quick-terminal-animation-duration = 0.1
+keybind = "global:cmd+shift+t=toggle_quick_terminal"
