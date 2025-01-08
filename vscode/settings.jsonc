@@ -61,7 +61,9 @@
   // true: 常に有効, active: アクティブなペアに対してのみ有効
   "editor.guides.bracketPairs": true,
   // フォント
-  "editor.fontFamily": "'JetBrains Mono', 'Hack Nerd Font', 'Fira Code'",
+  "editor.fontFamily": "'Moralerspace Neon', 'Hack Nerd Font'",
+  // フォントの合字機能を有効化
+  "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'",
   // エディタのフォントサイズ
   "editor.fontSize": 12,
   // 1行の高さ
@@ -74,8 +76,6 @@
   "editor.cursorStyle": "line", // block",
   // 文字間の距離
   "editor.letterSpacing": 0.1,
-  // フォントの合字機能を有効化
-  "editor.fontLigatures": true,
   // 制御文字を表示
   "editor.renderControlCharacters": true,
   // ミニマップを非表示
@@ -280,6 +280,7 @@
   // ===========================
   // Speed up
   // ===========================
+
   // 高速化のためビルドタスクフェッチをOFFに変更
   "typescript.tsc.autoDetect": "off",
   "grunt.autoDetect": "off",
@@ -375,6 +376,14 @@
       "value": "#42b883"
     }
   ],
+
+  // GitHub Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  },
 
   // ===========================
   // Linter, formatter
