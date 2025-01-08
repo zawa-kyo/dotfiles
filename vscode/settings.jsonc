@@ -376,6 +376,14 @@
     }
   ],
 
+  // GitHub Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  },
+
   // ===========================
   // Linter, formatter
   // ===========================
