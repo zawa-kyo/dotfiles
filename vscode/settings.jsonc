@@ -280,6 +280,7 @@
   // ===========================
   // Speed up
   // ===========================
+
   // 高速化のためビルドタスクフェッチをOFFに変更
   "typescript.tsc.autoDetect": "off",
   "grunt.autoDetect": "off",
