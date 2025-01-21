@@ -72,7 +72,6 @@ export HISTSIZE=1000
 # 履歴ファイルに保存される履歴の件数
 export SAVEHIST=100000
 
-
 setopt EXTENDED_HISTORY         # 開始と終了を記録する
 setopt hist_ignore_all_dups     # 履歴が重複した場合に古い履歴を削除する
 setopt hist_ignore_dups         # 古いコマンドの場合は履歴に追加しない
@@ -93,7 +92,6 @@ setopt correct            # コマンドのスペルミスを指摘
 setopt ignoreeof          # Ctrl+d でシェルを終了しない
 setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
 setopt no_beep            # ビープ音を鳴らさない
-
 
 # cd後に自動でlsする
 function chpwd() {
