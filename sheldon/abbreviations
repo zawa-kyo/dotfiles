@@ -21,6 +21,7 @@ abbr 'view'='nvim -R'
 # Utilities
 # ===========================
 
+abbr '.'='source'
 abbr ':q'='exit'
 abbr ':wq'='exit'
 
