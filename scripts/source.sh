@@ -1,24 +1,33 @@
 #!/usr/bin/env bash
 
-source_files() {
+# Prints content of matching files so zsh can 'eval' it later
+emit_sources() {
   local config_dir="$1"
   local extension="$2"
+  local found=false
 
-  if [ -d "$config_dir" ]; then
-    for conf_file in "$config_dir/"*"$extension"; do
-      # If no files with the given extension are found, print a message and break
-      [ -e "$conf_file" ] || {
-        echo "🚧 No configuration files with extension $extension found in $config_dir"
-        break
-      }
-      # shellcheck disable=SC1090
-      source "${conf_file}"
-      echo "✅ Sourced: $conf_file"
-    done
-  else
-    # If the configuration directory does not exist
-    echo "❌ Configuration directory not found: $config_dir"
+  # Check if directory exists
+  if [ ! -d "$config_dir" ]; then
+    echo "echo '❌ Directory not found: $config_dir' 1>&2"
+    return
+  fi
+
+  # Iterate through files with the given extension
+  for file in "$config_dir/"*"$extension"; do
+    [ -e "$file" ] || continue
+    found=true
+
+    # Output the file content directly (zsh-compatible syntax expected)
+    cat "$file"
+
+    # Emit an echo command for logging
+    echo "echo '✅ Sourced: $file' 1>&2"
+  done
+
+  # If no file was found
+  if [ "$found" = false ]; then
+    echo "echo '🚧 No *$extension files found in $config_dir' 1>&2"
   fi
 }
 
-source_files "$HOME/local.d" ".zsh"
+emit_sources "$HOME/local.d" ".zsh"
