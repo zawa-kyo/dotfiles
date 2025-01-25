@@ -50,7 +50,7 @@ run_source_script() {
     dotfiles_dir="$(get_dotfiles_dir)" || return 1
 
     # Execute the script from the scripts directory
-    sh "$dotfiles_dir/../scripts/source.sh"
+    eval "$(bash "$dotfiles_dir/../scripts/source.sh")"
 
     # Return to the original working directory
     cd "$current_dir"
