@@ -19,6 +19,9 @@ macos-titlebar-style = tabs
 macos-icon = custom-style
 macos-icon-frame = plastic
 
+# Mouse
+mouse-hide-while-typing = true
+
 # Quick Terminal
 quick-terminal-position = "top"
 quick-terminal-screen = "main"
