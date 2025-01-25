@@ -26,7 +26,7 @@ emit_sources() {
 
   # If no file was found
   if [ "$found" = false ]; then
-    echo "echo '🚧 No configuration files with extension $extension found in $config_dir' 1>&2"
+    echo "echo '🚧 No *$extension files found in $config_dir' 1>&2"
   fi
 }
 
