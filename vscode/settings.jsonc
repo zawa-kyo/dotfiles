@@ -438,6 +438,7 @@
     "javac",
     "jdbc",
     "jenv",
+    "keymap",
     "kyohei",
     "latexlog",
     "latexmk",
