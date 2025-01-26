@@ -6,6 +6,15 @@ local opts = { noremap = true, silent = true }
 
 
 --------------------
+-- Utils
+--------------------
+
+-- Close the hover by simulating 'hl'
+local function close_hover()
+    vim.api.nvim_feedkeys("hl", "n", false)
+end
+
+--------------------
 -- Common Actions
 --------------------
 
@@ -16,7 +25,7 @@ local function esc()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         local config = vim.api.nvim_win_get_config(win)
         if config.relative ~= "" then
-            vim.api.nvim_win_close(win, true)
+            close_hover()
             return
         end
     end
