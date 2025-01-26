@@ -15,17 +15,7 @@ $fill
 $character
 """
 
-right_format = """
-$aws\
-$golang\
-$java\
-$nodejs\
-$rust\
-$dart\
-$bun\
-$python\
-$docker_context
-"""
+right_format = ""
 
 [username]
 disabled = true
