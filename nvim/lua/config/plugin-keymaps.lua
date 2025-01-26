@@ -6,10 +6,36 @@ local opts = { noremap = true, silent = true }
 
 
 --------------------
+-- Common Actions
+--------------------
+
+-- Function to handle <Esc> key behavior
+-- Performs one action and skips subsequent ones
+local function esc()
+    -- Close floating window (hover)
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        if config.relative ~= "" then
+            vim.api.nvim_win_close(win, true)
+            return
+        end
+    end
+
+    -- Disable highlighting
+    if vim.v.hlsearch == 1 then
+        vim.cmd("nohlsearch")
+        return
+    end
+end
+
+vim.keymap.set("n", "<Esc><Esc>", esc, opts)
+
+
+--------------------
 -- LSP
 --------------------
 
-vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>")
 vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")

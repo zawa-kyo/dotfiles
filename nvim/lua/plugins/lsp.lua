@@ -52,26 +52,6 @@ return {
                 end
             })
 
-            -- Hover with ESC to close
-            local function hover()
-                vim.lsp.buf.hover()
-                local current_buf = vim.api.nvim_get_current_buf()
-
-                -- Autocmd to close the hover window when ESC is pressed
-                vim.api.nvim_create_autocmd("BufLeave", {
-                    buffer = current_buf,
-                    once = true,
-                    callback = function()
-                        -- Close floating window if it exists
-                        for _, win in ipairs(vim.api.nvim_list_wins()) do
-                            if vim.api.nvim_win_get_config(win).relative ~= "" then
-                                vim.api.nvim_win_close(win, true)
-                            end
-                        end
-                    end,
-                })
-            end
-
             -- Diagnostic settings
             vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
