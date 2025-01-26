@@ -438,6 +438,7 @@
     "javac",
     "jdbc",
     "jenv",
+    "keymap",
     "kyohei",
     "latexlog",
     "latexmk",
@@ -659,6 +660,10 @@
     "editor.tabSize": 2,
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
+  // Luaのランタイムを指定
+  "Lua.runtime.version": "LuaJIT",
+  // グローバル変数として`vim`を無視
+  "Lua.diagnostics.globals": ["vim"],
 
   // ======= Markdown =========
   "[markdown]": {
