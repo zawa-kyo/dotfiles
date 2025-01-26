@@ -1,6 +1,6 @@
 -- TODO: Refactor LSP setup into 'lsp' directory
 return {
-    -- Neoconf setup (should run before LSP configuration)
+    -- Neoconf (should run before LSP configuration)
     {
         "folke/neoconf.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
@@ -10,7 +10,7 @@ return {
         end,
     },
 
-    -- Mason and LSP-related plugins
+    -- Mason: LSP package manager
     {
         "williamboman/mason.nvim",
         config = function()
@@ -26,6 +26,7 @@ return {
         end,
     },
 
+    -- mason-lspconfig: Automatically sets up language servers installed via Mason
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
@@ -35,6 +36,13 @@ return {
             "hrsh7th/vim-vsnip",
         },
         config = function()
+            require("mason-lspconfig").setup {
+                ensure_installed = {
+                    "lua_ls",  -- Lua
+                    "ts_ls",   -- TypeScript
+                    "pyright", -- Python
+                },
+            }
             require("mason-lspconfig").setup_handlers({
                 function(server)
                     local opt = {
@@ -44,26 +52,6 @@ return {
                 end
             })
 
-            -- Hover with ESC to close
-            local function hover()
-                vim.lsp.buf.hover()
-                local current_buf = vim.api.nvim_get_current_buf()
-
-                -- Autocmd to close the hover window when ESC is pressed
-                vim.api.nvim_create_autocmd("BufLeave", {
-                    buffer = current_buf,
-                    once = true,
-                    callback = function()
-                        -- Close floating window if it exists
-                        for _, win in ipairs(vim.api.nvim_list_wins()) do
-                            if vim.api.nvim_win_get_config(win).relative ~= "" then
-                                vim.api.nvim_win_close(win, true)
-                            end
-                        end
-                    end,
-                })
-            end
-
             -- Diagnostic settings
             vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
@@ -71,23 +59,26 @@ return {
 
             -- Reference highlight
             vim.cmd [[
-        set updatetime=500
-        highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#F1943B guibg=#374152
-        highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#F1943B guibg=#374152
-        highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#F1943B guibg=#374152
-        augroup lsp_document_highlight
-          autocmd!
-          autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-        augroup END
-      ]]
+                set updatetime=500
+                highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#F1943B guibg=#374152
+                highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#F1943B guibg=#374152
+                highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#F1943B guibg=#374152
+                augroup lsp_document_highlight
+                autocmd!
+                autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+                augroup END
+            ]]
         end,
     },
 
-    -- Completion settings with modern theme
+    -- nvim-cmp: Completion settings with modern theme
     {
         "hrsh7th/nvim-cmp",
-        dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/vim-vsnip" },
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/vim-vsnip",
+        },
         config = function()
             local cmp = require("cmp")
 
@@ -146,5 +137,15 @@ return {
                 },
             })
         end,
+    },
+
+    -- mason-null-ls: Automatically sets up null-ls.nvim (none-ls.nvim) with Mason
+    {
+        'jay-babu/mason-null-ls.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'williamboman/mason.nvim',
+            'nvimtools/none-ls.nvim',
+        },
     },
 }
