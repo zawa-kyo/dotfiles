@@ -14,13 +14,14 @@ local M = {
     },
 }
 
--- Function to handle <leader>f with a check for fern buffer
-function M.fzf_lines_or_notify()
+-- Search lines with a check for fern buffer
+function M.lines()
     if vim.bo.filetype == "fern" then
         vim.notify("Cannot use :FzfLua lines in fern buffer", vim.log.levels.WARN)
-    else
-        vim.cmd("FzfLua lines")
+        return
     end
+
+    vim.cmd("FzfLua lines")
 end
 
 M.config = function()
