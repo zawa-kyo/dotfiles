@@ -2,6 +2,7 @@
 -- Typical Options
 --------------------
 
+-- Default options for keymaps
 local opts = { noremap = true, silent = true }
 
 
@@ -13,6 +14,7 @@ local opts = { noremap = true, silent = true }
 local function close_hover()
     vim.api.nvim_feedkeys("hl", "n", false)
 end
+
 
 --------------------
 -- Common Actions
