@@ -1,3 +1,6 @@
+-- Common options
+local opts = { noremap = true, silent = true }
+
 -- LSP functions
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>")
@@ -12,8 +15,7 @@ vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 
-
 -- Fern
 local fern = require("plugins.fern")
-vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts)
+vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
