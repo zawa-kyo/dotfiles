@@ -19,3 +19,22 @@ vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 local fern = require("plugins.fern")
 vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts)
 vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
+
+-- Toggleterm
+vim.api.nvim_set_keymap("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts)
+
+-- Fzf
+local fzf = require("plugins.fzf")
+
+-- Trigger file search in the current directory
+vim.api.nvim_set_keymap("n", "<leader>p", ":FzfLua files<CR>", opts)
+
+-- Perform a global search across all files
+vim.api.nvim_set_keymap("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
+
+-- Search within the current file (notify in fern buffer)
+vim.api.nvim_set_keymap("n", "<leader>f", "", {
+    noremap = true,
+    silent = true,
+    callback = fzf.fzf_lines_or_notify,
+})
