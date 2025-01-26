@@ -1,7 +1,14 @@
--- Common options
+--------------------
+-- Typical Options
+--------------------
+
 local opts = { noremap = true, silent = true }
 
--- LSP functions
+
+--------------------
+-- LSP
+--------------------
+
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>")
 vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
@@ -15,15 +22,34 @@ vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 
+
+--------------------
 -- Fern
+--------------------
+
+-- Load the plugin
 local fern = require("plugins.fern")
+
+-- Open file or expand directory when in Fern buffer
 vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts)
+
+-- Toggle focus to Fern or reveal current file in Fern
 vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
 
+
+--------------------
 -- Toggleterm
+--------------------
+
+-- Open a terminal in a horizontal split
 vim.api.nvim_set_keymap("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts)
 
+
+--------------------
 -- Fzf
+--------------------
+
+-- Load the plugin
 local fzf = require("plugins.fzf")
 
 -- Trigger file search in the current directory
