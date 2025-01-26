@@ -1,6 +1,6 @@
 -- TODO: Refactor LSP setup into 'lsp' directory
 return {
-    -- Neoconf setup (should run before LSP configuration)
+    -- Neoconf (should run before LSP configuration)
     {
         "folke/neoconf.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
@@ -10,7 +10,7 @@ return {
         end,
     },
 
-    -- Mason and LSP-related plugins
+    -- Mason: LSP package manager
     {
         "williamboman/mason.nvim",
         config = function()
@@ -26,6 +26,7 @@ return {
         end,
     },
 
+    -- mason-lspconfig: Automatically sets up language servers installed via Mason
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
@@ -84,7 +85,7 @@ return {
         end,
     },
 
-    -- Completion settings with modern theme
+    -- nvim-cmp: Completion settings with modern theme
     {
         "hrsh7th/nvim-cmp",
         dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/vim-vsnip" },
@@ -146,5 +147,15 @@ return {
                 },
             })
         end,
+    },
+
+    -- mason-null-ls: Automatically sets up null-ls.nvim (none-ls.nvim) with Mason
+    {
+        'jay-babu/mason-null-ls.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'williamboman/mason.nvim',
+            'nvimtools/none-ls.nvim',
+        },
     },
 }
