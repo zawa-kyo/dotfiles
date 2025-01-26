@@ -36,6 +36,13 @@ return {
             "hrsh7th/vim-vsnip",
         },
         config = function()
+            require("mason-lspconfig").setup {
+                ensure_installed = {
+                    "lua-language-server",        -- Lua
+                    "typescript-language-server", -- TypeScript
+                    "pyright",                    -- Python
+                },
+            }
             require("mason-lspconfig").setup_handlers({
                 function(server)
                     local opt = {
