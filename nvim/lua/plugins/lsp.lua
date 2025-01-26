@@ -38,9 +38,9 @@ return {
         config = function()
             require("mason-lspconfig").setup {
                 ensure_installed = {
-                    "lua-language-server",        -- Lua
-                    "typescript-language-server", -- TypeScript
-                    "pyright",                    -- Python
+                    "lua_ls",  -- Lua
+                    "ts_ls",   -- TypeScript
+                    "pyright", -- Python
                 },
             }
             require("mason-lspconfig").setup_handlers({
