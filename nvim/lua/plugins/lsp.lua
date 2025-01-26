@@ -88,7 +88,10 @@ return {
     -- nvim-cmp: Completion settings with modern theme
     {
         "hrsh7th/nvim-cmp",
-        dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/vim-vsnip" },
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/vim-vsnip",
+        },
         config = function()
             local cmp = require("cmp")
 
