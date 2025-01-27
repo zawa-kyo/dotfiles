@@ -86,9 +86,6 @@ keymap("n", "L", "$", opts)
 -- Optimize redo
 keymap("n", "U", "<C-r>", opts)
 
--- ESC 2回でハイライトを停止
-keymap("n", "<Esc><Esc>", ":<C-u>set nohlsearch<Return>", opts)
-
 -- INSERT MODE:
 -- コンマの後に自動的にスペースを挿入
 keymap("i", ",", ",<Space>", opts)
