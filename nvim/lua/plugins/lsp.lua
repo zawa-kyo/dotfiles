@@ -79,8 +79,10 @@ table.insert(M, {
 table.insert(M, {
     "hrsh7th/nvim-cmp",
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/vim-vsnip",
+        "hrsh7th/cmp-nvim-lsp", -- LSP completion source
+        "hrsh7th/cmp-buffer",   -- Buffer completion source
+        "hrsh7th/cmp-path",     -- Path completion source
+        "hrsh7th/cmp-cmdline",  -- Command-line completion source
     },
     config = function()
         local cmp = require("cmp")
@@ -135,6 +137,21 @@ table.insert(M, {
             }),
             experimental = {
                 ghost_text = false,
+            },
+        })
+
+        cmp.setup.cmdline(":", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "path" },
+                { name = "cmdline" },
+            },
+        })
+
+        cmp.setup.cmdline("/", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "buffer" },
             },
         })
     end,
