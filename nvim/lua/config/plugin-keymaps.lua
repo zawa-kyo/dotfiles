@@ -10,9 +10,27 @@ local opts = { noremap = true, silent = true }
 -- Utils
 --------------------
 
+-- Close the hover by simulating 'q'
+local function close_hover_in_hover()
+    -- Close the current floating window directly
+    -- `vim.api.nvim_feedkeys("hl", "n", false)` does not work
+    local current_win = vim.api.nvim_get_current_win()
+    vim.api.nvim_win_close(current_win, true)
+end
+
 -- Close the hover by simulating 'hl'
-local function close_hover()
+local function close_hover_out_of_hover()
     vim.api.nvim_feedkeys("hl", "n", false)
+end
+
+
+--- Check if the cursor is currently in a floating window (e.g., an LSP hover)
+---@return boolean
+local function is_cursor_in_hover()
+    local current_win = vim.api.nvim_get_current_win()
+    local config = vim.api.nvim_win_get_config(current_win)
+    -- If `relative` is not an empty string, this window is floating
+    return config.relative ~= ""
 end
 
 
@@ -23,11 +41,17 @@ end
 -- Function to handle <Esc> key behavior
 -- Performs one action and skips subsequent ones
 local function esc()
-    -- Close floating window (hover)
+    -- Close hover if cursor is in hover
+    if is_cursor_in_hover() then
+        close_hover_in_hover()
+        return
+    end
+
+    -- Close hover if cursor out of hover
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         local config = vim.api.nvim_win_get_config(win)
         if config.relative ~= "" then
-            close_hover()
+            close_hover_out_of_hover()
             return
         end
     end
