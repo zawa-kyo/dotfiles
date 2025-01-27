@@ -44,6 +44,10 @@
   // Editor
   // ===========================
 
+  // ホバー表示を有効化
+  "editor.hover.enabled": true,
+  // ホバー表示の遅延時間 (ms)
+  "editor.hover.delay": 500,
   // Ctrl+スクロールでエディタ文字をズーム
   "editor.mouseWheelZoom": false,
   // 自動的にフォーマットを実行
