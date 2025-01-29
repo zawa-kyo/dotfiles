@@ -3,17 +3,17 @@
 --------------------
 
 -- Default options for keymaps
-local opts = { noremap = true, silent = true }
+
 
 -- Get options with a description
 local function opts(desc)
-    -- Clone opts to avoid modifying the original table
-    local extended_opts = vim.tbl_extend("force", {}, opts)
+    -- Clone opts() to avoid modifying the original table
+    local options = { noremap = true, silent = true }
 
     if desc then
-        extended_opts.desc = desc
+        options.desc = desc
     end
-    return extended_opts
+    return options
 end
 
 
@@ -73,7 +73,7 @@ local function close_window()
     end
 end
 
-vim.keymap.set("n", "<Esc>", close_window, opts)
+vim.keymap.set("n", "<Esc>", close_window, opts())
 
 
 --------------------
@@ -102,10 +102,10 @@ vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 local fern = require("plugins.fern")
 
 -- Open file or expand directory when in Fern buffer
-vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts)
+vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts())
 
 -- Toggle focus to Fern or reveal current file in Fern
-vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
+vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts())
 
 
 --------------------
@@ -113,7 +113,7 @@ vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
 --------------------
 
 -- Open a terminal in a horizontal split
-vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts)
+vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts())
 
 
 --------------------
@@ -124,13 +124,22 @@ vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<
 local fzf = require("plugins.fzf")
 
 -- Trigger file search in the current directory
-vim.keymap.set("n", "<leader>p", ":FzfLua files<CR>", opts)
+vim.keymap.set(
+    "n", "<leader>p", ":FzfLua files<CR>",
+    opts("Search files in the current directory")
+)
 
 -- Perform a global search across all files
-vim.keymap.set("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
+vim.keymap.set(
+    "n", "<leader>g", ":FzfLua live_grep<CR>",
+    opts("Search text in all files")
+)
 
 -- Search within the current file (notify in fern buffer)
-vim.keymap.set("n", "<leader>f", fzf.lines, opts)
+vim.keymap.set(
+    "n", "<leader>f", fzf.lines,
+    opts("Search text in the current file")
+)
 
 
 --------------------
