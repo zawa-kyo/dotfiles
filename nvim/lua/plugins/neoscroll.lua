@@ -1,6 +1,9 @@
-return {
+local M = {
     "karb94/neoscroll.nvim",
+    lazy = false,
     config = function()
-        require('neoscroll').setup()
-    end
+        require("neoscroll").setup({ easing = "sine" })
+    end,
 }
+
+return M

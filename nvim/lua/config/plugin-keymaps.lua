@@ -120,3 +120,40 @@ vim.keymap.set("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
 
 -- Search within the current file (notify in fern buffer)
 vim.keymap.set("n", "<leader>f", fzf.lines, opts)
+
+
+--------------------
+-- Neoscroll
+--------------------
+
+-- Load the plugin
+local neoscroll = require("neoscroll")
+
+local keymap = {
+    ["<C-u>"]   = function() neoscroll.ctrl_u({ duration = 250 }) end,
+    ["<C-d>"]   = function() neoscroll.ctrl_d({ duration = 250 }) end,
+    ["<C-b>"]   = function() neoscroll.ctrl_b({ duration = 550 }) end,
+    ["<C-f>"]   = function() neoscroll.ctrl_f({ duration = 550 }) end,
+    ["<Tab>"]   = function() neoscroll.ctrl_d({ duration = 550 }) end,
+    ["<S-Tab>"] = function() neoscroll.ctrl_u({ duration = 550 }) end,
+}
+
+for key, func in pairs(keymap) do
+    vim.keymap.set({ "n", "v", "x" }, key, func, { silent = true })
+end
+
+
+--------------------
+-- Dial
+--------------------
+
+-- Load the plugin
+local map = require("dial.map")
+
+-- Normal mode increment/decrement
+vim.keymap.set("n", "<C-a>", map.inc_normal(), opts)
+vim.keymap.set("n", "<C-x>", map.dec_normal(), opts)
+
+-- Visual mode increment/decrement
+vim.keymap.set("v", "<C-a>", map.inc_visual(), opts)
+vim.keymap.set("v", "<C-x>", map.dec_visual(), opts)
