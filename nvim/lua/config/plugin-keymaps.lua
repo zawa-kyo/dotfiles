@@ -5,6 +5,17 @@
 -- Default options for keymaps
 local opts = { noremap = true, silent = true }
 
+-- Get options with a description
+local function opts(desc)
+    -- Clone opts to avoid modifying the original table
+    local extended_opts = vim.tbl_extend("force", {}, opts)
+
+    if desc then
+        extended_opts.desc = desc
+    end
+    return extended_opts
+end
+
 
 --------------------
 -- Utils
@@ -150,17 +161,36 @@ end
 -- Load the plugin
 local map = require("dial.map")
 
+-- Description
+local increment_desc = "Increment the number under the cursor"
+local decrement_desc = "Decrement the number under the cursor"
+
 -- Normal mode increment/decrement
-vim.keymap.set("n", "<C-a>", map.inc_normal(), opts)
-vim.keymap.set("n", "<C-x>", map.dec_normal(), opts)
+vim.keymap.set(
+    "n", "<C-a>", map.inc_normal(),
+    opts(increment_desc)
+)
+vim.keymap.set(
+    "n", "<C-x>", map.dec_normal(),
+    opts(decrement_desc)
+)
 
 -- Visual mode increment/decrement
-vim.keymap.set("v", "<C-a>", map.inc_visual(), opts)
-vim.keymap.set("v", "<C-x>", map.dec_visual(), opts)
+vim.keymap.set(
+    "v", "<C-a>", map.inc_visual(),
+    opts(increment_desc)
+)
+vim.keymap.set(
+    "v", "<C-x>", map.dec_visual(),
+    opts(decrement_desc)
+)
 
 
 --------------------
 -- GitMessenger
 --------------------
 
-vim.keymap.set("n", "G", ":GitMessenger<CR>", opts)
+vim.keymap.set(
+    "n", "G", ":GitMessenger<CR>",
+    opts("Show git commit message")
+)
