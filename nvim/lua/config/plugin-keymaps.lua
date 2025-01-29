@@ -1,9 +1,6 @@
 --------------------
--- Typical Options
+-- Utils
 --------------------
-
--- Default options for keymaps
-
 
 -- Get options with a description
 local function opts(desc)
@@ -15,11 +12,6 @@ local function opts(desc)
     end
     return options
 end
-
-
---------------------
--- Utils
---------------------
 
 -- Close hover in the hover
 local function close_hover_in_hover()
@@ -202,4 +194,19 @@ vim.keymap.set(
 vim.keymap.set(
     "n", "G", ":GitMessenger<CR>",
     opts("Show git commit message")
+)
+
+
+--------------------
+-- In-and-out
+--------------------
+
+vim.keymap.set(
+    "i", "<C-m>",
+    function()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<BS>", true, false, true), "n", false)
+
+        require("in-and-out").in_and_out()
+    end,
+    opts()
 )
