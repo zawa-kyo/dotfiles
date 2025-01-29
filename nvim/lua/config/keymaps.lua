@@ -43,11 +43,13 @@ keymap("n", "<C-S-Tab>", ":tabprevious<CR>", opts)
 keymap("n", "<C-t>", ":tabnew<CR>", opts)
 keymap("n", "<C-w>", ":tabclose<CR>", opts)
 
--- Remap 'j'/'k' for wrapped lines, and 'gj'/'gk' for actual lines
+-- Remap 'j'/'k' for wrapped lines
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
-keymap("n", "gj", "j", opts)
-keymap("n", "gk", "gk", opts)
+
+-- Move to the top/bottom line
+keymap("n", "gj", "G", opts)
+keymap("n", "gk", "gg", opts)
 
 -- Optimize jump
 keymap("n", "tl", "<c-]>", opts)
