@@ -1,7 +1,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-        ensure_installe = {
+        ensure_installed = {
             "lua",
             "typescript",
             "javascript"
