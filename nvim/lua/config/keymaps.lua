@@ -1,4 +1,3 @@
-local term_opts = { silent = true }
 -- Get options with a description
 -- TODO: refactor this to a separate file
 local function opts(desc)
