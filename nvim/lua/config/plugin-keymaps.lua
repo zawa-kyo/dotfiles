@@ -120,3 +120,19 @@ vim.keymap.set("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
 
 -- Search within the current file (notify in fern buffer)
 vim.keymap.set("n", "<leader>f", fzf.lines, opts)
+
+
+--------------------
+-- Dial
+--------------------
+
+-- Load the plugin
+local map = require("dial.map")
+
+-- Normal mode increment/decrement
+vim.keymap.set("n", "<C-a>", map.inc_normal(), opts)
+vim.keymap.set("n", "<C-x>", map.dec_normal(), opts)
+
+-- Visual mode increment/decrement
+vim.keymap.set("v", "<C-a>", map.inc_visual(), opts)
+vim.keymap.set("v", "<C-x>", map.dec_visual(), opts)
