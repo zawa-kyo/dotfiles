@@ -34,15 +34,6 @@ keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true })
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts)
 
--- Create new tab
-keymap("n", "te", ":tabedit", opts)
-
--- Move tab
-keymap("n", "<C-Tab>", ":tabnext<CR>", opts)
-keymap("n", "<C-S-Tab>", ":tabprevious<CR>", opts)
-keymap("n", "<C-t>", ":tabnew<CR>", opts)
-keymap("n", "<C-w>", ":tabclose<CR>", opts)
-
 -- Remap 'j'/'k' for wrapped lines
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
@@ -61,9 +52,10 @@ keymap("n", "M", "%", opts)
 -- Copy to clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y', opts)
 
--- Move tab
-keymap("n", "gh", "gT", opts)
-keymap("n", "gl", "gt", opts)
+-- Tab operations
+keymap("n", "tn", ":tabedit", opts("Create a new tab"))
+keymap("n", "th", "gT", opts("Move to the left tab"))
+keymap("n", "tl", "gt", opts("Move to the right tab"))
 
 -- Look around
 keymap("n", "zk", "zb", opts)
