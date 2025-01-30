@@ -173,4 +173,6 @@ keymap("v", "<C-x>", map.dec_visual(), opts(decrement_desc))
 -- GitMessenger
 --------------------
 
-keymap("n", "G", ":GitMessenger<CR>", opts("Show git commit message"))
+local git_messenger = require("plugins.git-messenger")
+keymap("n", "G", git_messenger.git_messenger_simple, opts("Show git commit message"))
+keymap("n", "gc", git_messenger.git_messenger_with_diff, opts("Show git commit message with diff"))
