@@ -1,22 +1,23 @@
--- Get options with a description
--- TODO: refactor this to a separate file
-local function opts(desc)
-    -- Clone opts() to avoid modifying the original table
-    local options = { noremap = true, silent = true }
+--------------------
+-- Utils
+--------------------
 
-    if desc then
-        options.desc = desc
-    end
-    return options
-end
+-- Load utils
+local utils = require("config.utils")
 
---local keymap = vim.keymap
+-- Rename variables for clarity
+local opts = utils.getOpts
 local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts())
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+
+--------------------
+-- Docs
+--------------------
 
 -- Modes
 --   normal_mode = 'n',
@@ -26,9 +27,14 @@ vim.g.maplocalleader = " "
 --   term_mode = 't',
 --   command_mode = 'c',
 
--- NORMAL MODE:
--- Trial: Better transition to command-line mode
-keymap("n", "<leader><leader>", ":", opts("Better transition to command-line mode"))
+
+--------------------
+-- Normal Mode
+--------------------
+
+-- Better transition to command-line mode
+-- Note: Enabling ‘silent’ may cause rendering delay
+keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false))
 
 -- Better window navigation
 keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
@@ -37,8 +43,8 @@ keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
 -- Make scroll keys intuitive
-keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true })
-keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true })
+keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true }, opts("Scroll up"))
+keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true }, opts("Scroll down"))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
@@ -87,11 +93,19 @@ keymap("n", "L", "$", opts("Move to the end of the line"))
 -- Optimize redo
 keymap("n", "U", "<C-r>", opts("Redo"))
 
--- INSERT MODE:
+
+--------------------
+-- Insert Mode
+--------------------
+
 -- コンマの後に自動的にスペースを挿入
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
--- VISUAL MODE:
+
+--------------------
+-- Visual Mode
+--------------------
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts())
 keymap("v", ">", ">gv", opts())
