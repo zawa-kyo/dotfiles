@@ -25,6 +25,7 @@ abbr '.'='source'
 abbr ':q'='exit'
 abbr ':wq'='exit'
 
+
 # ===========================
 # fastfetch
 # ==========================
@@ -81,6 +82,7 @@ abbr 'grep'='rg'
 # Perform a case-insensitive search
 abbr 'greps'='rg --case-sensitive'
 abbr 'rgs'='rg --case-sensitive'
+
 
 # ===========================
 # bat

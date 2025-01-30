@@ -1,3 +1,7 @@
+--------------------
+-- Utils
+--------------------
+
 -- Load utils
 local utils = require("config.utils")
 
@@ -17,8 +21,8 @@ local function close_hover_out_of_hover()
     vim.api.nvim_feedkeys("hl", "n", false)
 end
 
---- Check if the cursor is currently in a floating window (e.g., an LSP hover)
----@return boolean
+-- Check if the cursor is currently in a floating window (e.g., an LSP hover)
+-- @return boolean
 local function is_cursor_in_hover()
     local current_win = vim.api.nvim_get_current_win()
     local config = vim.api.nvim_win_get_config(current_win)

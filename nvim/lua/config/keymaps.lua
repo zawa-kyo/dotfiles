@@ -1,3 +1,7 @@
+--------------------
+-- Utils
+--------------------
+
 -- Load utils
 local utils = require("config.utils")
 
@@ -10,6 +14,11 @@ keymap("", "<Space>", "<Nop>", opts())
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
+--------------------
+-- Docs
+--------------------
+
 -- Modes
 --   normal_mode = 'n',
 --   insert_mode = 'i',
@@ -18,7 +27,11 @@ vim.g.maplocalleader = " "
 --   term_mode = 't',
 --   command_mode = 'c',
 
--- NORMAL MODE:
+
+--------------------
+-- Normal Mode
+--------------------
+
 -- Trial: Better transition to command-line mode
 keymap("n", "<leader><leader>", ":", opts("Better transition to command-line mode"))
 
@@ -79,11 +92,19 @@ keymap("n", "L", "$", opts("Move to the end of the line"))
 -- Optimize redo
 keymap("n", "U", "<C-r>", opts("Redo"))
 
--- INSERT MODE:
+
+--------------------
+-- Insert Mode
+--------------------
+
 -- コンマの後に自動的にスペースを挿入
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
--- VISUAL MODE:
+
+--------------------
+-- Visual Mode
+--------------------
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts())
 keymap("v", ">", ">gv", opts())
