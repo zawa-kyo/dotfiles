@@ -15,17 +15,42 @@ local M = {
     end
 }
 
---- Show GitMessenger simply
-function M.git_messenger_simple()
-    vim.g.git_messenger_include_diff = "none"
+--- Show GitMessenger with customizable options
+--- @param include_diff string|nil "none" for simple, "current" for diff
+--- @param extra_log_args string|nil Additional git log arguments
+--- @param template string|nil Custom format for display
+function M.git_messenger_show(include_diff, extra_log_args, template)
+    -- Set options dynamically based on parameters
+    vim.g.git_messenger_include_diff = include_diff or "none"
+
+    if extra_log_args then
+        vim.g.git_messenger_extra_log_args = extra_log_args
+    end
+
+    if template then
+        vim.g.git_messenger_template = template
+    end
+
+    -- Execute GitMessenger
     vim.cmd("GitMessenger")
 end
 
---- Show GitMessenger with diff
+--- Show GitMessenger simply (without diff and History)
+function M.git_messenger_simple()
+    M.git_messenger_show(
+        "none",
+        nil,
+        "Commit: #{commit}\nDate: #{date}\n#{author}\n#{summary}"
+    )
+end
+
+--- Show GitMessenger with diff and History
 function M.git_messenger_with_diff()
-    vim.g.git_messenger_include_diff = "current"
-    vim.g.git_messenger_extra_log_args = "--stat --color=always"
-    vim.cmd("GitMessenger")
+    M.git_messenger_show(
+        "current",
+        "--stat --color=always",
+        "History: #{history}\nCommit: #{commit}\nDate: #{date}\n#{author}\n#{summary}"
+    )
 end
 
 return M
