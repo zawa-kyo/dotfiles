@@ -43,7 +43,6 @@ function M.getOpts(desc, is_noremap, is_silent)
         options.desc = desc
     end
 
-
     return options
 end
 
