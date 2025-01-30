@@ -52,9 +52,9 @@ keymap("n", "k", "gk", opts("Move up wrapped lines"))
 keymap("n", "gj", "G", opts("Move to the bottom line"))
 keymap("n", "gk", "gg", opts("Move to the top line"))
 
--- Optimize jump
-keymap("n", "tl", "<c-]>", opts())
-keymap("n", "tl", "<c-t>", opts())
+-- Move to the next/previous location
+vim.keymap.set("n", "gp", "<C-o>", opts("Jump to previous location"))
+vim.keymap.set("n", "gn", "<C-i>", opts("Jump to next location"))
 
 -- Optimize to jump to the matching pair
 keymap("n", "M", "%", opts("Jump to the matching pair"))
@@ -64,8 +64,8 @@ keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
 
 -- Tab operations
 keymap("n", "tn", ":tabedit", opts("Create a new tab"))
-keymap("n", "th", "gT", opts("Move to the left tab"))
-keymap("n", "tl", "gt", opts("Move to the right tab"))
+keymap("n", "gh", "gT", opts("Move to the left tab"))
+keymap("n", "gl", "gt", opts("Move to the right tab"))
 
 -- Look around
 keymap("n", "zk", "zb", opts("Look up"))
