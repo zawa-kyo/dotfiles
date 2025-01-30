@@ -32,8 +32,9 @@ vim.g.maplocalleader = " "
 -- Normal Mode
 --------------------
 
--- Trial: Better transition to command-line mode
-keymap("n", "<leader><leader>", ":", opts("Better transition to command-line mode"))
+-- Better transition to command-line mode
+-- Note: Enabling ‘silent’ may cause rendering delay
+keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false))
 
 -- Better window navigation
 keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
