@@ -42,8 +42,8 @@ keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
 -- Make scroll keys intuitive
-keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true })
-keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true })
+keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true }, opts("Scroll up"))
+keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true }, opts("Scroll down"))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
