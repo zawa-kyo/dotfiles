@@ -1,16 +1,8 @@
--- Get options with a description
--- TODO: refactor this to a separate file
-local function opts(desc)
-    -- Clone opts() to avoid modifying the original table
-    local options = { noremap = true, silent = true }
+-- Load utils
+local utils = require("config.utils")
 
-    if desc then
-        options.desc = desc
-    end
-    return options
-end
-
---local keymap = vim.keymap
+-- Rename variables for clarity
+local opts = utils.getOpts
 local keymap = vim.keymap.set
 
 --Remap space as leader key

@@ -1,17 +1,8 @@
---------------------
--- Utils
---------------------
+-- Load utils
+local utils = require("config.utils")
 
--- Get options with a description
-local function opts(desc)
-    -- Clone opts() to avoid modifying the original table
-    local options = { noremap = true, silent = true }
-
-    if desc then
-        options.desc = desc
-    end
-    return options
-end
+-- Rename variables for clarity
+local opts = utils.getOpts
 
 -- Close hover in the hover
 local function close_hover_in_hover()
