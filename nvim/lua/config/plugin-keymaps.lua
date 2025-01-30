@@ -1,14 +1,17 @@
 --------------------
--- Typical Options
---------------------
-
--- Default options for keymaps
-local opts = { noremap = true, silent = true }
-
-
---------------------
 -- Utils
 --------------------
+
+-- Get options with a description
+local function opts(desc)
+    -- Clone opts() to avoid modifying the original table
+    local options = { noremap = true, silent = true }
+
+    if desc then
+        options.desc = desc
+    end
+    return options
+end
 
 -- Close hover in the hover
 local function close_hover_in_hover()
@@ -62,25 +65,61 @@ local function close_window()
     end
 end
 
-vim.keymap.set("n", "<Esc>", close_window, opts)
+vim.keymap.set("n", "<Esc>", close_window, opts())
 
 
 --------------------
 -- LSP
 --------------------
 
-vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover()<CR>")
-vim.keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>")
-vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-vim.keymap.set("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-vim.keymap.set("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
-vim.keymap.set("n", "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+vim.keymap.set(
+    'n', 'K', vim.lsp.buf.hover,
+    opts("Show hover information")
+)
+vim.keymap.set(
+    "n", "gf", vim.lsp.buf.format,
+    opts("Format the current file")
+)
+vim.keymap.set(
+    "n", "gr", vim.lsp.buf.references,
+    opts("Show references")
+)
+vim.keymap.set(
+    "n", "gd", vim.lsp.buf.definition,
+    opts("Go to definition")
+)
+vim.keymap.set(
+    "n", "gD", vim.lsp.buf.declaration,
+    opts("Go to declaration")
+)
+vim.keymap.set(
+    "n", "gi", vim.lsp.buf.implementation,
+    opts("Go to implementation")
+)
+vim.keymap.set(
+    "n", "gt", vim.lsp.buf.type_definition,
+    opts("Go to type definition")
+)
+vim.keymap.set(
+    "n", "rn", vim.lsp.buf.rename,
+    opts("Rename the symbol under cursor")
+)
+vim.keymap.set(
+    "n", "ga", vim.lsp.buf.code_action,
+    opts("Show available code actions")
+)
+vim.keymap.set(
+    "n", "ge", vim.diagnostic.open_float,
+    opts("Show diagnostics")
+)
+vim.keymap.set(
+    "n", "g]", vim.diagnostic.goto_next,
+    opts("Go to next diagnostic issue")
+)
+vim.keymap.set(
+    "n", "g[", vim.diagnostic.goto_prev,
+    opts("Go to previous diagnostic issue")
+)
 
 
 --------------------
@@ -91,10 +130,10 @@ vim.keymap.set("n", "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 local fern = require("plugins.fern")
 
 -- Open file or expand directory when in Fern buffer
-vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts)
+vim.keymap.set("n", "<leader>b", fern.toggle_or_close_fern, opts())
 
 -- Toggle focus to Fern or reveal current file in Fern
-vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
+vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts())
 
 
 --------------------
@@ -102,7 +141,7 @@ vim.keymap.set("n", "<leader>o", fern.toggle_fern_with_reveal, opts)
 --------------------
 
 -- Open a terminal in a horizontal split
-vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts)
+vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts())
 
 
 --------------------
@@ -113,13 +152,22 @@ vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<
 local fzf = require("plugins.fzf")
 
 -- Trigger file search in the current directory
-vim.keymap.set("n", "<leader>p", ":FzfLua files<CR>", opts)
+vim.keymap.set(
+    "n", "<leader>p", ":FzfLua files<CR>",
+    opts("Search files in the current directory")
+)
 
 -- Perform a global search across all files
-vim.keymap.set("n", "<leader>g", ":FzfLua live_grep<CR>", opts)
+vim.keymap.set(
+    "n", "<leader>g", ":FzfLua live_grep<CR>",
+    opts("Search text in all files")
+)
 
 -- Search within the current file (notify in fern buffer)
-vim.keymap.set("n", "<leader>f", fzf.lines, opts)
+vim.keymap.set(
+    "n", "<leader>f", fzf.lines,
+    opts("Search text in the current file")
+)
 
 
 --------------------
@@ -150,10 +198,36 @@ end
 -- Load the plugin
 local map = require("dial.map")
 
+-- Description
+local increment_desc = "Increment the number under the cursor"
+local decrement_desc = "Decrement the number under the cursor"
+
 -- Normal mode increment/decrement
-vim.keymap.set("n", "<C-a>", map.inc_normal(), opts)
-vim.keymap.set("n", "<C-x>", map.dec_normal(), opts)
+vim.keymap.set(
+    "n", "<C-a>", map.inc_normal(),
+    opts(increment_desc)
+)
+vim.keymap.set(
+    "n", "<C-x>", map.dec_normal(),
+    opts(decrement_desc)
+)
 
 -- Visual mode increment/decrement
-vim.keymap.set("v", "<C-a>", map.inc_visual(), opts)
-vim.keymap.set("v", "<C-x>", map.dec_visual(), opts)
+vim.keymap.set(
+    "v", "<C-a>", map.inc_visual(),
+    opts(increment_desc)
+)
+vim.keymap.set(
+    "v", "<C-x>", map.dec_visual(),
+    opts(decrement_desc)
+)
+
+
+--------------------
+-- GitMessenger
+--------------------
+
+vim.keymap.set(
+    "n", "G", ":GitMessenger<CR>",
+    opts("Show git commit message")
+)

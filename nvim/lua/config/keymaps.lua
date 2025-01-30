@@ -1,11 +1,20 @@
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+-- Get options with a description
+-- TODO: refactor this to a separate file
+local function opts(desc)
+    -- Clone opts() to avoid modifying the original table
+    local options = { noremap = true, silent = true }
+
+    if desc then
+        options.desc = desc
+    end
+    return options
+end
 
 --local keymap = vim.keymap
 local keymap = vim.keymap.set
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+keymap("", "<Space>", "<Nop>", opts())
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -19,86 +28,78 @@ vim.g.maplocalleader = " "
 
 -- NORMAL MODE:
 -- Trial: Better transition to command-line mode
-keymap("n", "<leader><leader>", ":", opts)
+keymap("n", "<leader><leader>", ":", opts("Better transition to command-line mode"))
 
 -- Better window navigation
-keymap("n", "<leader>h", "<C-w>h", opts)
-keymap("n", "<leader>j", "<C-w>j", opts)
-keymap("n", "<leader>k", "<C-w>k", opts)
-keymap("n", "<leader>l", "<C-w>l", opts)
+keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
+keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
+keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
+keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
 -- Make scroll keys intuitive
 keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true })
 keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true })
 
 -- Select all
-keymap("n", "<leader>a", "ggVG", opts)
+keymap("n", "<leader>a", "ggVG", opts("Select all"))
+keymap("v", ",", "<Esc>ggVG", opts("Select all"))
 
--- Create new tab
-keymap("n", "te", ":tabedit", opts)
+-- Remap 'j'/'k' for wrapped lines
+keymap("n", "j", "gj", opts("Move down wrapped lines"))
+keymap("n", "k", "gk", opts("Move up wrapped lines"))
 
--- Move tab
-keymap("n", "<C-Tab>", ":tabnext<CR>", opts)
-keymap("n", "<C-S-Tab>", ":tabprevious<CR>", opts)
-keymap("n", "<C-t>", ":tabnew<CR>", opts)
-keymap("n", "<C-w>", ":tabclose<CR>", opts)
+-- Move to the top/bottom line
+keymap("n", "gj", "G", opts("Move to the bottom line"))
+keymap("n", "gk", "gg", opts("Move to the top line"))
 
--- Remap 'j'/'k' for wrapped lines, and 'gj'/'gk' for actual lines
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
-keymap("n", "gj", "j", opts)
-keymap("n", "gk", "gk", opts)
-
--- Optimize jump
-keymap("n", "tl", "<c-]>", opts)
-keymap("n", "tl", "<c-t>", opts)
+-- Move to the next/previous location
+vim.keymap.set("n", "gp", "<C-o>", opts("Jump to previous location"))
+vim.keymap.set("n", "gn", "<C-i>", opts("Jump to next location"))
 
 -- Optimize to jump to the matching pair
-keymap("n", "M", "%", opts)
+keymap("n", "M", "%", opts("Jump to the matching pair"))
 
 -- Copy to clipboard
-keymap({ "n", "v" }, "<leader>y", '"+y', opts)
+keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
 
--- Move tab
-keymap("n", "gh", "gT", opts)
-keymap("n", "gl", "gt", opts)
+-- Tab operations
+keymap("n", "tn", ":tabedit", opts("Create a new tab"))
+keymap("n", "gh", "gT", opts("Move to the left tab"))
+keymap("n", "gl", "gt", opts("Move to the right tab"))
 
 -- Look around
-keymap("n", "zk", "zb", opts)
-keymap("n", "zj", "zt", opts)
+keymap("n", "zk", "zb", opts("Look up"))
+keymap("n", "zj", "zt", opts("Look down"))
 
 -- Split window
-keymap("n", "split", ":split<Return><C-w>w", opts)
-keymap("n", "splitv", ":vsplit<Return><C-w>w", opts)
-
--- Select all
-keymap("v", ",", "<Esc>ggVG", opts)
+keymap("n", "split", ":split<Return><C-w>w", opts("Split window horizontally"))
+keymap("n", "splitv", ":vsplit<Return><C-w>w", opts("Split window vertically"))
 
 -- Do not yank with x
-keymap("n", "x", '"_x', opts)
+keymap("n", "x", '"_x', opts("Do not yank with x"))
 
 -- Move effectively
-keymap("n", "J", "10j", opts)
-keymap("n", "K", "10k", opts)
-keymap("n", "H", "^", opts)
-keymap("n", "L", "$", opts)
+keymap("n", "J", "10j", opts("Move down 10 lines"))
+keymap("n", "K", "10k", opts("Move up 10 lines"))
+keymap("n", "H", "^", opts("Move to the beginning of the line"))
+keymap("n", "L", "$", opts("Move to the end of the line"))
 
 -- Optimize redo
-keymap("n", "U", "<C-r>", opts)
+keymap("n", "U", "<C-r>", opts("Redo"))
 
 -- INSERT MODE:
 -- コンマの後に自動的にスペースを挿入
-keymap("i", ",", ",<Space>", opts)
+keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
 -- VISUAL MODE:
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv", opts())
+keymap("v", ">", ">gv", opts())
 
 -- ビジュアルモード時vで行末まで選択
-keymap("v", "v", "$h", opts)
+keymap("v", "v", "$h", opts("Select to the end of the line"))
 
 -- aで前後のスペースを巻き添えにしない
 for _, quote in ipairs({ '"', "'", "`" }) do
-    keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts)
+    keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts())
 end
