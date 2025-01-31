@@ -117,3 +117,12 @@ keymap("v", "v", "$h", opts("Select to the end of the line"))
 for _, quote in ipairs({ '"', "'", "`" }) do
     keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts())
 end
+
+
+--------------------
+-- Text Object
+--------------------
+
+-- Select words between spaces
+keymap("o", "i<space>", "iW", opts())
+keymap("x", "i<space>", "iW", opts())
