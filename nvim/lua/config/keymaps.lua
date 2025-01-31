@@ -106,10 +106,9 @@ keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 -- Visual Mode
 --------------------
 
--- Stay in indent mode
-keymap("v", "<", "<gv", opts())
-keymap("v", ">", ">gv", opts())
-
+-- Adjust indentation consecutively.
+keymap("v", "<", "<gv", opts("Add indentation"))
+keymap("v", ">", ">gv", opts("Reduce indentation"))
 
 -- Align the behavior of Visual Mode with `c` and `d`.
 keymap("v", "v", "<Esc>V", opts("Select the whole line"))
