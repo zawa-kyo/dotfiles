@@ -97,6 +97,17 @@ keymap("n", "U", "<C-r>", opts("Redo"))
 keymap("n", "<C-k>", "<Cmd>move -2<CR>==", opts("Move current line up"))
 keymap("n", "<C-j>", "<Cmd>move +1<CR>==", opts("Move current line down"))
 
+-- Automatically indent when starting editing on an empty line
+vim.keymap.set(
+    "n", "i",
+    function() return vim.fn.getline(".") == "" and '"_cc' or "i" end,
+    opts("Indent when starting editing on an empty line", nil, nil, true)
+)
+vim.keymap.set(
+    "n", "A",
+    function() return vim.fn.getline(".") == "" and '"_cc' or "A" end,
+    opts("Indent when starting editing on an empty line", nil, nil, true)
+)
 
 --------------------
 -- Insert Mode

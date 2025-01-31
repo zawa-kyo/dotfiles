@@ -26,10 +26,15 @@ end
 --- @param desc string|nil Description of the mapping
 --- @param is_noremap boolean|nil Whether the mapping should be noremap (default: true)
 --- @param is_silent boolean|nil Whether the mapping should be silent (default: true)
+--- @param is_expr boolean|nil Whether the mapping should be an expression (default: false)
 --- @return table opts A table containing keymap options
-function M.getOpts(desc, is_noremap, is_silent)
+function M.getOpts(desc, is_noremap, is_silent, is_expr)
     -- Default options
-    local options = { noremap = true, silent = true }
+    local options = {
+        noremap = true,
+        silent = true,
+        expr = false,
+    }
 
     if M.isBoolean(is_noremap) then
         options.noremap = is_noremap
@@ -37,6 +42,10 @@ function M.getOpts(desc, is_noremap, is_silent)
 
     if M.isBoolean(is_silent) then
         options.silent = is_silent
+    end
+
+    if M.isBoolean(is_expr) then
+        options.expr = is_expr
     end
 
     if M.isString(desc) then
