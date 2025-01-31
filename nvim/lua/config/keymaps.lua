@@ -93,6 +93,10 @@ keymap("n", "L", "$", opts("Move to the end of the line"))
 -- Optimize redo
 keymap("n", "U", "<C-r>", opts("Redo"))
 
+-- Move current line up/down in normal mode
+keymap("n", "<C-k>", "<Cmd>move -2<CR>==", opts("Move current line up"))
+keymap("n", "<C-j>", "<Cmd>move +1<CR>==", opts("Move current line down"))
+
 
 --------------------
 -- Insert Mode
@@ -116,6 +120,10 @@ keymap("n", "V", "v$", opts("Select until the end of the line"))
 
 -- Save the cursor position when yanking
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
+
+-- Move selected lines up/down in visual mode
+keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
+keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
 
 -- aで前後のスペースを巻き添えにしない
 for _, quote in ipairs({ '"', "'", "`" }) do
