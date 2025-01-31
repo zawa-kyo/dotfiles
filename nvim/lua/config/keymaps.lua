@@ -115,6 +115,9 @@ keymap("v", ">", ">gv", opts())
 keymap("v", "v", "<Esc>V", opts("Select the whole line"))
 keymap("n", "V", "v$", opts("Select until the end of the line"))
 
+-- Save the cursor position when yanking
+keymap("x", "y", "mzy`z", opts("Yank the selected text"))
+
 -- aで前後のスペースを巻き添えにしない
 for _, quote in ipairs({ '"', "'", "`" }) do
     keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts())
