@@ -10,7 +10,7 @@ local opts = utils.getOpts
 local keymap = vim.keymap.set
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts())
+keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
