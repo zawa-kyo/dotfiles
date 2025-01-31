@@ -34,7 +34,7 @@ vim.g.maplocalleader = " "
 
 -- Better transition to command-line mode
 -- Note: Enabling ‘silent’ may cause rendering delay
-keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false))
+keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
 -- Better window navigation
 keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
@@ -43,8 +43,8 @@ keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
 -- Make scroll keys intuitive
-keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true }, opts("Scroll up"))
-keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true }, opts("Scroll down"))
+keymap("n", "<C-k>", "<C-u>", opts("Scroll up", false, nil, nil))
+keymap("n", "<C-j>", "<C-d>", opts("Scroll down", false, nil, nil))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
