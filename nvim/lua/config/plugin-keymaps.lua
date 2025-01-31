@@ -61,7 +61,7 @@ local function close_window()
     end
 end
 
-keymap("n", "<Esc>", close_window, opts())
+keymap("n", "<Esc>", close_window, opts("Close hover"))
 
 
 --------------------
@@ -90,10 +90,10 @@ keymap("n", "g[", vim.diagnostic.goto_prev, opts("Go to previous diagnostic issu
 local fern = require("plugins.fern")
 
 -- Open file or expand directory when in Fern buffer
-keymap("n", "<leader>b", fern.toggle_or_close_fern, opts())
+keymap("n", "<leader>b", fern.toggle_or_close_fern, opts("Toggle or close Fern"))
 
 -- Toggle focus to Fern or reveal current file in Fern
-keymap("n", "<leader>o", fern.toggle_fern_with_reveal, opts())
+keymap("n", "<leader>o", fern.toggle_fern_with_reveal, opts("Toggle or reveal in Fern"))
 
 
 --------------------
@@ -101,7 +101,11 @@ keymap("n", "<leader>o", fern.toggle_fern_with_reveal, opts())
 --------------------
 
 -- Open a terminal in a horizontal split
-keymap("n", "<leader>t", ":ToggleTerm direction=horizontal name=desktop<CR>", opts())
+keymap(
+    "n", "<leader>t",
+    ":ToggleTerm direction=horizontal name=desktop<CR>",
+    opts("Open terminal in a horizontal split")
+)
 
 
 --------------------
@@ -147,7 +151,7 @@ local neoscroll_keymap_pairs = {
 }
 
 for key, func in pairs(neoscroll_keymap_pairs) do
-    keymap({ "n", "v", "x" }, key, func, opts())
+    keymap({ "n", "v", "x" }, key, func, opts("Scroll"))
 end
 
 

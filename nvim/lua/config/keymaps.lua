@@ -10,7 +10,7 @@ local opts = utils.getOpts
 local keymap = vim.keymap.set
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts())
+keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -34,7 +34,7 @@ vim.g.maplocalleader = " "
 
 -- Better transition to command-line mode
 -- Note: Enabling ‘silent’ may cause rendering delay
-keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false))
+keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
 -- Better window navigation
 keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
@@ -43,8 +43,8 @@ keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
 -- Make scroll keys intuitive
-keymap("n", "<C-k>", "<C-u>", { noremap = false, silent = true }, opts("Scroll up"))
-keymap("n", "<C-j>", "<C-d>", { noremap = false, silent = true }, opts("Scroll down"))
+keymap("n", "<C-k>", "<C-u>", opts("Scroll up", false, nil, nil))
+keymap("n", "<C-j>", "<C-d>", opts("Scroll down", false, nil, nil))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
@@ -93,6 +93,21 @@ keymap("n", "L", "$", opts("Move to the end of the line"))
 -- Optimize redo
 keymap("n", "U", "<C-r>", opts("Redo"))
 
+-- Move current line up/down in normal mode
+keymap("n", "<C-k>", "<Cmd>move -2<CR>==", opts("Move current line up"))
+keymap("n", "<C-j>", "<Cmd>move +1<CR>==", opts("Move current line down"))
+
+-- Automatically indent when starting editing on an empty line
+vim.keymap.set(
+    "n", "i",
+    function() return vim.fn.getline(".") == "" and '"_cc' or "i" end,
+    opts("Indent when starting editing on an empty line", nil, nil, true)
+)
+vim.keymap.set(
+    "n", "A",
+    function() return vim.fn.getline(".") == "" and '"_cc' or "A" end,
+    opts("Indent when starting editing on an empty line", nil, nil, true)
+)
 
 --------------------
 -- Insert Mode
@@ -106,14 +121,31 @@ keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 -- Visual Mode
 --------------------
 
--- Stay in indent mode
-keymap("v", "<", "<gv", opts())
-keymap("v", ">", ">gv", opts())
+-- Adjust indentation consecutively.
+keymap("v", "<", "<gv", opts("Add indentation"))
+keymap("v", ">", ">gv", opts("Reduce indentation"))
 
--- ビジュアルモード時vで行末まで選択
-keymap("v", "v", "$h", opts("Select to the end of the line"))
+-- Align the behavior of Visual Mode with `c` and `d`.
+keymap("v", "v", "<Esc>V", opts("Select the whole line"))
+keymap("n", "V", "v$", opts("Select until the end of the line"))
+
+-- Save the cursor position when yanking
+keymap("x", "y", "mzy`z", opts("Yank the selected text"))
+
+-- Move selected lines up/down in visual mode
+keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
+keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
 
 -- aで前後のスペースを巻き添えにしない
 for _, quote in ipairs({ '"', "'", "`" }) do
     keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts())
 end
+
+
+--------------------
+-- Text Object
+--------------------
+
+-- Select words between spaces
+keymap("o", "i<space>", "iW", opts())
+keymap("x", "i<space>", "iW", opts())
