@@ -110,8 +110,10 @@ keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 keymap("v", "<", "<gv", opts())
 keymap("v", ">", ">gv", opts())
 
--- ビジュアルモード時vで行末まで選択
-keymap("v", "v", "$h", opts("Select to the end of the line"))
+
+-- Align the behavior of Visual Mode with `c` and `d`.
+keymap("v", "v", "<Esc>V", opts("Select the whole line"))
+keymap("n", "V", "v$", opts("Select until the end of the line"))
 
 -- aで前後のスペースを巻き添えにしない
 for _, quote in ipairs({ '"', "'", "`" }) do
