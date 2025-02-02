@@ -38,9 +38,12 @@ table.insert(M, {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
         "neovim/nvim-lspconfig",
+        "onsails/lspkind-nvim",
+        "hrsh7th/vim-vsnip",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/vim-vsnip",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
     config = function()
         require("mason-lspconfig").setup {
@@ -86,35 +89,8 @@ table.insert(M, {
     },
     config = function()
         local cmp = require("cmp")
+        local lspkind = require("lspkind")
 
-        -- Define icons similar to coc.nvim
-        local kind_icons = {
-            Text = "",
-            Method = "󰆧",
-            Function = "󰊕",
-            Constructor = "",
-            Field = "󰜢",
-            Variable = "󰀫",
-            Class = "",
-            Interface = "",
-            Module = "",
-            Property = "󰜢",
-            Unit = "",
-            Value = "󰎠",
-            Enum = "",
-            Keyword = "󰌋",
-            Snippet = "",
-            Color = "",
-            File = "󰈙",
-            Reference = "",
-            Folder = "󰉋",
-            EnumMember = "",
-            Constant = "󰏿",
-            Struct = "",
-            Event = "",
-            Operator = "󰆕",
-            TypeParameter = "󰗴",
-        }
 
         cmp.setup({
             snippet = {
@@ -127,32 +103,41 @@ table.insert(M, {
                 { name = "vsnip" },
                 { name = "buffer" },
                 { name = "path" },
+                { name = "nvim_lsp_signature_help" }
             },
             mapping = cmp.mapping.preset.insert({
                 ["<Tab>"] = cmp.mapping.select_next_item(),
                 ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-                ["<C-l>"] = cmp.mapping.complete(),
-                ["<C-e>"] = cmp.mapping.abort(),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
             }),
             experimental = {
                 ghost_text = false,
             },
+
+            formatting = {
+                format = lspkind.cmp_format({
+                    mode = "symbol",
+                    preset = "codicons",
+                    maxwidth = 50,
+                }),
+            },
         })
 
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = {
+            sources = ({
                 { name = "path" },
                 { name = "cmdline" },
-            },
+                { name = "nvim_lsp_document_symbol" },
+            }),
         })
 
         cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = {
+            sources = ({
                 { name = "buffer" },
-            },
+                { name = "nvim_lsp_document_symbol" },
+            }),
         })
     end,
 })
