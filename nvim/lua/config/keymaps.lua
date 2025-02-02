@@ -140,9 +140,9 @@ keymap("x", "y", "mzy`z", opts("Yank the selected text"))
 keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
 keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
 
--- aで前後のスペースを巻き添えにしない
+-- Prevent leading/trailing spaces from being included when appending
 for _, quote in ipairs({ '"', "'", "`" }) do
-    keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts())
+    keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts("Append without leading/trailing spaces"))
 end
 
 
@@ -151,5 +151,5 @@ end
 --------------------
 
 -- Select words between spaces
-keymap("o", "i<space>", "iW", opts())
-keymap("x", "i<space>", "iW", opts())
+keymap("o", "i<space>", "iW", opts("Select words between spaces"))
+keymap("x", "i<space>", "iW", opts("Select words between spaces"))
