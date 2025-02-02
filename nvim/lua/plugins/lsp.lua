@@ -33,6 +33,25 @@ table.insert(M, {
     end,
 })
 
+table.insert(M, {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    config = function()
+        require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+        })
+    end,
+})
+
+table.insert(M, {
+    "zbirenbaum/copilot-cmp",
+    dependencies = { "zbirenbaum/copilot.lua" },
+    config = function()
+        require("copilot_cmp").setup()
+    end,
+})
+
 -- mason-lspconfig: Automatically sets up language servers installed via Mason
 table.insert(M, {
     "williamboman/mason-lspconfig.nvim",
@@ -82,15 +101,24 @@ table.insert(M, {
 table.insert(M, {
     "hrsh7th/nvim-cmp",
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp", -- LSP completion source
-        "hrsh7th/cmp-buffer",   -- Buffer completion source
-        "hrsh7th/cmp-path",     -- Path completion source
-        "hrsh7th/cmp-cmdline",  -- Command-line completion source
+        "hrsh7th/cmp-nvim-lsp",   -- LSP completion source
+        "hrsh7th/cmp-buffer",     -- Buffer completion source
+        "hrsh7th/cmp-path",       -- Path completion source
+        "hrsh7th/cmp-cmdline",    -- Command-line completion source
+        "zbirenbaum/copilot-cmp", -- Copilot completion source
     },
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
 
+        local has_words_before = function()
+            if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+                return false
+            end
+            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+            local text = vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
+            return col ~= 0 and text:match("^%s*$") == nil
+        end
 
         cmp.setup({
             snippet = {
@@ -103,10 +131,17 @@ table.insert(M, {
                 { name = "vsnip" },
                 { name = "buffer" },
                 { name = "path" },
-                { name = "nvim_lsp_signature_help" }
+                { name = "copilot" },
+                { name = "nvim_lsp_signature_help" },
             },
             mapping = cmp.mapping.preset.insert({
-                ["<Tab>"] = cmp.mapping.select_next_item(),
+                ["<Tab>"] = vim.schedule_wrap(function(fallback)
+                    if cmp.visible() and has_words_before() then
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                    else
+                        fallback()
+                    end
+                end),
                 ["<S-Tab>"] = cmp.mapping.select_prev_item(),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
             }),
@@ -119,6 +154,7 @@ table.insert(M, {
                     mode = "symbol",
                     preset = "codicons",
                     maxwidth = 50,
+                    symbol_map = { Copilot = "" },
                 }),
             },
         })
