@@ -176,10 +176,15 @@ table.insert(M, {
             }),
         })
 
-        cmp.setup.cmdline("/", {
+        cmp.setup.cmdline({ "/", "?" }, {
             mapping = cmp.mapping.preset.cmdline(),
             sources = ({
-                { name = "buffer" },
+                { name = "buffer",
+                    option = {
+                        -- Only consider continuous keyword characters
+                        keyword_pattern = [[\k\+]],
+                    },
+                },
                 { name = "nvim_lsp_document_symbol" },
             }),
         })
