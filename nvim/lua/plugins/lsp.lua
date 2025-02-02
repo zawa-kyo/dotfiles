@@ -38,7 +38,15 @@ table.insert(M, {
     event = "InsertEnter",
     config = function()
         require("copilot").setup({
-            suggestion = { enabled = false },
+            suggestion = {
+                enabled = true,
+                auto_trigger = true,
+                keymap = {
+                    accept = "<C-a>",
+                    accept_word = false,
+                    accept_line = false,
+                },
+            },
             panel = { enabled = false },
         })
     end,
