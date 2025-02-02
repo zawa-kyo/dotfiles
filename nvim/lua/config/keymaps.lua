@@ -97,6 +97,10 @@ keymap("n", "U", "<C-r>", opts("Redo"))
 keymap("n", "<C-k>", "<Cmd>move -2<CR>==", opts("Move current line up"))
 keymap("n", "<C-j>", "<Cmd>move +1<CR>==", opts("Move current line down"))
 
+-- Indent after pasting
+keymap("n", "p", "]p`]", opts("Indent after pasting"))
+keymap("n", "P", "]P`]", opts("Indent after pasting"))
+
 -- Automatically indent when starting editing on an empty line
 vim.keymap.set(
     "n", "i",
