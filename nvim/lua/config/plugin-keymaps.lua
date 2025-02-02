@@ -180,3 +180,14 @@ keymap("v", "<C-x>", map.dec_visual(), opts(decrement_desc))
 local git_messenger = require("plugins.git-messenger")
 keymap("n", "G", git_messenger.git_messenger_simple, opts("Show git commit message"))
 keymap("n", "gc", git_messenger.git_messenger_with_diff, opts("Show git commit message with diff"))
+
+--------------------
+-- GitHub Copilot
+--------------------
+
+-- Accept copilot suggestion
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap(
+    "i", "<C-a>", 'copilot#Accept("<CR>")',
+    opts("Accept copilot suggestion", nil, nil, true)
+)
