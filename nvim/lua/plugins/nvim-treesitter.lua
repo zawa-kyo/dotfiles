@@ -25,12 +25,21 @@ return {
                     enable = true,
                     lookahead = true,
                     keymaps = {
-                        ["af"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["ac"] = "@class.outer",
+                        ["af"] = {
+                            query = "@function.outer",
+                            desc = "Select outer function",
+                        },
+                        ["if"] = {
+                            query = "@function.inner",
+                            desc = "Select inner function",
+                        },
+                        ["ac"] = {
+                            query = "@class.outer",
+                            desc = "Select outer class",
+                        },
                         ["ic"] = {
                             query = "@class.inner",
-                            desc = "Select inner part of a class region",
+                            desc = "Select inner class",
                         },
                     }
                 },
