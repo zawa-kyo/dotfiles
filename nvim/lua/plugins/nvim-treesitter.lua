@@ -13,6 +13,9 @@ return {
                 "javascript",
                 "typescript",
                 "python",
+                "java",
+                "dart",
+                "rust",
             },
             highlight = {
                 enable = true,
