@@ -123,6 +123,7 @@ keymap(
     opts("Indent when starting editing on an empty line", nil, nil, true)
 )
 
+
 --------------------
 -- Insert Mode
 --------------------
