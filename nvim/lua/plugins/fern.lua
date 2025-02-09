@@ -5,33 +5,41 @@ local M = {
     },
 }
 
--- Store the cwd at the time of NeoVim startup
+-- Store the cwd at startup
 local project_root = vim.fn.getcwd()
--- Track last cursor position in file
-local last_file_position = nil
+-- Track last file window and cursor position
+local last_file_state = nil
 
--- Function to toggle focus to Fern or reveal current file in Fern
+-- Toggle focus to Fern or reveal current file
 function M.toggle_fern_with_reveal()
-    -- Move focus back to the file without closing Fern
     if vim.bo.filetype == "fern" then
-        -- Move focus back to the file without closing Fern
+        -- Switch focus back to the file
         vim.cmd.wincmd("p")
-        if last_file_position then
-            vim.api.nvim_win_set_cursor(0, last_file_position)
+        if last_file_state and vim.api.nvim_win_is_valid(last_file_state.win) then
+            vim.api.nvim_set_current_win(last_file_state.win)
+            vim.api.nvim_win_set_cursor(last_file_state.win, last_file_state.pos)
         end
     else
-        -- Save the current cursor position in the file
-        last_file_position = vim.api.nvim_win_get_cursor(0)
-
-        -- Defer Fern opening and dynamically adjust width after opening
-        vim.defer_fn(function()
+        -- Save current window and cursor position
+        last_file_state = {
+            win = vim.api.nvim_get_current_win(),
+            pos = vim.api.nvim_win_get_cursor(0)
+        }
+        vim.schedule(function()
             vim.cmd("cd " .. project_root)
-            vim.cmd("Fern . -drawer -reveal=" .. vim.fn.expand("%:p"))
+            local current_file = vim.fn.expand("%:p")
+            if vim.fn.filereadable(current_file) == 1 then
+                -- Open Fern and reveal the current file
+                vim.cmd("Fern . -drawer -reveal=" .. current_file)
+            else
+                -- Open Fern normally if file does not exist
+                vim.cmd("Fern . -drawer")
+            end
 
             -- Resize Fern window to 25% of the full window width
             local fern_width = math.floor(vim.o.columns * 0.25)
             vim.cmd("vertical resize " .. fern_width)
-        end, 10)
+        end)
     end
 end
 
