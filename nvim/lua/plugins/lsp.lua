@@ -10,8 +10,14 @@ M.servers = {
 -- Neoconf (should run before LSP configuration)
 table.insert(M, {
     "folke/neoconf.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
+
+    lazy = false,
     priority = 1000, -- Ensure this loads first
+
+    dependencies = {
+        "neovim/nvim-lspconfig"
+    },
+
     config = function()
         require("neoconf").setup()
     end,
@@ -86,6 +92,7 @@ table.insert(M, {
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
+
     config = function()
         require("mason-lspconfig").setup {
             ensure_installed = M.servers
@@ -199,11 +206,17 @@ table.insert(M, {
 
 -- mason-null-ls
 table.insert(M, {
-    'jay-babu/mason-null-ls.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    "jay-babu/mason-null-ls.nvim",
+
+    lazy = true,
+    event = {
+        "BufReadPre",
+        "BufNewFile",
+    },
+
     dependencies = {
-        'williamboman/mason.nvim',
-        'nvimtools/none-ls.nvim',
+        "williamboman/mason.nvim",
+        "nvimtools/none-ls.nvim",
     },
 })
 
