@@ -59,8 +59,8 @@ keymap("n", "gj", "G", opts("Move to the bottom line"))
 keymap("n", "gk", "gg", opts("Move to the top line"))
 
 -- Move to the next/previous location
-vim.keymap.set("n", "gp", "<C-o>", opts("Jump to previous location"))
-vim.keymap.set("n", "gn", "<C-i>", opts("Jump to next location"))
+keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
+keymap("n", "gn", "<C-i>", opts("Jump to next location"))
 
 -- Optimize to jump to the matching pair
 keymap("n", "M", "%", opts("Jump to the matching pair"))
@@ -78,8 +78,18 @@ keymap("n", "zk", "zb", opts("Look up"))
 keymap("n", "zj", "zt", opts("Look down"))
 
 -- Split window
-keymap("n", "split", ":split<Return><C-w>w", opts("Split window horizontally"))
-keymap("n", "splitv", ":vsplit<Return><C-w>w", opts("Split window vertically"))
+keymap("n", "s", "<Nop>", opts("Nop"))
+keymap("n", "ss", ":split<Return><C-w>w", opts("Split window horizontally"))
+keymap("n", "sv", ":vsplit<Return><C-w>w", opts("Split window vertically"))
+
+-- Resize window
+keymap("n", "sh", "5<C-w><", opts("Decrease window width"))
+keymap("n", "sl", "5<C-w>>", opts("Increase window width"))
+keymap("n", "sj", "5<C-w>-", opts("Decrease window height"))
+keymap("n", "sk", "5<C-w>+", opts("Increase window height"))
+
+-- Equalize window sizes
+keymap("n", "se", "<C-w>=", opts("Equalize window sizes"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
@@ -102,16 +112,17 @@ keymap("n", "p", "]p`]", opts("Indent after pasting"))
 keymap("n", "P", "]P`]", opts("Indent after pasting"))
 
 -- Automatically indent when starting editing on an empty line
-vim.keymap.set(
+keymap(
     "n", "i",
     function() return vim.fn.getline(".") == "" and '"_cc' or "i" end,
     opts("Indent when starting editing on an empty line", nil, nil, true)
 )
-vim.keymap.set(
+keymap(
     "n", "A",
     function() return vim.fn.getline(".") == "" and '"_cc' or "A" end,
     opts("Indent when starting editing on an empty line", nil, nil, true)
 )
+
 
 --------------------
 -- Insert Mode
