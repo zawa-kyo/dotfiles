@@ -48,13 +48,15 @@ function M.toggle_or_close_fern()
 end
 
 M.config = function()
-    -- Set Enter key to open file or expand directory when in Fern buffer
-    vim.cmd([[
-    augroup FernCustom
-      autocmd!
-      autocmd FileType fern nnoremap <buffer> <CR> <Plug>(fern-action-open)
-    augroup END
-  ]])
+    local fern_augroup = vim.api.nvim_create_augroup("FernCustom", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+        group = fern_augroup,
+        pattern = "fern",
+        callback = function()
+            -- Map Enter key to open file or expand directory in Fern buffer
+            vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<Plug>(fern-action-open)", { noremap = false, silent = true })
+        end,
+    })
 end
 
 return M
