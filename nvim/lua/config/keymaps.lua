@@ -59,8 +59,8 @@ keymap("n", "gj", "G", opts("Move to the bottom line"))
 keymap("n", "gk", "gg", opts("Move to the top line"))
 
 -- Move to the next/previous location
-vim.keymap.set("n", "gp", "<C-o>", opts("Jump to previous location"))
-vim.keymap.set("n", "gn", "<C-i>", opts("Jump to next location"))
+keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
+keymap("n", "gn", "<C-i>", opts("Jump to next location"))
 
 -- Optimize to jump to the matching pair
 keymap("n", "M", "%", opts("Jump to the matching pair"))
@@ -112,12 +112,12 @@ keymap("n", "p", "]p`]", opts("Indent after pasting"))
 keymap("n", "P", "]P`]", opts("Indent after pasting"))
 
 -- Automatically indent when starting editing on an empty line
-vim.keymap.set(
+keymap(
     "n", "i",
     function() return vim.fn.getline(".") == "" and '"_cc' or "i" end,
     opts("Indent when starting editing on an empty line", nil, nil, true)
 )
-vim.keymap.set(
+keymap(
     "n", "A",
     function() return vim.fn.getline(".") == "" and '"_cc' or "A" end,
     opts("Indent when starting editing on an empty line", nil, nil, true)
