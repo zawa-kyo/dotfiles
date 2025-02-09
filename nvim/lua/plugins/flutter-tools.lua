@@ -1,7 +1,7 @@
 return {
     "nvim-flutter/flutter-tools.nvim",
 
-    -- only load on dart files
+    -- Only load on dart files
     lazy = true,
     ft = { "dart" },
 
@@ -9,5 +9,6 @@ return {
         "nvim-lua/plenary.nvim",
         "stevearc/dressing.nvim",
     },
+
     config = true,
 }
