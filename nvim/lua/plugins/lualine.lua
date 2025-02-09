@@ -1,6 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "DaikyXendo/nvim-material-icon" },
     config = function()
         require("lualine").setup({
             options = {

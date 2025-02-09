@@ -1,7 +1,7 @@
 local M = {
     "ibhagwan/fzf-lua",
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        "DaikyXendo/nvim-material-icon",
         {
             "ahmedkhalf/project.nvim",
             config = function()
