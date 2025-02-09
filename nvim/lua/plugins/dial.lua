@@ -1,5 +1,11 @@
 local M = {
     "monaqa/dial.nvim",
+
+    lazy = true,
+    event = {
+        "BufReadPre",
+        "BufNewFile",
+    },
 }
 
 function M.config()
