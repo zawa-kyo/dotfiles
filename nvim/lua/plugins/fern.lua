@@ -2,6 +2,7 @@ local M = {
     "lambdalisue/fern.vim",
     dependencies = {
         "lambdalisue/fern-hijack.vim",
+        "yuki-yano/fern-preview.vim",
     },
 }
 
@@ -66,6 +67,9 @@ M.config = function()
         callback = function()
             -- Map Enter key to open file or expand directory in Fern buffer
             vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<Plug>(fern-action-open)", { noremap = false, silent = true })
+            -- Toggle preview in Fern buffer
+            vim.api.nvim_buf_set_keymap(0, "n", "p", "<Plug>(fern-action-preview:toggle)",
+                { noremap = false, silent = true })
         end,
     })
 end
