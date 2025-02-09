@@ -26,6 +26,17 @@ table.insert(M, {
 -- Mason: LSP package manager
 table.insert(M, {
     "williamboman/mason.nvim",
+
+    lazy = true,
+    cmd = {
+        "Mason",
+        "MasonInstall",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonLog",
+        "MasonUpdate",
+    },
+
     config = function()
         require("mason").setup({
             ui = {
