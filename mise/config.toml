@@ -1,6 +1,6 @@
 [tools]
 bun = "1.1.38"
-dart = "3.6.0"
+flutter = "3.27.4-stable"
 deno = "2.1.2"
 go = "1.23.3"
 java = "21.0.2"
