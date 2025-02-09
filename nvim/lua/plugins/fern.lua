@@ -37,7 +37,8 @@ function M.toggle_fern_with_reveal()
             end
 
             -- Resize Fern window to 25% of the full window width
-            local fern_width = math.floor(vim.o.columns * 0.25)
+            local fern_width_ratio = 0.25
+            local fern_width = math.floor(vim.o.columns * fern_width_ratio)
             vim.cmd("vertical resize " .. fern_width)
         end)
     end
