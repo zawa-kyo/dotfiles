@@ -5,3 +5,7 @@ require("config.lazy")
 
 -- Load keymaps after lazy plugins
 require("config.plugin-keymaps")
+
+-- Load colorscheme
+vim.opt.termguicolors = true
+vim.cmd [[colorscheme nord]]
