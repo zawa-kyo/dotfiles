@@ -10,8 +10,14 @@ M.servers = {
 -- Neoconf (should run before LSP configuration)
 table.insert(M, {
     "folke/neoconf.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
+
+    lazy = false,
     priority = 1000, -- Ensure this loads first
+
+    dependencies = {
+        "neovim/nvim-lspconfig"
+    },
+
     config = function()
         require("neoconf").setup()
     end,
@@ -20,6 +26,17 @@ table.insert(M, {
 -- Mason: LSP package manager
 table.insert(M, {
     "williamboman/mason.nvim",
+
+    lazy = true,
+    cmd = {
+        "Mason",
+        "MasonInstall",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonLog",
+        "MasonUpdate",
+    },
+
     config = function()
         require("mason").setup({
             ui = {
@@ -35,7 +52,10 @@ table.insert(M, {
 
 table.insert(M, {
     "zbirenbaum/copilot.lua",
+
+    lazy = true,
     event = "InsertEnter",
+
     config = function()
         require("copilot").setup({
             suggestion = {
@@ -54,7 +74,14 @@ table.insert(M, {
 
 table.insert(M, {
     "zbirenbaum/copilot-cmp",
-    dependencies = { "zbirenbaum/copilot.lua" },
+
+    lazy = true,
+    event = "BufRead",
+
+    dependencies = {
+        "zbirenbaum/copilot.lua",
+    },
+
     config = function()
         require("copilot_cmp").setup()
     end,
@@ -63,6 +90,10 @@ table.insert(M, {
 -- mason-lspconfig: Automatically sets up language servers installed via Mason
 table.insert(M, {
     "williamboman/mason-lspconfig.nvim",
+
+    lazy = true,
+    event = "BufRead",
+
     dependencies = {
         "neovim/nvim-lspconfig",
         "onsails/lspkind-nvim",
@@ -72,6 +103,7 @@ table.insert(M, {
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
+
     config = function()
         require("mason-lspconfig").setup {
             ensure_installed = M.servers
@@ -95,6 +127,10 @@ table.insert(M, {
 -- nvim-cmp: Completion settings with modern theme
 table.insert(M, {
     "hrsh7th/nvim-cmp",
+
+    lazy = true,
+    event = "InsertEnter",
+
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",   -- LSP completion source
         "hrsh7th/cmp-buffer",     -- Buffer completion source
@@ -102,6 +138,7 @@ table.insert(M, {
         "hrsh7th/cmp-cmdline",    -- Command-line completion source
         "zbirenbaum/copilot-cmp", -- Copilot completion source
     },
+
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
@@ -180,11 +217,17 @@ table.insert(M, {
 
 -- mason-null-ls
 table.insert(M, {
-    'jay-babu/mason-null-ls.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    "jay-babu/mason-null-ls.nvim",
+
+    lazy = true,
+    event = {
+        "BufReadPre",
+        "BufNewFile",
+    },
+
     dependencies = {
-        'williamboman/mason.nvim',
-        'nvimtools/none-ls.nvim',
+        "williamboman/mason.nvim",
+        "nvimtools/none-ls.nvim",
     },
 })
 

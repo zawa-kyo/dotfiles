@@ -1,5 +1,12 @@
 local M = {
     "rhysd/git-messenger.vim",
+
+    lazy = true,
+    event = {
+        "BufReadPre",
+        "BufNewFile",
+    },
+
     init = function()
         -- Always use a popup window instead of echoing messages
         vim.g.git_messenger_always_into_popup = true
