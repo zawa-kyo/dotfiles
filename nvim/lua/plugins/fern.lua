@@ -46,9 +46,11 @@ end
 -- Function to toggle or close Fern
 function M.toggle_or_close_fern()
     if vim.bo.filetype == "fern" then
-        vim.cmd("bd") -- Close Fern
-        if last_file_position then
-            vim.api.nvim_win_set_cursor(0, last_file_position)
+        -- Close Fern buffer
+        vim.cmd("bd")
+        if last_file_state and vim.api.nvim_win_is_valid(last_file_state.win) then
+            vim.api.nvim_set_current_win(last_file_state.win)
+            vim.api.nvim_win_set_cursor(last_file_state.win, last_file_state.pos)
         end
     else
         M.toggle_fern_with_reveal()
