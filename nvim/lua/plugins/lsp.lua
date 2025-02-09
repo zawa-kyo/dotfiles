@@ -73,6 +73,10 @@ table.insert(M, {
 -- mason-lspconfig: Automatically sets up language servers installed via Mason
 table.insert(M, {
     "williamboman/mason-lspconfig.nvim",
+
+    lazy = true,
+    event = "BufRead",
+
     dependencies = {
         "neovim/nvim-lspconfig",
         "onsails/lspkind-nvim",
