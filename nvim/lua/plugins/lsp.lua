@@ -95,6 +95,10 @@ table.insert(M, {
 -- nvim-cmp: Completion settings with modern theme
 table.insert(M, {
     "hrsh7th/nvim-cmp",
+
+    lazy = true,
+    event = "InsertEnter",
+
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",   -- LSP completion source
         "hrsh7th/cmp-buffer",     -- Buffer completion source
@@ -102,6 +106,7 @@ table.insert(M, {
         "hrsh7th/cmp-cmdline",    -- Command-line completion source
         "zbirenbaum/copilot-cmp", -- Copilot completion source
     },
+
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
