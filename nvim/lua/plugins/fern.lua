@@ -65,7 +65,7 @@ M.config = function()
         group = fern_augroup,
         pattern = "fern",
         callback = function()
-            -- Map Enter key to open file or expand directory in Fern buffer
+            -- Open file or expand directory in Fern buffer
             vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<Plug>(fern-action-open)", { noremap = false, silent = true })
             -- Toggle preview in Fern buffer
             vim.api.nvim_buf_set_keymap(0, "n", "p", "<Plug>(fern-action-preview:toggle)",
