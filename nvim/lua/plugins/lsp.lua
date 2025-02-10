@@ -78,7 +78,7 @@ table.insert(M, {
     "zbirenbaum/copilot-cmp",
 
     lazy = true,
-    event = "BufRead",
+    event = "InsertEnter",
     cnd = not vim.g.vscode,
 
     dependencies = {
