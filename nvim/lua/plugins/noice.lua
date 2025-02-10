@@ -1,10 +1,18 @@
 return {
     "folke/noice.nvim",
-    event = { "BufRead", "BufNewFile", "LspAttach" },
+
+    lazy = true,
+    event = {
+        "BufRead",
+        "BufNewFile",
+        "LspAttach",
+    },
+
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
     },
+
     opts = {
         lsp = {
             -- override markdown rendering so that cmp and other plugins use Treesitter
