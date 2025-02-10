@@ -1,7 +1,7 @@
 return {
     "rcarriga/nvim-notify",
 
-    cnd = not vim.g.vscode,
+    cond = not vim.g.vscode,
 
     config = function()
         require("notify").setup({

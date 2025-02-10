@@ -1,7 +1,7 @@
 return {
     "nvim-lualine/lualine.nvim",
 
-    cnd = not vim.g.vscode,
+    cond = not vim.g.vscode,
 
     dependencies = {
         "nvim-tree/nvim-web-devicons",

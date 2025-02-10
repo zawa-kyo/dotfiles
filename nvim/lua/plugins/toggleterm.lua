@@ -2,7 +2,7 @@ return {
     {
         "akinsho/toggleterm.nvim",
 
-        cnd = not vim.g.vscode,
+        cond = not vim.g.vscode,
 
         config = function()
             require("toggleterm").setup {

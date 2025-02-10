@@ -2,7 +2,7 @@ return {
     "folke/which-key.nvim",
 
     event = "VeryLazy",
-    cnd = not vim.g.vscode,
+    cond = not vim.g.vscode,
 
     opts = {
         -- your configuration comes here

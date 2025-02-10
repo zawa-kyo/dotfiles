@@ -6,7 +6,7 @@ return {
         'BufNewFile',
         'BufRead',
     },
-    cnd = not vim.g.vscode,
+    cond = not vim.g.vscode,
 
     dependencies = {
         'nvim-treesitter/nvim-treesitter-textobjects',

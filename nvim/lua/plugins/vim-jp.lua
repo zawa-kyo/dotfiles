@@ -5,5 +5,5 @@ return {
     keys = {
         { "h", mode = "c", },
     },
-    cnd = not vim.g.vscode,
+    cond = not vim.g.vscode,
 }

@@ -3,7 +3,7 @@ return {
 
     lazy = false,
     priority = 1000,
-    cnd = not vim.g.vscode,
+    cond = not vim.g.vscode,
 
     config = function()
         vim.g.nord_contrast = true
