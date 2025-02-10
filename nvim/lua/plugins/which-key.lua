@@ -1,7 +1,9 @@
 return {
     "folke/which-key.nvim",
+
     event = "VeryLazy",
     cnd = not vim.g.vscode,
+
     opts = {
         -- your configuration comes here
         -- or leave it empty to use the default settings

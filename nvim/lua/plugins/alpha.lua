@@ -1,14 +1,14 @@
 return {
     'goolord/alpha-nvim',
 
+    lazy = true,
+    event = "VimEnter",
     cond = not vim.g.vscode,
+
     dependencies = {
         'echasnovski/mini.icons',
         'nvim-lua/plenary.nvim'
     },
-
-    lazy = true,
-    event = "VimEnter",
 
     config = function()
         local alpha = require("alpha")

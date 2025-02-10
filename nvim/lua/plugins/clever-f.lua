@@ -1,5 +1,12 @@
 return {
     "rhysd/clever-f.vim",
+
+    lazy = true,
+    event = {
+        "BufRead",
+        "BufNewFile",
+    },
+
     config = function()
         -- Highlight the next search target
         vim.g.clever_f_mark_char = true
