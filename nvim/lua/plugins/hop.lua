@@ -1,10 +1,16 @@
 return {
     "smoka7/hop.nvim",
-    event = "BufRead",
-    version = "*",
+
+    lazy = true,
+    event = {
+        "BufRead",
+        "BufNewFile",
+    },
+
     opts = {
         multi_windows = true,
     },
+
     keys = {
         { "<leader>w", "<cmd>HopWord<CR>",               mode = "n",               desc = "Hop Word" },
         { "<leader>v", "<cmd>HopLine<CR>",               mode = "n",               desc = "Hop Line" },

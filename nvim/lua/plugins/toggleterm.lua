@@ -1,7 +1,9 @@
 return {
     {
         "akinsho/toggleterm.nvim",
-        version = "*",
+
+        cond = not vim.g.vscode,
+
         config = function()
             require("toggleterm").setup {
                 size = 20,

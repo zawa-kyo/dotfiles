@@ -36,6 +36,7 @@ table.insert(M, {
         "MasonLog",
         "MasonUpdate",
     },
+    cond = not vim.g.vscode,
 
     config = function()
         require("mason").setup({
@@ -55,6 +56,7 @@ table.insert(M, {
 
     lazy = true,
     event = "InsertEnter",
+    cond = not vim.g.vscode,
 
     config = function()
         require("copilot").setup({
@@ -76,7 +78,8 @@ table.insert(M, {
     "zbirenbaum/copilot-cmp",
 
     lazy = true,
-    event = "BufRead",
+    event = "InsertEnter",
+    cond = not vim.g.vscode,
 
     dependencies = {
         "zbirenbaum/copilot.lua",
@@ -93,6 +96,7 @@ table.insert(M, {
 
     lazy = true,
     event = "BufRead",
+    cond = not vim.g.vscode,
 
     dependencies = {
         "neovim/nvim-lspconfig",
@@ -130,6 +134,7 @@ table.insert(M, {
 
     lazy = true,
     event = "InsertEnter",
+    cond = not vim.g.vscode,
 
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",   -- LSP completion source
@@ -224,6 +229,7 @@ table.insert(M, {
         "BufReadPre",
         "BufNewFile",
     },
+    cond = not vim.g.vscode,
 
     dependencies = {
         "williamboman/mason.nvim",

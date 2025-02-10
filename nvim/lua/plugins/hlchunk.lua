@@ -6,6 +6,7 @@ return {
         "BufReadPre",
         "BufNewFile",
     },
+    cond = not vim.g.vscode,
 
     config = function()
         require("hlchunk").setup({
