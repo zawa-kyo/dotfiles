@@ -7,6 +7,7 @@ return {
         "BufNewFile",
         "LspAttach",
     },
+    cnd = not vim.g.vscode,
 
     dependencies = {
         "MunifTanjim/nui.nvim",

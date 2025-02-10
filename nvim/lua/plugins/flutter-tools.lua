@@ -4,6 +4,7 @@ return {
     -- Only load on dart files
     lazy = true,
     ft = { "dart" },
+    cond = not vim.g.vscode,
 
     dependencies = {
         "nvim-lua/plenary.nvim",

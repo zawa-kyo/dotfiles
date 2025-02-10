@@ -6,6 +6,7 @@ local M = {
         "BufReadPre",
         "BufNewFile",
     },
+    cond = not vim.g.vscode,
 
     init = function()
         -- Always use a popup window instead of echoing messages

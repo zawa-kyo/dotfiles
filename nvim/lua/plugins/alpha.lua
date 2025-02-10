@@ -1,6 +1,7 @@
 return {
     'goolord/alpha-nvim',
 
+    cond = not vim.g.vscode,
     dependencies = {
         'echasnovski/mini.icons',
         'nvim-lua/plenary.nvim'

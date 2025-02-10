@@ -1,5 +1,8 @@
 local M = {
     "lambdalisue/fern.vim",
+
+    cond = not vim.g.vscode,
+
     dependencies = {
         "lambdalisue/fern-hijack.vim",
         "yuki-yano/fern-preview.vim",
