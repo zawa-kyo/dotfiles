@@ -3,7 +3,7 @@ local M = {
 
     lazy = true,
     event = {
-        "BufReadPre",
+        "BufRead",
         "BufNewFile",
     },
 }
