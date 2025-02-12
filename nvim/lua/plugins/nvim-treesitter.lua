@@ -6,7 +6,9 @@ return {
         'BufNewFile',
         'BufRead',
     },
-    cond = not vim.g.vscode,
+
+    -- Load in vscode to enable textobjects
+    -- cond = not vim.g.vscode,
 
     dependencies = {
         'nvim-treesitter/nvim-treesitter-textobjects',
