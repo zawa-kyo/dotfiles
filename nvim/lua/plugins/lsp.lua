@@ -95,7 +95,10 @@ table.insert(M, {
     "williamboman/mason-lspconfig.nvim",
 
     lazy = true,
-    event = "BufRead",
+    event = {
+        "BufRead",
+        "BufNewFile",
+    },
     cond = not vim.g.vscode,
 
     dependencies = {
@@ -226,7 +229,7 @@ table.insert(M, {
 
     lazy = true,
     event = {
-        "BufReadPre",
+        "BufRead",
         "BufNewFile",
     },
     cond = not vim.g.vscode,
