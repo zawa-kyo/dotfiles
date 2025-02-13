@@ -180,3 +180,11 @@ keymap("v", "<C-x>", map.dec_visual(), opts(decrement_desc))
 local git_messenger = require("plugins.git-messenger")
 keymap("n", "G", git_messenger.git_messenger_simple, opts("Show git commit message"))
 keymap("n", "gc", git_messenger.git_messenger_with_diff, opts("Show git commit message with diff"))
+
+--------------------
+-- Vim-Smartword
+--------------------
+
+keymap("n", "w", "<Plug>(smartword-w)", opts("Move to the next word", false, nil, nil))
+keymap("n", "b", "<Plug>(smartword-b)", opts("Move to the previous word", false, nil, nil))
+keymap("n", "e", "<Plug>(smartword-e)", opts("Move to the end of the word", false, nil, nil))
