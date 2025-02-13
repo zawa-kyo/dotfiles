@@ -12,23 +12,76 @@ return {
     },
 
     keys = {
-        { "<leader>w", "<cmd>HopWord<CR>",               mode = "n",               desc = "Hop Word" },
-        { "<leader>v", "<cmd>HopLine<CR>",               mode = "n",               desc = "Hop Line" },
-        { "<leader>c", "<cmp>HopChar1<CR>",              mode = "n",               desc = "Hop Char" },
-        -- { "<leader>r", "<cmd>HopPattern<CR>",            mode = "n",               desc = "Hop Pattern" },
-        { "f",         "<cmd>HopChar1CurrentLineAC<CR>", mode = { "n", "v", "o" }, desc = "Hop Char in Line (After Cursor)" },
-        { "F",         "<cmd>HopChar1CurrentLineBC<CR>", mode = { "n", "v", "o" }, desc = "Hop Char in Line (Before Cursor)" },
+        -- Jump to a word
+        {
+            "<leader>w",
+            "<cmd>HopWord<CR>",
+            mode = "n",
+            desc = "Hop Word",
+        },
+
+        -- Jump to a line
+        {
+            "<leader>v",
+            "<cmd>HopLine<CR>",
+            mode = "n",
+            desc = "Hop Line",
+        },
+
+        -- Jump to a single character
+        {
+            "<leader>c",
+            "<cmd>HopChar1<CR>",
+            mode = "n",
+            desc = "Hop Char",
+        },
+
+        -- Jump to a character in the current line (after the cursor)
+        {
+            "f",
+            "<cmd>HopChar1CurrentLineAC<CR>",
+            mode = { "n", "v", "o" },
+            desc = "Hop Char (after cursor)",
+        },
+
+        -- Jump to a character in the current line (before the cursor)
+        {
+            "F",
+            "<cmd>HopChar1CurrentLineBC<CR>",
+            mode = { "n", "v", "o" },
+            desc = "Hop Char (before cursor)",
+        },
+
+        -- Jump to just before a character in the current line (after the cursor)
         {
             "t",
-            "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>",
+            function()
+                local hop = require("hop")
+                local hint = require("hop.hint")
+                hop.hint_char1({
+                    direction = hint.HintDirection.AFTER_CURSOR,
+                    current_line_only = true,
+                    hint_offset = -1,
+                })
+            end,
             mode = { "n", "v", "o" },
-            desc = "Hop Before Char in Line (After Cursor)",
+            desc = "Hop before char (after cursor)",
         },
+
+        -- Jump to just after a character in the current line (before the cursor)
         {
             "T",
-            "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>",
+            function()
+                local hop = require("hop")
+                local hint = require("hop.hint")
+                hop.hint_char1({
+                    direction = hint.HintDirection.BEFORE_CURSOR,
+                    current_line_only = true,
+                    hint_offset = 1,
+                })
+            end,
             mode = { "n", "v", "o" },
-            desc = "Hop After Char in Line (Before Cursor)",
+            desc = "Hop after char (before cursor)",
         },
     },
 }
