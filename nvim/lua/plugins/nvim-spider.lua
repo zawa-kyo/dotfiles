@@ -1,5 +1,5 @@
 return {
-    "kana/vim-smartword",
+    "chrisgrieser/nvim-spider",
 
     lazy = true,
     event = {

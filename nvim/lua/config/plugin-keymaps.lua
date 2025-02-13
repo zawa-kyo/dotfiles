@@ -185,6 +185,6 @@ keymap("n", "gc", git_messenger.git_messenger_with_diff, opts("Show git commit m
 -- Vim-Smartword
 --------------------
 
-keymap("n", "w", "<Plug>(smartword-w)", opts("Move to the next word", false, nil, nil))
-keymap("n", "b", "<Plug>(smartword-b)", opts("Move to the previous word", false, nil, nil))
-keymap("n", "e", "<Plug>(smartword-e)", opts("Move to the end of the word", false, nil, nil))
+keymap("n", "w", "<cmd>lua require('spider').motion('w')<CR>", opts("Move to the next word", false, nil, nil))
+keymap("n", "b", "<cmd>lua require('spider').motion('b')<CR>", opts("Move to the previous word", false, nil, nil))
+keymap("n", "e", "<cmd>lua require('spider').motion('e')<CR>", opts("Move to the end of the word", false, nil, nil))
