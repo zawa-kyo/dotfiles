@@ -125,21 +125,28 @@ export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
 # AndroidStudio
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+# Official SDK root for Android Studio & sdkmanager/avdmanager
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+# Legacy SDK root for backward-compatibility (older scripts/CI)
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+# Include adb/fastboot
+export PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 
+# Ranchar Desktop
+export PATH="/Users/kyohei/.rd/bin:$PATH"
 
 # ===========================
 # Fzf
 # ===========================
 
 fv () {
-	local file
-	file=$(fzf) && nvim "$file"
+  local file
+  file=$(fzf) && nvim "$file"
 }
 
 fg () {
-    local file_and_line
-    file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
+  local file_and_line
+  file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
 
