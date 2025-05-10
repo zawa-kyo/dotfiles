@@ -29,31 +29,31 @@ eval "$(sheldon source)"
 
 # Function to resolve the absolute path of the dotfiles directory
 get_dotfiles_dir() {
-    # Get the actual path of the ~/.zshrc symlink
-    local zshrc_symlink
-    zshrc_symlink="$(readlink "${HOME}/.zshrc")"
+  # Get the actual path of the ~/.zshrc symlink
+  local zshrc_symlink
+  zshrc_symlink="$(readlink "${HOME}/.zshrc")"
 
-    # Change to HOME to handle relative paths
-    cd "${HOME}" || return 1
+  # Change to HOME to handle relative paths
+  cd "${HOME}" || return 1
 
-    # Get the absolute path to the dotfiles directory
-    cd "$(dirname "$zshrc_symlink")" && pwd
+  # Get the absolute path to the dotfiles directory
+  cd "$(dirname "$zshrc_symlink")" && pwd
 }
 
 # Function to execute the source script
 run_source_script() {
-    local current_dir
-    current_dir="$(pwd)"  # Store the current working directory
+  local current_dir
+  current_dir="$(pwd)"  # Store the current working directory
 
-    # Get the dotfiles directory
-    local dotfiles_dir
-    dotfiles_dir="$(get_dotfiles_dir)" || return 1
+  # Get the dotfiles directory
+  local dotfiles_dir
+  dotfiles_dir="$(get_dotfiles_dir)" || return 1
 
-    # Execute the script from the scripts directory
-    eval "$(bash "$dotfiles_dir/../scripts/source.sh")"
+  # Execute the script from the scripts directory
+  eval "$(bash "$dotfiles_dir/../scripts/source.sh")"
 
-    # Return to the original working directory
-    cd "$current_dir"
+  # Return to the original working directory
+  cd "$current_dir"
 }
 
 run_source_script
