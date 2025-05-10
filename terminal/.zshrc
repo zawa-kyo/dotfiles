@@ -125,8 +125,15 @@ export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
 # AndroidStudio
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+# Official SDK root for Android Studio & sdkmanager/avdmanager
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+# Legacy SDK root for backward-compatibility (older scripts/CI)
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+# Include adb/fastboot
+export PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 
+# Ranchar Desktop
+export PATH="/Users/kyohei/.rd/bin:$PATH"
 
 # ===========================
 # Fzf
