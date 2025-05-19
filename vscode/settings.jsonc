@@ -381,6 +381,18 @@
     }
   ],
 
+  // Error Lens
+  "errorLens.messageEnabled": true,
+  // アクティブな行以外でのみ有効
+  "errorLens.followCursor": "allLinesExceptActive",
+  // 表示形式の指定
+  "errorLens.messageTemplate": "$severity $message",
+  "errorLens.severityText": ["\uea87", "\uea6c", "\uea74", "\uee75"],
+  // gutter iconsの表示有無
+  "errorLens.gutterIconsEnabled": false,
+  "errorLens.gutterIconSet": "circle",
+  "errorLens.gutterIconsFollowCursorOverride": true,
+
   // GitHub Copilot
   "github.copilot.enable": {
     "*": true,
