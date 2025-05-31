@@ -182,7 +182,7 @@
   "window.title": "${activeEditorMedium}@${rootName}",
   // コマンドセンターを有効化
   // titleBarStyleが"custom"であることが必要
-  "window.commandCenter": false,
+  "window.commandCenter": true,
   // タイトルバーを修正
   "window.titleBarStyle": "custom",
   // OSの設定に合わせてテーマを切り替え
