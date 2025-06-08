@@ -143,12 +143,12 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 # Fzf
 # ===========================
 
-fv () {
+fzp () {
   local file
   file=$(fzf) && nvim "$file"
 }
 
-fg () {
+fzl () {
   local file_and_line
   file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
