@@ -132,9 +132,6 @@ export ANDROID_HOME="$ANDROID_SDK_ROOT"
 # Include adb/fastboot
 export PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 
-# Rancher Desktop
-export PATH="/Users/kyohei/.rd/bin:$PATH"
-
 # Dart CLI tools
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
