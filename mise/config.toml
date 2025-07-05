@@ -1,5 +1,5 @@
 [tools]
-bun = "1.1.38"
+bun = "1.2.18"
 flutter = "3.29.3-stable"
 deno = "2.1.2"
 go = "1.23.3"
