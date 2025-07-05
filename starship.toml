@@ -56,11 +56,11 @@ format = '[$all_status$ahead_behind]($style)'
 style = "#263238 bg:#E06C75"
 
 [time]
-disabled = false 
-format = '[ $time ]($style)' 
-style = "#263238 bg:#16DDB3" 
+disabled = false
+format = '[ $time ]($style)'
+style = "#263238 bg:#16DDB3"
 time_format = "%R" # Hour:Minute Format
-utc_time_offset = '+9' 
+utc_time_offset = '+9'
 
 [cmd_duration]
 disabled = false
