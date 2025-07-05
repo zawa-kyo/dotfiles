@@ -1,6 +1,7 @@
 # Theme
 theme = catppuccin-frappe
 font-family = Moralerspace Neon,
+font-feature = -dlig
 font-size = 14
 
 # Window
