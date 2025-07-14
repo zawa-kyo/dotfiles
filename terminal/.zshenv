@@ -6,10 +6,15 @@
 # Environmental variables
 # ===========================
 
-# ロケール
+# Locale
 export LANG="ja_JP.UTF-8"
-# タイムゾーン
+
+# Time zone
 export TZ="Asia/Tokyo"
+
+# Editor
+export EDITOR="/opt/homebrew/bin/nvim"
+export VISUAL="$EDITOR"
 
 # ===========================
 # Comments
