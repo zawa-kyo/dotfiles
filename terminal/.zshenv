@@ -11,6 +11,10 @@ export LANG="ja_JP.UTF-8"
 # タイムゾーン
 export TZ="Asia/Tokyo"
 
+# エディタ
+export EDITOR="/opt/homebrew/bin/nvim"
+export VISUAL="$EDITOR"
+
 # ===========================
 # Comments
 # ===========================
