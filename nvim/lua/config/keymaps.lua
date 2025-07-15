@@ -42,10 +42,6 @@ keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
 keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
--- Make scroll keys intuitive
-keymap("n", "<C-k>", "<C-u>", opts("Scroll up", false, nil, nil))
-keymap("n", "<C-j>", "<C-d>", opts("Scroll down", false, nil, nil))
-
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
 keymap("v", ",", "<Esc>ggVG", opts("Select all"))
@@ -53,10 +49,6 @@ keymap("v", ",", "<Esc>ggVG", opts("Select all"))
 -- Remap 'j'/'k' for wrapped lines
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
-
--- Move to the top/bottom line
-keymap("n", "gj", "G", opts("Move to the bottom line"))
-keymap("n", "gk", "gg", opts("Move to the top line"))
 
 -- Move to the next/previous location
 keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
@@ -148,8 +140,8 @@ keymap("n", "V", "v$", opts("Select until the end of the line"))
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
 
 -- Move selected lines up/down in visual mode
-keymap("x", "<C-k>", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
-keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
+keymap("x", "K", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
+keymap("x", "J", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
 
 -- Prevent leading/trailing spaces from being included when appending
 for _, quote in ipairs({ '"', "'", "`" }) do
