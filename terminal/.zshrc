@@ -181,6 +181,7 @@ up() {
   cd "$(printf '../%.0s' $(seq 1 $count))" || return 1
 }
 
+# Search Google for the given query using the default browser
 function google() {
   local search_query="$@"
   local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
