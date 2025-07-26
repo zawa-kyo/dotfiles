@@ -171,9 +171,9 @@ function y() {
 # ===========================
 
 function google() {
-    local search_query="$@"
-    local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
-    open "https://www.google.com/search?q=$encoded_query"
+  local search_query="$@"
+  local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
+  open "https://www.google.com/search?q=$encoded_query"
 }
 
 
