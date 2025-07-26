@@ -170,6 +170,11 @@ function y() {
 # Utilities
 # ===========================
 
+# Create a directory (if not exists) and move into it
+mkcd() {
+  mkdir -p "$1" && cd "$1" || return 1
+}
+
 function google() {
   local search_query="$@"
   local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
