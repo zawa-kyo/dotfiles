@@ -91,7 +91,7 @@ keymap("n", "se", "<C-w>=", opts("Equalize window sizes"))
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
 
-keymap("n", "J", "10j", opts("Move down 10 lines"))
+-- Move to the beginning/end of the line
 keymap("n", "H", "^", opts("Move to the beginning of the line"))
 keymap("n", "L", "$", opts("Move to the end of the line"))
 
