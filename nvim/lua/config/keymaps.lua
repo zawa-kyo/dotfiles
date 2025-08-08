@@ -42,9 +42,6 @@ keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
 keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
--- Make scroll keys intuitive
-keymap("n", "<C-k>", "<C-u>", opts("Scroll up", false, nil, nil))
-keymap("n", "<C-j>", "<C-d>", opts("Scroll down", false, nil, nil))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
@@ -94,9 +91,7 @@ keymap("n", "se", "<C-w>=", opts("Equalize window sizes"))
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
 
--- Move effectively
-keymap("n", "J", "10j", opts("Move down 10 lines"))
-keymap("n", "K", "10k", opts("Move up 10 lines"))
+-- Move to the beginning/end of the line
 keymap("n", "H", "^", opts("Move to the beginning of the line"))
 keymap("n", "L", "$", opts("Move to the end of the line"))
 

@@ -34,7 +34,6 @@ local options = {
     wrap = false,
     winblend = 0,
     wildoptions = "pum",
-    pumblend = 5,
     background = "dark",
     scrolloff = 8,
     sidescrolloff = 8,
@@ -50,13 +49,4 @@ end
 -- Move left and right across lines
 vim.cmd("set whichwrap=b,s,h,l,<,>,[,],~")
 
--- Automatically change to the file's directory on Vim startup
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*",
-    callback = function()
-        if vim.bo.buftype == "" then -- Only execute for normal buffers
-            local filepath = vim.fn.expand("%:p:h")
-            vim.cmd("silent! cd " .. filepath)
-        end
-    end,
-})
+-- Note: Avoid auto-changing CWD on BufEnter to reduce conflicts

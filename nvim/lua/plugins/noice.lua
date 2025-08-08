@@ -35,7 +35,7 @@ return {
             enabled = true,
             backend = "notify",
         },
-        message = {
+        messages = {
             enabled = true, -- leave LSP notifications in message history
         },
     },

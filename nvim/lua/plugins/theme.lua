@@ -15,5 +15,8 @@ return {
 
         -- Enable popup menu transparency with 0% opacity
         vim.opt.pumblend = 0
+
+        -- Apply colorscheme here to ensure it runs after lazy loads the theme
+        vim.cmd("colorscheme nord")
     end,
 }
