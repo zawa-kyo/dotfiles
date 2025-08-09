@@ -3,6 +3,12 @@ local M = {
 
     cond = not vim.g.vscode,
 
+    keys = {
+        {"<leader>p", ":FzfLua files<CR>", desc = "Search files in the current directory"},
+        {"<leader>g", ":FzfLua live_grep<CR>", desc = "Search text in all files"},
+        {"<leader>f", function() require("plugins.fzf").lines() end, desc = "Search text in the current file"},
+    },
+
     dependencies = {
         "nvim-tree/nvim-web-devicons",
         {
