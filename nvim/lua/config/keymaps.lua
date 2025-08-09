@@ -14,7 +14,6 @@ keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 --------------------
 -- Docs
 --------------------
@@ -26,7 +25,6 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = 'x',
 --   term_mode = 't',
 --   command_mode = 'c',
-
 
 --------------------
 -- Normal Mode
@@ -41,7 +39,6 @@ keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
 keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
 keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
-
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
@@ -107,17 +104,12 @@ keymap("n", "p", "]p`]", opts("Indent after pasting"))
 keymap("n", "P", "]P`]", opts("Indent after pasting"))
 
 -- Automatically indent when starting editing on an empty line
-keymap(
-    "n", "i",
-    function() return vim.fn.getline(".") == "" and '"_cc' or "i" end,
-    opts("Indent when starting editing on an empty line", nil, nil, true)
-)
-keymap(
-    "n", "A",
-    function() return vim.fn.getline(".") == "" and '"_cc' or "A" end,
-    opts("Indent when starting editing on an empty line", nil, nil, true)
-)
-
+keymap("n", "i", function()
+  return vim.fn.getline(".") == "" and '"_cc' or "i"
+end, opts("Indent when starting editing on an empty line", nil, nil, true))
+keymap("n", "A", function()
+  return vim.fn.getline(".") == "" and '"_cc' or "A"
+end, opts("Indent when starting editing on an empty line", nil, nil, true))
 
 --------------------
 -- Insert Mode
@@ -125,7 +117,6 @@ keymap(
 
 -- コンマの後に自動的にスペースを挿入
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
-
 
 --------------------
 -- Visual Mode
@@ -148,9 +139,8 @@ keymap("x", "<C-j>", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
 
 -- Prevent leading/trailing spaces from being included when appending
 for _, quote in ipairs({ '"', "'", "`" }) do
-    keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts("Append without leading/trailing spaces"))
+  keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts("Append without leading/trailing spaces"))
 end
-
 
 --------------------
 -- Text Object
@@ -160,52 +150,48 @@ end
 keymap("o", "i<space>", "iW", opts("Select words between spaces"))
 keymap("x", "i<space>", "iW", opts("Select words between spaces"))
 
-
 --------------------
 -- Escape: Close Helpers
 --------------------
 
 -- Close hover in the hover
 local function close_hover_in_hover()
-    local current_win = vim.api.nvim_get_current_win()
-    vim.api.nvim_win_close(current_win, true)
+  local current_win = vim.api.nvim_get_current_win()
+  vim.api.nvim_win_close(current_win, true)
 end
 
 -- Close hover out of the hover
 local function close_hover_out_of_hover()
-    vim.api.nvim_feedkeys("hl", "n", false)
+  vim.api.nvim_feedkeys("hl", "n", false)
 end
 
 -- Check if the cursor is currently in a floating window (e.g., an LSP hover)
 -- @return boolean
 local function is_cursor_in_hover()
-    local current_win = vim.api.nvim_get_current_win()
-    local config = vim.api.nvim_win_get_config(current_win)
-    return config.relative ~= ""
+  local current_win = vim.api.nvim_get_current_win()
+  local config = vim.api.nvim_win_get_config(current_win)
+  return config.relative ~= ""
 end
 
 -- Handle <Esc>: close hover or clear search highlight
 local function close_window()
-    if is_cursor_in_hover() then
-        close_hover_in_hover()
-        return
-    end
+  if is_cursor_in_hover() then
+    close_hover_in_hover()
+    return
+  end
 
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local config = vim.api.nvim_win_get_config(win)
-        if config.relative ~= "" then
-            close_hover_out_of_hover()
-            return
-        end
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= "" then
+      close_hover_out_of_hover()
+      return
     end
+  end
 
-    if vim.v.hlsearch == 1 then
-        vim.cmd("nohlsearch")
-        return
-    end
+  if vim.v.hlsearch == 1 then
+    vim.cmd("nohlsearch")
+    return
+  end
 end
 
-keymap(
-    "n", "<Esc>",
-    close_window, opts("Close hover/clear search")
-)
+keymap("n", "<Esc>", close_window, opts("Close hover/clear search"))
