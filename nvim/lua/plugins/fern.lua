@@ -7,10 +7,24 @@ local M = {
         "lambdalisue/fern-hijack.vim",
         "yuki-yano/fern-preview.vim",
     },
+
+    keys = {
+        {
+            "<leader>b",
+            function() require("plugins.fern").toggle_or_close_fern() end,
+            desc = "Toggle or close Fern"
+        },
+        {
+            "<leader>o",
+            function() require("plugins.fern").toggle_fern_with_reveal() end,
+            desc = "Toggle or reveal in Fern"
+        },
+    },
 }
 
 -- Store the cwd at startup
 local project_root = vim.fn.getcwd()
+
 -- Track last file window and cursor position
 local last_file_state = nil
 

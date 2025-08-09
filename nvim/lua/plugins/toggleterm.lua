@@ -4,6 +4,14 @@ return {
 
         cond = not vim.g.vscode,
 
+        keys = {
+            {
+                "<leader>t",
+                ":ToggleTerm direction=horizontal name=desktop<CR>",
+                desc = "Open terminal in a horizontal split"
+            },
+        },
+
         config = function()
             require("toggleterm").setup {
                 size = 20,
