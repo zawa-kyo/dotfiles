@@ -1,6 +1,9 @@
 local M = {
     "ibhagwan/fzf-lua",
+
+    lazy = true,
     cond = not vim.g.vscode,
+    cmd = { "FzfLua" },
 
     keys = {
         {

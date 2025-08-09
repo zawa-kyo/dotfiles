@@ -1,5 +1,6 @@
 local M = {
     "lambdalisue/fern.vim",
+
     cond = not vim.g.vscode,
 
     dependencies = {
@@ -23,6 +24,7 @@ local M = {
 
 -- Store the cwd at startup
 local project_root = vim.fn.getcwd()
+
 -- Track last file window and cursor position
 local last_file_state = nil
 
