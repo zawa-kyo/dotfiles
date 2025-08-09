@@ -10,7 +10,7 @@ local M = {
 
     keys = {
         {
-            "G",
+            "gm",
             function() require("plugins.git-messenger").git_messenger_simple() end,
             desc = "Show git commit message"
         },
