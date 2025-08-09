@@ -668,12 +668,9 @@
 
   // ====== Lua ========
   "[lua]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "sumneko.lua"
-  },
-  "Lua.format.defaultConfig": {
-    "indent_style": "space",
-    "quoteStyle": "double"
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
   },
 
   // ======= ShellScript =========

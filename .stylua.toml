@@ -1,0 +1,8 @@
+# Use spaces instead of tabs for indentation
+indent_type = "Spaces"
+
+# Number of spaces per indentation level
+indent_width = 2
+
+# Prefer double quotes when possible
+quote_style = "AutoPreferDouble"
