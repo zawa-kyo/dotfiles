@@ -9,8 +9,16 @@ local M = {
     cond = not vim.g.vscode,
 
     keys = {
-        {"G", function() require("plugins.git-messenger").git_messenger_simple() end, desc = "Show git commit message"},
-        {"gc", function() require("plugins.git-messenger").git_messenger_with_diff() end, desc = "Show git commit message with diff"},
+        {
+            "G",
+            function() require("plugins.git-messenger").git_messenger_simple() end,
+            desc = "Show git commit message"
+        },
+        {
+            "gc",
+            function() require("plugins.git-messenger").git_messenger_with_diff() end,
+            desc = "Show git commit message with diff"
+        },
     },
 
     init = function()

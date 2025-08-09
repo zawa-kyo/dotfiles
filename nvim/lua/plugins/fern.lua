@@ -1,15 +1,23 @@
 local M = {
     "lambdalisue/fern.vim",
-
     cond = not vim.g.vscode,
 
     dependencies = {
         "lambdalisue/fern-hijack.vim",
         "yuki-yano/fern-preview.vim",
     },
+
     keys = {
-        {"<leader>b", function() require("plugins.fern").toggle_or_close_fern() end, desc = "Toggle or close Fern"},
-        {"<leader>o", function() require("plugins.fern").toggle_fern_with_reveal() end, desc = "Toggle or reveal in Fern"},
+        {
+            "<leader>b",
+            function() require("plugins.fern").toggle_or_close_fern() end,
+            desc = "Toggle or close Fern"
+        },
+        {
+            "<leader>o",
+            function() require("plugins.fern").toggle_fern_with_reveal() end,
+            desc = "Toggle or reveal in Fern"
+        },
     },
 }
 
