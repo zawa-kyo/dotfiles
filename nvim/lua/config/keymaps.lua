@@ -159,3 +159,49 @@ end
 -- Select words between spaces
 keymap("o", "i<space>", "iW", opts("Select words between spaces"))
 keymap("x", "i<space>", "iW", opts("Select words between spaces"))
+
+--------------------
+-- Escape: Close Helpers
+--------------------
+
+-- Close hover in the hover
+local function close_hover_in_hover()
+    local current_win = vim.api.nvim_get_current_win()
+    vim.api.nvim_win_close(current_win, true)
+end
+
+-- Close hover out of the hover
+local function close_hover_out_of_hover()
+    vim.api.nvim_feedkeys("hl", "n", false)
+end
+
+-- Check if the cursor is currently in a floating window (e.g., an LSP hover)
+-- @return boolean
+local function is_cursor_in_hover()
+    local current_win = vim.api.nvim_get_current_win()
+    local config = vim.api.nvim_win_get_config(current_win)
+    return config.relative ~= ""
+end
+
+-- Handle <Esc>: close hover or clear search highlight
+local function close_window()
+    if is_cursor_in_hover() then
+        close_hover_in_hover()
+        return
+    end
+
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        if config.relative ~= "" then
+            close_hover_out_of_hover()
+            return
+        end
+    end
+
+    if vim.v.hlsearch == 1 then
+        vim.cmd("nohlsearch")
+        return
+    end
+end
+
+keymap("n", "<Esc>", close_window, opts("Close hover/clear search"))
