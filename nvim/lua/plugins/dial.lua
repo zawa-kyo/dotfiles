@@ -7,15 +7,12 @@ local M = {
         "BufNewFile",
     },
 
-    keys = (function()
-        local map = require("dial.map")
-        return {
-            {"<C-a>", map.inc_normal(), desc = "Increment the number under the cursor", mode = "n"},
-            {"<C-x>", map.dec_normal(), desc = "Decrement the number under the cursor", mode = "n"},
-            {"<C-a>", map.inc_visual(), desc = "Increment the number under the cursor", mode = "v"},
-            {"<C-x>", map.dec_visual(), desc = "Decrement the number under the cursor", mode = "v"},
-        }
-    end)(),
+    keys = {
+        {"<C-a>", function() require("dial.map").inc_normal()() end, desc = "Increment the number under the cursor", mode = "n"},
+        {"<C-x>", function() require("dial.map").dec_normal()() end, desc = "Decrement the number under the cursor", mode = "n"},
+        {"<C-a>", function() require("dial.map").inc_visual()() end, desc = "Increment the number under the cursor", mode = "v"},
+        {"<C-x>", function() require("dial.map").dec_visual()() end, desc = "Decrement the number under the cursor", mode = "v"},
+    },
 }
 
 function M.config()

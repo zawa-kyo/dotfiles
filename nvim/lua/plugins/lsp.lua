@@ -139,7 +139,7 @@ table.insert(M, {
                 end
                 require("lspconfig")[server].setup(opt)
             end
-        })})
+        })
 
         -- Diagnostic settings
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
