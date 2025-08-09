@@ -1,42 +1,40 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
-- `nvim/`: Neovim configuration (Lua) and plugin specs; formatted with Stylua.
-- `vscode/`: Editor settings and keybindings (`*.jsonc`) to be symlinked to the VS Code user folder.
-- `scripts/`: Setup helpers (e.g., `install-bun.sh`, `install.sh`, `source.sh`).
-- `homebrew/`: `Brewfile` for reproducible package installs via Homebrew.
-- `bun/`: Bun global packages managed in-repo (`package.json`, `bun.lock`).
-- `sheldon/`: Zsh plugin manager config (`plugins.toml`) and common abbreviations.
-- `wezterm/`, `terminal/`, `ghostty/`, `zellij/`, `starship.toml`: Terminal, multiplexer, and prompt configs.
-- `src/samples/`: Small language samples used for editor/LSP checks.
+## プロジェクト構成と配置
+- `nvim/`: Neovim 設定 (Lua) とプラグイン定義。Stylua で整形。
+- `vscode/`: エディタ設定とキーバインド (`*.jsonc`)。VS Code のユーザーフォルダへシンボリックリンク。
+- `scripts/`: セットアップ用スクリプト (例: `install-bun.sh`, `install.sh`, `source.sh`)。
+- `homebrew/`: Homebrew の再現可能なインストール用 `Brewfile`。
+- `bun/`: リポジトリ管理の Bun グローバルパッケージ (`package.json`, `bun.lock`)。
+- `sheldon/`: Zsh プラグインマネージャ設定 (`plugins.toml`) と略語定義。
+- `wezterm/`, `terminal/`, `ghostty/`, `zellij/`, `starship.toml`: ターミナル/プロンプト関連設定。
+- `src/samples/`: エディタ/LSP 確認用の小さなサンプル。
 
-## Build, Test, and Development Commands
-- Install dev tools: `pip install poetry && poetry install`
-- Enable pre-commit hooks: `poetry run pre-commit install`
-- Run hooks on all files: `poetry run pre-commit run -a`
-- Apply Homebrew bundle: `brew bundle --file=homebrew/Brewfile`
-- Setup Bun globals: `sh scripts/install-bun.sh` (creates link and runs `bun install`)
-- Sync VS Code: see `README.md` for `ln -s` commands and user path.
+## ビルド・テスト・開発コマンド
+- 開発ツール導入: `pip install poetry && poetry install`
+- pre-commit 有効化: `poetry run pre-commit install`
+- 全ファイルでフック実行: `poetry run pre-commit run -a`
+- Homebrew 適用: `brew bundle --file=homebrew/Brewfile`
+- Bun グローバル準備: `sh scripts/install-bun.sh` (リンク作成後に `bun install` を実行)
+- VS Code 同期: `README.md` の `ln -s` 手順を参照。
 
-## Coding Style & Naming Conventions
-- Indentation: 2 spaces (Lua enforced via `.stylua.toml`).
-- Languages: Lua for Neovim, Bash for scripts, JSON/JSONC for editors.
-- Naming: directories lower-case; scripts use hyphen-case (e.g., `install-bun.sh`).
-- Formatting: run Stylua for Lua; keep JSON/JSONC valid; shell scripts POSIX-compatible where possible.
+## コーディング規約と命名
+- インデント: 2 スペース (Lua は `.stylua.toml` で強制)。
+- 使用言語: Neovim は Lua、スクリプトは Bash、エディタ設定は JSON/JSONC。
+- 命名: ディレクトリは小文字、スクリプトはハイフン区切り (例: `install-bun.sh`)。
+- フォーマット: Lua は Stylua、JSON/JSONC は整合性維持、シェルは可能な限り POSIX 準拠。
 
-## Testing Guidelines
-- Lint/security checks: `poetry run pre-commit run -a` (includes `detect-secrets`, `gitleaks`, YAML/JSON checks).
-- Neovim health: open `nvim` and run `:checkhealth` after plugin changes.
-- Bun setup: re-run `scripts/install-bun.sh` and confirm globals resolve (`bunx --version`).
-- Homebrew: `brew doctor` and `brew bundle check --file=homebrew/Brewfile`.
+## テスト指針
+- Lint/セキュリティ: `poetry run pre-commit run -a` (`detect-secrets`, `gitleaks`, YAML/JSON チェックを含む)。
+- Neovim ヘルス: プラグイン変更後に `nvim` で `:checkhealth`。
+- Bun 確認: `scripts/install-bun.sh` 実行後、`bunx --version` で解決を確認。
+- Homebrew: `brew doctor` と `brew bundle check --file=homebrew/Brewfile`。
 
-## Commit & Pull Request Guidelines
-- Commit style: use Conventional Commits (e.g., `feat: ...`, `fix: ...`, `refactor: ...`, `style: ...`).
-- Scope clearly (e.g., `feat(nvim): add TOML LSP server`).
-- PRs must include: summary of changes, affected areas (e.g., `nvim/`, `sheldon/`), platform/macOS version, and screenshots when UI/terminal look changes.
-- Link related issues/tasks if applicable; keep PRs focused and small.
+## コミットとプルリクエスト
+- コミット規約: Conventional Commits (例: `feat: ...`, `fix: ...`, `refactor: ...`, `style: ...`)。
+- 関連 Issue/タスクをリンクし、PR は小さく焦点を絞る。
 
-## Security & Configuration Tips
-- Never commit secrets. Rely on pre-commit hooks and verify with `poetry run pre-commit run -a`.
-- Machine-specific files should live outside the repo or be templated.
-- When updating `Brewfile` use `brew bundle dump --file=homebrew/Brewfile --force` to capture exact state.
+## セキュリティと設定の注意
+- 秘密情報はコミットしない。pre-commit に依存し、`poetry run pre-commit run -a` で再確認。
+- マシン固有のファイルはリポジトリ外に置くかテンプレート化。
+- `Brewfile` 更新時は `brew bundle dump --file=homebrew/Brewfile --force` で状態を反映。
