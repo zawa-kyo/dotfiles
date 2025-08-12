@@ -265,6 +265,8 @@
   "git.autofetch": true,
   // 親ディレクトリの.gitファイルを認識する
   "git.openRepositoryInParentFolders": "always",
+// ステージングされたファイルがない場合、すべての変更をコミットする
+  "git.enableSmartCommit": true,
 
   // ===========================
   // Devcontainer
