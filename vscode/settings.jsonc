@@ -368,8 +368,8 @@
   // GitHub Copilot
   "github.copilot.enable": {
     "*": true,
-    "plaintext": true,
-    "markdown": true,
+    "plaintext": false,
+    "markdown": false,
     "scminput": false
   },
 
