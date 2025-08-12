@@ -154,7 +154,7 @@
     // JavaScript, TypeScript
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
     "tsconfig.json": "tsconfig.*.json",
     // Python
     "pyproject.toml": "poetry.lock",
