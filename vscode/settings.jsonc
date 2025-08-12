@@ -265,7 +265,7 @@
   "git.autofetch": true,
   // 親ディレクトリの.gitファイルを認識する
   "git.openRepositoryInParentFolders": "always",
-// ステージングされたファイルがない場合、すべての変更をコミットする
+  // ステージングされたファイルがない場合、すべての変更をコミットする
   "git.enableSmartCommit": true,
 
   // ===========================
@@ -678,6 +678,7 @@
     "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
     "MD032": false // blanks-around-lists: Lists should be surrounded by blank lines
   },
+
   // markdown-preview-enhanced
   "markdown-preview-enhanced.mermaidTheme": "forest",
   "markdown-preview-enhanced.previewTheme": "vue.css",
