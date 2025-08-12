@@ -666,7 +666,7 @@
     "files.trimTrailingWhitespace": false,
     "editor.trimAutoWhitespace": false,
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // markdownlint
