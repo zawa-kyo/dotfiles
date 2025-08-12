@@ -154,7 +154,7 @@
     // JavaScript, TypeScript
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
     "tsconfig.json": "tsconfig.*.json",
     // Python
     "pyproject.toml": "poetry.lock",
@@ -265,6 +265,8 @@
   "git.autofetch": true,
   // 親ディレクトリの.gitファイルを認識する
   "git.openRepositoryInParentFolders": "always",
+  // ステージングされたファイルがない場合、すべての変更をコミットする
+  "git.enableSmartCommit": true,
 
   // ===========================
   // Devcontainer
@@ -296,36 +298,6 @@
   // Extensions
   // ===========================
 
-  // Todo Tree
-  "todo-tree.general.tags": ["FIXME", "NOTE", "TODO", "CHECK", "DONE"],
-  "todo-tree.general.showActivityBarBadge": true,
-  "todo-tree.highlights.defaultHighlight": {
-    "gutterIcon": true
-  },
-  // 検索対象から除くディレクトリ
-  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/.venv/**"],
-  "todo-tree.highlights.customHighlight": {
-    "TODO": {
-      "icon": "bell",
-      "foreground": "#eb3055",
-      "iconColour": "#eb3055"
-    },
-    "FIXME": {
-      "icon": "flame",
-      "foreground": "#ff7700",
-      "iconColour": "#ff7700"
-    },
-    "NOTE": {
-      "icon": "bookmark",
-      "foreground": "#15a5ad",
-      "iconColour": "#15a5ad"
-    },
-    "DONE": {
-      "icon": "check",
-      "foreground": "#32CD32",
-      "iconColour": "#32CD32"
-    }
-  },
   // IndentRainbow
   "indentRainbow.colors": [
     "rgba(255,255,64,0.07)",
@@ -396,8 +368,8 @@
   // GitHub Copilot
   "github.copilot.enable": {
     "*": true,
-    "plaintext": true,
-    "markdown": true,
+    "plaintext": false,
+    "markdown": false,
     "scminput": false
   },
 
@@ -691,11 +663,10 @@
       "strings": "on",
       "other": "on"
     },
-    "editor.wordWrap": "on",
     "files.trimTrailingWhitespace": false,
     "editor.trimAutoWhitespace": false,
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // markdownlint
@@ -707,6 +678,7 @@
     "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
     "MD032": false // blanks-around-lists: Lists should be surrounded by blank lines
   },
+
   // markdown-preview-enhanced
   "markdown-preview-enhanced.mermaidTheme": "forest",
   "markdown-preview-enhanced.previewTheme": "vue.css",
