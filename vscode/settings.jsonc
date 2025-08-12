@@ -296,36 +296,6 @@
   // Extensions
   // ===========================
 
-  // Todo Tree
-  "todo-tree.general.tags": ["FIXME", "NOTE", "TODO", "CHECK", "DONE"],
-  "todo-tree.general.showActivityBarBadge": true,
-  "todo-tree.highlights.defaultHighlight": {
-    "gutterIcon": true
-  },
-  // 検索対象から除くディレクトリ
-  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/.venv/**"],
-  "todo-tree.highlights.customHighlight": {
-    "TODO": {
-      "icon": "bell",
-      "foreground": "#eb3055",
-      "iconColour": "#eb3055"
-    },
-    "FIXME": {
-      "icon": "flame",
-      "foreground": "#ff7700",
-      "iconColour": "#ff7700"
-    },
-    "NOTE": {
-      "icon": "bookmark",
-      "foreground": "#15a5ad",
-      "iconColour": "#15a5ad"
-    },
-    "DONE": {
-      "icon": "check",
-      "foreground": "#32CD32",
-      "iconColour": "#32CD32"
-    }
-  },
   // IndentRainbow
   "indentRainbow.colors": [
     "rgba(255,255,64,0.07)",
