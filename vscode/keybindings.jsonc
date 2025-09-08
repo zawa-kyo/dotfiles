@@ -1,16 +1,16 @@
 [
   {
-    // サイドバーをトグル
+    // Toggle sidebar visibility
     "key": "cmd+b",
     "command": "workbench.action.toggleSidebarVisibility"
   },
   {
-    // ターミナルをトグル
+    // Toggle terminal panel
     "key": "cmd+J",
     "command": "workbench.action.terminal.toggleTerminal"
   },
   {
-    // 次へ進む
+    // Navigate forward
     "key": "ctrl+i",
     "command": "workbench.action.navigateForward"
   }
