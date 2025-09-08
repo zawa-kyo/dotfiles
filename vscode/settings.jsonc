@@ -223,11 +223,21 @@
   },
 
   // ===========================
+  // Tasks
+  // ===========================
+
+  // タスク実行時にプロブレムマッチャーの入力ダイアログを表示しない
+  "task.problemMatchers.neverPrompt": true,
+
+  // ===========================
   // Debug console
   // ===========================
 
   // コンソールのフォントサイズ
   "debug.console.fontSize": 12,
+
+  // デバッグ実行中でも「デバッグコンソール」を自動で開かない
+  "debug.internalConsoleOptions": "neverOpen",
 
   // ===========================
   // Neovim
@@ -372,6 +382,7 @@
     "markdown": false,
     "scminput": false
   },
+  "github.copilot.chat.codesearch.enabled": true,
 
   // ===========================
   // Linter, formatter
