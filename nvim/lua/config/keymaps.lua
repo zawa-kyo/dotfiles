@@ -9,7 +9,7 @@ local utils = require("config.utils")
 local opts = utils.getOpts
 local keymap = vim.keymap.set
 
---Remap space as leader key
+--Remap space to leader key
 keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
