@@ -26,10 +26,15 @@ vim.g.maplocalleader = " "
 --   term_mode = 't',
 --   command_mode = 'c',
 --
--- Design notes (movement):
--- - Window navigation stays on <leader>h/j/k/l.
--- - Split/resize/equalize are unified under <leader>w… (window operations).
--- - Freed up plain 's' (previously split) for other uses (e.g. Hop’s t/T equivalent).
+-- Prefix design (movement/navigation):
+--   <leader>w … Window ops (move/split/resize/equalize/close)
+--   <leader>t … Tab ops (new/move/close)
+--   <leader>b … Buffer ops (next/prev/list/delete)
+--   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
+--   ] / [     … “Next / Previous” common UI (diagnostic/quickfix/loclist/…)
+--   n/N       … Keep default search repeat
+--   Hop       … f/F (to char), s/S (t/T-equivalent: before/after the char)
+--   *t is reserved for tabs; avoid collisions with Hop by using s/S
 
 --------------------
 -- Normal Mode
@@ -39,16 +44,18 @@ vim.g.maplocalleader = " "
 -- Note: Enabling ‘silent’ may cause rendering delay
 keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
--- Better window navigation
+-- Window navigation (<leader>h/j/k/l)
 keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
 keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
 keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 
--- Window operations
+-- Window operations (<leader>w…)
 keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
 keymap("n", "<leader>wv", ":vsplit<CR><C-w>w", opts("Split window vertically"))
 keymap("n", "<leader>w=", "<C-w>=", opts("Equalize window sizes"))
+
+-- Resize (use shifted H/J/K/L to imply “bigger action”)
 keymap("n", "<leader>wH", "5<C-w><", opts("Decrease window width"))
 keymap("n", "<leader>wL", "5<C-w>>", opts("Increase window width"))
 keymap("n", "<leader>wJ", "5<C-w>-", opts("Decrease window height"))
@@ -58,20 +65,20 @@ keymap("n", "<leader>wK", "5<C-w>+", opts("Increase window height"))
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
 keymap("v", ",", "<Esc>ggVG", opts("Select all"))
 
--- Remap 'j'/'k' for wrapped lines
+-- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
 
--- Move to the next/previous location
+-- Jump history (keep gp/gP)
 keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
 keymap("n", "gP", "<C-i>", opts("Jump to next location"))
 keymap("n", "gn", "<C-o>", opts("Jump to next location"))
 keymap("n", "gN", "<C-i>", opts("Jump to previous location"))
 
--- Optimize to jump to the matching pair
+-- Match pairs
 keymap("n", "M", "%", opts("Jump to the matching pair"))
 
--- Copy to clipboard
+-- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
 
 -- Tab operations
@@ -86,14 +93,14 @@ keymap("n", "zj", "zt", opts("Look down"))
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
 
--- Move to the beginning/end of the line
+-- Line begin/end
 keymap("n", "H", "^", opts("Move to the beginning of the line"))
 keymap("n", "L", "$", opts("Move to the end of the line"))
 
--- Optimize redo
+-- Redo
 keymap("n", "U", "<C-r>", opts("Redo"))
 
--- Move current line up/down in normal mode
+-- Move current line up/down
 keymap("n", "<C-k>", "<Cmd>move -2<CR>==", opts("Move current line up"))
 keymap("n", "<C-j>", "<Cmd>move +1<CR>==", opts("Move current line down"))
 
@@ -101,7 +108,7 @@ keymap("n", "<C-j>", "<Cmd>move +1<CR>==", opts("Move current line down"))
 keymap("n", "p", "]p`]", opts("Indent after pasting"))
 keymap("n", "P", "]P`]", opts("Indent after pasting"))
 
--- Automatically indent when starting editing on an empty line
+-- Auto-indent when starting edit on an empty line
 keymap("n", "i", function()
   return vim.fn.getline(".") == "" and '"_cc' or "i"
 end, opts("Indent when starting editing on an empty line", nil, nil, true))
@@ -113,7 +120,7 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 -- Insert Mode
 --------------------
 
--- Automatically insert a space after a comma
+-- Auto space after comma
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
 -- Remap jj to Esc
@@ -123,22 +130,22 @@ keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
 -- Visual Mode
 --------------------
 
--- Adjust indentation consecutively.
+-- Indentation
 keymap("v", "<", "<gv", opts("Add indentation"))
 keymap("v", ">", ">gv", opts("Reduce indentation"))
 
--- Align the behavior of Visual Mode with `c` and `d`.
+-- Align Visual behavior
 keymap("v", "v", "<Esc>V", opts("Select the whole line"))
 keymap("n", "V", "v$", opts("Select until the end of the line"))
 
--- Save the cursor position when yanking
+-- Preserve cursor on yank
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
 
--- Move selected lines up/down in visual mode
+-- Move selected lines
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
 
--- Prevent leading/trailing spaces from being included when appending
+-- Text objects: avoid leading/trailing spaces when appending
 for _, quote in ipairs({ '"', "'", "`" }) do
   keymap({ "x", "o" }, "a" .. quote, "2i" .. quote, opts("Append without leading/trailing spaces"))
 end
@@ -147,7 +154,7 @@ end
 -- Text Object
 --------------------
 
--- Select words between spaces
+-- Between spaces
 keymap("o", "i<space>", "iW", opts("Select words between spaces"))
 keymap("x", "i<space>", "iW", opts("Select words between spaces"))
 
