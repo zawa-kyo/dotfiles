@@ -54,7 +54,9 @@ keymap("n", "gk", "gg", opts("Move to the top line"))
 
 -- Move to the next/previous location
 keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
-keymap("n", "gn", "<C-i>", opts("Jump to next location"))
+keymap("n", "gP", "<C-i>", opts("Jump to next location"))
+keymap("n", "gn", "<C-o>", opts("Jump to next location"))
+keymap("n", "gN", "<C-i>", opts("Jump to previous location"))
 
 -- Optimize to jump to the matching pair
 keymap("n", "M", "%", opts("Jump to the matching pair"))
