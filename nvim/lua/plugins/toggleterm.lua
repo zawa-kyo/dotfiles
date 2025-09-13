@@ -6,7 +6,7 @@ return {
 
     keys = {
       {
-        "<leader>t",
+        "<leader>T",
         ":ToggleTerm direction=horizontal name=desktop<CR>",
         desc = "Open terminal in a horizontal split",
       },

@@ -1,3 +1,4 @@
+-- flutter-tools delegates LSP (dartls) setup; reuse common on_attach/capabilities
 return {
   "nvim-flutter/flutter-tools.nvim",
 
@@ -10,5 +11,13 @@ return {
     "stevearc/dressing.nvim",
   },
 
-  config = true,
+  config = function()
+    local common = require("config.lsp")
+    require("flutter-tools").setup({
+      lsp = {
+        on_attach = common.on_attach,
+        capabilities = common.capabilities,
+      },
+    })
+  end,
 }

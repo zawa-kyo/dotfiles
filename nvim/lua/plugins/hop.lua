@@ -14,7 +14,7 @@ return {
   keys = {
     -- Jump to a word
     {
-      "<leader>w",
+      "m",
       "<cmd>HopWord<CR>",
       mode = "n",
       desc = "Hop Word",
@@ -22,18 +22,10 @@ return {
 
     -- Jump to a line
     {
-      "<leader>v",
+      "M",
       "<cmd>HopLine<CR>",
       mode = "n",
       desc = "Hop Line",
-    },
-
-    -- Jump to a single character
-    {
-      "<leader>c",
-      "<cmd>HopChar1<CR>",
-      mode = "n",
-      desc = "Hop Char",
     },
 
     -- Jump to a character in the current line (after the cursor)
@@ -54,7 +46,7 @@ return {
 
     -- Jump to just before a character in the current line (after the cursor)
     {
-      "t",
+      "s",
       function()
         local hop = require("hop")
         local hint = require("hop.hint")
@@ -70,7 +62,7 @@ return {
 
     -- Jump to just after a character in the current line (before the cursor)
     {
-      "T",
+      "S",
       function()
         local hop = require("hop")
         local hint = require("hop.hint")

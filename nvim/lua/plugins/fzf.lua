@@ -35,6 +35,8 @@ local M = {
       "ahmedkhalf/project.nvim",
       config = function()
         require("project_nvim").setup({
+          -- Avoid LSP-based root detection to prevent deprecated API usage
+          detection_methods = { "pattern" },
           patterns = { ".git", "Makefile", "package.json" },
         })
       end,
