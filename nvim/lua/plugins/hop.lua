@@ -46,7 +46,7 @@ return {
 
     -- Jump to just before a character in the current line (after the cursor)
     {
-      "t",
+      "s",
       function()
         local hop = require("hop")
         local hint = require("hop.hint")
@@ -62,7 +62,7 @@ return {
 
     -- Jump to just after a character in the current line (before the cursor)
     {
-      "T",
+      "S",
       function()
         local hop = require("hop")
         local hint = require("hop.hint")

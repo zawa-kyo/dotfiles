@@ -54,12 +54,19 @@ keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
 keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
 keymap("n", "<leader>wv", ":vsplit<CR><C-w>w", opts("Split window vertically"))
 keymap("n", "<leader>w=", "<C-w>=", opts("Equalize window sizes"))
+keymap("n", "<leader>wq", "<C-w>q", opts("Close the current window"))
 
 -- Resize (use shifted H/J/K/L to imply “bigger action”)
 keymap("n", "<leader>wH", "5<C-w><", opts("Decrease window width"))
 keymap("n", "<leader>wL", "5<C-w>>", opts("Increase window width"))
 keymap("n", "<leader>wJ", "5<C-w>-", opts("Decrease window height"))
 keymap("n", "<leader>wK", "5<C-w>+", opts("Increase window height"))
+
+-- Tab operations (<leader>t…)
+keymap("n", "<leader>tn", ":tabedit", opts("Open new tab (enter filename)"))
+keymap("n", "<leader>tl", "gt", opts("Go to next tab"))
+keymap("n", "<leader>th", "gT", opts("Go to previous tab"))
+keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
@@ -81,14 +88,29 @@ keymap("n", "M", "%", opts("Jump to the matching pair"))
 -- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
 
--- Tab operations
-keymap("n", "tn", ":tabedit", opts("Create a new tab"))
-keymap("n", "gh", "gT", opts("Move to the left tab"))
-keymap("n", "gl", "gt", opts("Move to the right tab"))
-
 -- Look around
 keymap("n", "zk", "zb", opts("Look up"))
 keymap("n", "zj", "zt", opts("Look down"))
+
+-- “Next/Prev” conventions
+-- Diagnostics
+keymap("n", "]d", function()
+  vim.diagnostic.goto_next({ float = false })
+end, opts("Go to next diagnostic"))
+keymap("n", "[d", function()
+  vim.diagnostic.goto_prev({ float = false })
+end, opts("Go to previous diagnostic"))
+keymap("n", "<leader>e", vim.diagnostic.open_float, opts("Open diagnostic float"))
+
+-- Quickfix / Loclist
+keymap("n", "]q", "<Cmd>cnext<CR>", opts("Go to next quickfix item"))
+keymap("n", "[q", "<Cmd>cprev<CR>", opts("Go to previous quickfix item"))
+keymap("n", "<leader>qq", "<Cmd>copen<CR>", opts("Open quickfix"))
+keymap("n", "<leader>qQ", "<Cmd>cclose<CR>", opts("Close quickfix"))
+keymap("n", "]l", "<Cmd>lnext<CR>", opts("Go to next location list item"))
+keymap("n", "[l", "<Cmd>lprev<CR>", opts("Go to previous location list item"))
+keymap("n", "<leader>ll", "<Cmd>lopen<CR>", opts("Open location list"))
+keymap("n", "<leader>lL", "<Cmd>lclose<CR>", opts("Close location list"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
