@@ -1,3 +1,8 @@
+-- LSP setup strategy
+-- - Using lspconfig-led approach (common practice with customization).
+-- - mason manages installs; we disable mason-lspconfig automatic_enable to avoid
+--   duplicate startup paths. If you switch to mason-led, remove lspconfig.setup
+--   calls and set automatic_enable = true.
 local M = {}
 
 -- LSP servers to install
@@ -117,8 +122,7 @@ table.insert(M, {
     local mason_lspconfig = require("mason-lspconfig")
     mason_lspconfig.setup({
       ensure_installed = M.servers,
-      -- Root cause fix: avoid auto-enabling servers via vim.lsp.enable(),
-      -- since we manage setup via lspconfig handlers below.
+      -- Do not auto-enable via vim.lsp.enable(); lspconfig handles startup.
       automatic_enable = false,
     })
 
@@ -137,6 +141,7 @@ table.insert(M, {
       lsp[server].setup(opt)
     end
 
+    -- Single startup path: configure each server via lspconfig handlers.
     if type(mason_lspconfig.setup_handlers) == "function" then
       mason_lspconfig.setup_handlers({
         function(server)

@@ -1,3 +1,5 @@
+-- Common LSP config shared across servers (and flutter-tools)
+-- Keep one startup path; keymaps assume LSP is attached.
 local M = {}
 
 -- Shared LSP capabilities

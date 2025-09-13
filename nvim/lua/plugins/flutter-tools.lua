@@ -1,3 +1,4 @@
+-- flutter-tools delegates LSP (dartls) setup; reuse common on_attach/capabilities
 return {
   "nvim-flutter/flutter-tools.nvim",
 
