@@ -224,4 +224,4 @@ local function close_window()
   end
 end
 
-keymap("n", "<Esc>", close_window, opts("Close hover/clear search"))
+keymap("n", "<Esc>", close_window, opts("Close hover or clear search highlight"))
