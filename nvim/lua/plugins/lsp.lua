@@ -97,7 +97,7 @@ table.insert(M, {
 
   lazy = true,
   event = {
-    "BufRead",
+    "BufReadPre",
     "BufNewFile",
   },
   cond = not vim.g.vscode,
@@ -115,7 +115,12 @@ table.insert(M, {
 
   config = function()
     local mason_lspconfig = require("mason-lspconfig")
-    mason_lspconfig.setup({ ensure_installed = M.servers })
+    mason_lspconfig.setup({
+      ensure_installed = M.servers,
+      -- Root cause fix: avoid auto-enabling servers via vim.lsp.enable(),
+      -- since we manage setup via lspconfig handlers below.
+      automatic_enable = false,
+    })
 
     local function setup_server(server)
       local lsp = require("lspconfig")
