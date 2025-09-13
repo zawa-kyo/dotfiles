@@ -14,7 +14,7 @@ return {
   keys = {
     -- Jump to a word
     {
-      "<leader>w",
+      "m",
       "<cmd>HopWord<CR>",
       mode = "n",
       desc = "Hop Word",
@@ -22,18 +22,10 @@ return {
 
     -- Jump to a line
     {
-      "<leader>v",
+      "M",
       "<cmd>HopLine<CR>",
       mode = "n",
       desc = "Hop Line",
-    },
-
-    -- Jump to a single character
-    {
-      "<leader>c",
-      "<cmd>HopChar1<CR>",
-      mode = "n",
-      desc = "Hop Char",
     },
 
     -- Jump to a character in the current line (after the cursor)
