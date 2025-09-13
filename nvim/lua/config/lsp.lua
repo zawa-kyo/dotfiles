@@ -11,12 +11,11 @@ function M.on_attach(_, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, noremap = true, desc = desc })
   end
 
-  map("n", "K", vim.lsp.buf.hover, "Show hover information")
-  -- Keep native gf; provide explicit formatter mapping.
   map("n", "<leader>lf", function()
     vim.lsp.buf.format({ async = true })
   end, "Format the current file")
 
+  map("n", "K", vim.lsp.buf.hover, "Show hover information")
   map("n", "gr", vim.lsp.buf.references, "Show references")
   map("n", "gd", vim.lsp.buf.definition, "Go to definition")
   map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
