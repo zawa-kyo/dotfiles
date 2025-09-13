@@ -115,7 +115,7 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 -- Insert Mode
 --------------------
 
--- コンマの後に自動的にスペースを挿入
+-- Automatically insert a space after a comma
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
 --------------------
