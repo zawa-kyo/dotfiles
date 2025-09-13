@@ -9,7 +9,7 @@ local utils = require("config.utils")
 local opts = utils.getOpts
 local keymap = vim.keymap.set
 
---Remap space as leader key
+--Remap space to leader key
 keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -50,7 +50,9 @@ keymap("n", "k", "gk", opts("Move up wrapped lines"))
 
 -- Move to the next/previous location
 keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
-keymap("n", "gn", "<C-i>", opts("Jump to next location"))
+keymap("n", "gP", "<C-i>", opts("Jump to next location"))
+keymap("n", "gn", "<C-o>", opts("Jump to next location"))
+keymap("n", "gN", "<C-i>", opts("Jump to previous location"))
 
 -- Optimize to jump to the matching pair
 keymap("n", "M", "%", opts("Jump to the matching pair"))
@@ -111,8 +113,11 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 -- Insert Mode
 --------------------
 
--- コンマの後に自動的にスペースを挿入
+-- Automatically insert a space after a comma
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
+
+-- Remap jj to Esc
+keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
 
 --------------------
 -- Visual Mode
