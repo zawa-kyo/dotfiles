@@ -118,6 +118,9 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 -- Automatically insert a space after a comma
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
+-- Remap jj to Esc
+keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
+
 --------------------
 -- Visual Mode
 --------------------
