@@ -9,7 +9,7 @@ local utils = require("config.utils")
 local opts = utils.getOpts
 local keymap = vim.keymap.set
 
---Remap space to leader key
+-- Remap space to leader key
 keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -25,6 +25,11 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = 'x',
 --   term_mode = 't',
 --   command_mode = 'c',
+--
+-- Design notes (movement):
+-- - Window navigation stays on <leader>h/j/k/l.
+-- - Split/resize/equalize are unified under <leader>w… (window operations).
+-- - Freed up plain 's' (previously split) for other uses (e.g. Hop’s t/T equivalent).
 
 --------------------
 -- Normal Mode
@@ -39,6 +44,15 @@ keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
 keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
 keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
 keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
+
+-- Window operations
+keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
+keymap("n", "<leader>wv", ":vsplit<CR><C-w>w", opts("Split window vertically"))
+keymap("n", "<leader>w=", "<C-w>=", opts("Equalize window sizes"))
+keymap("n", "<leader>wH", "5<C-w><", opts("Decrease window width"))
+keymap("n", "<leader>wL", "5<C-w>>", opts("Increase window width"))
+keymap("n", "<leader>wJ", "5<C-w>-", opts("Decrease window height"))
+keymap("n", "<leader>wK", "5<C-w>+", opts("Increase window height"))
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
@@ -68,20 +82,6 @@ keymap("n", "gl", "gt", opts("Move to the right tab"))
 -- Look around
 keymap("n", "zk", "zb", opts("Look up"))
 keymap("n", "zj", "zt", opts("Look down"))
-
--- Split window
-keymap("n", "s", "<Nop>", opts("Nop"))
-keymap("n", "ss", ":split<Return><C-w>w", opts("Split window horizontally"))
-keymap("n", "sv", ":vsplit<Return><C-w>w", opts("Split window vertically"))
-
--- Resize window
-keymap("n", "sh", "5<C-w><", opts("Decrease window width"))
-keymap("n", "sl", "5<C-w>>", opts("Increase window width"))
-keymap("n", "sj", "5<C-w>-", opts("Decrease window height"))
-keymap("n", "sk", "5<C-w>+", opts("Increase window height"))
-
--- Equalize window sizes
-keymap("n", "se", "<C-w>=", opts("Equalize window sizes"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
