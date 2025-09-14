@@ -10,14 +10,14 @@ local M = {
 
   keys = {
     {
-      "<leader>b",
+      "<leader>e",
       function()
         require("plugins.fern").toggle_or_close_fern()
       end,
       desc = "Toggle or close Fern",
     },
     {
-      "<leader>o",
+      "<leader>E",
       function()
         require("plugins.fern").toggle_fern_with_reveal()
       end,

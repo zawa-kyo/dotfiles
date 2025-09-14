@@ -44,11 +44,15 @@ vim.g.maplocalleader = " "
 -- Note: Enabling ‘silent’ may cause rendering delay
 keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
--- Window navigation (<leader>h/j/k/l)
-keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
-keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
-keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
-keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
+-- Window navigation (Ctrl+h/j/k/l or <leader>h/j/k/l)
+keymap("n", "<C-h>", "<C-w>h", opts("Go to left window"))
+keymap("n", "<C-j>", "<C-w>j", opts("Go to bottom window"))
+keymap("n", "<C-k>", "<C-w>k", opts("Go to top window"))
+keymap("n", "<C-l>", "<C-w>l", opts("Go to right window"))
+keymap("n", "<leader>h", "<C-w>h", opts("Go to the left window"))
+keymap("n", "<leader>j", "<C-w>j", opts("Go to the bottom window"))
+keymap("n", "<leader>k", "<C-w>k", opts("Go to the top window"))
+keymap("n", "<leader>l", "<C-w>l", opts("Go to the right window"))
 
 -- Window operations (<leader>w…)
 keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
@@ -61,6 +65,12 @@ keymap("n", "<leader>wH", "5<C-w><", opts("Decrease window width"))
 keymap("n", "<leader>wL", "5<C-w>>", opts("Increase window width"))
 keymap("n", "<leader>wJ", "5<C-w>-", opts("Decrease window height"))
 keymap("n", "<leader>wK", "5<C-w>+", opts("Increase window height"))
+
+-- Buffer operations (<leader>b…)
+keymap("n", "<leader>bl", "<Cmd>bnext<CR>", opts("Go to next buffer"))
+keymap("n", "<leader>bh", "<Cmd>bprevious<CR>", opts("Go to previous buffer"))
+keymap("n", "<leader>bb", "<Cmd>ls<CR>", opts("List buffers"))
+keymap("n", "<leader>bd", "<Cmd>bdelete<CR>", opts("Delete buffer"))
 
 -- Tab operations (<leader>t…)
 keymap("n", "<leader>tn", ":tabedit", opts("Open new tab (enter filename)"))
@@ -100,7 +110,7 @@ end, opts("Go to next diagnostic"))
 keymap("n", "[d", function()
   vim.diagnostic.goto_prev({ float = false })
 end, opts("Go to previous diagnostic"))
-keymap("n", "<leader>e", vim.diagnostic.open_float, opts("Open diagnostic float"))
+keymap("n", "<leader>d", vim.diagnostic.open_float, opts("Open diagnostic float"))
 
 -- Quickfix / Loclist
 keymap("n", "]q", "<Cmd>cnext<CR>", opts("Go to next quickfix item"))
