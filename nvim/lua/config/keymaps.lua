@@ -110,7 +110,7 @@ end, opts("Go to next diagnostic"))
 keymap("n", "[d", function()
   vim.diagnostic.goto_prev({ float = false })
 end, opts("Go to previous diagnostic"))
-keymap("n", "<leader>e", vim.diagnostic.open_float, opts("Open diagnostic float"))
+keymap("n", "<leader>d", vim.diagnostic.open_float, opts("Open diagnostic float"))
 
 -- Quickfix / Loclist
 keymap("n", "]q", "<Cmd>cnext<CR>", opts("Go to next quickfix item"))
