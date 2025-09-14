@@ -66,6 +66,12 @@ keymap("n", "<leader>wL", "5<C-w>>", opts("Increase window width"))
 keymap("n", "<leader>wJ", "5<C-w>-", opts("Decrease window height"))
 keymap("n", "<leader>wK", "5<C-w>+", opts("Increase window height"))
 
+-- Buffer operations (<leader>b…)
+keymap("n", "<leader>bl", "<Cmd>bnext<CR>", opts("Go to next buffer"))
+keymap("n", "<leader>bh", "<Cmd>bprevious<CR>", opts("Go to previous buffer"))
+keymap("n", "<leader>bb", "<Cmd>ls<CR>", opts("List buffers"))
+keymap("n", "<leader>bd", "<Cmd>bdelete<CR>", opts("Delete buffer"))
+
 -- Tab operations (<leader>t…)
 keymap("n", "<leader>tn", ":tabedit", opts("Open new tab (enter filename)"))
 keymap("n", "<leader>tl", "gt", opts("Go to next tab"))
