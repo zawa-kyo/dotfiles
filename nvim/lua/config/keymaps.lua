@@ -44,11 +44,15 @@ vim.g.maplocalleader = " "
 -- Note: Enabling ‘silent’ may cause rendering delay
 keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
--- Window navigation (<leader>h/j/k/l)
-keymap("n", "<leader>h", "<C-w>h", opts("Move to the left window"))
-keymap("n", "<leader>j", "<C-w>j", opts("Move to the bottom window"))
-keymap("n", "<leader>k", "<C-w>k", opts("Move to the top window"))
-keymap("n", "<leader>l", "<C-w>l", opts("Move to the right window"))
+-- Window navigation (Ctrl+h/j/k/l or <leader>h/j/k/l)
+keymap("n", "<C-h>", "<C-w>h", opts("Go to left window"))
+keymap("n", "<C-j>", "<C-w>j", opts("Go to bottom window"))
+keymap("n", "<C-k>", "<C-w>k", opts("Go to top window"))
+keymap("n", "<C-l>", "<C-w>l", opts("Go to right window"))
+keymap("n", "<leader>h", "<C-w>h", opts("Go to the left window"))
+keymap("n", "<leader>j", "<C-w>j", opts("Go to the bottom window"))
+keymap("n", "<leader>k", "<C-w>k", opts("Go to the top window"))
+keymap("n", "<leader>l", "<C-w>l", opts("Go to the right window"))
 
 -- Window operations (<leader>w…)
 keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
