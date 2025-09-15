@@ -89,8 +89,8 @@ keymap("n", "k", "gk", opts("Move up wrapped lines"))
 -- Jump history (keep gp/gP)
 keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
 keymap("n", "gP", "<C-i>", opts("Jump to next location"))
-keymap("n", "gn", "<C-o>", opts("Jump to next location"))
-keymap("n", "gN", "<C-i>", opts("Jump to previous location"))
+keymap("n", "gn", "<C-i>", opts("Jump to next location"))
+keymap("n", "gN", "<C-o>", opts("Jump to previous location"))
 
 -- Match pairs
 keymap("n", "M", "%", opts("Jump to the matching pair"))
