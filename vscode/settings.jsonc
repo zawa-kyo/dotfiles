@@ -121,7 +121,10 @@
   "workbench.iconTheme": "catppuccin-macchiato",
   // プレビューモードを抑制
   "workbench.editor.enablePreview": false,
+  // QuickOpenのプレビューモードを抑制 (タブを上書きしない)
   "workbench.editor.enablePreviewFromQuickOpen": false,
+  // 新しいエディタを開く位置 (last: 最後尾, beside: 隣)
+  "workbench.editor.openPositioning": "last",
   // ファイルツリーにインデントのガイド線を表示 / インデントのサイズを変更する
   "workbench.tree.renderIndentGuides": "always",
   // 起動時にどのページを開くか
