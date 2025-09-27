@@ -14,6 +14,22 @@ keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- VSCode integration: reuse common leader keys to trigger native commands
+if vim.g.vscode then
+  local function vscode_map(lhs, command, desc)
+    keymap("n", lhs, function()
+      vim.fn.VSCodeNotify(command)
+    end, opts(desc))
+  end
+
+  vscode_map("<leader>p", "workbench.action.quickOpen", "Quick Open (VSCode)")
+  vscode_map("<leader>g", "workbench.action.findInFiles", "Search in workspace (VSCode)")
+  vscode_map("<leader>f", "actions.find", "Search in file (VSCode)")
+  vscode_map("<leader>e", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
+  vscode_map("<leader>T", "workbench.action.terminal.toggleTerminal", "Toggle terminal (VSCode)")
+  vscode_map("<leader>d", "workbench.actions.view.problems", "Open Problems view (VSCode)")
+end
+
 --------------------
 -- Docs
 --------------------
