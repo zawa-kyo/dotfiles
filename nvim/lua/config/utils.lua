@@ -1,5 +1,5 @@
 -- Module for utility functions
-M = {}
+local M = {}
 
 --- Check if a value is not nil
 --- @param value any The value to check
@@ -53,6 +53,20 @@ function M.getOpts(desc, is_noremap, is_silent, is_expr)
   end
 
   return options
+end
+
+--- Map VSCode command to a normal-mode keymap when running under VSCode
+--- @param lhs string The keybinding on the Neovim side
+--- @param command string The VSCode command id to trigger
+--- @param desc string|nil Description shown in which-key/help
+function M.vscode_map(lhs, command, desc)
+  if not vim.g.vscode then
+    return
+  end
+
+  vim.keymap.set("n", lhs, function()
+    vim.fn.VSCodeNotify(command)
+  end, M.getOpts(desc))
 end
 
 return M
