@@ -1,3 +1,9 @@
+local utils = require("config.utils")
+
+if vim.g.vscode then
+  utils.vscode_map("<leader>T", "workbench.action.terminal.toggleTerminal", "Toggle terminal (VSCode)")
+end
+
 return {
   {
     "akinsho/toggleterm.nvim",

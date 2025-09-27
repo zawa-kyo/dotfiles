@@ -1,3 +1,11 @@
+local utils = require("config.utils")
+
+if vim.g.vscode then
+  utils.vscode_map("<leader>p", "workbench.action.quickOpen", "Quick Open (VSCode)")
+  utils.vscode_map("<leader>g", "workbench.action.findInFiles", "Search in workspace (VSCode)")
+  utils.vscode_map("<leader>f", "actions.find", "Search in file (VSCode)")
+end
+
 local M = {
   "ibhagwan/fzf-lua",
 
