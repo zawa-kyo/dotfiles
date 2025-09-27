@@ -127,18 +127,17 @@ table.insert(M, {
     })
 
     local function setup_server(server)
-      local lsp = require("lspconfig")
-      if not lsp[server] then
-        return -- Skip unknown servers on older lspconfig versions
-      end
-
       local common = require("config.lsp")
-      local opt = {
-        capabilities = common.capabilities,
-        on_attach = common.on_attach,
-      }
 
-      lsp[server].setup(opt)
+      vim.lsp.config(
+        server,
+        vim.tbl_deep_extend("force", vim.lsp.config[server] or {}, {
+          capabilities = common.capabilities,
+          on_attach = common.on_attach,
+        })
+      )
+
+      vim.lsp.enable(server)
     end
 
     -- Single startup path: configure each server via lspconfig handlers.
@@ -156,8 +155,12 @@ table.insert(M, {
     end
 
     -- Diagnostic settings
-    vim.lsp.handlers["textDocument/publishDiagnostics"] =
-      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
+    vim.diagnostic.config({
+      virtual_text = false,
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+    })
   end,
 })
 
