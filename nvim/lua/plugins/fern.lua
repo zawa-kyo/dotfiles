@@ -1,3 +1,10 @@
+local utils = require("config.utils")
+
+if vim.g.vscode then
+  utils.vscode_map("<leader>e", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
+  utils.vscode_map("<leader>E", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
+end
+
 local M = {
   "lambdalisue/fern.vim",
 

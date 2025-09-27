@@ -14,13 +14,6 @@ keymap("", "<Space>", "<Nop>", opts("Nop"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- VSCode integration: reuse common leader keys to trigger native commands
-if vim.g.vscode then
-  utils.vscode_map("<leader>e", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
-  utils.vscode_map("<leader>T", "workbench.action.terminal.toggleTerminal", "Toggle terminal (VSCode)")
-  utils.vscode_map("<leader>d", "workbench.actions.view.problems", "Open Problems view (VSCode)")
-end
-
 --------------------
 -- Docs
 --------------------
@@ -117,7 +110,12 @@ end, opts("Go to next diagnostic"))
 keymap("n", "[d", function()
   vim.diagnostic.goto_prev({ float = false })
 end, opts("Go to previous diagnostic"))
-keymap("n", "<leader>d", vim.diagnostic.open_float, opts("Open diagnostic float"))
+
+if not vim.g.vscode then
+  keymap("n", "<leader>d", vim.diagnostic.open_float, opts("Open diagnostic float"))
+else
+  utils.vscode_map("<leader>d", "workbench.actions.view.problems", "Open Problems view (VSCode)")
+end
 
 -- Quickfix / Loclist
 keymap("n", "]q", "<Cmd>cnext<CR>", opts("Go to next quickfix item"))
