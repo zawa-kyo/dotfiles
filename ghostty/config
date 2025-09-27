@@ -1,6 +1,6 @@
 # Theme
-theme = catppuccin-frappe
-font-family = Moralerspace Neon,
+theme = Catppuccin Frappe
+font-family = 'x14y24pxHeadUpDaisy',
 font-feature = -dlig
 font-size = 14
 
