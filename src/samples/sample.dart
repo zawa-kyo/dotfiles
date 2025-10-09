@@ -37,8 +37,10 @@ class _CounterScreenState extends State<CounterScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('You pressed the button this many times:'),
-            Text('$_counter',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+            Text(
+              '$_counter',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
