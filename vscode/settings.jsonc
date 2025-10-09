@@ -752,6 +752,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  // ========== Toml ==========
+  "[toml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+
   // ====== LiveServer ========
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.CustomBrowser": "chrome",
