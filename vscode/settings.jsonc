@@ -11,11 +11,6 @@
   "files.trimFinalNewlines": true,
   // 保存時に行末のホワイトスペースを削除
   "files.trimTrailingWhitespace": true,
-  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
-  "files.watcherExclude": {
-    "**/node_modules/*/**": true,
-    "**/.dart_tool": true
-  },
   // 非表示にする項目
   "files.exclude": {
     // OS
@@ -31,13 +26,41 @@
     "**/.mypy_cache": true,
     "**/.pytest_cache": true,
     "**/poetry.lock": false,
-    // Intellij
+    // IntelliJ
     "**/.idea": true,
     // Dart, Flutter
     "**/.dart_tool": true,
     // JavaScript, TypeScript
     "**/bun.lockb": false,
     "**/package-lock.json": false
+  },
+  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
+  "files.watcherExclude": {
+    // OS, Git
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Python
+    "**/__pycache__": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.venv": true,
+    "**/venv": true,
+    // IntelliJ
+    "**/.idea": true,
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    "**/build": true,
+    "**/ios/Pods": true,
+    "**/ios/Flutter/Flutter.framework": true,
+    "**/ios/Flutter/App.framework": true,
+    "**/android/.gradle": true,
+    "**/android/app/build": true,
+    "**/macos/Flutter/ephemeral": true,
+    "**/linux/flutter/ephemeral": true,
+    "**/windows/flutter/ephemeral": true,
+    // JavaScript, TypeScript
+    "**/node_modules": true
   },
 
   // ===========================
@@ -201,10 +224,31 @@
 
   // 検索結果から除外する項目
   "search.exclude": {
-    // ファイルブラウザには表示するが検索から除外する
-    "**/node_modules": true,
-    "**/package-lock.json": true,
-    "**.svg": false
+    // OS, Git
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.metadata": true,
+    // Python
+    "**/__pycache__": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.venv": true,
+    "**/venv": true,
+    // IntelliJ
+    "**/.idea": true,
+    // Dart, Flutter
+    "**/.dart_tool": true,
+    "**/build": true,
+    "**/ios/Pods": true,
+    "**/ios/Flutter/Flutter.framework": true,
+    "**/ios/Flutter/App.framework": true,
+    "**/android/.gradle": true,
+    "**/android/app/build": true,
+    "**/macos/Flutter/ephemeral": true,
+    "**/linux/flutter/ephemeral": true,
+    "**/windows/flutter/ephemeral": true,
+    // JavaScript, TypeScript
+    "**/node_modules": true
   },
 
   // ===========================
@@ -721,5 +765,14 @@
   "settingsSync.ignoredExtensions": [
     "sonarlint.pathToNodeExecutable",
     "markdown-preview-enhanced.plantumlJarPath"
-  ]
+  ],
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
