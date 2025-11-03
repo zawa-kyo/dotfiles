@@ -62,7 +62,18 @@
     "**/bun.lockb": false,
     "**/bun.lock": false,
     "**/poetry.lock": false,
-    "**/uv.lock": false
+    "**/uv.lock": false,
+
+    // Rust
+    "**/target/**": true,
+
+    // Go
+    "**/bin/**": true,
+    "**/vendor/**": false,
+
+    // Kotlin
+    "**/.kotlin/**": true,
+    "**/kotlin-js-store/**": true
   },
 
   // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
@@ -104,7 +115,18 @@
     "**/.parcel-cache/**": true,
     "**/.turbo/**": true,
     "**/storybook-static/**": true,
-    "**/coverage/**": true
+    "**/coverage/**": true,
+
+    // Rust
+    "**/target/**": true,
+
+    // Go
+    "**/bin/**": true,
+    "**/vendor/**": true,
+
+    // Kotlin
+    "**/.kotlin/**": true,
+    "**/kotlin-js-store/**": true
   },
 
   // ===========================
@@ -310,7 +332,18 @@
     "**/storybook-static/**": true,
     "**/coverage/**": true,
     "**/*.min.*": false,
-    "**/*.map": false
+    "**/*.map": false,
+
+    // Rust
+    "**/target/**": true,
+
+    // Go
+    "**/bin/**": true,
+    "**/vendor/**": false,
+
+    // Kotlin
+    "**/.kotlin/**": true,
+    "**/kotlin-js-store/**": true
   },
 
   // ===========================
