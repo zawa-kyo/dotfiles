@@ -11,56 +11,100 @@
   "files.trimFinalNewlines": true,
   // 保存時に行末のホワイトスペースを削除
   "files.trimTrailingWhitespace": true,
-  // 非表示にする項目
+
+  // サイドバーの表示対象外とする項目
   "files.exclude": {
-    // OS
+    // OS, Git
     "**/.DS_Store": true,
     "**/.metadata": true,
-    // Git
     "**/.git": true,
     "**/.gitignore": false,
-    // Java
-    "**/.classpath": true,
-    // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/poetry.lock": false,
-    // IntelliJ
+
+    // IDE
     "**/.idea": true,
+
+    // Python
+    "**/__pycache__/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/.tox/**": true,
+    "**/.ruff_cache/**": true,
+
     // Dart, Flutter
-    "**/.dart_tool": true,
+    "**/.dart_tool/**": true,
+    "**/build/**": true,
+
+    // Android, iOS, Desktop（Flutter）
+    "**/.gradle/**": true,
+    "**/android/app/build/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/macos/Flutter/ephemeral/**": true,
+    "**/linux/flutter/ephemeral/**": true,
+    "**/windows/flutter/ephemeral/**": true,
+
     // JavaScript, TypeScript
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/out/**": true,
+    "**/.vite/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/storybook-static/**": true,
+    "**/coverage/**": true,
+
+    // Lockfiles
+    "**/package-lock.json": false,
     "**/bun.lockb": false,
-    "**/package-lock.json": false
+    "**/bun.lock": false,
+    "**/poetry.lock": false,
+    "**/uv.lock": false
   },
+
   // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
   "files.watcherExclude": {
-    // OS, Git
-    "**/.git": true,
+    "**/.git/**": true,
     "**/.DS_Store": true,
-    "**/.metadata": true,
+    "**/.metadata/**": true,
+
+    // IDE
+    "**/.idea/**": true,
+
     // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/.venv": true,
-    "**/venv": true,
-    // IntelliJ
-    "**/.idea": true,
-    // Dart, Flutter
-    "**/.dart_tool": true,
-    "**/build": true,
-    "**/ios/Pods": true,
-    "**/ios/Flutter/Flutter.framework": true,
-    "**/ios/Flutter/App.framework": true,
-    "**/android/.gradle": true,
-    "**/android/app/build": true,
-    "**/macos/Flutter/ephemeral": true,
-    "**/linux/flutter/ephemeral": true,
-    "**/windows/flutter/ephemeral": true,
+    "**/__pycache__/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/.tox/**": true,
+    "**/.ruff_cache/**": true,
+
+    // Dart / Flutter
+    "**/.dart_tool/**": true,
+    "**/build/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/.gradle/**": true,
+    "**/android/app/build/**": true,
+    "**/macos/Flutter/ephemeral/**": true,
+    "**/linux/flutter/ephemeral/**": true,
+    "**/windows/flutter/ephemeral/**": true,
+
     // JavaScript, TypeScript
-    "**/node_modules": true
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/out/**": true,
+    "**/.vite/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/storybook-static/**": true,
+    "**/coverage/**": true
   },
 
   // ===========================
@@ -227,30 +271,46 @@
   // 検索結果から除外する項目
   "search.exclude": {
     // OS, Git
-    "**/.git": true,
+    "**/.git/**": true,
     "**/.DS_Store": true,
-    "**/.metadata": true,
+    "**/.metadata/**": true,
+
+    // IDE
+    "**/.idea/**": true,
+
     // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/.venv": true,
-    "**/venv": true,
-    // IntelliJ
-    "**/.idea": true,
+    "**/__pycache__/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/.tox/**": true,
+    "**/.ruff_cache/**": true,
+
     // Dart, Flutter
-    "**/.dart_tool": true,
-    "**/build": true,
-    "**/ios/Pods": true,
-    "**/ios/Flutter/Flutter.framework": true,
-    "**/ios/Flutter/App.framework": true,
-    "**/android/.gradle": true,
-    "**/android/app/build": true,
-    "**/macos/Flutter/ephemeral": true,
-    "**/linux/flutter/ephemeral": true,
-    "**/windows/flutter/ephemeral": true,
+    "**/.dart_tool/**": true,
+    "**/build/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/.gradle/**": true,
+    "**/android/app/build/**": true,
+    "**/macos/Flutter/ephemeral/**": true,
+    "**/linux/flutter/ephemeral/**": true,
+    "**/windows/flutter/ephemeral/**": true,
+
     // JavaScript, TypeScript
-    "**/node_modules": true
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/out/**": true,
+    "**/.vite/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/storybook-static/**": true,
+    "**/coverage/**": true,
+    "**/*.min.*": false,
+    "**/*.map": false
   },
 
   // ===========================
