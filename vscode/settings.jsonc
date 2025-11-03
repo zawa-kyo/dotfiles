@@ -407,6 +407,7 @@
   "diffEditor.diffAlgorithm": "advanced", // 差分アルゴリズムを変更
   // Breadcrumbsを表示
   "breadcrumbs.enabled": true,
+  // 自動更新を制御
   "update.mode": "manual",
 
   // ===========================
@@ -528,13 +529,14 @@
     "markdown": false,
     "scminput": false
   },
+  // GitHub Copilotでプロジェクト全体の検索を利用
   "github.copilot.chat.codesearch.enabled": true,
 
   // ===========================
   // Linter, formatter
   // ===========================
 
-  // スペリングチェックで無視するワード
+  // スペルチェックで無視する単語
   "cSpell.userWords": [
     "appbar",
     "arange",
