@@ -133,6 +133,8 @@
   "editor.tabCompletion": "onlySnippets",
   // 単語ベースの補完
   "editor.wordBasedSuggestions": "matchingDocuments",
+  // CodeLensを有効化
+  "editor.codeLens": true,
 
   // ===========================
   // Workbench
@@ -318,6 +320,10 @@
   // Git
   // ===========================
 
+  // Git自体を有効化
+  "git.enabled": true,
+  // デコレーションを有効化
+  "git.decorations.enabled": true,
   // リモートリポジトリを自動的にfetch
   "git.autofetch": true,
   // 親ディレクトリの.gitファイルを認識する
