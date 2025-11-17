@@ -95,14 +95,16 @@
     "**/.tox/**": true,
     "**/.ruff_cache/**": true,
 
-    // Dart / Flutter
+    // Dart, Flutter
     "**/.dart_tool/**": true,
     "**/.fvm/**": true,
     "**/build/**": true,
-    "**/ios/Pods/**": true,
-    "**/ios/Flutter/**": true,
+
+    // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
@@ -315,10 +317,12 @@
     "**/.dart_tool/**": true,
     "**/.fvm/**": true,
     "**/build/**": true,
-    "**/ios/Pods/**": true,
-    "**/ios/Flutter/**": true,
+
+    // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
