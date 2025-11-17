@@ -788,6 +788,11 @@
   // デフォルトのインタプリタ
   "python.defaultInterpreterPath": "./.venv/bin/python",
 
+  // ======== Jupyter =========
+  "[jupyter]": {
+    "editor.tabSize": 2
+  },
+
   // ========= Swift ==========
   "[swift]": {
     "editor.tabSize": 2
@@ -796,11 +801,6 @@
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
   "lldb.suppressUpdateNotifications": true,
-
-  // ======== Jupyter =========
-  "[jupyter]": {
-    "editor.tabSize": 2
-  },
 
   // ========= Dart ==========
   "[dart]": {
