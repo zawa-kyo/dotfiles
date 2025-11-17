@@ -34,6 +34,7 @@
 
     // Dart, Flutter
     "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
     "**/build/**": true,
 
     // Android, iOS, Desktop（Flutter）
@@ -96,6 +97,7 @@
 
     // Dart / Flutter
     "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
     "**/build/**": true,
     "**/ios/Pods/**": true,
     "**/ios/Flutter/**": true,
@@ -311,6 +313,7 @@
 
     // Dart, Flutter
     "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
     "**/build/**": true,
     "**/ios/Pods/**": true,
     "**/ios/Flutter/**": true,
