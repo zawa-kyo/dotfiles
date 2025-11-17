@@ -42,8 +42,10 @@
     // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
     "**/ios/Pods/**": true,
     "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
@@ -107,8 +109,10 @@
     // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
     "**/ios/Pods/**": true,
     "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
@@ -327,8 +331,10 @@
     // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
     "**/ios/Pods/**": true,
     "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
