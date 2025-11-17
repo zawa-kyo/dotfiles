@@ -35,6 +35,8 @@
     // Dart, Flutter
     "**/.dart_tool/**": true,
     "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
     // Android, iOS, Desktop（Flutter）
@@ -98,6 +100,8 @@
     // Dart, Flutter
     "**/.dart_tool/**": true,
     "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
     // Android, iOS, Desktop（Flutter）
@@ -316,6 +320,8 @@
     // Dart, Flutter
     "**/.dart_tool/**": true,
     "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
     // Android, iOS, Desktop（Flutter）
