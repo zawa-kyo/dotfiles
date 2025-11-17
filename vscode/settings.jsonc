@@ -34,13 +34,18 @@
 
     // Dart, Flutter
     "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
     // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
     "**/ios/Pods/**": true,
     "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
@@ -94,13 +99,20 @@
     "**/.tox/**": true,
     "**/.ruff_cache/**": true,
 
-    // Dart / Flutter
+    // Dart, Flutter
     "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
-    "**/ios/Pods/**": true,
-    "**/ios/Flutter/**": true,
+
+    // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
@@ -311,11 +323,18 @@
 
     // Dart, Flutter
     "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
-    "**/ios/Pods/**": true,
-    "**/ios/Flutter/**": true,
+
+    // Android, iOS, Desktop（Flutter）
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
     "**/macos/Flutter/ephemeral/**": true,
     "**/linux/flutter/ephemeral/**": true,
     "**/windows/flutter/ephemeral/**": true,
@@ -775,6 +794,11 @@
   // デフォルトのインタプリタ
   "python.defaultInterpreterPath": "./.venv/bin/python",
 
+  // ======== Jupyter =========
+  "[jupyter]": {
+    "editor.tabSize": 2
+  },
+
   // ========= Swift ==========
   "[swift]": {
     "editor.tabSize": 2
@@ -784,14 +808,12 @@
   "lldb.launch.expressions": "native",
   "lldb.suppressUpdateNotifications": true,
 
-  // ======== Jupyter =========
-  "[jupyter]": {
-    "editor.tabSize": 2
-  },
-
   // ========= Dart ==========
   "[dart]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
   // Flutterプロジェクト作成時のAndroid言語をJavaに設定
   "dart.flutterCreateAndroidLanguage": "java",
