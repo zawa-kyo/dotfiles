@@ -24,7 +24,9 @@ macos-icon-frame = plastic
 mouse-hide-while-typing = true
 
 # Quick Terminal
+quick-terminal-autohide = true
 quick-terminal-position = "top"
-quick-terminal-screen = "main"
+quick-terminal-screen = "mouse"
 quick-terminal-animation-duration = 0.1
+quick-terminal-size = 60%, 80%
 keybind = "global:cmd+shift+t=toggle_quick_terminal"
