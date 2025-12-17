@@ -82,12 +82,28 @@ return {
   dependencies = {
     "lambdalisue/fern-hijack.vim",
     "yuki-yano/fern-preview.vim",
+    "lambdalisue/fern-renderer-nerdfont.vim",
+    "lambdalisue/glyph-palette.vim",
+    "lambdalisue/nerdfont.vim",
   },
   keys = {
     { "<leader>e", toggle_or_close_fern, desc = "Toggle or close Fern" },
     { "<leader>E", toggle_fern_with_reveal, desc = "Toggle or reveal in Fern" },
   },
   config = function()
+    vim.g["fern#renderer"] = "nerdfont"
+
+    local glyph_group = vim.api.nvim_create_augroup("FernGlyphPalette", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      group = glyph_group,
+      pattern = "fern",
+      callback = function()
+        if vim.fn.exists("*glyph_palette#apply") == 1 then
+          vim.fn["glyph_palette#apply"]()
+        end
+      end,
+    })
+
     local fern_augroup = vim.api.nvim_create_augroup("FernCustom", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       group = fern_augroup,
