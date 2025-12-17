@@ -5,10 +5,25 @@ local M = {}
 -- Shared LSP capabilities
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false })
+
 -- Shared on_attach: buffer-local keymaps and behaviors
 function M.on_attach(_, bufnr)
   local function map(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, noremap = true, desc = desc })
+  end
+
+  local format_capable = #vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/formatting" }) > 0
+  if format_capable then
+    vim.api.nvim_clear_autocmds({ group = format_on_save_group, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = format_on_save_group,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr, async = false })
+      end,
+      desc = "Format buffer with LSP on save",
+    })
   end
 
   map("n", "<leader>lf", function()
