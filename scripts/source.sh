@@ -21,12 +21,12 @@ emit_sources() {
     cat "$file"
 
     # Emit an echo command for logging
-    echo "echo '✅ Sourced: $file' 1>&2"
+    echo "echo '󰄳 Sourced: $file' 1>&2"
   done
 
   # If no file was found
   if [ "$found" = false ]; then
-    echo "echo '🚧 No *$extension files found in $config_dir' 1>&2"
+    echo "echo '󰒡 No *$extension files found in $config_dir' 1>&2"
   fi
 }
 
