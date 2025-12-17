@@ -1,64 +1,78 @@
 local utils = require("config.utils")
 
+if not vim.g.vscode then
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+end
+
 if vim.g.vscode then
   utils.vscode_map("<leader>e", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
   utils.vscode_map("<leader>E", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
 end
 
--- Resolve the current project root so Fern opens relative to cwd changes
-local function project_root()
-  return vim.loop.cwd() or vim.fn.getcwd()
-end
-local last_file_state = nil
+local state = {
+  last_win = nil,
+  last_pos = nil,
+}
 
--- Jump back to the last non-Fern window/cursor position if possible
-local function restore_last_window()
-  if last_file_state and vim.api.nvim_win_is_valid(last_file_state.win) then
-    vim.api.nvim_set_current_win(last_file_state.win)
-    vim.api.nvim_win_set_cursor(last_file_state.win, last_file_state.pos)
+-- Remember the window and cursor position before opening Fern
+local function remember_window()
+  state.last_win = vim.api.nvim_get_current_win()
+  state.last_pos = vim.api.nvim_win_get_cursor(0)
+end
+
+-- Restore focus to the previously saved window/cursor if still valid
+local function restore_window()
+  if state.last_win and vim.api.nvim_win_is_valid(state.last_win) then
+    vim.api.nvim_set_current_win(state.last_win)
+    vim.api.nvim_win_set_cursor(state.last_win, state.last_pos)
   end
 end
 
--- Open Fern as a drawer and optionally reveal the current buffer
+-- Determine the base directory Fern should use
+local function fern_root()
+  return vim.loop.cwd() or vim.fn.getcwd()
+end
+
+-- Open Fern as a drawer and optionally reveal the current file
 local function open_fern_drawer()
-  last_file_state = {
-    win = vim.api.nvim_get_current_win(),
-    pos = vim.api.nvim_win_get_cursor(0),
-  }
+  remember_window()
 
   vim.schedule(function()
-    local root = project_root()
-    vim.fn.chdir(root)
+    local root = fern_root()
     local current_file = vim.fn.expand("%:p")
+
     local reveal_cmd = ""
     if vim.fn.filereadable(current_file) == 1 then
       reveal_cmd = " -reveal=" .. vim.fn.fnameescape(current_file)
     end
+
     vim.cmd("Fern " .. vim.fn.fnameescape(root) .. " -drawer" .. reveal_cmd)
 
-    local fern_width_ratio = 0.25
-    local fern_width = math.floor(vim.o.columns * fern_width_ratio)
-    vim.cmd("vertical resize " .. fern_width)
+    local width = math.floor(vim.o.columns * 0.25)
+    vim.cmd("vertical resize " .. width)
   end)
 end
 
--- Toggle focus between Fern and last file, revealing the file when opening
+-- Toggle Fern and jump back to the last buffer if it's already open
 local function toggle_fern_with_reveal()
   if vim.bo.filetype == "fern" then
     vim.cmd.wincmd("p")
-    restore_last_window()
+    restore_window()
     return
   end
+
   open_fern_drawer()
 end
 
--- Close Fern if visible or open it when hidden
+-- Close Fern if active or open it when hidden
 local function toggle_or_close_fern()
   if vim.bo.filetype == "fern" then
     vim.cmd("bd")
-    restore_last_window()
+    restore_window()
     return
   end
+
   toggle_fern_with_reveal()
 end
 
@@ -68,19 +82,44 @@ return {
   dependencies = {
     "lambdalisue/fern-hijack.vim",
     "yuki-yano/fern-preview.vim",
+    "lambdalisue/fern-renderer-nerdfont.vim",
+    "lambdalisue/glyph-palette.vim",
+    "lambdalisue/nerdfont.vim",
   },
   keys = {
     { "<leader>e", toggle_or_close_fern, desc = "Toggle or close Fern" },
     { "<leader>E", toggle_fern_with_reveal, desc = "Toggle or reveal in Fern" },
   },
   config = function()
+    vim.g["fern#default_hidden"] = 1
+    vim.g["fern#renderer"] = "nerdfont"
+
+    local glyph_group = vim.api.nvim_create_augroup("FernGlyphPalette", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      group = glyph_group,
+      pattern = "fern",
+      callback = function()
+        if vim.fn.exists("*glyph_palette#apply") == 1 then
+          vim.fn["glyph_palette#apply"]()
+        end
+      end,
+    })
+
     local fern_augroup = vim.api.nvim_create_augroup("FernCustom", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       group = fern_augroup,
       pattern = "fern",
-      callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<Plug>(fern-action-open)", { noremap = false, silent = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "p", "<Plug>(fern-action-preview:toggle)", { noremap = false, silent = true })
+      callback = function(event)
+        local buffer = event.buf
+        local mappings = {
+          { "<CR>", "<Plug>(fern-action-open-or-expand)" },
+          { "<S-CR>", "<Plug>(fern-action-collapse)" },
+          { "p", "<Plug>(fern-action-preview:toggle)" },
+        }
+
+        for _, map in ipairs(mappings) do
+          vim.keymap.set("n", map[1], map[2], { buffer = buffer, noremap = false, silent = true })
+        end
       end,
     })
   end,

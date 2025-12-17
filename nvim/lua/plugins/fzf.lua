@@ -1,5 +1,32 @@
 local utils = require("config.utils")
 
+-- Make sure future edits happen in a non-Fern window, splitting if needed
+local function ensure_edit_window()
+  if vim.bo.filetype ~= "fern" then
+    return
+  end
+
+  vim.cmd.wincmd("p")
+  if vim.bo.filetype ~= "fern" then
+    return
+  end
+
+  vim.cmd.wincmd("l")
+  if vim.bo.filetype ~= "fern" then
+    return
+  end
+
+  vim.cmd("vsplit")
+  vim.cmd("enew")
+  vim.cmd.wincmd("l")
+end
+
+-- Run the given action after guaranteeing we are in an edit-friendly window
+local function run_in_edit_window(action)
+  ensure_edit_window()
+  action()
+end
+
 if vim.g.vscode then
   utils.vscode_map("<leader>p", "workbench.action.quickOpen", "Quick Open (VSCode)")
   utils.vscode_map("<leader>g", "workbench.action.findInFiles", "Search in workspace (VSCode)")
@@ -17,14 +44,18 @@ local M = {
     {
       "<leader>p",
       function()
-        require("fzf-lua").files()
+        run_in_edit_window(function()
+          require("fzf-lua").files()
+        end)
       end,
       desc = "Search files in the current directory",
     },
     {
       "<leader>g",
       function()
-        require("fzf-lua").live_grep()
+        run_in_edit_window(function()
+          require("fzf-lua").live_grep()
+        end)
       end,
       desc = "Search text in all files",
     },
@@ -54,12 +85,9 @@ local M = {
 
 -- Search lines with a check for fern buffer
 function M.lines()
-  if vim.bo.filetype == "fern" then
-    vim.notify("Cannot use lines picker in fern buffer", vim.log.levels.WARN)
-    return
-  end
-
-  require("fzf-lua").lines()
+  run_in_edit_window(function()
+    require("fzf-lua").lines()
+  end)
 end
 
 M.config = function()
