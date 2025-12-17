@@ -134,6 +134,10 @@ keymap("n", "x", '"_x', opts("Do not yank with x"))
 keymap("n", "H", "^", opts("Move to the beginning of the line"))
 keymap("n", "L", "$", opts("Move to the end of the line"))
 
+-- Create new lines without reaching for o/O
+keymap("n", "<CR>", "o", opts("Insert new line below"))
+keymap("n", "<S-CR>", "O", opts("Insert new line above"))
+
 -- Redo
 keymap("n", "U", "<C-r>", opts("Redo"))
 
