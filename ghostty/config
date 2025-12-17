@@ -1,6 +1,6 @@
 # Theme
 theme = Catppuccin Frappe
-font-family = 'x14y24pxHeadUpDaisy',
+font-family = Hack Nerd Font Mono,
 font-feature = -dlig
 font-size = 14
 
