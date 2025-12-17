@@ -14,6 +14,24 @@ return {
   config = function()
     local common = require("config.lsp")
     require("flutter-tools").setup({
+      widget_guides = {
+        enabled = true,
+      },
+      decorations = {
+        statusline = {
+          app_version = true,
+          device = true,
+        },
+      },
+      dev_log = {
+        enabled = true,
+        filter = nil,
+        notify_errors = true,
+      },
+      dev_tools = {
+        autostart = true,
+        auto_open_browser = false,
+      },
       lsp = {
         on_attach = common.on_attach,
         capabilities = common.capabilities,
