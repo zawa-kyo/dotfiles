@@ -176,12 +176,14 @@ mkcd() {
 }
 
 # Move up N levels in the directory tree (default: 1)
+# Usage example: up 3 # moves ../../..
 up() {
   local count=${1:-1}
   cd "$(printf '../%.0s' $(seq 1 $count))" || return 1
 }
 
 # Search Google for the given query using the default browser
+# Usage example: google how to configure Ghostty
 function google() {
   local search_query="$@"
   local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
