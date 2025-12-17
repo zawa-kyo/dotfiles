@@ -83,28 +83,17 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       group = fern_augroup,
       pattern = "fern",
-      callback = function()
-        vim.api.nvim_buf_set_keymap(
-          0,
-          "n",
-          "<CR>",
-          "<Plug>(fern-action-open-or-expand)",
-          { noremap = false, silent = true }
-        )
-        vim.api.nvim_buf_set_keymap(
-          0,
-          "n",
-          "<S-CR>",
-          "<Plug>(fern-action-collapse)",
-          { noremap = false, silent = true }
-        )
-        vim.api.nvim_buf_set_keymap(
-          0,
-          "n",
-          "p",
-          "<Plug>(fern-action-preview:toggle)",
-          { noremap = false, silent = true }
-        )
+      callback = function(event)
+        local buffer = event.buf
+        local mappings = {
+          { "<CR>", "<Plug>(fern-action-open-or-expand)" },
+          { "<S-CR>", "<Plug>(fern-action-collapse)" },
+          { "p", "<Plug>(fern-action-preview:toggle)" },
+        }
+
+        for _, map in ipairs(mappings) do
+          vim.keymap.set("n", map[1], map[2], { buffer = buffer, noremap = false, silent = true })
+        end
       end,
     })
   end,
