@@ -129,6 +129,7 @@ keymap("n", "<leader>lL", "<Cmd>lclose<CR>", opts("Close location list"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
+keymap("n", "-", "<Cmd>FzfLua keymaps<CR>", opts("Find keymaps via fzf"))
 
 -- Line begin/end
 keymap("n", "H", "^", opts("Move to the beginning of the line"))
