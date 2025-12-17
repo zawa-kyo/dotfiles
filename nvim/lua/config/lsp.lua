@@ -13,7 +13,7 @@ function M.on_attach(_, bufnr)
 
   map("n", "<leader>lf", function()
     vim.lsp.buf.format({ async = true })
-  end, "Format the current file")
+  end, "Format the current file with LSP")
 
   map("n", "K", vim.lsp.buf.hover, "Show hover information")
   map("n", "gr", vim.lsp.buf.references, "Show references")
