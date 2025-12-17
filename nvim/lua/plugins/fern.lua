@@ -84,8 +84,27 @@ return {
       group = fern_augroup,
       pattern = "fern",
       callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<Plug>(fern-action-open)", { noremap = false, silent = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "p", "<Plug>(fern-action-preview:toggle)", { noremap = false, silent = true })
+        vim.api.nvim_buf_set_keymap(
+          0,
+          "n",
+          "<CR>",
+          "<Plug>(fern-action-open-or-expand)",
+          { noremap = false, silent = true }
+        )
+        vim.api.nvim_buf_set_keymap(
+          0,
+          "n",
+          "<S-CR>",
+          "<Plug>(fern-action-collapse)",
+          { noremap = false, silent = true }
+        )
+        vim.api.nvim_buf_set_keymap(
+          0,
+          "n",
+          "p",
+          "<Plug>(fern-action-preview:toggle)",
+          { noremap = false, silent = true }
+        )
       end,
     })
   end,
