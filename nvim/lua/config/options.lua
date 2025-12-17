@@ -21,6 +21,8 @@ local options = {
   expandtab = true,
   -- Encoding written to files
   fileencoding = "utf-8",
+  -- Force Neovim to append a trailing newline when writing files
+  fixendofline = true,
   -- GUI font setting for GUIs like Neovide
   guifont = "monospace:h17",
   -- Highlight search matches

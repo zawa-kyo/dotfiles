@@ -7,17 +7,6 @@ M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false })
 
-local function ensure_trailing_newline(bufnr)
-  local line_count = vim.api.nvim_buf_line_count(bufnr)
-  if line_count == 0 then
-    return
-  end
-  local last_line = vim.api.nvim_buf_get_lines(bufnr, line_count - 1, line_count, true)[1]
-  if last_line ~= "" then
-    vim.api.nvim_buf_set_lines(bufnr, line_count, line_count, true, { "" })
-  end
-end
-
 -- Shared on_attach: buffer-local keymaps and behaviors
 function M.on_attach(_, bufnr)
   local function map(mode, lhs, rhs, desc)
@@ -32,7 +21,6 @@ function M.on_attach(_, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format({ bufnr = bufnr, async = false })
-        ensure_trailing_newline(bufnr)
       end,
       desc = "Format buffer with LSP on save",
     })
