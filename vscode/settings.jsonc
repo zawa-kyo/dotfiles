@@ -166,7 +166,7 @@
   // true: 常に有効, active: アクティブなペアに対してのみ有効
   "editor.guides.bracketPairs": true,
   // フォント
-  "editor.fontFamily": "'Moralerspace Neon', 'Hack Nerd Font'",
+  "editor.fontFamily": "'Hack Nerd Font Mono', 'Moralerspace Neon'",
   // フォントの合字機能を有効化
   "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'",
   // エディタのフォントサイズ
@@ -372,7 +372,7 @@
   // ターミナルのフォント設定
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "normal",
-  "terminal.integrated.fontFamily": "'x14y24pxHeadUpDaisy', 'Hack Nerd Font'",
+  "terminal.integrated.fontFamily": "'x14y24pxHeadUpDaisy', 'Hack Nerd Font Mono'",
   // ターミナルに表示する項目の最大行数
   "terminal.integrated.scrollback": 4000,
   // ターミナルのキャレットアニメーション
