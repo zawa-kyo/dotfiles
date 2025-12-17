@@ -9,4 +9,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
   },
+
+  config = function()
+    require("render-markdown").setup({
+      render_modes = true,
+    })
+  end,
+
+  keys = {
+    { "<Leader>tm", ":RenderMarkdown toggle<CR>", desc = "Toggle Markdown rendering" },
+  },
 }
