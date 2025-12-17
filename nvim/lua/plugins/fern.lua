@@ -1,5 +1,10 @@
 local utils = require("config.utils")
 
+if not vim.g.vscode then
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+end
+
 if vim.g.vscode then
   utils.vscode_map("<leader>e", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
   utils.vscode_map("<leader>E", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")

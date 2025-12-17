@@ -62,5 +62,17 @@ return {
     vim.cmd([[
             autocmd FileType alpha setlocal nofoldenable
         ]])
+
+    local function should_start_alpha_for_directory()
+      if vim.fn.argc() ~= 1 then
+        return false
+      end
+      local target = vim.fn.argv(0)
+      return target ~= nil and target ~= "" and vim.fn.isdirectory(target) == 1
+    end
+
+    if should_start_alpha_for_directory() then
+      alpha.start(false, dashboard.config)
+    end
   end,
 }
