@@ -91,6 +91,7 @@ return {
     { "<leader>E", toggle_fern_with_reveal, desc = "Toggle or reveal in Fern" },
   },
   config = function()
+    vim.g["fern#default_hidden"] = 1
     vim.g["fern#renderer"] = "nerdfont"
 
     local glyph_group = vim.api.nvim_create_augroup("FernGlyphPalette", { clear = true })
