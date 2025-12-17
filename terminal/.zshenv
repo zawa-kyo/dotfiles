@@ -20,4 +20,4 @@ export VISUAL="$EDITOR"
 # Comments
 # ===========================
 
-echo "✅ Sourced: .zshenv"
+echo "󰄳 Sourced: .zshenv"

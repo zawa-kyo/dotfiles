@@ -4,4 +4,4 @@
 # Comments
 # ===========================
 
-echo "✅ Sourced: .zlogout"
+echo "󰄳 Sourced: .zlogout"

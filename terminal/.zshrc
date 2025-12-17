@@ -193,4 +193,4 @@ function google() {
 # Comments
 # ===========================
 
-echo "✅ Sourced: .zshrc"
+echo "󰄳 Sourced: .zshrc"
