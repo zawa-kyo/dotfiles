@@ -9,7 +9,7 @@ return {
     set_cursorline = true,
     line_opacity = 0.3,
 
-    -- Adjust the palette later to match the chosen colorscheme
+    -- TODO: Adjust the palette later to match the chosen colorscheme
     modes = {
       copy = {
         color = "#f5c359",
