@@ -79,8 +79,8 @@ local options = {
   wildoptions = "pum",
   -- Transparent floating window backgrounds
   winblend = 0,
-  -- Disable line wrapping
-  wrap = false,
+  -- Enable line wrapping
+  wrap = true,
   -- Do not keep extra backup files
   writebackup = false,
 }
