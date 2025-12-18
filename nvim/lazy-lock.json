@@ -25,6 +25,7 @@
   "glyph-palette.vim": { "branch": "master", "commit": "675f0ad64e2c4b823bffc1907d469deefaf6e3bd" },
   "hlchunk.nvim": { "branch": "main", "commit": "3bc2bd7aef28fbed6643534a0fdd0f19966544bc" },
   "hop.nvim": { "branch": "master", "commit": "707049feaca9ae65abb3696eff9aefc7879e66aa" },
+  "in-and-out.nvim": { "branch": "master", "commit": "03456b9c49365a28732378a7f2a72a613154e042" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "lexima.vim": { "branch": "master", "commit": "ab621e4756465c9d354fce88cff2bd1aa7887065" },
   "lspkind-nvim": { "branch": "master", "commit": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3" },
