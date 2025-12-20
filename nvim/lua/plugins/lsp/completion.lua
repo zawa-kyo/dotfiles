@@ -10,11 +10,13 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "saadparwaiz1/cmp_luasnip",
       "zbirenbaum/copilot-cmp",
     },
     config = function()
       local cmp = require("cmp")
       local lspkind = require("lspkind")
+      local luasnip = require("luasnip")
 
       local has_words_before = function()
         if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -28,12 +30,12 @@ return {
       cmp.setup({
         snippet = {
           expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
         sources = {
           { name = "nvim_lsp" },
-          { name = "vsnip" },
+          { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
           { name = "copilot" },
