@@ -27,6 +27,7 @@ local function run_in_edit_window(action)
   action()
 end
 
+-- Search available LuaSnip snippets via fzf-lua and insert the trigger
 local function search_snippets()
   run_in_edit_window(function()
     local luasnip = require("luasnip")
@@ -109,6 +110,13 @@ local M = {
         require("plugins.fzf").lines()
       end,
       desc = "Search text in the current file",
+    },
+    {
+      "_", -- <S-->
+      function()
+        require("plugins.fzf").snippets()
+      end,
+      desc = "Search snippets",
     },
   },
 
