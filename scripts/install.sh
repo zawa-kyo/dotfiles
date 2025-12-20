@@ -73,7 +73,8 @@ install_file "$HOME/.dotfiles/sheldon/plugins.toml" "$HOME/.config/sheldon/plugi
 install_file "$HOME/.dotfiles/sheldon/abbreviations" "$HOME/.config/zsh-abbr/user-abbreviations"
 install_file "$HOME/.dotfiles/mise/config.toml" "$HOME/.config/mise/config.toml"
 install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
-install_file "$HOME/.dotfiles//ghostty/config" "$HOME/.config/ghostty/config"
+install_file "$HOME/.dotfiles/ghostty/config" "$HOME/.config/ghostty/config"
+install_file "$HOME/.dotfiles/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 
 install_dir "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 install_dir "$HOME/.dotfiles/wezterm" "$HOME/.config/wezterm"
