@@ -146,7 +146,7 @@
   // ===========================
 
   // ホバー表示を有効化
-  "editor.hover.enabled": true,
+  "editor.hover.enabled": "on",
   // ホバー表示の遅延時間 (ms)
   "editor.hover.delay": 500,
   // Ctrl+スクロールでエディタ文字をズーム
