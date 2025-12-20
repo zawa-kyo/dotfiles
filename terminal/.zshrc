@@ -135,6 +135,9 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 # Dart CLI tools
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
 
 # ===========================
 # Fzf
