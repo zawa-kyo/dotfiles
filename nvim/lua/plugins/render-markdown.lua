@@ -7,7 +7,7 @@ return {
 
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons",
+    "DaikyXendo/nvim-material-icon",
   },
 
   config = function()

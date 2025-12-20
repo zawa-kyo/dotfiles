@@ -4,7 +4,7 @@ return {
   cond = not vim.g.vscode,
 
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
+    "DaikyXendo/nvim-material-icon",
   },
 
   config = function()
