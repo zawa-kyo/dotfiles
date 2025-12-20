@@ -27,6 +27,50 @@ local function run_in_edit_window(action)
   action()
 end
 
+local function search_snippets()
+  run_in_edit_window(function()
+    local luasnip = require("luasnip")
+    local fzf_lua = require("fzf-lua")
+    local snippets = luasnip.available()
+    local entries = {}
+
+    for category, snippet_list in pairs(snippets) do
+      if type(snippet_list) == "table" then
+        for _, snippet in ipairs(snippet_list) do
+          local description = ""
+          if type(snippet.description) == "table" then
+            description = snippet.description[1] or ""
+          end
+          local entry = string.format("%s - %s (%s) : %s", snippet.trigger, snippet.name or "", category, description)
+          table.insert(entries, entry)
+        end
+      end
+    end
+
+    if #entries == 0 then
+      vim.notify("No available snippets", vim.log.levels.INFO)
+      return
+    end
+
+    fzf_lua.fzf_exec(entries, {
+      prompt = "Select Snippet> ",
+      actions = {
+        ["default"] = function(selected)
+          if not selected or not selected[1] then
+            return
+          end
+          local trigger = selected[1]:match("^(.-)%s+-")
+          if not trigger or trigger == "" then
+            return
+          end
+          vim.api.nvim_put({ trigger }, "c", true, true)
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>i", true, true, true), "n", true)
+        end,
+      },
+    })
+  end)
+end
+
 if vim.g.vscode then
   utils.vscode_map("<leader>p", "workbench.action.quickOpen", "Quick Open (VSCode)")
   utils.vscode_map("<leader>g", "workbench.action.findInFiles", "Search in workspace (VSCode)")
@@ -90,7 +134,15 @@ function M.lines()
   end)
 end
 
+function M.snippets()
+  search_snippets()
+end
+
 M.config = function()
+  vim.api.nvim_create_user_command("FzfLuaSnipAvailable", function()
+    require("plugins.fzf").snippets()
+  end, {})
+
   require("fzf-lua").setup({
     files = {
       find_opts = [[-type f]],
