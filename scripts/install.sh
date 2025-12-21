@@ -71,7 +71,7 @@ install_file "$HOME/.dotfiles/terminal/.zshrc" "$HOME/.zshrc"
 
 install_file "$HOME/.dotfiles/borders/bordersrc" "$HOME/.config/borders/bordersrc"
 install_file "$HOME/.dotfiles/ghostty/config" "$HOME/.config/ghostty/config"
-install_file "$HOME/.dotfiles/mise/config.toml" "$HOME/.config/mise/config.toml"
+install_file "$HOME/.dotfiles/mise/config.global.toml" "$HOME/.config/mise/config.toml"
 install_file "$HOME/.dotfiles/sheldon/abbreviations" "$HOME/.config/zsh-abbr/user-abbreviations"
 install_file "$HOME/.dotfiles/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
