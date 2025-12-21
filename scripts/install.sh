@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# install: create a symlink from source to target if safe.
 install() {
   local source_file="$1"
   local target_file="$2"
@@ -38,25 +39,38 @@ install() {
   fi
 
   # Check if target already exists
-  if [ -e "$target_file" ]; then
-    echo "❌ $target_file already exists! Skipping link!"
-  else
-    # Create symbolic link
-    if ln -s "$source_file" "$target_file"; then
-      echo "✅ $source_basename linked successfully."
-    else
-      echo "❌ Failed to link $source_basename!"
+  if [ -e "$target_file" ] || [ -L "$target_file" ]; then
+    if [ -L "$target_file" ]; then
+      local existing_target
+      existing_target="$(readlink "$target_file")"
+      if [ "$existing_target" = "$source_file" ]; then
+        echo "✅ $source_basename already linked."
+        return 0
+      fi
+      echo "❌ $target_file points to a different source ($existing_target)."
       exit 1
     fi
+    echo "❌ $target_file already exists and is not a symlink! Skipping link!"
+    return 0
+  fi
+
+  # Create symbolic link
+  if ln -s "$source_file" "$target_file"; then
+    echo "✅ $source_basename linked successfully."
+  else
+    echo "❌ Failed to link $source_basename!"
+    exit 1
   fi
 }
 
+# install_file: create a file symlink.
 install_file() {
   local source_file="$1"
   local target_file="$2"
   install "$source_file" "$target_file" "file"
 }
 
+# install_dir: create a directory symlink.
 install_dir() {
   local source_dir="$1"
   local target_dir="$2"
