@@ -75,6 +75,7 @@ install_file "$HOME/.dotfiles/mise/config.toml" "$HOME/.config/mise/config.toml"
 install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
 install_file "$HOME/.dotfiles/ghostty/config" "$HOME/.config/ghostty/config"
 install_file "$HOME/.dotfiles/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
+install_file "$HOME/.dotfiles/borders/bordersrc" "$HOME/.config/borders/bordersrc"
 
 install_dir "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 install_dir "$HOME/.dotfiles/wezterm" "$HOME/.config/wezterm"
