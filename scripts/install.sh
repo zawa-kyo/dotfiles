@@ -13,16 +13,16 @@ install() {
   # Check if source exists
   if [ "$type" = "file" ]; then
     if [ ! -f "$source_file" ]; then
-      echo "❌ $source_basename not found in dotfiles!"
+      echo "󰅙 $source_basename not found in dotfiles!"
       exit 1
     fi
   elif [ "$type" = "dir" ]; then
     if [ ! -d "$source_file" ]; then
-      echo "❌ $source_basename directory not found in dotfiles!"
+      echo "󰅙 $source_basename directory not found in dotfiles!"
       exit 1
     fi
   else
-    echo "❌ Invalid type: $type. Use 'file' or 'dir'."
+    echo "󰅙 Invalid type: $type. Use 'file' or 'dir'."
     exit 1
   fi
 
@@ -31,9 +31,9 @@ install() {
   target_parent_dir="$(dirname "$target_file")"
   if [ ! -d "$target_parent_dir" ]; then
     if mkdir -p "$target_parent_dir"; then
-      echo "✅ Created directory: $target_parent_dir"
+      echo "󰄳 Created directory: $target_parent_dir"
     else
-      echo "❌ Failed to create directory: $target_parent_dir"
+      echo "󰅙 Failed to create directory: $target_parent_dir"
       exit 1
     fi
   fi
@@ -44,21 +44,21 @@ install() {
       local existing_target
       existing_target="$(readlink "$target_file")"
       if [ "$existing_target" = "$source_file" ]; then
-        echo "✅ $source_basename already linked."
+        echo "󰄳 $source_basename already linked."
         return 0
       fi
-      echo "❌ $target_file points to a different source ($existing_target)."
+      echo "󰅙 $target_file points to a different source ($existing_target)."
       exit 1
     fi
-    echo "❌ $target_file already exists and is not a symlink! Skipping link!"
+    echo "󰅙 $target_file already exists and is not a symlink! Skipping link!"
     return 0
   fi
 
   # Create symbolic link
   if ln -s "$source_file" "$target_file"; then
-    echo "✅ $source_basename linked successfully."
+    echo "󰄳 $source_basename linked successfully."
   else
-    echo "❌ Failed to link $source_basename!"
+    echo "󰅙 Failed to link $source_basename!"
     exit 1
   fi
 }

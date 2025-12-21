@@ -8,7 +8,7 @@ emit_sources() {
 
   # Check if directory exists
   if [ ! -d "$config_dir" ]; then
-    echo "echo '❌ Directory not found: $config_dir' 1>&2"
+    echo "echo '󰅙 Directory not found: $config_dir' 1>&2"
     return
   fi
 
