@@ -193,6 +193,8 @@ function google() {
   open "https://www.google.com/search?q=$encoded_query"
 }
 
+alias rm="echo ' Heads up: rm is dangerous. Use trash instead!'"
+
 
 # ===========================
 # Comments

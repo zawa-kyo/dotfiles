@@ -63,17 +63,18 @@ install_dir() {
   install "$source_dir" "$target_dir" "dir"
 }
 
-install_file "$HOME/.dotfiles/terminal/.zshrc" "$HOME/.zshrc"
-install_file "$HOME/.dotfiles/terminal/.zshenv" "$HOME/.zshenv"
-install_file "$HOME/.dotfiles/terminal/.zprofile" "$HOME/.zprofile"
 install_file "$HOME/.dotfiles/terminal/.zlogin" "$HOME/.zlogin"
 install_file "$HOME/.dotfiles/terminal/.zlogout" "$HOME/.zlogout"
+install_file "$HOME/.dotfiles/terminal/.zprofile" "$HOME/.zprofile"
+install_file "$HOME/.dotfiles/terminal/.zshenv" "$HOME/.zshenv"
+install_file "$HOME/.dotfiles/terminal/.zshrc" "$HOME/.zshrc"
 
-install_file "$HOME/.dotfiles/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
-install_file "$HOME/.dotfiles/sheldon/abbreviations" "$HOME/.config/zsh-abbr/user-abbreviations"
-install_file "$HOME/.dotfiles/mise/config.toml" "$HOME/.config/mise/config.toml"
-install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
+install_file "$HOME/.dotfiles/borders/bordersrc" "$HOME/.config/borders/bordersrc"
 install_file "$HOME/.dotfiles/ghostty/config" "$HOME/.config/ghostty/config"
+install_file "$HOME/.dotfiles/mise/config.toml" "$HOME/.config/mise/config.toml"
+install_file "$HOME/.dotfiles/sheldon/abbreviations" "$HOME/.config/zsh-abbr/user-abbreviations"
+install_file "$HOME/.dotfiles/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
+install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
 install_file "$HOME/.dotfiles/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 
 install_dir "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
