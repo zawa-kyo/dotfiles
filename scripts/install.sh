@@ -77,19 +77,34 @@ install_dir() {
   install "$source_dir" "$target_dir" "dir"
 }
 
-install_file "$HOME/.dotfiles/terminal/.zlogin" "$HOME/.zlogin"
-install_file "$HOME/.dotfiles/terminal/.zlogout" "$HOME/.zlogout"
-install_file "$HOME/.dotfiles/terminal/.zprofile" "$HOME/.zprofile"
-install_file "$HOME/.dotfiles/terminal/.zshenv" "$HOME/.zshenv"
-install_file "$HOME/.dotfiles/terminal/.zshrc" "$HOME/.zshrc"
+file_links=(
+  "$HOME/.dotfiles/terminal/.zlogin:$HOME/.zlogin"
+  "$HOME/.dotfiles/terminal/.zlogout:$HOME/.zlogout"
+  "$HOME/.dotfiles/terminal/.zprofile:$HOME/.zprofile"
+  "$HOME/.dotfiles/terminal/.zshenv:$HOME/.zshenv"
+  "$HOME/.dotfiles/terminal/.zshrc:$HOME/.zshrc"
+  "$HOME/.dotfiles/borders/bordersrc:$HOME/.config/borders/bordersrc"
+  "$HOME/.dotfiles/ghostty/config:$HOME/.config/ghostty/config"
+  "$HOME/.dotfiles/mise/config.global.toml:$HOME/.config/mise/config.toml"
+  "$HOME/.dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
+  "$HOME/.dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
+  "$HOME/.dotfiles/starship.toml:$HOME/.config/starship.toml"
+  "$HOME/.dotfiles/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
+)
 
-install_file "$HOME/.dotfiles/borders/bordersrc" "$HOME/.config/borders/bordersrc"
-install_file "$HOME/.dotfiles/ghostty/config" "$HOME/.config/ghostty/config"
-install_file "$HOME/.dotfiles/mise/config.global.toml" "$HOME/.config/mise/config.toml"
-install_file "$HOME/.dotfiles/sheldon/abbreviations" "$HOME/.config/zsh-abbr/user-abbreviations"
-install_file "$HOME/.dotfiles/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
-install_file "$HOME/.dotfiles/starship.toml" "$HOME/.config/starship.toml"
-install_file "$HOME/.dotfiles/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
+directory_links=(
+  "$HOME/.dotfiles/nvim:$HOME/.config/nvim"
+  "$HOME/.dotfiles/wezterm:$HOME/.config/wezterm"
+)
 
-install_dir "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
-install_dir "$HOME/.dotfiles/wezterm" "$HOME/.config/wezterm"
+# Link listed files from dotfiles into their target locations.
+for link in "${file_links[@]}"; do
+  IFS=":" read -r source target <<<"$link"
+  install_file "$source" "$target"
+done
+
+# Link listed directories from dotfiles into their target locations.
+for link in "${directory_links[@]}"; do
+  IFS=":" read -r source target <<<"$link"
+  install_dir "$source" "$target"
+done
