@@ -4,6 +4,7 @@ local servers = {
   "ts_ls", -- TypeScript
   "pyright", -- Python
   "taplo", -- TOML
+  "rust_analyzer", -- Rust
 }
 
 return {
