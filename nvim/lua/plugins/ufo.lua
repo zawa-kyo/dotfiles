@@ -11,11 +11,24 @@ return {
 
   keys = {
     {
-      "zR",
-      function()
-        require("ufo").openAllFolds()
-      end,
-      desc = "Open all folds",
+      "zo",
+      "zo",
+      desc = "Open fold under cursor",
+    },
+    {
+      "zO",
+      "zO",
+      desc = "Open all folds under cursor",
+    },
+    {
+      "zc",
+      "zc",
+      desc = "Close fold under cursor",
+    },
+    {
+      "zC",
+      "zC",
+      desc = "Close all folds under cursor",
     },
     {
       "zM",
@@ -23,6 +36,13 @@ return {
         require("ufo").closeAllFolds()
       end,
       desc = "Close all folds",
+    },
+    {
+      "zR",
+      function()
+        require("ufo").openAllFolds()
+      end,
+      desc = "Open all folds",
     },
   },
 
