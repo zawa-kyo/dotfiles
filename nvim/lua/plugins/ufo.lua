@@ -6,7 +6,7 @@ return {
   },
 
   lazy = true,
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile", "LspAttach" },
   cond = not vim.g.vscode,
 
   keys = {
