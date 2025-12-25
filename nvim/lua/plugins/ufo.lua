@@ -53,8 +53,11 @@ return {
     vim.o.foldenable = true
 
     require("ufo").setup({
-      provider_selector = function()
-        return { "treesitter", "indent" }
+      provider_selector = function(_, filetype)
+        if filetype == "markdown" then
+          return { "treesitter", "indent" }
+        end
+        return { "lsp", "indent" }
       end,
     })
   end,
