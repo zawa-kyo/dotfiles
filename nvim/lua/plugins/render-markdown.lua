@@ -13,6 +13,7 @@ return {
   config = function()
     require("render-markdown").setup({
       render_modes = true,
+      heading = { position = 'inline' },
     })
   end,
 
