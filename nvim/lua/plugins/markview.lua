@@ -3,6 +3,9 @@ return {
 
   lazy = false,
   cond = not vim.g.vscode,
+  keys = {
+    { "<Leader>tm", ":Markview toggle<CR>", desc = "Toggle Markdown rendering" },
+  },
 
   config = function()
     local presets = require("markview.presets").headings
