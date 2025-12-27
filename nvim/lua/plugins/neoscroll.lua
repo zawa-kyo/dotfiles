@@ -1,3 +1,8 @@
+local duration = {
+  scroll = 250,
+  page = 550,
+}
+
 local M = {
   "karb94/neoscroll.nvim",
 
@@ -8,7 +13,7 @@ local M = {
     {
       "<C-u>",
       function()
-        require("neoscroll").ctrl_u({ duration = 250 })
+        require("neoscroll").ctrl_u({ duration = duration.scroll })
       end,
       mode = { "n", "v", "x" },
       desc = "Scroll up",
@@ -16,7 +21,7 @@ local M = {
     {
       "<C-d>",
       function()
-        require("neoscroll").ctrl_d({ duration = 250 })
+        require("neoscroll").ctrl_d({ duration = duration.scroll })
       end,
       mode = { "n", "v", "x" },
       desc = "Scroll down",
@@ -24,7 +29,7 @@ local M = {
     {
       "<C-b>",
       function()
-        require("neoscroll").ctrl_b({ duration = 550 })
+        require("neoscroll").ctrl_b({ duration = duration.page })
       end,
       mode = { "n", "v", "x" },
       desc = "Page up",
@@ -32,7 +37,7 @@ local M = {
     {
       "<C-f>",
       function()
-        require("neoscroll").ctrl_f({ duration = 550 })
+        require("neoscroll").ctrl_f({ duration = duration.page })
       end,
       mode = { "n", "v", "x" },
       desc = "Page down",
@@ -40,7 +45,7 @@ local M = {
     {
       "<Tab>",
       function()
-        require("neoscroll").ctrl_d({ duration = 550 })
+        require("neoscroll").ctrl_d({ duration = duration.page })
       end,
       mode = { "n", "v", "x" },
       desc = "Scroll down",
@@ -48,7 +53,7 @@ local M = {
     {
       "<S-Tab>",
       function()
-        require("neoscroll").ctrl_u({ duration = 550 })
+        require("neoscroll").ctrl_u({ duration = duration.page })
       end,
       mode = { "n", "v", "x" },
       desc = "Scroll up",
