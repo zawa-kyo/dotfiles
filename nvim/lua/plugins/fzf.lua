@@ -148,6 +148,20 @@ local M = {
       end,
       desc = "Search snippets",
     },
+    {
+      "<leader>o",
+      function()
+        require("fzf-lua").lsp_document_symbols()
+      end,
+      desc = "Document symbols/outline (LSP)",
+    },
+    {
+      "<leader>O",
+      function()
+        require("fzf-lua").treesitter()
+      end,
+      desc = "Document symbols/outline (Treesitter)",
+    },
   },
 
   dependencies = {
