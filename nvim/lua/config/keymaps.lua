@@ -32,9 +32,8 @@ vim.g.maplocalleader = " "
 --   <leader>b … Buffer ops (next/prev/list/delete)
 --   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
 --   ] / [     … “Next / Previous” common UI (diagnostic/quickfix/loclist/…)
---   n/N       … Keep default search repeat
---   Hop       … f/F (to char), s/S (t/T-equivalent: before/after the char)
---   *t is reserved for tabs; avoid collisions with Hop by using s/S
+--   n/N       … Keep default search repeat (unless overridden elsewhere)
+--   Flash     … f/F/t/T behavior is handled in flash.nvim config
 
 --------------------
 -- Normal Mode
