@@ -54,7 +54,11 @@ return {
 
     require("ufo").setup({
       provider_selector = function(_, filetype)
-        if filetype == "markdown" then
+        local treesitter_fallback = {
+          markdown = true,
+          python = true,
+        }
+        if treesitter_fallback[filetype] then
           return { "treesitter", "indent" }
         end
         return { "lsp", "indent" }
