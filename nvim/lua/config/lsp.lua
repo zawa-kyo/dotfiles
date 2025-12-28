@@ -4,11 +4,6 @@ local M = {}
 
 -- Shared LSP capabilities
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
-M.capabilities.textDocument = M.capabilities.textDocument or {}
-M.capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
 
 local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false })
 
