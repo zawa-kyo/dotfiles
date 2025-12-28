@@ -1,29 +1,19 @@
 return {
   "folke/flash.nvim",
-  event = "VeryLazy",
 
+  event = "VeryLazy",
   keys = {
     {
       "m",
-      mode = "n",
-      desc = "Flash Word (HopWord-like)",
+      mode = { "n", "x", "o" },
       function()
-        require("flash").jump({
-          search = {
-            mode = "search",
-            max_length = 0,
-            multi_window = false,
-          },
-          pattern = [[\<\k]],
-          label = { before = true, after = false },
-        })
+        require("flash").jump()
       end,
+      desc = "Flash jump",
     },
-
     {
       "M",
       mode = "n",
-      desc = "Flash Line (HopLine-like)",
       function()
         require("flash").jump({
           search = {
@@ -35,6 +25,15 @@ return {
           label = { before = true, after = false },
         })
       end,
+      desc = "Flash line jump",
+    },
+    {
+      "r",
+      mode = "o",
+      function()
+        require("flash").remote()
+      end,
+      desc = "Flash remote jump",
     },
   },
 }
