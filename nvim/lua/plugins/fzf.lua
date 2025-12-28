@@ -117,6 +117,15 @@ local M = {
 
   keys = {
     {
+      "sf",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").files()
+        end)
+      end,
+      desc = "Search files in the current directory",
+    },
+    {
       "<leader>p",
       function()
         run_in_edit_window(function()
@@ -126,20 +135,20 @@ local M = {
       desc = "Search files in the current directory",
     },
     {
-      "<leader>g",
+      "sw",
+      function()
+        require("plugins.fzf").lines()
+      end,
+      desc = "Search word in the current file",
+    },
+    {
+      "sW",
       function()
         run_in_edit_window(function()
           require("fzf-lua").live_grep()
         end)
       end,
-      desc = "Search text in all files",
-    },
-    {
-      "<leader>f",
-      function()
-        require("plugins.fzf").lines()
-      end,
-      desc = "Search text in the current file",
+      desc = "Search word in all files",
     },
     {
       "_", -- <S-->
@@ -149,18 +158,65 @@ local M = {
       desc = "Search snippets",
     },
     {
-      "<leader>o",
+      "sn", -- search snippets
       function()
-        require("fzf-lua").lsp_document_symbols()
+        require("plugins.fzf").snippets()
       end,
-      desc = "Document symbols/outline (LSP)",
+      desc = "Search snippets",
     },
     {
-      "<leader>O",
+      "ss",
       function()
-        require("fzf-lua").treesitter()
+        run_in_edit_window(function()
+          require("fzf-lua").lsp_document_symbols()
+        end)
       end,
-      desc = "Document symbols/outline (Treesitter)",
+      desc = "Symbols in current buffer (LSP)",
+    },
+    {
+      "sS",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").lsp_workspace_symbols()
+        end)
+      end,
+      desc = "Symbols in workspace (LSP)",
+    },
+    {
+      "st",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").treesitter()
+        end)
+      end,
+      desc = "Symbols in current buffer (Treesitter)",
+    },
+    {
+      "sr",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").registers()
+        end)
+      end,
+      desc = "Search registers",
+    },
+    {
+      "so",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").oldfiles()
+        end)
+      end,
+      desc = "Search old files",
+    },
+    {
+      "sk",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").keymaps()
+        end)
+      end,
+      desc = "Search keymaps",
     },
   },
 
