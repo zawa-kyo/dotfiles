@@ -2,6 +2,23 @@ return {
   "folke/flash.nvim",
 
   event = "VeryLazy",
+  opts = {
+    modes = {
+      char = {
+        jump_labels = true,
+
+        keys = { "f", "F", "t", "T", "n", "N" },
+        char_actions = function(motion)
+          return {
+            ["n"] = "next",
+            ["N"] = "prev",
+            [motion:lower()] = "next",
+            [motion:upper()] = "prev",
+          }
+        end,
+      },
+    },
+  },
   keys = {
     {
       "m",
