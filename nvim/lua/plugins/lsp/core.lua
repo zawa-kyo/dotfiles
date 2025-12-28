@@ -3,6 +3,9 @@ local servers = {
   "lua_ls", -- Lua
   "ts_ls", -- TypeScript
   "pyright", -- Python
+  "jdtls", -- Java
+  "rust_analyzer", -- Rust
+  "marksman", -- Markdown
   "taplo", -- TOML
 }
 

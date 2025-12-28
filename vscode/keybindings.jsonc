@@ -13,5 +13,17 @@
     // Navigate forward
     "key": "ctrl+i",
     "command": "workbench.action.navigateForward"
+  },
+  {
+    // Quick Open: select next result
+    "key": "tab",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    // Quick Open: select previous result
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
   }
 ]
