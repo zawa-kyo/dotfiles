@@ -10,6 +10,31 @@ return {
   end,
 
   config = function()
-    require("origami").setup()
+    require("origami").setup({
+      useLspFoldsWithTreesitterFallback = {
+        enabled = true,
+        foldmethodIfNeitherIsAvailable = "indent",
+      },
+      pauseFoldsOnSearch = true,
+      foldtext = {
+        enabled = true,
+        padding = 2,
+        lineCount = {
+          template = "󰘖 %d lines",
+          hlgroup = "Comment",
+        },
+        diagnosticsCount = true,
+        gitsignsCount = true,
+        disableOnFt = { "snacks_picker_input" },
+      },
+      autoFold = {
+        enabled = false,
+      },
+      foldKeymaps = {
+        setup = true,
+        closeOnlyOnFirstColumn = false,
+        scrollLeftOnCaret = false,
+      },
+    })
   end,
 }
