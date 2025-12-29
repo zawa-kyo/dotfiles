@@ -41,10 +41,9 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button("<leader>e", "  Fern", ":Fern . -drawer -toggle<CR>"),
       dashboard.button("sf", "󰥨  Find file", ":FzfLua files<CR>"),
+      dashboard.button("sF", "  Recent file", ":FzfLua oldfiles<CR>"),
       dashboard.button("sW", "󰱼  Find text", ":FzfLua live_grep<CR>"),
-      dashboard.button("so", "  Recent file", ":FzfLua oldfiles<CR>"),
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-      dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
       dashboard.button("q", "  Quit", ":qa<CR>"),
     }
 

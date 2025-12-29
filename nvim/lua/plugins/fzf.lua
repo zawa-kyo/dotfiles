@@ -135,9 +135,20 @@ local M = {
       desc = "Search files in the current directory",
     },
     {
+      "sF",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").oldfiles()
+        end)
+      end,
+      desc = "Search old files",
+    },
+    {
       "sw",
       function()
-        require("plugins.fzf").lines()
+        run_in_edit_window(function()
+          require("fzf-lua").lines()
+        end)
       end,
       desc = "Search word in the current file",
     },
@@ -151,16 +162,34 @@ local M = {
       desc = "Search word in all files",
     },
     {
+      "sb",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").buffers()
+        end)
+      end,
+      desc = "Search buffers",
+    },
+    {
+      "sB",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").blines()
+        end)
+      end,
+      desc = "Search lines in open buffers",
+    },
+    {
       "_", -- <S-->
       function()
-        require("plugins.fzf").snippets()
+        search_snippets()
       end,
       desc = "Search snippets",
     },
     {
       "sn", -- search snippets
       function()
-        require("plugins.fzf").snippets()
+        search_snippets()
       end,
       desc = "Search snippets",
     },
@@ -201,15 +230,6 @@ local M = {
       desc = "Search registers",
     },
     {
-      "so",
-      function()
-        run_in_edit_window(function()
-          require("fzf-lua").oldfiles()
-        end)
-      end,
-      desc = "Search old files",
-    },
-    {
       "sk",
       function()
         run_in_edit_window(function()
@@ -235,20 +255,9 @@ local M = {
   },
 }
 
--- Search lines with a check for fern buffer
-function M.lines()
-  run_in_edit_window(function()
-    require("fzf-lua").lines()
-  end)
-end
-
-function M.snippets()
-  search_snippets()
-end
-
 M.config = function()
   vim.api.nvim_create_user_command("FzfLuaSnipAvailable", function()
-    require("plugins.fzf").snippets()
+    search_snippets()
   end, {})
 
   require("fzf-lua").setup({
