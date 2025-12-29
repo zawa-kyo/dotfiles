@@ -36,6 +36,18 @@ vim.g.maplocalleader = " "
 --   Flash     … f/F/t/T behavior is handled in flash.nvim config
 
 --------------------
+-- All Modes
+--------------------
+
+local all_modes = { "n", "i", "v", "x", "o", "t", "c", "s" }
+
+-- Disable arrow keys to encourage hjkl
+keymap(all_modes, "<Up>", "<Nop>", opts("Nop"))
+keymap(all_modes, "<Down>", "<Nop>", opts("Nop"))
+keymap(all_modes, "<Left>", "<Nop>", opts("Nop"))
+keymap(all_modes, "<Right>", "<Nop>", opts("Nop"))
+
+--------------------
 -- Normal Mode
 --------------------
 
