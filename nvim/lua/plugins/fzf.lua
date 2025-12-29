@@ -146,7 +146,9 @@ local M = {
     {
       "sw",
       function()
-        require("plugins.fzf").lines()
+        run_in_edit_window(function()
+          require("fzf-lua").lines()
+        end)
       end,
       desc = "Search word in the current file",
     },
@@ -162,14 +164,14 @@ local M = {
     {
       "_", -- <S-->
       function()
-        require("plugins.fzf").snippets()
+        search_snippets()
       end,
       desc = "Search snippets",
     },
     {
       "sn", -- search snippets
       function()
-        require("plugins.fzf").snippets()
+        search_snippets()
       end,
       desc = "Search snippets",
     },
@@ -235,20 +237,9 @@ local M = {
   },
 }
 
--- Search lines with a check for fern buffer
-function M.lines()
-  run_in_edit_window(function()
-    require("fzf-lua").lines()
-  end)
-end
-
-function M.snippets()
-  search_snippets()
-end
-
 M.config = function()
   vim.api.nvim_create_user_command("FzfLuaSnipAvailable", function()
-    require("plugins.fzf").snippets()
+    search_snippets()
   end, {})
 
   require("fzf-lua").setup({
