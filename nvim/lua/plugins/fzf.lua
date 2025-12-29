@@ -135,6 +135,15 @@ local M = {
       desc = "Search files in the current directory",
     },
     {
+      "sF",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").oldfiles()
+        end)
+      end,
+      desc = "Search old files",
+    },
+    {
       "sw",
       function()
         require("plugins.fzf").lines()
@@ -199,15 +208,6 @@ local M = {
         end)
       end,
       desc = "Search registers",
-    },
-    {
-      "so",
-      function()
-        run_in_edit_window(function()
-          require("fzf-lua").oldfiles()
-        end)
-      end,
-      desc = "Search old files",
     },
     {
       "sk",
