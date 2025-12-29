@@ -162,6 +162,24 @@ local M = {
       desc = "Search word in all files",
     },
     {
+      "sb",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").buffers()
+        end)
+      end,
+      desc = "Search buffers",
+    },
+    {
+      "sB",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").blines()
+        end)
+      end,
+      desc = "Search lines in open buffers",
+    },
+    {
       "_", -- <S-->
       function()
         search_snippets()
