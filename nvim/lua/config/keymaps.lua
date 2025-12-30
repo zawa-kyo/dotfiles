@@ -93,6 +93,9 @@ keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
 keymap("v", ",", "<Esc>ggVG", opts("Select all"))
 
+-- Disable default substitute to free up "s" prefix
+keymap("n", "s", "<Nop>", opts("Disable substitute"))
+
 -- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
