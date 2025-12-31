@@ -17,12 +17,6 @@ return {
 
   keys = {
     {
-      "s",
-      "<Cmd>WhichKey s<CR>",
-      desc = "Symbols prefix",
-      nowait = true,
-    },
-    {
       "<leader>?",
       function()
         require("which-key").show({ global = false })
