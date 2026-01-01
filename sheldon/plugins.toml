@@ -36,6 +36,14 @@ inline = 'eval "$(atuin init zsh)"'
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
 
+# Disable command mode
+[plugins.zsh-vi-mode-config]
+inline = """
+function zvm_after_lazy_keybindings() {
+  bindkey -M vicmd ':' undefined-key
+}
+"""
+
 # Fuzzy finder
 [plugins.fzf]
 apply = ['fzf-install', 'fzf-source', 'defer']
