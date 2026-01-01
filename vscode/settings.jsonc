@@ -372,7 +372,7 @@
   // ターミナルのフォント設定
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "normal",
-  "terminal.integrated.fontFamily": "'x14y24pxHeadUpDaisy', 'Hack Nerd Font Mono'",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font Mono', 'Moralerspace Neon'",
   // ターミナルに表示する項目の最大行数
   "terminal.integrated.scrollback": 4000,
   // ターミナルのキャレットアニメーション
