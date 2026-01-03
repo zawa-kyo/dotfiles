@@ -1,13 +1,12 @@
 local utils = require("config.utils")
-
-local show_hidden = true
+local is_hidden_visible = true
 
 local function filter_hidden(entry)
-  return show_hidden or not vim.startswith(entry.name, ".")
+  return is_hidden_visible or not vim.startswith(entry.name, ".")
 end
 
 local function toggle_hidden()
-  show_hidden = not show_hidden
+  is_hidden_visible = not is_hidden_visible
   require("mini.files").refresh()
 end
 
