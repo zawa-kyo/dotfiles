@@ -180,13 +180,6 @@ local M = {
       desc = "Search lines in open buffers",
     },
     {
-      "_", -- <S-->
-      function()
-        search_snippets()
-      end,
-      desc = "Search snippets",
-    },
-    {
       "sn", -- search snippets
       function()
         search_snippets()

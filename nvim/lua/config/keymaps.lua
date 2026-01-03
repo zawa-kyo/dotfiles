@@ -143,10 +143,7 @@ keymap("n", "<leader>lL", "<Cmd>lclose<CR>", opts("Close location list"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
-
--- Line begin/end
-keymap("n", "H", "^", opts("Move to the beginning of the line"))
-keymap("n", "L", "$", opts("Move to the end of the line"))
+keymap("n", "<BS>", '"_x', opts("Do not yank with backspace"))
 
 -- Create new lines without reaching for o/O
 keymap("n", "<CR>", "o", opts("Insert new line below"))
@@ -195,6 +192,9 @@ keymap("n", "V", "v$", opts("Select until the end of the line"))
 
 -- Preserve cursor on yank
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
+
+-- Delete words with backspace
+keymap({ "v", "x" }, "<BS>", "_d", opts("Delete selection with backspace"))
 
 -- Move selected lines
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))

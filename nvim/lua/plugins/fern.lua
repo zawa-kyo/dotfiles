@@ -1,4 +1,5 @@
 local utils = require("config.utils")
+local file_ignore = require("config.file-ignore")
 local keymap = utils.getKeymap
 
 if not vim.g.vscode then
@@ -92,6 +93,7 @@ return {
   },
   config = function()
     vim.g["fern#default_hidden"] = 1
+    vim.g["fern#default_exclude"] = file_ignore.fern_exclude()
     vim.g["fern#renderer"] = "nerdfont"
 
     local glyph_group = vim.api.nvim_create_augroup("FernGlyphPalette", { clear = true })
