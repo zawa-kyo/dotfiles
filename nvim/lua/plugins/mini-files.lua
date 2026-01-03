@@ -1,4 +1,5 @@
 local utils = require("config.utils")
+local file_ignore = require("config.file-ignore")
 local is_hidden_visible = true
 
 --- Resolve the project root using project.nvim or common markers.
@@ -98,6 +99,10 @@ end
 
 --- Decide whether to show a file system entry based on hidden visibility.
 local function filter_hidden(entry)
+  if file_ignore.is_ignored(entry.name) then
+    return false
+  end
+
   return is_hidden_visible or not vim.startswith(entry.name, ".")
 end
 
