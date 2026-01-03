@@ -4,6 +4,7 @@ local servers = {
   "ts_ls", -- TypeScript
   "pyright", -- Python
   "jdtls", -- Java
+  "gopls", -- Go
   "rust_analyzer", -- Rust
   "marksman", -- Markdown
   "taplo", -- TOML
