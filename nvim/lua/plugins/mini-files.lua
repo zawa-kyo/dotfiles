@@ -1,3 +1,5 @@
+local utils = require("config.utils")
+
 local show_hidden = true
 
 local function filter_hidden(entry)
@@ -30,6 +32,8 @@ return {
     },
   },
   config = function()
+    local keymap = utils.getKeymap
+
     require("mini.files").setup({
       content = {
         filter = filter_hidden,
@@ -43,15 +47,10 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "MiniFilesBufferCreate",
       callback = function(args)
-        vim.keymap.set(
-          "n",
-          "e",
-          function()
-            require("mini.files").go_in()
-          end,
-          { buffer = args.buf, desc = "Open entry" }
-        )
-        vim.keymap.set("n", "H", toggle_hidden, { buffer = args.buf, desc = "Toggle hidden files" })
+        keymap("n", "e", function()
+          require("mini.files").go_in()
+        end, { buffer = args.buf, desc = "Open entry" })
+        keymap("n", "H", toggle_hidden, { buffer = args.buf, desc = "Toggle hidden files" })
       end,
     })
   end,

@@ -1,4 +1,5 @@
 local utils = require("config.utils")
+local keymap = utils.getKeymap
 
 if not vim.g.vscode then
   vim.g.loaded_netrw = 1
@@ -118,7 +119,7 @@ return {
         }
 
         for _, map in ipairs(mappings) do
-          vim.keymap.set("n", map[1], map[2], { buffer = buffer, noremap = false, silent = true })
+          keymap("n", map[1], map[2], { buffer = buffer, noremap = false, silent = true })
         end
       end,
     })
