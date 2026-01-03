@@ -43,6 +43,14 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "MiniFilesBufferCreate",
       callback = function(args)
+        vim.keymap.set(
+          "n",
+          "e",
+          function()
+            require("mini.files").go_in()
+          end,
+          { buffer = args.buf, desc = "Open entry" }
+        )
         vim.keymap.set("n", "H", toggle_hidden, { buffer = args.buf, desc = "Toggle hidden files" })
       end,
     })
