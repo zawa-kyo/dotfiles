@@ -2,10 +2,7 @@ return {
   "j-hui/fidget.nvim",
 
   lazy = true,
-  event = {
-    "BufRead",
-    "BufNewFile",
-  },
+  event = { "BufReadPre", "BufNewFile" },
   cond = not vim.g.vscode,
 
   config = function()

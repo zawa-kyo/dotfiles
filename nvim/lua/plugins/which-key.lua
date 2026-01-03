@@ -3,12 +3,17 @@ return {
 
   event = "VeryLazy",
   cond = not vim.g.vscode,
+  opts = {},
 
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  },
+  config = function(_, opts)
+    local wk = require("which-key")
+    wk.setup(opts)
+
+    -- Declare a normal-mode prefix group so "s" shows symbol-related mappings.
+    wk.add({
+      { "s", group = "symbols" },
+    })
+  end,
 
   keys = {
     {

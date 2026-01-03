@@ -117,6 +117,15 @@ local M = {
 
   keys = {
     {
+      "sf",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").files()
+        end)
+      end,
+      desc = "Search files in the current directory",
+    },
+    {
       "<leader>p",
       function()
         run_in_edit_window(function()
@@ -126,27 +135,108 @@ local M = {
       desc = "Search files in the current directory",
     },
     {
-      "<leader>g",
+      "sF",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").oldfiles()
+        end)
+      end,
+      desc = "Search old files",
+    },
+    {
+      "sw",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").lines()
+        end)
+      end,
+      desc = "Search word in the current file",
+    },
+    {
+      "sW",
       function()
         run_in_edit_window(function()
           require("fzf-lua").live_grep()
         end)
       end,
-      desc = "Search text in all files",
+      desc = "Search word in all files",
     },
     {
-      "<leader>f",
+      "sb",
       function()
-        require("plugins.fzf").lines()
+        run_in_edit_window(function()
+          require("fzf-lua").buffers()
+        end)
       end,
-      desc = "Search text in the current file",
+      desc = "Search buffers",
+    },
+    {
+      "sB",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").blines()
+        end)
+      end,
+      desc = "Search lines in open buffers",
     },
     {
       "_", -- <S-->
       function()
-        require("plugins.fzf").snippets()
+        search_snippets()
       end,
       desc = "Search snippets",
+    },
+    {
+      "sn", -- search snippets
+      function()
+        search_snippets()
+      end,
+      desc = "Search snippets",
+    },
+    {
+      "ss",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").lsp_document_symbols()
+        end)
+      end,
+      desc = "Symbols in current buffer (LSP)",
+    },
+    {
+      "sS",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").lsp_workspace_symbols()
+        end)
+      end,
+      desc = "Symbols in workspace (LSP)",
+    },
+    {
+      "st",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").treesitter()
+        end)
+      end,
+      desc = "Symbols in current buffer (Treesitter)",
+    },
+    {
+      "sr",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").registers()
+        end)
+      end,
+      desc = "Search registers",
+    },
+    {
+      "sk",
+      function()
+        run_in_edit_window(function()
+          require("fzf-lua").keymaps()
+        end)
+      end,
+      desc = "Search keymaps",
     },
   },
 
@@ -165,20 +255,9 @@ local M = {
   },
 }
 
--- Search lines with a check for fern buffer
-function M.lines()
-  run_in_edit_window(function()
-    require("fzf-lua").lines()
-  end)
-end
-
-function M.snippets()
-  search_snippets()
-end
-
 M.config = function()
   vim.api.nvim_create_user_command("FzfLuaSnipAvailable", function()
-    require("plugins.fzf").snippets()
+    search_snippets()
   end, {})
 
   require("fzf-lua").setup({

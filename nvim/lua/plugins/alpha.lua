@@ -39,12 +39,11 @@ return {
 
     -- Set shortcuts
     dashboard.section.buttons.val = {
-      dashboard.button("<Space>b", "  Fern", ":Fern . -drawer -toggle<CR>"),
-      dashboard.button("<Space>p", "󰥨  Find file", ":FzfLua files<CR>"),
-      dashboard.button("<Space>g", "󰱼  Find text", ":FzfLua live_grep<CR>"),
-      dashboard.button("r", "  Recent file", ":FzfLua oldfiles<CR>"),
+      dashboard.button("<leader>e", "󰉖  mini.files", ":lua require('mini.files').open()<CR>"),
+      dashboard.button("sf", "󰥨  Find file", ":FzfLua files<CR>"),
+      dashboard.button("sF", "  Recent file", ":FzfLua oldfiles<CR>"),
+      dashboard.button("sW", "󰱼  Find text", ":FzfLua live_grep<CR>"),
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-      dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
       dashboard.button("q", "  Quit", ":qa<CR>"),
     }
 

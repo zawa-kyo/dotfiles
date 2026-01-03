@@ -22,6 +22,8 @@ return {
         "lua",
         "javascript",
         "typescript",
+        "markdown",
+        "markdown_inline",
         "python",
         "java",
         "dart",

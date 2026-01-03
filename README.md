@@ -66,10 +66,7 @@ To set up Bun’s global environment managed via this repository, run the follow
 sh scripts/install-bun.sh
 ```
 
-This script will:
-	1. Create a symbolic link between the Bun global directory and the repository’s managed directory.
-	2. Navigate to the Bun global directory.
-	3. Install dependencies listed in package.json.
+This script will: 1. Create a symbolic link between the Bun global directory and the repository’s managed directory. 2. Navigate to the Bun global directory. 3. Install dependencies listed in package.json.
 
 After running the script, your Bun global environment will be fully configured and ready to use.
 
@@ -94,15 +91,15 @@ To back up the currently installed Homebrew packages into the `Brewfile`:
 
 1. Navigate to the repository directory:
 
-	```sh
-	cd $HOME/.dotfiles
-	```
+   ```sh
+   cd $HOME/.dotfiles
+   ```
 
 2. Run the following command:
 
-	```sh
-	brew bundle dump --file=homebrew/Brewfile --force
-	```
+   ```sh
+   brew bundle dump --file=homebrew/Brewfile --force
+   ```
 
 This will overwrite the existing `Brewfile` with the current list of installed packages.
 

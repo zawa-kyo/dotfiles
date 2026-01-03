@@ -7,7 +7,7 @@ local utils = require("config.utils")
 
 -- Rename variables for clarity
 local opts = utils.getOpts
-local keymap = vim.keymap.set
+local keymap = utils.getKeymap
 
 -- Remap space to leader key
 keymap("", "<Space>", "<Nop>", opts("Nop"))
@@ -18,7 +18,7 @@ vim.g.maplocalleader = " "
 -- Docs
 --------------------
 
--- Modes
+-- Modes:
 --   normal_mode = 'n',
 --   insert_mode = 'i',
 --   visual_mode = 'v',
@@ -32,9 +32,20 @@ vim.g.maplocalleader = " "
 --   <leader>b … Buffer ops (next/prev/list/delete)
 --   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
 --   ] / [     … “Next / Previous” common UI (diagnostic/quickfix/loclist/…)
---   n/N       … Keep default search repeat
---   Hop       … f/F (to char), s/S (t/T-equivalent: before/after the char)
---   *t is reserved for tabs; avoid collisions with Hop by using s/S
+--   n/N       … Keep default search repeat (unless overridden elsewhere)
+--   Flash     … f/F/t/T behavior is handled in flash.nvim config
+
+--------------------
+-- All Modes
+--------------------
+
+local all_modes = { "n", "i", "v", "x", "o", "t", "c", "s" }
+
+-- Disable arrow keys to encourage hjkl
+keymap(all_modes, "<Up>", "<Nop>", opts("Nop"))
+keymap(all_modes, "<Down>", "<Nop>", opts("Nop"))
+keymap(all_modes, "<Left>", "<Nop>", opts("Nop"))
+keymap(all_modes, "<Right>", "<Nop>", opts("Nop"))
 
 --------------------
 -- Normal Mode
@@ -44,7 +55,7 @@ vim.g.maplocalleader = " "
 -- Note: Enabling ‘silent’ may cause rendering delay
 keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
--- Window navigation (Ctrl+h/j/k/l or <leader>H/J/K/J)
+-- Window navigation (Ctrl+h/j/k/l or <leader>H/J/K/L)
 keymap("n", "<C-h>", "<C-w>h", opts("Go to left window"))
 keymap("n", "<C-j>", "<C-w>j", opts("Go to bottom window"))
 keymap("n", "<C-k>", "<C-w>k", opts("Go to top window"))
@@ -81,6 +92,9 @@ keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
 keymap("v", ",", "<Esc>ggVG", opts("Select all"))
+
+-- Disable default substitute to free up "s" prefix
+keymap("n", "s", "<Nop>", opts("Disable substitute"))
 
 -- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
@@ -129,7 +143,6 @@ keymap("n", "<leader>lL", "<Cmd>lclose<CR>", opts("Close location list"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
-keymap("n", "-", "<Cmd>FzfLua keymaps<CR>", opts("Find keymaps via fzf"))
 
 -- Line begin/end
 keymap("n", "H", "^", opts("Move to the beginning of the line"))
@@ -201,16 +214,16 @@ keymap("o", "i<space>", "iW", opts("Select words between spaces"))
 keymap("x", "i<space>", "iW", opts("Select words between spaces"))
 
 --------------------
--- Escape: Close Helpers
+-- Escape: Close helpers
 --------------------
 
--- Close hover in the hover
+-- Close hover when cursor is in a hover window
 local function close_hover_in_hover()
   local current_win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_close(current_win, true)
 end
 
--- Close hover out of the hover
+-- Close hover when cursor is outside a hover window
 local function close_hover_out_of_hover()
   vim.api.nvim_feedkeys("hl", "n", false)
 end

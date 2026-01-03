@@ -55,6 +55,15 @@ function M.getOpts(desc, is_noremap, is_silent, is_expr)
   return options
 end
 
+--- Keymap helper that forwards opts as-is
+--- @param mode string|string[] Mode(s)
+--- @param lhs string Left-hand side
+--- @param rhs string|function Right-hand side
+--- @param opts table|nil Keymap options
+function M.getKeymap(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
 --- Map VSCode command to a normal-mode keymap when running under VSCode
 --- @param lhs string The keybinding on the Neovim side
 --- @param command string The VSCode command id to trigger
@@ -64,7 +73,7 @@ function M.vscode_map(lhs, command, desc)
     return
   end
 
-  vim.keymap.set("n", lhs, function()
+  M.getKeymap("n", lhs, function()
     vim.fn.VSCodeNotify(command)
   end, M.getOpts(desc))
 end

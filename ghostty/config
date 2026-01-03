@@ -1,5 +1,5 @@
 # Theme
-theme = Catppuccin Frappe
+theme = Nord
 font-family = Hack Nerd Font Mono,
 font-feature = -dlig
 font-size = 14
@@ -10,11 +10,12 @@ window-padding-y = 5
 window-padding-balance = true
 
 # Background
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur-radius = 20
 
-# Titlebar
+# Title Bar
 macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 
 # Icon
 macos-icon = custom-style
@@ -29,4 +30,4 @@ quick-terminal-position = "top"
 quick-terminal-screen = "mouse"
 quick-terminal-animation-duration = 0.1
 quick-terminal-size = 60%, 80%
-keybind = "global:option+g=toggle_quick_terminal"
+keybind = "global:cmd+backquote=toggle_quick_terminal"
