@@ -37,7 +37,7 @@ local function fern_root()
 end
 
 -- Open Fern as a drawer and optionally reveal the current file
-local function open_fern_drawer()
+local function open_fern_drawer(should_reveal)
   remember_window()
 
   vim.schedule(function()
@@ -45,7 +45,7 @@ local function open_fern_drawer()
     local current_file = vim.fn.expand("%:p")
 
     local reveal_cmd = ""
-    if vim.fn.filereadable(current_file) == 1 then
+    if should_reveal and vim.fn.filereadable(current_file) == 1 then
       reveal_cmd = " -reveal=" .. vim.fn.fnameescape(current_file)
     end
 
@@ -64,7 +64,7 @@ local function toggle_fern_with_reveal()
     return
   end
 
-  open_fern_drawer()
+  open_fern_drawer(true)
 end
 
 -- Close Fern if active or open it when hidden
@@ -75,7 +75,7 @@ local function toggle_or_close_fern()
     return
   end
 
-  toggle_fern_with_reveal()
+  open_fern_drawer(false)
 end
 
 return {

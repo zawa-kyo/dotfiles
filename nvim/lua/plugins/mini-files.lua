@@ -152,10 +152,18 @@ return {
       },
     })
 
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "MiniFilesBufferCreate",
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "minifiles",
       callback = function(args)
         keymap("n", "H", toggle_hidden, { buffer = args.buf, desc = "Toggle hidden files" })
+        keymap("n", "<Esc>", function()
+          if vim.v.hlsearch == 1 then
+            vim.cmd("nohlsearch")
+            return
+          end
+
+          require("mini.files").close()
+        end, { buffer = args.buf, desc = "Close mini.files" })
       end,
     })
   end,
