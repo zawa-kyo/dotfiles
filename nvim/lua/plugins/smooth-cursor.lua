@@ -3,6 +3,7 @@ return {
     "gen740/SmoothCursor.nvim",
 
     cond = not vim.g.vscode,
+    event = { "CursorMoved", "CursorMovedI" },
 
     config = function()
       require("smoothcursor").setup({

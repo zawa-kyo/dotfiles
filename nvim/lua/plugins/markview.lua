@@ -1,8 +1,10 @@
 return {
   "OXY2DEV/markview.nvim",
 
-  lazy = false,
+  lazy = true,
   cond = not vim.g.vscode,
+  ft = { "markdown" },
+  cmd = { "Markview" },
   keys = {
     { "<Leader>tm", ":Markview toggle<CR>", desc = "Toggle Markdown rendering" },
   },
