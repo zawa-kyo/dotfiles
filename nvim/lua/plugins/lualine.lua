@@ -2,6 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
 
   cond = not vim.g.vscode,
+  event = "VimEnter",
 
   dependencies = {
     "DaikyXendo/nvim-material-icon",

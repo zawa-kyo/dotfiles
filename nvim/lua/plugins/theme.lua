@@ -2,7 +2,8 @@ return {
   {
     "gbprod/nord.nvim",
 
-    lazy = false,
+    lazy = true,
+    event = "VimEnter",
     priority = 1000,
 
     config = function()

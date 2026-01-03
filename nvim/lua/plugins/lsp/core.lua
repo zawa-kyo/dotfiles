@@ -13,8 +13,7 @@ local servers = {
 return {
   {
     "folke/neoconf.nvim",
-    lazy = false,
-    priority = 1000, -- Ensure configuration data loads before servers
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "neovim/nvim-lspconfig" },
     config = function()
       require("neoconf").setup()
