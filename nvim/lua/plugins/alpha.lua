@@ -39,7 +39,7 @@ return {
 
     -- Set shortcuts
     dashboard.section.buttons.val = {
-      dashboard.button("<leader>e", "  Fern", ":Fern . -drawer -toggle<CR>"),
+      dashboard.button("<leader>e", "󰉖  mini.files", ":lua require('mini.files').open()<CR>"),
       dashboard.button("sf", "󰥨  Find file", ":FzfLua files<CR>"),
       dashboard.button("sF", "  Recent file", ":FzfLua oldfiles<CR>"),
       dashboard.button("sW", "󰱼  Find text", ":FzfLua live_grep<CR>"),
