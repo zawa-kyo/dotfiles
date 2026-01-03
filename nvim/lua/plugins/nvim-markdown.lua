@@ -10,7 +10,7 @@ return {
   config = function()
     local utils = require("config.utils")
     local opts = utils.getOpts
-    local keymap = vim.keymap.set
+    local keymap = utils.getKeymap
     local group = vim.api.nvim_create_augroup("nvim_markdown_custom_keymaps", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       group = group,

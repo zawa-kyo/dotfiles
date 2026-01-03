@@ -15,6 +15,7 @@ background-blur-radius = 20
 
 # Title Bar
 macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 
 # Icon
 macos-icon = custom-style

@@ -1,4 +1,5 @@
 local utils = require("config.utils")
+local keymap = utils.getKeymap
 
 if not vim.g.vscode then
   vim.g.loaded_netrw = 1
@@ -80,15 +81,14 @@ return {
   "lambdalisue/fern.vim",
   cond = not vim.g.vscode,
   dependencies = {
-    "lambdalisue/fern-hijack.vim",
     "yuki-yano/fern-preview.vim",
     "lambdalisue/fern-renderer-nerdfont.vim",
     "lambdalisue/glyph-palette.vim",
     "lambdalisue/nerdfont.vim",
   },
   keys = {
-    { "<leader>e", toggle_or_close_fern, desc = "Toggle or close Fern" },
-    { "<leader>E", toggle_fern_with_reveal, desc = "Toggle or reveal in Fern" },
+    { "<leader>fe", toggle_or_close_fern, desc = "Toggle or close Fern" },
+    { "<leader>fE", toggle_fern_with_reveal, desc = "Toggle or reveal in Fern" },
   },
   config = function()
     vim.g["fern#default_hidden"] = 1
@@ -114,11 +114,12 @@ return {
         local mappings = {
           { "<CR>", "<Plug>(fern-action-open-or-expand)" },
           { "<S-CR>", "<Plug>(fern-action-collapse)" },
+          { "H", "<Plug>(fern-action-hidden:toggle)" },
           { "p", "<Plug>(fern-action-preview:toggle)" },
         }
 
         for _, map in ipairs(mappings) do
-          vim.keymap.set("n", map[1], map[2], { buffer = buffer, noremap = false, silent = true })
+          keymap("n", map[1], map[2], { buffer = buffer, noremap = false, silent = true })
         end
       end,
     })

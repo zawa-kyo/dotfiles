@@ -7,7 +7,7 @@ local utils = require("config.utils")
 
 -- Rename variables for clarity
 local opts = utils.getOpts
-local keymap = vim.keymap.set
+local keymap = utils.getKeymap
 
 -- Remap space to leader key
 keymap("", "<Space>", "<Nop>", opts("Nop"))
