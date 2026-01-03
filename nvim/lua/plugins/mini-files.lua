@@ -38,6 +38,10 @@ return {
       content = {
         filter = filter_hidden,
       },
+      mappings = {
+        go_in = "l",
+        go_in_plus = "<CR>",
+      },
       options = {
         use_as_default_explorer = true,
         use_trash = true,
@@ -47,9 +51,6 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "MiniFilesBufferCreate",
       callback = function(args)
-        keymap("n", "e", function()
-          require("mini.files").go_in()
-        end, { buffer = args.buf, desc = "Open entry" })
         keymap("n", "H", toggle_hidden, { buffer = args.buf, desc = "Toggle hidden files" })
       end,
     })
