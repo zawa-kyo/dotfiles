@@ -1,10 +1,12 @@
 local utils = require("config.utils")
 local is_hidden_visible = true
 
+--- Decide whether to show a file system entry based on hidden visibility.
 local function filter_hidden(entry)
   return is_hidden_visible or not vim.startswith(entry.name, ".")
 end
 
+--- Toggle hidden file visibility and refresh the explorer view.
 local function toggle_hidden()
   is_hidden_visible = not is_hidden_visible
   require("mini.files").refresh()
