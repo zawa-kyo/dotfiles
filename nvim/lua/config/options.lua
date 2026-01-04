@@ -7,8 +7,8 @@ local options = {
   backupskip = { "/tmp/*", "/private/tmp/*" },
   -- Sync system clipboard with unnamed register
   clipboard = "unnamedplus",
-  -- Make command-line two rows tall
-  cmdheight = 2,
+  -- Hide the command line when not in use
+  cmdheight = 0,
   -- Completion UI should show menu even with one match
   completeopt = { "menuone", "noselect" },
   -- Hide concealed text entirely (useful for Markdown)
