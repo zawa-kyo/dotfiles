@@ -114,6 +114,9 @@ zstyle ":completion:*:commands" rehash 1
 # Paths
 # ===========================
 
+# Local
+export PATH="$HOME/.local/bin:$PATH"
+
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"
 
