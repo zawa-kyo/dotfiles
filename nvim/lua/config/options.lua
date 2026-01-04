@@ -57,8 +57,8 @@ local options = {
   shiftwidth = 2,
   -- Hide -- INSERT -- indicator (statusline handles it)
   showmode = false,
-  -- Always show the tabline
-  showtabline = 2,
+  -- Only show tabline when there are at least two tabs
+  showtabline = 1,
   -- Keep cursor away from left/right edges
   sidescrolloff = 8,
   -- Always show the sign column
