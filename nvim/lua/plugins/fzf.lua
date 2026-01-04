@@ -1,5 +1,14 @@
 local utils = require("config.utils")
 
+local function toggle_visibility_actions()
+  local actions = require("fzf-lua.actions")
+
+  return {
+    ["ctrl-u"] = { actions.toggle_hidden, { desc = "Toggle hidden" } },
+    ["ctrl-o"] = { actions.toggle_ignore, { desc = "Toggle ignore" } },
+  }
+end
+
 -- Make sure future edits happen in a non-Fern window, splitting if needed
 local function ensure_edit_window()
   if vim.bo.filetype ~= "fern" then
@@ -120,7 +129,9 @@ local M = {
       "sf",
       function()
         run_in_edit_window(function()
-          require("fzf-lua").files()
+          require("fzf-lua").files({
+            actions = toggle_visibility_actions(),
+          })
         end)
       end,
       desc = "Search files in the current directory",
@@ -129,7 +140,9 @@ local M = {
       "<leader>p",
       function()
         run_in_edit_window(function()
-          require("fzf-lua").files()
+          require("fzf-lua").files({
+            actions = toggle_visibility_actions(),
+          })
         end)
       end,
       desc = "Search files in the current directory",
@@ -156,7 +169,9 @@ local M = {
       "sW",
       function()
         run_in_edit_window(function()
-          require("fzf-lua").live_grep()
+          require("fzf-lua").live_grep({
+            actions = toggle_visibility_actions(),
+          })
         end)
       end,
       desc = "Search word in all files",
