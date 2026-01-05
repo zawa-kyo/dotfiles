@@ -1,5 +1,13 @@
 return {
   "numToStr/Comment.nvim",
+
+  cond = not vim.g.vscode,
+  lazy = true,
+  event = {
+    "BufRead",
+    "BufNewFile",
+  },
+
   keys = {
     {
       "<leader>/",

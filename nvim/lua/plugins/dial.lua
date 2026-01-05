@@ -2,11 +2,6 @@ local M = {
   "monaqa/dial.nvim",
 
   lazy = true,
-  event = {
-    "BufRead",
-    "BufNewFile",
-  },
-
   keys = {
     {
       "<C-a>",
