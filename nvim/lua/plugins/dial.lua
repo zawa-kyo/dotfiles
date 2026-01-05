@@ -2,16 +2,11 @@ local M = {
   "monaqa/dial.nvim",
 
   lazy = true,
-  event = {
-    "BufRead",
-    "BufNewFile",
-  },
-
   keys = {
     {
       "<C-a>",
       function()
-        require("dial.map").inc_normal()()
+        require("dial.map").manipulate("increment", "normal")
       end,
       desc = "Increment the number under the cursor",
       mode = "n",
@@ -19,7 +14,7 @@ local M = {
     {
       "<C-x>",
       function()
-        require("dial.map").dec_normal()()
+        require("dial.map").manipulate("decrement", "normal")
       end,
       desc = "Decrement the number under the cursor",
       mode = "n",
@@ -27,7 +22,7 @@ local M = {
     {
       "<C-a>",
       function()
-        require("dial.map").inc_visual()()
+        require("dial.map").manipulate("increment", "visual")
       end,
       desc = "Increment the number under the cursor",
       mode = "v",
@@ -35,7 +30,7 @@ local M = {
     {
       "<C-x>",
       function()
-        require("dial.map").dec_visual()()
+        require("dial.map").manipulate("decrement", "visual")
       end,
       desc = "Decrement the number under the cursor",
       mode = "v",
@@ -49,10 +44,10 @@ function M.config()
 
   dial.augends:register_group({
     default = {
-      augend.integer.alias.decimal, -- integer: decimal
-      augend.integer.alias.hex, -- integer: hex
-      augend.date.alias["%Y/%m/%d"], -- date: YYYY/MM/DD
-      augend.constant.alias.bool, -- true/false toggle
+      augend.integer.alias.decimal,
+      augend.integer.alias.hex,
+      augend.date.alias["%Y/%m/%d"],
+      augend.constant.alias.bool,
     },
   })
 end
