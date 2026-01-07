@@ -115,6 +115,19 @@ end
 return {
   "echasnovski/mini.files",
   cond = not vim.g.vscode,
+  dependencies = {
+    {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        -- Provide consistent project roots for mini.files navigation.
+        require("project_nvim").setup({
+          -- Avoid LSP-based root detection to prevent deprecated API usage
+          detection_methods = { "pattern" },
+          patterns = { ".git", "Makefile", "package.json" },
+        })
+      end,
+    },
+  },
 
   keys = {
     {
