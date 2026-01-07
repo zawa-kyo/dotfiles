@@ -204,7 +204,7 @@ local M = {
           })
         end)
       end,
-      desc = "Search files in the current directory",
+      desc = "Search files (cwd)",
     },
     {
       "<leader>p",
@@ -215,7 +215,7 @@ local M = {
           })
         end)
       end,
-      desc = "Search files in the current directory",
+      desc = "Search files (cwd)",
     },
     {
       "sF",
@@ -233,7 +233,7 @@ local M = {
           fzf_lua.lines()
         end)
       end,
-      desc = "Search word in the current file",
+      desc = "Search in buffer",
     },
     {
       "sW",
@@ -244,7 +244,7 @@ local M = {
           })
         end)
       end,
-      desc = "Search word in all files",
+      desc = "Search in workspace",
     },
     {
       "sb",
@@ -262,7 +262,7 @@ local M = {
           fzf_lua.blines()
         end)
       end,
-      desc = "Search lines in open buffers",
+      desc = "Search lines (buffers)",
     },
     {
       "sn", -- search snippets
@@ -278,7 +278,7 @@ local M = {
           fzf_lua.lsp_document_symbols()
         end)
       end,
-      desc = "Symbols in current buffer (LSP)",
+      desc = "Search symbols (LSP buffer)",
     },
     {
       "sS",
@@ -287,7 +287,7 @@ local M = {
           fzf_lua.lsp_workspace_symbols()
         end)
       end,
-      desc = "Symbols in workspace (LSP)",
+      desc = "Search symbols (LSP workspace)",
     },
     {
       "st",
@@ -296,7 +296,7 @@ local M = {
           fzf_lua.treesitter()
         end)
       end,
-      desc = "Symbols in current buffer (Treesitter)",
+      desc = "Search symbols (Treesitter buffer)",
     },
     {
       "sr",
