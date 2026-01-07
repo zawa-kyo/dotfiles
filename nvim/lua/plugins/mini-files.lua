@@ -118,13 +118,6 @@ return {
 
   keys = {
     {
-      "<leader>e",
-      function()
-        require("mini.files").open()
-      end,
-      desc = "Toggle mini.files",
-    },
-    {
       "-",
       open_project_reveal,
       desc = "Open mini.files (project root, reveal file)",

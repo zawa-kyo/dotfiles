@@ -32,8 +32,20 @@ return {
   "folke/snacks.nvim",
   cond = not vim.g.vscode,
   keys = {
-    { "<leader>fe", function() toggle_explorer(false) end, desc = "Toggle explorer" },
-    { "<leader>fE", function() toggle_explorer(true) end, desc = "Toggle or reveal in explorer" },
+    {
+      "<leader>e",
+      function()
+        toggle_explorer(false)
+      end,
+      desc = "Toggle explorer",
+    },
+    {
+      "<leader>E",
+      function()
+        toggle_explorer(true)
+      end,
+      desc = "Toggle or reveal in explorer",
+    },
   },
   opts = {
     explorer = {
