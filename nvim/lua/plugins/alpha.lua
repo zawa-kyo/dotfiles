@@ -41,9 +41,9 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button("e", "󰉖  Snacks Explorer", ":lua require('snacks').explorer.open()<CR>"),
       dashboard.button("E", "󰉖  Mini Explorer", ":lua require('mini.files').open()<CR>"),
-      dashboard.button("sf", "󰥨  Find file", ":lua require('snacks').picker.files()<CR>"),
-      dashboard.button("sF", "  Recent file", ":lua require('snacks').picker.recent()<CR>"),
-      dashboard.button("sW", "󰱼  Find text", ":lua require('snacks').picker.grep()<CR>"),
+      dashboard.button("f", "󰥨  Find file", ":lua require('snacks').picker.files()<CR>"),
+      dashboard.button("F", "  Recent file", ":lua require('snacks').picker.recent()<CR>"),
+      dashboard.button("W", "󰱼  Find text", ":lua require('snacks').picker.grep()<CR>"),
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("q", "  Quit", ":qa<CR>"),
     }
