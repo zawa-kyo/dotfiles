@@ -1,11 +1,10 @@
 local utils = require("config.utils")
+local fzf_actions = require("fzf-lua.actions")
 
 local function toggle_visibility_actions()
-  local actions = require("fzf-lua.actions")
-
   return {
-    ["ctrl-u"] = { actions.toggle_hidden, { desc = "Toggle hidden" } },
-    ["ctrl-o"] = { actions.toggle_ignore, { desc = "Toggle ignore" } },
+    ["ctrl-u"] = { fzf_actions.toggle_hidden, { desc = "Toggle hidden" } },
+    ["ctrl-o"] = { fzf_actions.toggle_ignore, { desc = "Toggle ignore" } },
   }
 end
 
