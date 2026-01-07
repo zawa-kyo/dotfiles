@@ -1,5 +1,3 @@
-local window = require("plugins.fzf.window")
-
 local snippet_entries_cache = nil
 local snippet_by_id_cache = nil
 
@@ -71,9 +69,18 @@ local function build_snippet_cache()
         local description = snippet_description(snippet)
         entry_id = entry_id + 1
         snippet_by_id[entry_id] = snippet
-        local entry =
-          string.format("[%d] %s - %s (%s) : %s", entry_id, snippet.trigger, snippet.name or "", category, description)
-        table.insert(entries, entry)
+        local entry = string.format(
+          "[%d] %s - %s (%s) : %s",
+          entry_id,
+          snippet.trigger,
+          snippet.name or "",
+          category,
+          description
+        )
+        table.insert(entries, {
+          text = entry,
+          id = entry_id,
+        })
       end
     end
   end
@@ -84,51 +91,46 @@ end
 
 local M = {}
 
--- Search available LuaSnip snippets via fzf-lua and insert the trigger
+-- Search available LuaSnip snippets via snacks picker and insert the trigger
 function M.search_snippets()
-  window.run_in_edit_window(function()
-    local fzf_lua = require("fzf-lua")
-    local luasnip = require("luasnip")
-    if not snippet_entries_cache or not snippet_by_id_cache then
-      build_snippet_cache()
-    end
-    local entries = snippet_entries_cache or {}
-    local snippet_by_id = snippet_by_id_cache or {}
+  local luasnip = require("luasnip")
+  if not snippet_entries_cache or not snippet_by_id_cache then
+    build_snippet_cache()
+  end
+  local entries = snippet_entries_cache or {}
+  local snippet_by_id = snippet_by_id_cache or {}
 
-    if #entries == 0 then
-      vim.notify("No available snippets", vim.log.levels.INFO)
-      return
-    end
+  if #entries == 0 then
+    vim.notify("No available snippets", vim.log.levels.INFO)
+    return
+  end
 
-    fzf_lua.fzf_exec(entries, {
-      prompt = "Select Snippet> ",
-      actions = {
-        ["default"] = function(selected)
-          if not selected or not selected[1] then
-            return
-          end
-          local id = tonumber(selected[1]:match("^%[(%d+)%]"))
-          if not id then
-            return
-          end
-          local snippet = snippet_by_id[id]
-          if not snippet then
-            return
-          end
-          vim.schedule(function()
-            if type(snippet.copy) == "function" then
-              vim.cmd("startinsert")
-              luasnip.snip_expand(snippet)
-            else
-              vim.api.nvim_put({ snippet.trigger }, "c", true, true)
-              vim.cmd("startinsert")
-              luasnip.expand()
-            end
-          end)
-        end,
-      },
-    })
-  end)
+  require("snacks").picker({
+    title = "Snippets",
+    items = entries,
+    format = "text",
+    preview = "none",
+    confirm = function(picker, item)
+      if not item or not item.id then
+        return
+      end
+      local snippet = snippet_by_id[item.id]
+      if not snippet then
+        return
+      end
+      picker:close()
+      vim.schedule(function()
+        if type(snippet.copy) == "function" then
+          vim.cmd("startinsert")
+          luasnip.snip_expand(snippet)
+        else
+          vim.api.nvim_put({ snippet.trigger }, "c", true, true)
+          vim.cmd("startinsert")
+          luasnip.expand()
+        end
+      end)
+    end,
+  })
 end
 
 return M
