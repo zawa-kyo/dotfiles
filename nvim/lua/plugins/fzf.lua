@@ -15,19 +15,20 @@ local function ensure_edit_window()
     return
   end
 
-  vim.cmd.wincmd("p")
-  if vim.bo.filetype ~= "fern" then
-    return
+  local current_win = vim.api.nvim_get_current_win()
+  local windows = vim.api.nvim_tabpage_list_wins(0)
+
+  for _, win in ipairs(windows) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].filetype ~= "fern" then
+      vim.api.nvim_set_current_win(win)
+      return
+    end
   end
 
-  vim.cmd.wincmd("l")
-  if vim.bo.filetype ~= "fern" then
-    return
-  end
-
+  vim.api.nvim_set_current_win(current_win)
   vim.cmd("vsplit")
   vim.cmd("enew")
-  vim.cmd.wincmd("l")
 end
 
 -- Run the given action after guaranteeing we are in an edit-friendly window
