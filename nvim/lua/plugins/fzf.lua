@@ -46,20 +46,64 @@ local function search_snippets()
     local snippet_by_id = {}
     local entry_id = 0
 
-    for category, snippet_list in pairs(snippets) do
+    ---Normalize values for consistent sorting.
+    local function sort_key(value)
+      if type(value) == "string" then
+        return value:lower()
+      end
+      return tostring(value or "")
+    end
+
+    ---Return sorted category keys from a map.
+    local function sorted_categories(map)
+      local keys = {}
+      for key in pairs(map) do
+        table.insert(keys, key)
+      end
+      table.sort(keys, function(a, b)
+        return sort_key(a) < sort_key(b)
+      end)
+      return keys
+    end
+
+    ---Return snippets sorted by trigger, then name.
+    local function sorted_snippets(snippet_list)
+      local list = {}
+      for index, snippet in ipairs(snippet_list) do
+        list[index] = snippet
+      end
+      table.sort(list, function(a, b)
+        local a_trigger = sort_key(a.trigger)
+        local b_trigger = sort_key(b.trigger)
+        if a_trigger == b_trigger then
+          return sort_key(a.name) < sort_key(b.name)
+        end
+        return a_trigger < b_trigger
+      end)
+      return list
+    end
+
+    ---Extract a snippet description string.
+    local function snippet_description(snippet)
+      if type(snippet.description) == "table" then
+        return snippet.description[1] or ""
+      end
+      if type(snippet.description) == "string" then
+        return snippet.description
+      end
+      return ""
+    end
+
+    for _, category in ipairs(sorted_categories(snippets)) do
+      local snippet_list = snippets[category]
       local real_snippets = snippet_list
       if type(luasnip.get_snippets) == "function" then
         real_snippets = luasnip.get_snippets(category) or {}
       end
 
       if type(real_snippets) == "table" then
-        for _, snippet in ipairs(real_snippets) do
-          local description = ""
-          if type(snippet.description) == "table" then
-            description = snippet.description[1] or ""
-          elseif type(snippet.description) == "string" then
-            description = snippet.description
-          end
+        for _, snippet in ipairs(sorted_snippets(real_snippets)) do
+          local description = snippet_description(snippet)
           entry_id = entry_id + 1
           snippet_by_id[entry_id] = snippet
           local entry = string.format(
