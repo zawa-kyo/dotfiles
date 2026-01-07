@@ -40,6 +40,12 @@ local function run_in_edit_window(action)
   action()
 end
 
+local function with_fzf(action)
+  run_in_edit_window(function()
+    action(require("fzf-lua"))
+  end)
+end
+
 local snippet_entries_cache = nil
 local snippet_by_id_cache = nil
 
@@ -192,8 +198,8 @@ local M = {
     {
       "sf",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").files({
+        with_fzf(function(fzf_lua)
+          fzf_lua.files({
             actions = toggle_visibility_actions(),
           })
         end)
@@ -203,8 +209,8 @@ local M = {
     {
       "<leader>p",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").files({
+        with_fzf(function(fzf_lua)
+          fzf_lua.files({
             actions = toggle_visibility_actions(),
           })
         end)
@@ -214,8 +220,8 @@ local M = {
     {
       "sF",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").oldfiles()
+        with_fzf(function(fzf_lua)
+          fzf_lua.oldfiles()
         end)
       end,
       desc = "Search old files",
@@ -223,8 +229,8 @@ local M = {
     {
       "sw",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").lines()
+        with_fzf(function(fzf_lua)
+          fzf_lua.lines()
         end)
       end,
       desc = "Search word in the current file",
@@ -232,8 +238,8 @@ local M = {
     {
       "sW",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").live_grep({
+        with_fzf(function(fzf_lua)
+          fzf_lua.live_grep({
             actions = toggle_visibility_actions(),
           })
         end)
@@ -243,8 +249,8 @@ local M = {
     {
       "sb",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").buffers()
+        with_fzf(function(fzf_lua)
+          fzf_lua.buffers()
         end)
       end,
       desc = "Search buffers",
@@ -252,8 +258,8 @@ local M = {
     {
       "sB",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").blines()
+        with_fzf(function(fzf_lua)
+          fzf_lua.blines()
         end)
       end,
       desc = "Search lines in open buffers",
@@ -268,8 +274,8 @@ local M = {
     {
       "ss",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").lsp_document_symbols()
+        with_fzf(function(fzf_lua)
+          fzf_lua.lsp_document_symbols()
         end)
       end,
       desc = "Symbols in current buffer (LSP)",
@@ -277,8 +283,8 @@ local M = {
     {
       "sS",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").lsp_workspace_symbols()
+        with_fzf(function(fzf_lua)
+          fzf_lua.lsp_workspace_symbols()
         end)
       end,
       desc = "Symbols in workspace (LSP)",
@@ -286,8 +292,8 @@ local M = {
     {
       "st",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").treesitter()
+        with_fzf(function(fzf_lua)
+          fzf_lua.treesitter()
         end)
       end,
       desc = "Symbols in current buffer (Treesitter)",
@@ -295,8 +301,8 @@ local M = {
     {
       "sr",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").registers()
+        with_fzf(function(fzf_lua)
+          fzf_lua.registers()
         end)
       end,
       desc = "Search registers",
@@ -304,8 +310,8 @@ local M = {
     {
       "sk",
       function()
-        run_in_edit_window(function()
-          require("fzf-lua").keymaps()
+        with_fzf(function(fzf_lua)
+          fzf_lua.keymaps()
         end)
       end,
       desc = "Search keymaps",
