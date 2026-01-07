@@ -94,6 +94,34 @@ M.keys = {
     end,
     desc = "Search keymaps",
   },
+  {
+    "sm",
+    function()
+      require("snacks").picker.smart()
+    end,
+    desc = "Search smart",
+  },
+  {
+    "sp",
+    function()
+      require("snacks").picker.projects()
+    end,
+    desc = "Search projects",
+  },
+  {
+    "sR",
+    function()
+      require("snacks").picker.resume()
+    end,
+    desc = "Search previous picker",
+  },
+  {
+    "sz",
+    function()
+      require("snacks").picker.zoxide()
+    end,
+    desc = "Search zoxide",
+  },
 }
 
 M.vscode = function()
