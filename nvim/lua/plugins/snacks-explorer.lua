@@ -49,7 +49,7 @@ return {
   },
   opts = {
     explorer = {
-      replace_netrw = true,
+      replace_netrw = false,
       trash = true,
     },
   },
