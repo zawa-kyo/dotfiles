@@ -47,19 +47,4 @@ function M.is_ignored(name)
   return false
 end
 
--- Builds a fern-compatible regex from exact names and regex patterns.
-function M.fern_exclude()
-  local patterns = {}
-  for _, name in ipairs(M.exact_names) do
-    local escaped = vim.fn.escape(name, [[\.^$~[]*]])
-    table.insert(patterns, "^" .. escaped .. "$")
-  end
-
-  for _, pattern in ipairs(M.regex_patterns) do
-    table.insert(patterns, pattern)
-  end
-
-  return table.concat(patterns, "\\|")
-end
-
 return M

@@ -1,8 +1,13 @@
 local M = {}
 
--- Make sure future edits happen in a non-Fern window, splitting if needed
+local function is_snacks_picker(buf)
+  local filetype = vim.bo[buf].filetype
+  return filetype == "snacks_picker_list" or filetype == "snacks_picker_input"
+end
+
+-- Make sure future edits happen in a non-snacks picker window, splitting if needed
 function M.ensure_edit_window()
-  if vim.bo.filetype ~= "fern" then
+  if not is_snacks_picker(0) then
     return
   end
 
@@ -11,7 +16,7 @@ function M.ensure_edit_window()
 
   for _, win in ipairs(windows) do
     local buf = vim.api.nvim_win_get_buf(win)
-    if vim.bo[buf].filetype ~= "fern" then
+    if not is_snacks_picker(buf) then
       vim.api.nvim_set_current_win(win)
       return
     end
