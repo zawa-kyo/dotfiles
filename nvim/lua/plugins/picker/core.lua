@@ -15,6 +15,25 @@ return {
           picker.list:select()
         end,
       },
+      sources = {
+        buffers = {
+          win = {
+            input = {
+              keys = {
+                -- Mappings when focus is in the prompt
+                ["<c-x>"] = { "bufdelete", mode = { "n", "i" } },
+                ["x"] = { "bufdelete", mode = { "n" } },
+              },
+            },
+            list = {
+              -- Mappings when focus is in the results pane
+              keys = {
+                ["x"] = "bufdelete",
+              },
+            },
+          },
+        },
+      },
       win = {
         input = {
           keys = {
