@@ -77,8 +77,8 @@ local options = {
   tabstop = 2,
   -- Enable truecolor support
   termguicolors = true,
-  -- Mappings timeout length in ms
-  timeoutlen = 300,
+  -- Mappings timeout length in ms (default: 1000)
+  timeoutlen = 1000,
   -- Show file title in the window titlebar
   title = true,
   -- Persist undo history
