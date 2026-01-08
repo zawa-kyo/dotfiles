@@ -30,12 +30,24 @@ return {
     local function footer()
       local stats = require("lazy").stats()
       local total_plugins = stats.count
-      local startup_time = string.format("  󰭖 %.2f ms", stats.startuptime)
+      local startup_time = string.format("%.2f ms", stats.startuptime)
       local datetime = os.date(" %Y-%m-%d  %H:%M:%S")
       local version = vim.version()
-      local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+      local nvim_version_info = "v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-      return datetime .. startup_time .. "  󱐮 " .. total_plugins .. " plugins" .. nvim_version_info
+      local parts = {
+        { icon = "", text = datetime },
+        { icon = "󰭖", text = startup_time },
+        { icon = "󱐮", text = total_plugins .. " plugins" },
+        { icon = "", text = nvim_version_info },
+      }
+
+      local segments = {}
+      for _, part in ipairs(parts) do
+        table.insert(segments, string.format("%s %s", part.icon, part.text))
+      end
+
+      return table.concat(segments, "  ")
     end
 
     local function refresh_footer()
