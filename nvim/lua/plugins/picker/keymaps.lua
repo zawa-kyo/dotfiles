@@ -1,4 +1,5 @@
 local snippets = require("plugins.picker.snippets")
+local pickers = require("snacks").picker
 
 local M = {}
 
@@ -6,49 +7,49 @@ M.keys = {
   {
     "<leader>p",
     function()
-      require("snacks").picker.files()
+      pickers.files()
     end,
     desc = "Search files in workspace",
   },
   {
     "sf",
     function()
-      require("snacks").picker.files()
+      pickers.files()
     end,
     desc = "Search files in workspace",
   },
   {
     "sF",
     function()
-      require("snacks").picker.recent()
+      pickers.recent()
     end,
     desc = "Search recent files",
   },
   {
     "sw",
     function()
-      require("snacks").picker.lines()
+      pickers.lines()
     end,
     desc = "Search lines in current buffer",
   },
   {
     "sW",
     function()
-      require("snacks").picker.grep()
+      pickers.grep()
     end,
     desc = "Search words in workspace",
   },
   {
     "sb",
     function()
-      require("snacks").picker.buffers()
+      pickers.buffers()
     end,
     desc = "Search open buffers",
   },
   {
     "sB",
     function()
-      require("snacks").picker.grep({ buffers = true })
+      pickers.grep({ buffers = true })
     end,
     desc = "Search words in open buffers",
   },
@@ -62,70 +63,70 @@ M.keys = {
   {
     "ss",
     function()
-      require("snacks").picker.lsp_symbols()
+      pickers.lsp_symbols()
     end,
     desc = "Search LSP symbols in current buffer",
   },
   {
     "sS",
     function()
-      require("snacks").picker.lsp_workspace_symbols()
+      pickers.lsp_workspace_symbols()
     end,
     desc = "Search LSP symbols in workspace",
   },
   {
     "st",
     function()
-      require("snacks").picker.treesitter()
+      pickers.treesitter()
     end,
     desc = "Search Tree-sitter symbols in current buffer",
   },
   {
     "sr",
     function()
-      require("snacks").picker.registers()
+      pickers.registers()
     end,
     desc = "Search registers",
   },
   {
     "sR",
     function()
-      require("snacks").picker.resume()
+      pickers.resume()
     end,
     desc = "Resume previous picker",
   },
   {
     "sk",
     function()
-      require("snacks").picker.keymaps()
+      pickers.keymaps()
     end,
     desc = "Search keymaps",
   },
   {
     "sm",
     function()
-      require("snacks").picker.smart()
+      pickers.smart()
     end,
     desc = "Smart search for files and words",
   },
   {
     "sp",
     function()
-      require("snacks").picker.pickers()
+      pickers.pickers()
     end,
     desc = "Search pickers",
   },
   {
     "sP",
     function()
-      require("snacks").picker.projects()
+      pickers.projects()
     end,
     desc = "Search projects",
   },
   {
     "sz",
     function()
-      require("snacks").picker.zoxide()
+      pickers.zoxide()
     end,
     desc = "Search zoxide directories",
   },
