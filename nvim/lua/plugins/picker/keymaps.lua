@@ -43,7 +43,7 @@ M.keys = {
     function()
       require("snacks").picker.buffers()
     end,
-    desc = "Search buffers",
+    desc = "Search open buffers",
   },
   {
     "sB",
@@ -92,7 +92,7 @@ M.keys = {
     function()
       require("snacks").picker.resume()
     end,
-    desc = "Search previous picker",
+    desc = "Resume previous picker",
   },
   {
     "sk",
@@ -106,7 +106,7 @@ M.keys = {
     function()
       require("snacks").picker.smart()
     end,
-    desc = "Search smart",
+    desc = "Smart search for files and words",
   },
   {
     "sp",
@@ -127,7 +127,7 @@ M.keys = {
     function()
       require("snacks").picker.zoxide()
     end,
-    desc = "Search zoxide",
+    desc = "Search zoxide directories",
   },
 }
 
