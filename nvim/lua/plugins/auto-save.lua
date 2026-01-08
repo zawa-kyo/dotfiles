@@ -5,6 +5,11 @@ return {
   event = { "InsertLeave", "TextChanged" },
 
   config = function()
+    local utils = require("config.utils")
+    if not vim.g.vscode then
+      utils.getKeymap("n", "<leader>as", "<Cmd>ASToggle<CR>", utils.getOpts("Toggle auto-save"))
+    end
+
     require("auto-save").setup({
       enabled = true,
       debounce_delay = 200,
