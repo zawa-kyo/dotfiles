@@ -44,7 +44,7 @@ M.keys = {
     function()
       pickers.buffers()
     end,
-    desc = "Search open buffers",
+    desc = "Search buffers",
   },
   {
     "sB",
@@ -128,7 +128,7 @@ M.keys = {
     function()
       pickers.zoxide()
     end,
-    desc = "Search zoxide directories",
+    desc = "Search directories via zoxide",
   },
 }
 
