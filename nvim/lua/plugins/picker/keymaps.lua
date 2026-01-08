@@ -4,14 +4,14 @@ local M = {}
 
 M.keys = {
   {
-    "sf",
+    "<leader>p",
     function()
       require("snacks").picker.files()
     end,
     desc = "Search files in workspace",
   },
   {
-    "<leader>p",
+    "sf",
     function()
       require("snacks").picker.files()
     end,
@@ -88,6 +88,13 @@ M.keys = {
     desc = "Search registers",
   },
   {
+    "sR",
+    function()
+      require("snacks").picker.resume()
+    end,
+    desc = "Search previous picker",
+  },
+  {
     "sk",
     function()
       require("snacks").picker.keymaps()
@@ -109,18 +116,11 @@ M.keys = {
     desc = "Search pickers",
   },
   {
-    "sp",
+    "sP",
     function()
       require("snacks").picker.projects()
     end,
     desc = "Search projects",
-  },
-  {
-    "sR",
-    function()
-      require("snacks").picker.resume()
-    end,
-    desc = "Search previous picker",
   },
   {
     "sz",
