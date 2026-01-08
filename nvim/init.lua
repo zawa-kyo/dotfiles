@@ -1,4 +1,4 @@
 -- Speed up Lua module loading (Neovim 0.9+)
-vim.loader.enable()
+if vim.loader then vim.loader.enable() end
 
 require("config")
