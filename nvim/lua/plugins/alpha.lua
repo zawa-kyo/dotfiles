@@ -26,15 +26,33 @@ return {
       "                                                     ",
     }
 
-    -- Footer function to display plugins, date, and version
+    -- Footer function to display plugins, date, version, and startup time
     local function footer()
-      -- Use Lazy's stats function to get the number of plugins
-      local total_plugins = require("lazy").stats().count
+      local stats = require("lazy").stats()
+      local total_plugins = stats.count
+      local startup_time = string.format("%.2f ms", stats.startuptime)
       local datetime = os.date(" %Y-%m-%d  %H:%M:%S")
       local version = vim.version()
-      local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+      local nvim_version_info = "v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
-      return datetime .. "  󱐮 " .. total_plugins .. " plugins" .. nvim_version_info
+      local parts = {
+        { icon = "", text = datetime },
+        { icon = "󰭖", text = startup_time },
+        { icon = "󱐮", text = total_plugins .. " plugins" },
+        { icon = "", text = nvim_version_info },
+      }
+
+      local segments = {}
+      for _, part in ipairs(parts) do
+        table.insert(segments, string.format("%s %s", part.icon, part.text))
+      end
+
+      return table.concat(segments, "  ")
+    end
+
+    local function refresh_footer()
+      dashboard.section.footer.val = footer()
+      pcall(vim.cmd, "AlphaRedraw")
     end
 
     -- Set shortcuts
@@ -49,7 +67,7 @@ return {
     }
 
     -- Set footer
-    dashboard.section.footer.val = footer()
+    refresh_footer()
 
     -- Set footer color (for example, 'Type' is a built-in highlight group)
     vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#9CBF86", bold = true })
@@ -62,6 +80,30 @@ return {
     vim.cmd([[
             autocmd FileType alpha setlocal nofoldenable
         ]])
+
+    local function refresh_footer_when_ready()
+      local tries = 0
+      local max_tries = 20
+      local interval_ms = 50
+
+      local function tick()
+        tries = tries + 1
+        if require("lazy").stats().startuptime > 0 or tries >= max_tries then
+          refresh_footer()
+          return
+        end
+        vim.defer_fn(tick, interval_ms)
+      end
+
+      vim.defer_fn(tick, interval_ms)
+    end
+
+    -- Update footer after lazy.nvim computes startuptime
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "LazyVimStarted",
+      callback = refresh_footer_when_ready,
+      once = true,
+    })
 
     local function should_start_alpha_for_directory()
       if vim.fn.argc() ~= 1 then
