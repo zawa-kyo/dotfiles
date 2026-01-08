@@ -104,6 +104,13 @@ M.keys = {
   {
     "sp",
     function()
+      require("snacks").picker.pickers()
+    end,
+    desc = "Search pickers",
+  },
+  {
+    "sp",
+    function()
       require("snacks").picker.projects()
     end,
     desc = "Search projects",
