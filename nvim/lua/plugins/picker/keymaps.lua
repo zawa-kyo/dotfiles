@@ -8,6 +8,27 @@ end
 
 M.keys = {
   {
+    "sb",
+    function()
+      picker().buffers()
+    end,
+    desc = "Search buffers",
+  },
+  {
+    "sB",
+    function()
+      picker().grep({ buffers = true })
+    end,
+    desc = "Search words in open buffers",
+  },
+  {
+    "sc",
+    function()
+      picker().colorschemes()
+    end,
+    desc = "Search colorschemes",
+  },
+  {
     "<leader>p",
     function()
       picker().files()
@@ -29,32 +50,18 @@ M.keys = {
     desc = "Search recent files",
   },
   {
-    "sw",
+    "sk",
     function()
-      picker().lines()
+      picker().keymaps()
     end,
-    desc = "Search lines in current buffer",
+    desc = "Search keymaps",
   },
   {
-    "sW",
+    "sm",
     function()
-      picker().grep()
+      picker().smart()
     end,
-    desc = "Search words in workspace",
-  },
-  {
-    "sb",
-    function()
-      picker().buffers()
-    end,
-    desc = "Search buffers",
-  },
-  {
-    "sB",
-    function()
-      picker().grep({ buffers = true })
-    end,
-    desc = "Search words in open buffers",
+    desc = "Smart search for files and words",
   },
   {
     "sn", -- search snippets
@@ -62,6 +69,34 @@ M.keys = {
       snippets.search_snippets()
     end,
     desc = "Search snippets",
+  },
+  {
+    "sp",
+    function()
+      picker().pickers()
+    end,
+    desc = "Search pickers",
+  },
+  {
+    "sP",
+    function()
+      picker().projects()
+    end,
+    desc = "Search projects",
+  },
+  {
+    "sr",
+    function()
+      picker().registers()
+    end,
+    desc = "Search registers",
+  },
+  {
+    "sR",
+    function()
+      picker().resume()
+    end,
+    desc = "Resume previous picker",
   },
   {
     "ss",
@@ -85,46 +120,18 @@ M.keys = {
     desc = "Search Tree-sitter symbols in current buffer",
   },
   {
-    "sr",
+    "sw",
     function()
-      picker().registers()
+      picker().lines()
     end,
-    desc = "Search registers",
+    desc = "Search lines in current buffer",
   },
   {
-    "sR",
+    "sW",
     function()
-      picker().resume()
+      picker().grep()
     end,
-    desc = "Resume previous picker",
-  },
-  {
-    "sk",
-    function()
-      picker().keymaps()
-    end,
-    desc = "Search keymaps",
-  },
-  {
-    "sm",
-    function()
-      picker().smart()
-    end,
-    desc = "Smart search for files and words",
-  },
-  {
-    "sp",
-    function()
-      picker().pickers()
-    end,
-    desc = "Search pickers",
-  },
-  {
-    "sP",
-    function()
-      picker().projects()
-    end,
-    desc = "Search projects",
+    desc = "Search words in workspace",
   },
   {
     "sz",
