@@ -57,6 +57,13 @@ M.keys = {
     desc = "Search words in open buffers",
   },
   {
+    "sc",
+    function()
+      picker().colorschemes()
+    end,
+    desc = "Search colorschemes",
+  },
+  {
     "sn", -- search snippets
     function()
       snippets.search_snippets()
