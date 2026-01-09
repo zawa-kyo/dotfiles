@@ -25,4 +25,6 @@ function fizzBuzz(n: number): void {
 // - Correct: fizzBuzz(15)
 // - Error: fizzBuzz("15") (Type error)
 fizzBuzz(15);
-fizzBuzz("15"); // Type error
+
+// TODO: Fix Type error
+fizzBuzz("15");
