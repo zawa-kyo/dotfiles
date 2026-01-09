@@ -31,12 +31,14 @@ return {
       local stats = require("lazy").stats()
       local total_plugins = stats.count
       local startup_time = string.format("%.2f ms", stats.startuptime)
-      local datetime = os.date(" %Y-%m-%d  %H:%M:%S")
+      local date = os.date("%Y-%m-%d")
+      local time = os.date("%H:%M:%S")
       local version = vim.version()
       local nvim_version_info = "v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
       local parts = {
-        { icon = "", text = datetime },
+        { icon = "", text = date },
+        { icon = "", text = time },
         { icon = "󰭖", text = startup_time },
         { icon = "󱐮", text = total_plugins .. " plugins" },
         { icon = "", text = nvim_version_info },
