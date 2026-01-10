@@ -1,12 +1,10 @@
 local M = {}
-
-M.exact_names = {
-  ".DS_Store",
-}
-
-M.regex_patterns = {}
-
+local patterns = require("config.ignore.patterns")
 local regex_cache = nil
+
+-- Public lists that control ignore behavior.
+M.exact_names = patterns.exact_names
+M.regex_patterns = patterns.regex_patterns
 
 -- Compile Vim regex patterns once for fast matching.
 local function compiled_regexes()

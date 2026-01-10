@@ -1,5 +1,5 @@
 local utils = require("config.utils")
-local file_ignore = require("config.file-ignore")
+local file_ignore = require("config.ignore")
 local is_hidden_visible = true
 
 --- Resolve the project root using project.nvim or common markers.
