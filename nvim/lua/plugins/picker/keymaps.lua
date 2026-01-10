@@ -19,7 +19,7 @@ M.keys = {
     function()
       picker().grep({ buffers = true })
     end,
-    desc = "Search words in open buffers",
+    desc = "Search words in current buffers",
   },
   {
     "sc",
@@ -36,6 +36,20 @@ M.keys = {
     desc = "Search files in workspace",
   },
   {
+    "sd",
+    function()
+      picker().diagnostics()
+    end,
+    desc = "Search diagnostics in current buffer",
+  },
+  {
+    "sD",
+    function()
+      picker().diagnostics_buffer()
+    end,
+    desc = "Search diagnostics in workspace",
+  },
+  {
     "sf",
     function()
       picker().files()
@@ -50,11 +64,25 @@ M.keys = {
     desc = "Search recent files",
   },
   {
+    "si",
+    function()
+      picker().icons()
+    end,
+    desc = "Search icons",
+  },
+  {
     "sk",
     function()
       picker().keymaps()
     end,
     desc = "Search keymaps",
+  },
+  {
+    "sl",
+    function()
+      picker().lazy()
+    end,
+    desc = "Search for plugin spec",
   },
   {
     "sm",
@@ -125,6 +153,13 @@ M.keys = {
       picker().treesitter()
     end,
     desc = "Search Tree-sitter symbols in current buffer",
+  },
+  {
+    "sT",
+    function()
+      picker().todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+    end,
+    desc = "Search todo comments (Todo/Fix/Fixme)",
   },
   {
     "sw",
