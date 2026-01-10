@@ -19,7 +19,7 @@ M.keys = {
     function()
       picker().grep({ buffers = true })
     end,
-    desc = "Search words in open buffers",
+    desc = "Search words in current buffers",
   },
   {
     "sc",
