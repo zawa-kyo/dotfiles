@@ -64,7 +64,14 @@ M.keys = {
     desc = "Smart search for files and words",
   },
   {
-    "sn", -- search snippets
+    "sn",
+    function()
+      picker().notifications()
+    end,
+    desc = "Search notifications",
+  },
+  {
+    "sN", -- search snippets
     function()
       snippets.search_snippets()
     end,
