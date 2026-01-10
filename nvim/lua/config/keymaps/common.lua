@@ -58,6 +58,7 @@ keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
 
 -- Disable default substitute to free up "s" prefix
 keymap("n", "s", "<Nop>", opts("Disable substitute"))
+keymap("n", "S", "<Nop>", opts("Disable substitute line"))
 
 -- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
