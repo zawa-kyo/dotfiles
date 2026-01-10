@@ -6,8 +6,10 @@ end
 
 return {
   "folke/snacks.nvim",
+
   cond = not vim.g.vscode,
   keys = picker_keymaps.keys,
+
   opts = {
     picker = {
       actions = {
@@ -19,8 +21,8 @@ return {
         buffers = {
           win = {
             input = {
+              -- Mappings when focus is in the prompt
               keys = {
-                -- Mappings when focus is in the prompt
                 ["<c-x>"] = { "bufdelete", mode = { "n", "i" } },
                 ["x"] = { "bufdelete", mode = { "n" } },
               },
@@ -56,6 +58,7 @@ return {
       },
     },
   },
+
   config = function(_, opts)
     require("snacks").setup(opts)
   end,
