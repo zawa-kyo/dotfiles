@@ -30,21 +30,26 @@ function M.on_attach(_, bufnr)
     })
   end
 
-  map("n", "<leader>lf", function()
-    vim.lsp.buf.format({ async = true })
-  end, "Format the current file with LSP")
-
-  map("n", "K", vim.lsp.buf.hover, "Show hover information")
+  -- g: go
+  -- TODO: Use snacks
   map("n", "gr", vim.lsp.buf.references, "Show references")
   map("n", "gd", vim.lsp.buf.definition, "Go to definition")
   map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
   map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
   map("n", "gt", vim.lsp.buf.type_definition, "Go to type definition")
-  map("n", "rn", vim.lsp.buf.rename, "Rename the symbol")
-  map("n", "ga", vim.lsp.buf.code_action, "Show available code actions")
-  map("n", "ge", vim.diagnostic.open_float, "Show diagnostics")
-  map("n", "g]", vim.diagnostic.goto_next, "Go to next diagnostic issue")
-  map("n", "g[", vim.diagnostic.goto_prev, "Go to previous diagnostic issue")
+
+  -- m: modify
+  map("n", "mr", vim.lsp.buf.rename, "Rename the symbol")
+
+  map("n", "mf", function()
+    vim.lsp.buf.format({ async = true })
+  end, "Format the current file with LSP")
+
+  -- S: show
+  map("n", "K", vim.lsp.buf.hover, "Show hover information")
+  map("n", "Si", vim.lsp.buf.hover, "Show hover information")
+  map("n", "Sa", vim.lsp.buf.code_action, "Show code action list")
+  map("n", "Sd", vim.diagnostic.open_float, "Show diagnostics")
 end
 
 return M
