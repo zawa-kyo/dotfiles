@@ -3,60 +3,38 @@
 ## 基本方針
 
 - 追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計する
-  - 動詞（1 打鍵目）は「操作の種類」を表す
+  - 動詞（1 打鍵目）は「操作の種類」
   - 目的語（2 打鍵目以降）は固定された“辞書”に従う
 - Vim 標準操作（`hjkl`, `d`, `c`, `x`, `y`, `p`, `f/F/t/T`, `w/e/b` など）は尊重する
 - プラグイン単位ではなく「操作の意味」で分類する
 
-## 動詞キーの定義
+## 動詞キー一覧
 
-| Key     | Verb       | Meaning                                |
-| ------- | ---------- | -------------------------------------- |
-| `g`     | go         | カーソルジャンプ・意味的移動           |
-| `s`     | search     | 検索・一覧 UI を開く                   |
-| `S`     | show       | 表示・peek・hover 等の"覗く"操作       |
-| `t`     | toggle     | 状態の反転・表示/非表示                |
-| `m`     | modify     | コードを書き換える操作                 |
-| `r`     | run        | 実行する操作                           |
-| `X`     | execute    | 強制実行・即実行・危険度の高い実行     |
-| `[ , ]` | cycle      | 意味的な前後関係を巡回                 |
-| `z`     | (built-in) | 画面・表示範囲の移動（Vim 標準のまま） |
-
-## 各動詞の役割
-
-| Key     | Role       | Examples                                                                               |
-| ------- | ---------- | -------------------------------------------------------------------------------------- |
-| `g`     | go         | 定義、宣言、実装、型、参照、診断位置などへのジャンプ                                   |
-| `s`     | search     | ファイル、バッファ、シンボル、診断、参照などの一覧 UI を開く                           |
-| `S`     | show       | hover、signature、peek definition、peek references、diagnostic float など              |
-| `t`     | toggle     | number, relativenumber, wrap, spell, diagnostics, indent guide, terminal などの ON/OFF |
-| `m`     | modify     | rename, format, organize imports, quick fix, code action 適用など                      |
-| `r`     | run        | test 実行、codelens 実行、LSP コマンド、ツール実行など                                 |
-| `X`     | execute    | 強制実行、即時適用、リスクのある操作 (LSP 再起動、即適用系など)                        |
-| `[ , ]` | cycle      | diagnostics, quickfix, buffer, hunk, todo などを前後に巡回                             |
-| `z`     | (built-in) | 画面位置・表示範囲の移動、折りたたみ、スクロールなど (Vim 標準機能)                    |
+| Key     | Verb       | 意味/用途                                                                    |
+| ------- | ---------- | ---------------------------------------------------------------------------- |
+| `g`     | go         | 定義・宣言・実装・型・参照・診断位置などへのジャンプ                         |
+| `s`     | search     | ファイル/バッファ/シンボル/診断/参照などの一覧 UI を開く                     |
+| `S`     | show       | hover/signature/peek/diagnostic float などの表示・覗き                       |
+| `t`     | toggle     | number/relativenumber/wrap/spell/diagnostics/indent guide/terminal の ON/OFF |
+| `m`     | modify     | rename/format/organize imports/quick fix/code action 適用などの書き換え      |
+| `r`     | run        | test 実行/codelens 実行/LSP コマンド/ツール実行など                          |
+| `X`     | execute    | 強制実行・即実行・リスクのある操作 (LSP 再起動、即適用系など)                |
+| `[ , ]` | cycle      | diagnostics/quickfix/buffer/hunk/todo などの前後移動                         |
+| `z`     | (built-in) | 画面位置・表示範囲の移動、折りたたみ、スクロールなど (Vim 標準機能)          |
 
 ## 運用ルール
 
-- 同じ目的語は原則的に同じキーを使う
+- 目的語は固定の辞書で統一する
   - 例：b=buffer, d=diagnostic, f=file/format, s=symbol
-- ジャンプは必ず `g`
-- 一覧・検索 UI は必ず `s`
-- 表示だけなら `S`
-- 状態の反転は `t`
-  - Normal モードのみ `t` を toggle として再定義し、Operator-pending の `t/T` は維持する
-- コードが変わるなら `m`
-  - 一度一覧を開いてから選択、実行するものは `S`、即座に実行するものは `m` に寄せる
-- 何かを動かすなら `r`, `X`
-- 同種を順に回るなら `[`, `]`
-- 画面操作は `z` に限定する
-- 小文字/大文字の使い分け
-  - 同じ目的語で `sf`/`sF` のように大小を使う場合は、小文字=狭い範囲、大文字=広い範囲
-  - `st`/`sT` のように意味が近い場合は、使用頻度が高い方を小文字に割り当てる
-- `<leader>` の扱い
-  - `<leader>` は特別扱いで、その他のルールと整合しない機能を実行する場合などに使う
-- 例外
-  - LSP hover は頻繁に使うため `K` を維持する
+- 動詞の割当は必ず守る
+  - `g`=ジャンプ, `s`=一覧/検索 UI, `S`=表示, `t`=状態反転, `m`=書き換え, `r`/`X`=実行, `[ ]`=巡回, `z`=画面操作
+- Normal モードのみ `t` を toggle として再定義し、Operator-pending の `t/T` は維持する
+- 実行の粒度で使い分ける
+  - 一覧から選択して実行するものは `S`、即時実行は `m` に寄せる
+- 小文字/大文字は使い分ける
+  - 小文字=狭い範囲、大文字=広い範囲。近い意味は使用頻度の高い方を小文字にする
+- `<leader>` は例外枠として扱い、既存ルールと整合しない機能に使う
+- 例外: LSP hover は頻繁に使うため `K` を維持する
 
 ## サンプルキーバインド
 
