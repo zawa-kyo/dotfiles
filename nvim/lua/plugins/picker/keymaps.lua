@@ -64,6 +64,13 @@ M.keys = {
     desc = "Search recent files",
   },
   {
+    "sh",
+    function()
+      picker().help()
+    end,
+    desc = "Search helps",
+  },
+  {
     "si",
     function()
       picker().icons()
