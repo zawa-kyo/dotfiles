@@ -64,6 +64,11 @@ keymap("n", "S", "<Nop>", opts("Disable substitute line"))
 keymap("n", "r", "<Nop>", opts("Disable replace"))
 keymap("n", "R", "<Nop>", opts("Disable replace line"))
 
+-- Toggle fold column
+keymap("n", "tf", function()
+  vim.wo.foldcolumn = vim.wo.foldcolumn == "0" and "1" or "0"
+end, opts("Toggle fold column"))
+
 -- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))

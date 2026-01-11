@@ -23,8 +23,8 @@ local options = {
   fileencoding = "utf-8",
   -- Force Neovim to append a trailing newline when writing files
   fixendofline = true,
-  -- Show fold column for built-in folding
-  foldcolumn = "1",
+  -- Hide fold column for built-in folding
+  foldcolumn = "0",
   -- Start with most folds open
   foldlevel = 99,
   -- Start with folds open on new buffers
