@@ -25,9 +25,9 @@ keymap("n", "U", "<C-r>", opts("Redo"))
 keymap("n", "mK", "<Cmd>move -2<CR>==", opts("Move current line up"))
 keymap("n", "mJ", "<Cmd>move +1<CR>==", opts("Move current line down"))
 
--- Indent after pasting
-keymap("n", "p", "]p`]", opts("Indent after pasting"))
-keymap("n", "P", "]P`]", opts("Indent after pasting"))
+-- Paste and move to the end
+keymap("n", "p", "p`]", opts("Paste and move to the end"))
+keymap("n", "P", "P`]", opts("Paste and move to the end"))
 
 -- Auto-indent when starting edit on an empty line
 keymap("n", "i", function()
@@ -36,6 +36,9 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 keymap("n", "A", function()
   return vim.fn.getline(".") == "" and '"_cc' or "A"
 end, opts("Indent when starting editing on an empty line", nil, nil, true))
+
+-- Override V behavior
+keymap("n", "V", "v$", opts("Select until the end of the line"))
 
 --------------------
 -- Insert Mode
@@ -52,18 +55,20 @@ keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
 --------------------
 
 -- Indentation
-keymap("v", "<", "<gv", opts("Add indentation"))
-keymap("v", ">", ">gv", opts("Reduce indentation"))
+keymap("x", "<", "<gv", opts("Add indentation"))
+keymap("x", ">", ">gv", opts("Reduce indentation"))
 
 -- Align Visual behavior
-keymap("v", "v", "<Esc>V", opts("Select the whole line"))
-keymap("n", "V", "v$", opts("Select until the end of the line"))
+keymap("x", "v", "<Esc>V", opts("Select the whole line"))
+
+-- Paste without replacing the unnamed register
+keymap("x", "p", '"_dP', opts("Paste without changing register"))
 
 -- Preserve cursor on yank
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
 
 -- Delete words with backspace
-keymap({ "v", "x" }, "<BS>", "_d", opts("Delete selection with backspace"))
+keymap("x", "<BS>", "_d", opts("Delete selection with backspace"))
 
 -- Move selected lines
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
