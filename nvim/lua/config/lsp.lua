@@ -40,7 +40,6 @@ function M.on_attach(_, bufnr)
 
   -- m: modify
   map("n", "mr", vim.lsp.buf.rename, "Rename the symbol")
-
   map("n", "mf", function()
     vim.lsp.buf.format({ async = true })
   end, "Format the current file with LSP")
