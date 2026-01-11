@@ -2,8 +2,9 @@ return {
   {
     "folke/zen-mode.nvim",
 
+    -- TODO: Notify when zen mode is toggled.
     keys = {
-      { "<leader>z", "<Cmd>ZenMode<CR>", desc = "Toggle zen mode" },
+      { "tz", "<Cmd>ZenMode<CR>", desc = "Toggle zen mode" },
     },
 
     config = function()

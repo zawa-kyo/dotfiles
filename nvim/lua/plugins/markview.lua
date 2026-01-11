@@ -1,3 +1,4 @@
+-- TODO: Consider migrating to render-markdown.nvim.
 return {
   "OXY2DEV/markview.nvim",
 
@@ -6,7 +7,7 @@ return {
   ft = { "markdown" },
   cmd = { "Markview" },
   keys = {
-    { "<Leader>tm", ":Markview toggle<CR>", desc = "Toggle Markdown rendering" },
+    { "tm", ":Markview toggle<CR>", desc = "Toggle Markdown rendering" },
   },
 
   config = function()

@@ -1,7 +1,7 @@
 local utils = require("config.utils")
 
 if vim.g.vscode then
-  utils.vscode_map("<leader>T", "workbench.action.terminal.toggleTerminal", "Toggle terminal (VSCode)")
+  utils.vscode_map("tt", "workbench.action.terminal.toggleTerminal", "Toggle terminal (VSCode)")
 end
 
 return {
@@ -12,9 +12,9 @@ return {
 
     keys = {
       {
-        "<leader>T",
+        "tt",
         ":ToggleTerm direction=horizontal name=desktop<CR>",
-        desc = "Open terminal in a horizontal split",
+        desc = "Toggle terminal (horizontal split)",
       },
     },
 

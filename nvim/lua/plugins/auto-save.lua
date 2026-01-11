@@ -6,8 +6,11 @@ return {
 
   config = function()
     local utils = require("config.utils")
+    local keymap = utils.getKeymap
+    local opts = utils.getOpts
+
     if not vim.g.vscode then
-      utils.getKeymap("n", "<leader>as", "<Cmd>ASToggle<CR>", utils.getOpts("Toggle auto-save"))
+      keymap("n", "ta", "<Cmd>ASToggle<CR>", opts("Toggle auto-save"))
     end
 
     require("auto-save").setup({
