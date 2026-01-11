@@ -37,26 +37,32 @@
   - window/tab/buffer など Vim コアの操作は `<leader>` に集約する
 - 例外: LSP hover は頻繁に使うため `K` を維持する
 - 例外: コメントのトグルは VSCode のキーマップに寄せるため `<leader>/` を維持する
+- 例外: mini.files は操作性の都合で `-` / `_` を維持する
 
 ## サンプルキーバインド
 
-| Group         | Key  | Verb                   | Action                |
-| ------------- | ---- | ---------------------- | --------------------- |
-| `g` (go)      | `gd` | go definition          | 定義へジャンプ        |
-| `g` (go)      | `gr` | go references          | 参照へジャンプ        |
-| `s` (search)  | `sf` | search file            | ファイル検索          |
-| `s` (search)  | `sb` | search buffer          | バッファ検索          |
-| `S` (show)    | `Sh` | show hover             | hover 表示            |
-| `S` (show)    | `Sd` | show diagnostic float  | diagnostic float 表示 |
-| `t` (toggle)  | `tn` | toggle number          | 行番号の ON/OFF       |
-| `t` (toggle)  | `tw` | toggle wrap            | wrap の ON/OFF        |
-| `m` (modify)  | `mr` | modify rename          | rename                |
-| `m` (modify)  | `mf` | modify format          | format                |
-| `r` (run)     | `rt` | run test               | テスト実行            |
-| `r` (run)     | `rl` | run codelens           | codelens 実行         |
-| `X` (execute) | `Xr` | execute restart lsp    | LSP 再起動            |
-| `X` (execute) | `Xf` | execute force format   | format を強制実行     |
-| `[`, `]`      | `[d` | cycle prev diagnostic  | 前の diagnostic       |
-| `[`, `]`      | `]d` | cycle next diagnostic  | 次の diagnostic       |
-| `z`           | `zz` | built-in center screen | 画面中央へ            |
-| `z`           | `zt` | built-in top of screen | 画面上へ移動          |
+| Group         | Key         | Verb                   | Action                |
+| ------------- | ----------- | ---------------------- | --------------------- |
+| `g` (go)      | `gd`        | go definition          | 定義へジャンプ        |
+| `g` (go)      | `gr`        | go references          | 参照へジャンプ        |
+| `s` (search)  | `sf`        | search file            | ファイル検索          |
+| `s` (search)  | `sF`        | search recent          | 最近のファイル検索    |
+| `s` (search)  | `sb`        | search buffer          | バッファ検索          |
+| `S` (show)    | `Sd`        | show diagnostic float  | diagnostic float 表示 |
+| `S` (show)    | `Sa`        | show code actions      | code action 一覧表示  |
+| `S` (show)    | `Sq`        | show quickfix list     | quickfix を開く       |
+| `t` (toggle)  | `ta`        | toggle auto-save       | 自動保存の ON/OFF     |
+| `t` (toggle)  | `tt`        | toggle terminal        | ターミナルの ON/OFF   |
+| `t` (toggle)  | `tq`        | toggle quickfix        | quickfix の ON/OFF    |
+| `t` (toggle)  | `tl`        | toggle location list   | loclist の ON/OFF     |
+| `m` (modify)  | `mr`        | modify rename          | rename                |
+| `m` (modify)  | `mf`        | modify format          | format                |
+| `r` (run)     | `rt`        | run test               | テスト実行            |
+| `r` (run)     | `rl`        | run codelens           | codelens 実行         |
+| `X` (execute) | `Xr`        | execute restart lsp    | LSP 再起動            |
+| `X` (execute) | `Xf`        | execute force format   | format を強制実行     |
+| `[`, `]`      | `[d`        | cycle prev diagnostic  | 前の diagnostic       |
+| `[`, `]`      | `]d`        | cycle next diagnostic  | 次の diagnostic       |
+| `<leader>`    | `<leader>/` | toggle comment         | コメントの ON/OFF     |
+| `z`           | `zz`        | built-in center screen | 画面中央へ            |
+| `z`           | `zt`        | built-in top of screen | 画面上へ移動          |
