@@ -10,14 +10,14 @@ local M = {
 
   keys = {
     {
-      "gm",
+      "rgm",
       function()
         require("plugins.git-messenger").git_messenger_simple()
       end,
       desc = "Show git commit message",
     },
     {
-      "gc",
+      "rgM",
       function()
         require("plugins.git-messenger").git_messenger_with_diff()
       end,

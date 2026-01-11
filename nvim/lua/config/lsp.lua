@@ -3,6 +3,7 @@
 local M = {}
 
 local utils = require("config.utils")
+local picker = require("snacks").picker
 
 -- Shared LSP capabilities
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -13,8 +14,13 @@ local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { cl
 function M.on_attach(_, bufnr)
   local keymap = utils.getKeymap
 
-  local function map(mode, lhs, rhs, desc)
-    keymap(mode, lhs, rhs, { buffer = bufnr, silent = true, noremap = true, desc = desc })
+  --- Set a buffer-local LSP keymap with default options and optional overrides.
+  local function map(mode, lhs, rhs, desc, opts)
+    local options = { buffer = bufnr, silent = true, noremap = true, desc = desc }
+    if opts then
+      options = vim.tbl_extend("force", options, opts)
+    end
+    keymap(mode, lhs, rhs, options)
   end
 
   local format_capable = #vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/formatting" }) > 0
@@ -30,21 +36,26 @@ function M.on_attach(_, bufnr)
     })
   end
 
-  map("n", "<leader>lf", function()
+  -- g: go
+  map("n", "gd", picker.lsp_definitions, "Go to definition")
+  map("n", "gD", picker.lsp_declarations, "Go to declaration")
+  map("n", "gr", picker.lsp_references, "Go to References", { nowait = true })
+  map("n", "gi", picker.lsp_implementations, "Go to implementation")
+  map("n", "gt", picker.lsp_type_definitions, "Go to type definition")
+  map("n", "gc", picker.lsp_incoming_calls, "Calls incoming")
+  map("n", "gC", picker.lsp_outgoing_calls, "Calls outgoing")
+
+  -- m: modify
+  map("n", "mr", vim.lsp.buf.rename, "Rename the symbol")
+  map("n", "mf", function()
     vim.lsp.buf.format({ async = true })
   end, "Format the current file with LSP")
 
+  -- S: show
   map("n", "K", vim.lsp.buf.hover, "Show hover information")
-  map("n", "gr", vim.lsp.buf.references, "Show references")
-  map("n", "gd", vim.lsp.buf.definition, "Go to definition")
-  map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-  map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
-  map("n", "gt", vim.lsp.buf.type_definition, "Go to type definition")
-  map("n", "rn", vim.lsp.buf.rename, "Rename the symbol")
-  map("n", "ga", vim.lsp.buf.code_action, "Show available code actions")
-  map("n", "ge", vim.diagnostic.open_float, "Show diagnostics")
-  map("n", "g]", vim.diagnostic.goto_next, "Go to next diagnostic issue")
-  map("n", "g[", vim.diagnostic.goto_prev, "Go to previous diagnostic issue")
+  map("n", "ri", vim.lsp.buf.hover, "Show hover information")
+  map("n", "ra", vim.lsp.buf.code_action, "Show code action list")
+  map("n", "rd", vim.diagnostic.open_float, "Show diagnostics")
 end
 
 return M

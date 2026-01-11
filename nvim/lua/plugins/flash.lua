@@ -21,8 +21,9 @@ return {
   },
 
   keys = {
+    -- TODO: Consider mapping these frequently used actions to single keys.
     {
-      "m",
+      "gw", -- go word
       mode = { "n", "x", "o" },
       function()
         require("flash").jump()
@@ -30,7 +31,7 @@ return {
       desc = "Flash jump",
     },
     {
-      "M",
+      "gl", -- go line
       mode = "n",
       function()
         require("flash").jump({
@@ -46,7 +47,7 @@ return {
       desc = "Flash line jump",
     },
     {
-      "r",
+      "r", -- remote
       mode = "o",
       function()
         require("flash").remote()

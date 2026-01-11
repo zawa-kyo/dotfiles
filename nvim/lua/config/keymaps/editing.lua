@@ -22,8 +22,8 @@ keymap("n", "<S-CR>", "O", opts("Insert new line above"))
 keymap("n", "U", "<C-r>", opts("Redo"))
 
 -- Move current line up/down
-keymap("n", "<leader>K", "<Cmd>move -2<CR>==", opts("Move current line up"))
-keymap("n", "<leader>J", "<Cmd>move +1<CR>==", opts("Move current line down"))
+keymap("n", "mK", "<Cmd>move -2<CR>==", opts("Move current line up"))
+keymap("n", "mJ", "<Cmd>move +1<CR>==", opts("Move current line down"))
 
 -- Indent after pasting
 keymap("n", "p", "]p`]", opts("Indent after pasting"))

@@ -48,10 +48,11 @@ return {
     },
   },
 
+  -- TODO: Revisit whether these keymaps are necessary and remove if redundant.
   -- Keymaps: quick access to history / last / dismiss (+ optional notify history)
   keys = {
     {
-      "<leader>nh",
+      "rnh",
       function()
         require("noice").cmd("history")
       end,
@@ -59,7 +60,7 @@ return {
     },
 
     {
-      "<leader>nH",
+      "rnH",
       function()
         require("noice").cmd("history", { view = "split" })
       end,
@@ -67,7 +68,7 @@ return {
     },
 
     {
-      "<leader>nl",
+      "rnl",
       function()
         require("noice").cmd("last")
       end,
@@ -78,7 +79,7 @@ return {
     -- but it’s kept in noice config for clarity:
     -- used to view messages shown before noice starts.
     {
-      "<leader>nm",
+      "rnm",
       "<cmd>messages<CR>",
       desc = "Show messages (via native Vim/Neovim API)",
     },

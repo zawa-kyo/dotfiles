@@ -6,8 +6,8 @@ if not vim.g.vscode then
 end
 
 if vim.g.vscode then
-  utils.vscode_map("<leader>e", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
-  utils.vscode_map("<leader>E", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
+  utils.vscode_map("te", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
+  utils.vscode_map("re", "workbench.action.toggleSidebarVisibility", "Show Explorer (VSCode)")
 end
 
 local function toggle_explorer(reveal)
@@ -33,18 +33,18 @@ return {
   cond = not vim.g.vscode,
   keys = {
     {
-      "<leader>e",
+      "te",
       function()
         toggle_explorer(false)
       end,
       desc = "Toggle explorer",
     },
     {
-      "<leader>E",
+      "re",
       function()
         toggle_explorer(true)
       end,
-      desc = "Toggle or reveal in explorer",
+      desc = "Show or reveal in explorer",
     },
   },
   opts = {
