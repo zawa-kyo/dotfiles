@@ -9,9 +9,9 @@ return {
     local wk = require("which-key")
     wk.setup(opts)
 
-    -- Declare a normal-mode prefix group so "s" shows symbol-related mappings.
+    -- Declare a normal-mode prefix group so "s" shows search-related mappings.
     wk.add({
-      { "s", group = "symbols" },
+      { "s", group = "search" },
     })
   end,
 
