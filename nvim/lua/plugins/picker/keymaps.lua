@@ -187,9 +187,9 @@ M.keys = {
 M.vscode = function()
   local utils = require("config.utils")
 
-  utils.vscode_map("<leader>p", "workbench.action.quickOpen", "Quick Open (VSCode)")
-  utils.vscode_map("<leader>g", "workbench.action.findInFiles", "Search in workspace (VSCode)")
-  utils.vscode_map("<leader>f", "actions.find", "Search in file (VSCode)")
+  utils.vscode_map("sf", "workbench.action.quickOpen", "Search files in workspace (VSCode)")
+  utils.vscode_map("sW", "workbench.action.findInFiles", "Search words in workspace (VSCode)")
+  utils.vscode_map("sw", "actions.find", "Search words in file (VSCode)")
 end
 
 return M
