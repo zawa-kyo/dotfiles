@@ -1,3 +1,4 @@
+-- TODO: Extract the mini.files logic into a separate module to reduce complexity.
 local utils = require("config.utils")
 local file_ignore = require("config.ignore")
 local is_hidden_visible = true
@@ -133,12 +134,12 @@ return {
     {
       "-",
       open_project_reveal,
-      desc = "Open mini.files (project root, reveal file)",
+      desc = "Show mini.files (project root, reveal file)",
     },
     {
       "_",
       open_project_root,
-      desc = "Open mini.files (project root)",
+      desc = "Show mini.files (project root)",
     },
   },
   config = function()
