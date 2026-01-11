@@ -55,17 +55,17 @@ keymap("n", "[d", function()
 end, opts("Go to previous diagnostic"))
 
 if not vim.g.vscode then
-  keymap("n", "Sd", vim.diagnostic.open_float, opts("Show diagnostic float"))
+  keymap("n", "rd", vim.diagnostic.open_float, opts("Show diagnostic float"))
 else
-  utils.vscode_map("Sd", "workbench.actions.view.problems", "Show Problems view (VSCode)")
+  utils.vscode_map("rd", "workbench.actions.view.problems", "Show Problems view (VSCode)")
 end
 
 -- Quickfix / Location List
 keymap("n", "]q", "<Cmd>cnext<CR>", opts("Go to next quickfix item"))
 keymap("n", "[q", "<Cmd>cprev<CR>", opts("Go to previous quickfix item"))
-keymap("n", "Sq", "<Cmd>copen<CR>", opts("Show quickfix list"))
+keymap("n", "rq", "<Cmd>copen<CR>", opts("Show quickfix list"))
 keymap("n", "tq", toggle_quickfix, opts("Toggle quickfix list"))
 keymap("n", "]l", "<Cmd>lnext<CR>", opts("Go to next location list item"))
 keymap("n", "[l", "<Cmd>lprev<CR>", opts("Go to previous location list item"))
-keymap("n", "Sl", "<Cmd>lopen<CR>", opts("Show location list"))
+keymap("n", "rl", "<Cmd>lopen<CR>", opts("Show location list"))
 keymap("n", "tl", toggle_loclist, opts("Toggle location list"))

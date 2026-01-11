@@ -46,9 +46,9 @@ function M.on_attach(_, bufnr)
 
   -- S: show
   map("n", "K", vim.lsp.buf.hover, "Show hover information")
-  map("n", "Si", vim.lsp.buf.hover, "Show hover information")
-  map("n", "Sa", vim.lsp.buf.code_action, "Show code action list")
-  map("n", "Sd", vim.diagnostic.open_float, "Show diagnostics")
+  map("n", "ri", vim.lsp.buf.hover, "Show hover information")
+  map("n", "ra", vim.lsp.buf.code_action, "Show code action list")
+  map("n", "rd", vim.diagnostic.open_float, "Show diagnostics")
 end
 
 return M

@@ -52,7 +52,7 @@ return {
   -- Keymaps: quick access to history / last / dismiss (+ optional notify history)
   keys = {
     {
-      "Snh",
+      "rnh",
       function()
         require("noice").cmd("history")
       end,
@@ -60,7 +60,7 @@ return {
     },
 
     {
-      "SnH",
+      "rnH",
       function()
         require("noice").cmd("history", { view = "split" })
       end,
@@ -68,7 +68,7 @@ return {
     },
 
     {
-      "Snl",
+      "rnl",
       function()
         require("noice").cmd("last")
       end,
@@ -79,7 +79,7 @@ return {
     -- but it’s kept in noice config for clarity:
     -- used to view messages shown before noice starts.
     {
-      "Snm",
+      "rnm",
       "<cmd>messages<CR>",
       desc = "Show messages (via native Vim/Neovim API)",
     },

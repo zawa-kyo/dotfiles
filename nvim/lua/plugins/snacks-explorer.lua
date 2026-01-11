@@ -7,7 +7,7 @@ end
 
 if vim.g.vscode then
   utils.vscode_map("te", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
-  utils.vscode_map("Se", "workbench.action.toggleSidebarVisibility", "Show Explorer (VSCode)")
+  utils.vscode_map("re", "workbench.action.toggleSidebarVisibility", "Show Explorer (VSCode)")
 end
 
 local function toggle_explorer(reveal)
@@ -40,7 +40,7 @@ return {
       desc = "Toggle explorer",
     },
     {
-      "Se",
+      "re",
       function()
         toggle_explorer(true)
       end,
