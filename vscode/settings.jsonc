@@ -550,6 +550,8 @@
   },
   // GitHub Copilotでプロジェクト全体の検索を利用
   "github.copilot.chat.codesearch.enabled": true,
+  // MCPサーバギャラリーを有効化
+  "chat.mcp.gallery.enabled": true,
 
   // ===========================
   // Linter, formatter
