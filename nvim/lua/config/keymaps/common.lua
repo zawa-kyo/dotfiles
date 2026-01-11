@@ -60,6 +60,10 @@ keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
 keymap("n", "s", "<Nop>", opts("Disable substitute"))
 keymap("n", "S", "<Nop>", opts("Disable substitute line"))
 
+-- Disable default replace to free up "r/R" prefix
+keymap("n", "r", "<Nop>", opts("Disable replace"))
+keymap("n", "R", "<Nop>", opts("Disable replace line"))
+
 -- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
