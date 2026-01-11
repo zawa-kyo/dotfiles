@@ -56,7 +56,7 @@ keymap("n", "<leader>tl", "gt", opts("Go to next tab"))
 keymap("n", "<leader>th", "gT", opts("Go to previous tab"))
 keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
 
--- Disable default substitute to free up "s" prefix
+-- Disable default substitute to free up "s/S" prefix
 keymap("n", "s", "<Nop>", opts("Disable substitute"))
 keymap("n", "S", "<Nop>", opts("Disable substitute line"))
 
