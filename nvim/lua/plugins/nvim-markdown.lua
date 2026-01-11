@@ -7,11 +7,13 @@ return {
     -- Disable all default keymaps to avoid conflicts with user mappings.
     vim.g.vim_markdown_no_default_key_mappings = 1
   end,
+
   config = function()
     local utils = require("config.utils")
     local opts = utils.getOpts
     local keymap = utils.getKeymap
     local group = vim.api.nvim_create_augroup("nvim_markdown_custom_keymaps", { clear = true })
+
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
       pattern = { "markdown", "markdown.mdx" },
