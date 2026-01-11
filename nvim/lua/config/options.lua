@@ -47,8 +47,8 @@ local options = {
   numberwidth = 4,
   -- Popup menu height limit
   pumheight = 10,
-  -- Do not show relative numbers
-  relativenumber = false,
+  -- Show relative numbers
+  relativenumber = true,
   -- Keep cursor away from top/bottom edges
   scrolloff = 8,
   -- Use Zsh for :! commands / terminal
