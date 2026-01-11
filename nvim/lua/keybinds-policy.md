@@ -27,6 +27,7 @@
   - 例：b=buffer, d=diagnostic, f=file/format, s=symbol
 - 動詞の割当は必ず守る
   - `g`=ジャンプ, `s`=一覧/検索 UI, `r`=表示/覗き, `t`=状態反転, `m`=書き換え, `X`=実行, `[ ]`=巡回, `z`=画面操作
+- `g` はカーソル位置を基準に移動/参照する操作、`s` はカーソル位置に依存しない検索/一覧を開く操作とする
 - Normal モードのみ `t` を toggle として再定義し、Operator-pending の `t/T` は維持する
 - 実行の粒度で使い分ける
   - 一覧を見てから選択するものは `r`、即時実行は `X` に寄せる
@@ -41,24 +42,24 @@
 
 ## サンプルキーバインド
 
-| Group         | Key         | Verb                    | Action                |
-| ------------- | ----------- | ----------------------- | --------------------- |
-| `g` (go)      | `gd`        | go definition           | 定義へジャンプ        |
-| `g` (go)      | `gr`        | go references           | 参照へジャンプ        |
-| `s` (search)  | `sf`        | search file             | ファイル検索          |
-| `s` (search)  | `sF`        | search recent           | 最近のファイル検索    |
-| `s` (search)  | `sb`        | search buffer           | バッファ検索          |
-| `r` (reveal)  | `rd`        | reveal diagnostic float | diagnostic float 表示 |
-| `r` (reveal)  | `ra`        | reveal code actions     | code action 一覧表示  |
-| `r` (reveal)  | `rq`        | reveal quickfix list    | quickfix を開く       |
-| `t` (toggle)  | `ta`        | toggle auto-save        | 自動保存の ON/OFF     |
-| `t` (toggle)  | `tt`        | toggle terminal         | ターミナルの ON/OFF   |
-| `t` (toggle)  | `tq`        | toggle quickfix         | quickfix の ON/OFF    |
-| `t` (toggle)  | `tl`        | toggle location list    | loclist の ON/OFF     |
-| `m` (modify)  | `mr`        | modify rename           | rename                |
-| `m` (modify)  | `mf`        | modify format           | format                |
-| `[`, `]`      | `[d`        | cycle prev diagnostic   | 前の diagnostic       |
-| `[`, `]`      | `]d`        | cycle next diagnostic   | 次の diagnostic       |
-| `<leader>`    | `<leader>/` | toggle comment          | コメントの ON/OFF     |
-| `z`           | `zz`        | built-in center screen  | 画面中央へ            |
-| `z`           | `zt`        | built-in top of screen  | 画面上へ移動          |
+| Group        | Key         | Verb                    | Action                |
+| ------------ | ----------- | ----------------------- | --------------------- |
+| `g` (go)     | `gd`        | go definition           | 定義へジャンプ        |
+| `g` (go)     | `gr`        | go references           | 参照へジャンプ        |
+| `s` (search) | `sf`        | search file             | ファイル検索          |
+| `s` (search) | `sF`        | search recent           | 最近のファイル検索    |
+| `s` (search) | `sb`        | search buffer           | バッファ検索          |
+| `r` (reveal) | `rd`        | reveal diagnostic float | diagnostic float 表示 |
+| `r` (reveal) | `ra`        | reveal code actions     | code action 一覧表示  |
+| `r` (reveal) | `rq`        | reveal quickfix list    | quickfix を開く       |
+| `t` (toggle) | `ta`        | toggle auto-save        | 自動保存の ON/OFF     |
+| `t` (toggle) | `tt`        | toggle terminal         | ターミナルの ON/OFF   |
+| `t` (toggle) | `tq`        | toggle quickfix         | quickfix の ON/OFF    |
+| `t` (toggle) | `tl`        | toggle location list    | loclist の ON/OFF     |
+| `m` (modify) | `mr`        | modify rename           | rename                |
+| `m` (modify) | `mf`        | modify format           | format                |
+| `[`, `]`     | `[d`        | cycle prev diagnostic   | 前の diagnostic       |
+| `[`, `]`     | `]d`        | cycle next diagnostic   | 次の diagnostic       |
+| `<leader>`   | `<leader>/` | toggle comment          | コメントの ON/OFF     |
+| `z`          | `zz`        | built-in center screen  | 画面中央へ            |
+| `z`          | `zt`        | built-in top of screen  | 画面上へ移動          |
