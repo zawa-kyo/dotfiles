@@ -15,6 +15,8 @@ local options = {
   conceallevel = 0,
   -- Highlight the current line for easier tracking
   cursorline = true,
+  -- Emphasize only the line number of the cursor line
+  cursorlineopt = "number",
   -- Preferred file encoding
   encoding = "utf-8",
   -- Convert tabs to spaces
@@ -44,7 +46,7 @@ local options = {
   -- Show absolute line numbers
   number = true,
   -- Width of the number column
-  numberwidth = 4,
+  numberwidth = 3,
   -- Popup menu height limit
   pumheight = 10,
   -- Show relative numbers
