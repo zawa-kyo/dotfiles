@@ -59,12 +59,13 @@ return {
 
     -- Set shortcuts
     dashboard.section.buttons.val = {
+      dashboard.button("n", "  Create New File", ":ene <BAR> startinsert <CR>"),
+      dashboard.button("W", "󰱼  Find Texts", ":lua require('snacks').picker.grep()<CR>"),
+      dashboard.button("f", "󰥨  Find Files", ":lua require('snacks').picker.files()<CR>"),
+      dashboard.button("F", "  Show Recent Files", ":lua require('snacks').picker.recent()<CR>"),
       dashboard.button("e", "󰉖  Snacks Explorer", ":lua require('snacks').explorer.open()<CR>"),
       dashboard.button("E", "󰉖  Mini Explorer", ":lua require('mini.files').open()<CR>"),
-      dashboard.button("f", "󰥨  Find file", ":lua require('snacks').picker.files()<CR>"),
-      dashboard.button("F", "  Recent file", ":lua require('snacks').picker.recent()<CR>"),
-      dashboard.button("W", "󰱼  Find text", ":lua require('snacks').picker.grep()<CR>"),
-      dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
+      dashboard.button("l", "󰒲  Open Lazy.nvim", ":Lazy<CR>"),
       dashboard.button("q", "  Quit", ":qa<CR>"),
     }
 
