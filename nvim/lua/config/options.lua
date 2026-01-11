@@ -15,6 +15,8 @@ local options = {
   conceallevel = 0,
   -- Highlight the current line for easier tracking
   cursorline = true,
+  -- Emphasize only the line number of the cursor line
+  cursorlineopt = "number",
   -- Preferred file encoding
   encoding = "utf-8",
   -- Convert tabs to spaces
@@ -23,8 +25,8 @@ local options = {
   fileencoding = "utf-8",
   -- Force Neovim to append a trailing newline when writing files
   fixendofline = true,
-  -- Show fold column for built-in folding
-  foldcolumn = "1",
+  -- Hide fold column for built-in folding
+  foldcolumn = "0",
   -- Start with most folds open
   foldlevel = 99,
   -- Start with folds open on new buffers
@@ -44,11 +46,11 @@ local options = {
   -- Show absolute line numbers
   number = true,
   -- Width of the number column
-  numberwidth = 4,
+  numberwidth = 3,
   -- Popup menu height limit
   pumheight = 10,
-  -- Do not show relative numbers
-  relativenumber = false,
+  -- Show relative numbers
+  relativenumber = true,
   -- Keep cursor away from top/bottom edges
   scrolloff = 8,
   -- Use Zsh for :! commands / terminal
