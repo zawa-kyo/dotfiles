@@ -19,7 +19,7 @@ keymap("n", "<CR>", "o", opts("Insert new line below"))
 keymap("n", "<S-CR>", "O", opts("Insert new line above"))
 
 -- Redo
-keymap("n", "U", "<C-r>", opts("Redo"))
+keymap("n", "U", "<Cmd>redo<CR>", opts("Redo"))
 
 -- Move current line up/down
 keymap("n", "mK", "<Cmd>move -2<CR>==", opts("Move current line up"))
