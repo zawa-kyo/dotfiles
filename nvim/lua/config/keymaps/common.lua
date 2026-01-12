@@ -22,6 +22,10 @@ keymap(all_modes, "<Right>", "<Nop>", opts("Nop"))
 -- Note: Enabling ‘silent’ may cause rendering delay
 keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
+-- File operations
+keymap("n", "<leader>w", "<Cmd>write<CR>", opts("Write current buffer"))
+keymap("n", "<leader>q", "<Cmd>quit<CR>", opts("Quit window"))
+
 -- Window navigation (Ctrl+h/j/k/l or <leader>H/J/K/L)
 keymap("n", "<C-h>", "<C-w>h", opts("Go to left window"))
 keymap("n", "<C-j>", "<C-w>j", opts("Go to bottom window"))
