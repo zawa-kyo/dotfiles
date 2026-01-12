@@ -87,6 +87,10 @@ keymap("n", "gN", "<C-o>", opts("Jump to previous location"))
 -- Marks (use M to avoid clashing with the modify prefix)
 keymap("n", "M", "m", opts("Set mark"))
 
+-- Match pairs (align with cycle-style [ ] prefix)
+keymap("n", "]p", "%", opts("Go to matching pair"))
+keymap("n", "[p", "%", opts("Go to matching pair"))
+
 -- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
 
