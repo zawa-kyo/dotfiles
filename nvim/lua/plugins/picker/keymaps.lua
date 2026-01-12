@@ -176,6 +176,13 @@ M.keys = {
     desc = "Search todo comments (Todo/Fix/Fixme)",
   },
   {
+    "su",
+    function()
+      picker().undo()
+    end,
+    desc = "Search undos",
+  },
+  {
     "sgb",
     function()
       picker().git_branches()

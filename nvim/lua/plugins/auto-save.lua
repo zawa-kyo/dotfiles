@@ -2,7 +2,7 @@ return {
   "Pocco81/auto-save.nvim",
 
   cond = not vim.g.vscode,
-  event = { "InsertLeave", "TextChanged" },
+  event = { "InsertLeave" },
 
   config = function()
     local utils = require("config.utils")
@@ -13,10 +13,11 @@ return {
       keymap("n", "ta", "<Cmd>ASToggle<CR>", opts("Toggle auto-save"))
     end
 
-    require("auto-save").setup({
+    local autosave = require("auto-save")
+    autosave.setup({
       enabled = true,
       debounce_delay = 200,
-      trigger_events = { "InsertLeave", "TextChanged" },
+      trigger_events = { "InsertLeave" },
       execution_message = {
         message = "",
         dim = 0,
@@ -43,5 +44,9 @@ return {
         return true
       end,
     })
+
+    -- Recreate autocommands after setup since the plugin enables itself on load.
+    autosave.off()
+    autosave.on()
   end,
 }
