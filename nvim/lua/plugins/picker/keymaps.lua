@@ -99,6 +99,13 @@ M.keys = {
     desc = "Smart search for files and words",
   },
   {
+    "sm",
+    function()
+      picker().marks()
+    end,
+    desc = " search marks",
+  },
+  {
     "sn",
     function()
       picker().notifications()
