@@ -30,6 +30,9 @@ function M.on_attach(_, bufnr)
       group = format_on_save_group,
       buffer = bufnr,
       callback = function()
+        -- Merge auto-save/write + format into a single undo block when possible.
+        pcall(vim.cmd, "silent! undojoin")
+
         vim.lsp.buf.format({ bufnr = bufnr, async = false })
       end,
       desc = "Format buffer with LSP on save",
