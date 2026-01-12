@@ -84,8 +84,12 @@ keymap("n", "gP", "<C-i>", opts("Jump to next location"))
 keymap("n", "gn", "<C-i>", opts("Jump to next location"))
 keymap("n", "gN", "<C-o>", opts("Jump to previous location"))
 
--- Match pairs
-keymap("n", "M", "%", opts("Jump to the matching pair"))
+-- Marks (use M to avoid clashing with the modify prefix)
+keymap("n", "M", "m", opts("Set mark"))
+
+-- Match pairs (align with cycle-style [ ] prefix)
+keymap("n", "]p", "%", opts("Go to matching pair"))
+keymap("n", "[p", "%", opts("Go to matching pair"))
 
 -- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
