@@ -136,6 +136,13 @@ M.keys = {
   {
     "sl",
     function()
+      picker().loclist()
+    end,
+    desc = "Search loclist",
+  },
+  {
+    "sL",
+    function()
       picker().lazy()
     end,
     desc = "Search for plugin spec",
@@ -181,6 +188,13 @@ M.keys = {
       picker().projects()
     end,
     desc = "Search projects",
+  },
+  {
+    "sq",
+    function()
+      picker().qflist()
+    end,
+    desc = "Search quickfix list",
   },
   {
     "sr",
