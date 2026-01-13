@@ -1,27 +1,30 @@
 return {
   "folke/which-key.nvim",
 
-  event = "VeryLazy",
-  cond = not vim.g.vscode,
-  opts = {},
+  opts = {
+    preset = "helix",
 
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-
-    -- Declare a normal-mode prefix group so "s" shows search-related mappings.
-    wk.add({
-      { "s", group = "search" },
-    })
-  end,
+    spec = {
+      { "g", group = "Go" },
+      { "s", group = "Search" },
+      { "t", group = "Toggle" },
+      { "m", group = "Modify" },
+      { "r", group = "Reveal" },
+      { "X", group = "Execute" },
+      { "[", group = "Cycle Prev" },
+      { "]", group = "Cycle Next" },
+      { "z", group = "View" },
+      { "<leader>", group = "Leader" },
+    },
+  },
 
   keys = {
     {
       "<leader>?",
       function()
-        require("which-key").show({ global = false })
+        vim.cmd("WhichKey")
       end,
-      desc = "Buffer Local Keymaps (which-key)",
+      desc = "Show buffer keymaps",
     },
   },
 }

@@ -29,13 +29,6 @@ M.keys = {
     desc = "Search colorschemes",
   },
   {
-    "<leader>p",
-    function()
-      picker().files()
-    end,
-    desc = "Search files in workspace",
-  },
-  {
     "sd",
     function()
       picker().diagnostics()
@@ -64,6 +57,62 @@ M.keys = {
     desc = "Search recent files",
   },
   {
+    "sgb",
+    function()
+      picker().git_branches()
+    end,
+    desc = "Search git branches",
+  },
+  {
+    "sgd",
+    function()
+      picker().git_diff()
+    end,
+    desc = "Search git diffs (hunks)",
+  },
+  {
+    "sgf",
+    function()
+      picker().git_files()
+    end,
+    desc = "Search git files",
+  },
+  {
+    "sgf",
+    function()
+      picker().git_log_file()
+    end,
+    desc = "Search git log file",
+  },
+  {
+    "sgl",
+    function()
+      picker().git_log()
+    end,
+    desc = "Search git logs",
+  },
+  {
+    "sgL",
+    function()
+      picker().git_log_line()
+    end,
+    desc = "Search git log lines",
+  },
+  {
+    "sgs",
+    function()
+      picker().git_status()
+    end,
+    desc = "Search git status",
+  },
+  {
+    "sgS",
+    function()
+      picker().git_stash()
+    end,
+    desc = "Search git stash",
+  },
+  {
     "sh",
     function()
       picker().help()
@@ -87,6 +136,13 @@ M.keys = {
   {
     "sl",
     function()
+      picker().loclist()
+    end,
+    desc = "Search loclist",
+  },
+  {
+    "sL",
+    function()
       picker().lazy()
     end,
     desc = "Search for plugin spec",
@@ -99,11 +155,11 @@ M.keys = {
     desc = "Smart search for files and words",
   },
   {
-    "sm",
+    "sM",
     function()
       picker().marks()
     end,
-    desc = " search marks",
+    desc = "Search marks",
   },
   {
     "sn",
@@ -132,6 +188,13 @@ M.keys = {
       picker().projects()
     end,
     desc = "Search projects",
+  },
+  {
+    "sq",
+    function()
+      picker().qflist()
+    end,
+    desc = "Search quickfix list",
   },
   {
     "sr",
@@ -181,62 +244,6 @@ M.keys = {
       picker().undo()
     end,
     desc = "Search undos",
-  },
-  {
-    "sgb",
-    function()
-      picker().git_branches()
-    end,
-    desc = "Search git branches",
-  },
-  {
-    "sgl",
-    function()
-      picker().git_log()
-    end,
-    desc = "Search git logs",
-  },
-  {
-    "sgL",
-    function()
-      picker().git_log_line()
-    end,
-    desc = "Search git log lines",
-  },
-  {
-    "sgs",
-    function()
-      picker().git_status()
-    end,
-    desc = "Search git status",
-  },
-  {
-    "sgS",
-    function()
-      picker().git_stash()
-    end,
-    desc = "Search git stash",
-  },
-  {
-    "sgd",
-    function()
-      picker().git_diff()
-    end,
-    desc = "Search git diffs (hunks)",
-  },
-  {
-    "sgf",
-    function()
-      picker().git_files()
-    end,
-    desc = "Search git files",
-  },
-  {
-    "sgf",
-    function()
-      picker().git_log_file()
-    end,
-    desc = "Search git log file",
   },
   {
     "sw",
