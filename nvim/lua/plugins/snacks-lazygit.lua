@@ -6,11 +6,12 @@ return {
 
   keys = {
     {
-      "Xg",
+      "tg",
       function()
         require("snacks").lazygit()
       end,
-      desc = "Run lazygit",
+      mode = { "n", "t" },
+      desc = "Toggle lazygit",
     },
     {
       "Xl",
