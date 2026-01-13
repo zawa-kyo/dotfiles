@@ -73,16 +73,16 @@ M.keys = {
   {
     "sgf",
     function()
-      picker().git_files()
+      picker().git_log_file()
     end,
-    desc = "Search git files",
+    desc = "Search git log file",
   },
   {
     "sgf",
     function()
-      picker().git_log_file()
+      picker().git_files()
     end,
-    desc = "Search git log file",
+    desc = "Search git files",
   },
   {
     "sgl",
