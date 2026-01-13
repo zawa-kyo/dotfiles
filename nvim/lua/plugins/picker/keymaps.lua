@@ -29,13 +29,6 @@ M.keys = {
     desc = "Search colorschemes",
   },
   {
-    "<leader>p",
-    function()
-      picker().files()
-    end,
-    desc = "Search files in workspace",
-  },
-  {
     "sd",
     function()
       picker().diagnostics()
