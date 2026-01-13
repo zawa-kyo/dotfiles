@@ -78,7 +78,7 @@ M.keys = {
     desc = "Search git log file",
   },
   {
-    "sgf",
+    "sgF",
     function()
       picker().git_files()
     end,
