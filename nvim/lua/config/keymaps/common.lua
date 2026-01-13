@@ -6,13 +6,13 @@ local keymap = utils.getKeymap
 -- All Modes
 --------------------
 
-local all_modes = { "n", "i", "v", "x", "o", "t", "c", "s" }
+local all_modes_without_terminal = { "n", "i", "v", "x", "o", "c", "s" }
 
 -- Disable arrow keys to encourage hjkl
-keymap(all_modes, "<Up>", "<Nop>", opts("Nop"))
-keymap(all_modes, "<Down>", "<Nop>", opts("Nop"))
-keymap(all_modes, "<Left>", "<Nop>", opts("Nop"))
-keymap(all_modes, "<Right>", "<Nop>", opts("Nop"))
+keymap(all_modes_without_terminal, "<Up>", "<Nop>", opts("Nop"))
+keymap(all_modes_without_terminal, "<Down>", "<Nop>", opts("Nop"))
+keymap(all_modes_without_terminal, "<Left>", "<Nop>", opts("Nop"))
+keymap(all_modes_without_terminal, "<Right>", "<Nop>", opts("Nop"))
 
 --------------------
 -- Normal Mode
