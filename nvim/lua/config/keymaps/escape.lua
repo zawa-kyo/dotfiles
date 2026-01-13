@@ -52,6 +52,21 @@ local function is_noice_window(win)
   return vim.bo[buf].filetype == "noice"
 end
 
+-- Close all Overlook popups
+-- @return boolean
+local function close_overlook()
+  local overlook = package.loaded["overlook.api"]
+  if not overlook or type(overlook.close_all) ~= "function" then
+    return false
+  end
+
+  local before = #vim.api.nvim_list_wins()
+  pcall(overlook.close_all)
+  local after = #vim.api.nvim_list_wins()
+
+  return after < before
+end
+
 -- Handle <Esc>: close hover or clear search highlight
 local function close_window()
   local current_win = vim.api.nvim_get_current_win()
@@ -66,6 +81,10 @@ local function close_window()
   end
 
   if close_windows(is_noice_window) then
+    return
+  end
+
+  if close_overlook() then
     return
   end
 
