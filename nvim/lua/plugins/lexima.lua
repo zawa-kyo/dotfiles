@@ -20,5 +20,12 @@ return {
     ]]
 
     vim.cmd(custom_space_rules)
+
+    local custom_quote_rules = [[
+      " Insert a single quote when there's a non-space to the left (and not right before a closing quote).
+      call lexima#add_rule({'char': '"', 'at': '\S\%#\%([^"]\|$\)', 'input': '"', 'input_after': ''})
+    ]]
+
+    vim.cmd(custom_quote_rules)
   end,
 }
