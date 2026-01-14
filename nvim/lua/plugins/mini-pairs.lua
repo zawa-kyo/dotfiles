@@ -7,6 +7,10 @@ return {
   config = function()
     require("mini.pairs").setup()
 
+    local utils = require("config.utils")
+    local opts = utils.getOpts
+    local keymap = utils.getKeymap
+
     local smart_quote = function(quote)
       local line = vim.api.nvim_get_current_line()
       local col = vim.api.nvim_win_get_cursor(0)[2]
@@ -19,28 +23,16 @@ return {
       return quote
     end
 
-    vim.keymap.set("i", '"', function()
+    keymap("i", '"', function()
       return smart_quote('"')
-    end, {
-      desc = "Smart quote",
-      expr = true,
-      replace_keycodes = true,
-    })
+    end, opts("Smart quote", nil, nil, true))
 
-    vim.keymap.set("i", "'", function()
+    keymap("i", "'", function()
       return smart_quote("'")
-    end, {
-      desc = "Smart quote",
-      expr = true,
-      replace_keycodes = true,
-    })
+    end, opts("Smart quote", nil, nil, true))
 
-    vim.keymap.set("i", "`", function()
+    keymap("i", "`", function()
       return smart_quote("`")
-    end, {
-      desc = "Smart quote",
-      expr = true,
-      replace_keycodes = true,
-    })
+    end, opts("Smart quote", nil, nil, true))
   end,
 }
