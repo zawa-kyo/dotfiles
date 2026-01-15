@@ -1,8 +1,10 @@
 return {
   "echasnovski/mini.ai",
+
   cond = not vim.g.vscode,
   event = "VeryLazy",
   dependencies = { "echasnovski/mini.extra" },
+
   config = function()
     local gen_ai_spec = require("mini.extra").gen_ai_spec
 
