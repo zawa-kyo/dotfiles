@@ -9,8 +9,15 @@ return {
     local treesitter = ai.gen_spec.treesitter
 
     local custom_textobjects = {
+      a = treesitter({ a = "@parameter.outer", i = "@parameter.inner" }),
+      b = treesitter({ a = "@block.outer", i = "@block.inner" }),
       c = treesitter({ a = "@class.outer", i = "@class.inner" }),
+      d = treesitter({ a = "@conditional.outer", i = "@conditional.inner" }),
       f = treesitter({ a = "@function.outer", i = "@function.inner" }),
+      k = treesitter({ a = "@comment.outer", i = "@comment.inner" }),
+      l = treesitter({ a = "@loop.outer", i = "@loop.inner" }),
+      s = treesitter({ a = "@statement.outer", i = "@statement.inner" }),
+      t = treesitter({ a = "@tag.outer", i = "@tag.inner" }),
       B = gen_ai_spec.buffer(),
       D = gen_ai_spec.diagnostic(),
       I = gen_ai_spec.indent(),
