@@ -41,6 +41,12 @@ return {
     miniclue.setup({
       triggers = triggers,
       clues = clues,
+      window = {
+        delay = 500, -- ms
+        config = {
+          border = "rounded",
+        },
+      },
     })
   end,
 }
