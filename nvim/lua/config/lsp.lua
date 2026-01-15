@@ -8,6 +8,15 @@ local picker = require("snacks").picker
 -- Shared LSP capabilities
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- Remove Neovim LSP default keymaps to avoid mini.clue noise.
+do
+  local lsp_defaults = { "gra", "gri", "grm", "grr", "grt", "grn" }
+  for _, lhs in ipairs(lsp_defaults) do
+    pcall(vim.keymap.del, "n", lhs)
+    pcall(vim.keymap.del, "x", lhs)
+  end
+end
+
 local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false })
 
 -- Shared on_attach: buffer-local keymaps and behaviors

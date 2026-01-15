@@ -7,21 +7,25 @@ return {
     local gen_clues = miniclue.gen_clues
 
     local triggers = {
-      { mode = { "n", "x" }, keys = "<Leader>" },
-      { mode = "n", keys = "[" },
-      { mode = "n", keys = "]" },
-      { mode = "i", keys = "<C-x>" },
+      { mode = { "x", "o" }, keys = "a" },
       { mode = { "n", "x" }, keys = "g" },
+      { mode = { "x", "o" }, keys = "i" },
+      { mode = "n",          keys = "m" },
+      { mode = { "n", "x" }, keys = "s" },
+      { mode = "n",          keys = "t" },
+      { mode = { "x", "o" }, keys = "o" },
+      { mode = "n",          keys = "r" },
+      { mode = "n",          keys = "X" },
+      { mode = { "n", "x" }, keys = "z" },
+      { mode = "n",          keys = "[" },
+      { mode = "n",          keys = "]" },
       { mode = { "n", "x" }, keys = "'" },
       { mode = { "n", "x" }, keys = "`" },
       { mode = { "n", "x" }, keys = '"' },
       { mode = { "i", "c" }, keys = "<C-r>" },
-      { mode = "n", keys = "<C-w>" },
-      { mode = { "n", "x" }, keys = "z" },
-      { mode = { "n", "x" }, keys = "s" },
-      { mode = { "x", "o" }, keys = "i" },
-      { mode = { "x", "o" }, keys = "a" },
-      { mode = "n", keys = "m" },
+      { mode = "n",          keys = "<C-w>" },
+      { mode = "i",          keys = "<C-x>" },
+      { mode = { "n", "x" }, keys = "<Leader>" },
     }
 
     local clues = {
@@ -37,6 +41,12 @@ return {
     miniclue.setup({
       triggers = triggers,
       clues = clues,
+      window = {
+        delay = 500, -- ms
+        config = {
+          border = "rounded",
+        },
+      },
     })
   end,
 }
