@@ -47,6 +47,16 @@ return {
   },
 
   config = function()
-    require("Comment").setup()
+    require("Comment").setup({
+      mappings = {
+        ---Operator-pending mapping; `gcc` `gbc` etc.
+        basic = false,
+        ---Extra mapping; `gco`, `gcO`, `gcA`
+        extra = false,
+      },
+    })
+
+    -- Remove default comment keymaps from Neovim runtime
+    pcall(vim.keymap.del, "n", "gcc")
   end,
 }
