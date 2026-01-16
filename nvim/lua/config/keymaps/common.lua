@@ -95,9 +95,6 @@ keymap("n", "M", "m", opts("Set mark"))
 keymap("n", "]p", "%", opts("Go to matching pair"))
 keymap("n", "[p", "%", opts("Go to matching pair"))
 
--- Clipboard
-keymap({ "n", "v" }, "<leader>y", '"+y', opts("Copy to clipboard"))
-
 -- Look around
 keymap("n", "zk", "zb", opts("Look up"))
 keymap("n", "zj", "zt", opts("Look down"))
