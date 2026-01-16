@@ -35,6 +35,7 @@
   - 小文字=狭い範囲、大文字=広い範囲。近い意味は使用頻度の高い方を小文字にする
 - `<leader>` は例外枠として扱い、既存ルールと整合しない機能に使う
   - window/tab/buffer など Vim コアの操作は `<leader>` に集約する
+- window の移動は `<C-h/j/k/l>` に固定し、作成/操作は `<leader>w…` に寄せる
 - `S` は使わず、誤入力防止のため `<Nop>` にする
 - 例外: LSP hover は頻繁に使うため `K` を維持する
 - 例外: コメントのトグルは VSCode のキーマップに寄せるため `<leader>/` を維持する
@@ -61,6 +62,10 @@
 | `m` (modify) | `mf`        | modify format           | format                |
 | `[`, `]`     | `[d`        | cycle prev diagnostic   | 前の diagnostic       |
 | `[`, `]`     | `]d`        | cycle next diagnostic   | 次の diagnostic       |
+| `[`, `]`     | `[t`        | cycle prev tab          | 前のタブ              |
+| `[`, `]`     | `]t`        | cycle next tab          | 次のタブ              |
 | `<leader>`   | `<leader>/` | toggle comment          | コメントの ON/OFF     |
+| `<leader>w`  | `<leader>ws` | window split           | 横分割                |
+| `<leader>w`  | `<leader>wv` | window vsplit          | 縦分割                |
 | `z`          | `zz`        | built-in center screen  | 画面中央へ            |
 | `z`          | `zt`        | built-in top of screen  | 画面上へ移動          |
