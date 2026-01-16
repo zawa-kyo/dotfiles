@@ -41,8 +41,6 @@ keymap("n", "<leader>w=", "<C-w>=", opts("Equalize window sizes"))
 keymap("n", "<leader>wq", "<C-w>q", opts("Close the current window"))
 keymap("n", "<leader>wo", "<C-w>o", opts("Close other windows"))
 keymap("n", "<leader>wx", "<C-w>x", opts("Swap with adjacent window"))
-
--- Resize
 keymap("n", "<leader>w<", "5<C-w><", opts("Decrease window width"))
 keymap("n", "<leader>w>", "5<C-w>>", opts("Increase window width"))
 keymap("n", "<leader>w-", "5<C-w>-", opts("Decrease window height"))
