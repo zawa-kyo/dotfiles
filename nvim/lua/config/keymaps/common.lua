@@ -54,6 +54,7 @@ keymap("n", "[b", "<Cmd>bprevious<CR>", opts("Go to previous buffer"))
 
 -- Tab operations (<leader>t…)
 keymap("n", "<leader>tn", "<Cmd>tabnew<CR>", opts("Open new tab"))
+keymap("n", "<leader>ts", "<Cmd>tabsplit<CR>", opts("Split to new tab"))
 keymap("n", "<leader>tl", "gt", opts("Go to next tab"))
 keymap("n", "<leader>th", "gT", opts("Go to previous tab"))
 keymap("n", "<leader>tq", "<Cmd>tabclose<CR>", opts("Close tab"))
