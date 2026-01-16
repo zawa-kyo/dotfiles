@@ -19,12 +19,12 @@ return {
         },
 
         sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { "filename" },
-          lualine_x = { "encoding", "filetype" },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
+          lualine_a = { "branch" },
+          lualine_b = { "filename" },
+          lualine_c = { "diff" },
+          lualine_x = { "diagnostics" },
+          lualine_y = { "lsp_status" },
+          lualine_z = { "filetype" },
         },
 
         inactive_sections = {
