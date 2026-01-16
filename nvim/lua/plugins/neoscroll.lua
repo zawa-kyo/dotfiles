@@ -60,6 +60,30 @@ local M = {
       mode = modes,
       desc = "Scroll up",
     },
+    {
+      "zj",
+      function()
+        require("neoscroll").zt({ half_win_duration = duration.scroll })
+      end,
+      mode = modes,
+      desc = "Scroll top",
+    },
+    {
+      "zz",
+      function()
+        require("neoscroll").zz({ half_win_duration = duration.scroll })
+      end,
+      mode = modes,
+      desc = "Scroll center",
+    },
+    {
+      "zk",
+      function()
+        require("neoscroll").zb({ half_win_duration = duration.scroll })
+      end,
+      mode = modes,
+      desc = "Scroll bottom",
+    },
   },
 
   config = function()

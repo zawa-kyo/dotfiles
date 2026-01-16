@@ -97,7 +97,3 @@ keymap("n", "M", "m", opts("Set mark"))
 -- Match pairs (align with cycle-style [ ] prefix)
 keymap("n", "]p", "%", opts("Go to matching pair"))
 keymap("n", "[p", "%", opts("Go to matching pair"))
-
--- Look around
-keymap("n", "zk", "zb", opts("Look up"))
-keymap("n", "zj", "zt", opts("Look down"))
