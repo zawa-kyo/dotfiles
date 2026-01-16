@@ -9,6 +9,7 @@ return {
   },
 
   config = function()
+    -- Build an LSP client label, excluding names from the given list.
     local function lsp_clients(ignore_list)
       local ignore_lookup = {}
       for _, name in ipairs(ignore_list) do
@@ -38,6 +39,7 @@ return {
       end
     end
 
+    -- Resolve devicon and color for the current buffer.
     local function filename_icon_parts()
       local devicons = require("nvim-web-devicons")
       local name = vim.api.nvim_buf_get_name(0)
@@ -52,16 +54,19 @@ return {
       return icon, color
     end
 
+    -- Return the current buffer icon text.
     local function filename_icon_text()
       local icon = filename_icon_parts()
       return icon
     end
 
+    -- Return the current buffer icon color.
     local function filename_icon_color()
       local _, color = filename_icon_parts()
       return { fg = color }
     end
 
+    -- Build a shortened yank register preview.
     local function yank_register(max_length)
       return function()
         local yank_content = vim.fn.getreg('"')
@@ -74,6 +79,7 @@ return {
       end
     end
 
+    -- Configure lualine sections and options.
     local function setup_lualine()
       require("lualine").setup({
         options = {
