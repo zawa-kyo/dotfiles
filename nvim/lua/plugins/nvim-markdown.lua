@@ -33,42 +33,6 @@ return {
           "<Plug>Markdown_NewLineBelow",
           vim.tbl_extend("force", opts("Insert new line below"), buffer_opts)
         )
-        keymap(
-          "n",
-          "]]",
-          "<Plug>Markdown_MoveToNextHeader",
-          vim.tbl_extend("force", opts("Go to next header"), buffer_opts)
-        )
-        keymap(
-          "n",
-          "[[",
-          "<Plug>Markdown_MoveToPreviousHeader",
-          vim.tbl_extend("force", opts("Go to previous header"), buffer_opts)
-        )
-        keymap(
-          "n",
-          "][",
-          "<Plug>Markdown_MoveToNextSiblingHeader",
-          vim.tbl_extend("force", opts("Go to next sibling header"), buffer_opts)
-        )
-        keymap(
-          "n",
-          "[]",
-          "<Plug>Markdown_MoveToPreviousSiblingHeader",
-          vim.tbl_extend("force", opts("Go to previous sibling header"), buffer_opts)
-        )
-        keymap(
-          "n",
-          "]c",
-          "<Plug>Markdown_MoveToCurHeader",
-          vim.tbl_extend("force", opts("Go to current header"), buffer_opts)
-        )
-        keymap(
-          "n",
-          "]u",
-          "<Plug>Markdown_MoveToParentHeader",
-          vim.tbl_extend("force", opts("Go to parent header"), buffer_opts)
-        )
 
         -- Insert Mode
         keymap("i", "<CR>", function()
