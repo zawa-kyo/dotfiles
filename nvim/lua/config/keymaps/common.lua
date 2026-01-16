@@ -39,6 +39,8 @@ keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
 keymap("n", "<leader>wv", ":vsplit<CR><C-w>w", opts("Split window vertically"))
 keymap("n", "<leader>w=", "<C-w>=", opts("Equalize window sizes"))
 keymap("n", "<leader>wq", "<C-w>q", opts("Close the current window"))
+keymap("n", "<leader>wo", "<C-w>o", opts("Close other windows"))
+keymap("n", "<leader>wx", "<C-w>x", opts("Swap with adjacent window"))
 
 -- Resize (use shifted H/J/K/L to imply “bigger action”)
 keymap("n", "<leader>wH", "5<C-w><", opts("Decrease window width"))
