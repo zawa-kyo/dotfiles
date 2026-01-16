@@ -36,6 +36,30 @@ return {
       return table.concat(names, ", ")
     end
 
+    local function filename_icon_parts()
+      local devicons = require("nvim-web-devicons")
+      local name = vim.api.nvim_buf_get_name(0)
+      if name == "" then
+        local icon, color = devicons.get_icon_color("", "", { default = true })
+        return icon, color
+      end
+
+      local filename = vim.fn.fnamemodify(name, ":t")
+      local ext = vim.fn.fnamemodify(name, ":e")
+      local icon, color = devicons.get_icon_color(filename, ext, { default = true })
+      return icon, color
+    end
+
+    local function filename_icon_text()
+      local icon = filename_icon_parts()
+      return icon
+    end
+
+    local function filename_icon_color()
+      local _, color = filename_icon_parts()
+      return { fg = color }
+    end
+
     local function setup_lualine()
       require("lualine").setup({
         options = {
@@ -47,7 +71,20 @@ return {
 
         sections = {
           lualine_a = { "branch" },
-          lualine_b = { "filename" },
+          lualine_b = {
+            {
+              filename_icon_text,
+              color = filename_icon_color,
+              separator = "",
+              padding = { left = 1, right = 0 },
+            },
+            {
+              "filename",
+              icon = "",
+              separator = "",
+              padding = { left = 0, right = 1 },
+            },
+          },
           lualine_c = { "diff" },
           lualine_x = { "diagnostics" },
           lualine_y = {
