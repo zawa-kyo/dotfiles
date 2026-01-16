@@ -42,11 +42,11 @@ keymap("n", "<leader>wq", "<C-w>q", opts("Close the current window"))
 keymap("n", "<leader>wo", "<C-w>o", opts("Close other windows"))
 keymap("n", "<leader>wx", "<C-w>x", opts("Swap with adjacent window"))
 
--- Resize (use shifted H/J/K/L to imply “bigger action”)
-keymap("n", "<leader>wH", "5<C-w><", opts("Decrease window width"))
-keymap("n", "<leader>wL", "5<C-w>>", opts("Increase window width"))
-keymap("n", "<leader>wJ", "5<C-w>-", opts("Decrease window height"))
-keymap("n", "<leader>wK", "5<C-w>+", opts("Increase window height"))
+-- Resize
+keymap("n", "<leader>w<", "5<C-w><", opts("Decrease window width"))
+keymap("n", "<leader>w>", "5<C-w>>", opts("Increase window width"))
+keymap("n", "<leader>w-", "5<C-w>-", opts("Decrease window height"))
+keymap("n", "<leader>w+", "5<C-w>+", opts("Increase window height"))
 
 -- Buffer operations (<leader>b…)
 keymap("n", "<leader>bl", "<Cmd>bnext<CR>", opts("Go to next buffer"))
