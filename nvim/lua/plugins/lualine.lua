@@ -86,11 +86,12 @@ return {
             },
           },
           lualine_c = { "diff" },
-          lualine_x = { "diagnostics" },
+          lualine_x = {},
           lualine_y = {
+            "diagnostics",
             { lsp_clients, icon = " " },
           },
-          lualine_z = { "filetype" },
+          lualine_z = {},
         },
 
         inactive_sections = {
