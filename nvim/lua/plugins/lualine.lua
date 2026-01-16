@@ -60,6 +60,17 @@ return {
       return { fg = color }
     end
 
+    local function yank_register()
+      local max_length = 12
+      local yank_content = vim.fn.getreg('"')
+      yank_content = yank_content:gsub("\n", " ")
+      yank_content = yank_content:gsub("^%s+", "")
+      if #yank_content > max_length then
+        yank_content = string.sub(yank_content, 1, max_length) .. "..."
+      end
+      return yank_content ~= "" and yank_content or "EMPTY"
+    end
+
     local function setup_lualine()
       require("lualine").setup({
         options = {
@@ -86,7 +97,7 @@ return {
             },
           },
           lualine_c = { "diff" },
-          lualine_x = {},
+          lualine_x = { yank_register },
           lualine_y = {
             "diagnostics",
             { lsp_clients, icon = " " },
