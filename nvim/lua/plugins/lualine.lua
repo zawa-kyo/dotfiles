@@ -107,7 +107,7 @@ return {
           },
           lualine_c = { "diff" },
           lualine_x = {
-            { yank_register(12), icon = " " },
+            { yank_register(12), icon = "" },
             "diagnostics",
             {
               lsp_clients({ "null-ls", "null_ls" }),
