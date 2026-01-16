@@ -80,13 +80,19 @@ end, opts("Toggle relative numbers"))
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
 
--- Jump history (keep gp/gP)
+-- Jump history
 keymap("n", "gp", "<C-o>", opts("Jump to previous location"))
 keymap("n", "gP", "<C-i>", opts("Jump to next location"))
 keymap("n", "gn", "<C-i>", opts("Jump to next location"))
 keymap("n", "gN", "<C-o>", opts("Jump to previous location"))
 keymap("n", "]l", "<C-i>", opts("Jump to next location"))
 keymap("n", "[l", "<C-o>", opts("Jump to previous location"))
+keymap("n", "]]", "<C-i>", opts("Jump to next location"))
+keymap("n", "[[", "<C-o>", opts("Jump to previous location"))
+
+-- Sections
+keymap("n", "]s", "<Cmd>normal! ]]<CR>", opts("Go to next section"))
+keymap("n", "[s", "<Cmd>normal! [[<CR>", opts("Go to previous section"))
 
 -- Marks (use M to avoid clashing with the modify prefix)
 keymap("n", "M", "m", opts("Set mark"))
