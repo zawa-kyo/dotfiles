@@ -5,7 +5,6 @@ return {
   cond = not vim.g.vscode,
   dependencies = "DaikyXendo/nvim-material-icon",
 
-  -- TODO: Customize the bufferline appearance.
   keys = {
     {
       "tB",
@@ -15,13 +14,22 @@ return {
       desc = "Toggle bufferline",
     },
   },
+
   opts = {
     options = {
       mode = "buffers",
       always_show_bufferline = true,
+      separator_style = "thin",
+      tab_size = 8,
+      minimum_padding = 0,
       show_close_icon = false,
       show_buffer_close_icons = false,
       show_tab_indicators = false,
+    },
+    highlights = {
+      buffer_selected = {
+        italic = false,
+      },
     },
   },
 }
