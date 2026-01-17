@@ -6,7 +6,12 @@ return {
   lazy = true,
 
   keys = {
-    { "tb", "<Cmd>DropbarToggle<CR>", desc = "Toggle dropbar" },
+    {
+      "tb", -- Toggle breadcrumbs
+      "<Cmd>DropbarToggle<CR>",
+      desc = "Toggle breadcrumbs"
+    },
+
   },
 
   -- TODO: Review and refine dropbar settings later.
