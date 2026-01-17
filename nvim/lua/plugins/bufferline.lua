@@ -6,6 +6,15 @@ return {
   dependencies = "DaikyXendo/nvim-material-icon",
 
   -- TODO: Customize the bufferline appearance.
+  keys = {
+    {
+      "tB",
+      function()
+        vim.o.showtabline = vim.o.showtabline == 0 and 2 or 0
+      end,
+      desc = "Toggle bufferline",
+    },
+  },
   opts = {
     options = {
       mode = "buffers",
