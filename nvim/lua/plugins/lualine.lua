@@ -79,6 +79,13 @@ return {
       end
     end
 
+    -- Return the current tab index as n/N for compact display.
+    local function tab_ratio()
+      local current = vim.fn.tabpagenr()
+      local total = vim.fn.tabpagenr("$")
+      return string.format("%d/%d", current, total)
+    end
+
     -- Configure lualine sections and options.
     local function setup_lualine()
       require("lualine").setup({
@@ -114,7 +121,9 @@ return {
               icon = " ",
             },
           },
-          lualine_y = {},
+          lualine_y = {
+            { tab_ratio, icon = "󱦞" },
+          },
           lualine_z = {},
         },
 
