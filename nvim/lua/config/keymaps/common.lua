@@ -75,6 +75,11 @@ keymap("n", "tr", function()
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, opts("Toggle relative numbers"))
 
+-- Toggle tabline display
+keymap("n", "tT", function()
+  vim.o.showtabline = vim.o.showtabline == 0 and 1 or 0
+end, opts("Toggle tabline"))
+
 -- Wrapped lines: move by screen line
 keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
