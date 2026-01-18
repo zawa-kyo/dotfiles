@@ -47,8 +47,10 @@ keymap("n", "<leader>w-", "5<C-w>-", opts("Decrease window height"))
 keymap("n", "<leader>w+", "5<C-w>+", opts("Increase window height"))
 
 -- Buffer operations (<leader>b…)
-keymap("n", "<leader>bl", "<Cmd>ls<CR>", opts("List buffers"))
+keymap("n", "<leader>bb", "<Cmd>ls<CR>", opts("Browse buffers"))
 keymap("n", "<leader>bd", "<Cmd>bdelete<CR>", opts("Delete buffer"))
+keymap("n", "<leader>bq", "<Cmd>bdelete<CR>", opts("Delete buffer"))
+keymap("n", "<leader>br", "<Cmd>edit!<CR>", opts("Reload buffer"))
 keymap("n", "]b", "<Cmd>bnext<CR>", opts("Go to next buffer"))
 keymap("n", "[b", "<Cmd>bprevious<CR>", opts("Go to previous buffer"))
 
