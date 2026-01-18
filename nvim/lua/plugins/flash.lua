@@ -7,7 +7,7 @@ return {
     modes = {
       char = {
         jump_labels = true,
-        keys = { "f", "F", "t", "T", "n", "N" },
+        keys = { "f", "F", "t", "T", ";", "," },
         char_actions = function(motion)
           return {
             ["n"] = "next",
