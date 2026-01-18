@@ -7,7 +7,7 @@ return {
     modes = {
       char = {
         jump_labels = true,
-        keys = { "f", "F", "t", "T", "n", "N" },
+        keys = { "f", "F", "t", "T", "n", "N", ";", "," },
         char_actions = function(motion)
           return {
             ["n"] = "next",
@@ -21,14 +21,21 @@ return {
   },
 
   keys = {
-    -- TODO: Consider mapping these frequently used actions to single keys.
     {
-      "gw", -- go word
-      mode = { "n", "x", "o" },
+      "/",
+      mode = "n",
       function()
         require("flash").jump()
       end,
-      desc = "Flash jump",
+      desc = "Flash search",
+    },
+    {
+      "?",
+      mode = "n",
+      function()
+        require("flash").treesitter_search()
+      end,
+      desc = "Flash search with treesitter",
     },
     {
       "gl", -- go line
