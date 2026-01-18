@@ -40,6 +40,14 @@ return {
       show_buffer_close_icons = false,
       -- Hide tab page indicators on the right.
       show_tab_indicators = false,
+      -- Hide file extensions in buffer labels
+      name_formatter = function(buf)
+        local filename = buf.name or ""
+        if filename == "" then
+          return "[No Name]"
+        end
+        return vim.fn.fnamemodify(filename, ":t:r")
+      end,
     },
     highlights = {
       buffer_selected = {
