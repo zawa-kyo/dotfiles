@@ -20,6 +20,8 @@ return {
       mode = "buffers",
       always_show_bufferline = true,
       separator_style = "thin",
+      right_mouse_command = function() end,
+      middle_mouse_command = function() end,
       tab_size = 8,
       minimum_padding = 0,
       show_close_icon = false,
