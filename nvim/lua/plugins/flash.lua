@@ -4,6 +4,9 @@ return {
   event = "VeryLazy",
 
   opts = {
+    jump = {
+      jumplist = true,
+    },
     modes = {
       char = {
         jump_labels = true,
