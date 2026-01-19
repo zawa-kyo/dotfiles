@@ -8,6 +8,9 @@ return {
       jumplist = true,
     },
     modes = {
+      search = {
+        enabled = true,
+      },
       char = {
         jump_labels = true,
         keys = { "f", "F", "t", "T", "n", "N", ";", "," },
@@ -24,17 +27,6 @@ return {
   },
 
   keys = {
-    {
-      "/",
-      mode = "n",
-      function()
-        require("flash").jump({
-          search = { mode = "search" },
-          jump = { history = true, register = true },
-        })
-      end,
-      desc = "Flash search",
-    },
     {
       "?",
       mode = "n",
