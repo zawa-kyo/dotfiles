@@ -25,7 +25,10 @@ return {
       "/",
       mode = "n",
       function()
-        require("flash").jump()
+        require("flash").jump({
+          search = { mode = "search" },
+          jump = { history = true, register = true },
+        })
       end,
       desc = "Flash search",
     },
