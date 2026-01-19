@@ -4,7 +4,13 @@ return {
   event = "VeryLazy",
 
   opts = {
+    jump = {
+      jumplist = true,
+    },
     modes = {
+      search = {
+        enabled = true,
+      },
       char = {
         jump_labels = true,
         keys = { "f", "F", "t", "T", "n", "N", ";", "," },
@@ -21,14 +27,6 @@ return {
   },
 
   keys = {
-    {
-      "/",
-      mode = "n",
-      function()
-        require("flash").jump()
-      end,
-      desc = "Flash search",
-    },
     {
       "?",
       mode = "n",

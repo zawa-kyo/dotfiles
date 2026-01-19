@@ -31,14 +31,14 @@ M.keys = {
   {
     "sd",
     function()
-      picker().diagnostics()
+      picker().diagnostics_buffer()
     end,
     desc = "Search diagnostics in current buffer",
   },
   {
     "sD",
     function()
-      picker().diagnostics_buffer()
+      picker().diagnostics()
     end,
     desc = "Search diagnostics in workspace",
   },

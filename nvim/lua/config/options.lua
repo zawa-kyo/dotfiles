@@ -41,6 +41,8 @@ local options = {
   hlsearch = true,
   -- Ignore case when searching by default
   ignorecase = true,
+  -- Avoid flicker during incremental search highlighting
+  incsearch = false,
   -- Enable mouse support
   mouse = "a",
   -- Show absolute line numbers
