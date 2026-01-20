@@ -9,6 +9,10 @@ return {
   },
 
   config = function()
+    local utils = require("config.utils")
+    local opts = utils.getOpts
+    local keymap = utils.getKeymap
+
     local lualine_visible = true
     local laststatus_visible = vim.o.laststatus ~= 0
 
@@ -152,7 +156,7 @@ return {
 
     setup_lualine()
 
-    vim.keymap.set("n", "ts", function()
+    keymap("n", "ts", function()
       local ok, lualine = pcall(require, "lualine")
       if not ok then
         return
@@ -163,6 +167,6 @@ return {
 
       laststatus_visible = not laststatus_visible
       vim.o.laststatus = laststatus_visible and 3 or 0
-    end, { desc = "Toggle statusline" })
+    end, opts("Toggle statusline"))
   end,
 }
