@@ -1,3 +1,7 @@
+/**
+ * Prints numbers from 1 to 100, replacing multiples of 3 with Fizz,
+ * multiples of 5 with Buzz, and multiples of 15 with FizzBuzz.
+ */
 public class FizzBuzz {
     public static void main(String[] args) {
         for (int i = 1; i <= 100; i++) {

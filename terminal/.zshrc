@@ -29,31 +29,31 @@ eval "$(sheldon source)"
 
 # Function to resolve the absolute path of the dotfiles directory
 get_dotfiles_dir() {
-    # Get the actual path of the ~/.zshrc symlink
-    local zshrc_symlink
-    zshrc_symlink="$(readlink "${HOME}/.zshrc")"
+  # Get the actual path of the ~/.zshrc symlink
+  local zshrc_symlink
+  zshrc_symlink="$(readlink "${HOME}/.zshrc")"
 
-    # Change to HOME to handle relative paths
-    cd "${HOME}" || return 1
+  # Change to HOME to handle relative paths
+  cd "${HOME}" || return 1
 
-    # Get the absolute path to the dotfiles directory
-    cd "$(dirname "$zshrc_symlink")" && pwd
+  # Get the absolute path to the dotfiles directory
+  cd "$(dirname "$zshrc_symlink")" && pwd
 }
 
 # Function to execute the source script
 run_source_script() {
-    local current_dir
-    current_dir="$(pwd)"  # Store the current working directory
+  local current_dir
+  current_dir="$(pwd)"  # Store the current working directory
 
-    # Get the dotfiles directory
-    local dotfiles_dir
-    dotfiles_dir="$(get_dotfiles_dir)" || return 1
+  # Get the dotfiles directory
+  local dotfiles_dir
+  dotfiles_dir="$(get_dotfiles_dir)" || return 1
 
-    # Execute the script from the scripts directory
-    eval "$(bash "$dotfiles_dir/../scripts/source.sh")"
+  # Execute the script from the scripts directory
+  eval "$(bash "$dotfiles_dir/../scripts/source.sh")"
 
-    # Return to the original working directory
-    cd "$current_dir"
+  # Return to the original working directory
+  cd "$current_dir"
 }
 
 run_source_script
@@ -114,6 +114,9 @@ zstyle ":completion:*:commands" rehash 1
 # Paths
 # ===========================
 
+# Local
+export PATH="$HOME/.local/bin:$PATH"
+
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"
 
@@ -122,29 +125,82 @@ export PATH="$HOME/.rd/bin:$PATH"
 
 # Go
 export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:$GOPATH/bin"
 
 # AndroidStudio
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+# Official SDK root for Android Studio & sdkmanager/avdmanager
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+# Legacy SDK root for backward-compatibility (older scripts/CI)
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+# Include adb/fastboot
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+
+# Dart CLI tools
+export PATH="$PATH:$HOME/.pub-cache/bin"
+
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 
 # ===========================
 # Fzf
 # ===========================
 
-fv () {
-	local file
-	file=$(fzf) && nvim "$file"
+fzp () {
+  local file
+  file=$(fzf) && nvim "$file"
 }
 
-fg () {
-    local file_and_line
-    file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
+fzl () {
+  local file_and_line
+  file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
+
+
+# ===========================
+# Yazi
+# ===========================
+
+# Open Yazi and change directory to the one selected on exit
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+# ===========================
+# Utilities
+# ===========================
+
+# Create a directory (if not exists) and move into it
+mkcd() {
+  mkdir -p "$1" && cd "$1" || return 1
+}
+
+# Move up N levels in the directory tree (default: 1)
+# Usage example: up 3 # moves ../../..
+up() {
+  local count=${1:-1}
+  cd "$(printf '../%.0s' $(seq 1 $count))" || return 1
+}
+
+# Search Google for the given query using the default browser
+# Usage example: google how to configure Ghostty
+function google() {
+  local search_query="$@"
+  local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
+  open "https://www.google.com/search?q=$encoded_query"
+}
+
+alias rm="echo ' Heads up: rm is dangerous. Use trash instead!'"
 
 
 # ===========================
 # Comments
 # ===========================
 
-echo "✅ Sourced: .zshrc"
+echo "󰄳 Sourced: .zshrc"

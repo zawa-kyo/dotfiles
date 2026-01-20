@@ -1,0 +1,74 @@
+keybinds {
+    normal {
+        // Use Ctrl+g to switch to locked mode and return to normal terminal input
+        bind "Ctrl g" { SwitchToMode "Locked"; }
+
+        // Switch between modes
+        bind "p" { SwitchToMode "Pane"; }   // Pane mode
+        bind "t" { SwitchToMode "Tab"; }    // Tab mode
+        bind "s" { SwitchToMode "Scroll"; } // Scroll mode
+        bind "o" { SwitchToMode "Session"; } // Session mode
+        bind "n" { SwitchToMode "Resize"; } // Resize mode
+    }
+
+    // Pane mode - Vim-like keybinds
+    pane {
+        bind "h" "Left" { MoveFocus "Left"; }
+        bind "l" "Right" { MoveFocus "Right"; }
+        bind "j" "Down" { MoveFocus "Down"; }
+        bind "k" "Up" { MoveFocus "Up"; }
+
+        // Create new pane
+        bind "d" { NewPane "Down"; SwitchToMode "Locked"; }
+        bind "r" { NewPane "Right"; SwitchToMode "Locked"; }
+
+        // Toggle fullscreen for focused pane
+        bind "f" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
+
+        // Toggle pane frames
+        bind "z" { TogglePaneFrames; SwitchToMode "Locked"; }
+    }
+
+    // Tab mode
+    tab {
+        // Move between tabs
+        bind "h" "Left" { GoToPreviousTab; }
+        bind "l" "Right" { GoToNextTab; }
+
+        // Jump directly to a tab by number
+        bind "1" { GoToTab 1; SwitchToMode "Locked"; }
+        bind "2" { GoToTab 2; SwitchToMode "Locked"; }
+        // ...
+    }
+
+    // Scroll mode - view terminal output
+    scroll {
+        // Vim-like scrolling
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+
+        // Search
+        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
+    }
+}
+
+themes {
+    nord {
+        fg "#D8DEE9"
+        bg "#2E3440"
+        black "#3B4252"
+        red "#BF616A"
+        green "#A3BE8C"
+        yellow "#EBCB8B"
+        blue "#81A1C1"
+        magenta "#B48EAD"
+        cyan "#88C0D0"
+        white "#E5E9F0"
+        orange "#D08770"
+    }
+}
+
+// TODO: Move to a separate file once multi-file config support is added
+theme "nord"

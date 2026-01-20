@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "aicommits": "^1.11.0",
-    "typescript": "^5.4.5"
+    "@anthropic-ai/claude-code": "^2.1.1",
+    "@google/gemini-cli": "^0.22.5",
+    "@openai/codex": "^0.79.0",
+    "typescript": "^5.9.3"
   }
 }

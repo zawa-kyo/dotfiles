@@ -1,62 +1,109 @@
 local options = {
-    encoding = "utf-8",
-    fileencoding = "utf-8",
-    title = true,
-    backup = false,
-    clipboard = "unnamedplus",
-    cmdheight = 2,
-    completeopt = { "menuone", "noselect" },
-    conceallevel = 0,
-    hlsearch = true,
-    ignorecase = true,
-    mouse = "a",
-    pumheight = 10,
-    showmode = false,
-    showtabline = 2,
-    smartcase = true,
-    smartindent = true,
-    swapfile = false,
-    termguicolors = true,
-    timeoutlen = 300,
-    undofile = true,
-    updatetime = 300,
-    writebackup = false,
-    shell = "zsh",
-    backupskip = { "/tmp/*", "/private/tmp/*" },
-    expandtab = true,
-    shiftwidth = 2,
-    tabstop = 2,
-    cursorline = true,
-    number = true,
-    relativenumber = false,
-    numberwidth = 4,
-    signcolumn = "yes",
-    wrap = false,
-    winblend = 0,
-    wildoptions = "pum",
-    pumblend = 5,
-    background = "dark",
-    scrolloff = 8,
-    sidescrolloff = 8,
-    guifont = "monospace:h17",
-    splitbelow = true,
-    splitright = true,
+  -- Use a dark colorscheme background
+  background = "dark",
+  -- Avoid overwriting existing files when writing
+  backup = false,
+  -- Do not create backups for temp directories
+  backupskip = { "/tmp/*", "/private/tmp/*" },
+  -- Sync system clipboard with unnamed register
+  clipboard = "unnamedplus",
+  -- Hide the command line when not in use
+  cmdheight = 0,
+  -- Completion UI should show menu even with one match
+  completeopt = { "menuone", "noselect" },
+  -- Hide concealed text entirely (useful for Markdown)
+  conceallevel = 0,
+  -- Highlight the current line for easier tracking
+  cursorline = true,
+  -- Emphasize only the line number of the cursor line
+  cursorlineopt = "number",
+  -- Preferred file encoding
+  encoding = "utf-8",
+  -- Convert tabs to spaces
+  expandtab = true,
+  -- Encoding written to files
+  fileencoding = "utf-8",
+  -- Force Neovim to append a trailing newline when writing files
+  fixendofline = true,
+  -- Hide fold column for built-in folding
+  foldcolumn = "0",
+  -- Start with most folds open
+  foldlevel = 99,
+  -- Start with folds open on new buffers
+  foldlevelstart = 99,
+  -- Enable folding by default
+  foldenable = true,
+  -- Prefer stable, built-in folding
+  foldmethod = "indent",
+  -- GUI font setting for GUIs like Neovide
+  guifont = "monospace:h17",
+  -- Highlight search matches
+  hlsearch = true,
+  -- Ignore case when searching by default
+  ignorecase = true,
+  -- Avoid flicker during incremental search highlighting
+  incsearch = false,
+  -- Enable mouse support
+  mouse = "a",
+  -- Show absolute line numbers
+  number = true,
+  -- Width of the number column
+  numberwidth = 3,
+  -- Popup menu height limit
+  pumheight = 10,
+  -- Show relative numbers
+  relativenumber = true,
+  -- Keep cursor away from top/bottom edges
+  scrolloff = 8,
+  -- Use Zsh for :! commands / terminal
+  shell = "zsh",
+  -- Number of spaces for each indent step
+  shiftwidth = 2,
+  -- Hide -- INSERT -- indicator (statusline handles it)
+  showmode = false,
+  -- Only show tabline when there are at least two tabs
+  showtabline = 1,
+  -- Keep cursor away from left/right edges
+  sidescrolloff = 8,
+  -- Always show the sign column
+  signcolumn = "yes",
+  -- Smart-case search (case-sensitive only when needed)
+  smartcase = true,
+  -- Maintain indentation on new lines
+  smartindent = true,
+  -- New splits open below the current window
+  splitbelow = true,
+  -- New splits open to the right
+  splitright = true,
+  -- Disable swap files
+  swapfile = false,
+  -- Display width for a literal <Tab>
+  tabstop = 2,
+  -- Enable truecolor support
+  termguicolors = true,
+  -- Mappings timeout length in ms (default: 1000)
+  timeoutlen = 1000,
+  -- Show file title in the window titlebar
+  title = true,
+  -- Persist undo history
+  undofile = true,
+  -- Faster CursorHold/diagnostic updates
+  updatetime = 300,
+  -- Use popup menu for :wildmenu completion
+  wildoptions = "pum",
+  -- Transparent floating window backgrounds
+  winblend = 0,
+  -- Enable line wrapping
+  wrap = true,
+  -- Do not keep extra backup files
+  writebackup = false,
 }
 
 for k, v in pairs(options) do
-    vim.opt[k] = v
+  vim.opt[k] = v
 end
 
 -- Move left and right across lines
 vim.cmd("set whichwrap=b,s,h,l,<,>,[,],~")
 
--- Automatically change to the file's directory on Vim startup
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*",
-    callback = function()
-        if vim.bo.buftype == "" then -- Only execute for normal buffers
-            local filepath = vim.fn.expand("%:p:h")
-            vim.cmd("silent! cd " .. filepath)
-        end
-    end,
-})
+-- Note: Avoid auto-changing CWD on BufEnter to reduce conflicts

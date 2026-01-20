@@ -23,4 +23,6 @@ def fizz_buzz(n: int) -> None:
 # - Correct: fizz_buzz(15)
 # - Error: fizz_buzz("15") (Type hint error)
 fizz_buzz(15)
-fizz_buzz("15")  # Type hint error
+
+# FIXME: Type hint error
+fizz_buzz("15")

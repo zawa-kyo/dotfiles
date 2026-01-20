@@ -1,12 +1,29 @@
 [
   {
+    // Toggle sidebar visibility
     "key": "cmd+b",
-    // サイドバーをトグル
     "command": "workbench.action.toggleSidebarVisibility"
   },
   {
+    // Toggle terminal panel
+    "key": "cmd+J",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    // Navigate forward
     "key": "ctrl+i",
-    // 次へ進む
     "command": "workbench.action.navigateForward"
+  },
+  {
+    // Quick Open: select next result
+    "key": "tab",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    // Quick Open: select previous result
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
   }
 ]

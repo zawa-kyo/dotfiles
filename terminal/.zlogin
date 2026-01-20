@@ -5,4 +5,4 @@
 # Comments
 # ===========================
 
-echo "✅ Sourced: .zlogin"
+echo "󰄳 Sourced: .zlogin"

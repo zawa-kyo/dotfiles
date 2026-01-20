@@ -11,33 +11,134 @@
   "files.trimFinalNewlines": true,
   // 保存時に行末のホワイトスペースを削除
   "files.trimTrailingWhitespace": true,
-  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
-  "files.watcherExclude": {
-    "**/node_modules/*/**": true,
-    "**/.dart_tool": true
-  },
-  // 非表示にする項目
+
+  // サイドバーの表示対象外とする項目
   "files.exclude": {
-    // OS
+    // OS, Git
     "**/.DS_Store": true,
     "**/.metadata": true,
-    // Git
     "**/.git": true,
     "**/.gitignore": false,
-    // Java
-    "**/.classpath": true,
-    // Python
-    "**/__pycache__": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/poetry.lock": false,
-    // Intellij
+
+    // IDE
     "**/.idea": true,
+
+    // Python
+    "**/__pycache__/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/.tox/**": true,
+    "**/.ruff_cache/**": true,
+
     // Dart, Flutter
-    "**/.dart_tool": true,
+    "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
+    "**/build/**": true,
+
+    // Android, iOS, Desktop（Flutter）
+    "**/.gradle/**": true,
+    "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
+    "**/macos/Flutter/ephemeral/**": true,
+    "**/linux/flutter/ephemeral/**": true,
+    "**/windows/flutter/ephemeral/**": true,
+
     // JavaScript, TypeScript
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/out/**": true,
+    "**/.vite/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/storybook-static/**": true,
+    "**/coverage/**": true,
+
+    // Lockfiles
+    "**/package-lock.json": false,
     "**/bun.lockb": false,
-    "**/package-lock.json": false
+    "**/bun.lock": false,
+    "**/poetry.lock": false,
+    "**/uv.lock": false,
+
+    // Rust
+    "**/target/**": true,
+
+    // Go
+    "**/bin/**": true,
+    "**/vendor/**": false,
+
+    // Kotlin
+    "**/.kotlin/**": true,
+    "**/kotlin-js-store/**": true
+  },
+
+  // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/.DS_Store": true,
+    "**/.metadata/**": true,
+
+    // IDE
+    "**/.idea/**": true,
+
+    // Python
+    "**/__pycache__/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/.tox/**": true,
+    "**/.ruff_cache/**": true,
+
+    // Dart, Flutter
+    "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
+    "**/build/**": true,
+
+    // Android, iOS, Desktop（Flutter）
+    "**/.gradle/**": true,
+    "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
+    "**/macos/Flutter/ephemeral/**": true,
+    "**/linux/flutter/ephemeral/**": true,
+    "**/windows/flutter/ephemeral/**": true,
+
+    // JavaScript, TypeScript
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/out/**": true,
+    "**/.vite/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/storybook-static/**": true,
+    "**/coverage/**": true,
+
+    // Rust
+    "**/target/**": true,
+
+    // Go
+    "**/bin/**": true,
+    "**/vendor/**": true,
+
+    // Kotlin
+    "**/.kotlin/**": true,
+    "**/kotlin-js-store/**": true
   },
 
   // ===========================
@@ -45,7 +146,7 @@
   // ===========================
 
   // ホバー表示を有効化
-  "editor.hover.enabled": true,
+  "editor.hover.enabled": "on",
   // ホバー表示の遅延時間 (ms)
   "editor.hover.delay": 500,
   // Ctrl+スクロールでエディタ文字をズーム
@@ -65,7 +166,7 @@
   // true: 常に有効, active: アクティブなペアに対してのみ有効
   "editor.guides.bracketPairs": true,
   // フォント
-  "editor.fontFamily": "'Moralerspace Neon', 'Hack Nerd Font'",
+  "editor.fontFamily": "'Hack Nerd Font Mono', 'Moralerspace Neon'",
   // フォントの合字機能を有効化
   "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'",
   // エディタのフォントサイズ
@@ -110,6 +211,8 @@
   "editor.tabCompletion": "onlySnippets",
   // 単語ベースの補完
   "editor.wordBasedSuggestions": "matchingDocuments",
+  // CodeLensを有効化
+  "editor.codeLens": true,
 
   // ===========================
   // Workbench
@@ -121,7 +224,10 @@
   "workbench.iconTheme": "catppuccin-macchiato",
   // プレビューモードを抑制
   "workbench.editor.enablePreview": false,
+  // QuickOpenのプレビューモードを抑制 (タブを上書きしない)
   "workbench.editor.enablePreviewFromQuickOpen": false,
+  // 新しいエディタを開く位置 (last: 最後尾, beside: 隣)
+  "workbench.editor.openPositioning": "last",
   // ファイルツリーにインデントのガイド線を表示 / インデントのサイズを変更する
   "workbench.tree.renderIndentGuides": "always",
   // 起動時にどのページを開くか
@@ -154,7 +260,7 @@
     // JavaScript, TypeScript
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
     "tsconfig.json": "tsconfig.*.json",
     // Python
     "pyproject.toml": "poetry.lock",
@@ -182,7 +288,7 @@
   "window.title": "${activeEditorMedium}@${rootName}",
   // コマンドセンターを有効化
   // titleBarStyleが"custom"であることが必要
-  "window.commandCenter": false,
+  "window.commandCenter": true,
   // タイトルバーを修正
   "window.titleBarStyle": "custom",
   // OSの設定に合わせてテーマを切り替え
@@ -198,10 +304,65 @@
 
   // 検索結果から除外する項目
   "search.exclude": {
-    // ファイルブラウザには表示するが検索から除外する
-    "**/node_modules": true,
-    "**/package-lock.json": true,
-    "**.svg": false
+    // OS, Git
+    "**/.git/**": true,
+    "**/.DS_Store": true,
+    "**/.metadata/**": true,
+
+    // IDE
+    "**/.idea/**": true,
+
+    // Python
+    "**/__pycache__/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/.tox/**": true,
+    "**/.ruff_cache/**": true,
+
+    // Dart, Flutter
+    "**/.dart_tool/**": true,
+    "**/.fvm/**": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
+    "**/build/**": true,
+
+    // Android, iOS, Desktop（Flutter）
+    "**/.gradle/**": true,
+    "**/android/app/build/**": true,
+    "**/android/.cxx/**": true,
+    "**/ios/Pods/**": true,
+    "**/ios/Flutter/**": true,
+    "**/ios/.symlinks/**": true,
+    "**/macos/Flutter/ephemeral/**": true,
+    "**/linux/flutter/ephemeral/**": true,
+    "**/windows/flutter/ephemeral/**": true,
+
+    // JavaScript, TypeScript
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true,
+    "**/.nuxt/**": true,
+    "**/out/**": true,
+    "**/.vite/**": true,
+    "**/.parcel-cache/**": true,
+    "**/.turbo/**": true,
+    "**/storybook-static/**": true,
+    "**/coverage/**": true,
+    "**/*.min.*": false,
+    "**/*.map": false,
+
+    // Rust
+    "**/target/**": true,
+
+    // Go
+    "**/bin/**": true,
+    "**/vendor/**": false,
+
+    // Kotlin
+    "**/.kotlin/**": true,
+    "**/kotlin-js-store/**": true
   },
 
   // ===========================
@@ -211,7 +372,7 @@
   // ターミナルのフォント設定
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.fontWeight": "normal",
-  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font Mono', 'Moralerspace Neon'",
   // ターミナルに表示する項目の最大行数
   "terminal.integrated.scrollback": 4000,
   // ターミナルのキャレットアニメーション
@@ -223,11 +384,21 @@
   },
 
   // ===========================
+  // Tasks
+  // ===========================
+
+  // タスク実行時にプロブレムマッチャーの入力ダイアログを表示しない
+  "task.problemMatchers.neverPrompt": true,
+
+  // ===========================
   // Debug console
   // ===========================
 
   // コンソールのフォントサイズ
   "debug.console.fontSize": 12,
+
+  // デバッグ実行中でも「デバッグコンソール」を自動で開かない
+  "debug.internalConsoleOptions": "neverOpen",
 
   // ===========================
   // Neovim
@@ -255,16 +426,23 @@
   "diffEditor.diffAlgorithm": "advanced", // 差分アルゴリズムを変更
   // Breadcrumbsを表示
   "breadcrumbs.enabled": true,
+  // 自動更新を制御
   "update.mode": "manual",
 
   // ===========================
   // Git
   // ===========================
 
+  // Git自体を有効化
+  "git.enabled": true,
+  // デコレーションを有効化
+  "git.decorations.enabled": true,
   // リモートリポジトリを自動的にfetch
   "git.autofetch": true,
   // 親ディレクトリの.gitファイルを認識する
   "git.openRepositoryInParentFolders": "always",
+  // ステージングされたファイルがない場合、すべての変更をコミットする
+  "git.enableSmartCommit": false,
 
   // ===========================
   // Devcontainer
@@ -296,36 +474,6 @@
   // Extensions
   // ===========================
 
-  // Todo Tree
-  "todo-tree.general.tags": ["FIXME", "NOTE", "TODO", "CHECK", "DONE"],
-  "todo-tree.general.showActivityBarBadge": true,
-  "todo-tree.highlights.defaultHighlight": {
-    "gutterIcon": true
-  },
-  // 検索対象から除くディレクトリ
-  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/.venv/**"],
-  "todo-tree.highlights.customHighlight": {
-    "TODO": {
-      "icon": "bell",
-      "foreground": "#eb3055",
-      "iconColour": "#eb3055"
-    },
-    "FIXME": {
-      "icon": "flame",
-      "foreground": "#ff7700",
-      "iconColour": "#ff7700"
-    },
-    "NOTE": {
-      "icon": "bookmark",
-      "foreground": "#15a5ad",
-      "iconColour": "#15a5ad"
-    },
-    "DONE": {
-      "icon": "check",
-      "foreground": "#32CD32",
-      "iconColour": "#32CD32"
-    }
-  },
   // IndentRainbow
   "indentRainbow.colors": [
     "rgba(255,255,64,0.07)",
@@ -381,27 +529,45 @@
     }
   ],
 
+  // Error Lens
+  "errorLens.messageEnabled": true,
+  // アクティブな行以外でのみ有効
+  "errorLens.followCursor": "allLinesExceptActive",
+  // 表示形式の指定
+  "errorLens.messageTemplate": "$severity $message",
+  "errorLens.severityText": ["\uea87", "\uea6c", "\uea74", "\uee75"],
+  // gutter iconsの表示有無
+  "errorLens.gutterIconsEnabled": false,
+  "errorLens.gutterIconSet": "circle",
+  "errorLens.gutterIconsFollowCursorOverride": true,
+
   // GitHub Copilot
   "github.copilot.enable": {
     "*": true,
-    "plaintext": true,
-    "markdown": true,
+    "plaintext": false,
+    "markdown": false,
     "scminput": false
   },
+  // GitHub Copilotでプロジェクト全体の検索を利用
+  "github.copilot.chat.codesearch.enabled": true,
+  // MCPサーバギャラリーを有効化
+  "chat.mcp.gallery.enabled": true,
 
   // ===========================
   // Linter, formatter
   // ===========================
 
-  // スペリングチェックで無視するワード
+  // スペルチェックで無視する単語
   "cSpell.userWords": [
     "appbar",
     "arange",
     "asvetliakov",
+    "autolap",
     "autopep8",
     "autoremove",
-    "autolap",
+    "avdmanager",
     "azureus",
+    "catppuccin-macchiato",
     "chatgpt",
     "chktex",
     "classpath",
@@ -417,14 +583,15 @@
     "donot",
     "dtype",
     "dtypes",
-    "eamodio", // GitLens
-    "endwhile",
+    "eamodio",
     "enduml",
+    "endwhile",
     "errisinstance",
+    "errorlens",
     "esbenp",
-    "errorlens", // Error Lens
-    "evilinspector", // Evilinspector
+    "evilinspector",
     "factorypath",
+    "fastboot",
     "fira",
     "flac",
     "fontsize",
@@ -445,12 +612,13 @@
     "keymap",
     "keymaps",
     "kyohei",
+    "lat",
     "latexlog",
     "latexmk",
-    "lat",
     "latlng",
     "lng",
     "lockb",
+    "lockfiles",
     "longdivider",
     "Mandalorian",
     "mathbb",
@@ -458,6 +626,7 @@
     "matplotlib",
     "metasyntactic",
     "mhutchie",
+    "Moralerspace",
     "mypy",
     "mytheme",
     "nanmax",
@@ -476,13 +645,15 @@
     "println",
     "psutil",
     "pstmt",
+    "pubspec",
     "pycache",
     "pyenv",
     "pyinstaller",
-    "pyocr",
     "pylance",
     "pylint",
+    "pyocr",
     "pyperclip",
+    "pyproject",
     "pytest",
     "qiita",
     "raycast",
@@ -492,10 +663,11 @@
     "riverpod",
     "runtimes",
     "rustc",
-    "saikou9901", // Evilinspector
+    "saikou9901",
     "savefig",
-    "setopt",
     "scrollback",
+    "sdkmanager",
+    "setopt",
     "shellsession",
     "skiprows",
     "sonarlint",
@@ -506,12 +678,12 @@
     "tabbar",
     "tesseract",
     "textlint",
-    "Traceback",
-    "tqdm",
     "touchbar",
+    "tqdm",
+    "traceback",
     "twinx",
     "unnecessaries",
-    "usernamehw", // Error Lens
+    "usernamehw",
     "venv",
     "vsintellicode",
     "wezterm",
@@ -624,6 +796,11 @@
   // デフォルトのインタプリタ
   "python.defaultInterpreterPath": "./.venv/bin/python",
 
+  // ======== Jupyter =========
+  "[jupyter]": {
+    "editor.tabSize": 2
+  },
+
   // ========= Swift ==========
   "[swift]": {
     "editor.tabSize": 2
@@ -633,14 +810,12 @@
   "lldb.launch.expressions": "native",
   "lldb.suppressUpdateNotifications": true,
 
-  // ======== Jupyter =========
-  "[jupyter]": {
-    "editor.tabSize": 2
-  },
-
   // ========= Dart ==========
   "[dart]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
   // Flutterプロジェクト作成時のAndroid言語をJavaに設定
   "dart.flutterCreateAndroidLanguage": "java",
@@ -653,12 +828,9 @@
 
   // ====== Lua ========
   "[lua]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "sumneko.lua"
-  },
-  "Lua.format.defaultConfig": {
-    "indent_style": "space",
-    "quoteStyle": "double"
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
   },
 
   // ======= ShellScript =========
@@ -673,17 +845,16 @@
 
   // ======= Markdown =========
   "[markdown]": {
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.quickSuggestions": {
       "comments": "on",
       "strings": "on",
       "other": "on"
     },
-    "editor.wordWrap": "on",
     "files.trimTrailingWhitespace": false,
     "editor.trimAutoWhitespace": false,
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // markdownlint
@@ -695,6 +866,7 @@
     "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
     "MD032": false // blanks-around-lists: Lists should be surrounded by blank lines
   },
+
   // markdown-preview-enhanced
   "markdown-preview-enhanced.mermaidTheme": "forest",
   "markdown-preview-enhanced.previewTheme": "vue.css",
@@ -703,6 +875,18 @@
   "markdown-preview-enhanced.scrollSync": false,
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
+
+  // ========== Yaml ==========
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ========== Toml ==========
+  "[toml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
 
   // ====== LiveServer ========
   "liveServer.settings.donotShowInfoMsg": true,

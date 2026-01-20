@@ -56,11 +56,11 @@ format = '[$all_status$ahead_behind]($style)'
 style = "#263238 bg:#E06C75"
 
 [time]
-disabled = false 
-format = '[ $time ]($style)' 
-style = "#263238 bg:#16DDB3" 
-time_format = "%R" # Hour:Minute Format
-utc_time_offset = '+9' 
+disabled = false
+format = '[ $time ]($style)'
+style = "#263238 bg:#16DDB3"
+time_format = "%R"            # Hour:Minute Format
+utc_time_offset = '+9'
 
 [cmd_duration]
 disabled = false
@@ -74,52 +74,74 @@ error_symbol = "[❯](bold red)"
 success_symbol = "[❯](bold green)"
 
 [fill]
+disabled = true
 style = 'blue'
 symbol = '─'
 
 [docker_context]
+disabled = true
 format = '[ $symbol $context ]($style)'
 style = "#1D63ED"
 symbol = ""
 
 [golang]
+disabled = true
 format = '[ $symbol ($version) ]($style)'
 style = "bg:#E06C75"
 symbol = ""
 
 [java]
+disabled = true
 format = '[ $symbol ($version) ]($style)'
 style = "#F09016"
 symbol = ""
 
 [nodejs]
-detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb']
+disabled = true
+detect_files = [
+  'package.json',
+  '.node-version',
+  '!bunfig.toml',
+  '!bun.lockb',
+  '!bun.lock',
+]
 format = '[ $symbol ($version) ]($style)'
 style = "#4D8E48"
 symbol = ""
 
 [bun]
+disabled = true
 format = '[ $symbol ($version) ]($style)'
 style = "#FBF0DF"
 symbol = "󱨛"
 
 [dart]
+disabled = true
 format = '[ $symbol ($version) ]($style)'
 style = "#2BB1EE"
 symbol = ""
 
 [rust]
+disabled = true
 format = '[ $symbol ($version) ]($style)'
 style = "#F74C00"
 symbol = ""
 
 [aws]
+disabled = true
 format = '[ $symbol ($region) ]($style)'
 style = '#F79400'
 symbol = '󰸏'
 
 [python]
+disabled = true
 format = '[${symbol} (${version}) (\(${virtualenv}\) )]($style)'
-python_binary = ["./.venv/bin/python", "./.venv/bin/python3", "python", "python2", "python3"]
+python_binary = [
+  "./.venv/bin/python",
+  "./.venv/bin/python3",
+  "python",
+  "python2",
+  "python3",
+]
 style = "#FFD743"
 symbol = '󰌠'

@@ -5,4 +5,4 @@
 # Comments
 # ===========================
 
-echo "✅ Sourced: .zprofile"
+echo "󰄳 Sourced: .zprofile"
