@@ -9,6 +9,13 @@ return {
   },
 
   config = function()
+    local utils = require("config.utils")
+    local opts = utils.getOpts
+    local keymap = utils.getKeymap
+
+    local lualine_visible = true
+    local laststatus_visible = vim.o.laststatus ~= 0
+
     -- Build an LSP client label, excluding names from the given list.
     local function lsp_clients(ignore_list)
       local ignore_lookup = {}
@@ -148,5 +155,18 @@ return {
     })
 
     setup_lualine()
+
+    keymap("n", "ts", function()
+      local ok, lualine = pcall(require, "lualine")
+      if not ok then
+        return
+      end
+
+      lualine_visible = not lualine_visible
+      lualine.hide({ place = { "statusline" }, unhide = lualine_visible })
+
+      laststatus_visible = not laststatus_visible
+      vim.o.laststatus = laststatus_visible and 3 or 0
+    end, opts("Toggle statusline"))
   end,
 }
