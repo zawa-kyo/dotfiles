@@ -21,6 +21,10 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true, -- if using nvim-cmp
       },
+      progress = {
+        -- Disable LSP progress UI to avoid overlap with fidget.nvim.
+        enabled = false,
+      },
     },
 
     presets = {
