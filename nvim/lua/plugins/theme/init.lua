@@ -39,7 +39,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 return {
+  require("plugins.theme.catppuccin"),
+  require("plugins.theme.evergarden"),
+  require("plugins.theme.nord"),
   require("plugins.theme.nordfox"),
   require("plugins.theme.nordic"),
-  require("plugins.theme.nord"),
+  require("plugins.theme.tokyonight"),
 }
