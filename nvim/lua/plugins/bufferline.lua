@@ -3,7 +3,7 @@ return {
 
   cond = not vim.g.vscode,
   dependencies = "DaikyXendo/nvim-material-icon",
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
 
   keys = {
     {
