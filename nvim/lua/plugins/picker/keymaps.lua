@@ -6,6 +6,12 @@ local function picker()
   return require("snacks").picker
 end
 
+local colorscheme_allowlist = {
+  nord = true,
+  nordfox = true,
+  nordic = true,
+}
+
 M.keys = {
   {
     "sb",
@@ -24,7 +30,13 @@ M.keys = {
   {
     "sc",
     function()
-      picker().colorschemes()
+      picker().colorschemes({
+        transform = function(item)
+          if colorscheme_allowlist[item.text] then
+            return item
+          end
+        end,
+      })
     end,
     desc = "Search colorschemes",
   },
