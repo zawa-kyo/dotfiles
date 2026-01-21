@@ -6,7 +6,7 @@ local function picker()
   return require("snacks").picker
 end
 
-local colorscheme_picker = require("plugins.picker.colorscheme")
+local colorscheme_picker = require("plugins.picker.colorschemes")
 
 M.keys = {
   {
