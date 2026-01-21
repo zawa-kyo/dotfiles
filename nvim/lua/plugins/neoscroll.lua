@@ -8,7 +8,6 @@ local modes = { "n", "v", "x" }
 local M = {
   "karb94/neoscroll.nvim",
 
-  lazy = false,
   cond = not vim.g.vscode,
 
   keys = {
