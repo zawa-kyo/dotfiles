@@ -3,7 +3,7 @@ return {
     "gen740/SmoothCursor.nvim",
 
     cond = not vim.g.vscode,
-    event = { "CursorMoved", "CursorMovedI" },
+    event = "VeryLazy",
 
     config = function()
       require("smoothcursor").setup({
@@ -21,7 +21,7 @@ return {
           },
           tail = { cursor = nil, texthl = "SmoothCursor" },
         },
-        autostart = true,
+        autostart = false,
         always_redraw = true,
         flyin_effect = "top",
         speed = 25,
