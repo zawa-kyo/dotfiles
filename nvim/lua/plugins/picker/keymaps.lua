@@ -6,6 +6,8 @@ local function picker()
   return require("snacks").picker
 end
 
+local colorscheme_picker = require("plugins.picker.colorschemes")
+
 M.keys = {
   {
     "sb",
@@ -22,9 +24,9 @@ M.keys = {
     desc = "Search words in current buffers",
   },
   {
-    "sc",
+    "sc", -- search colorschemes
     function()
-      picker().colorschemes()
+      colorscheme_picker.open(picker)
     end,
     desc = "Search colorschemes",
   },
