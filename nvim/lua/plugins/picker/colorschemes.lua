@@ -1,26 +1,23 @@
 local M = {}
 
----Theme names allowed in the colorscheme picker.
-local colorscheme_allowlist = {
-  "nord",
-  "nordfox",
-  "nordic",
-}
-
----Build a lookup table for allowlist membership checks.
-local function build_allowlist_set()
+---Collect colorscheme names from theme spec filenames.
+local function theme_allowlist_set()
   local set = {}
-  for _, name in ipairs(colorscheme_allowlist) do
-    set[name] = true
+  local theme_dir = vim.fn.stdpath("config") .. "/lua/plugins/theme"
+  local files = vim.fn.globpath(theme_dir, "*.lua", false, true)
+  for _, file in ipairs(files) do
+    local name = vim.fn.fnamemodify(file, ":t:r")
+    if name ~= "init" then
+      set[name] = true
+    end
   end
   return set
 end
 
-local colorscheme_allowlist_set = build_allowlist_set()
-
 ---Collect colorscheme items limited to the allowlist.
 local function colorscheme_items()
   local items = {}
+  local allowlist = theme_allowlist_set()
   local rtp = vim.o.runtimepath
   if package.loaded.lazy then
     rtp = rtp .. "," .. table.concat(require("lazy.core.util").get_unloaded_rtp(""), ",")
@@ -29,7 +26,7 @@ local function colorscheme_items()
   for _, file in ipairs(files) do
     local name = vim.fn.fnamemodify(file, ":t:r")
     local ext = vim.fn.fnamemodify(file, ":e")
-    if (ext == "vim" or ext == "lua") and colorscheme_allowlist_set[name] then
+    if (ext == "vim" or ext == "lua") and allowlist[name] then
       items[#items + 1] = {
         text = name,
         file = file,
