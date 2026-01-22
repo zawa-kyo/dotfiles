@@ -88,6 +88,7 @@ keymap("x", "Y", function()
   elseif vim.o.clipboard:match("unnamed") then
     vim.fn.setreg("*", text)
   end
+  vim.notify("Yanked: " .. text, vim.log.levels.INFO, { title = "Yank" })
 end, opts("Yank file path and line range"))
 
 -- Delete words with backspace
