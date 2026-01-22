@@ -94,6 +94,9 @@ end, opts("Yank file path and line range"))
 -- Delete words with backspace
 keymap("x", "<BS>", "_d", opts("Delete selection with backspace"))
 
+-- Replace selection with a newline (VSCode-like Enter)
+keymap("x", "<CR>", "c<CR>", opts("Replace selection with newline"))
+
 -- Move selected lines
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts("Move selected lines down"))
