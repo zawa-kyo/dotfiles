@@ -1,5 +1,35 @@
 local M = {}
 
+local NIGHTFOX_THEMES = {
+  "nightfox",
+  "dayfox",
+  "dawnfox",
+  "duskfox",
+  "nordfox",
+  "terafox",
+  "carbonfox",
+}
+
+local EVERGARDEN_THEMES = {
+  "evergarden",
+}
+
+local TOKYONIGHT_THEMES = {
+  "tokyonight",
+  "tokyonight-night",
+  "tokyonight-storm",
+  "tokyonight-day",
+  "tokyonight-moon",
+}
+
+local CATPPUCCIN_THEMES = {
+  "catppuccin",
+  "catppuccin-latte",
+  "catppuccin-frappe",
+  "catppuccin-macchiato",
+  "catppuccin-mocha",
+}
+
 ---Collect colorscheme names from theme spec filenames.
 local function theme_allowlist_set()
   local set = {}
@@ -11,6 +41,23 @@ local function theme_allowlist_set()
       set[name] = true
     end
   end
+
+  for _, name in ipairs(NIGHTFOX_THEMES) do
+    set[name] = true
+  end
+
+  for _, name in ipairs(EVERGARDEN_THEMES) do
+    set[name] = true
+  end
+
+  for _, name in ipairs(TOKYONIGHT_THEMES) do
+    set[name] = true
+  end
+
+  for _, name in ipairs(CATPPUCCIN_THEMES) do
+    set[name] = true
+  end
+
   return set
 end
 
