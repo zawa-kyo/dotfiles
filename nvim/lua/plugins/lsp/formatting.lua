@@ -26,7 +26,7 @@ return {
         sources = {
           -- Use Prettier daemon to match VS Code's prettier-vscode experience
           formatting.prettierd.with({
-            filetypes = { "markdown", "markdown.mdx" },
+            filetypes = { "markdown", "mdx" },
           }),
         },
         on_attach = common.on_attach,

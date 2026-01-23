@@ -10,6 +10,8 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-document-symbol",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
       "zbirenbaum/copilot-cmp",
     },
@@ -18,14 +20,8 @@ return {
       local lspkind = require("lspkind")
       local luasnip = require("luasnip")
 
-      local has_words_before = function()
-        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-          return false
-        end
-        local cursor = vim.api.nvim_win_get_cursor(0)
-        local line, col = cursor[1], cursor[2]
-        local text = vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
-        return col ~= 0 and text:match("^%s*$") == nil
+      local feedkey = function(key)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", true)
       end
 
       cmp.setup({
@@ -44,13 +40,23 @@ return {
         },
         mapping = cmp.mapping.preset.insert({
           ["<Tab>"] = vim.schedule_wrap(function(fallback)
-            if cmp.visible() and has_words_before() then
+            if cmp.visible() then
               cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            elseif luasnip and luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
             else
-              fallback()
+              feedkey("<C-t>")
             end
           end),
-          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+          ["<S-Tab>"] = vim.schedule_wrap(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+            elseif luasnip and luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              feedkey("<C-d>")
+            end
+          end),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         experimental = {

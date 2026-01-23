@@ -50,6 +50,10 @@ keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 -- Remap jj to Esc
 keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
 
+-- Indent/outdent in Insert mode (VS Code-like)
+keymap("i", "<Tab>", "<C-t>", opts("Indent line"))
+keymap("i", "<S-Tab>", "<C-d>", opts("Outdent line"))
+
 --------------------
 -- Visual Mode
 --------------------
