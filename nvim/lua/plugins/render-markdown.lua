@@ -18,6 +18,6 @@ return {
   end,
 
   keys = {
-    { "tm", ":RenderMarkdown toggle<CR>", desc = "Toggle markdown rendering" },
+    { "tmr", ":RenderMarkdown toggle<CR>", desc = "Toggle markdown rendering" },
   },
 }
