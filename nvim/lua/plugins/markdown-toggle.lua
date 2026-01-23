@@ -6,13 +6,33 @@ return {
   config = function()
     require("markdown-toggle").setup({
       use_default_keymaps = false,
-      keymaps = {
-        toggle = {
-          tmc = "checkbox",
-          tml = "list",
-          mmc = "checkbox_cycle",
-        },
-      },
     })
   end,
+
+  keys = {
+    {
+      "tmc",
+      function()
+        require("markdown-toggle").checkbox()
+      end,
+      mode = { "n", "x" },
+      desc = "Toggle checkbox",
+    },
+    {
+      "tml",
+      function()
+        require("markdown-toggle").list()
+      end,
+      mode = { "n", "x" },
+      desc = "Toggle list",
+    },
+    {
+      "mmc",
+      function()
+        require("markdown-toggle").checkbox_cycle()
+      end,
+      mode = { "n", "x" },
+      desc = "Toggle checkbox cycle",
+    },
+  },
 }
