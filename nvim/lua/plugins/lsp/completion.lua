@@ -20,14 +20,8 @@ return {
       local lspkind = require("lspkind")
       local luasnip = require("luasnip")
 
-      local has_words_before = function()
-        if vim.bo[0].buftype == "prompt" then
-          return false
-        end
-        local cursor = vim.api.nvim_win_get_cursor(0)
-        local line, col = cursor[1], cursor[2]
-        local text = vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
-        return col ~= 0 and text:match("^%s*$") == nil
+      local feedkey = function(key)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", true)
       end
 
       cmp.setup({
@@ -50,10 +44,8 @@ return {
               cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             elseif luasnip and luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
             else
-              fallback()
+              feedkey("<C-t>")
             end
           end),
           ["<S-Tab>"] = vim.schedule_wrap(function(fallback)
@@ -62,7 +54,7 @@ return {
             elseif luasnip and luasnip.jumpable(-1) then
               luasnip.jump(-1)
             else
-              fallback()
+              feedkey("<C-d>")
             end
           end),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
