@@ -48,7 +48,7 @@ return {
           ["<Tab>"] = vim.schedule_wrap(function(fallback)
             if cmp.visible() then
               cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip.expand_or_jumpable() then
+            elseif luasnip and luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
             elseif has_words_before() then
               cmp.complete()
@@ -59,7 +59,7 @@ return {
           ["<S-Tab>"] = vim.schedule_wrap(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip.jumpable(-1) then
+            elseif luasnip and luasnip.jumpable(-1) then
               luasnip.jump(-1)
             else
               fallback()
