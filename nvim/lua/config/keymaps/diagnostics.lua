@@ -96,6 +96,27 @@ local function replace_quickfix(scope)
   vim.cmd("cfdo %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
 end
 
+--- Replace location list entries with a prompt for search/replace strings.
+--- @param scope "file"|"entry" Controls whether to use lfdo (file) or ldo (entry).
+local function replace_loclist(scope)
+  local old = vim.fn.input("Replace: ")
+  if old == "" then
+    vim.notify("Replace text is empty", vim.log.levels.WARN, { title = "Location List Replace" })
+    return
+  end
+
+  local new = vim.fn.input("With: ")
+  local escaped_old = vim.fn.escape(old, [[/\]])
+  local escaped_new = vim.fn.escape(new, [[/\&]])
+
+  if scope == "entry" then
+    vim.cmd("ldo s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
+    return
+  end
+
+  vim.cmd("lfdo %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
+end
+
 --- Delete a quickfix entry by index (count) or current entry.
 local function delete_quickfix_entry()
   local info = vim.fn.getqflist({ idx = 0, size = 0 })
@@ -134,6 +155,13 @@ end, opts("Replace all quickfix entries"))
 keymap("n", "mqR", function()
   replace_quickfix("file")
 end, opts("Replace all quickfix files"))
+
+keymap("n", "mlr", function()
+  replace_loclist("entry")
+end, opts("Replace all loclist entries"))
+keymap("n", "mlR", function()
+  replace_loclist("file")
+end, opts("Replace all loclist files"))
 
 keymap("n", "mqd", delete_quickfix_entry, opts("Delete quickfix entry"))
 keymap("n", "mqD", clear_quickfix, opts("Clear quickfix list"))
