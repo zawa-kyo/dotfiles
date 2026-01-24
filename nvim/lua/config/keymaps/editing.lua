@@ -77,12 +77,17 @@ local function yank_file_path_range(start_line, end_line)
   if path == "" then
     path = "No Name"
   end
+
   local last_line = vim.fn.line("$")
   local text
+
+  -- Entire file selected: path only.
   if start_line == 1 and end_line == last_line then
     text = path
+    -- Single line selected: path:line.
   elseif start_line == end_line then
     text = string.format("%s:%d", path, start_line)
+    -- Line range selected: path:start-end.
   else
     text = string.format("%s:%d-%d", path, start_line, end_line)
   end
