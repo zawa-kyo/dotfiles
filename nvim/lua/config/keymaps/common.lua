@@ -97,3 +97,18 @@ keymap("n", "M", "m", opts("Set mark"))
 -- Match pairs (align with cycle-style [ ] prefix)
 keymap("n", "]p", "%", opts("Go to matching pair"))
 keymap("n", "[p", "%", opts("Go to matching pair"))
+
+-- Mirror unnamed register into operator-specific registers (y/d/c)
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("use-easy-regname", { clear = true }),
+  callback = function()
+    if vim.v.event.regname ~= "" then
+      return
+    end
+
+    local op = vim.v.event.operator
+    if op == "y" or op == "d" or op == "c" then
+      vim.fn.setreg(op, vim.fn.getreg('"'), vim.fn.getregtype('"'))
+    end
+  end,
+})
