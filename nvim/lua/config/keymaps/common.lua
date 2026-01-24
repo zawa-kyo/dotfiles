@@ -112,3 +112,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end
   end,
 })
+
+-- Clear specific register
+keymap("n", "Xr", function()
+  local reg = vim.fn.getcharstr()
+  if reg:match("^[a-zA-Z]$") then
+    local ok = pcall(vim.fn.setreg, reg, "")
+    if ok then
+      vim.notify("Cleared register: " .. reg, vim.log.levels.INFO, { title = "Registers" })
+      return
+    end
+    vim.notify("Register is read-only: " .. reg, vim.log.levels.WARN, { title = "Registers" })
+    return
+  end
+  vim.notify("Invalid register: " .. reg, vim.log.levels.WARN, { title = "Registers" })
+end, opts("Clear register (a-z/A-Z)"))
+
+local register_characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"=+*%#.:'
+
+-- Clear all registers
+keymap("n", "XR", function()
+  for r in register_characters:gmatch(".") do
+    pcall(vim.fn.setreg, r, "")
+  end
+  vim.notify("Cleared all registers", vim.log.levels.INFO, { title = "Registers" })
+end, opts("Clear all registers"))
