@@ -68,12 +68,12 @@ keymap("n", "r", "<Nop>", opts("Disable replace"))
 keymap("n", "R", "<Nop>", opts("Disable replace line"))
 
 -- Toggle fold column
-keymap("n", "tf", function()
+keymap("n", "tF", function()
   vim.wo.foldcolumn = vim.wo.foldcolumn == "0" and "1" or "0"
 end, opts("Toggle fold column"))
 
 -- Toggle relative numbers
-keymap("n", "tr", function()
+keymap("n", "tR", function()
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, opts("Toggle relative numbers"))
 
@@ -97,3 +97,43 @@ keymap("n", "M", "m", opts("Set mark"))
 -- Match pairs (align with cycle-style [ ] prefix)
 keymap("n", "]p", "%", opts("Go to matching pair"))
 keymap("n", "[p", "%", opts("Go to matching pair"))
+
+-- Mirror unnamed register into operator-specific registers (y/d/c)
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("use-easy-regname", { clear = true }),
+  callback = function()
+    if vim.v.event.regname ~= "" then
+      return
+    end
+
+    local op = vim.v.event.operator
+    if op == "y" or op == "d" or op == "c" then
+      vim.fn.setreg(op, vim.fn.getreg('"'), vim.fn.getregtype('"'))
+    end
+  end,
+})
+
+-- Clear specific register
+keymap("n", "Xr", function()
+  local reg = vim.fn.getcharstr()
+  if reg:match("^[a-zA-Z]$") then
+    local ok = pcall(vim.fn.setreg, reg, "")
+    if ok then
+      vim.notify("Cleared register: " .. reg, vim.log.levels.INFO, { title = "Registers" })
+      return
+    end
+    vim.notify("Register is read-only: " .. reg, vim.log.levels.WARN, { title = "Registers" })
+    return
+  end
+  vim.notify("Invalid register: " .. reg, vim.log.levels.WARN, { title = "Registers" })
+end, opts("Clear register (a-z/A-Z)"))
+
+local register_characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"=+*%#.:'
+
+-- Clear all registers
+keymap("n", "XR", function()
+  for r in register_characters:gmatch(".") do
+    pcall(vim.fn.setreg, r, "")
+  end
+  vim.notify("Cleared all registers", vim.log.levels.INFO, { title = "Registers" })
+end, opts("Clear all registers"))

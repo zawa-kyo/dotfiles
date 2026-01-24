@@ -84,7 +84,14 @@ keymap("x", "Y", function()
     start_line, end_line = end_line, start_line
   end
 
-  local text = string.format("%s:%d-%d", path, start_line, end_line)
+  local last_line = vim.fn.line("$")
+  local text
+  if start_line == 1 and end_line == last_line then
+    text = path
+  else
+    text = string.format("%s:%d-%d", path, start_line, end_line)
+  end
+
   vim.fn.setreg('"', text)
   vim.fn.setreg("0", text)
   if vim.o.clipboard:match("unnamedplus") then
