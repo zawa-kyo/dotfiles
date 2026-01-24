@@ -91,6 +91,14 @@ keymap("n", "[[", "<C-o>", opts("Jump to previous location"))
 keymap("n", "]s", "<Cmd>normal! ]]<CR>", opts("Go to next section"))
 keymap("n", "[s", "<Cmd>normal! [[<CR>", opts("Go to previous section"))
 
+-- Add blank lines without entering Insert mode
+keymap("n", "mo", function()
+  vim.fn.append(vim.fn.line("."), "")
+end, opts("Add blank line below"))
+keymap("n", "mO", function()
+  vim.fn.append(vim.fn.line(".") - 1, "")
+end, opts("Add blank line above"))
+
 -- Marks (use M to avoid clashing with the modify prefix)
 keymap("n", "M", "m", opts("Set mark"))
 
