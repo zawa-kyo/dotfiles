@@ -75,12 +75,27 @@ keymap("n", "[l", "<Cmd>lprev<CR>", opts("Go to previous location list item"))
 keymap("n", "rl", "<Cmd>lopen<CR>", opts("Show location list"))
 keymap("n", "tl", toggle_loclist, opts("Toggle location list"))
 
---- Replace quickfix entries with a prompt for search/replace strings.
---- @param scope "file"|"entry" Controls whether to use cfdo (file) or cdo (entry).
-local function replace_quickfix(scope)
+--- Replace list entries with a prompt for search/replace strings.
+--- @param list "quickfix"|"loclist"
+--- @param scope "file"|"entry" Controls whether to use *fdo (file) or *do (entry).
+local function replace_list(list, scope)
+  local commands = {
+    quickfix = { entry = "cdo", file = "cfdo" },
+    loclist = { entry = "ldo", file = "lfdo" },
+  }
+  local titles = {
+    quickfix = "Quickfix Replace",
+    loclist = "Location List Replace",
+  }
+
+  local list_cmds = commands[list]
+  if not list_cmds then
+    return
+  end
+
   local old = vim.fn.input("Replace: ")
   if old == "" then
-    vim.notify("Replace text is empty", vim.log.levels.WARN, { title = "Quickfix Replace" })
+    vim.notify("Replace text is empty", vim.log.levels.WARN, { title = titles[list] })
     return
   end
 
@@ -88,33 +103,18 @@ local function replace_quickfix(scope)
   local escaped_old = vim.fn.escape(old, [[/\]])
   local escaped_new = vim.fn.escape(new, [[/\&]])
 
-  if scope == "entry" then
-    vim.cmd("cdo s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
+  local cmd = list_cmds[scope]
+  if not cmd then
     return
   end
 
-  vim.cmd("cfdo %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
-end
-
---- Replace location list entries with a prompt for search/replace strings.
---- @param scope "file"|"entry" Controls whether to use lfdo (file) or ldo (entry).
-local function replace_loclist(scope)
-  local old = vim.fn.input("Replace: ")
-  if old == "" then
-    vim.notify("Replace text is empty", vim.log.levels.WARN, { title = "Location List Replace" })
+  local pattern = cmd == "cdo" or cmd == "ldo"
+  if pattern then
+    vim.cmd(cmd .. " s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
     return
   end
 
-  local new = vim.fn.input("With: ")
-  local escaped_old = vim.fn.escape(old, [[/\]])
-  local escaped_new = vim.fn.escape(new, [[/\&]])
-
-  if scope == "entry" then
-    vim.cmd("ldo s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
-    return
-  end
-
-  vim.cmd("lfdo %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
+  vim.cmd(cmd .. " %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
 end
 
 --- Delete a quickfix entry by index (count) or current entry.
@@ -150,17 +150,17 @@ local function clear_quickfix()
 end
 
 keymap("n", "mqr", function()
-  replace_quickfix("entry")
+  replace_list("quickfix", "entry")
 end, opts("Replace all quickfix entries"))
 keymap("n", "mqR", function()
-  replace_quickfix("file")
+  replace_list("quickfix", "file")
 end, opts("Replace all quickfix files"))
 
 keymap("n", "mlr", function()
-  replace_loclist("entry")
+  replace_list("loclist", "entry")
 end, opts("Replace all loclist entries"))
 keymap("n", "mlR", function()
-  replace_loclist("file")
+  replace_list("loclist", "file")
 end, opts("Replace all loclist files"))
 
 keymap("n", "mqd", delete_quickfix_entry, opts("Delete quickfix entry"))
