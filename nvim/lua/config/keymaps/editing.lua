@@ -81,6 +81,8 @@ local function yank_file_path_range(start_line, end_line)
   local text
   if start_line == 1 and end_line == last_line then
     text = path
+  elseif start_line == end_line then
+    text = string.format("%s:%d", path, start_line)
   else
     text = string.format("%s:%d-%d", path, start_line, end_line)
   end
