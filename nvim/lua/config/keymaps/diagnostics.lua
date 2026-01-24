@@ -69,3 +69,31 @@ keymap("n", "]l", "<Cmd>lnext<CR>", opts("Go to next location list item"))
 keymap("n", "[l", "<Cmd>lprev<CR>", opts("Go to previous location list item"))
 keymap("n", "rl", "<Cmd>lopen<CR>", opts("Show location list"))
 keymap("n", "tl", toggle_loclist, opts("Toggle location list"))
+
+--- Replace quickfix entries with a prompt for search/replace strings.
+--- @param scope "file"|"entry" Controls whether to use cfdo (file) or cdo (entry).
+local function replace_quickfix(scope)
+  local old = vim.fn.input("Replace: ")
+  if old == "" then
+    vim.notify("Replace text is empty", vim.log.levels.WARN, { title = "Quickfix Replace" })
+    return
+  end
+
+  local new = vim.fn.input("With: ")
+  local escaped_old = vim.fn.escape(old, [[/\]])
+  local escaped_new = vim.fn.escape(new, [[/\&]])
+
+  if scope == "entry" then
+    vim.cmd("cdo s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
+    return
+  end
+
+  vim.cmd("cfdo %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
+end
+
+keymap("n", "mqr", function()
+  replace_quickfix("entry")
+end, opts("Replace all quickfix entries"))
+keymap("n", "mqR", function()
+  replace_quickfix("file")
+end, opts("Replace all quickfix files"))
