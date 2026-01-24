@@ -47,8 +47,9 @@ keymap("n", "V", "v$", opts("Select until the end of the line"))
 -- Auto space after comma
 keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 
--- Remap jj to Esc
+-- Escape by typing double keys
 keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
+keymap("i", "kk", "<Esc>", opts("Escape", true, false, nil))
 
 -- Indent/outdent in Insert mode (VS Code-like)
 keymap("i", "<Tab>", "<C-t>", opts("Indent line"))
