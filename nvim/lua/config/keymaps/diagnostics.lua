@@ -42,6 +42,11 @@ local function toggle_loclist()
   if is_loclist_open() then
     vim.cmd("lclose")
   else
+    local info = vim.fn.getloclist(0, { size = 0 })
+    if not info or info.size == 0 then
+      vim.notify("Location list is empty", vim.log.levels.WARN, { title = "Location List" })
+      return
+    end
     vim.cmd("lopen")
   end
 end
