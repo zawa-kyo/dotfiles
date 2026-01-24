@@ -72,19 +72,11 @@ keymap("x", "p", '"_dP', opts("Paste without changing register"))
 -- Preserve cursor on yank
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
 
--- Yank file path and line range for AI references
-keymap("x", "Y", function()
+local function yank_file_path_range(start_line, end_line)
   local path = vim.fn.expand("%:.")
   if path == "" then
     path = "No Name"
   end
-
-  local start_line = vim.fn.line("v")
-  local end_line = vim.fn.line(".")
-  if start_line > end_line then
-    start_line, end_line = end_line, start_line
-  end
-
   local last_line = vim.fn.line("$")
   local text
   if start_line == 1 and end_line == last_line then
@@ -101,7 +93,22 @@ keymap("x", "Y", function()
     vim.fn.setreg("*", text)
   end
   vim.notify("Yanked: " .. text, vim.log.levels.INFO, { title = "Yank" })
+end
+
+-- Yank file path and line range for AI references
+keymap("x", "Y", function()
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  yank_file_path_range(start_line, end_line)
 end, opts("Yank file path and line range"))
+
+keymap("n", "Y", function()
+  local line = vim.fn.line(".")
+  yank_file_path_range(line, line)
+end, opts("Yank file path and line"))
 
 -- Delete words with backspace
 keymap("x", "<BS>", "_d", opts("Delete selection with backspace"))
