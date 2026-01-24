@@ -87,10 +87,31 @@ local function replace_list(list, scope)
     quickfix = "Quickfix Replace",
     loclist = "Location List Replace",
   }
+  local labels = {
+    quickfix = "Quickfix",
+    loclist = "Location list",
+  }
+  local info = {
+    quickfix = function()
+      return vim.fn.getqflist({ size = 0 })
+    end,
+    loclist = function()
+      return vim.fn.getloclist(0, { size = 0 })
+    end,
+  }
 
   local list_cmds = commands[list]
   if not list_cmds then
     return
+  end
+
+  local list_info = info[list]
+  if list_info then
+    local state = list_info()
+    if not state or state.size == 0 then
+      vim.notify((labels[list] or "List") .. " is empty", vim.log.levels.WARN, { title = titles[list] })
+      return
+    end
   end
 
   local old = vim.fn.input("Replace: ")
