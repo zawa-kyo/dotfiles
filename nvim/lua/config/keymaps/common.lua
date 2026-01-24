@@ -68,12 +68,12 @@ keymap("n", "r", "<Nop>", opts("Disable replace"))
 keymap("n", "R", "<Nop>", opts("Disable replace line"))
 
 -- Toggle fold column
-keymap("n", "tf", function()
+keymap("n", "tF", function()
   vim.wo.foldcolumn = vim.wo.foldcolumn == "0" and "1" or "0"
 end, opts("Toggle fold column"))
 
 -- Toggle relative numbers
-keymap("n", "tr", function()
+keymap("n", "tR", function()
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, opts("Toggle relative numbers"))
 
