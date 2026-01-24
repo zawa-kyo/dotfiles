@@ -91,9 +91,44 @@ local function replace_quickfix(scope)
   vim.cmd("cfdo %s/" .. escaped_old .. "/" .. escaped_new .. "/g | update")
 end
 
+--- Delete a quickfix entry by index (count) or current entry.
+local function delete_quickfix_entry()
+  local info = vim.fn.getqflist({ idx = 0, size = 0 })
+  if not info or info.idx == 0 or info.size == 0 then
+    vim.notify("Quickfix list is empty", vim.log.levels.WARN, { title = "Quickfix Delete" })
+    return
+  end
+
+  local list = vim.fn.getqflist()
+  local input = vim.fn.input("Select entry index to delete (empty = current): ")
+  local target = tonumber(input) or info.idx
+  if target > #list then
+    vim.notify("Quickfix index is out of range", vim.log.levels.WARN, { title = "Quickfix Delete" })
+    return
+  end
+
+  table.remove(list, target)
+  local new_idx = #list == 0 and 0 or math.min(target, #list)
+  vim.fn.setqflist(list, "r")
+  if new_idx > 0 then
+    vim.fn.setqflist({}, "a", { idx = new_idx })
+  end
+
+  vim.notify("Deleted quickfix entry: " .. target, vim.log.levels.INFO, { title = "Quickfix Delete" })
+end
+
+--- Clear all quickfix entries.
+local function clear_quickfix()
+  vim.cmd("cexpr []")
+  vim.notify("Cleared quickfix list", vim.log.levels.INFO, { title = "Quickfix Delete" })
+end
+
 keymap("n", "mqr", function()
   replace_quickfix("entry")
 end, opts("Replace all quickfix entries"))
 keymap("n", "mqR", function()
   replace_quickfix("file")
 end, opts("Replace all quickfix files"))
+
+keymap("n", "mqd", delete_quickfix_entry, opts("Delete quickfix entry"))
+keymap("n", "mqD", clear_quickfix, opts("Clear quickfix list"))
