@@ -2,7 +2,7 @@ return {
   "j-hui/fidget.nvim",
 
   lazy = true,
-  event = { "BufReadPre", "BufNewFile" },
+  event = "LspAttach",
   cond = not vim.g.vscode,
 
   config = function()
