@@ -1,7 +1,6 @@
 return {
   "j-hui/fidget.nvim",
 
-  lazy = true,
   event = "LspAttach",
   cond = not vim.g.vscode,
 

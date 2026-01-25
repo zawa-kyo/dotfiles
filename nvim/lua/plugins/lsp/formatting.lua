@@ -2,7 +2,6 @@
 return {
   {
     "jay-babu/mason-null-ls.nvim",
-    lazy = true,
     event = { "BufRead", "BufNewFile" },
     cond = not vim.g.vscode,
     dependencies = {

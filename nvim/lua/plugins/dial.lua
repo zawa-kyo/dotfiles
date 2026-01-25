@@ -1,7 +1,6 @@
 local M = {
   "monaqa/dial.nvim",
 
-  lazy = true,
   keys = {
     {
       "<C-a>",

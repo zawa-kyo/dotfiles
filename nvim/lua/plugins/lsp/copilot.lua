@@ -2,7 +2,6 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    lazy = true,
     event = "InsertEnter",
     cond = not vim.g.vscode,
     config = function()
@@ -22,7 +21,6 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
-    lazy = true,
     event = "InsertEnter",
     cond = not vim.g.vscode,
     dependencies = { "zbirenbaum/copilot.lua" },
