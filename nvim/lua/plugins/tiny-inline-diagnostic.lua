@@ -9,5 +9,12 @@ return {
 
     -- Disable Neovim's default virtual text diagnostics
     vim.diagnostic.config({ virtual_text = false })
+
+    vim.keymap.set(
+      "n",
+      "td",
+      "<cmd>TinyInlineDiag toggle<cr>",
+      { desc = "Toggle inline diagnostics" }
+    )
   end,
 }
