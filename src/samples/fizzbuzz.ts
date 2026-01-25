@@ -1,3 +1,7 @@
+// FIXME: Remove unused imports
+import fs from "fs";
+import path from "path";
+
 /**
  * Prints "Fizz", "Buzz", or "FizzBuzz" for numbers from 1 to n.
  * - "Fizz" for numbers divisible by 3.

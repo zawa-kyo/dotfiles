@@ -3,7 +3,6 @@ return {
 
   cond = not vim.g.vscode,
   event = { "BufReadPre", "BufNewFile" },
-  lazy = true,
 
   keys = {
     {

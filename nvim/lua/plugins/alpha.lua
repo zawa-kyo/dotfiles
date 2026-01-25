@@ -1,7 +1,6 @@
 return {
   "goolord/alpha-nvim",
 
-  lazy = true,
   event = "VimEnter",
   cond = not vim.g.vscode,
 

@@ -1,7 +1,6 @@
 local M = {
   "rhysd/git-messenger.vim",
 
-  lazy = true,
   event = {
     "BufRead",
     "BufNewFile",

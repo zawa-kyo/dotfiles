@@ -1,7 +1,6 @@
 return {
   "shellRaining/hlchunk.nvim",
 
-  lazy = true,
   event = {
     "BufRead",
     "BufNewFile",

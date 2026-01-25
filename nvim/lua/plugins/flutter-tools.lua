@@ -2,7 +2,6 @@
 return {
   "nvim-flutter/flutter-tools.nvim",
 
-  lazy = true,
   ft = { "dart" },
   cond = not vim.g.vscode,
 

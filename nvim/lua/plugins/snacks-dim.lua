@@ -16,7 +16,7 @@ return {
   cond = not vim.g.vscode,
   keys = {
     {
-      "td",
+      "tD",
       toggle_dim,
       desc = "Toggle dim",
     },

@@ -1,7 +1,6 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
 
-  lazy = true,
   ft = { "markdown" },
   cond = not vim.g.vscode,
 

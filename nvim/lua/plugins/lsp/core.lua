@@ -21,7 +21,6 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    lazy = true,
     cmd = {
       "Mason",
       "MasonInstall",
@@ -45,7 +44,6 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     cond = not vim.g.vscode,
     dependencies = {
