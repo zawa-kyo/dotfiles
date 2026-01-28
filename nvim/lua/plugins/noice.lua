@@ -2,6 +2,19 @@
 -- - Captures all messages (cmdline, LSP, vim.notify) with a unified UI & history.
 -- - nvim-notify: toast-style renderer with its own :Notifications window.
 -- - Noice: higher-level manager; here we use nvim-notify as its backend.
+local hover_max_width_ratio = 0.6
+local hover_max_height_ratio = 0.4
+
+local function calc_hover_size()
+  local ui = vim.api.nvim_list_uis()[1]
+  local columns = ui and ui.width or vim.o.columns
+  local lines = ui and ui.height or vim.o.lines
+  return {
+    max_width = math.max(1, math.floor(columns * hover_max_width_ratio)),
+    max_height = math.max(1, math.floor(lines * hover_max_height_ratio)),
+  }
+end
+
 return {
   "folke/noice.nvim",
 
@@ -21,9 +34,33 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true, -- if using nvim-cmp
       },
+
+      hover = {
+        enabled = true,
+        view = "hover",
+      },
+
+      signature = {
+        enabled = true,
+        view = "hover",
+      },
+
       progress = {
         -- Disable LSP progress UI to avoid overlap with fidget.nvim.
         enabled = false,
+      },
+    },
+
+    views = {
+      hover = {
+        size = calc_hover_size(),
+        win_options = {
+          wrap = true,
+          linebreak = true,
+        },
+        border = {
+          style = "rounded",
+        },
       },
     },
 

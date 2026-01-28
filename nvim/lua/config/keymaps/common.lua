@@ -73,7 +73,7 @@ keymap("n", "tF", function()
 end, opts("Toggle fold column"))
 
 -- Toggle relative numbers
-keymap("n", "tR", function()
+keymap("n", "tN", function()
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, opts("Toggle relative numbers"))
 
