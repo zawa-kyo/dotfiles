@@ -1,6 +1,6 @@
 # Theme
-theme = Nord
-font-family = Hack Nerd Font Mono,
+theme = Atom One Dark
+font-family = Hack Nerd Font Mono
 font-feature = -dlig
 font-size = 14
 
@@ -12,6 +12,7 @@ window-padding-balance = true
 # Background
 background-opacity = 0.95
 background-blur-radius = 20
+background = #232B38
 
 # Title Bar
 macos-titlebar-style = tabs
