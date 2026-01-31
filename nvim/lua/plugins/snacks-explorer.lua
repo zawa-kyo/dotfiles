@@ -1,4 +1,5 @@
 local utils = require("config.utils")
+local snacks_toggles = require("config.snacks-toggles")
 
 if not vim.g.vscode then
   vim.g.loaded_netrw = 1
@@ -21,11 +22,14 @@ local function toggle_explorer(reveal)
   end
 
   if reveal then
+    if not (picker and not picker.closed) then
+      Snacks.explorer.open(snacks_toggles.opts())
+    end
     Snacks.explorer.reveal()
     return
   end
 
-  Snacks.explorer.open()
+  Snacks.explorer.open(snacks_toggles.opts())
 end
 
 return {
@@ -51,6 +55,17 @@ return {
     explorer = {
       replace_netrw = false,
       trash = true,
+      on_close = function(picker)
+        snacks_toggles.sync_from_opts(picker.opts)
+      end,
+      win = {
+        list = {
+          keys = {
+            ["th"] = "toggle_hidden",
+            ["ti"] = "toggle_ignored",
+          },
+        },
+      },
     },
   },
 }
