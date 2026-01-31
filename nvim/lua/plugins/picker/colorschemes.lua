@@ -30,6 +30,10 @@ local CATPPUCCIN_THEMES = {
   "catppuccin-mocha",
 }
 
+local ONEDARK_THEMES = {
+  "onedark",
+}
+
 ---Collect colorscheme names from theme spec filenames.
 local function theme_allowlist_set()
   local set = {}
@@ -55,6 +59,10 @@ local function theme_allowlist_set()
   end
 
   for _, name in ipairs(CATPPUCCIN_THEMES) do
+    set[name] = true
+  end
+
+  for _, name in ipairs(ONEDARK_THEMES) do
     set[name] = true
   end
 
