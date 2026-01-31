@@ -1,6 +1,7 @@
 local M = {}
 
 local snippets = require("plugins.picker.snippets")
+local snacks_toggles = require("config.snacks-toggles")
 
 local function picker()
   return require("snacks").picker
@@ -19,7 +20,7 @@ M.keys = {
   {
     "sB",
     function()
-      picker().grep({ buffers = true })
+      picker().grep(vim.tbl_extend("force", { buffers = true }, snacks_toggles.opts()))
     end,
     desc = "Search words in current buffers",
   },
@@ -47,7 +48,7 @@ M.keys = {
   {
     "sf",
     function()
-      picker().files()
+      picker().files(snacks_toggles.opts())
     end,
     desc = "Search files in workspace",
   },
@@ -82,7 +83,7 @@ M.keys = {
   {
     "sgF",
     function()
-      picker().git_files()
+      picker().git_files(snacks_toggles.opts())
     end,
     desc = "Search git files",
   },
@@ -257,7 +258,7 @@ M.keys = {
   {
     "sW",
     function()
-      picker().grep()
+      picker().grep(snacks_toggles.opts())
     end,
     desc = "Search words in workspace",
   },
@@ -268,6 +269,20 @@ M.keys = {
     end,
     desc = "Search directories via zoxide",
   },
+  {
+    "th", -- toggle hidden files
+    function()
+      snacks_toggles.toggle_hidden()
+    end,
+    desc = "Toggle snacks hidden files",
+  },
+  {
+    "ti", -- toggle ignored files
+    function()
+      snacks_toggles.toggle_ignored()
+    end,
+    desc = "Toggle snacks ignored files",
+  }
 }
 
 M.vscode = function()

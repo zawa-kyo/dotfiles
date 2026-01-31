@@ -1,4 +1,5 @@
 local picker_keymaps = require("plugins.picker.keymaps")
+local snacks_toggles = require("config.snacks-toggles")
 
 if vim.g.vscode then
   picker_keymaps.vscode()
@@ -17,6 +18,9 @@ return {
           picker.list:select()
         end,
       },
+      on_close = function(picker)
+        snacks_toggles.sync_from_opts(picker.opts)
+      end,
       sources = {
         buffers = {
           win = {
@@ -44,6 +48,8 @@ return {
             ["<c-x>"] = { "toggle_select", mode = { "i", "n" } },
             ["<c-u>"] = { "toggle_hidden", mode = { "i", "n" } },
             ["<c-o>"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["th"] = { "toggle_hidden", mode = "n" },
+            ["ti"] = { "toggle_ignored", mode = "n" },
           },
         },
         list = {
@@ -53,6 +59,8 @@ return {
             ["<c-x>"] = "toggle_select",
             ["<c-u>"] = "toggle_hidden",
             ["<c-o>"] = "toggle_ignored",
+            ["th"] = "toggle_hidden",
+            ["ti"] = "toggle_ignored",
           },
         },
       },
