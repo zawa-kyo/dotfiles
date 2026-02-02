@@ -145,3 +145,11 @@ keymap("n", "XR", function()
   end
   vim.notify("Cleared all registers", vim.log.levels.INFO, { title = "Registers" })
 end, opts("Clear all registers"))
+
+--------------------
+-- Command-line
+--------------------
+
+-- After search, :s<Space> expands to :%s//g so you can replace the last match immediately.
+vim.cmd(
+[[cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's']])
