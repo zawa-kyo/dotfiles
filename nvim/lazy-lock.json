@@ -44,7 +44,7 @@
   "mini.icons": { "branch": "main", "commit": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c" },
   "mini.pairs": { "branch": "main", "commit": "4089aa6ea6423e02e1a8326a7a7a00159f6f5e04" },
   "modes.nvim": { "branch": "main", "commit": "0932ba4e0bdc3457ac89a8aeed4d56ca0b36977a" },
-  "neoconf.nvim": { "branch": "main", "commit": "a659e840dbfe1dd6eb0f7b67dc367d0080f9da8f" },
+  "neoconf.nvim": { "branch": "main", "commit": "d5361648f7cfc598aed6dcfbac81fa702af1514d" },
   "neoscroll.nvim": { "branch": "master", "commit": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8" },
   "nightfox.nvim": { "branch": "main", "commit": "ba47d4b4c5ec308718641ba7402c143836f35aa9" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
@@ -77,6 +77,6 @@
   "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
   "undo-glow.nvim": { "branch": "main", "commit": "25314a94cdfd84a3ca62bada1f88ed00982659ac" },
   "vim-vsnip": { "branch": "master", "commit": "9bcfabea653abdcdac584283b5097c3f8760abaa" },
-  "vimdoc-ja": { "branch": "master", "commit": "73854794ba524b8bdba2742eaa2507b918c844e9" },
+  "vimdoc-ja": { "branch": "master", "commit": "6612db35af2291b7eb9ee4efb7dba24bd8818746" },
   "zen-mode.nvim": { "branch": "main", "commit": "8564ce6d29ec7554eb9df578efa882d33b3c23a7" }
 }
