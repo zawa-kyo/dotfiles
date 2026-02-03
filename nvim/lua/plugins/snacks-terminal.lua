@@ -4,6 +4,16 @@ if vim.g.vscode then
   utils.vscode_map("tt", "workbench.action.terminal.toggleTerminal", "Toggle terminal (VSCode)")
 end
 
+---Toggle the Snacks floating terminal window.
+local function toggle_terminal()
+  require("snacks").terminal(nil, {
+    win = {
+      position = "float",
+      border = "rounded",
+    },
+  })
+end
+
 return {
   "folke/snacks.nvim",
 
@@ -11,27 +21,13 @@ return {
   keys = {
     {
       "tt",
-      function()
-        require("snacks").terminal(nil, {
-          win = {
-            position = "float",
-            border = "rounded",
-          },
-        })
-      end,
+      toggle_terminal,
       mode = "n",
       desc = "Toggle terminal",
     },
     {
       "tT",
-      function()
-        require("snacks").terminal(nil, {
-          win = {
-            position = "float",
-            border = "rounded",
-          },
-        })
-      end,
+      toggle_terminal,
       mode = { "n", "t" },
       desc = "Toggle terminal",
     },
