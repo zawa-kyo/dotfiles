@@ -23,7 +23,7 @@ keymap(all_modes_without_terminal, "<Right>", "<Nop>", opts("Nop"))
 keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false, nil))
 
 -- File operations
-keymap("n", "<leader>w", "<Cmd>write<CR>", opts("Write current buffer"))
+keymap("n", "<leader>s", "<Cmd>write<CR>", opts("Write current buffer"))
 keymap("n", "<leader>q", "<Cmd>quit<CR>", opts("Quit window"))
 
 -- Window navigation (Ctrl+h/j/k/l)
