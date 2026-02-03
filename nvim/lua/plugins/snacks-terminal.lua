@@ -19,6 +19,19 @@ return {
           },
         })
       end,
+      mode = "n",
+      desc = "Toggle terminal",
+    },
+    {
+      "tT",
+      function()
+        require("snacks").terminal(nil, {
+          win = {
+            position = "float",
+            border = "rounded",
+          },
+        })
+      end,
       mode = { "n", "t" },
       desc = "Toggle terminal",
     },
