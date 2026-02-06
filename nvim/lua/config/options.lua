@@ -45,6 +45,8 @@ local options = {
   incsearch = false,
   -- Enable mouse support
   mouse = "a",
+  -- Reduce trackpad/mouse scroll speed (default: ver:3,hor:6)
+  mousescroll = "ver:1,hor:2",
   -- Show absolute line numbers
   number = true,
   -- Width of the number column
