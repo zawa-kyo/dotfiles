@@ -56,7 +56,7 @@ local options = {
   -- Show relative numbers
   relativenumber = true,
   -- Keep cursor away from top/bottom edges
-  scrolloff = 8,
+  scrolloff = 2,
   -- Use Zsh for :! commands / terminal
   shell = "zsh",
   -- Number of spaces for each indent step
