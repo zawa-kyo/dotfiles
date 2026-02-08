@@ -8,7 +8,7 @@ local keymap = utils.getKeymap
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
-keymap("v", ",", "<Esc>ggVG", opts("Select all"))
+keymap("x", "a", "<Esc>ggVG", opts("Select all"))
 
 -- Do not yank with x
 keymap("n", "x", '"_x', opts("Do not yank with x"))
