@@ -5,14 +5,11 @@
 /// - Otherwise, prints the number itself.
 fn fizz_buzz(n: i32) {
     for i in 1..=n {
-        if i % 15 == 0 {
-            println!("FizzBuzz");
-        } else if i % 3 == 0 {
-            println!("Fizz");
-        } else if i % 5 == 0 {
-            println!("Buzz");
-        } else {
-            println!("{i}");
+        match (i % 3 == 0, i % 5 == 0) {
+            (true, true) => println!("FizzBuzz"),
+            (true, false) => println!("Fizz"),
+            (false, true) => println!("Buzz"),
+            (false, false) => println!("{i}"),
         }
     }
 }

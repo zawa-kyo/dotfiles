@@ -13,6 +13,24 @@ return {
     local opts = utils.getOpts
     local keymap = utils.getKeymap
 
+    local function safe_component(fn, fallback)
+      return function(...)
+        local ok, result = pcall(fn, ...)
+        if not ok then
+          return fallback or "LUALINE_ERR"
+        end
+        return result
+      end
+    end
+
+    -- Escape statusline expression markers in dynamic text.
+    local function escape_statusline_text(text)
+      if type(text) ~= "string" then
+        return text
+      end
+      return text:gsub("%%", "%%%%")
+    end
+
     local lualine_visible = true
     local laststatus_visible = vim.o.laststatus ~= 0
 
@@ -82,7 +100,8 @@ return {
         if #yank_content > max_length then
           yank_content = string.sub(yank_content, 1, max_length) .. "..."
         end
-        return yank_content ~= "" and yank_content or "EMPTY"
+        yank_content = yank_content ~= "" and yank_content or "EMPTY"
+        return escape_statusline_text(yank_content)
       end
     end
 
@@ -107,7 +126,7 @@ return {
           lualine_a = { "branch" },
           lualine_b = {
             {
-              filename_icon_text,
+              safe_component(filename_icon_text),
               color = filename_icon_color,
               separator = "",
               padding = { left = 1, right = 0 },
@@ -121,15 +140,15 @@ return {
           },
           lualine_c = { "diff" },
           lualine_x = {
-            { yank_register(12), icon = "" },
+            { safe_component(yank_register(12)), icon = "" },
             "diagnostics",
             {
-              lsp_clients({ "null-ls", "null_ls" }),
+              safe_component(lsp_clients({ "null-ls", "null_ls" })),
               icon = " ",
             },
           },
           lualine_y = {
-            { tab_ratio, icon = "󱦞" },
+            { safe_component(tab_ratio), icon = "󱦞" },
           },
           lualine_z = {},
         },
