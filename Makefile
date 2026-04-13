@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: install install-bun source brew-sync
+.PHONY: install source install-bun  brew-sync
 
 # Ensure the target script is executable, then run it
 define RUN_SCRIPT
@@ -16,10 +16,6 @@ endef
 install:
 	$(call RUN_SCRIPT,./scripts/install.sh)
 
-# Link Bun globals and install Bun dependencies
-install-bun:
-	$(call RUN_SCRIPT,./scripts/install-bun.sh)
-
 # Emit shell snippets for eval-style sourcing
 source:
 	@if [ -t 1 ]; then \
@@ -27,6 +23,10 @@ source:
 	else \
 		$(call RUN_SCRIPT,./scripts/source.sh); \
 	fi
+
+# Link Bun globals and install Bun dependencies
+install-bun:
+	$(call RUN_SCRIPT,./scripts/install-bun.sh)
 
 # Upgrade Homebrew packages and sync the tracked Brewfile
 brew-sync:
