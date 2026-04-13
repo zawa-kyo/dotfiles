@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: install install-bun source
+.PHONY: install install-bun source brew-sync
 
 # Ensure the target script is executable, then run it
 define RUN_SCRIPT
@@ -27,3 +27,8 @@ source:
 	else \
 		$(call RUN_SCRIPT,./scripts/source.sh); \
 	fi
+
+# Upgrade Homebrew packages and sync the tracked Brewfile
+brew-sync:
+	brew upgrade
+	brew bundle dump --file=homebrew/Brewfile --force
