@@ -10,6 +10,7 @@ CONFIG_FILE="$SCRIPT_DIR/../mise/config.global.toml"
 
 list_tools() {
   # Read only simple `name = "version"` entries from the [tools] section.
+  # Output format: <tool>\t<current_version>
   awk '
     /^\[tools\]$/ { in_tools=1; next }
     /^\[/ { in_tools=0 }
@@ -18,8 +19,11 @@ list_tools() {
       sub(/^[[:space:]]*/, "", line)
       split(line, parts, "=")
       key=parts[1]
+      value=parts[2]
       sub(/[[:space:]]+$/, "", key)
-      print key
+      gsub(/^[[:space:]]*"/, "", value)
+      gsub(/"[[:space:]]*$/, "", value)
+      print key "\t" value
     }
   ' "$CONFIG_FILE"
 }
@@ -34,6 +38,7 @@ latest_version_for() {
 main() {
   local tools
   local tool
+  local current_version
   local latest_version
 
   if ! command -v mise >/dev/null 2>&1; then
@@ -53,7 +58,7 @@ main() {
     exit 1
   fi
 
-  while IFS= read -r tool; do
+  while IFS=$'\t' read -r tool current_version; do
     [ -n "$tool" ] || continue
 
     echo "󰄳 Resolving latest version for $tool..."
@@ -62,6 +67,11 @@ main() {
     if [ -z "$latest_version" ]; then
       echo "󰅙 Failed to resolve latest version for $tool"
       exit 1
+    fi
+
+    if [ "$latest_version" = "$current_version" ]; then
+      echo "󰄳 $tool is already up to date ($current_version)"
+      continue
     fi
 
     echo "󰄳 Updating $tool to $latest_version"
