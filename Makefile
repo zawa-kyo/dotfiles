@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: install source install-bun  brew-sync
+.PHONY: install source install-bun brew-sync mise-sync-global-tools
 
 # Ensure the target script is executable, then run it
 define RUN_SCRIPT
@@ -32,3 +32,7 @@ install-bun:
 brew-sync:
 	brew upgrade
 	brew bundle dump --file=homebrew/Brewfile --force
+
+# Update every tool declared in mise/config.global.toml to the latest remote version
+mise-sync-global-tools:
+	$(call RUN_SCRIPT,./scripts/update-mise-global-tools.sh)
