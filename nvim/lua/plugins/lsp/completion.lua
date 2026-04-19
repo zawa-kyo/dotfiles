@@ -12,7 +12,6 @@ return {
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
-      "zbirenbaum/copilot-cmp",
     },
     config = function()
       local cmp = require("cmp")
@@ -34,7 +33,6 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
-          { name = "copilot" },
           { name = "nvim_lsp_signature_help" },
         },
         mapping = cmp.mapping.preset.insert({
