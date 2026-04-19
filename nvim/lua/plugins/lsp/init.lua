@@ -1,7 +1,6 @@
 -- Aggregate LSP-related plugin specs split into focused modules for clarity
 local sections = {
   require("plugins.lsp.core"),
-  require("plugins.lsp.completion"),
   require("plugins.lsp.formatting"),
 }
 

@@ -1,4 +1,5 @@
 local utils = require("config.utils")
+local completion = require("config.completion")
 local opts = utils.getOpts
 local keymap = utils.getKeymap
 
@@ -51,9 +52,12 @@ keymap("i", ",", ",<Space>", opts("Insert a space after a comma"))
 keymap("i", "jj", "<Esc>", opts("Escape", true, false, nil))
 keymap("i", "kk", "<Esc>", opts("Escape", true, false, nil))
 
--- Indent/outdent in Insert mode (VS Code-like)
-keymap("i", "<Tab>", "<C-t>", opts("Indent line"))
-keymap("i", "<S-Tab>", "<C-d>", opts("Outdent line"))
+-- Keep Tab for snippet movement / indentation and use Ctrl-n/p for completion.
+keymap({ "i", "s" }, "<Tab>", completion.expand_or_jump_or_indent, opts("Expand snippet or indent line"))
+keymap({ "i", "s" }, "<S-Tab>", completion.jump_back_or_outdent, opts("Jump back in snippet or outdent line"))
+keymap("i", "<C-n>", completion.select_next, opts("Select next completion item"))
+keymap("i", "<C-p>", completion.select_prev, opts("Select previous completion item"))
+keymap("i", "<CR>", completion.confirm, opts("Confirm completion or insert newline"))
 
 --------------------
 -- Visual Mode
