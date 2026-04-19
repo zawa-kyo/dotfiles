@@ -1,3 +1,5 @@
+local completion = require("config.completion")
+
 local options = {
   -- Use a dark colorscheme background
   background = "dark",
@@ -10,7 +12,7 @@ local options = {
   -- Hide the command line when not in use
   cmdheight = 0,
   -- Completion UI should show menu even with one match
-  completeopt = { "menuone", "noselect" },
+  completeopt = completion.completeopt(),
   -- Hide concealed text entirely (useful for Markdown)
   conceallevel = 0,
   -- Highlight the current line for easier tracking
@@ -103,6 +105,11 @@ local options = {
 
 for k, v in pairs(options) do
   vim.opt[k] = v
+end
+
+if completion.has_native_lsp_completion() then
+  vim.opt.pumborder = "rounded"
+  vim.opt.pummaxwidth = 80
 end
 
 -- Move left and right across lines

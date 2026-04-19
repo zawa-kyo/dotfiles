@@ -2,6 +2,7 @@
 -- Keep one startup path; keymaps assume LSP is attached.
 local M = {}
 
+local completion = require("config.completion")
 local utils = require("config.utils")
 local picker = require("snacks").picker
 
@@ -20,8 +21,10 @@ end
 local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false })
 
 -- Shared on_attach: buffer-local keymaps and behaviors
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
   local keymap = utils.getKeymap
+
+  completion.enable_lsp_completion(client, bufnr)
 
   --- Set a buffer-local LSP keymap with default options and optional overrides.
   local function map(mode, lhs, rhs, desc, opts)
