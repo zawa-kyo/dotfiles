@@ -6,7 +6,7 @@ local utils = require("config.utils")
 local picker = require("snacks").picker
 
 -- Shared LSP capabilities
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+M.capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Remove Neovim LSP default keymaps to avoid mini.clue noise.
 do

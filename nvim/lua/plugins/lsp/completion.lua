@@ -1,97 +1,136 @@
--- nvim-cmp configuration and related completion sources
+local blink_highlight_group = vim.api.nvim_create_augroup("BlinkCmpHighlights", { clear = true })
+
+---Link blink.cmp highlight groups to theme-native groups.
+---@return nil
+local function set_blink_highlights()
+  local links = {
+    BlinkCmpMenu = "Pmenu",
+    BlinkCmpMenuBorder = "FloatBorder",
+    BlinkCmpMenuSelection = "PmenuSel",
+    BlinkCmpScrollBarThumb = "PmenuThumb",
+    BlinkCmpScrollBarGutter = "PmenuSbar",
+    BlinkCmpLabel = "Pmenu",
+    BlinkCmpLabelDetail = "Comment",
+    BlinkCmpLabelDescription = "Comment",
+    BlinkCmpKind = "Special",
+    BlinkCmpSource = "Comment",
+    BlinkCmpDoc = "Pmenu",
+    BlinkCmpDocBorder = "FloatBorder",
+    BlinkCmpDocSeparator = "PmenuSbar",
+    BlinkCmpSignatureHelp = "NormalFloat",
+    BlinkCmpSignatureHelpBorder = "FloatBorder",
+  }
+
+  for group, link in pairs(links) do
+    vim.api.nvim_set_hl(0, group, { link = link, default = false })
+  end
+end
+
 return {
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = "1.*",
     event = "InsertEnter",
     cond = not vim.g.vscode,
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp-document-symbol",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
-      "zbirenbaum/copilot-cmp",
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets",
     },
-    config = function()
-      local cmp = require("cmp")
-      local lspkind = require("lspkind")
-      local luasnip = require("luasnip")
-
-      local feedkey = function(key)
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", true)
-      end
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
+    opts = {
+      snippets = { preset = "luasnip" },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      keymap = {
+        preset = "none",
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<C-y>"] = { "select_and_accept", "fallback" },
+        ["<C-n>"] = { "select_next", "fallback_to_mappings" },
+        ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+      },
+      completion = {
+        trigger = {
+          show_on_keyword = true,
+          show_on_backspace_in_keyword = true,
         },
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "copilot" },
-          { name = "nvim_lsp_signature_help" },
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = false,
+          },
         },
-        mapping = cmp.mapping.preset.insert({
-          ["<Tab>"] = vim.schedule_wrap(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip and luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              feedkey("<C-t>")
-            end
-          end),
-          ["<S-Tab>"] = vim.schedule_wrap(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip and luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              feedkey("<C-d>")
-            end
-          end),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        }),
-        experimental = {
-          ghost_text = false,
+        menu = {
+          border = "rounded",
+          auto_show = true,
+          winhighlight = table.concat({
+            "Normal:BlinkCmpMenu",
+            "FloatBorder:BlinkCmpMenuBorder",
+            "CursorLine:BlinkCmpMenuSelection",
+            "Search:None",
+          }, ","),
+          draw = {
+            columns = {
+              { "label", "label_description", gap = 1 },
+              { "kind_icon", "kind" },
+            },
+            treesitter = { "lsp" },
+          },
         },
-        formatting = {
-          format = lspkind.cmp_format({
-            mode = "symbol",
-            preset = "codicons",
-            maxwidth = 50,
-            symbol_map = { Copilot = "" },
-          }),
-        },
-      })
-
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "path" },
-          { name = "cmdline" },
-          { name = "nvim_lsp_document_symbol" },
-        },
-      })
-
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          {
-            name = "buffer",
-            option = {
-              keyword_pattern = [[\k\+]],
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+          update_delay_ms = 50,
+          treesitter_highlighting = false,
+          window = {
+            border = "rounded",
+            winhighlight = table.concat({
+              "Normal:BlinkCmpDoc",
+              "FloatBorder:BlinkCmpDocBorder",
+              "EndOfBuffer:BlinkCmpDoc",
+            }, ","),
+            direction_priority = {
+              menu_north = { "e", "w", "n", "s" },
+              menu_south = { "e", "w", "s", "n" },
             },
           },
-          { name = "nvim_lsp_document_symbol" },
         },
+      },
+      cmdline = {
+        enabled = true,
+        keymap = { preset = "inherit" },
+        completion = {
+          menu = { auto_show = true },
+        },
+      },
+      fuzzy = {
+        implementation = "prefer_rust_with_warning",
+      },
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded",
+          winhighlight = table.concat({
+            "Normal:BlinkCmpSignatureHelp",
+            "FloatBorder:BlinkCmpSignatureHelpBorder",
+          }, ","),
+        },
+      },
+    },
+    opts_extend = { "sources.default" },
+    config = function(_, opts)
+      set_blink_highlights()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = blink_highlight_group,
+        callback = set_blink_highlights,
+        desc = "Relink blink.cmp highlights after colorscheme changes",
       })
+      require("blink.cmp").setup(opts)
     end,
   },
 }

@@ -43,6 +43,16 @@
   - mini.files は操作性の都合で `-` / `_` を維持する
   - mark は `m` を使わず `M` に移動する (modify を `m` に割り当てるため)
 
+## Insert Mode Policy
+
+- Insert mode の `<Tab>` / `<S-Tab>` は補完候補の移動に使わず、indent と snippet 展開/ジャンプに優先的に割り当てる
+- 補完候補の前後移動は `<C-n>` / `<C-p>` を基本とする
+- 補完の確定は `<CR>` または明示的な accept key に寄せ、`<Tab>` での暗黙確定は避ける
+- 理由
+  - `<Tab>` はインデントと snippet 操作の両方で自然に使える
+  - 補完候補移動を `<Tab>` に載せると、indent・snippet・補完選択の責務が衝突しやすい
+  - `<C-n>` / `<C-p>` は Vim 標準の補完操作と整合し、Neovim 標準補完への移行でも破綻しにくい
+
 ## サンプルキーバインド
 
 | Group        | Key          | Verb                    | Action                |
