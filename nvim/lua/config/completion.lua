@@ -1,4 +1,5 @@
 local M = {}
+local native_completion_group = vim.api.nvim_create_augroup("NativeLspCompletion", { clear = false })
 
 local function feedkey(key)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", true)
@@ -22,21 +23,26 @@ end
 
 ---Build the global completeopt value.
 ---Use conservative defaults on older Neovim versions and enable 0.12-specific
----popup features only when the native completion API is available.
+---completion features only when the native completion API is available.
 ---@return string[]
 function M.completeopt()
   local options = { "menu", "menuone", "noselect" }
 
   if M.has_native_lsp_completion() then
     table.insert(options, "fuzzy")
-    table.insert(options, "popup")
+    -- Neovim 0.12.1 + current nvim-treesitter can crash while rendering
+    -- markdown fenced-code docs in completion preview popups. Keep the native
+    -- completion menu, but leave preview popups disabled until upstream fixes
+    -- the conceal_line/query_predicates interaction.
   end
 
   return options
 end
 
 ---Enable Neovim's native LSP completion hooks for a buffer when available.
----Autotrigger is enabled once the completion stack is fully native.
+---Enable native completion for the attached LSP client and current buffer.
+---Neovim recommends InsertCharPre + vim.lsp.completion.get() when you want
+---completion on every keypress instead of only on server trigger characters.
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 function M.enable_lsp_completion(client, bufnr)
@@ -50,7 +56,27 @@ function M.enable_lsp_completion(client, bufnr)
 
   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
   vim.lsp.completion.enable(true, client.id, bufnr, {
-    autotrigger = true,
+    autotrigger = false,
+  })
+
+  vim.api.nvim_clear_autocmds({ group = native_completion_group, buffer = bufnr })
+  vim.api.nvim_create_autocmd("InsertCharPre", {
+    group = native_completion_group,
+    buffer = bufnr,
+    callback = function()
+      if vim.fn.pumvisible() == 1 then
+        return
+      end
+
+      -- Follow :help lsp-autocompletion so prefixes like "con" can complete to
+      -- "console", even when the server does not advertise letter triggers.
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(bufnr) then
+          vim.lsp.completion.get()
+        end
+      end)
+    end,
+    desc = "Trigger native LSP completion on every typed character",
   })
 end
 
