@@ -1,3 +1,31 @@
+local blink_highlight_group = vim.api.nvim_create_augroup("BlinkCmpHighlights", { clear = true })
+
+---Link blink.cmp highlight groups to theme-native groups.
+---@return nil
+local function set_blink_highlights()
+  local links = {
+    BlinkCmpMenu = "Pmenu",
+    BlinkCmpMenuBorder = "FloatBorder",
+    BlinkCmpMenuSelection = "PmenuSel",
+    BlinkCmpScrollBarThumb = "PmenuThumb",
+    BlinkCmpScrollBarGutter = "PmenuSbar",
+    BlinkCmpLabel = "Pmenu",
+    BlinkCmpLabelDetail = "Comment",
+    BlinkCmpLabelDescription = "Comment",
+    BlinkCmpKind = "Special",
+    BlinkCmpSource = "Comment",
+    BlinkCmpDoc = "Pmenu",
+    BlinkCmpDocBorder = "FloatBorder",
+    BlinkCmpDocSeparator = "PmenuSbar",
+    BlinkCmpSignatureHelp = "NormalFloat",
+    BlinkCmpSignatureHelpBorder = "FloatBorder",
+  }
+
+  for group, link in pairs(links) do
+    vim.api.nvim_set_hl(0, group, { link = link, default = false })
+  end
+end
+
 return {
   {
     "saghen/blink.cmp",
@@ -27,6 +55,10 @@ return {
         ["<CR>"] = { "accept", "fallback" },
       },
       completion = {
+        trigger = {
+          show_on_keyword = true,
+          show_on_backspace_in_keyword = true,
+        },
         list = {
           selection = {
             preselect = true,
@@ -36,13 +68,36 @@ return {
         menu = {
           border = "rounded",
           auto_show = true,
+          winhighlight = table.concat({
+            "Normal:BlinkCmpMenu",
+            "FloatBorder:BlinkCmpMenuBorder",
+            "CursorLine:BlinkCmpMenuSelection",
+            "Search:None",
+          }, ","),
+          draw = {
+            columns = {
+              { "label", "label_description", gap = 1 },
+              { "kind_icon", "kind" },
+            },
+            treesitter = { "lsp" },
+          },
         },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,
+          update_delay_ms = 50,
           treesitter_highlighting = false,
           window = {
             border = "rounded",
+            winhighlight = table.concat({
+              "Normal:BlinkCmpDoc",
+              "FloatBorder:BlinkCmpDocBorder",
+              "EndOfBuffer:BlinkCmpDoc",
+            }, ","),
+            direction_priority = {
+              menu_north = { "e", "w", "n", "s" },
+              menu_south = { "e", "w", "s", "n" },
+            },
           },
         },
       },
@@ -60,9 +115,22 @@ return {
         enabled = true,
         window = {
           border = "rounded",
+          winhighlight = table.concat({
+            "Normal:BlinkCmpSignatureHelp",
+            "FloatBorder:BlinkCmpSignatureHelpBorder",
+          }, ","),
         },
       },
     },
     opts_extend = { "sources.default" },
+    config = function(_, opts)
+      set_blink_highlights()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = blink_highlight_group,
+        callback = set_blink_highlights,
+        desc = "Relink blink.cmp highlights after colorscheme changes",
+      })
+      require("blink.cmp").setup(opts)
+    end,
   },
 }
