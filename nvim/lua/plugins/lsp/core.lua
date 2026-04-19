@@ -48,6 +48,7 @@ return {
     cond = not vim.g.vscode,
     dependencies = {
       "neovim/nvim-lspconfig",
+      "saghen/blink.cmp",
       "williamboman/mason.nvim",
     },
     config = function()
