@@ -37,23 +37,36 @@ return {
         },
         mapping = cmp.mapping.preset.insert({
           ["<Tab>"] = vim.schedule_wrap(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip and luasnip.expand_or_jumpable() then
+            if luasnip and luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
             else
               feedkey("<C-t>")
             end
           end),
           ["<S-Tab>"] = vim.schedule_wrap(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-            elseif luasnip and luasnip.jumpable(-1) then
+            if luasnip and luasnip.jumpable(-1) then
               luasnip.jump(-1)
             else
               feedkey("<C-d>")
             end
           end),
+          ["<C-n>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              return
+            end
+
+            cmp.complete()
+          end, { "i", "s" }),
+          ["<C-p>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+              return
+            end
+
+            cmp.complete()
+          end, { "i", "s" }),
+          ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         experimental = {
