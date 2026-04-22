@@ -1,36 +1,27 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
 
   event = {
     "BufNewFile",
     "BufRead",
   },
 
-  -- Load in vscode to enable textobjects
-  -- cond = not vim.g.vscode,
-
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      branch = "main",
+    },
     "nvim-treesitter/nvim-treesitter-context",
   },
   build = ":TSUpdate",
   config = function()
-    require("nvim-treesitter.configs").setup({
-      auto_install = true,
-      ensure_installed = {
-        "lua",
-        "javascript",
-        "typescript",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "java",
-        "dart",
-        "rust",
-      },
-      highlight = {
-        enable = true,
-      },
-    })
+    -- Prefer Neovim's bundled vim parser until nvim-treesitter ships a compatible one.
+    for _, path in ipairs(vim.api.nvim_get_runtime_file("parser/vim.so", true)) do
+      if path:match("/lib/nvim/parser/") then
+        vim.treesitter.language.add("vim", { path = path })
+        break
+      end
+    end
   end,
 }
