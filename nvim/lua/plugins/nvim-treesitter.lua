@@ -7,9 +7,6 @@ return {
     "BufRead",
   },
 
-  -- Load in vscode to enable textobjects
-  -- cond = not vim.g.vscode,
-
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -19,15 +16,12 @@ return {
   },
   build = ":TSUpdate",
   config = function()
-    local function use_builtin_parser(lang)
-      local paths = vim.api.nvim_get_runtime_file(("parser/%s.so"):format(lang), true)
-      local builtin = paths[#paths]
-      if builtin and builtin:match("/lib/nvim/parser/") then
-        vim.treesitter.language.add(lang, { path = builtin })
+    -- Prefer Neovim's bundled vim parser until nvim-treesitter ships a compatible one.
+    for _, path in ipairs(vim.api.nvim_get_runtime_file("parser/vim.so", true)) do
+      if path:match("/lib/nvim/parser/") then
+        vim.treesitter.language.add("vim", { path = path })
+        break
       end
     end
-
-    -- nvim-treesitter main currently ships a vim parser older than Neovim 0.12's bundled one.
-    use_builtin_parser("vim")
   end,
 }
