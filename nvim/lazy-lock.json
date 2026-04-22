@@ -67,6 +67,6 @@
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "tokyonight.nvim": { "branch": "main", "commit": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6" },
   "undo-glow.nvim": { "branch": "main", "commit": "25314a94cdfd84a3ca62bada1f88ed00982659ac" },
-  "vimdoc-ja": { "branch": "master", "commit": "ee16ecb8f802287302ff0317e52e27c274c16194" },
+  "vimdoc-ja": { "branch": "master", "commit": "b1fee81b5c791d95c165a60bdaaf18cd1c52565a" },
   "zen-mode.nvim": { "branch": "main", "commit": "8564ce6d29ec7554eb9df578efa882d33b3c23a7" }
 }
