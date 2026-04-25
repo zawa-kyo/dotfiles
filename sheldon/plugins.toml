@@ -61,7 +61,3 @@ inline = 'eval "$(zoxide init zsh)"'
 # Prompt customization
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
-
-# Manage shell environment
-[plugins.mise]
-inline = 'eval "$(mise activate zsh)"'

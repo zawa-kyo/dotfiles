@@ -19,6 +19,9 @@ path=(
   /Library/Apple/usr/bin
 )
 
+# Mise
+eval "$(mise activate zsh)"
+
 # Sheldon
 eval "$(sheldon source)"
 
