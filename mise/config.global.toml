@@ -47,10 +47,10 @@ GOPATH = "{{env.HOME}}"
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
 ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
 _.path = [
-  "{{env.HOME}}/.local/bin",
-  "{{env.HOME}}/.bun/bin",
-  "{{env.HOME}}/.rd/bin",
-  "{{env.GOPATH}}/bin",
-  "{{env.ANDROID_SDK_ROOT}}/platform-tools",
-  "{{env.HOME}}/.pub-cache/bin",
+  "{{env.HOME}}/.local/bin",                 # Local
+  "{{env.HOME}}/.bun/bin",                   # Bun
+  "{{env.HOME}}/.rd/bin",                    # Rancher Desktop
+  "{{env.HOME}}/.pub-cache/bin",             # Dart CLI tools
+  "{{env.GOPATH}}/bin",                      # Go
+  "{{env.ANDROID_SDK_ROOT}}/platform-tools", # AndroidStudio adb/fastboot
 ]
