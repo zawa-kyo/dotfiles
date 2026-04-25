@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#MISE description="Upgrade Homebrew packages and sync the tracked Brewfile"
+
+set -euo pipefail
+
+brew upgrade
+brew bundle dump --file=homebrew/Brewfile --force

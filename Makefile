@@ -2,41 +2,20 @@ SHELL := /usr/bin/env bash
 
 .PHONY: install source install-bun bun-sync brew-sync mise-sync-global-tools
 
-# Ensure the target script is executable, then run it
-define RUN_SCRIPT
-@script=$(1); \
-if [ ! -x "$$script" ]; then \
-	echo "󰅙 $$script is not executable. Please run: chmod +x $$script"; \
-	exit 1; \
-fi; \
-"$$script"
-endef
-
-# Run the dotfiles symlink setup
 install:
-	$(call RUN_SCRIPT,./scripts/install.sh)
+	mise run install
 
-# Emit shell snippets for eval-style sourcing
 source:
-	@if [ -t 1 ]; then \
-		echo "NOTE: This is auto-loaded from .zshrc, so you usually don't need to run it manually. If you do run it via make, use \`eval \"\$$(make -s source)\"\` to apply exports to the current shell." 1>&2; \
-	else \
-		$(call RUN_SCRIPT,./scripts/source.sh); \
-	fi
+	@mise run source
 
-# Link Bun globals and install Bun dependencies
 install-bun:
-	$(call RUN_SCRIPT,./scripts/install-bun.sh)
+	mise run install-bun
 
-# Update Bun global packages to their latest versions
 bun-sync:
-	bun update -g --latest
+	mise run bun-sync
 
-# Upgrade Homebrew packages and sync the tracked Brewfile
 brew-sync:
-	brew upgrade
-	brew bundle dump --file=homebrew/Brewfile --force
+	mise run brew-sync
 
-# Update every tool declared in mise/config.global.toml to the latest remote version
 mise-sync-global-tools:
-	$(call RUN_SCRIPT,./scripts/update-mise-global-tools.sh)
+	mise run mise-sync-global-tools
