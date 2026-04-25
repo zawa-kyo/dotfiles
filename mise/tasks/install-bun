@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Link Bun globals and install Bun dependencies"
-
-set -euo pipefail
-
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-
-bash "$repo_root/scripts/install-bun.sh"

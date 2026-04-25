@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Update Bun global packages to their latest versions"
-
-set -euo pipefail
-
-bun update -g --latest

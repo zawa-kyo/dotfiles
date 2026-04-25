@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Update every tool declared in mise/config.global.toml to the latest remote version"
-
-set -euo pipefail
-
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-
-"$repo_root/scripts/update-mise-global-tools.sh"
