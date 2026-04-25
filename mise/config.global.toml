@@ -1,15 +1,43 @@
 [tools]
+# Languages
 bun = "1.3.12"
 deno = "2.7.12"
-flutter = "3.41.2-stable"
 go = "1.26.2"
 java = "26.0.0"
-maestro = "cli-2.4.0"
-neovim = "0.12.2"
+lua = "5.5.0"
 node = "24.14.1"
 python = "3.14.4"
 ruby = "3.4.9"
 rust = "1.94.1"
+
+# Editors / dev tools
+neovim = "0.12.2"
 tree-sitter = "0.26.8"
-uv = "0.11.6"
 zellij = "0.44.1"
+
+# Automation / SDKs
+flutter = "3.41.2-stable"
+maestro = "cli-2.4.0"
+uv = "0.11.6"
+
+# CLI tools
+actionlint = "latest"
+atuin = "latest"
+aws-cli = { version = "latest", symlink_bins = "true" }
+bat = "latest"
+delta = "latest"
+eza = "latest"
+fastfetch = "latest"
+fd = "latest"
+fzf = "latest"
+ghq = "latest"
+gitleaks = "latest"
+jq = "latest"
+lazygit = "latest"
+ripgrep = "latest"
+sheldon = "latest"
+shellcheck = "latest"
+starship = "latest"
+peco = "latest"
+yazi = "latest"
+zoxide = "latest"
