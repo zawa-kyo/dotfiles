@@ -85,7 +85,7 @@ file_links=(
   "$HOME/.dotfiles/terminal/.zshrc:$HOME/.zshrc"
   "$HOME/.dotfiles/borders/bordersrc:$HOME/.config/borders/bordersrc"
   "$HOME/.dotfiles/codex/config.toml:$HOME/.codex/config.toml"
-  "$HOME/.dotfiles/ghostty/config:$HOME/.config/ghostty/config"
+  "$HOME/.dotfiles/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
   "$HOME/.dotfiles/mise/config.global.toml:$HOME/.config/mise/config.toml"
   "$HOME/.dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
   "$HOME/.dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
