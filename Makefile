@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: install source install-bun brew-sync mise-sync-global-tools
+.PHONY: install source install-bun bun-sync brew-sync mise-sync-global-tools
 
 # Ensure the target script is executable, then run it
 define RUN_SCRIPT
@@ -27,6 +27,10 @@ source:
 # Link Bun globals and install Bun dependencies
 install-bun:
 	$(call RUN_SCRIPT,./scripts/install-bun.sh)
+
+# Update Bun global packages to their latest versions
+bun-sync:
+	bun update -g --latest
 
 # Upgrade Homebrew packages and sync the tracked Brewfile
 brew-sync:
