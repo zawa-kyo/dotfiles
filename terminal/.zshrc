@@ -106,9 +106,6 @@ precmd() {
   print -Pn "\e]0;%~\a"
 }
 
-# venv: プロンプトに環境名を表示しない
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 # brew installしたコマンドを即座に認識
 zstyle ":completion:*:commands" rehash 1
 
