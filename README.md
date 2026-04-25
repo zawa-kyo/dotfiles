@@ -23,17 +23,16 @@ cd $HOME/.dotfiles
 This pre-hook helps prevent accidental commits of sensitive information, such as passwords or API keys. Follow these steps to set up pre-commit for your repository.
 
 ```sh
-# Install poetry
-$ pip install poetry
+# Sync Python dev tools with uv
+$ uv sync --group dev
 
 # Enable and install pre-commit
-$ poetry install
-$ poetry run pre-commit install
+$ uv run pre-commit install
 ```
 
 ### Notes
 
-- Ensure that your repository includes a `pyproject.toml` file with pre-commit listed as a development dependency.
+- This repository manages Python development dependencies with `uv` via `pyproject.toml`.
 - If you have existing Git hooks, pre-commit will run in migration mode by default. Use the -f option to overwrite existing hooks and use only pre-commit.
 
 ## VSCode
@@ -63,7 +62,7 @@ $ ln -s "$(realpath vscode/keybindings.jsonc)" "$VSCODE_SETTING_DIR/keybindings.
 To set up Bun’s global environment managed via this repository, run the following command:
 
 ```sh
-sh scripts/install-bun.sh
+mise run install-bun
 ```
 
 This script will: 1. Create a symbolic link between the Bun global directory and the repository’s managed directory. 2. Navigate to the Bun global directory. 3. Install dependencies listed in package.json.
@@ -122,4 +121,16 @@ $ brew deps [package_name]
 
 // Show packages that depend on a specific package:
 $ brew uses [package_name]
+```
+
+## Task Runner
+
+This repository uses `mise` for local task entrypoints.
+
+```sh
+mise run install
+mise run install-bun
+mise run python-sync
+mise run pre-commit-install
+mise run check
 ```
