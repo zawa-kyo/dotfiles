@@ -30,6 +30,7 @@ eza = "latest"
 fastfetch = "latest"
 fd = "latest"
 fzf = "latest"
+gh = "latest"
 ghq = "latest"
 gitleaks = "latest"
 jq = "latest"
@@ -38,6 +39,18 @@ ripgrep = "latest"
 sheldon = "latest"
 shellcheck = "latest"
 starship = "latest"
-peco = "latest"
 yazi = "latest"
 zoxide = "latest"
+
+[env]
+GOPATH = "{{env.HOME}}"
+ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
+ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
+_.path = [
+  "{{env.HOME}}/.local/bin",
+  "{{env.HOME}}/.bun/bin",
+  "{{env.HOME}}/.rd/bin",
+  "{{env.GOPATH}}/bin",
+  "{{env.ANDROID_SDK_ROOT}}/platform-tools",
+  "{{env.HOME}}/.pub-cache/bin",
+]

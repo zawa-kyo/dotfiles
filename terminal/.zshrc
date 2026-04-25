@@ -106,40 +106,8 @@ precmd() {
   print -Pn "\e]0;%~\a"
 }
 
-# venv: プロンプトに環境名を表示しない
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 # brew installしたコマンドを即座に認識
 zstyle ":completion:*:commands" rehash 1
-
-
-# ===========================
-# Paths
-# ===========================
-
-# Local
-export PATH="$HOME/.local/bin:$PATH"
-
-# Bun
-export PATH="$HOME/.bun/bin:$PATH"
-
-# Rancher Desktop
-export PATH="$HOME/.rd/bin:$PATH"
-
-# Go
-export GOPATH=$HOME
-export PATH="$PATH:$GOPATH/bin"
-
-# AndroidStudio
-# Official SDK root for Android Studio & sdkmanager/avdmanager
-export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-# Legacy SDK root for backward-compatibility (older scripts/CI)
-export ANDROID_HOME="$ANDROID_SDK_ROOT"
-# Include adb/fastboot
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-
-# Dart CLI tools
-export PATH="$PATH:$HOME/.pub-cache/bin"
 
 
 # ===========================
