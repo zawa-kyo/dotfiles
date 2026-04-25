@@ -1,6 +1,7 @@
 [tools]
 bun = "1.3.5"
 rust = "1.92.0"
+uv = "0.11.7"
 
 [tasks.install]
 description = "Run the dotfiles symlink setup"
@@ -32,3 +33,21 @@ run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
 [tasks.mise-sync-global-tools]
 description = "Update every tool declared in mise/config.global.toml to the latest remote version"
 file = "scripts/update-mise-global-tools.sh"
+
+[tasks.python-sync]
+description = "Sync Python development dependencies with uv"
+run = "uv sync --group dev"
+
+[tasks.pre-commit-install]
+description = "Install the repository pre-commit hook with uv"
+run = [
+  "uv sync --group dev",
+  "uv run pre-commit install",
+]
+
+[tasks.check]
+description = "Run all pre-commit checks with uv"
+run = [
+  "uv sync --group dev",
+  "uv run pre-commit run -a",
+]
