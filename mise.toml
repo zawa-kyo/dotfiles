@@ -12,54 +12,9 @@ taplo = "latest"
 # Frameworks / SDKs
 uv = "0.11.7"
 
-[tasks.install]
-description = "Run the dotfiles symlink setup"
-file = "scripts/install.sh"
-
-[tasks.source]
-description = "Emit shell snippets for eval-style sourcing"
-run = '''
-if [ -t 1 ]; then
-  echo 'NOTE: This is auto-loaded from .zshrc, so you usually do not need to run it manually. If you do run it via mise, use `eval "$(mise run -q source)"` to apply exports to the current shell.' 1>&2
-  exit 0
-fi
-
-bash scripts/source.sh
-'''
-
-[tasks.install-bun]
-description = "Link Bun globals and install Bun dependencies"
-file = "scripts/install-bun.sh"
-
-[tasks.sync-bun]
-description = "Update Bun global packages to their latest versions"
-run = "bun update -g --latest"
-
-[tasks.sync-brew]
-description = "Upgrade Homebrew packages and sync the tracked Brewfile"
-run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
-
-[tasks.sync-global-tools]
-description = "Update every tool declared in mise/config.global.toml to the latest remote version"
-file = "scripts/update-mise-global-tools.sh"
-
-[tasks.sync-python]
-description = "Sync Python development dependencies with uv"
-run = "uv sync --group dev"
-
-[tasks.install-pre-commit]
-description = "Install the repository pre-commit hook with uv"
-run = [
-  "uv sync --group dev",
-  "uv run pre-commit install",
-]
-
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
-run = [
-  "uv sync --group dev",
-  "uv run pre-commit run -a",
-]
+run = ["uv sync --group dev", "uv run pre-commit run -a"]
 
 [tasks.format]
 description = "Format the repository"
@@ -111,3 +66,42 @@ run_if_any "$tmpdir/shell" shfmt -w
 run_if_any "$tmpdir/prettier" prettier --write
 run_if_any "$tmpdir/toml" taplo fmt
 '''
+
+[tasks.install]
+description = "Run the dotfiles symlink setup"
+file = "scripts/install.sh"
+
+[tasks.install-bun]
+description = "Link Bun globals and install Bun dependencies"
+file = "scripts/install-bun.sh"
+
+[tasks.install-pre-commit]
+description = "Install the repository pre-commit hook with uv"
+run = ["uv sync --group dev", "uv run pre-commit install"]
+
+[tasks.source]
+description = "Emit shell snippets for eval-style sourcing"
+run = '''
+if [ -t 1 ]; then
+  echo 'NOTE: This is auto-loaded from .zshrc, so you usually do not need to run it manually. If you do run it via mise, use `eval "$(mise run -q source)"` to apply exports to the current shell.' 1>&2
+  exit 0
+fi
+
+bash scripts/source.sh
+'''
+
+[tasks.sync-brew]
+description = "Upgrade Homebrew packages and sync the tracked Brewfile"
+run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
+
+[tasks.sync-bun]
+description = "Update Bun global packages to their latest versions"
+run = "bun update -g --latest"
+
+[tasks.sync-global-tools]
+description = "Update every tool declared in mise/config.global.toml to the latest remote version"
+file = "scripts/update-mise-global-tools.sh"
+
+[tasks.sync-python]
+description = "Sync Python development dependencies with uv"
+run = "uv sync --group dev"
