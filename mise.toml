@@ -110,14 +110,14 @@ run = ["mise upgrade --local", "mise lock"]
 description = "Upgrade global mise tools within their configured version ranges"
 run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
 
-[tasks.upgrade-tools]
-description = "Upgrade local and global mise tools within their configured version ranges"
+[tasks.upgrade-mise-tools]
+description = "Upgrade local and global mise-managed tools within their configured version ranges"
 run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [
-  { task = "upgrade-tools" },
+  { task = "upgrade-mise-tools" },
   { task = "upgrade-bun" },
   { task = "upgrade-brew" },
 ]
