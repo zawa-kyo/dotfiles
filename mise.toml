@@ -71,8 +71,8 @@ run_if_any "$tmpdir/toml" taplo fmt
 '''
 
 [tasks.install]
-description = "Run the dotfiles symlink setup"
-file = "scripts/install.sh"
+description = "Run the dotfiles symlink setup and install configured mise tools"
+run = ["bash scripts/install.sh", "mise install"]
 
 [tasks.install-bun]
 description = "Link Bun globals and install Bun dependencies"
