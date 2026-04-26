@@ -4,5 +4,17 @@ indent_type = "Spaces"
 # Number of spaces per indentation level
 indent_width = 2
 
+# Use LF line endings
+line_endings = "Unix"
+
 # Prefer double quotes when possible
 quote_style = "AutoPreferDouble"
+
+# Always use parentheses for function calls
+call_parentheses = "Always"
+
+# Do not add spaces after function names
+space_after_function_names = "Never"
+
+# Do not collapse simple statements onto a single line
+collapse_simple_statement = "Never"
