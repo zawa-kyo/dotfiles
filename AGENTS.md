@@ -14,8 +14,8 @@
 ## ビルド・テスト・開発コマンド
 
 - 開発ツール導入: `uv sync --group dev`
-- pre-commit 有効化: `uv run pre-commit install` または `mise run pre-commit-install`
-- 全ファイルでフック実行: `uv run pre-commit run -a` または `mise run check`
+- pre-commit 有効化: `uv run pre-commit install` または `mise run install-pre-commit`
+- 全ファイルでフック実行: `uv run pre-commit run -a` または `mise run check-pre-commit`
 - Homebrew 適用: `brew bundle --file=homebrew/Brewfile`
 - Bun グローバル準備: `mise run install-bun` (内部で `scripts/install-bun.sh` を実行)
 - VS Code 同期: `README.md` の `ln -s` 手順を参照。
@@ -29,7 +29,7 @@
 
 ## テスト指針
 
-- Lint/セキュリティ: `uv run pre-commit run -a` または `mise run check` (`detect-secrets`, `gitleaks`, YAML/JSON チェックを含む)。
+- Lint/セキュリティ: `uv run pre-commit run -a` または `mise run check-pre-commit` (`detect-secrets`, `gitleaks`, YAML/JSON チェックを含む)。
 - Neovim ヘルス: プラグイン変更後に `nvim` で `:checkhealth`。
 - Bun 確認: `scripts/install-bun.sh` 実行後、`bunx --version` で解決を確認。
 - Homebrew: `brew doctor` と `brew bundle check --file=homebrew/Brewfile`。
@@ -41,6 +41,6 @@
 
 ## セキュリティと設定の注意
 
-- 秘密情報はコミットしない。pre-commit に依存し、`uv run pre-commit run -a` または `mise run check` で再確認。
+- 秘密情報はコミットしない。pre-commit に依存し、`uv run pre-commit run -a` または `mise run check-pre-commit` で再確認。
 - マシン固有のファイルはリポジトリ外に置くかテンプレート化。
 - `Brewfile` 更新時は `brew bundle dump --file=homebrew/Brewfile --force` で状態を反映。
