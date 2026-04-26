@@ -78,7 +78,7 @@
 
     // Kotlin
     "**/.kotlin/**": true,
-    "**/kotlin-js-store/**": true
+    "**/kotlin-js-store/**": true,
   },
 
   // 差分の巡回検索を無視する項目 (Gitの差分検索から漏れるので注意)
@@ -138,7 +138,7 @@
 
     // Kotlin
     "**/.kotlin/**": true,
-    "**/kotlin-js-store/**": true
+    "**/kotlin-js-store/**": true,
   },
 
   // ===========================
@@ -240,11 +240,11 @@
   "workbench.colorCustomizations": {
     "[Evans Dark Theme]": {
       "titleBar.activeBackground": "#1C262C",
-      "titleBar.activeForeground": "#1C262C"
+      "titleBar.activeForeground": "#1C262C",
     },
     "statusBar.background": "#1C262C",
     "statusBar.noFolderBackground": "#1C262C",
-    "statusBar.debuggingBackground": "#1C262C"
+    "statusBar.debuggingBackground": "#1C262C",
   },
 
   // ===========================
@@ -266,7 +266,7 @@
     "pyproject.toml": "poetry.lock",
     // Dart, Flutter
     "*.dart": "${capture}.g.dart, ${capture}.freezed.dart",
-    "pubspec.yaml": ".dart_tool, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml"
+    "pubspec.yaml": ".dart_tool, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml",
   },
   // 空のフォルダーを非表示
   "explorer.compactFolders": false,
@@ -362,7 +362,7 @@
 
     // Kotlin
     "**/.kotlin/**": true,
-    "**/kotlin-js-store/**": true
+    "**/kotlin-js-store/**": true,
   },
 
   // ===========================
@@ -380,7 +380,7 @@
   // ターミナルのキャレットのスタイル
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
+    "FIG_NEW_SESSION": "1",
   },
 
   // ===========================
@@ -410,7 +410,7 @@
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
   // 拡張機能を独自スレッドで実行しパフォーマンスが向上する、らしい
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "asvetliakov.vscode-neovim": 1,
   },
 
   // ===========================
@@ -455,7 +455,7 @@
     "streetsidesoftware.code-spell-checker", // Spell Checker
     "usernamehw.errorlens", // Error Lens
     "saikou9901.evilinspector", // Evilinspector
-    "oderwat.indent-rainbow" // indent-rainbow
+    "oderwat.indent-rainbow", // indent-rainbow
   ],
   "dev.containers.dockerComposePath": "docker compose",
 
@@ -479,7 +479,7 @@
     "rgba(255,255,64,0.07)",
     "rgba(127,255,127,0.07)",
     "rgba(255,127,255,0.07)",
-    "rgba(79,236,236,0.07)"
+    "rgba(79,236,236,0.07)",
   ],
   "indentRainbow.ignoreErrorLanguages": ["*"],
 
@@ -488,45 +488,45 @@
   "peacock.affectStatusBar": true,
   "peacock.affectTitleBar": true,
   "peacock.elementAdjustments": {
-    "activityBar": "lighten"
+    "activityBar": "lighten",
   },
   "peacock.favoriteColors": [
     {
       "name": "Angular Red",
-      "value": "#dd0531"
+      "value": "#dd0531",
     },
     {
       "name": "Azure Blue",
-      "value": "#007fff"
+      "value": "#007fff",
     },
     {
       "name": "JavaScript Yellow",
-      "value": "#f9e64f"
+      "value": "#f9e64f",
     },
     {
       "name": "Mandalorian Blue",
-      "value": "#1857a4"
+      "value": "#1857a4",
     },
     {
       "name": "Node Green",
-      "value": "#215732"
+      "value": "#215732",
     },
     {
       "name": "React Blue",
-      "value": "#61dafb"
+      "value": "#61dafb",
     },
     {
       "name": "Something Different",
-      "value": "#832561"
+      "value": "#832561",
     },
     {
       "name": "Svelte Orange",
-      "value": "#ff3d00"
+      "value": "#ff3d00",
     },
     {
       "name": "Vue Green",
-      "value": "#42b883"
-    }
+      "value": "#42b883",
+    },
   ],
 
   // Error Lens
@@ -546,7 +546,7 @@
     "*": true,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
   },
   // GitHub Copilotでプロジェクト全体の検索を利用
   "github.copilot.chat.codesearch.enabled": true,
@@ -693,7 +693,7 @@
     "ylabel",
     "ylim",
     "yzhang",
-    "zenn"
+    "zenn",
   ],
   // スペルチェックを無視するファイル
   "cSpell.ignorePaths": ["**/.gitignore"],
@@ -708,30 +708,30 @@
   // ========== JSON ===========
   "[json]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // ========== JSONC ==========
   "[jsonc]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // ========== HTML ===========
   "[html]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // ========== CSS ============
   "[css]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
 
   // ========== Java ==========
   "[java]": {
     "editor.tabSize": 4,
-    "editor.defaultFormatter": "redhat.java"
+    "editor.defaultFormatter": "redhat.java",
   },
 
   // ======= JavaScript ========
@@ -739,13 +739,13 @@
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "files.insertFinalNewline": false,
-    "javascript.preferences.quoteStyle": "double"
+    "javascript.preferences.quoteStyle": "double",
   },
 
   // ======= TypeScript ========
   "[typescript]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // ======= Bun ========
@@ -758,7 +758,7 @@
 
   // ======== Python ==========
   "[python]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
 
   // pytest
@@ -783,7 +783,7 @@
     // E402: Module level import not at top of file
     //  E501: Line too long (82 > 79 characters)
     "--ignore=E402, E501",
-    "--max-line-length=119" // E501のデフォルトの79を上書き
+    "--max-line-length=119", // E501のデフォルトの79を上書き
   ],
   "autopep8.args": ["--max-line-length=150"],
   // 言語サーバ
@@ -798,12 +798,12 @@
 
   // ======== Jupyter =========
   "[jupyter]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
 
   // ========= Swift ==========
   "[swift]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   // デバッガーのディレクトリ
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
@@ -814,8 +814,8 @@
   "[dart]": {
     "editor.tabSize": 2,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+      "source.organizeImports": "explicit",
+    },
   },
   // Flutterプロジェクト作成時のAndroid言語をJavaに設定
   "dart.flutterCreateAndroidLanguage": "java",
@@ -830,13 +830,13 @@
   "[lua]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
   },
 
   // ======= ShellScript =========
   "[shellscript]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
   // Luaのランタイムを指定
   "Lua.runtime.version": "LuaJIT",
@@ -849,12 +849,12 @@
     "editor.quickSuggestions": {
       "comments": "on",
       "strings": "on",
-      "other": "on"
+      "other": "on",
     },
     "files.trimTrailingWhitespace": false,
     "editor.trimAutoWhitespace": false,
     "editor.snippetSuggestions": "top",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // markdownlint
@@ -864,7 +864,7 @@
     "MD010": false, // no-hard-tabs - Hard tabs
     "MD022": false, //blanks-around-headings/blanks-around-headers: Headings should be surrounded by blank lines
     "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
-    "MD032": false // blanks-around-lists: Lists should be surrounded by blank lines
+    "MD032": false, // blanks-around-lists: Lists should be surrounded by blank lines
   },
 
   // markdown-preview-enhanced
@@ -879,13 +879,13 @@
   // ========== Yaml ==========
   "[yaml]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // ========== Toml ==========
   "[toml]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
   },
 
   // ====== LiveServer ========
@@ -900,6 +900,6 @@
 
   "settingsSync.ignoredExtensions": [
     "sonarlint.pathToNodeExecutable",
-    "markdown-preview-enhanced.plantumlJarPath"
-  ]
+    "markdown-preview-enhanced.plantumlJarPath",
+  ],
 }

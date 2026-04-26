@@ -89,7 +89,7 @@ file_links=(
   "$HOME/.dotfiles/mise/config.global.toml:$HOME/.config/mise/config.toml"
   "$HOME/.dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
   "$HOME/.dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
-  "$HOME/.dotfiles/starship.toml:$HOME/.config/starship.toml"
+  "$HOME/.dotfiles/starship/starship.toml:$HOME/.config/starship.toml"
   "$HOME/.dotfiles/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
 )
 

@@ -69,14 +69,8 @@ local function build_snippet_cache()
         local description = snippet_description(snippet)
         entry_id = entry_id + 1
         snippet_by_id[entry_id] = snippet
-        local entry = string.format(
-          "[%d] %s - %s (%s) : %s",
-          entry_id,
-          snippet.trigger,
-          snippet.name or "",
-          category,
-          description
-        )
+        local entry =
+          string.format("[%d] %s - %s (%s) : %s", entry_id, snippet.trigger, snippet.name or "", category, description)
         table.insert(entries, {
           text = entry,
           id = entry_id,

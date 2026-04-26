@@ -1,13 +1,13 @@
 -- Core LSP tooling: Neoconf, Mason, and mason-lspconfig wiring
 local servers = {
-  "lua_ls", -- Lua
-  "ts_ls", -- TypeScript
-  "pyright", -- Python
-  "jdtls", -- Java
   "gopls", -- Go
-  "rust_analyzer", -- Rust
+  "jdtls", -- Java
+  "lua_ls", -- Lua
   "marksman", -- Markdown
-  "taplo", -- TOML
+  "pyright", -- Python
+  "rust_analyzer", -- Rust
+  "taplo", -- Toml
+  "ts_ls", -- TypeScript
 }
 
 return {
