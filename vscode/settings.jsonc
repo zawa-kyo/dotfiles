@@ -69,7 +69,7 @@
     "**/poetry.lock": false,
     "**/uv.lock": false,
     "**/mise.lock": false,
-    "**/mise.global.lock": false,
+    "**/config.global.lock": false,
     "**/lazy-lock.json": false,
 
     // Rust

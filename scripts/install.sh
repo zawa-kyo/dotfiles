@@ -47,11 +47,18 @@ install() {
         echo "󰄳 $source_basename already linked."
         return 0
       fi
-      echo "󰅙 $target_file points to a different source ($existing_target)."
-      exit 1
+      if [ ! -e "$existing_target" ]; then
+        trash "$target_file"
+        echo "󰄳 Removed stale symlink: $target_file"
+      else
+        echo "󰅙 $target_file points to a different source ($existing_target)."
+        exit 1
+      fi
     fi
-    echo "󰅙 $target_file already exists and is not a symlink! Skipping link!"
-    return 0
+    if [ -e "$target_file" ] || [ -L "$target_file" ]; then
+      echo "󰅙 $target_file already exists and is not a symlink! Skipping link!"
+      return 0
+    fi
   fi
 
   # Create symbolic link
@@ -86,8 +93,8 @@ file_links=(
   "$HOME/.dotfiles/borders/bordersrc:$HOME/.config/borders/bordersrc"
   "$HOME/.dotfiles/codex/config.toml:$HOME/.codex/config.toml"
   "$HOME/.dotfiles/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
-  "$HOME/.dotfiles/mise/mise.global.toml:$HOME/.config/mise/mise.toml"
-  "$HOME/.dotfiles/mise/mise.global.lock:$HOME/.config/mise/mise.lock"
+  "$HOME/.dotfiles/mise/config.global.toml:$HOME/.config/mise/mise.toml"
+  "$HOME/.dotfiles/mise/config.global.lock:$HOME/.config/mise/mise.lock"
   "$HOME/.dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
   "$HOME/.dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
   "$HOME/.dotfiles/starship/starship.toml:$HOME/.config/starship.toml"

@@ -12,6 +12,9 @@ taplo = "latest"
 # Frameworks / SDKs
 uv = "0"
 
+[settings]
+lockfile = true
+
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]
@@ -98,9 +101,13 @@ run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
 description = "Update Bun global packages to their latest versions"
 run = "bun update -g --latest"
 
-[tasks.sync-global-tools]
-description = "Update every tool declared in mise/config.global.toml to the latest remote version"
-file = "scripts/update-mise-global-tools.sh"
+[tasks.upgrade]
+description = "Upgrade local and global mise tools within their configured version ranges"
+run = ["mise upgrade --local", "mise lock", "mise -C ~ upgrade", "mise lock -g"]
+
+[tasks.upgrade-global-tools]
+description = "Upgrade global mise tools within their configured version ranges"
+run = ["mise -C ~ upgrade", "mise lock -g"]
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"

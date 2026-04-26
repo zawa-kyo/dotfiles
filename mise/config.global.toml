@@ -42,6 +42,9 @@ starship = "latest"
 yazi = "latest"
 zoxide = "latest"
 
+[settings]
+lockfile = true
+
 [env]
 GOPATH = "{{env.HOME}}"
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
