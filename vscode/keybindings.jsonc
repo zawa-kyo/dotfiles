@@ -2,28 +2,28 @@
   {
     // Toggle sidebar visibility
     "key": "cmd+b",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
   },
   {
     // Toggle terminal panel
     "key": "cmd+J",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "command": "workbench.action.terminal.toggleTerminal",
   },
   {
     // Navigate forward
     "key": "ctrl+i",
-    "command": "workbench.action.navigateForward"
+    "command": "workbench.action.navigateForward",
   },
   {
     // Quick Open: select next result
     "key": "tab",
     "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
+    "when": "inQuickOpen",
   },
   {
     // Quick Open: select previous result
     "key": "shift+tab",
     "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  }
+    "when": "inQuickOpen",
+  },
 ]

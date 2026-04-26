@@ -14,8 +14,8 @@ return {
       desc = "Toggle bufferline",
     },
     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Pin/unpin buffer" },
-    { "<leader>bh", "<Cmd>BufferLineMovePrev<CR>",  desc = "Move buffer left" },
-    { "<leader>bl", "<Cmd>BufferLineMoveNext<CR>",  desc = "Move buffer right" },
+    { "<leader>bh", "<Cmd>BufferLineMovePrev<CR>", desc = "Move buffer left" },
+    { "<leader>bl", "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer right" },
   },
 
   opts = {

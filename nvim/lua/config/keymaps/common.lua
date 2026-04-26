@@ -152,4 +152,5 @@ end, opts("Clear all registers"))
 
 -- After search, :s<Space> expands to :%s//g so you can replace the last match immediately.
 vim.cmd(
-[[cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's']])
+  [[cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's']]
+)

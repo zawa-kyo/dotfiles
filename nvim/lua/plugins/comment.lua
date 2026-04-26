@@ -1,7 +1,6 @@
 return {
   "numToStr/Comment.nvim",
 
-
   keys = {
     {
       "tc", -- toggle comments

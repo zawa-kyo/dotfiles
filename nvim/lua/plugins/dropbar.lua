@@ -8,9 +8,8 @@ return {
     {
       "tb", -- Toggle breadcrumbs
       "<Cmd>DropbarToggle<CR>",
-      desc = "Toggle breadcrumbs"
+      desc = "Toggle breadcrumbs",
     },
-
   },
 
   -- TODO: Review and refine dropbar settings later.

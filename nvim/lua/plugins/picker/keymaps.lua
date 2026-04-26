@@ -282,7 +282,7 @@ M.keys = {
       snacks_toggles.toggle_ignored()
     end,
     desc = "Toggle snacks ignored files",
-  }
+  },
 }
 
 M.vscode = function()
