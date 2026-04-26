@@ -68,6 +68,9 @@
     "**/bun.lock": false,
     "**/poetry.lock": false,
     "**/uv.lock": false,
+    "**/mise.lock": false,
+    "**/config.global.lock": false,
+    "**/lazy-lock.json": false,
 
     // Rust
     "**/target/**": true,

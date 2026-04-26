@@ -1,7 +1,7 @@
 [tools]
 # Languages
-bun = "1.3.5"
-rust = "1.92.0"
+bun = "1"
+rust = "1"
 
 # Editors / Formatters
 shfmt = "latest"
@@ -10,7 +10,11 @@ prettier = "latest"
 taplo = "latest"
 
 # Frameworks / SDKs
-uv = "0.11.7"
+uv = "0"
+
+[settings]
+lockfile = true
+lockfile_platforms = ["macos-arm64", "linux-x64"]
 
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
@@ -68,8 +72,8 @@ run_if_any "$tmpdir/toml" taplo fmt
 '''
 
 [tasks.install]
-description = "Run the dotfiles symlink setup"
-file = "scripts/install.sh"
+description = "Run the dotfiles symlink setup and install configured mise tools"
+run = ["bash scripts/install.sh", "mise install"]
 
 [tasks.install-bun]
 description = "Link Bun globals and install Bun dependencies"
@@ -98,9 +102,17 @@ run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
 description = "Update Bun global packages to their latest versions"
 run = "bun update -g --latest"
 
-[tasks.sync-global-tools]
-description = "Update every tool declared in mise/config.global.toml to the latest remote version"
-file = "scripts/update-mise-global-tools.sh"
+[tasks.upgrade-local-tools]
+description = "Upgrade local mise tools within their configured version ranges"
+run = ["mise upgrade --local", "mise lock"]
+
+[tasks.upgrade-global-tools]
+description = "Upgrade global mise tools within their configured version ranges"
+run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
+
+[tasks.upgrade-tools]
+description = "Upgrade local and global mise tools within their configured version ranges"
+run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"
