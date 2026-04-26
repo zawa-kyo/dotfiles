@@ -31,30 +31,30 @@ bash scripts/source.sh
 description = "Link Bun globals and install Bun dependencies"
 file = "scripts/install-bun.sh"
 
-[tasks.bun-sync]
+[tasks.sync-bun]
 description = "Update Bun global packages to their latest versions"
 run = "bun update -g --latest"
 
-[tasks.brew-sync]
+[tasks.sync-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
 run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
 
-[tasks.mise-sync-global-tools]
+[tasks.sync-global-tools]
 description = "Update every tool declared in mise/config.global.toml to the latest remote version"
 file = "scripts/update-mise-global-tools.sh"
 
-[tasks.python-sync]
+[tasks.sync-python]
 description = "Sync Python development dependencies with uv"
 run = "uv sync --group dev"
 
-[tasks.pre-commit-install]
+[tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
 run = [
   "uv sync --group dev",
   "uv run pre-commit install",
 ]
 
-[tasks.check]
+[tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
 run = [
   "uv sync --group dev",
