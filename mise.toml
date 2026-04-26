@@ -114,6 +114,14 @@ run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
 description = "Upgrade local and global mise tools within their configured version ranges"
 run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 
+[tasks.upgrade]
+description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
+run = [
+  { task = "upgrade-tools" },
+  { task = "upgrade-bun" },
+  { task = "upgrade-brew" },
+]
+
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"
 run = "uv sync --group dev"
