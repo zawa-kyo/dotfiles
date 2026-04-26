@@ -2,7 +2,7 @@
 # Languages
 bun = "1"
 deno = "2"
-go = "1.26.2"
+go = "1"
 java = "26"
 lua = "5"
 node = "24"

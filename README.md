@@ -129,8 +129,6 @@ This repository uses `mise` for local task entrypoints.
 
 ```sh
 mise run install
-mise run install-bun
-mise run sync-python
 mise run install-pre-commit
 mise run check-pre-commit
 ```
