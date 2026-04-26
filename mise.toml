@@ -1,7 +1,7 @@
 [tools]
 # Languages
-bun = "1.3.5"
-rust = "1.92.0"
+bun = "1"
+rust = "1"
 
 # Editors / Formatters
 shfmt = "latest"
@@ -10,7 +10,7 @@ prettier = "latest"
 taplo = "latest"
 
 # Frameworks / SDKs
-uv = "0.11.7"
+uv = "0"
 
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
