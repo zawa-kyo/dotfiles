@@ -20,8 +20,9 @@ lockfile_platforms = ["macos-arm64", "linux-x64"]
 description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]
 
-[tasks.format]
-description = "Format the repository"
+[tasks.format-check-tools]
+hide = true
+description = "Check required formatters for the repository"
 run = '''
 set -eu
 
@@ -37,39 +38,84 @@ if [ -n "$missing_tools" ]; then
   echo "Install them first, then run: mise run format" >&2
   exit 1
 fi
+'''
 
-tmpdir="$(mktemp -d)"
-trap 'rm -rf "$tmpdir"' EXIT
+[tasks.format-lua]
+hide = true
+description = "Format Lua files with Stylua"
+run = '''
+set -eu
 
-list_files() {
-  output_file="$1"
-  shift
-  git ls-files -z -- "$@" > "$output_file"
-}
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
 
-run_if_any() {
-  file_list="$1"
-  shift
-  if [ -s "$file_list" ]; then
-    xargs -0 "$@" < "$file_list"
-  fi
-}
+git ls-files -z -- '*.lua' > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 stylua < "$tmpfile"
+fi
+'''
 
-list_files "$tmpdir/lua" '*.lua'
-list_files "$tmpdir/shell" '*.sh' '*.bash' '*.zsh'
-list_files "$tmpdir/prettier" \
+[tasks.format-shell]
+hide = true
+description = "Format shell files with shfmt"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.sh' '*.bash' '*.zsh' > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 shfmt -w < "$tmpfile"
+fi
+'''
+
+[tasks.format-prettier]
+hide = true
+description = "Format JSON, Markdown, and YAML files with Prettier"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
-  ':(exclude)**/*.lock'
-list_files "$tmpdir/toml" \
-  '*.toml' \
-  ':(exclude)**/*.lock'
-
-run_if_any "$tmpdir/lua" stylua
-run_if_any "$tmpdir/shell" shfmt -w
-run_if_any "$tmpdir/prettier" prettier --write
-run_if_any "$tmpdir/toml" taplo fmt
+  ':(exclude)**/*.lock' > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 prettier --write < "$tmpfile"
+fi
 '''
+
+[tasks.format-toml]
+hide = true
+description = "Format TOML files with Taplo"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- \
+  '*.toml' \
+  ':(exclude)**/*.lock' > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 taplo fmt < "$tmpfile"
+fi
+'''
+
+[tasks.format]
+description = "Format the repository"
+run = [
+  { task = "format-check-tools" },
+  { tasks = [
+    "format-lua",
+    "format-shell",
+    "format-prettier",
+    "format-toml",
+  ] },
+]
 
 [tasks.install]
 description = "Run the dotfiles symlink setup and install configured mise tools"
