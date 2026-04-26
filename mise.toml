@@ -101,13 +101,17 @@ run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
 description = "Update Bun global packages to their latest versions"
 run = "bun update -g --latest"
 
-[tasks.upgrade]
-description = "Upgrade local and global mise tools within their configured version ranges"
-run = ["mise upgrade --local", "mise lock", "mise -C ~ upgrade", "mise lock -g"]
+[tasks.upgrade-local-tools]
+description = "Upgrade local mise tools within their configured version ranges"
+run = ["mise upgrade --local", "mise lock"]
 
 [tasks.upgrade-global-tools]
 description = "Upgrade global mise tools within their configured version ranges"
-run = ["mise -C ~ upgrade", "mise lock -g"]
+run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
+
+[tasks.upgrade-tools]
+description = "Upgrade local and global mise tools within their configured version ranges"
+run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"
