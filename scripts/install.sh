@@ -48,7 +48,7 @@ install() {
         return 0
       fi
       if [ ! -e "$existing_target" ]; then
-        trash "$target_file"
+        rm "$target_file"
         echo "󰄳 Removed stale symlink: $target_file"
       else
         echo "󰅙 $target_file points to a different source ($existing_target)."
