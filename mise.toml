@@ -129,6 +129,10 @@ file = "scripts/install-bun.sh"
 description = "Install the repository pre-commit hook with uv"
 run = ["uv sync --group dev", "uv run pre-commit install"]
 
+[tasks.sync-python]
+description = "Sync Python development dependencies with uv"
+run = "uv sync --group dev"
+
 [tasks.source]
 description = "Emit shell snippets for eval-style sourcing"
 run = '''
@@ -140,26 +144,6 @@ fi
 bash scripts/source.sh
 '''
 
-[tasks.upgrade-brew]
-description = "Upgrade Homebrew packages and sync the tracked Brewfile"
-run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
-
-[tasks.upgrade-bun]
-description = "Update Bun global packages to their latest versions"
-run = "bun update -g --latest"
-
-[tasks.upgrade-local-tools]
-description = "Upgrade local mise tools within their configured version ranges"
-run = ["mise upgrade --local", "mise lock"]
-
-[tasks.upgrade-global-tools]
-description = "Upgrade global mise tools within their configured version ranges"
-run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
-
-[tasks.upgrade-mise-tools]
-description = "Upgrade local and global mise-managed tools within their configured version ranges"
-run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
-
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [
@@ -168,6 +152,22 @@ run = [
   { task = "upgrade-brew" },
 ]
 
-[tasks.sync-python]
-description = "Sync Python development dependencies with uv"
-run = "uv sync --group dev"
+[tasks.upgrade-brew]
+description = "Upgrade Homebrew packages and sync the tracked Brewfile"
+run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
+
+[tasks.upgrade-bun]
+description = "Update Bun global packages to their latest versions"
+run = "bun update -g --latest"
+
+[tasks.upgrade-global-tools]
+description = "Upgrade global mise tools within their configured version ranges"
+run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
+
+[tasks.upgrade-local-tools]
+description = "Upgrade local mise tools within their configured version ranges"
+run = ["mise upgrade --local", "mise lock"]
+
+[tasks.upgrade-mise-tools]
+description = "Upgrade local and global mise-managed tools within their configured version ranges"
+run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
