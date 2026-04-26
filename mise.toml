@@ -60,3 +60,54 @@ run = [
   "uv sync --group dev",
   "uv run pre-commit run -a",
 ]
+
+[tasks.format]
+description = "Format the repository"
+run = '''
+set -eu
+
+missing_tools=""
+for tool in stylua shfmt prettier taplo; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    missing_tools="$missing_tools $tool"
+  fi
+done
+
+if [ -n "$missing_tools" ]; then
+  echo "Missing required formatter(s):$missing_tools" >&2
+  echo "Install them first, then run: mise run format" >&2
+  exit 1
+fi
+
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir"' EXIT
+
+list_files() {
+  output_file="$1"
+  shift
+  git ls-files -z -- "$@" > "$output_file"
+}
+
+run_if_any() {
+  file_list="$1"
+  shift
+  if [ -s "$file_list" ]; then
+    xargs -0 "$@" < "$file_list"
+  fi
+}
+
+list_files "$tmpdir/lua" '*.lua'
+list_files "$tmpdir/shell" '*.sh' '*.bash' '*.zsh'
+list_files "$tmpdir/prettier" \
+  '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
+  ':(exclude)**/lazy-lock.json' \
+  ':(exclude)**/*.lock'
+list_files "$tmpdir/toml" \
+  '*.toml' \
+  ':(exclude)**/*.lock'
+
+run_if_any "$tmpdir/lua" stylua
+run_if_any "$tmpdir/shell" shfmt -w
+run_if_any "$tmpdir/prettier" prettier --write
+run_if_any "$tmpdir/toml" taplo fmt
+'''
