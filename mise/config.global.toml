@@ -12,6 +12,7 @@ rust = "1.94.1"
 
 # Editors / dev tools
 neovim = "0.12.2"
+stylua = "latest"
 tree-sitter = "0.26.8"
 zellij = "0.44.1"
 

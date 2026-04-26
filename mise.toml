@@ -1,6 +1,7 @@
 [tools]
 bun = "1.3.5"
 rust = "1.92.0"
+stylua = "latest"
 uv = "0.11.7"
 
 [tasks.install]
