@@ -94,11 +94,11 @@ fi
 bash scripts/source.sh
 '''
 
-[tasks.sync-brew]
+[tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
 run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
 
-[tasks.sync-bun]
+[tasks.upgrade-bun]
 description = "Update Bun global packages to their latest versions"
 run = "bun update -g --latest"
 
