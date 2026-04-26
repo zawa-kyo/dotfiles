@@ -162,11 +162,11 @@ run = "bun update -g --latest"
 
 [tasks.upgrade-global-tools]
 description = "Upgrade global mise tools within their configured version ranges"
-run = ["mise -C ~ upgrade", "mise -C ~ lock -g"]
+run = "mise -C ~ upgrade"
 
 [tasks.upgrade-local-tools]
 description = "Upgrade local mise tools within their configured version ranges"
-run = ["mise upgrade --local", "mise lock"]
+run = "mise upgrade --local"
 
 [tasks.upgrade-mise-tools]
 description = "Upgrade local and global mise-managed tools within their configured version ranges"

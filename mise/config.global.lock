@@ -12,7 +12,6 @@ provenance = "github-attestations"
 [tools.actionlint."platforms.macos-arm64"]
 checksum = "sha256:aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f"
 url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz"
-provenance = "github-attestations"
 
 [[tools.atuin]]
 version = "18.15.2"
@@ -26,7 +25,6 @@ provenance = "github-attestations"
 [tools.atuin."platforms.macos-arm64"]
 checksum = "sha256:d73608ade168b24a29ddfed119896eb95ff7f5addcd01cab3bfff3c93deeeee1"
 url = "https://github.com/atuinsh/atuin/releases/download/v18.15.2/atuin-aarch64-apple-darwin.tar.gz"
-provenance = "github-attestations"
 
 [[tools.aws-cli]]
 version = "2.34.37"
@@ -55,23 +53,18 @@ version = "1.3.13"
 backend = "core:bun"
 
 [tools.bun."platforms.linux-x64"]
-checksum = "sha256:79c0771fa8b92c33aae41e15a0e0d307ea99d0e2f00317c71c6c53237a78e25a"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64.zip"
 
 [tools.bun."platforms.linux-x64-baseline"]
-checksum = "sha256:9d8a24292a7068090205daac0a5a223f5f69736f5287e37bf88d3b4031edc750"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-baseline.zip"
 
 [tools.bun."platforms.linux-x64-musl"]
-checksum = "sha256:5b91a48f0b00df9fd2da8bff1a795d2659d842da966432969203f25da19d1c74"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-musl.zip"
 
 [tools.bun."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:88ca7c7ad235b498f549eea2f770f434e9f0f5e9ba95168a2d3a1f235184c394"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-musl-baseline.zip"
 
 [tools.bun."platforms.macos-arm64"]
-checksum = "sha256:5467e3f65dba526b9fea98f0cce04efafc0c63e169733ec27b876a3ad32da190"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
 
 [[tools.delta]]
@@ -91,11 +84,9 @@ version = "2.7.13"
 backend = "core:deno"
 
 [tools.deno."platforms.linux-x64"]
-checksum = "sha256:d7b452de2578742889b70a7e3cf90eb14b8e6b1bca4758380da3630d694f04ff"
 url = "https://dl.deno.land/release/v2.7.13/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.macos-arm64"]
-checksum = "sha256:e2e63288d11e3f36855b60d77585844cbc5146600cbc7224e2d9276a35378089"
 url = "https://dl.deno.land/release/v2.7.13/deno-aarch64-apple-darwin.zip"
 
 [[tools.eza]]
@@ -158,7 +149,6 @@ provenance = "github-attestations"
 [tools.gh."platforms.macos-arm64"]
 checksum = "sha256:20446cd714d9fa1b69fbd410deade3731f38fe09a2b980c8488aa388dd320ada"
 url = "https://github.com/cli/cli/releases/download/v2.91.0/gh_2.91.0_macOS_arm64.zip"
-provenance = "github-attestations"
 
 [[tools.ghq]]
 version = "1.10.1"
@@ -189,11 +179,9 @@ version = "1.26.2"
 backend = "core:go"
 
 [tools.go."platforms.linux-x64"]
-checksum = "sha256:990e6b4bbba816dc3ee129eaeaf4b42f17c2800b88a2166c265ac1a200262282"
 url = "https://dl.google.com/go/go1.26.2.linux-amd64.tar.gz"
 
 [tools.go."platforms.macos-arm64"]
-checksum = "sha256:32af1522bf3e3ff3975864780a429cc0b41d190ec7bf90faa661d6d64566e7af"
 url = "https://dl.google.com/go/go1.26.2.darwin-arm64.tar.gz"
 
 [[tools.java]]
@@ -212,7 +200,6 @@ provenance = "github-attestations"
 [tools.jq."platforms.macos-arm64"]
 checksum = "sha256:a9fe3ea2f86dfc72f6728417521ec9067b343277152b114f4e98d8cb0e263603"
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-macos-arm64"
-provenance = "github-attestations"
 
 [[tools.lazygit]]
 version = "0.61.1"
@@ -240,51 +227,15 @@ url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 version = "cli-2.4.0"
 backend = "github:mobile-dev-inc/maestro"
 
-[tools.maestro."platforms.linux-x64"]
-checksum = "sha256:aea22ce67ab6718997ec990c58652ede0c2be8f10ac4799039ca3dce3390d634"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.4.0/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/387342677"
-
-[tools.maestro."platforms.macos-arm64"]
-checksum = "sha256:aea22ce67ab6718997ec990c58652ede0c2be8f10ac4799039ca3dce3390d634"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.4.0/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/387342677"
-
-[[tools.neovim]]
-version = "0.12.2"
-backend = "vfox:mise-plugins/vfox-neovim"
-
-[tools.neovim."platforms.linux-x64"]
-url = "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-linux-x86_64.tar.gz"
-
-[tools.neovim."platforms.macos-arm64"]
-url = "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-macos-arm64.tar.gz"
-
 [[tools.node]]
 version = "24.15.0"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:44836872d9aec49f1e6b52a9a922872db9a2b02d235a616a5681b6a85fec8d89"
 url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-linux-x64.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:372331b969779ab5d15b949884fc6eaf88d5afe87bde8ba881d6400b9100ffc4"
 url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-darwin-arm64.tar.gz"
-
-[[tools.python]]
-version = "3.14.4"
-backend = "core:python"
-
-[tools.python."platforms.linux-x64"]
-checksum = "sha256:fe9a9c32d13870af632cbac3dfc7528ae53597e94472aa4c7d6a42e8166136cd"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
-provenance = "github-attestations"
-
-[tools.python."platforms.macos-arm64"]
-checksum = "sha256:6f304f4ec30854611f23316578302235fb517cd970519ecdd11a8c4db87fd843"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260414/cpython-3.14.4+20260414-aarch64-apple-darwin-install_only_stripped.tar.gz"
-provenance = "github-attestations"
 
 [[tools.ripgrep]]
 version = "15.1.0"
@@ -297,18 +248,6 @@ url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15
 [tools.ripgrep."platforms.macos-arm64"]
 checksum = "sha256:378e973289176ca0c6054054ee7f631a065874a352bf43f0fa60ef079b6ba715"
 url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-apple-darwin.tar.gz"
-
-[[tools.ruby]]
-version = "3.4.9"
-backend = "core:ruby"
-
-[tools.ruby."platforms.linux-x64"]
-checksum = "sha256:7bb4d4f5e807cc27251d14d9d6086d182c5b25875191e44ab15b709cd7a7dd9c"
-url = "https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.9.tar.gz"
-
-[tools.ruby."platforms.macos-arm64"]
-checksum = "sha256:7bb4d4f5e807cc27251d14d9d6086d182c5b25875191e44ab15b709cd7a7dd9c"
-url = "https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.9.tar.gz"
 
 [[tools.rust]]
 version = "1.95.0"
@@ -362,7 +301,6 @@ provenance = "github-attestations"
 [tools.tree-sitter."platforms.macos-arm64"]
 checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d9575889e"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
-provenance = "github-attestations"
 
 [[tools.uv]]
 version = "0.11.7"
