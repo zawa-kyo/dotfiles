@@ -12,11 +12,10 @@ rust = "1.94.1"
 
 # Editors / dev tools
 neovim = "0.12.2"
-stylua = "latest"
 tree-sitter = "0.26.8"
 zellij = "0.44.1"
 
-# Automation / SDKs
+# Frameworks / SDKs
 flutter = "3.41.2-stable"
 maestro = "cli-2.4.0"
 uv = "0.11.6"

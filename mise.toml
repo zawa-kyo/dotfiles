@@ -1,7 +1,15 @@
 [tools]
+# Languages
 bun = "1.3.5"
 rust = "1.92.0"
+
+# Editors / Formatters
+shfmt = "latest"
 stylua = "latest"
+prettier = "latest"
+taplo = "latest"
+
+# Frameworks / SDKs
 uv = "0.11.7"
 
 [tasks.install]
