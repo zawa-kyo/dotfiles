@@ -23,6 +23,10 @@
     // IDE
     "**/.idea": true,
 
+    // Local cache
+    "**/.cache/**": true,
+    "**/.tmp/**": true,
+
     // Python
     "**/__pycache__/**": true,
     "**/.mypy_cache/**": true,
@@ -93,6 +97,10 @@
     // IDE
     "**/.idea/**": true,
 
+    // Local cache
+    "**/.cache/**": true,
+    "**/.tmp/**": true,
+
     // Python
     "**/__pycache__/**": true,
     "**/.mypy_cache/**": true,
@@ -156,8 +164,8 @@
   "editor.mouseWheelZoom": false,
   // 自動的にフォーマットを実行
   "editor.formatOnSave": true, // 保存時
-  "editor.formatOnType": true, // 入力中（改行時）
   "editor.formatOnPaste": true, // ペースト時
+  "editor.formatOnType": false, // 改行時
   // 入力候補の1番目を最初に選択しておく
   "editor.suggestSelection": "first",
   // StickyScroll
@@ -314,6 +322,10 @@
 
     // IDE
     "**/.idea/**": true,
+
+    // Local cache
+    "**/.cache/**": true,
+    "**/.tmp/**": true,
 
     // Python
     "**/__pycache__/**": true,
@@ -769,11 +781,8 @@
   "python.testing.unittestEnabled": false,
   // ユニットテストツールとしてpytestを有効化
   "python.testing.pytestEnabled": true,
-  // ファイル保存時にテスト対象を自動的に探索
-  "python.testing.autoTestDiscoverOnSaveEnabled": true,
-  // --cov: カバレッジ計測の有効化
-  // --cov-report xml: カバレッジ計測レポートをxml形式 (coverage.xml) で出力
-  "python.testing.pytestArgs": ["--cov=src", "--cov-report", "xml"],
+  // ファイル保存時の自動探索は重くなりやすいため無効化
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
   // エディタ上のカバレッジ表示設定
   // ガター(ブレークポイント等が表示される場所)でのカバレッジ表示有無(default: true)
   "coverage-gutters.showGutterCoverage": true,
@@ -794,10 +803,8 @@
   // Pylance
   // メソッドの丸括弧補完を有効にする
   "python.analysis.completeFunctionParens": true,
-  // ファイル保存時にテスト対象コードを自動的に探索
-  "python.analysis.diagnosticMode": "workspace",
-  // デフォルトのインタプリタ
-  "python.defaultInterpreterPath": "./.venv/bin/python",
+  // user設定では開いているファイル中心に診断する
+  "python.analysis.diagnosticMode": "openFilesOnly",
 
   // ======== Jupyter =========
   "[jupyter]": {
