@@ -23,6 +23,10 @@
     // IDE
     "**/.idea": true,
 
+    // Local cache
+    "**/.cache/**": true,
+    "**/.tmp/**": true,
+
     // Python
     "**/__pycache__/**": true,
     "**/.mypy_cache/**": true,
@@ -92,6 +96,10 @@
 
     // IDE
     "**/.idea/**": true,
+
+    // Local cache
+    "**/.cache/**": true,
+    "**/.tmp/**": true,
 
     // Python
     "**/__pycache__/**": true,
@@ -314,6 +322,10 @@
 
     // IDE
     "**/.idea/**": true,
+
+    // Local cache
+    "**/.cache/**": true,
+    "**/.tmp/**": true,
 
     // Python
     "**/__pycache__/**": true,
