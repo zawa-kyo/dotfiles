@@ -164,8 +164,8 @@
   "editor.mouseWheelZoom": false,
   // 自動的にフォーマットを実行
   "editor.formatOnSave": true, // 保存時
-  "editor.formatOnType": true, // 入力中（改行時）
   "editor.formatOnPaste": true, // ペースト時
+  "editor.formatOnType": false, // 改行時
   // 入力候補の1番目を最初に選択しておく
   "editor.suggestSelection": "first",
   // StickyScroll
