@@ -15,6 +15,7 @@ uv = "0"
 [settings]
 lockfile = true
 lockfile_platforms = ["macos-arm64", "linux-x64"]
+minimum_release_age = "7d"
 
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
