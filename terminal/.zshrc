@@ -145,7 +145,7 @@ ghq-nvim () {
   nvim "$repo"
 }
 
-# Open a ghq-managed repository in Visual Studio Code.
+# Open a ghq-managed repository in VSCode.
 ghq-code () {
   local repo
   repo=$(ghq-select) || return

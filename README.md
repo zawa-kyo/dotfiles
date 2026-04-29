@@ -42,6 +42,8 @@ This repository manages the base `~/.gitconfig` as a symlink.
 - Run `scripts/link-dotfiles.sh` to link `/Users/kyohei/.dotfiles/git/.gitconfig` to `~/.gitconfig`.
 - Machine-specific overrides can be placed in `~/.gitconfig.local`.
 - The base `.gitconfig` includes `~/.gitconfig.local` automatically, so a work machine can override `user.name` and `user.email` without changing the dotfiles-managed file.
+- New repositories fetched with `ghq get` are stored under `~/Git/ghq`.
+- Existing repositories under `~/Git` can remain where they are and do not need to be migrated immediately.
 
 Example:
 
