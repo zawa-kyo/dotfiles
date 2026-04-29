@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+dotfiles_dir="$(cd "$script_dir/.." && pwd)"
+
+# resolve_path: print the canonical absolute path for a file or directory.
+resolve_path() {
+  realpath "$1"
+}
+
 # install: create a symlink from source to target if safe.
 install() {
   local source_file="$1"
@@ -43,11 +51,11 @@ install() {
     if [ -L "$target_file" ]; then
       local existing_target
       existing_target="$(readlink "$target_file")"
-      if [ "$existing_target" = "$source_file" ]; then
+      if [ "$(resolve_path "$target_file")" = "$(resolve_path "$source_file")" ]; then
         echo "󰄳 $source_basename already linked."
         return 0
       fi
-      if [ ! -e "$existing_target" ]; then
+      if [ ! -e "$(dirname "$target_file")/$existing_target" ] && [ ! -e "$existing_target" ]; then
         rm "$target_file"
         echo "󰄳 Removed stale symlink: $target_file"
       else
@@ -85,26 +93,26 @@ install_dir() {
 }
 
 file_links=(
-  "$HOME/.dotfiles/git/.gitconfig:$HOME/.gitconfig"
-  "$HOME/.dotfiles/terminal/.zlogin:$HOME/.zlogin"
-  "$HOME/.dotfiles/terminal/.zlogout:$HOME/.zlogout"
-  "$HOME/.dotfiles/terminal/.zprofile:$HOME/.zprofile"
-  "$HOME/.dotfiles/terminal/.zshenv:$HOME/.zshenv"
-  "$HOME/.dotfiles/terminal/.zshrc:$HOME/.zshrc"
-  "$HOME/.dotfiles/borders/bordersrc:$HOME/.config/borders/bordersrc"
-  "$HOME/.dotfiles/codex/config.toml:$HOME/.codex/config.toml"
-  "$HOME/.dotfiles/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
-  "$HOME/.dotfiles/mise/config.global.toml:$HOME/.config/mise/mise.toml"
-  "$HOME/.dotfiles/mise/config.global.lock:$HOME/.config/mise/mise.lock"
-  "$HOME/.dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
-  "$HOME/.dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
-  "$HOME/.dotfiles/starship/starship.toml:$HOME/.config/starship.toml"
-  "$HOME/.dotfiles/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
+  "$dotfiles_dir/git/.gitconfig:$HOME/.gitconfig"
+  "$dotfiles_dir/terminal/.zlogin:$HOME/.zlogin"
+  "$dotfiles_dir/terminal/.zlogout:$HOME/.zlogout"
+  "$dotfiles_dir/terminal/.zprofile:$HOME/.zprofile"
+  "$dotfiles_dir/terminal/.zshenv:$HOME/.zshenv"
+  "$dotfiles_dir/terminal/.zshrc:$HOME/.zshrc"
+  "$dotfiles_dir/borders/bordersrc:$HOME/.config/borders/bordersrc"
+  "$dotfiles_dir/codex/config.toml:$HOME/.codex/config.toml"
+  "$dotfiles_dir/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
+  "$dotfiles_dir/mise/config.global.toml:$HOME/.config/mise/mise.toml"
+  "$dotfiles_dir/mise/config.global.lock:$HOME/.config/mise/mise.lock"
+  "$dotfiles_dir/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
+  "$dotfiles_dir/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
+  "$dotfiles_dir/starship/starship.toml:$HOME/.config/starship.toml"
+  "$dotfiles_dir/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
 )
 
 directory_links=(
-  "$HOME/.dotfiles/nvim:$HOME/.config/nvim"
-  "$HOME/.dotfiles/wezterm:$HOME/.config/wezterm"
+  "$dotfiles_dir/nvim:$HOME/.config/nvim"
+  "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
 )
 
 # Link listed files from dotfiles into their target locations.

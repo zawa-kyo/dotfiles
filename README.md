@@ -4,16 +4,16 @@ Personal collection of .dotfiles for system configuration and customization.
 
 ## Preparation
 
-To get started, clone this repository into your home directory:
+Clone this repository into any directory you prefer:
 
 ```sh
-git clone [repository_url] $HOME/.dotfiles
+git clone [repository_url]
 ```
 
-After cloning the repository, navigate to the project directory to execute subsequent commands:
+Then navigate to the cloned repository directory to execute subsequent commands:
 
 ```sh
-cd $HOME/.dotfiles
+cd [cloned_repository_path]
 ```
 
 ## Pre-Hook
@@ -39,7 +39,7 @@ $ uv run pre-commit install
 
 This repository manages the base `~/.gitconfig` as a symlink.
 
-- Run `scripts/link-dotfiles.sh` to link `/Users/kyohei/.dotfiles/git/.gitconfig` to `~/.gitconfig`.
+- Run `scripts/link-dotfiles.sh` from the cloned repository to link `git/.gitconfig` to `~/.gitconfig`.
 - Machine-specific overrides can be placed in `~/.gitconfig.local`.
 - The base `.gitconfig` includes `~/.gitconfig.local` automatically, so a work machine can override `user.name` and `user.email` without changing the dotfiles-managed file.
 - New repositories fetched with `ghq get` are stored under `~/Git/ghq`.
@@ -96,7 +96,7 @@ This section describes how to manage Homebrew packages using the `Brewfile` incl
 To install the Homebrew packages listed in the `Brewfile`, navigate to the repository directory and run the following command:
 
 ```sh
-cd $HOME/.dotfiles
+cd [cloned_repository_path]
 brew bundle --file=homebrew/Brewfile
 ```
 
@@ -109,7 +109,7 @@ To back up the currently installed Homebrew packages into the `Brewfile`:
 1. Navigate to the repository directory:
 
    ```sh
-   cd $HOME/.dotfiles
+   cd [cloned_repository_path]
    ```
 
 2. Run the following command:
