@@ -126,6 +126,10 @@ run = ["bash scripts/link-dotfiles.sh", "mise install"]
 description = "Link Bun globals and install Bun dependencies"
 file = "scripts/install-bun.sh"
 
+[tasks.relink]
+description = "Relink dotfiles-managed symlinks without overwriting real files"
+file = "scripts/relink-dotfiles.sh"
+
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
 run = ["uv sync --group dev", "uv run pre-commit install"]

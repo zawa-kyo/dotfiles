@@ -2,6 +2,7 @@
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
+. "$script_dir/lib/dotfiles-links.sh"
 
 # resolve_path: print the canonical absolute path for a file or directory.
 resolve_path() {
@@ -92,28 +93,7 @@ install_dir() {
   install "$source_dir" "$target_dir" "dir"
 }
 
-file_links=(
-  "$dotfiles_dir/git/.gitconfig:$HOME/.gitconfig"
-  "$dotfiles_dir/terminal/.zlogin:$HOME/.zlogin"
-  "$dotfiles_dir/terminal/.zlogout:$HOME/.zlogout"
-  "$dotfiles_dir/terminal/.zprofile:$HOME/.zprofile"
-  "$dotfiles_dir/terminal/.zshenv:$HOME/.zshenv"
-  "$dotfiles_dir/terminal/.zshrc:$HOME/.zshrc"
-  "$dotfiles_dir/borders/bordersrc:$HOME/.config/borders/bordersrc"
-  "$dotfiles_dir/codex/config.toml:$HOME/.codex/config.toml"
-  "$dotfiles_dir/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
-  "$dotfiles_dir/mise/config.global.toml:$HOME/.config/mise/mise.toml"
-  "$dotfiles_dir/mise/config.global.lock:$HOME/.config/mise/mise.lock"
-  "$dotfiles_dir/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
-  "$dotfiles_dir/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
-  "$dotfiles_dir/starship/starship.toml:$HOME/.config/starship.toml"
-  "$dotfiles_dir/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
-)
-
-directory_links=(
-  "$dotfiles_dir/nvim:$HOME/.config/nvim"
-  "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
-)
+populate_dotfiles_links "$dotfiles_dir"
 
 # Link listed files from dotfiles into their target locations.
 for link in "${file_links[@]}"; do
