@@ -149,6 +149,7 @@ bash scripts/source.sh
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [
   { task = "upgrade-mise-tools" },
+  { task = "upgrade-nvim-plugins" },
   { task = "upgrade-bun" },
   { task = "upgrade-brew" },
 ]
@@ -172,3 +173,10 @@ run = "mise upgrade --local"
 [tasks.upgrade-mise-tools]
 description = "Upgrade local and global mise-managed tools within their configured version ranges"
 run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
+
+[tasks.upgrade-nvim-plugins]
+description = "Upgrade Neovim plugins managed by lazy.nvim"
+run = '''
+XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp \
+nvim --headless -u nvim/init.lua "+Lazy! update" +qa
+'''
