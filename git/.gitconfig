@@ -1,0 +1,43 @@
+[user]
+  name = Kyohei Ozawa
+  email = zawazawakyo@gmail.com
+
+[color]
+  ui = auto
+
+[core]
+  pager = delta
+
+[delta]
+  navigate = true
+  light = false
+
+[diff]
+  colorMoved = default
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[ghq]
+  root = ~/Git/ghq
+
+[include]
+  path = ~/.gitconfig.local
+
+[init]
+  defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = zdiff3
+
+[push]
+  default = simple
+
+[rerere]
+  enabled = true

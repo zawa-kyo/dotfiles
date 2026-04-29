@@ -85,6 +85,7 @@ install_dir() {
 }
 
 file_links=(
+  "$HOME/.dotfiles/git/.gitconfig:$HOME/.gitconfig"
   "$HOME/.dotfiles/terminal/.zlogin:$HOME/.zlogin"
   "$HOME/.dotfiles/terminal/.zlogout:$HOME/.zlogout"
   "$HOME/.dotfiles/terminal/.zprofile:$HOME/.zprofile"

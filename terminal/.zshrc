@@ -124,6 +124,48 @@ fzl () {
   file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
+# Select a ghq-managed repository with fzf.
+ghq-select () {
+  local preview_cmd
+  preview_cmd='
+    git_status=$(git -C {} status --short 2>/dev/null)
+    if [ -n "$git_status" ]; then
+      printf "%s\n\n" "$git_status"
+    fi
+    eza --tree --level=2 --git-ignore --color=always --icons {}
+  '
+
+  ghq list --full-path | fzf --preview "$preview_cmd"
+}
+
+# Open a ghq-managed repository in Neovim.
+ghq-nvim () {
+  local repo
+  repo=$(ghq-select) || return
+  nvim "$repo"
+}
+
+# Open a ghq-managed repository in VSCode.
+ghq-code () {
+  local repo
+  repo=$(ghq-select) || return
+  code "$repo"
+}
+
+# Change directory to a ghq-managed repository.
+ghq-cd () {
+  local repo
+  repo=$(ghq-select) || return
+  cd "$repo"
+}
+
+# Jump to a ghq-managed repository with zoxide.
+ghq-z () {
+  local repo
+  repo=$(ghq-select) || return
+  z "$repo"
+}
+
 
 # ===========================
 # Yazi
