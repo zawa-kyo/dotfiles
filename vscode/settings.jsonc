@@ -420,7 +420,7 @@
   // ==========================
 
   // Neovimのパス
-  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
   // init.vimのパス
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
   // 拡張機能を独自スレッドで実行しパフォーマンスが向上する、らしい
