@@ -12,7 +12,7 @@
   required = true
 
 [color]
-  ui = true
+  ui = auto
 
 [ghq]
   root = ~/Library/CloudStorage/Dropbox/Git/ghq
@@ -28,10 +28,13 @@
   light = false
 
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 
 [diff]
   colorMoved = default
+
+[push]
+  default = simple
 
 [include]
   path = ~/.gitconfig.local
