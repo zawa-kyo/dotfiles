@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+dotfiles_dir="$(cd "$script_dir/.." && pwd)"
+bun_dir="$dotfiles_dir/bun"
+
 # Remove old link or directory if it exists
 if [ -L "$HOME/.bun/install/global" ] || [ -d "$HOME/.bun/install/global" ]; then
   rm -rf "$HOME/.bun/install/global"
@@ -7,8 +11,8 @@ if [ -L "$HOME/.bun/install/global" ] || [ -d "$HOME/.bun/install/global" ]; the
 fi
 
 # Create a new symbolic link
-if [ -d ~/.dotfiles/bun ]; then
-  ln -s ~/.dotfiles/bun "$HOME/.bun/install/global"
+if [ -d "$bun_dir" ]; then
+  ln -s "$bun_dir" "$HOME/.bun/install/global"
   echo "󰄳 Bun directory linked successfully."
 else
   echo "󰅙 Bun directory not found in dotfiles!"
