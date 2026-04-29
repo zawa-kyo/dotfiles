@@ -35,6 +35,22 @@ $ uv run pre-commit install
 - This repository manages Python development dependencies with `uv` via `pyproject.toml`.
 - If you have existing Git hooks, pre-commit will run in migration mode by default. Use the -f option to overwrite existing hooks and use only pre-commit.
 
+## Git
+
+This repository manages the base `~/.gitconfig` as a symlink.
+
+- Run `scripts/link-dotfiles.sh` to link `/Users/kyohei/.dotfiles/git/.gitconfig` to `~/.gitconfig`.
+- Machine-specific overrides can be placed in `~/.gitconfig.local`.
+- The base `.gitconfig` includes `~/.gitconfig.local` automatically, so a work machine can override `user.name` and `user.email` without changing the dotfiles-managed file.
+
+Example:
+
+```ini
+[user]
+  name = Your Work Name
+  email = your-work-email@example.com
+```
+
 ## VSCode
 
 ### Caution
