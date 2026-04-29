@@ -3,6 +3,11 @@
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
 
+# resolve_path: print the canonical absolute path for a file or directory.
+resolve_path() {
+  realpath "$1"
+}
+
 # install: create a symlink from source to target if safe.
 install() {
   local source_file="$1"
@@ -46,11 +51,11 @@ install() {
     if [ -L "$target_file" ]; then
       local existing_target
       existing_target="$(readlink "$target_file")"
-      if [ "$existing_target" = "$source_file" ]; then
+      if [ "$(resolve_path "$target_file")" = "$(resolve_path "$source_file")" ]; then
         echo "󰄳 $source_basename already linked."
         return 0
       fi
-      if [ ! -e "$existing_target" ]; then
+      if [ ! -e "$(dirname "$target_file")/$existing_target" ] && [ ! -e "$existing_target" ]; then
         rm "$target_file"
         echo "󰄳 Removed stale symlink: $target_file"
       else
