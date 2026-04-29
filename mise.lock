@@ -62,5 +62,5 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aarch64.gz"
 
 [[tools.uv]]
-version = "0.11.7"
+version = "0.11.8"
 backend = "asdf:uv"
