@@ -124,6 +124,20 @@ fzl () {
   file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
+# Open a ghq-managed repository in Neovim.
+ghq-nvim () {
+  local repo
+  repo=$(ghq list --full-path | fzf --preview 'eza --color=always --group-directories-first --icons {}') || return
+  nvim "$repo"
+}
+
+# Open a ghq-managed repository in Visual Studio Code.
+ghq-code () {
+  local repo
+  repo=$(ghq list --full-path | fzf --preview 'eza --color=always --group-directories-first --icons {}') || return
+  code "$repo"
+}
+
 
 # ===========================
 # Yazi
