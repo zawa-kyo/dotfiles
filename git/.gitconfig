@@ -22,7 +22,7 @@
   required = true
 
 [ghq]
-  root = ~/Library/CloudStorage/Dropbox/Git/ghq
+  root = ~/Git/ghq
 
 [include]
   path = ~/.gitconfig.local
