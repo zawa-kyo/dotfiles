@@ -152,6 +152,20 @@ ghq-code () {
   code "$repo"
 }
 
+# Change directory to a ghq-managed repository.
+ghq-cd () {
+  local repo
+  repo=$(ghq-select) || return
+  cd "$repo"
+}
+
+# Jump to a ghq-managed repository with zoxide.
+ghq-z () {
+  local repo
+  repo=$(ghq-select) || return
+  z "$repo"
+}
+
 
 # ===========================
 # Yazi

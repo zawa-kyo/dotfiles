@@ -26,6 +26,7 @@ abbr ':q'='exit'
 abbr ':wq'='exit'
 abbr 'gn'='ghq-nvim'
 abbr 'gc'='ghq-code'
+abbr 'gz'='ghq-z'
 
 
 # ===========================
