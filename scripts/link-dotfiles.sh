@@ -4,12 +4,12 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
 . "$script_dir/lib/dotfiles-links.sh"
 
-# resolve_path: print the canonical absolute path for a file or directory.
+# Print the canonical absolute path for a file or directory.
 resolve_path() {
   realpath "$1"
 }
 
-# install: create a symlink from source to target if safe.
+# Create a symlink from source to target if safe.
 install() {
   local source_file="$1"
   local target_file="$2"
@@ -79,14 +79,14 @@ install() {
   fi
 }
 
-# install_file: create a file symlink.
+# Create a file symlink.
 install_file() {
   local source_file="$1"
   local target_file="$2"
   install "$source_file" "$target_file" "file"
 }
 
-# install_dir: create a directory symlink.
+# Create a directory symlink.
 install_dir() {
   local source_dir="$1"
   local target_dir="$2"
