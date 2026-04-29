@@ -3,7 +3,7 @@
   email = zawazawakyo@gmail.com
 
 [init]
-  defaultBranch = master
+  defaultBranch = main
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
