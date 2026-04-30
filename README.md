@@ -301,6 +301,20 @@ The normal path should be:
 
 `mise run` is still supported, but it is not the shortest daily path. Its role is discoverability, listing, description management, and a unified task interface.
 
+### Shell-Resident Commands
+
+Some commands should remain shell functions instead of being moved into standalone executables.
+
+- `reveal-repository`
+- `reveal-repository-with-zoxide`
+
+The reason is semantic, not incidental: these commands change the current shell's working directory. If they run as external processes, the directory change only affects the child process and not the interactive shell the user is actually using.
+
+So the intended split is:
+
+- commands that open tools or perform independent actions can live in `scripts/local/`
+- commands that must mutate the current shell session should stay in `.zshrc`
+
 ### Review Summary
 
 This overall direction is sound and should age well.
