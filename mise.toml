@@ -134,6 +134,7 @@ run = [
   { task = "link-dotfiles" },
   { task = "install-mise-tools" },
   { task = "install-bun" },
+  { task = "install-pre-commit" },
 ]
 
 [tasks.install-bun]
@@ -146,7 +147,7 @@ file = "scripts/relink-dotfiles.sh"
 
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
-run = ["uv sync --group dev", "uv run pre-commit install"]
+file = "scripts/install-pre-commit.sh"
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"
