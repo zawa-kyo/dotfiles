@@ -121,12 +121,12 @@ run = [
 [tasks.link-dotfiles]
 hide = true
 description = "Link dotfiles-managed files into the home directory"
-run = "bash scripts/link-dotfiles.sh"
+run = "bash scripts/local/link-dotfiles.sh"
 
-[tasks.sync-local-commands]
+[tasks.sync-global-commands]
 hide = true
-description = "Link local CLI commands and generate mise task wrappers"
-run = "bash scripts/sync-local-commands.sh"
+description = "Link global CLI commands and generate mise task wrappers"
+run = "bash scripts/local/sync-global-commands.sh"
 
 [tasks.install-mise-tools]
 hide = true
@@ -137,7 +137,7 @@ run = "mise install"
 description = "Run the dotfiles symlink setup and install configured mise tools"
 run = [
   { task = "link-dotfiles" },
-  { task = "sync-local-commands" },
+  { task = "sync-global-commands" },
   { task = "install-mise-tools" },
   { task = "install-bun" },
   { task = "install-pre-commit" },
@@ -145,15 +145,15 @@ run = [
 
 [tasks.install-bun]
 description = "Link Bun globals and install Bun dependencies"
-file = "scripts/install-bun.sh"
+file = "scripts/local/install-bun.sh"
 
 [tasks.relink]
 description = "Relink dotfiles-managed symlinks without overwriting real files"
-file = "scripts/relink-dotfiles.sh"
+file = "scripts/local/relink-dotfiles.sh"
 
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
-file = "scripts/install-pre-commit.sh"
+file = "scripts/local/install-pre-commit.sh"
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"
@@ -167,7 +167,7 @@ if [ -t 1 ]; then
   exit 0
 fi
 
-bash scripts/source.sh
+bash scripts/local/source.sh
 '''
 
 [tasks.upgrade]
