@@ -3,13 +3,13 @@
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-dotfiles_dir="$(cd "$script_dir/.." && pwd)"
+dotfiles_dir="$(cd "$script_dir/../.." && pwd)"
 bun_dir="$dotfiles_dir/bun"
 global_dir="$HOME/.bun/install/global"
 global_parent_dir="$(dirname "$global_dir")"
 global_bin_dir="$HOME/.bun/bin"
 
-source "$script_dir/utils/log.sh"
+source "$script_dir/../utils/log.sh"
 
 # Ensure the repo-managed Bun directory exists.
 ensure_bun_dir() {

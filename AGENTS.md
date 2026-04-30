@@ -17,7 +17,7 @@
 - pre-commit 有効化: `uv run pre-commit install` または `mise run install-pre-commit`
 - 全ファイルでフック実行: `uv run pre-commit run -a` または `mise run check-pre-commit`
 - Homebrew 適用: `brew bundle --file=homebrew/Brewfile`
-- Bun グローバル準備: `mise run install-bun` (内部で `scripts/install-bun.sh` を実行)
+- Bun グローバル準備: `mise run install-bun` (内部で `scripts/local/install-bun.sh` を実行)
 - VS Code 同期: `README.md` の `ln -s` 手順を参照。
 
 ## コーディング規約と命名
@@ -31,7 +31,7 @@
 
 - Lint/セキュリティ: `uv run pre-commit run -a` または `mise run check-pre-commit` (`detect-secrets`, `gitleaks`, YAML/JSON チェックを含む)。
 - Neovim ヘルス: プラグイン変更後に `nvim` で `:checkhealth`。
-- Bun 確認: `scripts/install-bun.sh` 実行後、`bunx --version` で解決を確認。
+- Bun 確認: `scripts/local/install-bun.sh` 実行後、`bunx --version` で解決を確認。
 - Homebrew: `brew doctor` と `brew bundle check --file=homebrew/Brewfile`。
 
 ## コミットとプルリクエスト

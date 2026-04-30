@@ -58,7 +58,7 @@ run_source_script() {
   dotfiles_dir="$(get_dotfiles_dir)" || return 1
 
   # Execute the script from the scripts directory
-  eval "$(bash "$dotfiles_dir/../scripts/source.sh")"
+  eval "$(bash "$dotfiles_dir/../scripts/local/source.sh")"
 
   # Return to the original working directory
   cd "$current_dir"
@@ -115,20 +115,6 @@ precmd() {
 zstyle ":completion:*:commands" rehash 1
 
 
-# ===========================
-# Fzf
-# ===========================
-
-fzp () {
-  local file
-  file=$(fzf) && nvim "$file"
-}
-
-fzl () {
-  local file_and_line
-  file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
-}
-
 # Reveal a repository by changing into it.
 reveal-repository () {
   local repo
@@ -136,41 +122,11 @@ reveal-repository () {
   cd "$repo"
 }
 
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-code () {
-  command reveal-repository-with-code "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-fork () {
-  command reveal-repository-with-fork "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-lazygit () {
-  command reveal-repository-with-lazygit "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-neovim () {
-  command reveal-repository-with-neovim "$@"
-}
-
 # Reveal a repository with zoxide.
 reveal-repository-with-zoxide () {
   local repo
   repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
   z "$repo"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-add-worktree () {
-  command add-worktree "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-delete-worktree () {
-  command delete-worktree "$@"
 }
 
 
@@ -203,14 +159,6 @@ mkcd() {
 up() {
   local count=${1:-1}
   cd "$(printf '../%.0s' $(seq 1 $count))" || return 1
-}
-
-# Search Google for the given query using the default browser
-# Usage example: google how to configure Ghostty
-function google() {
-  local search_query="$@"
-  local encoded_query=$(echo "$search_query" | sed 's/ /+/g')
-  open "https://www.google.com/search?q=$encoded_query"
 }
 
 alias rm="echo ' Heads up: rm is dangerous. Use trash instead!'"

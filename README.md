@@ -39,7 +39,7 @@ $ uv run pre-commit install
 
 This repository manages the base `~/.gitconfig` as a symlink.
 
-- Run `scripts/link-dotfiles.sh` from the cloned repository to link `git/.gitconfig` to `~/.gitconfig`.
+- Run `scripts/local/link-dotfiles.sh` from the cloned repository to link `git/.gitconfig` to `~/.gitconfig`.
 - Machine-specific overrides can be placed in `~/.gitconfig.local`.
 - The base `.gitconfig` includes `~/.gitconfig.local` automatically, so a work machine can override `user.name` and `user.email` without changing the dotfiles-managed file.
 - New repositories fetched with `ghq get` are stored under `~/Git/ghq`.
@@ -80,10 +80,10 @@ If needed, back up the original configuration files before making changes. The l
 
 ### Synchronizing configuration files
 
-On macOS, `scripts/link-dotfiles.sh` also creates symbolic links for VS Code configuration files in `~/Library/Application Support/Code/User`.
+On macOS, `scripts/local/link-dotfiles.sh` also creates symbolic links for VS Code configuration files in `~/Library/Application Support/Code/User`.
 
 ```sh
-$ scripts/link-dotfiles.sh
+$ scripts/local/link-dotfiles.sh
 ```
 
 If those files already exist and are not symlinks, the script leaves them in place and prints a warning. On non-macOS systems, it skips the VS Code links and prints a warning because the current target path is macOS-specific.
@@ -168,7 +168,7 @@ mise run install-pre-commit
 mise run check-pre-commit
 ```
 
-`mise run install` is also responsible for linking commands from `scripts/local/` into `~/.local/bin/` and generating `mise` task wrappers.
+`mise run install` is also responsible for linking commands from `scripts/global/` into `~/.local/bin/` and generating `mise` task wrappers.
 
 ## Custom CLI and Mise Tasks
 
@@ -201,15 +201,16 @@ This design keeps command ownership and task discovery separate.
 
 The planned split inside this repository is:
 
-- `scripts/local/`: real daily-use CLI commands
+- `scripts/local/`: commands intended to run only from inside this dotfiles repository
+- `scripts/global/`: commands published to `~/.local/bin` and `mise` global tasks
 - `scripts/utils/`: shared shell helpers, logging, sync helpers
 - `.cache/mise/tasks/`: generated `mise` wrappers
 
 This keeps setup scripts and interactive CLI commands separate.
 
-- `scripts/local/` is the source of truth.
-- `~/.local/bin/` should point at commands from `scripts/local/`.
-- `.cache/mise/tasks/` should be generated from `scripts/local/`, not edited by hand.
+- `scripts/global/` is the source of truth for published commands.
+- `~/.local/bin/` should point at commands from `scripts/global/`.
+- `.cache/mise/tasks/` should be generated from `scripts/global/`, not edited by hand.
 - `~/.config/mise/tasks/` should be populated from the generated wrappers.
 
 The generated wrapper directory is intentionally ignored by Git.
@@ -218,7 +219,7 @@ The generated wrapper directory is intentionally ignored by Git.
 
 `mise` wrappers should not be maintained manually.
 
-- Each command in `scripts/local/` should declare its own description metadata.
+- Each command in `scripts/global/` should declare its own description metadata.
 - A sync step should generate wrappers into `.cache/mise/tasks/`.
 - The generated wrappers should then be linked or copied into `~/.config/mise/tasks/`.
 - `mise run install` should create both the wrapper directory and the wrapper files.
@@ -318,7 +319,7 @@ The reason is semantic, not incidental: these commands change the current shell'
 
 So the intended split is:
 
-- commands that open tools or perform independent actions can live in `scripts/local/`
+- commands that open tools or perform independent actions can live in `scripts/global/`
 - commands that must mutate the current shell session should stay in `.zshrc`
 
 ### Review Summary
@@ -337,13 +338,13 @@ In short: keep the command in `~/.local/bin/`, keep the `mise` task thin, and ke
 The next implementation step should stay intentionally small:
 
 1. Rename `scripts/lib/` to `scripts/utils/`.
-2. Create `scripts/local/`.
-3. Move the first three commands into `scripts/local/`:
+2. Create `scripts/local/` and `scripts/global/`.
+3. Move the first three commands into `scripts/global/`:
    - `reveal-repository-with-neovim`
    - `add-worktree`
    - `delete-worktree`
 4. Add one sync script that:
-   - links `scripts/local/*` into `~/.local/bin/`
+   - links `scripts/global/*` into `~/.local/bin/`
    - generates wrappers into `.cache/mise/tasks/`
    - reflects those wrappers into `~/.config/mise/tasks/`
 5. Run that sync step from `mise run install`.
@@ -363,4 +364,4 @@ The first migration intentionally leaves some existing shell functions in place.
 - `reveal-repository`
 - `reveal-repository-with-zoxide`
 
-These should move into `scripts/local/` after the initial command sync flow is proven out with the first three commands.
+These should stay in `.zshrc`, because they need to mutate the current shell session.

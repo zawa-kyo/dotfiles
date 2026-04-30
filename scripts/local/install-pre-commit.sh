@@ -3,10 +3,10 @@
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-dotfiles_dir="$(cd "$script_dir/.." && pwd)"
+dotfiles_dir="$(cd "$script_dir/../.." && pwd)"
 venv_dir="$dotfiles_dir/.venv"
 
-source "$script_dir/utils/log.sh"
+source "$script_dir/../utils/log.sh"
 
 hook_path="$(git -C "$dotfiles_dir" rev-parse --git-path hooks/pre-commit)"
 
