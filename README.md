@@ -215,7 +215,7 @@ exec reveal-repository-with-neovim "$@"
 
 ### Abbreviation Policy
 
-Abbreviations should follow the same design principle as [nvim/lua/policies/keybinds-policy.md](/Users/kyohei/Git/ghq/github.com/zawa-kyo/dotfiles/nvim/lua/policies/keybinds-policy.md): prefer meaning-based composition over ad-hoc memorization.
+Abbreviations should follow the same design principle as [nvim/lua/policies/keybinds-policy.md](nvim/lua/policies/keybinds-policy.md): prefer meaning-based composition over ad-hoc memorization.
 
 The shell version of that rule is:
 
