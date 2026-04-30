@@ -163,3 +163,112 @@ mise run install
 mise run install-pre-commit
 mise run check-pre-commit
 ```
+
+## Custom CLI and Mise Tasks
+
+This repository treats `mise` as a task catalog and discovery interface, while keeping day-to-day execution on standalone commands.
+
+### Overview
+
+The intended split is:
+
+- `~/.local/bin/`: the real command implementation
+- `~/.config/mise/tasks/`: thin wrappers for `mise run` and task discovery
+- `sheldon/abbreviations`: short forms for frequently used commands
+
+This gives us three access paths for the same utility:
+
+1. Direct execution: `ghq-nvim`
+2. Interactive catalog execution: `mise run ghq-nvim`
+3. Short daily input: an abbrev that expands to `ghq-nvim`
+
+### Why This Split
+
+This design keeps command ownership and task discovery separate.
+
+- Real commands should be executable without depending on `mise`.
+- `mise` should provide a consistent catalog via `mise run` and `mise tasks ls --global`.
+- `mise.toml` should stay small; file tasks under `~/.config/mise/tasks/` scale better than a large `[tasks]` block.
+- Abbreviations should optimize typing, but the expanded command should remain visible in shell history.
+
+### Directory Roles
+
+Use `~/.local/bin/` for commands that should behave like normal CLI tools.
+
+- They are invoked directly.
+- They can later be rewritten in Bash, Go, Rust, or another language without changing the interface.
+- They should remain usable even if `mise` is not involved.
+
+Use `~/.config/mise/tasks/` for thin wrappers only.
+
+- Each file should delegate to the real command with `exec ... "$@"`.
+- Each file should carry a `#MISE description="..."` header.
+- These wrappers exist for `mise run` and `mise tasks ls --global`, not for core logic.
+
+Example:
+
+```sh
+#!/usr/bin/env bash
+#MISE description="Select a ghq repository with fzf and open it in Neovim"
+exec ghq-nvim "$@"
+```
+
+### Abbreviation Policy
+
+Abbreviations should follow the same design principle as [nvim/lua/policies/keybinds-policy.md](/Users/kyohei/Git/ghq/github.com/zawa-kyo/dotfiles/nvim/lua/policies/keybinds-policy.md): prefer meaning-based composition over ad-hoc memorization.
+
+The shell version of that rule is:
+
+- Design abbrevs as `verb + object`.
+- Keep the verb set small and stable.
+- Keep the object set small and stable.
+- Prefer semantic names over implementation details.
+- Only create abbrevs for commands used often enough to justify the mental slot.
+
+Examples of good verb categories:
+
+- `g`: go/open/jump into a target context
+- `c`: create
+- `r`: remove
+- `s`: search/select
+
+Examples of object categories:
+
+- `w`: worktree
+- `r`: repository
+- `n`: Neovim
+- `b`: branch
+
+The important point is not the exact letter choice, but consistency. Once a verb or object letter is assigned, it should keep the same meaning across commands.
+
+Bad examples:
+
+- Abbrevs that encode an implementation detail such as `mise run ...`
+- One-off mnemonics that do not belong to a reusable dictionary
+- Multiple abbrevs that use the same prefix letter with different meanings
+
+Good examples:
+
+- A create-related abbrev should start with `c`
+- A worktree-related abbrev should consistently use the same object key
+- The abbrev should expand to the real command, not to `mise run ...`
+
+### Operational Rule
+
+The normal path should be:
+
+- abbrev expands to the real command
+- the real command runs directly from `~/.local/bin/`
+
+`mise run` is still supported, but it is not the shortest daily path. Its role is discoverability, listing, description management, and a unified task interface.
+
+### Review Summary
+
+This overall direction is sound and should age well.
+
+- The separation between command implementation and task catalog is clean.
+- The `mise` wrappers stay trivial and easy to maintain.
+- Direct CLI execution keeps the interface portable.
+- The only important constraint is abbreviation discipline: if abbrevs grow without a fixed `verb + object` vocabulary, cognitive load will climb quickly.
+
+In short: keep the command in `~/.local/bin/`, keep the `mise` task thin, and keep abbrevs semantic and dictionary-driven.
