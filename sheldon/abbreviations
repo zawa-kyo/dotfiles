@@ -24,14 +24,18 @@ abbr 'view'='nvim -R'
 abbr '.'='source'
 abbr ':q'='exit'
 abbr ':wq'='exit'
-abbr 'gc'='ghq-code'
-abbr 'gd'='ghq-cd'
-abbr 'gf'='ghq-fork'
-abbr 'gl'='ghq-lazygit'
-abbr 'gn'='ghq-nvim'
-abbr 'gz'='ghq-z'
+
+# Custom utility policy:
+# - verb + object
+# - add a qualifier only when verb + object is not enough
+abbr 'rr'='ghq-cd'
+abbr 'rrc'='ghq-code'
+abbr 'rrf'='ghq-fork'
+abbr 'rrl'='ghq-lazygit'
+abbr 'rrn'='ghq-nvim'
+abbr 'rrz'='ghq-z'
 abbr 'cw'='create-worktree'
-abbr 'rw'='remove-worktree'
+abbr 'dw'='remove-worktree'
 
 
 # ===========================

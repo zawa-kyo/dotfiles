@@ -220,6 +220,7 @@ Abbreviations should follow the same design principle as [nvim/lua/policies/keyb
 The shell version of that rule is:
 
 - Design abbrevs as `verb + object`.
+- If `verb + object` is not enough, add one short qualifier.
 - Keep the verb set small and stable.
 - Keep the object set small and stable.
 - Prefer semantic names over implementation details.
@@ -227,19 +228,26 @@ The shell version of that rule is:
 
 Examples of good verb categories:
 
-- `g`: go/open/jump into a target context
+- `r`: reveal/open
 - `c`: create
-- `r`: remove
+- `d`: delete/remove
 - `s`: search/select
 
 Examples of object categories:
 
 - `w`: worktree
 - `r`: repository
-- `n`: Neovim
 - `b`: branch
 
-The important point is not the exact letter choice, but consistency. Once a verb or object letter is assigned, it should keep the same meaning across commands.
+Examples of qualifiers:
+
+- `c`: VS Code
+- `f`: Fork
+- `l`: lazygit
+- `n`: Neovim
+- `z`: zoxide
+
+The important point is not the exact letter choice, but consistency. Once a verb, object, or qualifier letter is assigned, it should keep the same meaning across commands.
 
 Bad examples:
 
@@ -250,8 +258,21 @@ Bad examples:
 Good examples:
 
 - A create-related abbrev should start with `c`
+- A delete-related abbrev should start with `d`
 - A worktree-related abbrev should consistently use the same object key
+- Repo-related commands should share the same `rr...` prefix
 - The abbrev should expand to the real command, not to `mise run ...`
+
+Current examples in this repository:
+
+- `rr` -> `ghq-cd`
+- `rrn` -> `ghq-nvim`
+- `rrc` -> `ghq-code`
+- `rrf` -> `ghq-fork`
+- `rrl` -> `ghq-lazygit`
+- `rrz` -> `ghq-z`
+- `cw` -> `create-worktree`
+- `dw` -> `remove-worktree`
 
 ### Operational Rule
 
