@@ -118,17 +118,36 @@ run = [
   ] },
 ]
 
+[tasks.link-dotfiles]
+hide = true
+description = "Link dotfiles-managed files into the home directory"
+run = "bash scripts/link-dotfiles.sh"
+
+[tasks.install-mise-tools]
+hide = true
+description = "Install tools declared in the local mise configuration"
+run = "mise install"
+
 [tasks.install]
 description = "Run the dotfiles symlink setup and install configured mise tools"
-run = ["bash scripts/link-dotfiles.sh", "mise install"]
+run = [
+  { task = "link-dotfiles" },
+  { task = "install-mise-tools" },
+  { task = "install-bun" },
+  { task = "install-pre-commit" },
+]
 
 [tasks.install-bun]
 description = "Link Bun globals and install Bun dependencies"
 file = "scripts/install-bun.sh"
 
+[tasks.relink]
+description = "Relink dotfiles-managed symlinks without overwriting real files"
+file = "scripts/relink-dotfiles.sh"
+
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
-run = ["uv sync --group dev", "uv run pre-commit install"]
+file = "scripts/install-pre-commit.sh"
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"

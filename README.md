@@ -57,23 +57,17 @@ Example:
 
 ### Caution
 
-If needed, back up the original configuration files before making changes.
+If needed, back up the original configuration files before making changes. The linking script will not delete existing files; if `settings.json` or `keybindings.json` already exist, it will stop at those files with a warning instead of overwriting them.
 
 ### Synchronizing configuration files
 
-Run the following commands to create symbolic links for the configuration files:
+On macOS, `scripts/link-dotfiles.sh` also creates symbolic links for VS Code configuration files in `~/Library/Application Support/Code/User`.
 
 ```sh
-$ VSCODE_SETTING_DIR="$HOME/Library/Application Support/Code/User"
-
-# Link settings.json
-$ rm "$VSCODE_SETTING_DIR/settings.json"
-$ ln -s "$(realpath vscode/settings.jsonc)" "$VSCODE_SETTING_DIR/settings.json"
-
-# Link keybindings.json
-$ rm "$VSCODE_SETTING_DIR/keybindings.json"
-$ ln -s "$(realpath vscode/keybindings.jsonc)" "$VSCODE_SETTING_DIR/keybindings.json"
+$ scripts/link-dotfiles.sh
 ```
+
+If those files already exist and are not symlinks, the script leaves them in place and prints a warning. On non-macOS systems, it skips the VS Code links and prints a warning because the current target path is macOS-specific.
 
 ## Bun
 
