@@ -24,10 +24,11 @@ abbr 'view'='nvim -R'
 abbr '.'='source'
 abbr ':q'='exit'
 abbr ':wq'='exit'
-abbr 'gn'='ghq-nvim'
 abbr 'gc'='ghq-code'
+abbr 'gd'='ghq-cd'
 abbr 'gf'='ghq-fork'
 abbr 'gl'='ghq-lazygit'
+abbr 'gn'='ghq-nvim'
 abbr 'gz'='ghq-z'
 
 

@@ -138,11 +138,11 @@ ghq-select () {
   ghq list --full-path | fzf --preview "$preview_cmd"
 }
 
-# Open a ghq-managed repository in Neovim.
-ghq-nvim () {
+# Change directory to a ghq-managed repository.
+ghq-cd () {
   local repo
   repo=$(ghq-select) || return
-  nvim "$repo"
+  cd "$repo"
 }
 
 # Open a ghq-managed repository in VSCode.
@@ -166,11 +166,11 @@ ghq-lazygit () {
   lazygit -p "$repo"
 }
 
-# Change directory to a ghq-managed repository.
-ghq-cd () {
+# Open a ghq-managed repository in Neovim.
+ghq-nvim () {
   local repo
   repo=$(ghq-select) || return
-  cd "$repo"
+  nvim "$repo"
 }
 
 # Jump to a ghq-managed repository with zoxide.
