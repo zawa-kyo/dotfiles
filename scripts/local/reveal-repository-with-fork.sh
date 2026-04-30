@@ -3,7 +3,8 @@
 
 set -euo pipefail
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 repo="$("$script_dir/../utils/select-repository.sh" "$@")" || exit 1
 [ -n "$repo" ] || exit 1
 exec fork "$repo"
