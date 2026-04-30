@@ -191,19 +191,35 @@ This design keeps command ownership and task discovery separate.
 - `mise.toml` should stay small; file tasks under `~/.config/mise/tasks/` scale better than a large `[tasks]` block.
 - Abbreviations should optimize typing, but the expanded command should remain visible in shell history.
 
-### Directory Roles
+### Repository Layout
 
-Use `~/.local/bin/` for commands that should behave like normal CLI tools.
+The planned split inside this repository is:
 
-- They are invoked directly.
-- They can later be rewritten in Bash, Go, Rust, or another language without changing the interface.
-- They should remain usable even if `mise` is not involved.
+- `scripts/local/`: real daily-use CLI commands
+- `scripts/utils/`: shared shell helpers, logging, sync helpers
+- `.cache/mise/tasks/`: generated `mise` wrappers
 
-Use `~/.config/mise/tasks/` for thin wrappers only.
+This keeps setup scripts and interactive CLI commands separate.
 
-- Each file should delegate to the real command with `exec ... "$@"`.
-- Each file should carry a `#MISE description="..."` header.
-- These wrappers exist for `mise run` and `mise tasks ls --global`, not for core logic.
+- `scripts/local/` is the source of truth.
+- `~/.local/bin/` should point at commands from `scripts/local/`.
+- `.cache/mise/tasks/` should be generated from `scripts/local/`, not edited by hand.
+- `~/.config/mise/tasks/` should be populated from the generated wrappers.
+
+The generated wrapper directory is intentionally ignored by Git.
+
+### Wrapper Generation
+
+`mise` wrappers should not be maintained manually.
+
+- Each command in `scripts/local/` should declare its own description metadata.
+- A sync step should generate wrappers into `.cache/mise/tasks/`.
+- The generated wrappers should then be linked or copied into `~/.config/mise/tasks/`.
+- `mise run install` should create both the wrapper directory and the wrapper files.
+
+This makes the real command implementation the single source of truth and keeps wrapper generation idempotent.
+
+Each generated wrapper should delegate to the real command with `exec ... "$@"` and carry a `#MISE description="..."` header.
 
 Example:
 
@@ -293,3 +309,27 @@ This overall direction is sound and should age well.
 - The only important constraint is abbreviation discipline: if abbrevs grow without a fixed `verb + object` vocabulary, cognitive load will climb quickly.
 
 In short: keep the command in `~/.local/bin/`, keep the `mise` task thin, and keep abbrevs semantic and dictionary-driven.
+
+### Current Implementation Scope
+
+The next implementation step should stay intentionally small:
+
+1. Rename `scripts/lib/` to `scripts/utils/`.
+2. Create `scripts/local/`.
+3. Move the first three commands into `scripts/local/`:
+   - `reveal-repository-with-neovim`
+   - `add-worktree`
+   - `delete-worktree`
+4. Add one sync script that:
+   - links `scripts/local/*` into `~/.local/bin/`
+   - generates wrappers into `.cache/mise/tasks/`
+   - reflects those wrappers into `~/.config/mise/tasks/`
+5. Run that sync step from `mise run install`.
+6. Keep `terminal/.zshrc` compatible while the commands move out of shell functions.
+7. Verify four paths:
+   - abbrev
+   - direct command execution
+   - `mise run <command>`
+   - `mise tasks ls --global`
+
+This scope is enough to validate the structure, generation flow, and install integration without migrating every existing helper at once.
