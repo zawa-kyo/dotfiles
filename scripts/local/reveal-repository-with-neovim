@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# MISE_DESCRIPTION: Select a repository with ghq/fzf and open it in Neovim
+
+set -euo pipefail
+
+ghq_select() {
+  local query="${*:-}"
+  local preview_cmd
+  local -a fzf_opts
+
+  preview_cmd='
+    git_status=$(git -C {} status --short 2>/dev/null)
+    if [ -n "$git_status" ]; then
+      printf "%s\n\n" "$git_status"
+    fi
+    eza --tree --level=2 --git-ignore --color=always --icons {}
+  '
+
+  fzf_opts=(--preview "$preview_cmd")
+  if [ -n "$query" ]; then
+    fzf_opts+=(--query "$query")
+  fi
+
+  ghq list --full-path | fzf "${fzf_opts[@]}"
+}
+
+ghq_find() {
+  local repo
+  local ghq_root
+  local query="${*:-}"
+  local matches=""
+  local -a matched_repos
+
+  if [ "$#" -eq 0 ]; then
+    ghq_select
+    return
+  fi
+
+  ghq_root="$(ghq root)"
+  repo="$(zoxide query --base-dir "$ghq_root" "$@" 2>/dev/null || true)"
+  if [ -n "$repo" ]; then
+    printf '%s\n' "$repo"
+    return 0
+  fi
+
+  matches="$(ghq list --full-path | fzf --filter="$query" || true)"
+  if [ -n "$matches" ]; then
+    mapfile -t matched_repos <<< "$matches"
+    if [ "${#matched_repos[@]}" -eq 1 ]; then
+      printf '%s\n' "${matched_repos[0]}"
+      return 0
+    fi
+  fi
+
+  ghq_select "$@"
+}
+
+main() {
+  local repo
+
+  repo="$(ghq_find "$@")" || exit 1
+  [ -n "$repo" ] || exit 1
+  exec nvim "$repo"
+}
+
+main "$@"
