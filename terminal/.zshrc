@@ -32,15 +32,14 @@ eval "$(sheldon source)"
 
 # Function to resolve the absolute path of the dotfiles directory
 get_dotfiles_dir() {
-  # Get the actual path of the ~/.zshrc symlink
   local zshrc_symlink
+  local zshrc_dir
+
   zshrc_symlink="$(readlink "${HOME}/.zshrc")"
+  [[ -n "$zshrc_symlink" ]] || return 1
 
-  # Change to HOME to handle relative paths
-  cd "${HOME}" || return 1
-
-  # Get the absolute path to the dotfiles directory
-  cd "$(dirname "$zshrc_symlink")" && pwd
+  zshrc_dir="$(dirname "$zshrc_symlink")"
+  realpath "${HOME}/${zshrc_dir}"
 }
 
 source "$(get_dotfiles_dir)/../scripts/utils/log.sh"
