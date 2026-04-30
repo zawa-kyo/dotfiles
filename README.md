@@ -164,6 +164,8 @@ mise run install-pre-commit
 mise run check-pre-commit
 ```
 
+`mise run install` is also responsible for linking commands from `scripts/local/` into `~/.local/bin/` and generating `mise` task wrappers.
+
 ## Custom CLI and Mise Tasks
 
 This repository treats `mise` as a task catalog and discovery interface, while keeping day-to-day execution on standalone commands.
