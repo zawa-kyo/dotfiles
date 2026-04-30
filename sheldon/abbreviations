@@ -28,13 +28,29 @@ abbr ':wq'='exit'
 # Custom utility policy:
 # - verb + object
 # - add a qualifier only when verb + object is not enough
+
+# reveal-repository
 abbr 'rr'='ghq-cd'
+
+# reveal-repository-with-code
 abbr 'rrc'='ghq-code'
+
+# reveal-repository-with-fork
 abbr 'rrf'='ghq-fork'
+
+# reveal-repository-with-lazygit
 abbr 'rrl'='ghq-lazygit'
+
+# reveal-repository-with-neovim
 abbr 'rrn'='ghq-nvim'
+
+# reveal-repository-with-zoxide
 abbr 'rrz'='ghq-z'
-abbr 'cw'='create-worktree'
+
+# add-worktree
+abbr 'aw'='create-worktree'
+
+# delete-worktree
 abbr 'dw'='remove-worktree'
 
 

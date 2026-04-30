@@ -229,7 +229,7 @@ The shell version of that rule is:
 Examples of good verb categories:
 
 - `r`: reveal/open
-- `c`: create
+- `a`: add/create/append
 - `d`: delete/remove
 - `s`: search/select
 
@@ -257,7 +257,7 @@ Bad examples:
 
 Good examples:
 
-- A create-related abbrev should start with `c`
+- An add-related abbrev should start with `a`
 - A delete-related abbrev should start with `d`
 - A worktree-related abbrev should consistently use the same object key
 - Repo-related commands should share the same `rr...` prefix
@@ -271,7 +271,7 @@ Current examples in this repository:
 - `rrf` -> `ghq-fork`
 - `rrl` -> `ghq-lazygit`
 - `rrz` -> `ghq-z`
-- `cw` -> `create-worktree`
+- `aw` -> `create-worktree`
 - `dw` -> `remove-worktree`
 
 ### Operational Rule
