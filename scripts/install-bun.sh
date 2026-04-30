@@ -9,7 +9,7 @@ global_dir="$HOME/.bun/install/global"
 global_parent_dir="$(dirname "$global_dir")"
 global_bin_dir="$HOME/.bun/bin"
 
-. "$script_dir/lib/log.sh"
+. "$script_dir/utils/log.sh"
 
 # Ensure the repo-managed Bun directory exists.
 ensure_bun_dir() {

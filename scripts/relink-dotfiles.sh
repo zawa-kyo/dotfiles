@@ -2,8 +2,8 @@
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
-. "$script_dir/lib/dotfiles-links.sh"
-. "$script_dir/lib/log.sh"
+. "$script_dir/utils/dotfiles-links.sh"
+. "$script_dir/utils/log.sh"
 
 relink() {
   local source_path="$1"

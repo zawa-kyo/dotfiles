@@ -43,7 +43,7 @@ get_dotfiles_dir() {
   cd "$(dirname "$zshrc_symlink")" && pwd
 }
 
-source "$(get_dotfiles_dir)/../scripts/lib/log.sh"
+source "$(get_dotfiles_dir)/../scripts/utils/log.sh"
 
 # Function to execute the source script
 run_source_script() {
