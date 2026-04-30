@@ -123,6 +123,11 @@ hide = true
 description = "Link dotfiles-managed files into the home directory"
 run = "bash scripts/link-dotfiles.sh"
 
+[tasks.sync-local-commands]
+hide = true
+description = "Link local CLI commands and generate mise task wrappers"
+run = "bash scripts/sync-local-commands.sh"
+
 [tasks.install-mise-tools]
 hide = true
 description = "Install tools declared in the local mise configuration"
@@ -132,6 +137,7 @@ run = "mise install"
 description = "Run the dotfiles symlink setup and install configured mise tools"
 run = [
   { task = "link-dotfiles" },
+  { task = "sync-local-commands" },
   { task = "install-mise-tools" },
   { task = "install-bun" },
   { task = "install-pre-commit" },

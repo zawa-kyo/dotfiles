@@ -55,21 +55,21 @@ Example:
 
 ### Interactive worktree
 
-When `terminal/.zshrc` is linked to `~/.zshrc`, `create-worktree` lets you select a local branch with `fzf` and creates a worktree next to the current repository.
+When `terminal/.zshrc` is linked to `~/.zshrc`, `add-worktree` lets you select a local branch with `fzf` and creates a worktree next to the current repository.
 
 ```sh
-create-worktree
+add-worktree
 ```
 
 To remove an existing linked worktree interactively:
 
 ```sh
-remove-worktree
+delete-worktree
 ```
 
 - The worktree path is created as `[repo]+[branch]`, with `/` in branch names replaced by `_`.
 - If the selected branch already has a worktree, the existing path is printed instead of creating a duplicate.
-- `remove-worktree` excludes the current worktree and stops if the selected worktree has uncommitted changes.
+- `delete-worktree` excludes the current worktree and stops if the selected worktree has uncommitted changes.
 - `git` and `fzf` are required.
 
 ## VSCode
@@ -163,3 +163,200 @@ mise run install
 mise run install-pre-commit
 mise run check-pre-commit
 ```
+
+`mise run install` is also responsible for linking commands from `scripts/local/` into `~/.local/bin/` and generating `mise` task wrappers.
+
+## Custom CLI and Mise Tasks
+
+This repository treats `mise` as a task catalog and discovery interface, while keeping day-to-day execution on standalone commands.
+
+### Overview
+
+The intended split is:
+
+- `~/.local/bin/`: the real command implementation
+- `~/.config/mise/tasks/`: thin wrappers for `mise run` and task discovery
+- `sheldon/abbreviations`: short forms for frequently used commands
+
+This gives us three access paths for the same utility:
+
+1. Direct execution: `reveal-repository-with-neovim`
+2. Interactive catalog execution: `mise run reveal-repository-with-neovim`
+3. Short daily input: an abbrev that expands to `reveal-repository-with-neovim`
+
+### Why This Split
+
+This design keeps command ownership and task discovery separate.
+
+- Real commands should be executable without depending on `mise`.
+- `mise` should provide a consistent catalog via `mise run` and `mise tasks ls --global`.
+- `mise.toml` should stay small; file tasks under `~/.config/mise/tasks/` scale better than a large `[tasks]` block.
+- Abbreviations should optimize typing, but the expanded command should remain visible in shell history.
+
+### Repository Layout
+
+The planned split inside this repository is:
+
+- `scripts/local/`: real daily-use CLI commands
+- `scripts/utils/`: shared shell helpers, logging, sync helpers
+- `.cache/mise/tasks/`: generated `mise` wrappers
+
+This keeps setup scripts and interactive CLI commands separate.
+
+- `scripts/local/` is the source of truth.
+- `~/.local/bin/` should point at commands from `scripts/local/`.
+- `.cache/mise/tasks/` should be generated from `scripts/local/`, not edited by hand.
+- `~/.config/mise/tasks/` should be populated from the generated wrappers.
+
+The generated wrapper directory is intentionally ignored by Git.
+
+### Wrapper Generation
+
+`mise` wrappers should not be maintained manually.
+
+- Each command in `scripts/local/` should declare its own description metadata.
+- A sync step should generate wrappers into `.cache/mise/tasks/`.
+- The generated wrappers should then be linked or copied into `~/.config/mise/tasks/`.
+- `mise run install` should create both the wrapper directory and the wrapper files.
+
+This makes the real command implementation the single source of truth and keeps wrapper generation idempotent.
+
+Each generated wrapper should delegate to the real command with `exec ... "$@"` and carry a `#MISE description="..."` header.
+
+Example:
+
+```sh
+#!/usr/bin/env bash
+#MISE description="Select a repository with fzf and open it in Neovim"
+exec reveal-repository-with-neovim "$@"
+```
+
+### Abbreviation Policy
+
+Abbreviations should follow the same design principle as [nvim/lua/policies/keybinds-policy.md](/Users/kyohei/Git/ghq/github.com/zawa-kyo/dotfiles/nvim/lua/policies/keybinds-policy.md): prefer meaning-based composition over ad-hoc memorization.
+
+The shell version of that rule is:
+
+- Design abbrevs as `verb + object`.
+- If `verb + object` is not enough, add one short qualifier.
+- Keep the verb set small and stable.
+- Keep the object set small and stable.
+- Prefer semantic names over implementation details.
+- Only create abbrevs for commands used often enough to justify the mental slot.
+
+Examples of good verb categories:
+
+- `r`: reveal/open
+- `a`: add/create/append
+- `d`: delete/remove
+- `s`: search/select
+
+Examples of object categories:
+
+- `w`: worktree
+- `r`: repository
+- `b`: branch
+- `t`: task
+
+Examples of qualifiers:
+
+- `c`: VS Code
+- `f`: Fork
+- `l`: lazygit
+- `n`: Neovim
+- `z`: zoxide
+
+The important point is not the exact letter choice, but consistency. Once a verb, object, or qualifier letter is assigned, it should keep the same meaning across commands.
+
+Bad examples:
+
+- Abbrevs that encode an implementation detail such as `mise run ...`
+- One-off mnemonics that do not belong to a reusable dictionary
+- Multiple abbrevs that use the same prefix letter with different meanings
+
+Good examples:
+
+- An add-related abbrev should start with `a`
+- A delete-related abbrev should start with `d`
+- A worktree-related abbrev should consistently use the same object key
+- Repo-related commands should share the same `rr...` prefix
+- The abbrev should expand to the real command, not to `mise run ...`
+
+Current examples in this repository:
+
+- `rr` -> `reveal-repository`
+- `rrn` -> `reveal-repository-with-neovim`
+- `rrc` -> `reveal-repository-with-code`
+- `rrf` -> `reveal-repository-with-fork`
+- `rrl` -> `reveal-repository-with-lazygit`
+- `rrz` -> `reveal-repository-with-zoxide`
+- `aw` -> `add-worktree`
+- `dw` -> `delete-worktree`
+- `st` -> `search-task`
+
+### Operational Rule
+
+The normal path should be:
+
+- abbrev expands to the real command
+- the real command runs directly from `~/.local/bin/`
+
+`mise run` is still supported, but it is not the shortest daily path. Its role is discoverability, listing, description management, and a unified task interface.
+
+### Shell-Resident Commands
+
+Some commands should remain shell functions instead of being moved into standalone executables.
+
+- `reveal-repository`
+- `reveal-repository-with-zoxide`
+
+The reason is semantic, not incidental: these commands change the current shell's working directory. If they run as external processes, the directory change only affects the child process and not the interactive shell the user is actually using.
+
+So the intended split is:
+
+- commands that open tools or perform independent actions can live in `scripts/local/`
+- commands that must mutate the current shell session should stay in `.zshrc`
+
+### Review Summary
+
+This overall direction is sound and should age well.
+
+- The separation between command implementation and task catalog is clean.
+- The `mise` wrappers stay trivial and easy to maintain.
+- Direct CLI execution keeps the interface portable.
+- The only important constraint is abbreviation discipline: if abbrevs grow without a fixed `verb + object` vocabulary, cognitive load will climb quickly.
+
+In short: keep the command in `~/.local/bin/`, keep the `mise` task thin, and keep abbrevs semantic and dictionary-driven.
+
+### Current Implementation Scope
+
+The next implementation step should stay intentionally small:
+
+1. Rename `scripts/lib/` to `scripts/utils/`.
+2. Create `scripts/local/`.
+3. Move the first three commands into `scripts/local/`:
+   - `reveal-repository-with-neovim`
+   - `add-worktree`
+   - `delete-worktree`
+4. Add one sync script that:
+   - links `scripts/local/*` into `~/.local/bin/`
+   - generates wrappers into `.cache/mise/tasks/`
+   - reflects those wrappers into `~/.config/mise/tasks/`
+5. Run that sync step from `mise run install`.
+6. Keep `terminal/.zshrc` compatible while the commands move out of shell functions.
+7. Verify four paths:
+   - abbrev
+   - direct command execution
+   - `mise run <command>`
+   - `mise tasks ls --global`
+
+This scope is enough to validate the structure, generation flow, and install integration without migrating every existing helper at once.
+
+### Deferred Commands
+
+The first migration intentionally leaves some existing shell functions in place.
+
+- `reveal-repository`
+- `reveal-repository-with-zoxide`
+
+These should move into `scripts/local/` after the initial command sync flow is proven out with the first three commands.

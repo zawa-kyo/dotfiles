@@ -12,3 +12,6 @@ Thumbs.db
 
 # Neovim
 nvim.log
+
+# Generated mise task wrappers
+.cache/mise/tasks/

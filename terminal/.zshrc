@@ -8,6 +8,7 @@
 # (N-/): もしそのディレクトリが存在していれば PATH に追加し、存在しなければ無視するオプション
 typeset -U path PATH
 path=(
+  "$HOME/.local/bin"(N-/)
   /opt/homebrew/bin(N-/)
   /opt/homebrew/sbin(N-/)
   /usr/bin
@@ -32,18 +33,20 @@ eval "$(sheldon source)"
 
 # Function to resolve the absolute path of the dotfiles directory
 get_dotfiles_dir() {
-  # Get the actual path of the ~/.zshrc symlink
   local zshrc_symlink
+  local zshrc_dir
+
   zshrc_symlink="$(readlink "${HOME}/.zshrc")"
+  [[ -n "$zshrc_symlink" ]] || return 1
 
-  # Change to HOME to handle relative paths
-  cd "${HOME}" || return 1
-
-  # Get the absolute path to the dotfiles directory
-  cd "$(dirname "$zshrc_symlink")" && pwd
+  zshrc_dir="$(dirname "$zshrc_symlink")"
+  case "$zshrc_dir" in
+    /*) realpath "$zshrc_dir" ;;
+    *) realpath "${HOME}/${zshrc_dir}" ;;
+  esac
 }
 
-source "$(get_dotfiles_dir)/../scripts/lib/log.sh"
+source "$(get_dotfiles_dir)/../scripts/utils/log.sh"
 
 # Function to execute the source script
 run_source_script() {
@@ -126,215 +129,48 @@ fzl () {
   file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
-# Select a ghq-managed repository interactively with fzf.
-ghq-select () {
-  local query="$*"
-  local preview_cmd
-  local -a fzf_opts
-  preview_cmd='
-    git_status=$(git -C {} status --short 2>/dev/null)
-    if [ -n "$git_status" ]; then
-      printf "%s\n\n" "$git_status"
-    fi
-    eza --tree --level=2 --git-ignore --color=always --icons {}
-  '
-
-  fzf_opts=(--preview "$preview_cmd")
-  if [[ -n "$query" ]]; then
-    fzf_opts+=(--query "$query")
-  fi
-
-  ghq list --full-path | fzf "${fzf_opts[@]}"
-}
-
-# Find a ghq-managed repository from keywords.
-# When a query is given, prefer a direct match via zoxide, then a unique fuzzy match,
-# and finally fall back to interactive selection with the query prefilled.
-ghq-find () {
+# Reveal a repository by changing into it.
+reveal-repository () {
   local repo
-  local ghq_root
-  local query="$*"
-  local matches=""
-  local -a matched_repos
-
-  if [[ $# -eq 0 ]]; then
-    ghq-select
-    return
-  fi
-
-  ghq_root="$(ghq root)"
-  repo="$(zoxide query --base-dir "$ghq_root" "$@" 2>/dev/null)"
-  if [[ -n "$repo" ]]; then
-    print -r -- "$repo"
-    return 0
-  fi
-
-  matches="$(ghq list --full-path | fzf --filter="$query" || true)"
-  if [[ -n "$matches" ]]; then
-    matched_repos=("${(@f)matches}")
-    if (( ${#matched_repos} == 1 )); then
-      print -r -- "$matched_repos[1]"
-      return 0
-    fi
-  fi
-
-  ghq-select "$@"
-}
-
-# Change directory to a ghq-managed repository.
-ghq-cd () {
-  local repo
-  repo=$(ghq-find "$@") || return
+  repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
   cd "$repo"
 }
 
-# Open a ghq-managed repository in VSCode.
-ghq-code () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  code "$repo"
+# Temporary compatibility wrapper until this function can be removed.
+reveal-repository-with-code () {
+  command reveal-repository-with-code "$@"
 }
 
-# Open a ghq-managed repository in Fork.
-ghq-fork () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  fork "$repo"
+# Temporary compatibility wrapper until this function can be removed.
+reveal-repository-with-fork () {
+  command reveal-repository-with-fork "$@"
 }
 
-# Open a ghq-managed repository in lazygit.
-ghq-lazygit () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  lazygit -p "$repo"
+# Temporary compatibility wrapper until this function can be removed.
+reveal-repository-with-lazygit () {
+  command reveal-repository-with-lazygit "$@"
 }
 
-# Open a ghq-managed repository in Neovim.
-ghq-nvim () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  nvim "$repo"
+# Temporary compatibility wrapper until this function can be removed.
+reveal-repository-with-neovim () {
+  command reveal-repository-with-neovim "$@"
 }
 
-# Jump to a ghq-managed repository with zoxide.
-ghq-z () {
+# Reveal a repository with zoxide.
+reveal-repository-with-zoxide () {
   local repo
-  repo=$(ghq-find "$@") || return
+  repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
   z "$repo"
 }
 
-# Create or reuse a worktree for a local branch selected with fzf.
-create-worktree () {
-  local branch
-  local existing_path
-  local preview_cmd='git log --oneline --decorate --color=always -20 -- {}'
-  local repo_base_path
-  local repo_path
-  local repo_root
-
-  command -v git >/dev/null 2>&1 || {
-    warn "git is required"
-    return 1
-  }
-
-  command -v fzf >/dev/null 2>&1 || {
-    warn "fzf is required"
-    return 1
-  }
-
-  repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
-    warn "not inside a git repository"
-    return 1
-  }
-
-  branch="$(
-    git for-each-ref --format='%(refname:short)' refs/heads |
-      fzf --preview "$preview_cmd"
-  )" || return 1
-
-  [[ -n "$branch" ]] || return 1
-
-  existing_path="$(
-    git worktree list --porcelain |
-      awk -v branch="refs/heads/$branch" '
-        $1 == "worktree" { path = $2 }
-        $1 == "branch" && $2 == branch { print path; exit }
-      '
-  )"
-  if [[ -n "$existing_path" ]]; then
-    warn "worktree already exists: $existing_path"
-    print -r -- "$existing_path"
-    return 0
-  fi
-
-  repo_base_path="${repo_root%%+*}"
-  repo_path="${repo_base_path}+${branch//\//_}"
-  if [[ -d "$repo_path" ]]; then
-    warn "directory already exists: $repo_path"
-    print -r -- "$repo_path"
-    return 0
-  fi
-
-  git worktree add -q -- "$repo_path" "$branch" || return 1
-  info "created worktree: $repo_path"
-  print -r -- "$repo_path"
+# Temporary compatibility wrapper until this function can be removed.
+add-worktree () {
+  command add-worktree "$@"
 }
 
-# Remove a linked worktree selected with fzf.
-remove-worktree () {
-  local confirm
-  local current_path
-  local preview_cmd
-  local target_path
-
-  command -v git >/dev/null 2>&1 || {
-    warn "git is required"
-    return 1
-  }
-
-  command -v fzf >/dev/null 2>&1 || {
-    warn "fzf is required"
-    return 1
-  }
-
-  current_path="$(git rev-parse --show-toplevel 2>/dev/null)" || {
-    warn "not inside a git repository"
-    return 1
-  }
-
-  preview_cmd='
-    branch=$(git -C {} branch --show-current 2>/dev/null)
-    if [ -n "$branch" ]; then
-      printf "branch: %s\n\n" "$branch"
-    fi
-    git -C {} status --short --branch 2>/dev/null
-  '
-
-  target_path="$(
-    git worktree list --porcelain |
-      awk -v current="$current_path" '
-        $1 == "worktree" { path = $2; next }
-        $1 == "branch" && path != current { print path }
-      ' |
-      fzf --preview "$preview_cmd"
-  )" || return 1
-
-  [[ -n "$target_path" ]] || return 1
-
-  if [[ -n "$(git -C "$target_path" status --short 2>/dev/null)" ]]; then
-    warn "worktree has uncommitted changes: $target_path"
-    return 1
-  fi
-
-  printf "Remove worktree %s? [y/N]: " "$target_path"
-  read -r confirm
-  if [[ "$confirm" != [Yy] ]]; then
-    info "canceled"
-    return 1
-  fi
-
-  git worktree remove -- "$target_path" || return 1
-  info "removed worktree: $target_path"
+# Temporary compatibility wrapper until this function can be removed.
+delete-worktree () {
+  command delete-worktree "$@"
 }
 
 
