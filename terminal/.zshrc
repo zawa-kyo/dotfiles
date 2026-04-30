@@ -8,6 +8,7 @@
 # (N-/): もしそのディレクトリが存在していれば PATH に追加し、存在しなければ無視するオプション
 typeset -U path PATH
 path=(
+  "$HOME/.local/bin"(N-/)
   /opt/homebrew/bin(N-/)
   /opt/homebrew/sbin(N-/)
   /usr/bin
@@ -211,9 +212,9 @@ reveal-repository-with-lazygit () {
   lazygit -p "$repo"
 }
 
-# Reveal a repository in Neovim.
+# Temporary compatibility wrapper until this function can be removed.
 reveal-repository-with-neovim () {
-  "$(get_dotfiles_dir)/../scripts/local/reveal-repository-with-neovim" "$@"
+  command reveal-repository-with-neovim "$@"
 }
 
 # Reveal a repository with zoxide.
@@ -223,14 +224,14 @@ reveal-repository-with-zoxide () {
   z "$repo"
 }
 
-# Add or reuse a worktree for a local branch selected with fzf.
+# Temporary compatibility wrapper until this function can be removed.
 add-worktree () {
-  "$(get_dotfiles_dir)/../scripts/local/add-worktree" "$@"
+  command add-worktree "$@"
 }
 
-# Delete a linked worktree selected with fzf.
+# Temporary compatibility wrapper until this function can be removed.
 delete-worktree () {
-  "$(get_dotfiles_dir)/../scripts/local/delete-worktree" "$@"
+  command delete-worktree "$@"
 }
 
 
