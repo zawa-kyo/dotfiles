@@ -124,9 +124,11 @@ fzl () {
   file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
-# Select a ghq-managed repository with fzf.
+# Select a ghq-managed repository interactively with fzf.
 ghq-select () {
+  local query="$*"
   local preview_cmd
+  local -a fzf_opts
   preview_cmd='
     git_status=$(git -C {} status --short 2>/dev/null)
     if [ -n "$git_status" ]; then
@@ -135,34 +137,87 @@ ghq-select () {
     eza --tree --level=2 --git-ignore --color=always --icons {}
   '
 
-  ghq list --full-path | fzf --preview "$preview_cmd"
+  fzf_opts=(--preview "$preview_cmd")
+  if [[ -n "$query" ]]; then
+    fzf_opts+=(--query "$query")
+  fi
+
+  ghq list --full-path | fzf "${fzf_opts[@]}"
 }
 
-# Open a ghq-managed repository in Neovim.
-ghq-nvim () {
+# Find a ghq-managed repository from keywords.
+# When a query is given, prefer a direct match via zoxide, then a unique fuzzy match,
+# and finally fall back to interactive selection with the query prefilled.
+ghq-find () {
   local repo
-  repo=$(ghq-select) || return
-  nvim "$repo"
-}
+  local ghq_root
+  local query="$*"
+  local matches=""
+  local -a matched_repos
 
-# Open a ghq-managed repository in VSCode.
-ghq-code () {
-  local repo
-  repo=$(ghq-select) || return
-  code "$repo"
+  if [[ $# -eq 0 ]]; then
+    ghq-select
+    return
+  fi
+
+  ghq_root="$(ghq root)"
+  repo="$(zoxide query --base-dir "$ghq_root" "$@" 2>/dev/null)"
+  if [[ -n "$repo" ]]; then
+    print -r -- "$repo"
+    return 0
+  fi
+
+  matches="$(ghq list --full-path | fzf --filter="$query" || true)"
+  if [[ -n "$matches" ]]; then
+    matched_repos=("${(@f)matches}")
+    if (( ${#matched_repos} == 1 )); then
+      print -r -- "$matched_repos[1]"
+      return 0
+    fi
+  fi
+
+  ghq-select "$@"
 }
 
 # Change directory to a ghq-managed repository.
 ghq-cd () {
   local repo
-  repo=$(ghq-select) || return
+  repo=$(ghq-find "$@") || return
   cd "$repo"
+}
+
+# Open a ghq-managed repository in VSCode.
+ghq-code () {
+  local repo
+  repo=$(ghq-find "$@") || return
+  code "$repo"
+}
+
+# Open a ghq-managed repository in Fork.
+ghq-fork () {
+  local repo
+  repo=$(ghq-find "$@") || return
+  fork "$repo"
+}
+
+# Open a ghq-managed repository in lazygit.
+ghq-lazygit () {
+  local repo
+  repo=$(ghq-find "$@") || return
+  lazygit -p "$repo"
+}
+
+# Open a ghq-managed repository in Neovim.
+ghq-nvim () {
+  local repo
+  repo=$(ghq-find "$@") || return
+  nvim "$repo"
 }
 
 # Jump to a ghq-managed repository with zoxide.
 ghq-z () {
   local repo
-  repo=$(ghq-select) || return
+  repo=$(ghq-find "$@") || return
   z "$repo"
 }
 
