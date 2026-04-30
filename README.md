@@ -16,9 +16,9 @@ Then navigate to the cloned repository directory to execute subsequent commands:
 cd [cloned_repository_path]
 ```
 
-## Pre-Hook
+## Pre-commit
 
-### Enabling Pre-Hook for Protecting Sensitive Information
+### Enabling Pre-commit for Protecting Sensitive Information
 
 This pre-hook helps prevent accidental commits of sensitive information, such as passwords or API keys. Follow these steps to set up pre-commit for your repository.
 
@@ -96,7 +96,11 @@ To set up Bun’s global environment managed via this repository, run the follow
 mise run install-bun
 ```
 
-This script will: 1. Create a symbolic link between the Bun global directory and the repository’s managed directory. 2. Navigate to the Bun global directory. 3. Install dependencies listed in package.json.
+This script will:
+
+- Create a symbolic link between the Bun global directory and the repository's managed directory.
+- Navigate to the Bun global directory.
+- Install dependencies listed in `package.json`.
 
 After running the script, your Bun global environment will be fully configured and ready to use.
 
@@ -138,20 +142,20 @@ This will overwrite the existing `Brewfile` with the current list of installed p
 Here are some helpful commands:
 
 ```sh
-// Show explicitly installed packages (leaves):
-$ brew leaves
+# Show explicitly installed packages (leaves)
+brew leaves
 
-// Clean up unused dependencies:
+# Clean up unused dependencies
 brew autoremove
 
-// Delete cached software files:
-$ brew cleanup
+# Delete cached software files
+brew cleanup
 
-// Show dependencies of a specific package:
-$ brew deps [package_name]
+# Show dependencies of a specific package
+brew deps [package_name]
 
-// Show packages that depend on a specific package:
-$ brew uses [package_name]
+# Show packages that depend on a specific package
+brew uses [package_name]
 ```
 
 ## Task Runner
@@ -233,7 +237,7 @@ exec reveal-repository-with-neovim "$@"
 
 ### Abbreviation Policy
 
-Abbreviations should follow the same design principle as [nvim/lua/policies/keybinds-policy.md](/Users/kyohei/Git/ghq/github.com/zawa-kyo/dotfiles/nvim/lua/policies/keybinds-policy.md): prefer meaning-based composition over ad-hoc memorization.
+Abbreviations should follow the same design principle as [nvim/lua/policies/keybinds-policy.md](nvim/lua/policies/keybinds-policy.md): prefer meaning-based composition over ad-hoc memorization.
 
 The shell version of that rule is:
 
