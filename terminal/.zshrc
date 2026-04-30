@@ -129,87 +129,26 @@ fzl () {
   file_and_line=$(rg --no-heading --line-number --color=always '' | fzf --ansi --delimiter=: --preview 'bat --color=always {1} --highlight-line {2}' --bind 'enter:execute(nvim {1} +{2})')
 }
 
-# Select a ghq-managed repository interactively with fzf.
-ghq-select () {
-  local query="$*"
-  local preview_cmd
-  local -a fzf_opts
-  preview_cmd='
-    git_status=$(git -C {} status --short 2>/dev/null)
-    if [ -n "$git_status" ]; then
-      printf "%s\n\n" "$git_status"
-    fi
-    eza --tree --level=2 --git-ignore --color=always --icons {}
-  '
-
-  fzf_opts=(--preview "$preview_cmd")
-  if [[ -n "$query" ]]; then
-    fzf_opts+=(--query "$query")
-  fi
-
-  ghq list --full-path | fzf "${fzf_opts[@]}"
-}
-
-# Find a ghq-managed repository from keywords.
-# When a query is given, prefer a direct match via zoxide, then a unique fuzzy match,
-# and finally fall back to interactive selection with the query prefilled.
-ghq-find () {
-  local repo
-  local ghq_root
-  local query="$*"
-  local matches=""
-  local -a matched_repos
-
-  if [[ $# -eq 0 ]]; then
-    ghq-select
-    return
-  fi
-
-  ghq_root="$(ghq root)"
-  repo="$(zoxide query --base-dir "$ghq_root" "$@" 2>/dev/null)"
-  if [[ -n "$repo" ]]; then
-    print -r -- "$repo"
-    return 0
-  fi
-
-  matches="$(ghq list --full-path | fzf --filter="$query" || true)"
-  if [[ -n "$matches" ]]; then
-    matched_repos=("${(@f)matches}")
-    if (( ${#matched_repos} == 1 )); then
-      print -r -- "$matched_repos[1]"
-      return 0
-    fi
-  fi
-
-  ghq-select "$@"
-}
-
 # Reveal a repository by changing into it.
 reveal-repository () {
   local repo
-  repo=$(ghq-find "$@") || return
+  repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
   cd "$repo"
 }
 
-# Reveal a repository in VS Code.
+# Temporary compatibility wrapper until this function can be removed.
 reveal-repository-with-code () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  code "$repo"
+  command reveal-repository-with-code "$@"
 }
 
-# Reveal a repository in Fork.
+# Temporary compatibility wrapper until this function can be removed.
 reveal-repository-with-fork () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  fork "$repo"
+  command reveal-repository-with-fork "$@"
 }
 
-# Reveal a repository in lazygit.
+# Temporary compatibility wrapper until this function can be removed.
 reveal-repository-with-lazygit () {
-  local repo
-  repo=$(ghq-find "$@") || return
-  lazygit -p "$repo"
+  command reveal-repository-with-lazygit "$@"
 }
 
 # Temporary compatibility wrapper until this function can be removed.
@@ -220,7 +159,7 @@ reveal-repository-with-neovim () {
 # Reveal a repository with zoxide.
 reveal-repository-with-zoxide () {
   local repo
-  repo=$(ghq-find "$@") || return
+  repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
   z "$repo"
 }
 

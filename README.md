@@ -341,9 +341,6 @@ This scope is enough to validate the structure, generation flow, and install int
 The first migration intentionally leaves some existing shell functions in place.
 
 - `reveal-repository`
-- `reveal-repository-with-code`
-- `reveal-repository-with-fork`
-- `reveal-repository-with-lazygit`
 - `reveal-repository-with-zoxide`
 
 These should move into `scripts/local/` after the initial command sync flow is proven out with the first three commands.
