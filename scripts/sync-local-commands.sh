@@ -125,6 +125,7 @@ remove_stale_task_links() {
 main() {
   local command_path
   local command_name
+  local command_basename
   local description
   local -a command_names=()
 
@@ -135,7 +136,12 @@ main() {
   for command_path in "$local_commands_dir"/*; do
     [ -f "$command_path" ] || continue
 
-    command_name="$(basename "$command_path")"
+    command_basename="$(basename "$command_path")"
+    case "$command_basename" in
+      *.sh) command_name="${command_basename%.sh}" ;;
+      *.bash) command_name="${command_basename%.bash}" ;;
+      *) command_name="$command_basename" ;;
+    esac
     command_names+=("$command_name")
 
     install_symlink "$command_path" "$local_bin_dir/$command_name"
