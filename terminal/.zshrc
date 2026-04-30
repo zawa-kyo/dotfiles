@@ -136,41 +136,11 @@ reveal-repository () {
   cd "$repo"
 }
 
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-code () {
-  command reveal-repository-with-code "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-fork () {
-  command reveal-repository-with-fork "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-lazygit () {
-  command reveal-repository-with-lazygit "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-reveal-repository-with-neovim () {
-  command reveal-repository-with-neovim "$@"
-}
-
 # Reveal a repository with zoxide.
 reveal-repository-with-zoxide () {
   local repo
   repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
   z "$repo"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-add-worktree () {
-  command add-worktree "$@"
-}
-
-# Temporary compatibility wrapper until this function can be removed.
-delete-worktree () {
-  command delete-worktree "$@"
 }
 
 
