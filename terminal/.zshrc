@@ -159,6 +159,13 @@ ghq-fork () {
   fork "$repo"
 }
 
+# Open a ghq-managed repository in lazygit.
+ghq-lazygit () {
+  local repo
+  repo=$(ghq-select) || return
+  lazygit -p "$repo"
+}
+
 # Change directory to a ghq-managed repository.
 ghq-cd () {
   local repo

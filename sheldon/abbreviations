@@ -27,6 +27,7 @@ abbr ':wq'='exit'
 abbr 'gn'='ghq-nvim'
 abbr 'gc'='ghq-code'
 abbr 'gf'='ghq-fork'
+abbr 'gl'='ghq-lazygit'
 abbr 'gz'='ghq-z'
 
 
