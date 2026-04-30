@@ -3,6 +3,7 @@
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
 . "$script_dir/lib/dotfiles-links.sh"
+. "$script_dir/lib/log.sh"
 
 # Print the canonical absolute path for a file or directory.
 resolve_path() {
@@ -22,17 +23,14 @@ install() {
   # Check if source exists
   if [ "$type" = "file" ]; then
     if [ ! -f "$source_file" ]; then
-      echo "󰅙 $source_basename not found in dotfiles!"
-      exit 1
+      fail "$source_basename not found in dotfiles!"
     fi
   elif [ "$type" = "dir" ]; then
     if [ ! -d "$source_file" ]; then
-      echo "󰅙 $source_basename directory not found in dotfiles!"
-      exit 1
+      fail "$source_basename directory not found in dotfiles!"
     fi
   else
-    echo "󰅙 Invalid type: $type. Use 'file' or 'dir'."
-    exit 1
+    fail "Invalid type: $type. Use 'file' or 'dir'."
   fi
 
   # Create target parent directory if it doesn't exist
@@ -40,10 +38,9 @@ install() {
   target_parent_dir="$(dirname "$target_file")"
   if [ ! -d "$target_parent_dir" ]; then
     if mkdir -p "$target_parent_dir"; then
-      echo "󰄳 Created directory: $target_parent_dir"
+      info "Created directory: $target_parent_dir"
     else
-      echo "󰅙 Failed to create directory: $target_parent_dir"
-      exit 1
+      fail "Failed to create directory: $target_parent_dir"
     fi
   fi
 
@@ -53,29 +50,27 @@ install() {
       local existing_target
       existing_target="$(readlink "$target_file")"
       if [ "$(resolve_path "$target_file")" = "$(resolve_path "$source_file")" ]; then
-        echo "󰄳 $source_basename already linked."
+        info "$source_basename already linked."
         return 0
       fi
       if [ ! -e "$(dirname "$target_file")/$existing_target" ] && [ ! -e "$existing_target" ]; then
         rm "$target_file"
-        echo "󰄳 Removed stale symlink: $target_file"
+        info "Removed stale symlink: $target_file"
       else
-        echo "󰅙 $target_file points to a different source ($existing_target)."
-        exit 1
+        fail "$target_file points to a different source ($existing_target)."
       fi
     fi
     if [ -e "$target_file" ] || [ -L "$target_file" ]; then
-      echo "󰅙 $target_file already exists and is not a symlink! Skipping link!"
+      warn "$target_file already exists and is not a symlink! Skipping link!"
       return 0
     fi
   fi
 
   # Create symbolic link
   if ln -s "$source_file" "$target_file"; then
-    echo "󰄳 $source_basename linked successfully."
+    info "$source_basename linked successfully."
   else
-    echo "󰅙 Failed to link $source_basename!"
-    exit 1
+    fail "Failed to link $source_basename!"
   fi
 }
 

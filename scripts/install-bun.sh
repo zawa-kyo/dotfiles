@@ -9,21 +9,7 @@ global_dir="$HOME/.bun/install/global"
 global_parent_dir="$(dirname "$global_dir")"
 global_bin_dir="$HOME/.bun/bin"
 
-# Print an informational status message.
-info() {
-  echo "󰄳 $1"
-}
-
-# Print a warning message to stderr.
-warn() {
-  echo "󰅙 $1" >&2
-}
-
-# Abort the script with an error message.
-fail() {
-  warn "$1"
-  exit 1
-}
+. "$script_dir/lib/log.sh"
 
 # Ensure the repo-managed Bun directory exists.
 ensure_bun_dir() {
