@@ -27,14 +27,14 @@ checksum = "sha256:d73608ade168b24a29ddfed119896eb95ff7f5addcd01cab3bfff3c93deee
 url = "https://github.com/atuinsh/atuin/releases/download/v18.15.2/atuin-aarch64-apple-darwin.tar.gz"
 
 [[tools.aws-cli]]
-version = "2.34.38"
+version = "2.34.39"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.38.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.39.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.38.pkg"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.39.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
