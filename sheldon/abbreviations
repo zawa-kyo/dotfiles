@@ -53,6 +53,9 @@ abbr 'aw'='add-worktree'
 # delete-worktree
 abbr 'dw'='delete-worktree'
 
+# search-task
+abbr 'st'='search-task'
+
 
 # ===========================
 # fastfetch

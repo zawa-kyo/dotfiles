@@ -256,6 +256,7 @@ Examples of object categories:
 - `w`: worktree
 - `r`: repository
 - `b`: branch
+- `t`: task
 
 Examples of qualifiers:
 
@@ -291,6 +292,7 @@ Current examples in this repository:
 - `rrz` -> `reveal-repository-with-zoxide`
 - `aw` -> `add-worktree`
 - `dw` -> `delete-worktree`
+- `st` -> `search-task`
 
 ### Operational Rule
 
