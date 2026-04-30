@@ -152,6 +152,13 @@ ghq-code () {
   code "$repo"
 }
 
+# Open a ghq-managed repository in Fork.
+ghq-fork () {
+  local repo
+  repo=$(ghq-select) || return
+  fork "$repo"
+}
+
 # Change directory to a ghq-managed repository.
 ghq-cd () {
   local repo
