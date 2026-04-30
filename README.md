@@ -55,21 +55,21 @@ Example:
 
 ### Interactive worktree
 
-When `terminal/.zshrc` is linked to `~/.zshrc`, `create-worktree` lets you select a local branch with `fzf` and creates a worktree next to the current repository.
+When `terminal/.zshrc` is linked to `~/.zshrc`, `add-worktree` lets you select a local branch with `fzf` and creates a worktree next to the current repository.
 
 ```sh
-create-worktree
+add-worktree
 ```
 
 To remove an existing linked worktree interactively:
 
 ```sh
-remove-worktree
+delete-worktree
 ```
 
 - The worktree path is created as `[repo]+[branch]`, with `/` in branch names replaced by `_`.
 - If the selected branch already has a worktree, the existing path is printed instead of creating a duplicate.
-- `remove-worktree` excludes the current worktree and stops if the selected worktree has uncommitted changes.
+- `delete-worktree` excludes the current worktree and stops if the selected worktree has uncommitted changes.
 - `git` and `fzf` are required.
 
 ## VSCode
@@ -178,9 +178,9 @@ The intended split is:
 
 This gives us three access paths for the same utility:
 
-1. Direct execution: `ghq-nvim`
-2. Interactive catalog execution: `mise run ghq-nvim`
-3. Short daily input: an abbrev that expands to `ghq-nvim`
+1. Direct execution: `reveal-repository-with-neovim`
+2. Interactive catalog execution: `mise run reveal-repository-with-neovim`
+3. Short daily input: an abbrev that expands to `reveal-repository-with-neovim`
 
 ### Why This Split
 
@@ -209,8 +209,8 @@ Example:
 
 ```sh
 #!/usr/bin/env bash
-#MISE description="Select a ghq repository with fzf and open it in Neovim"
-exec ghq-nvim "$@"
+#MISE description="Select a repository with fzf and open it in Neovim"
+exec reveal-repository-with-neovim "$@"
 ```
 
 ### Abbreviation Policy
@@ -265,14 +265,14 @@ Good examples:
 
 Current examples in this repository:
 
-- `rr` -> `ghq-cd`
-- `rrn` -> `ghq-nvim`
-- `rrc` -> `ghq-code`
-- `rrf` -> `ghq-fork`
-- `rrl` -> `ghq-lazygit`
-- `rrz` -> `ghq-z`
-- `aw` -> `create-worktree`
-- `dw` -> `remove-worktree`
+- `rr` -> `reveal-repository`
+- `rrn` -> `reveal-repository-with-neovim`
+- `rrc` -> `reveal-repository-with-code`
+- `rrf` -> `reveal-repository-with-fork`
+- `rrl` -> `reveal-repository-with-lazygit`
+- `rrz` -> `reveal-repository-with-zoxide`
+- `aw` -> `add-worktree`
+- `dw` -> `delete-worktree`
 
 ### Operational Rule
 

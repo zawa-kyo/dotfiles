@@ -181,50 +181,50 @@ ghq-find () {
   ghq-select "$@"
 }
 
-# Change directory to a ghq-managed repository.
-ghq-cd () {
+# Reveal a repository by changing into it.
+reveal-repository () {
   local repo
   repo=$(ghq-find "$@") || return
   cd "$repo"
 }
 
-# Open a ghq-managed repository in VSCode.
-ghq-code () {
+# Reveal a repository in VS Code.
+reveal-repository-with-code () {
   local repo
   repo=$(ghq-find "$@") || return
   code "$repo"
 }
 
-# Open a ghq-managed repository in Fork.
-ghq-fork () {
+# Reveal a repository in Fork.
+reveal-repository-with-fork () {
   local repo
   repo=$(ghq-find "$@") || return
   fork "$repo"
 }
 
-# Open a ghq-managed repository in lazygit.
-ghq-lazygit () {
+# Reveal a repository in lazygit.
+reveal-repository-with-lazygit () {
   local repo
   repo=$(ghq-find "$@") || return
   lazygit -p "$repo"
 }
 
-# Open a ghq-managed repository in Neovim.
-ghq-nvim () {
+# Reveal a repository in Neovim.
+reveal-repository-with-neovim () {
   local repo
   repo=$(ghq-find "$@") || return
   nvim "$repo"
 }
 
-# Jump to a ghq-managed repository with zoxide.
-ghq-z () {
+# Reveal a repository with zoxide.
+reveal-repository-with-zoxide () {
   local repo
   repo=$(ghq-find "$@") || return
   z "$repo"
 }
 
-# Create or reuse a worktree for a local branch selected with fzf.
-create-worktree () {
+# Add or reuse a worktree for a local branch selected with fzf.
+add-worktree () {
   local branch
   local existing_path
   local preview_cmd='git log --oneline --decorate --color=always -20 -- {}'
@@ -280,8 +280,8 @@ create-worktree () {
   print -r -- "$repo_path"
 }
 
-# Remove a linked worktree selected with fzf.
-remove-worktree () {
+# Delete a linked worktree selected with fzf.
+delete-worktree () {
   local confirm
   local current_path
   local preview_cmd
