@@ -43,6 +43,8 @@ get_dotfiles_dir() {
   cd "$(dirname "$zshrc_symlink")" && pwd
 }
 
+source "$(get_dotfiles_dir)/../scripts/lib/log.sh"
+
 # Function to execute the source script
 run_source_script() {
   local current_dir
@@ -219,6 +221,120 @@ ghq-z () {
   local repo
   repo=$(ghq-find "$@") || return
   z "$repo"
+}
+
+# Create or reuse a worktree for a local branch selected with fzf.
+create-worktree () {
+  local branch
+  local existing_path
+  local preview_cmd='git log --oneline --decorate --color=always -20 -- {}'
+  local repo_base_path
+  local repo_path
+  local repo_root
+
+  command -v git >/dev/null 2>&1 || {
+    warn "git is required"
+    return 1
+  }
+
+  command -v fzf >/dev/null 2>&1 || {
+    warn "fzf is required"
+    return 1
+  }
+
+  repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+    warn "not inside a git repository"
+    return 1
+  }
+
+  branch="$(
+    git for-each-ref --format='%(refname:short)' refs/heads |
+      fzf --preview "$preview_cmd"
+  )" || return 1
+
+  [[ -n "$branch" ]] || return 1
+
+  existing_path="$(
+    git worktree list --porcelain |
+      awk -v branch="refs/heads/$branch" '
+        $1 == "worktree" { path = $2 }
+        $1 == "branch" && $2 == branch { print path; exit }
+      '
+  )"
+  if [[ -n "$existing_path" ]]; then
+    warn "worktree already exists: $existing_path"
+    print -r -- "$existing_path"
+    return 0
+  fi
+
+  repo_base_path="${repo_root%%+*}"
+  repo_path="${repo_base_path}+${branch//\//_}"
+  if [[ -d "$repo_path" ]]; then
+    warn "directory already exists: $repo_path"
+    print -r -- "$repo_path"
+    return 0
+  fi
+
+  git worktree add -q -- "$repo_path" "$branch" || return 1
+  info "created worktree: $repo_path"
+  print -r -- "$repo_path"
+}
+
+# Remove a linked worktree selected with fzf.
+remove-worktree () {
+  local confirm
+  local current_path
+  local preview_cmd
+  local target_path
+
+  command -v git >/dev/null 2>&1 || {
+    warn "git is required"
+    return 1
+  }
+
+  command -v fzf >/dev/null 2>&1 || {
+    warn "fzf is required"
+    return 1
+  }
+
+  current_path="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+    warn "not inside a git repository"
+    return 1
+  }
+
+  preview_cmd='
+    branch=$(git -C {} branch --show-current 2>/dev/null)
+    if [ -n "$branch" ]; then
+      printf "branch: %s\n\n" "$branch"
+    fi
+    git -C {} status --short --branch 2>/dev/null
+  '
+
+  target_path="$(
+    git worktree list --porcelain |
+      awk -v current="$current_path" '
+        $1 == "worktree" { path = $2; next }
+        $1 == "branch" && path != current { print path }
+      ' |
+      fzf --preview "$preview_cmd"
+  )" || return 1
+
+  [[ -n "$target_path" ]] || return 1
+
+  if [[ -n "$(git -C "$target_path" status --short 2>/dev/null)" ]]; then
+    warn "worktree has uncommitted changes: $target_path"
+    return 1
+  fi
+
+  printf "Remove worktree %s? [y/N]: " "$target_path"
+  read -r confirm
+  if [[ "$confirm" != [Yy] ]]; then
+    info "canceled"
+    return 1
+  fi
+
+  git worktree remove -- "$target_path" || return 1
+  info "removed worktree: $target_path"
 }
 
 

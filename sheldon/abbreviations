@@ -30,6 +30,8 @@ abbr 'gf'='ghq-fork'
 abbr 'gl'='ghq-lazygit'
 abbr 'gn'='ghq-nvim'
 abbr 'gz'='ghq-z'
+abbr 'cw'='create-worktree'
+abbr 'rw'='remove-worktree'
 
 
 # ===========================

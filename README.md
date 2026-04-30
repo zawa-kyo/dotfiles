@@ -53,6 +53,25 @@ Example:
   email = your-work-email@example.com
 ```
 
+### Interactive worktree
+
+When `terminal/.zshrc` is linked to `~/.zshrc`, `create-worktree` lets you select a local branch with `fzf` and creates a worktree next to the current repository.
+
+```sh
+create-worktree
+```
+
+To remove an existing linked worktree interactively:
+
+```sh
+remove-worktree
+```
+
+- The worktree path is created as `[repo]+[branch]`, with `/` in branch names replaced by `_`.
+- If the selected branch already has a worktree, the existing path is printed instead of creating a duplicate.
+- `remove-worktree` excludes the current worktree and stops if the selected worktree has uncommitted changes.
+- `git` and `fzf` are required.
+
 ## VSCode
 
 ### Caution
