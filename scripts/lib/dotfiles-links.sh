@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "$script_dir/log.sh"
+
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dotfiles_dir="$1"
@@ -21,6 +24,18 @@ populate_dotfiles_links() {
     "$dotfiles_dir/starship/starship.toml:$HOME/.config/starship.toml"
     "$dotfiles_dir/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
   )
+
+  case "$(uname -s)" in
+    Darwin)
+      file_links+=(
+        "$dotfiles_dir/vscode/settings.jsonc:$HOME/Library/Application Support/Code/User/settings.json"
+        "$dotfiles_dir/vscode/keybindings.jsonc:$HOME/Library/Application Support/Code/User/keybindings.json"
+      )
+      ;;
+    *)
+      warn "Skipping VS Code links: unsupported OS for ~/Library/Application Support/Code/User"
+      ;;
+  esac
 
   directory_links=(
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
