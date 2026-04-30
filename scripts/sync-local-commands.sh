@@ -4,7 +4,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
-. "$script_dir/utils/log.sh"
+source "$script_dir/utils/log.sh"
 
 local_commands_dir="$dotfiles_dir/scripts/local"
 generated_tasks_dir="$dotfiles_dir/.cache/mise/tasks"

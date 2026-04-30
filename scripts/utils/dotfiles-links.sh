@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 dotfiles_links_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-. "$dotfiles_links_dir/log.sh"
+source "$dotfiles_links_dir/log.sh"
 
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
