@@ -39,7 +39,10 @@ get_dotfiles_dir() {
   [[ -n "$zshrc_symlink" ]] || return 1
 
   zshrc_dir="$(dirname "$zshrc_symlink")"
-  realpath "${HOME}/${zshrc_dir}"
+  case "$zshrc_dir" in
+    /*) realpath "$zshrc_dir" ;;
+    *) realpath "${HOME}/${zshrc_dir}" ;;
+  esac
 }
 
 source "$(get_dotfiles_dir)/../scripts/utils/log.sh"

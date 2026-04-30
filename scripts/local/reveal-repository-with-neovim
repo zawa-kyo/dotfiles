@@ -29,7 +29,8 @@ ghq_find() {
   local ghq_root
   local query="${*:-}"
   local matches=""
-  local -a matched_repos
+  local matched_count=0
+  local matched_repo=""
 
   if [ "$#" -eq 0 ]; then
     ghq_select
@@ -45,9 +46,15 @@ ghq_find() {
 
   matches="$(ghq list --full-path | fzf --filter="$query" || true)"
   if [ -n "$matches" ]; then
-    mapfile -t matched_repos <<< "$matches"
-    if [ "${#matched_repos[@]}" -eq 1 ]; then
-      printf '%s\n' "${matched_repos[0]}"
+    while IFS= read -r repo; do
+      [ -n "$repo" ] || continue
+      matched_count=$((matched_count + 1))
+      matched_repo="$repo"
+    done <<EOF
+$matches
+EOF
+    if [ "$matched_count" -eq 1 ]; then
+      printf '%s\n' "$matched_repo"
       return 0
     fi
   fi
