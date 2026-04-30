@@ -103,7 +103,12 @@ return {
       },
       cmdline = {
         enabled = true,
-        keymap = { preset = "inherit" },
+        keymap = {
+          -- Keep cmdline behavior native to blink.cmp so cancel/hide semantics
+          -- match command-line completion instead of insert-mode completion.
+          preset = "cmdline",
+          ["<Esc>"] = { "cancel", "fallback" },
+        },
         completion = {
           menu = { auto_show = true },
         },
