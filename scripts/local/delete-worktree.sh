@@ -3,13 +3,9 @@
 
 set -euo pipefail
 
-warn() {
-  printf '󰅙 %s\n' "$1" >&2
-}
-
-info() {
-  printf '󰄳 %s\n' "$1"
-}
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+. "$script_dir/../utils/log.sh"
 
 main() {
   local confirm
