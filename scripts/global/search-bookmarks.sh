@@ -202,11 +202,27 @@ main() {
 
   selected="$(
     printf '%s\n' "$bookmarks" |
-      fzf \
+      SHELL=/bin/sh fzf \
         --prompt='bookmarks> ' \
         --delimiter="$(printf '\t')" \
         --with-nth=1,2,3,4 \
-        --preview 'printf "Browser: %s\nLocation: %s\nTitle: %s\nURL: %s\n" {1} {2} {3} {4}'
+        --preview-window='right,60%,wrap' \
+        --preview '
+          /bin/sh -c '"'"'
+            browser="$1"
+            location="$2"
+            title="$3"
+            url="$4"
+            host="${url#*://}"
+            host="${host%%/*}"
+
+            printf "Browser  : %s\n" "$browser"
+            printf "Location : %s\n" "$location"
+            printf "Title    : %s\n" "$title"
+            printf "Host     : %s\n" "${host:-N/A}"
+            printf "URL      : %s\n" "$url"
+          '"'"' sh {1} {2} {3} {4}
+        '
   )" || exit 1
 
   [ -n "$selected" ] || exit 1
