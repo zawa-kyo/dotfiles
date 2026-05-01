@@ -111,7 +111,7 @@ abbr 'lt'='eza --tree --level=2 --color=always --group-directories-first'
 # find
 # ===========================
 
-# Replace 'ls' command
+# Replace 'find' command
 abbr 'find'='fd'
 
 # Include hidden files, ignore .gitignore rules.
