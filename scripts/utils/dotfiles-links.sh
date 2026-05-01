@@ -21,7 +21,6 @@ populate_dotfiles_links() {
     "$dotfiles_dir/terminal/.zprofile:$HOME/.zprofile"
     "$dotfiles_dir/terminal/.zshenv:$HOME/.zshenv"
     "$dotfiles_dir/terminal/.zshrc:$HOME/.zshrc"
-    "$dotfiles_dir/ai/codex/config.toml:$dir_codex/config.toml"
     "$dotfiles_dir/borders/bordersrc:$HOME/.config/borders/bordersrc"
     "$dotfiles_dir/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
     "$dotfiles_dir/mise/config.global.toml:$HOME/.config/mise/mise.toml"
