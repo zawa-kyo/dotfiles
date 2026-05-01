@@ -88,37 +88,30 @@ abbr 'neofetch'='fastfetch'
 # ===========================
 
 # Replaced 'ls' command
-abbr 'ls'='eza --color=always --group-directories-first --icons'
+abbr 'ls'='eza -1 --group-directories-first'
 
-# One file per line, with icons.
-abbr 'lS'='eza -1 --color=always --group-directories-first --icons'
-
-# Long listing of all files with icons and octal permissions.
-abbr 'll'='eza -long --icons --octal-permissions --group-directories-first'
-
-# Show all files in a long list, grouped, with directories first.
-abbr 'la'='eza --long --all --group --group-directories-first'
+# Show all files, one file per line.
+abbr 'la'='eza -1 --all --group-directories-first'
 
 # Show only hidden files.
-abbr 'l.'='eza -a | grep -E '^\.''
+abbr 'lh'='eza -1 -d --group-directories-first .*(DN)'
 
-# Tree view with directories first and icons.
-# Note: Using '-L' after setting '--level' overrides the previous level value.
-abbr 'lt'='eza --tree --level=2 --color=always --group-directories-first --icons'
+# Tree view with directories.
+abbr 'tree'='eza -T --group-directories-first -L=2'
 
 
 # ===========================
 # find
 # ===========================
 
-# Replace 'ls' command
+# Replace 'find' command
 abbr 'find'='fd'
 
 # Include hidden files, ignore .gitignore rules.
 abbr 'fda'='fd --hidden --no-ignore'
 abbr 'finda'='fd --hidden --no-ignore'
 
-# Perform a case-insensitive search
+# Perform a case-sensitive search.
 abbr 'fds'='fd --case-sensitive'
 
 
@@ -127,16 +120,8 @@ abbr 'fds'='fd --case-sensitive'
 # ===========================
 
 # Replace 'grep' command
-abbr 'grep'='rg'
+abbr 'grep'='rg --ignore-case'
 
-# Perform a case-insensitive search
-abbr 'greps'='rg --case-sensitive'
+# Perform a case-sensitive search.
 abbr 'rgs'='rg --case-sensitive'
-
-
-# ===========================
-# bat
-# ===========================
-
-# Set the default theme to 'Nord'
-abbr 'bat'='bat --theme="Nord"'
+abbr 'greps'='rg --case-sensitive'

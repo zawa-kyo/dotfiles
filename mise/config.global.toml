@@ -31,6 +31,7 @@ fastfetch = "latest"
 fd = "latest"
 ffmpeg = "latest"
 fzf = "latest"
+gat = "latest"
 gh = "latest"
 ghq = "latest"
 gitleaks = "latest"
@@ -43,15 +44,36 @@ starship = "latest"
 yazi = "latest"
 zoxide = "latest"
 
+[tool_alias]
+gat = "github:koki-develop/gat"
+
 [settings]
 lockfile = true
 lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [env]
+BAT_THEME = "Nord"
+BAT_STYLE = "changes,header,snip"
+BAT_PAGER = "less -RF"
+
+EZA_ICONS_AUTO = "1"   # Enable icons automatically
+EZA_ICON_SPACING = "2"
+
+GAT_THEME = "nord"
+
 GOPATH = "{{env.HOME}}"
+
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
 ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
+
+DIR_CLAUDE_CODE = "{{env.HOME}}/.claude"
+DIR_CLAUDE_CODE_SKILLS = "{{env.DIR_CLAUDE_CODE}}/skills"
+DIR_CODEX = "{{env.HOME}}/.codex"
+DIR_CODEX_SKILLS = "{{env.DIR_CODEX}}/skills"
+DIR_GEMINI_CLI = "{{env.HOME}}/.gemini"
+DIR_GEMINI_CLI_SKILLS = "{{env.DIR_GEMINI_CLI}}/skills"
+
 _.path = [
   "{{env.HOME}}/.local/bin",                 # Local
   "{{env.HOME}}/.bun/bin",                   # Bun

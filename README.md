@@ -88,6 +88,23 @@ $ scripts/local/link-dotfiles.sh
 
 If those files already exist and are not symlinks, the script leaves them in place and prints a warning. On non-macOS systems, it skips the VS Code links and prints a warning because the current target path is macOS-specific.
 
+## AI Tools
+
+AI tool configuration is grouped under `ai/`.
+
+- `ai/skills/` is linked to `~/.skills`.
+- Claude Code, Codex, and Gemini CLI skills directories are linked to the shared `~/.skills` directory.
+
+The canonical paths are exposed through `mise/config.global.toml` as `DIR_*` environment variables:
+
+```toml
+DIR_CLAUDE_CODE_SKILLS = "{{env.DIR_CLAUDE_CODE}}/skills"
+DIR_CODEX_SKILLS = "{{env.DIR_CODEX}}/skills"
+DIR_GEMINI_CLI_SKILLS = "{{env.DIR_GEMINI_CLI}}/skills"
+```
+
+The source path for `ai/skills/` is resolved from the cloned repository path by the link script, so it is not hard-coded in global environment variables.
+
 ## Bun
 
 To set up Bun’s global environment managed via this repository, run the following command:
