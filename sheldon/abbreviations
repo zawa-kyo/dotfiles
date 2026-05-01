@@ -60,6 +60,9 @@ abbr 'sb'='search-bookmarks'
 # search-bookmarks-chrome
 abbr 'sbc'='search-bookmarks-chrome'
 
+# search-bookmarks-safari
+abbr 'sbs'='search-bookmarks-safari'
+
 # search-file-with-neovim
 abbr 'sfn'='search-file-with-neovim'
 
@@ -68,9 +71,6 @@ abbr 'sg'='search-google'
 
 # search-line-with-neovim
 abbr 'sln'='search-line-with-neovim'
-
-# search-bookmarks-safari
-abbr 'sbs'='search-bookmarks-safari'
 
 # search-task
 abbr 'st'='search-task'
