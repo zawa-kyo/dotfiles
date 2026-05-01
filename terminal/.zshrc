@@ -55,8 +55,8 @@ run_source_script() {
   local dotfiles_dir
   dotfiles_dir="$(get_dotfiles_dir)" || return 1
 
-  # Execute the script from the scripts directory
-  eval "$(bash "$dotfiles_dir/../scripts/local/source.sh")"
+  # Source local shell snippets into the current session
+  source "$dotfiles_dir/../scripts/local/source.sh"
 
   # Return to the original working directory
   cd "$current_dir"

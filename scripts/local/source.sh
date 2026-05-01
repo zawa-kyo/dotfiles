@@ -1,33 +1,29 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-# Prints content of matching files so zsh can 'eval' it later
-emit_sources() {
+SOURCE_SCRIPT_PATH="${${(%):-%N}:A}"
+SOURCE_SCRIPT_DIR="${SOURCE_SCRIPT_PATH:h}"
+source "${SOURCE_SCRIPT_DIR}/../utils/log.sh"
+
+source_local_files() {
   local config_dir="$1"
   local extension="$2"
   local found=false
+  local file
 
-  # Check if directory exists
-  if [ ! -d "$config_dir" ]; then
-    echo "echo '󰅙 Directory not found: $config_dir' 1>&2"
+  if [[ ! -d "$config_dir" ]]; then
+    missing "$config_dir"
     return
   fi
 
-  # Iterate through files with the given extension
-  for file in "$config_dir/"*"$extension"; do
-    [ -e "$file" ] || continue
+  for file in "$config_dir"/*"$extension"(N); do
     found=true
-
-    # Output the file content directly (zsh-compatible syntax expected)
-    cat "$file"
-
-    # Emit an echo command for logging
-    echo "echo '󰄳 Sourced: $file' 1>&2"
+    source "$file"
+    sourced "$file"
   done
 
-  # If no file was found
-  if [ "$found" = false ]; then
-    echo "echo '󰒡 No *$extension files found in $config_dir' 1>&2"
+  if [[ "$found" == false ]]; then
+    not_found "$config_dir" "$extension"
   fi
 }
 
-emit_sources "$HOME/local.d" ".zsh"
+source_local_files "$HOME/local.d" ".zsh"
