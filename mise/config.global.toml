@@ -54,6 +54,8 @@ minimum_release_age = "7d"
 
 [env]
 BAT_THEME = "Nord"
+BAT_STYLE = "changes,header,snip"
+BAT_PAGER = "less -RF"
 GAT_THEME = "nord"
 
 GOPATH = "{{env.HOME}}"
