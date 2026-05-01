@@ -6,6 +6,14 @@ source "$dotfiles_links_dir/log.sh"
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dotfiles_dir="$1"
+  local dir_skills="${DIR_SKILLS:-$dotfiles_dir/ai/skills}"
+  local dir_skills_link="$HOME/.skills"
+  local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
+  local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
+  local dir_codex="${DIR_CODEX:-$HOME/.codex}"
+  local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
+  local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
+  local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
 
   file_links=(
     "$dotfiles_dir/git/.gitconfig:$HOME/.gitconfig"
@@ -15,7 +23,6 @@ populate_dotfiles_links() {
     "$dotfiles_dir/terminal/.zshenv:$HOME/.zshenv"
     "$dotfiles_dir/terminal/.zshrc:$HOME/.zshrc"
     "$dotfiles_dir/borders/bordersrc:$HOME/.config/borders/bordersrc"
-    "$dotfiles_dir/codex/config.toml:$HOME/.codex/config.toml"
     "$dotfiles_dir/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
     "$dotfiles_dir/mise/config.global.toml:$HOME/.config/mise/mise.toml"
     "$dotfiles_dir/mise/config.global.lock:$HOME/.config/mise/mise.lock"
@@ -38,6 +45,10 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
+    "$dir_skills:$dir_skills_link"
+    "$dir_skills_link:$dir_claude_code_skills"
+    "$dir_skills_link:$dir_codex_skills"
+    "$dir_skills_link:$dir_gemini_cli_skills"
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
     "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
   )

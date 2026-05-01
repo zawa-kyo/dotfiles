@@ -59,8 +59,17 @@ BAT_PAGER = "less -RF"
 GAT_THEME = "nord"
 
 GOPATH = "{{env.HOME}}"
+
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
 ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
+
+DIR_CLAUDE_CODE = "{{env.HOME}}/.claude"
+DIR_CLAUDE_CODE_SKILLS = "{{env.DIR_CLAUDE_CODE}}/skills"
+DIR_CODEX = "{{env.HOME}}/.codex"
+DIR_CODEX_SKILLS = "{{env.DIR_CODEX}}/skills"
+DIR_GEMINI_CLI = "{{env.HOME}}/.gemini"
+DIR_GEMINI_CLI_SKILLS = "{{env.DIR_GEMINI_CLI}}/skills"
+
 _.path = [
   "{{env.HOME}}/.local/bin",                 # Local
   "{{env.HOME}}/.bun/bin",                   # Bun
