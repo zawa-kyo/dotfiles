@@ -31,6 +31,7 @@ fastfetch = "latest"
 fd = "latest"
 ffmpeg = "latest"
 fzf = "latest"
+gat = "latest"
 gh = "latest"
 ghq = "latest"
 gitleaks = "latest"
@@ -43,12 +44,20 @@ starship = "latest"
 yazi = "latest"
 zoxide = "latest"
 
+[tool_alias]
+gat = "github:koki-develop/gat"
+
 [settings]
 lockfile = true
 lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [env]
+BAT_THEME = "Nord"
+BAT_STYLE = "changes,header,snip"
+BAT_PAGER = "less -RF"
+GAT_THEME = "nord"
+
 GOPATH = "{{env.HOME}}"
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
 ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
