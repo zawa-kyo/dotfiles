@@ -53,6 +53,9 @@ lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [env]
+BAT_THEME = "Nord"
+GAT_THEME = "nord"
+
 GOPATH = "{{env.HOME}}"
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
 ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
