@@ -11,8 +11,8 @@ resolve_script_dir() {
     link_target="$(readlink "$source_path")"
 
     case "$link_target" in
-      /*) source_path="$link_target" ;;
-      *) source_path="$source_dir/$link_target" ;;
+    /*) source_path="$link_target" ;;
+    *) source_path="$source_dir/$link_target" ;;
     esac
   done
 

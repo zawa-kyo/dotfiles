@@ -63,9 +63,9 @@ sync_global_bins() {
     fi
 
     case "$resolved_link" in
-      "$managed_root"/node_modules/*)
-        rm "$existing_link"
-        ;;
+    "$managed_root"/node_modules/*)
+      rm "$existing_link"
+      ;;
     esac
   done
 

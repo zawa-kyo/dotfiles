@@ -55,11 +55,11 @@ main() {
   printf 'Remove worktree %s? [y/N]: ' "$target_path"
   read -r confirm
   case "$confirm" in
-    [Yy]) ;;
-    *)
-      info "canceled"
-      exit 1
-      ;;
+  [Yy]) ;;
+  *)
+    info "canceled"
+    exit 1
+    ;;
   esac
 
   git worktree remove -- "$target_path"
