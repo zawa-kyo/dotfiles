@@ -31,38 +31,30 @@ eval "$(sheldon source)"
 # Source local files
 # ===========================
 
-# Function to resolve the absolute path of the dotfiles directory
-get_dotfiles_dir() {
-  local zshrc_symlink
-  local zshrc_dir
+# Source all matching local shell snippets and log what was loaded.
+source_local_files() {
+  local config_dir="$1"
+  local extension="$2"
+  local found=false
+  local file
 
-  zshrc_symlink="$(readlink "${HOME}/.zshrc")"
-  [[ -n "$zshrc_symlink" ]] || return 1
+  if [[ ! -d "$config_dir" ]]; then
+    missing "$config_dir"
+    return
+  fi
 
-  zshrc_dir="$(dirname "$zshrc_symlink")"
-  case "$zshrc_dir" in
-    /*) realpath "$zshrc_dir" ;;
-    *) realpath "${HOME}/${zshrc_dir}" ;;
-  esac
+  for file in "$config_dir"/*"$extension"(N); do
+    found=true
+    source "$file"
+    sourced "$file"
+  done
+
+  if [[ "$found" == false ]]; then
+    not_found "$config_dir" "$extension"
+  fi
 }
 
-# Function to execute the source script
-run_source_script() {
-  local current_dir
-  current_dir="$(pwd)"  # Store the current working directory
-
-  # Get the dotfiles directory
-  local dotfiles_dir
-  dotfiles_dir="$(get_dotfiles_dir)" || return 1
-
-  # Source local shell snippets into the current session
-  source "$dotfiles_dir/../scripts/local/source.sh"
-
-  # Return to the original working directory
-  cd "$current_dir"
-}
-
-run_source_script
+source_local_files "$HOME/local.d" ".zsh"
 
 
 # ===========================
@@ -116,14 +108,14 @@ zstyle ":completion:*:commands" rehash 1
 # Reveal a repository by changing into it.
 reveal-repository () {
   local repo
-  repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
+  repo=$(bash "${DOTFILES_ROOT_DIR}/scripts/utils/select-repository.sh" "$@") || return
   cd "$repo"
 }
 
 # Reveal a repository with zoxide.
 reveal-repository-with-zoxide () {
   local repo
-  repo=$(bash "$(get_dotfiles_dir)/../scripts/utils/select-repository.sh" "$@") || return
+  repo=$(bash "${DOTFILES_ROOT_DIR}/scripts/utils/select-repository.sh" "$@") || return
   z "$repo"
 }
 

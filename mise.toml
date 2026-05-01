@@ -159,17 +159,6 @@ file = "scripts/local/install-pre-commit.sh"
 description = "Sync Python development dependencies with uv"
 run = "uv sync --group dev"
 
-[tasks.source]
-description = "Source local shell snippets"
-run = '''
-if [ -t 1 ]; then
-  echo 'NOTE: This is auto-loaded from .zshrc, so you usually do not need to run it manually. If you need it in the current shell, run `source scripts/local/source.sh`.' 1>&2
-  exit 0
-fi
-
-zsh scripts/local/source.sh
-'''
-
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [
