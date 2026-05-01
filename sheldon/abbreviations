@@ -118,7 +118,7 @@ abbr 'find'='fd'
 abbr 'fda'='fd --hidden --no-ignore'
 abbr 'finda'='fd --hidden --no-ignore'
 
-# Perform a case-insensitive search
+# Perform a case-sensitive search.
 abbr 'fds'='fd --case-sensitive'
 
 
@@ -127,8 +127,8 @@ abbr 'fds'='fd --case-sensitive'
 # ===========================
 
 # Replace 'grep' command
-abbr 'grep'='rg'
+abbr 'grep'='rg --ignore-case'
 
-# Perform a case-insensitive search
-abbr 'greps'='rg --case-sensitive'
+# Perform a case-sensitive search.
 abbr 'rgs'='rg --case-sensitive'
+abbr 'greps'='rg --case-sensitive'
