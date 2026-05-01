@@ -118,7 +118,7 @@ abbr 'find'='fd'
 abbr 'fda'='fd --hidden --no-ignore'
 abbr 'finda'='fd --hidden --no-ignore'
 
-# Perform a case-insensitive search
+# Perform a case-sensitive search.
 abbr 'fds'='fd --case-sensitive'
 
 
