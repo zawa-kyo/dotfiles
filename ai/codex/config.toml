@@ -1,4 +1,4 @@
-model = "gpt-5.4"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 network_access = true
 
@@ -13,6 +13,3 @@ args = ["-y", "@upstash/context7-mcp"]
 command = "npx"
 args = ["-y", "@modelcontextprotocol/server-github"]
 env = { GITHUB_TOKEN = "${GITHUB_TOKEN}" }
-
-[notice.model_migrations]
-"gpt-5.3-codex" = "gpt-5.4"
