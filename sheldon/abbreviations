@@ -54,6 +54,15 @@ abbr 'aw'='add-worktree'
 # delete-worktree
 abbr 'dw'='delete-worktree'
 
+# search-file-with-neovim
+abbr 'sfn'='search-file-with-neovim'
+
+# search-google
+abbr 'sg'='search-google'
+
+# search-line-with-neovim
+abbr 'sln'='search-line-with-neovim'
+
 # search-task
 abbr 'st'='search-task'
 
