@@ -56,6 +56,10 @@ minimum_release_age = "7d"
 BAT_THEME = "Nord"
 BAT_STYLE = "changes,header,snip"
 BAT_PAGER = "less -RF"
+
+EZA_ICONS_AUTO = "1"   # Enable icons automatically
+EZA_ICON_SPACING = "2"
+
 GAT_THEME = "nord"
 
 GOPATH = "{{env.HOME}}"
