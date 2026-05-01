@@ -297,6 +297,9 @@ Current examples in this repository:
 - `rrz` -> `reveal-repository-with-zoxide`
 - `aw` -> `add-worktree`
 - `dw` -> `delete-worktree`
+- `sb` -> `search-bookmarks`
+- `sbc` -> `search-bookmarks-chrome`
+- `sbs` -> `search-bookmarks-safari`
 - `st` -> `search-task`
 
 ### Operational Rule
