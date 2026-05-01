@@ -46,8 +46,6 @@ get_dotfiles_dir() {
   esac
 }
 
-source "$(get_dotfiles_dir)/../scripts/utils/log.sh"
-
 # Function to execute the source script
 run_source_script() {
   local current_dir
@@ -168,4 +166,4 @@ alias rm="echo ' Heads up: rm is dangerous. Use trash instead!'"
 # Comments
 # ===========================
 
-echo "󰄳 Sourced: .zshrc"
+sourced ".zshrc"
