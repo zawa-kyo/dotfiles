@@ -73,7 +73,7 @@ emit_safari_bookmarks() {
   plist="$HOME/Library/Safari/Bookmarks.plist"
   [ -f "$plist" ] || return 0
 
-  if ! python3 - "$plist" <<'PY'
+  if ! python3 - "$plist" <<'PY'; then
 import plistlib
 import sys
 
@@ -114,7 +114,6 @@ walk(data, entries)
 for title, url in sorted(entries, key=lambda item: (item[0].lower(), item[1])):
     print("\t".join(("Safari", "Bookmarks", title, url)))
 PY
-  then
     warn "Safari bookmarks could not be read."
     warn "Check Safari bookmark file access and format."
     return 0
@@ -123,19 +122,19 @@ PY
 
 emit_bookmarks() {
   case "$1" in
-    all)
-      emit_chrome_bookmarks
-      emit_safari_bookmarks
-      ;;
-    chrome)
-      emit_chrome_bookmarks
-      ;;
-    safari)
-      emit_safari_bookmarks
-      ;;
-    *)
-      fail "Unsupported browser target: $1"
-      ;;
+  all)
+    emit_chrome_bookmarks
+    emit_safari_bookmarks
+    ;;
+  chrome)
+    emit_chrome_bookmarks
+    ;;
+  safari)
+    emit_safari_bookmarks
+    ;;
+  *)
+    fail "Unsupported browser target: $1"
+    ;;
   esac
 }
 
@@ -144,15 +143,15 @@ open_selected_bookmark() {
   local url="$2"
 
   case "$browser" in
-    Chrome)
-      exec open -a "Google Chrome" "$url"
-      ;;
-    Safari)
-      exec open -a Safari "$url"
-      ;;
-    *)
-      fail "Unsupported browser application: $browser"
-      ;;
+  Chrome)
+    exec open -a "Google Chrome" "$url"
+    ;;
+  Safari)
+    exec open -a Safari "$url"
+    ;;
+  *)
+    fail "Unsupported browser application: $browser"
+    ;;
   esac
 }
 
@@ -170,20 +169,20 @@ main() {
 
   while [ "$#" -gt 0 ]; do
     case "$1" in
-      --dump)
-        dump_mode=true
-        ;;
-      all|chrome|safari)
-        target="$1"
-        ;;
-      -h|--help)
-        usage
-        exit 0
-        ;;
-      *)
-        usage >&2
-        exit 1
-        ;;
+    --dump)
+      dump_mode=true
+      ;;
+    all | chrome | safari)
+      target="$1"
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      usage >&2
+      exit 1
+      ;;
     esac
     shift
   done
