@@ -31,6 +31,7 @@ fastfetch = "latest"
 fd = "latest"
 ffmpeg = "latest"
 fzf = "latest"
+gat = "latest"
 gh = "latest"
 ghq = "latest"
 gitleaks = "latest"
@@ -42,6 +43,9 @@ shellcheck = "latest"
 starship = "latest"
 yazi = "latest"
 zoxide = "latest"
+
+[tool_alias]
+gat = "github:koki-develop/gat"
 
 [settings]
 lockfile = true
