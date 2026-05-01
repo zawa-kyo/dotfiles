@@ -92,18 +92,18 @@ If those files already exist and are not symlinks, the script leaves them in pla
 
 AI tool configuration is grouped under `ai/`.
 
-- `ai/codex/config.toml` is linked to `~/.codex/config.toml`.
-- `ai/agent-skills/` is linked to `~/.agent-skills`.
-- Claude Code, Codex, and Gemini CLI skills directories are linked to the shared `~/.agent-skills` directory.
+- `ai/skills/` is linked to `~/.skills`.
+- Claude Code, Codex, and Gemini CLI skills directories are linked to the shared `~/.skills` directory.
 
 The canonical paths are exposed through `mise/config.global.toml` as `DIR_*` environment variables:
 
 ```toml
-DIR_AGENT_SKILLS = "{{env.HOME}}/.agent-skills"
 DIR_CLAUDE_CODE_SKILLS = "{{env.DIR_CLAUDE_CODE}}/skills"
 DIR_CODEX_SKILLS = "{{env.DIR_CODEX}}/skills"
 DIR_GEMINI_CLI_SKILLS = "{{env.DIR_GEMINI_CLI}}/skills"
 ```
+
+The source path for `ai/skills/` is resolved from the cloned repository path by the link script, so it is not hard-coded in global environment variables.
 
 ## Bun
 

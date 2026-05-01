@@ -54,7 +54,6 @@ GOPATH = "{{env.HOME}}"
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
 ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
 
-DIR_AGENT_SKILLS = "{{env.HOME}}/.agent-skills"
 DIR_CLAUDE_CODE = "{{env.HOME}}/.claude"
 DIR_CLAUDE_CODE_SKILLS = "{{env.DIR_CLAUDE_CODE}}/skills"
 DIR_CODEX = "{{env.HOME}}/.codex"
