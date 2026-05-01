@@ -4,7 +4,7 @@
 
 - `nvim/`: Neovim 設定 (Lua) とプラグイン定義。Stylua で整形。
 - `vscode/`: エディタ設定とキーバインド (`*.jsonc`)。VS Code のユーザーフォルダへシンボリックリンク。
-- `scripts/`: セットアップ用スクリプト (例: `install-bun.sh`, `link-dotfiles.sh`, `source.sh`)。
+- `scripts/`: セットアップ用スクリプト (例: `install-bun.sh`, `link-dotfiles.sh`, `relink-dotfiles.sh`)。
 - `homebrew/`: Homebrew の再現可能なインストール用 `Brewfile`。
 - `bun/`: リポジトリ管理の Bun グローバルパッケージ (`package.json`, `bun.lock`)。
 - `sheldon/`: Zsh プラグインマネージャ設定 (`plugins.toml`) と略語定義。

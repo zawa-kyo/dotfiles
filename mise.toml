@@ -159,17 +159,6 @@ file = "scripts/local/install-pre-commit.sh"
 description = "Sync Python development dependencies with uv"
 run = "uv sync --group dev"
 
-[tasks.source]
-description = "Emit shell snippets for eval-style sourcing"
-run = '''
-if [ -t 1 ]; then
-  echo 'NOTE: This is auto-loaded from .zshrc, so you usually do not need to run it manually. If you do run it via mise, use `eval "$(mise run -q source)"` to apply exports to the current shell.' 1>&2
-  exit 0
-fi
-
-bash scripts/local/source.sh
-'''
-
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [

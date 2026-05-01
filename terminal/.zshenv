@@ -16,8 +16,13 @@ export TZ="Asia/Tokyo"
 export EDITOR="/opt/homebrew/bin/nvim"
 export VISUAL="$EDITOR"
 
+# Load shared log helpers here because .zshenv runs before the other zsh startup files.
+DOTFILES_TERMINAL_DIR="${${(%):-%N}:P:h}"
+DOTFILES_ROOT_DIR="${DOTFILES_TERMINAL_DIR}/.."
+source "${DOTFILES_ROOT_DIR}/scripts/utils/log.sh"
+
 # ===========================
 # Comments
 # ===========================
 
-echo "󰄳 Sourced: .zshenv"
+sourced ".zshenv"
