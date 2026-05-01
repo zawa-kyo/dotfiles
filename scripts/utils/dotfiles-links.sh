@@ -6,6 +6,13 @@ source "$dotfiles_links_dir/log.sh"
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dotfiles_dir="$1"
+  local dir_agent_skills="${DIR_AGENT_SKILLS:-$HOME/.agent-skills}"
+  local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
+  local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
+  local dir_codex="${DIR_CODEX:-$HOME/.codex}"
+  local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
+  local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
+  local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
 
   file_links=(
     "$dotfiles_dir/git/.gitconfig:$HOME/.gitconfig"
@@ -38,6 +45,10 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
+    "$dotfiles_dir/ai/agent-skills:$dir_agent_skills"
+    "$dir_agent_skills:$dir_claude_code_skills"
+    "$dir_agent_skills:$dir_codex_skills"
+    "$dir_agent_skills:$dir_gemini_cli_skills"
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
     "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
   )
