@@ -47,9 +47,17 @@ populate_dotfiles_links() {
   directory_links=(
     "$dir_skills:$dir_skills_link"
     "$dir_skills_link:$dir_claude_code_skills"
-    "$dir_skills_link:$dir_codex_skills"
     "$dir_skills_link:$dir_gemini_cli_skills"
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
     "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
   )
+
+  codex_skill_links=()
+  if [ -d "$dir_skills" ]; then
+    local skill_dir
+    for skill_dir in "$dir_skills"/*; do
+      [ -d "$skill_dir" ] || continue
+      codex_skill_links+=("$skill_dir:$dir_codex_skills/$(basename "$skill_dir")")
+    done
+  fi
 }
