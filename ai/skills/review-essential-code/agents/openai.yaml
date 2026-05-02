@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Essential Code"
+  short_description: "Review code for bugs and essential simplicity"
+  default_prompt: "Use $review-essential-code to review this change for bugs, regressions, and whether the implementation stays simple and essential."
