@@ -58,6 +58,7 @@ Useful direct commands after install:
 add-worktree
 delete-worktree
 reveal-repository-with-neovim
+search-abbreviation
 search-task
 ```
 
