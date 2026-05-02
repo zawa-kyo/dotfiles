@@ -14,3 +14,7 @@ git:
 
 refresher:
   fetchInterval: 60
+
+keybinding:
+  universal:
+    pushFiles: "<disabled>"
