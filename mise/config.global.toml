@@ -62,6 +62,8 @@ EZA_ICON_SPACING = "2"
 
 GAT_THEME = "nord"
 
+GHQ_ROOT = "{{env.HOME}}/Git/ghq"
+
 GOPATH = "{{env.HOME}}"
 
 ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
