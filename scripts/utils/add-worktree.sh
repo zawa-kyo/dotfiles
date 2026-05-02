@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Create or reuse a worktree for a selected local or remote-backed branch.
 run_add_worktree() {
   local mode="$1"
   local existing_path

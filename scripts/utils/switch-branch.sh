@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Switch to a selected local or remote-backed branch.
 run_switch_branch() {
   local mode="$1"
   local local_branch

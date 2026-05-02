@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
+# Ensure required Git and fzf commands are available.
 ensure_git_and_fzf() {
   command -v git >/dev/null 2>&1 || fail "git is required"
   command -v fzf >/dev/null 2>&1 || fail "fzf is required"
 }
 
+# Ensure the current directory is inside a Git repository.
 ensure_git_repository() {
   git rev-parse --show-toplevel >/dev/null 2>&1 || fail "not inside a git repository"
 }
 
+# Select a local or remote branch ref with fzf.
 select_branch_ref() {
   local mode="$1"
   local preview_cmd='git log --oneline --decorate --color=always -20 -- {}'
@@ -29,6 +32,7 @@ select_branch_ref() {
   esac
 }
 
+# Resolve the local branch name for the selected ref.
 resolve_local_branch_name() {
   local mode="$1"
   local ref_name="$2"
@@ -52,6 +56,7 @@ resolve_local_branch_name() {
   esac
 }
 
+# Ensure an existing local branch tracks the expected upstream ref.
 require_matching_branch_upstream() {
   local local_branch="$1"
   local ref_name="$2"
