@@ -32,7 +32,7 @@ main() {
 
   branch="$(
     git for-each-ref --format='%(refname:short)' refs/heads |
-      fzf --preview "$preview_cmd"
+      SHELL=/bin/sh fzf --preview "$preview_cmd"
   )" || exit 1
 
   [ -n "$branch" ] || exit 1

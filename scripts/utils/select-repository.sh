@@ -20,7 +20,7 @@ select_repository() {
     fzf_opts+=(--query "$query")
   fi
 
-  ghq list --full-path | fzf "${fzf_opts[@]}"
+  ghq list --full-path | SHELL=/bin/sh fzf "${fzf_opts[@]}"
 }
 
 find_repository() {
@@ -43,7 +43,7 @@ find_repository() {
     return 0
   fi
 
-  matches="$(ghq list --full-path | fzf --filter="$query" || true)"
+  matches="$(ghq list --full-path | SHELL=/bin/sh fzf --filter="$query" || true)"
   if [ -n "$matches" ]; then
     while IFS= read -r repo; do
       [ -n "$repo" ] || continue
