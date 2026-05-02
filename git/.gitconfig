@@ -21,9 +21,6 @@
   process = git-lfs filter-process
   required = true
 
-[ghq]
-  root = ~/Git/ghq
-
 [include]
   path = ~/.gitconfig.local
 

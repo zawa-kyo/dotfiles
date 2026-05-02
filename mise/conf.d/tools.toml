@@ -1,0 +1,48 @@
+[tools]
+# Languages
+bun = "1"
+deno = "2"
+go = "1"
+java = "26"
+lua = "5"
+node = "24"
+python = "3"
+ruby = "3"
+rust = "1"
+
+# Editors / dev tools
+neovim = "0"
+tree-sitter = "0"
+zellij = "0"
+
+# Frameworks / SDKs
+flutter = "3.41.2-stable"
+maestro = "cli-2.4.0"
+uv = "0"
+
+# CLI tools
+actionlint = "latest"
+atuin = "latest"
+aws-cli = { version = "latest", symlink_bins = "true" }
+bat = "latest"
+delta = "latest"
+eza = "latest"
+fastfetch = "latest"
+fd = "latest"
+ffmpeg = "latest"
+fzf = "latest"
+gat = "latest"
+gh = "latest"
+ghq = "latest"
+gitleaks = "latest"
+jq = "latest"
+lazygit = "latest"
+ripgrep = "latest"
+sheldon = "latest"
+shellcheck = "latest"
+starship = "latest"
+yazi = "latest"
+zoxide = "latest"
+
+[tool_alias]
+gat = "github:koki-develop/gat"

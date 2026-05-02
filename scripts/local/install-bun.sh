@@ -5,9 +5,9 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/../.." && pwd)"
 bun_dir="$dotfiles_dir/bun"
-global_dir="$HOME/.bun/install/global"
+global_dir="${DIR_BUN_GLOBAL:-$HOME/.bun/install/global}"
 global_parent_dir="$(dirname "$global_dir")"
-global_bin_dir="$HOME/.bun/bin"
+global_bin_dir="${DIR_BUN_BIN:-$HOME/.bun/bin}"
 
 source "$script_dir/../utils/log.sh"
 

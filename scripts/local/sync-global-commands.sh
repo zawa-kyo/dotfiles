@@ -8,8 +8,8 @@ source "$script_dir/../utils/log.sh"
 
 global_commands_dir="$dotfiles_dir/scripts/global"
 generated_tasks_dir="$dotfiles_dir/.cache/mise/tasks"
-local_bin_dir="$HOME/.local/bin"
-mise_tasks_dir="$HOME/.config/mise/tasks"
+local_bin_dir="${DIR_LOCAL_BIN:-$HOME/.local/bin}"
+mise_tasks_dir="${DIR_MISE_TASKS:-$HOME/.config/mise/tasks}"
 
 ensure_dir() {
   local dir="$1"

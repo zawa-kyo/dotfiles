@@ -16,9 +16,9 @@ relink() {
   fi
 
   if [ -L "$target_path" ]; then
-    rm "$target_path"
+    rm "$target_path" || fail "Failed to remove existing symlink: $target_path"
     info "Removed existing symlink: $target_path"
-    ln -s "$source_path" "$target_path"
+    ln -s "$source_path" "$target_path" || fail "Failed to relink $target_path"
     info "$target_basename relinked successfully."
     return 0
   fi
@@ -31,15 +31,16 @@ relink() {
   local target_parent_dir
   target_parent_dir="$(dirname "$target_path")"
   if [ ! -d "$target_parent_dir" ]; then
-    mkdir -p "$target_parent_dir"
+    mkdir -p "$target_parent_dir" || fail "Failed to create directory: $target_parent_dir"
     info "Created directory: $target_parent_dir"
   fi
 
-  ln -s "$source_path" "$target_path"
+  ln -s "$source_path" "$target_path" || fail "Failed to link $target_path"
   info "$target_basename linked successfully."
 }
 
 populate_dotfiles_links "$dotfiles_dir"
+validate_dotfiles_links "$dotfiles_dir"
 
 for link in "${file_links[@]}"; do
   IFS=":" read -r source target <<<"$link"

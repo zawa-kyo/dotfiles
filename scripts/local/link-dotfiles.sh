@@ -89,6 +89,7 @@ install_dir() {
 }
 
 populate_dotfiles_links "$dotfiles_dir"
+validate_dotfiles_links "$dotfiles_dir"
 
 # Link listed files from dotfiles into their target locations.
 for link in "${file_links[@]}"; do

@@ -23,6 +23,6 @@ repos:
     hooks:
       - id: check-username-paths
         name: Reject local username paths
-        entry: '(/Users|/home)/kyohei(/|$)'
+        entry: "(/Users|/home)/kyohei(/|$)"
         language: pygrep
         types: [text]
