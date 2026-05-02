@@ -5,8 +5,6 @@ set -euo pipefail
 
 main() {
   local abbreviation_column_width
-  local execution_dir
-  local expansion
   local xdg_data_home
   local plugin_path
   local selected
@@ -22,7 +20,6 @@ main() {
 
   xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
   abbreviation_column_width=18
-  execution_dir="${MISE_ORIGINAL_CWD:-${INIT_CWD:-${OLDPWD:-$PWD}}}"
   plugin_path="$xdg_data_home/sheldon/repos/github.com/olets/zsh-abbr/zsh-abbr.plugin.zsh"
 
   [ -f "$plugin_path" ] || {
@@ -60,11 +57,7 @@ main() {
 
   [ -n "$selected" ] || exit 1
 
-  expansion="${selected#*$'\t'}"
-  expansion="${expansion#*$'\t'}"
-  [ -n "$expansion" ] || exit 1
-
-  exec zsh -ic "cd \"\$1\" && shift && eval \"\$*\"" _ "$execution_dir" "$expansion"
+  printf '%s\n' "${selected%%$'\t'*}"
 }
 
 main "$@"
