@@ -105,6 +105,7 @@ DIR_GEMINI_CLI_SKILLS = "{{env.DIR_GEMINI_CLI}}/skills"
 ```
 
 The source path for `ai/skills/` is resolved from the cloned repository path by the link script, so it is not hard-coded in global environment variables.
+Other machine-specific paths such as `DIR_BUN_*`, `DIR_LOCAL_BIN`, `DIR_MISE_TASKS`, and bookmark locations are also centralized in `mise/conf.d/env.toml`.
 
 ## Bun
 
@@ -187,6 +188,7 @@ mise run check-pre-commit
 ```
 
 `mise run install` is also responsible for linking commands from `scripts/global/` into `~/.local/bin/` and generating `mise` task wrappers.
+The target paths are configured through `mise/conf.d/env.toml` via `DIR_LOCAL_BIN` and `DIR_MISE_TASKS`.
 
 ## Custom CLI and Mise Tasks
 
