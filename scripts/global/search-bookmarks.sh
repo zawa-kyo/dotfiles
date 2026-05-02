@@ -70,7 +70,7 @@ PY
 emit_safari_bookmarks() {
   local plist
 
-  plist="$HOME/Library/Safari/Bookmarks.plist"
+  plist="${SAFARI_BOOKMARKS_PLIST:-$HOME/Library/Safari/Bookmarks.plist}"
   [ -f "$plist" ] || return 0
 
   if ! python3 - "$plist" <<'PY'; then
