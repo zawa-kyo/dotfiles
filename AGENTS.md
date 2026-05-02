@@ -1,46 +1,87 @@
-# Repository Guidelines
+# エージェント向けガイド
 
-## プロジェクト構成と配置
+## このファイルの役割
 
-- `nvim/`: Neovim 設定 (Lua) とプラグイン定義。Stylua で整形。
-- `vscode/`: エディタ設定とキーバインド (`*.jsonc`)。VS Code のユーザーフォルダへシンボリックリンク。
-- `scripts/`: セットアップ用スクリプト (例: `install-bun.sh`, `link-dotfiles.sh`, `relink-dotfiles.sh`)。
-- `homebrew/`: Homebrew の再現可能なインストール用 `Brewfile`。
-- `bun/`: リポジトリ管理の Bun グローバルパッケージ (`package.json`, `bun.lock`)。
-- `sheldon/`: Zsh プラグインマネージャ設定 (`plugins.toml`) と略語定義。
-- `wezterm/`, `terminal/`, `ghostty/`, `zellij/`, `starship.toml`: ターミナル/プロンプト関連設定。
-- `src/samples/`: エディタ/LSP 確認用の小さなサンプル。
+- `AGENTS.md` はエージェント向けの入口です
+- 詳細手順や長い背景説明はここに複製せず、正本への導線だけを置きます
+- 人向けの利用案内は `README.md`、リポジトリ全体の設計判断は `docs/`、サブシステム固有の詳細規約は各ディレクトリ直下の policy を参照します
 
-## ビルド・テスト・開発コマンド
+## 参照先一覧
 
-- 開発ツール導入: `uv sync --group dev`
-- pre-commit 有効化: `uv run pre-commit install` または `mise run install-pre-commit`
-- 全ファイルでフック実行: `uv run pre-commit run -a` または `mise run check-pre-commit`
-- Homebrew 適用: `brew bundle --file=homebrew/Brewfile`
-- Bun グローバル準備: `mise run install-bun` (内部で `scripts/local/install-bun.sh` を実行)
-- VS Code 同期: `README.md` の `ln -s` 手順を参照。
+- `README.md`
+  - 人向けの入口
+  - セットアップ、日常運用、主要コマンド、全体構成の概要
+- `docs/index.md`
+  - 設計文書の目次
+- `docs/architecture.md`
+  - リポジトリ全体の構造と責務分担
+- `docs/command-model.md`
+  - 単独実行コマンド / shell function / `mise run` の役割分担
+- `docs/abbreviation-policy.md`
+  - shell の省略コマンド名の設計原則
+- `docs/operations.md`
+  - 変更後の確認方針
+- `nvim/lua/policies/keybinds-policy.md`
+  - Neovim キーバインド設計の正本
+- `nvim/lua/policies/tab-buffer-policy.md`
+  - Neovim のタブ / バッファ表示方針の正本
 
-## コーディング規約と命名
+## 変更対象ごとの参照先
 
-- インデント: 2 スペース (Lua は `.stylua.toml` で強制)。
-- 使用言語: Neovim は Lua、スクリプトは Bash、エディタ設定は JSON/JSONC。
-- 命名: ディレクトリは小文字、スクリプトはハイフン区切り (例: `install-bun.sh`)。
-- フォーマット: Lua は Stylua、JSON/JSONC は整合性維持、シェルは可能な限り POSIX 準拠。
+- `nvim/` を変更する場合
+  - まず `nvim/lua/policies/` を確認する
+  - キーバインド変更は `nvim/lua/policies/keybinds-policy.md`
+  - タブ/バッファ表示変更は `nvim/lua/policies/tab-buffer-policy.md`
+- `scripts/`, `mise.toml`, `terminal/`, `sheldon/abbreviations` を変更する場合
+  - `docs/command-model.md` と `docs/abbreviation-policy.md` を確認する
+- `homebrew/` を変更する場合
+  - `README.md` の Homebrew 節と `docs/operations.md` を確認する
+- `bun/` を変更する場合
+  - `README.md` の Bun 節と `docs/operations.md` を確認する
+- `ai/` を変更する場合
+  - `README.md` の AI Tools 節と `docs/architecture.md` を確認する
+- セットアップや利用手順を変える場合
+  - `README.md` を更新する
+- リポジトリ全体に関わる設計判断を変える場合
+  - `docs/` を更新する
 
-## テスト指針
+## 編集ルール
 
-- Lint/セキュリティ: `uv run pre-commit run -a` または `mise run check-pre-commit` (`detect-secrets`, `gitleaks`, YAML/JSON チェックを含む)。
-- Neovim ヘルス: プラグイン変更後に `nvim` で `:checkhealth`。
-- Bun 確認: `scripts/local/install-bun.sh` 実行後、`bunx --version` で解決を確認。
-- Homebrew: `brew doctor` と `brew bundle check --file=homebrew/Brewfile`。
+- `AGENTS.md` に `README.md` や `docs/` の内容を複製しない
+- 人向けの手順は `README.md` を正本にする
+- リポジトリ全体の原則は `docs/` を正本にする
+- サブシステム固有の規約は実装の近くに置き、そのファイルを正本にする
+- インデントは 2 スペースを基本とする
+- Lua は `.stylua.toml` に従う
+- shell script は既存スタイルに合わせ、可能な限り POSIX 寄りを維持する
+- JSON / JSONC / TOML / Markdown は既存フォーマットに合わせる
+- マシン固有の値や秘密情報はコミットしない
 
-## コミットとプルリクエスト
+## 検証ルール
 
-- コミット規約: Conventional Commits (例: `feat: ...`, `fix: ...`, `refactor: ...`, `style: ...`)。
-- 関連 Issue/タスクをリンクし、PR は小さく焦点を絞る。
+- ドキュメントのみの変更
+  - 必須テストはなし
+  - 必要なら `mise run format`
+- `nvim/` を変更した場合
+  - 必要に応じて `mise run format`
+  - 必要に応じて `nvim` で `:checkhealth`
+- `scripts/`, `mise.toml`, `terminal/`, `sheldon/abbreviations` を変更した場合
+  - 必要に応じて `mise run format`
+  - 影響範囲が広い場合は `uv run pre-commit run -a`
+- `homebrew/Brewfile` を変更した場合
+  - 必要に応じて `brew bundle check --file=homebrew/Brewfile`
+- `bun/` を変更した場合
+  - 必要に応じて `mise run install-bun`
+  - その後 `bunx --version` で解決確認
 
-## セキュリティと設定の注意
+## ドキュメント更新ルール
 
-- 秘密情報はコミットしない。pre-commit に依存し、`uv run pre-commit run -a` または `mise run check-pre-commit` で再確認。
-- マシン固有のファイルはリポジトリ外に置くかテンプレート化。
-- `Brewfile` 更新時は `brew bundle dump --file=homebrew/Brewfile --force` で状態を反映。
+- 新しいセットアップ手順を追加したら `README.md` を更新する
+- 新しい全体設計の原則を追加したら `docs/` を更新する
+- 新しい Neovim 規約を追加したら `nvim/lua/policies/` を更新する
+- エージェント向けの参照導線が変わったら `AGENTS.md` を更新する
+
+## 注意事項
+
+- `README.md` は英語、`AGENTS.md` と `docs/` と policy 文書は日本語を基本とする
+- `AGENTS.md` は短い入口として保ち、肥大化させない
