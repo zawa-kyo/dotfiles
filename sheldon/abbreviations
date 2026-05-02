@@ -57,6 +57,9 @@ abbr 'rrz'='reveal-repository-with-zoxide'
 # add-worktree
 abbr 'aw'='add-worktree'
 
+# add-worktree-remote
+abbr 'awr'='add-worktree-remote'
+
 # delete-worktree
 abbr 'dw'='delete-worktree'
 

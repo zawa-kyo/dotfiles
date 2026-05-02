@@ -56,6 +56,7 @@ Useful direct commands after install:
 
 ```sh
 add-worktree
+add-worktree-remote
 delete-worktree
 reveal-repository-with-neovim
 search-abbreviation
@@ -100,7 +101,7 @@ The base `~/.gitconfig` is managed as a symlink from this repository.
 - Put machine-specific overrides in `~/.gitconfig.local`
 - Repositories fetched with `ghq get` are expected under `~/Git/ghq`
 
-When `terminal/.zshrc` is linked, `add-worktree` and `delete-worktree` provide interactive worktree management with `fzf`.
+When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, and `delete-worktree` provide interactive worktree management with `fzf`.
 
 ### VS Code
 

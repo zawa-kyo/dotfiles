@@ -52,6 +52,7 @@
 - `rrl` -> `reveal-repository-with-lazygit`
 - `rrz` -> `reveal-repository-with-zoxide`
 - `aw` -> `add-worktree`
+- `awr` -> `add-worktree-remote`
 - `dw` -> `delete-worktree`
 - `sb` -> `search-bookmarks`
 - `st` -> `search-task`

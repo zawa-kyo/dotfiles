@@ -16,6 +16,7 @@
 
 - `reveal-repository-with-neovim`
 - `add-worktree`
+- `add-worktree-remote`
 - `delete-worktree`
 - `search-task`
 
