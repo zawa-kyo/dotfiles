@@ -93,7 +93,8 @@ If those files already exist and are not symlinks, the script leaves them in pla
 AI tool configuration is grouped under `ai/`.
 
 - `ai/skills/` is linked to `~/.skills`.
-- Claude Code, Codex, and Gemini CLI skills directories are linked to the shared `~/.skills` directory.
+- Claude Code and Gemini CLI skills directories are linked to the shared `~/.skills` directory.
+- Codex custom skills are linked individually into `~/.codex/skills/` so they can coexist with Codex-managed system skills under `~/.codex/skills/.system/`.
 
 The canonical paths are exposed through `mise/config.global.toml` as `DIR_*` environment variables:
 

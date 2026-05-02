@@ -50,3 +50,8 @@ for link in "${directory_links[@]}"; do
   IFS=":" read -r source target <<<"$link"
   relink "$source" "$target"
 done
+
+for link in "${codex_skill_links[@]}"; do
+  IFS=":" read -r source target <<<"$link"
+  relink "$source" "$target"
+done
