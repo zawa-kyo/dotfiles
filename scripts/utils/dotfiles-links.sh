@@ -75,13 +75,16 @@ populate_dotfiles_links() {
 
   case "$(uname -s)" in
   Darwin)
+    local macos_app_support_dir="$HOME/Library/Application Support"
+
     file_links+=(
-      "$dotfiles_dir/vscode/settings.jsonc:$HOME/Library/Application Support/Code/User/settings.json"
-      "$dotfiles_dir/vscode/keybindings.jsonc:$HOME/Library/Application Support/Code/User/keybindings.json"
+      "$dotfiles_dir/lazygit/config.yml:$macos_app_support_dir/lazygit/config.yml"
+      "$dotfiles_dir/vscode/settings.jsonc:$macos_app_support_dir/Code/User/settings.json"
+      "$dotfiles_dir/vscode/keybindings.jsonc:$macos_app_support_dir/Code/User/keybindings.json"
     )
     ;;
   *)
-    warn "Skipping VS Code links: unsupported OS for ~/Library/Application Support/Code/User"
+    warn "Skipping macOS-specific links on unsupported OS"
     ;;
   esac
 

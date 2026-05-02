@@ -1,0 +1,20 @@
+gui:
+  nerdFontsVersion: "3"
+  sidePanelWidth: 0.25
+  filterMode: fuzzy
+  showRandomTip: false
+  showCommandLog: false
+  showPanelJumps: false
+
+git:
+  autoFetch: true
+  pagers:
+    - pager: delta --paging=never
+      colorArg: always
+
+refresher:
+  fetchInterval: 60
+
+keybinding:
+  universal:
+    pushFiles: "<disabled>"
