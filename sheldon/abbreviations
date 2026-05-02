@@ -63,6 +63,12 @@ abbr 'awr'='add-worktree-remote'
 # delete-worktree
 abbr 'dw'='delete-worktree'
 
+# change-branch
+abbr 'cb'='switch-branch'
+
+# change-branch-remote
+abbr 'cbr'='switch-branch-remote'
+
 # search-bookmarks
 abbr 'sb'='search-bookmarks'
 

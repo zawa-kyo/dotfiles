@@ -61,6 +61,8 @@ delete-worktree
 reveal-repository-with-neovim
 search-abbreviation
 search-task
+switch-branch
+switch-branch-remote
 ```
 
 ## Repository Layout
@@ -101,7 +103,7 @@ The base `~/.gitconfig` is managed as a symlink from this repository.
 - Put machine-specific overrides in `~/.gitconfig.local`
 - Repositories fetched with `ghq get` are expected under `~/Git/ghq`
 
-When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, and `delete-worktree` provide interactive worktree management with `fzf`.
+When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
 
 ### VS Code
 

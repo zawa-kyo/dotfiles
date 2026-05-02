@@ -4,44 +4,18 @@ run_add_worktree() {
   local mode="$1"
   local existing_path
   local local_branch
-  local preview_cmd='git log --oneline --decorate --color=always -20 -- {}'
   local ref_name
   local repo_base_path
   local repo_path
   local repo_root
-  local upstream_branch
 
-  command -v git >/dev/null 2>&1 || fail "git is required"
-  command -v fzf >/dev/null 2>&1 || fail "fzf is required"
+  ensure_git_and_fzf
 
   repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || fail "not inside a git repository"
 
-  case "$mode" in
-  local)
-    ref_name="$(
-      git for-each-ref --format='%(refname:short)' refs/heads |
-        SHELL=/bin/sh fzf --preview "$preview_cmd"
-    )" || return 1
-    [ -n "$ref_name" ] || return 1
-    local_branch="$ref_name"
-    ;;
-  remote)
-    ref_name="$(
-      git for-each-ref --format='%(refname:short)' --sort=refname refs/remotes |
-        awk '$0 !~ /\/HEAD$/ { print }' |
-        SHELL=/bin/sh fzf --preview "$preview_cmd"
-    )" || return 1
-    [ -n "$ref_name" ] || return 1
-
-    local_branch="${ref_name#*/}"
-    if [ -z "$local_branch" ] || [ "$local_branch" = "$ref_name" ]; then
-      fail "failed to derive local branch name from remote branch: $ref_name"
-    fi
-    ;;
-  *)
-    fail "unsupported add-worktree mode: $mode"
-    ;;
-  esac
+  ref_name="$(select_branch_ref "$mode")" || return 1
+  [ -n "$ref_name" ] || return 1
+  local_branch="$(resolve_local_branch_name "$mode" "$ref_name")"
 
   existing_path="$(
     git worktree list --porcelain |
@@ -70,14 +44,7 @@ run_add_worktree() {
     ;;
   remote)
     if git show-ref --verify --quiet "refs/heads/$local_branch"; then
-      upstream_branch="$(
-        git for-each-ref --format='%(upstream:short)' "refs/heads/$local_branch"
-      )"
-
-      if [ "$upstream_branch" != "$ref_name" ]; then
-        fail "local branch already exists with different upstream: $local_branch${upstream_branch:+ -> $upstream_branch}"
-      fi
-
+      require_matching_branch_upstream "$local_branch" "$ref_name"
       git worktree add -q -- "$repo_path" "$local_branch"
     else
       git worktree add -q -b "$local_branch" --track -- "$repo_path" "$ref_name"
