@@ -11,7 +11,7 @@ Review changes with the normal code-review lens first: correctness, regressions,
 
 ## Workflow
 
-1. Identify the review target from the user request. If no target is named, inspect the current Git diff, prioritizing staged changes when present and otherwise unstaged changes.
+1. Identify the review target from the user request. If no target is named, inspect the current Git diff, including staged and unstaged changes separately unless the user specifies staged-only or a narrower target.
 2. Read enough surrounding code to understand the existing design, invariants, public contracts, and local style. Do not judge simplicity without context.
 3. Review for concrete correctness risks first: bugs, regressions, missing edge cases, broken API contracts, data loss, security issues, performance problems, and missing or weak tests.
 4. Review for essential design next:
@@ -43,6 +43,7 @@ Use the standard code-review shape:
 - For each finding, include file and line reference, severity, the concrete risk, and the smallest directionally correct fix.
 - Separate "correctness findings" from "simplicity/design findings" only when that makes the review easier to scan.
 - Include open questions or assumptions after findings.
+- State any verification that was not run when it affects confidence in the review.
 - End with a brief summary only after findings.
 
 When no issues are found, say that no blocking issues were found and mention any residual test or context gaps.
