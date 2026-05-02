@@ -12,7 +12,8 @@ main() {
   script_dir="$(cd "$(dirname "$script_path")" && pwd)"
   repo="$("$script_dir/../utils/select-repository.sh" "$@")" || exit 1
   [ -n "$repo" ] || exit 1
-  exec nvim "$repo"
+  cd "$repo" || exit 1
+  exec nvim .
 }
 
 main "$@"
