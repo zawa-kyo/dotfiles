@@ -60,6 +60,9 @@ abbr 'aw'='add-worktree'
 # delete-worktree
 abbr 'dw'='delete-worktree'
 
+# search-abbreviation
+abbr 'sa'='search-abbreviation'
+
 # search-bookmarks
 abbr 'sb'='search-bookmarks'
 
