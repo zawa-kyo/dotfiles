@@ -7,6 +7,12 @@ abbr '....'='../../../'
 abbr 'desktop'='cd ~/Desktop'
 abbr 'root'='cd $(git rev-parse --show-toplevel)'
 
+# go-desktop
+abbr 'gd'='cd ~/Desktop'
+
+# go-root
+abbr 'gr'='cd $(git rev-parse --show-toplevel)'
+
 
 # ===========================
 # Vim
@@ -60,6 +66,9 @@ abbr 'sb'='search-bookmarks'
 # search-bookmarks-chrome
 abbr 'sbc'='search-bookmarks-chrome'
 
+# search-bookmarks-safari
+abbr 'sbs'='search-bookmarks-safari'
+
 # search-file-with-neovim
 abbr 'sfn'='search-file-with-neovim'
 
@@ -68,9 +77,6 @@ abbr 'sg'='search-google'
 
 # search-line-with-neovim
 abbr 'sln'='search-line-with-neovim'
-
-# search-bookmarks-safari
-abbr 'sbs'='search-bookmarks-safari'
 
 # search-task
 abbr 'st'='search-task'
@@ -81,6 +87,9 @@ abbr 'st'='search-task'
 # ==========================
 
 abbr 'neofetch'='fastfetch'
+
+# reveal-system
+abbr 'rs'='fastfetch'
 
 
 # ===========================
@@ -99,6 +108,18 @@ abbr 'lh'='eza -1 -d --group-directories-first .*(DN)'
 # Tree view with directories.
 abbr 'tree'='eza -T --group-directories-first -L=2'
 
+# reveal-files
+abbr 'rf'='eza -1 --group-directories-first'
+
+# reveal-files-all
+abbr 'rfa'='eza -1 --all --group-directories-first'
+
+# reveal-hidden-files
+abbr 'rhf'='eza -1 -d --group-directories-first .*(DN)'
+
+# reveal-tree
+abbr 'rt'='eza -T --group-directories-first -L=2'
+
 
 # ===========================
 # find
@@ -114,6 +135,15 @@ abbr 'finda'='fd --hidden --no-ignore'
 # Perform a case-sensitive search.
 abbr 'fds'='fd --case-sensitive'
 
+# search-files
+abbr 'sf'='fd'
+
+# search-files-all
+abbr 'sfa'='fd --hidden --no-ignore'
+
+# search-files-sensitive
+abbr 'sfs'='fd --case-sensitive'
+
 
 # ===========================
 # grep
@@ -125,3 +155,9 @@ abbr 'grep'='rg --ignore-case'
 # Perform a case-sensitive search.
 abbr 'rgs'='rg --case-sensitive'
 abbr 'greps'='rg --case-sensitive'
+
+# search-text
+abbr 'sw'='rg --ignore-case'
+
+# search-text-sensitive
+abbr 'sws'='rg --case-sensitive'
