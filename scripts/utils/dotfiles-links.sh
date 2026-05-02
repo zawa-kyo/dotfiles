@@ -3,6 +3,47 @@
 dotfiles_links_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dotfiles_links_dir/log.sh"
 
+# Return success when the candidate path itself is located inside the given directory.
+is_within_dir() {
+  local candidate="$1"
+  local dir="$2"
+
+  python3 - "$candidate" "$dir" <<'PY'
+import os
+import sys
+
+candidate = os.path.abspath(os.path.expanduser(sys.argv[1]))
+directory = os.path.abspath(os.path.expanduser(sys.argv[2]))
+
+try:
+    common = os.path.commonpath([candidate, directory])
+except ValueError:
+    raise SystemExit(1)
+
+raise SystemExit(0 if common == directory else 1)
+PY
+}
+
+# Refuse links that point back into the dotfiles repo.
+validate_dotfiles_links() {
+  local dotfiles_dir="$1"
+  local source
+  local target
+  local link
+
+  for link in "${file_links[@]}" "${directory_links[@]}" "${codex_skill_links[@]}"; do
+    IFS=":" read -r source target <<<"$link"
+
+    if [[ -z "$source" || -z "$target" ]]; then
+      fail "Invalid link definition: $link"
+    fi
+
+    if is_within_dir "$target" "$dotfiles_dir"; then
+      fail "Refusing to create a link inside the repository: $target"
+    fi
+  done
+}
+
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dotfiles_dir="$1"
@@ -48,6 +89,7 @@ populate_dotfiles_links() {
     "$dir_skills:$dir_skills_link"
     "$dir_skills_link:$dir_claude_code_skills"
     "$dir_skills_link:$dir_gemini_cli_skills"
+    "$dotfiles_dir/mise/conf.d:$HOME/.config/mise/conf.d"
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
     "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
   )
@@ -57,6 +99,7 @@ populate_dotfiles_links() {
     local skill_dir
     for skill_dir in "$dir_skills"/*; do
       [ -d "$skill_dir" ] || continue
+      [ -L "$skill_dir" ] && continue
       codex_skill_links+=("$skill_dir:$dir_codex_skills/$(basename "$skill_dir")")
     done
   fi
