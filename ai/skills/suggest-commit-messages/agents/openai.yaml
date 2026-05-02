@@ -1,0 +1,4 @@
+interface:
+  display_name: "Suggest Commit Messages"
+  short_description: "Draft concise commit messages from staged diffs"
+  default_prompt: "Use $suggest-commit-messages to suggest concise English commit messages from the staged Git diff."
