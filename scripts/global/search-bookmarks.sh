@@ -12,10 +12,7 @@ source "$bootstrap_utils_dir/script-path.sh"
 script_dir="$(resolve_script_dir "${BASH_SOURCE[0]}")"
 source "$script_dir/../utils/log.sh"
 source "$script_dir/../utils/fzf.sh"
-
-require_python3() {
-  command -v python3 >/dev/null 2>&1 || fail "python3 is required for search-bookmarks."
-}
+source "$script_dir/../utils/require.sh"
 
 usage() {
   cat <<'EOF'
@@ -166,7 +163,7 @@ main() {
   local title
   local url
 
-  require_python3
+  require_command python3
 
   while [ "$#" -gt 0 ]; do
     case "$1" in

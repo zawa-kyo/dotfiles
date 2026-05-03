@@ -6,6 +6,7 @@ set -euo pipefail
 script_path="$(realpath "${BASH_SOURCE[0]}")"
 script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 source "$script_dir/../utils/log.sh"
+source "$script_dir/../utils/require.sh"
 source "$script_dir/../utils/fzf.sh"
 
 main() {
@@ -14,13 +15,9 @@ main() {
   local preview_cmd
   local target_path
 
-  command -v git >/dev/null 2>&1 || {
-    warn "git is required"
-    exit 1
-  }
-
+  require_command git || exit 1
   current_path="$(git rev-parse --show-toplevel 2>/dev/null)" || {
-    warn "not inside a git repository"
+    require_fail "not inside a git repository"
     exit 1
   }
 

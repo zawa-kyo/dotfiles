@@ -5,13 +5,8 @@ source "$script_dir/fzf.sh"
 
 # Ensure required Git and fzf commands are available.
 ensure_git_and_fzf() {
-  command -v git >/dev/null 2>&1 || fail "git is required"
+  require_command git
   ensure_fzf_command
-}
-
-# Ensure the current directory is inside a Git repository.
-ensure_git_repository() {
-  git rev-parse --show-toplevel >/dev/null 2>&1 || fail "not inside a git repository"
 }
 
 # Select a local or remote branch ref with fzf.

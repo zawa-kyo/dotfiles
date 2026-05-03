@@ -6,6 +6,7 @@ set -euo pipefail
 script_path="$(realpath "${BASH_SOURCE[0]}")"
 script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 source "$script_dir/../utils/fzf.sh"
+source "$script_dir/../utils/require.sh"
 
 main() {
   local abbreviations_file
@@ -15,10 +16,7 @@ main() {
   abbreviations_file="${XDG_CONFIG_HOME:-$HOME/.config}/zsh-abbr/user-abbreviations"
   abbreviation_column_width=18
 
-  [ -f "$abbreviations_file" ] || {
-    echo "search-abbreviation: abbreviations file not found at $abbreviations_file" >&2
-    exit 1
-  }
+  require_file "$abbreviations_file" "search-abbreviation: abbreviations file not found at $abbreviations_file" || exit 1
 
   selected="$(
     while IFS= read -r line; do

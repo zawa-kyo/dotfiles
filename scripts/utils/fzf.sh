@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/require.sh"
+
 # Print an fzf-related error and abort the current flow.
 fzf_fail() {
   local message="$1"
@@ -14,7 +17,7 @@ fzf_fail() {
 
 # Ensure the fzf command is available.
 ensure_fzf_command() {
-  command -v fzf >/dev/null 2>&1 || fzf_fail "fzf is required"
+  require_command fzf
 }
 
 # Run fzf with the provided options.
