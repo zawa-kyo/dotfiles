@@ -16,6 +16,9 @@
 
 - `reveal-repository-with-neovim`
 - `add-worktree`
+- `add-worktree-remote`
+- `switch-branch`
+- `switch-branch-remote`
 - `delete-worktree`
 - `search-task`
 

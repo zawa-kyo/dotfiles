@@ -56,10 +56,13 @@ Useful direct commands after install:
 
 ```sh
 add-worktree
+add-worktree-remote
 delete-worktree
 reveal-repository-with-neovim
 search-abbreviation
 search-task
+switch-branch
+switch-branch-remote
 ```
 
 ## Repository Layout
@@ -100,7 +103,7 @@ The base `~/.gitconfig` is managed as a symlink from this repository.
 - Put machine-specific overrides in `~/.gitconfig.local`
 - Repositories fetched with `ghq get` are expected under `~/Git/ghq`
 
-When `terminal/.zshrc` is linked, `add-worktree` and `delete-worktree` provide interactive worktree management with `fzf`.
+When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
 
 ### VS Code
 
@@ -115,6 +118,7 @@ AI tool configuration is grouped under `ai/`.
 - `ai/skills/` is linked to a shared skills directory
 - Codex custom skills are linked individually into `~/.codex/skills/`
 - canonical paths are managed through `mise/conf.d/env.toml`
+- custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
 ### Bun
 

@@ -45,6 +45,7 @@ Use the standard code-review shape:
 - Include open questions or assumptions after findings.
 - State any verification that was not run when it affects confidence in the review.
 - End with a brief summary only after findings.
+- Write the review in the user's request language unless they explicitly ask for another language.
 
 When no issues are found, say that no blocking issues were found and mention any residual test or context gaps.
 
