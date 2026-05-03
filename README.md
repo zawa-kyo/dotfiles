@@ -118,6 +118,7 @@ AI tool configuration is grouped under `ai/`.
 - `ai/skills/` is linked to a shared skills directory
 - Codex custom skills are linked individually into `~/.codex/skills/`
 - canonical paths are managed through `mise/conf.d/env.toml`
+- custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
 ### Bun
 
