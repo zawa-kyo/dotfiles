@@ -11,10 +11,8 @@ source "$bootstrap_utils_dir/script-path.sh"
 
 script_dir="$(resolve_script_dir "${BASH_SOURCE[0]}")"
 source "$script_dir/../utils/log.sh"
-
-require_python3() {
-  command -v python3 >/dev/null 2>&1 || fail "python3 is required for search-bookmarks."
-}
+source "$script_dir/../utils/fzf.sh"
+source "$script_dir/../utils/require.sh"
 
 usage() {
   cat <<'EOF'
@@ -165,7 +163,7 @@ main() {
   local title
   local url
 
-  require_python3
+  require_command python3
 
   while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -201,12 +199,7 @@ main() {
 
   selected="$(
     printf '%s\n' "$bookmarks" |
-      SHELL=/bin/sh fzf \
-        --prompt='bookmarks> ' \
-        --delimiter="$(printf '\t')" \
-        --with-nth=1,2,3,4 \
-        --preview-window='right,60%,wrap' \
-        --preview '
+      run_fzf_with_preview '
           /bin/sh -c '"'"'
             browser="$1"
             location="$2"
@@ -221,7 +214,11 @@ main() {
             printf "Host     : %s\n" "${host:-N/A}"
             printf "URL      : %s\n" "$url"
           '"'"' sh {1} {2} {3} {4}
-        '
+        ' \
+        --prompt='bookmarks> ' \
+        --delimiter="$(printf '\t')" \
+        --with-nth=1,2,3,4 \
+        --preview-window='right,60%,wrap'
   )" || exit 1
 
   [ -n "$selected" ] || exit 1

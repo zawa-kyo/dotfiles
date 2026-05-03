@@ -3,12 +3,15 @@
 
 set -euo pipefail
 
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+source "$script_dir/../utils/fzf.sh"
+
 main() {
   local file
 
   file="$(
-    SHELL=/bin/sh fzf \
-      --preview 'bat --style=numbers --color=always {}'
+    run_fzf_with_preview 'bat --style=numbers --color=always {}'
   )" || exit 1
   [ -n "$file" ] || exit 1
   exec nvim "$file"

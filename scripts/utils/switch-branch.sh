@@ -7,7 +7,7 @@ run_switch_branch() {
   local ref_name
 
   ensure_git_and_fzf
-  ensure_git_repository
+  require_git_repository
 
   ref_name="$(select_branch_ref "$mode")" || return 1
   [ -n "$ref_name" ] || return 1

@@ -11,8 +11,9 @@ run_add_worktree() {
   local repo_root
 
   ensure_git_and_fzf
+  require_git_repository
 
-  repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || fail "not inside a git repository"
+  repo_root="$(git rev-parse --show-toplevel 2>/dev/null)"
 
   ref_name="$(select_branch_ref "$mode")" || return 1
   [ -n "$ref_name" ] || return 1

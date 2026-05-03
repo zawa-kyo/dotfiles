@@ -3,23 +3,20 @@
 
 set -euo pipefail
 
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+source "$script_dir/../utils/fzf.sh"
+source "$script_dir/../utils/require.sh"
+
 main() {
   local abbreviations_file
   local abbreviation_column_width
   local selected
 
-  command -v fzf >/dev/null 2>&1 || {
-    echo "search-abbreviation: fzf is required." >&2
-    exit 1
-  }
-
   abbreviations_file="${XDG_CONFIG_HOME:-$HOME/.config}/zsh-abbr/user-abbreviations"
   abbreviation_column_width=18
 
-  [ -f "$abbreviations_file" ] || {
-    echo "search-abbreviation: abbreviations file not found at $abbreviations_file" >&2
-    exit 1
-  }
+  require_file "$abbreviations_file" "search-abbreviation: abbreviations file not found at $abbreviations_file" || exit 1
 
   selected="$(
     while IFS= read -r line; do
@@ -31,12 +28,11 @@ main() {
           "$abbreviation" \
           "$expansion"
       fi
-    done <"$abbreviations_file" | SHELL=/bin/bash fzf \
+    done <"$abbreviations_file" | run_fzf_with_preview $'printf "abbreviation: %s\n\nexpansion:\n%s\n" {1} {3}' \
       --delimiter=$'\t' \
       --with-nth=2,3 \
       --header=$'ABBREVIATION\tEXPANSION' \
       --prompt='abbreviation> ' \
-      --preview $'printf "abbreviation: %s\n\nexpansion:\n%s\n" {1} {3}' \
       --preview-window='right,60%,wrap'
   )" || exit 1
 
