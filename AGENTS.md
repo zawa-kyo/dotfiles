@@ -34,6 +34,7 @@
   - タブ/バッファ表示変更は `nvim/lua/policies/tab-buffer-policy.md`
 - `scripts/`, `mise.toml`, `terminal/`, `sheldon/abbreviations` を変更する場合
   - `docs/command-model.md` と `docs/abbreviation-policy.md` を確認する
+  - `fzf` を使う処理は `docs/command-model.md` の共通化方針に従う
 - `homebrew/` を変更する場合
   - `README.md` の Homebrew 節と `docs/operations.md` を確認する
 - `bun/` を変更する場合
