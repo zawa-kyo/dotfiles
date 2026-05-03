@@ -6,7 +6,10 @@ set -euo pipefail
 main() {
   local file
 
-  file="$(fzf)" || exit 1
+  file="$(
+    SHELL=/bin/sh fzf \
+      --preview 'bat --style=numbers --color=always {}'
+  )" || exit 1
   [ -n "$file" ] || exit 1
   exec nvim "$file"
 }

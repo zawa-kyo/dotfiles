@@ -4,49 +4,34 @@
 set -euo pipefail
 
 main() {
+  local abbreviations_file
   local abbreviation_column_width
-  local xdg_data_home
-  local plugin_path
   local selected
 
   command -v fzf >/dev/null 2>&1 || {
     echo "search-abbreviation: fzf is required." >&2
     exit 1
   }
-  command -v zsh >/dev/null 2>&1 || {
-    echo "search-abbreviation: zsh is required." >&2
-    exit 1
-  }
 
-  xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+  abbreviations_file="${XDG_CONFIG_HOME:-$HOME/.config}/zsh-abbr/user-abbreviations"
   abbreviation_column_width=18
-  plugin_path="$xdg_data_home/sheldon/repos/github.com/olets/zsh-abbr/zsh-abbr.plugin.zsh"
 
-  [ -f "$plugin_path" ] || {
-    echo "search-abbreviation: zsh-abbr plugin not found at $plugin_path" >&2
+  [ -f "$abbreviations_file" ] || {
+    echo "search-abbreviation: abbreviations file not found at $abbreviations_file" >&2
     exit 1
   }
 
   selected="$(
-    ABBREVIATION_COLUMN_WIDTH="$abbreviation_column_width" \
-      ZSH_ABBR_PLUGIN_PATH="$plugin_path" zsh -fc '
-      source "$ZSH_ABBR_PLUGIN_PATH"
-
-      abbr list | while IFS= read -r line; do
-        case "$line" in
-          *"Sourced: .zshenv"*) continue ;;
-        esac
-
-        abbreviation=${line%%=*}
-        expansion=${line#*=}
-        quoted_abbreviation=${(Q)abbreviation}
-        quoted_expansion=${(Q)expansion}
-        printf "%s\t%-${ABBREVIATION_COLUMN_WIDTH}s\t%s\n" \
-          "$quoted_abbreviation" \
-          "$quoted_abbreviation" \
-          "$quoted_expansion"
-      done
-    ' | SHELL=/bin/bash fzf \
+    while IFS= read -r line; do
+      if [[ $line =~ ^abbr\ \'([^\']+)\'=\'(.*)\'$ ]]; then
+        abbreviation="${BASH_REMATCH[1]}"
+        expansion="${BASH_REMATCH[2]}"
+        printf "%s\t%-${abbreviation_column_width}s\t%s\n" \
+          "$abbreviation" \
+          "$abbreviation" \
+          "$expansion"
+      fi
+    done <"$abbreviations_file" | SHELL=/bin/bash fzf \
       --delimiter=$'\t' \
       --with-nth=2,3 \
       --header=$'ABBREVIATION\tEXPANSION' \

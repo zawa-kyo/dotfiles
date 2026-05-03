@@ -69,6 +69,9 @@ abbr 'cb'='switch-branch'
 # change-branch-remote
 abbr 'cbr'='switch-branch-remote'
 
+# search-abbreviation
+abbr 'sa'='search-abbreviation'
+
 # search-bookmarks
 abbr 'sb'='search-bookmarks'
 

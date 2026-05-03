@@ -42,7 +42,7 @@ main() {
         $1 == "worktree" { path = $2; next }
         $1 == "branch" && path != current { print path }
       ' |
-      fzf --preview "$preview_cmd"
+      SHELL=/bin/sh fzf --preview "$preview_cmd"
   )" || exit 1
 
   [ -n "$target_path" ] || exit 1

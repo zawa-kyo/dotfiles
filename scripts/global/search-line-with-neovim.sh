@@ -5,7 +5,7 @@ set -euo pipefail
 
 main() {
   rg --no-heading --line-number --color=always '' |
-    fzf \
+    SHELL=/bin/sh fzf \
       --ansi \
       --delimiter=: \
       --preview 'bat --color=always {1} --highlight-line {2}' \
