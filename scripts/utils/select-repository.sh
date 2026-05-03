@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/fzf.sh"
+
 select_repository() {
   local query="${*:-}"
   local preview_cmd
@@ -15,12 +18,12 @@ select_repository() {
     eza --tree --level=2 --git-ignore --color=always --icons {}
   '
 
-  fzf_opts=(--preview "$preview_cmd")
+  fzf_opts=()
   if [ -n "$query" ]; then
     fzf_opts+=(--query "$query")
   fi
 
-  ghq list --full-path | SHELL=/bin/sh fzf "${fzf_opts[@]}"
+  ghq list --full-path | run_fzf_with_preview "$preview_cmd" "${fzf_opts[@]}"
 }
 
 find_repository() {
@@ -43,7 +46,7 @@ find_repository() {
     return 0
   fi
 
-  matches="$(ghq list --full-path | SHELL=/bin/sh fzf --filter="$query" || true)"
+  matches="$(ghq list --full-path | run_fzf --filter="$query" || true)"
   if [ -n "$matches" ]; then
     while IFS= read -r repo; do
       [ -n "$repo" ] || continue

@@ -3,13 +3,17 @@
 
 set -euo pipefail
 
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+source "$script_dir/../utils/fzf.sh"
+
 main() {
   local selected
   local task_name
 
   selected="$(
     mise tasks ls --global 2>/dev/null |
-      fzf --prompt='mise task> '
+      run_fzf --prompt='mise task> '
   )" || exit 1
 
   [ -n "$selected" ] || exit 1

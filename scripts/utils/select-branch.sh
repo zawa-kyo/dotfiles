@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/fzf.sh"
+
 # Ensure required Git and fzf commands are available.
 ensure_git_and_fzf() {
   command -v git >/dev/null 2>&1 || fail "git is required"
-  command -v fzf >/dev/null 2>&1 || fail "fzf is required"
+  ensure_fzf_command
 }
 
 # Ensure the current directory is inside a Git repository.
@@ -19,12 +22,12 @@ select_branch_ref() {
   case "$mode" in
   local)
     git for-each-ref --format='%(refname:short)' refs/heads |
-      SHELL=/bin/sh fzf --preview "$preview_cmd"
+      run_fzf_with_preview "$preview_cmd"
     ;;
   remote)
     git for-each-ref --format='%(refname:short)' --sort=refname refs/remotes |
       awk '$0 !~ /\/HEAD$/ { print }' |
-      SHELL=/bin/sh fzf --preview "$preview_cmd"
+      run_fzf_with_preview "$preview_cmd"
     ;;
   *)
     fail "unsupported branch-ref mode: $mode"

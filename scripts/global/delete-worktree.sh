@@ -6,6 +6,7 @@ set -euo pipefail
 script_path="$(realpath "${BASH_SOURCE[0]}")"
 script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 source "$script_dir/../utils/log.sh"
+source "$script_dir/../utils/fzf.sh"
 
 main() {
   local confirm
@@ -15,11 +16,6 @@ main() {
 
   command -v git >/dev/null 2>&1 || {
     warn "git is required"
-    exit 1
-  }
-
-  command -v fzf >/dev/null 2>&1 || {
-    warn "fzf is required"
     exit 1
   }
 
@@ -42,7 +38,7 @@ main() {
         $1 == "worktree" { path = $2; next }
         $1 == "branch" && path != current { print path }
       ' |
-      SHELL=/bin/sh fzf --preview "$preview_cmd"
+      run_fzf_with_preview "$preview_cmd"
   )" || exit 1
 
   [ -n "$target_path" ] || exit 1

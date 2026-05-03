@@ -3,12 +3,15 @@
 
 set -euo pipefail
 
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
+source "$script_dir/../utils/fzf.sh"
+
 main() {
   rg --no-heading --line-number --color=always '' |
-    SHELL=/bin/sh fzf \
+    run_fzf_with_preview 'bat --color=always {1} --highlight-line {2}' \
       --ansi \
       --delimiter=: \
-      --preview 'bat --color=always {1} --highlight-line {2}' \
       --bind 'enter:execute(nvim {1} +{2})'
 }
 
