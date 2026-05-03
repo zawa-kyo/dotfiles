@@ -17,6 +17,7 @@
 
 ### verb
 
+- `c`: checkout / change
 - `r`: reveal / open
 - `a`: add / create / append
 - `d`: delete / remove
@@ -52,6 +53,9 @@
 - `rrl` -> `reveal-repository-with-lazygit`
 - `rrz` -> `reveal-repository-with-zoxide`
 - `aw` -> `add-worktree`
+- `awr` -> `add-worktree-remote`
+- `cb` -> `switch-branch`
+- `cbr` -> `switch-branch-remote`
 - `dw` -> `delete-worktree`
 - `sb` -> `search-bookmarks`
 - `st` -> `search-task`

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a local branch with fzf and add or reuse its worktree
+# MISE_DESCRIPTION: Select a remote branch with fzf and add or reuse its tracking worktree
 
 set -euo pipefail
 
@@ -9,4 +9,4 @@ source "$script_dir/../utils/log.sh"
 source "$script_dir/../utils/select-branch.sh"
 source "$script_dir/../utils/add-worktree.sh"
 
-run_add_worktree local "$@"
+run_add_worktree remote "$@"

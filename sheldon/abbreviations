@@ -57,8 +57,17 @@ abbr 'rrz'='reveal-repository-with-zoxide'
 # add-worktree
 abbr 'aw'='add-worktree'
 
+# add-worktree-remote
+abbr 'awr'='add-worktree-remote'
+
 # delete-worktree
 abbr 'dw'='delete-worktree'
+
+# change-branch
+abbr 'cb'='switch-branch'
+
+# change-branch-remote
+abbr 'cbr'='switch-branch-remote'
 
 # search-bookmarks
 abbr 'sb'='search-bookmarks'
