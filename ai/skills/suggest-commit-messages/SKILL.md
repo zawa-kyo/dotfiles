@@ -15,14 +15,16 @@ Draft a small set of concise English commit message candidates from the reposito
 2. If there is no staged diff, say that no staged changes were found and ask the user to stage changes before suggesting commit messages.
 3. Infer the dominant intent of the staged diff, including whether the change is a feature, fix, refactor, style, chore, docs, test, or build change.
 4. Generate 3-6 commit message candidates in concise English, using Conventional Commit style by default.
-5. Prefer one-line messages unless the user asks for bodies. Keep the subject concise and action-oriented, with no trailing period.
-6. If the staged diff contains unrelated changes, group candidates by likely change area or mention that splitting the commit may be clearer.
+5. After listing candidates, recommend the single best message based on fit to the diff content and natural English phrasing.
+6. Prefer one-line messages unless the user asks for bodies. Keep the subject concise and action-oriented, with no trailing period.
+7. If the staged diff contains unrelated changes, group candidates by likely change area or mention that splitting the commit may be clearer.
 
 ## Style
 
 - Use lowercase Conventional Commit types such as `feat`, `fix`, `refactor`, `style`, `chore`, `docs`, `test`, `build`, or `ci`.
 - Capitalize the first word of the subject after `type:`.
 - Prefer messages without a scope unless one is clearly necessary for clarity.
+- When choosing the recommended message, prefer the candidate that most directly describes the staged diff while sounding natural to an English-speaking maintainer.
 - Match the user's preference for brevity. Good examples:
   - `feat: Simplify eza abbreviations`
   - `feat: Limit mise lockfiles to supported platforms`
@@ -39,4 +41,8 @@ staged diff を確認しました。以下がコミットメッセージの候�
 - feat: Simplify eza abbreviations
 - feat: Limit mise lockfiles to supported platforms
 - refactor: Move CLI tools from Homebrew to mise
+
+もっとも自然なものは次のとおりです。
+
+- feat: Limit mise lockfiles to supported platforms
 ```
