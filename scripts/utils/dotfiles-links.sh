@@ -139,22 +139,11 @@ cleanup_skill_links() {
   local skill_root
   local skill_path
   local skill_target
-  local legacy_shared_skills_link="$HOME/.skills"
 
   for skill_root in \
     "$dir_claude_code_skills" \
     "$dir_codex_skills" \
     "$dir_gemini_cli_skills"; do
-    if symlink_points_within_dir "$skill_root" "$dir_skills"; then
-      rm -f "$skill_root"
-      info "Removed legacy shared skills symlink: $skill_root"
-    fi
-
-    if [ -L "$skill_root" ] && [ "$(readlink "$skill_root")" = "$legacy_shared_skills_link" ]; then
-      rm -f "$skill_root"
-      info "Removed legacy shared skills symlink: $skill_root"
-    fi
-
     [ -d "$skill_root" ] || continue
 
     for skill_path in "$skill_root"/*; do
@@ -180,9 +169,4 @@ cleanup_skill_links() {
       fi
     done
   done
-
-  if symlink_points_within_dir "$legacy_shared_skills_link" "$dir_skills"; then
-    rm -f "$legacy_shared_skills_link"
-    info "Removed legacy shared skills symlink: $legacy_shared_skills_link"
-  fi
 }
