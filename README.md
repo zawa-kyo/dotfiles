@@ -115,8 +115,8 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 AI tool configuration is grouped under `ai/`.
 
-- `ai/skills/` is linked to a shared skills directory
-- Codex custom skills are linked individually into `~/.codex/skills/`
+- each skill under `ai/skills/` is published directly into each tool's skills directory
+- the installer links individual skills under `~/.claude/skills/`, `~/.gemini/skills/`, and `~/.codex/skills/`
 - canonical paths are managed through `mise/conf.d/env.toml`
 - custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 

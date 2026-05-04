@@ -90,6 +90,7 @@ install_dir() {
 
 populate_dotfiles_links "$dotfiles_dir"
 validate_dotfiles_links "$dotfiles_dir"
+cleanup_skill_links "$dotfiles_dir"
 
 # Link listed files from dotfiles into their target locations.
 for link in "${file_links[@]}"; do
@@ -103,7 +104,7 @@ for link in "${directory_links[@]}"; do
   install_dir "$source" "$target"
 done
 
-for link in "${codex_skill_links[@]}"; do
+for link in "${skill_links[@]}"; do
   IFS=":" read -r source target <<<"$link"
   install_dir "$source" "$target"
 done

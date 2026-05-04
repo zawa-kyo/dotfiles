@@ -41,6 +41,7 @@ relink() {
 
 populate_dotfiles_links "$dotfiles_dir"
 validate_dotfiles_links "$dotfiles_dir"
+cleanup_skill_links "$dotfiles_dir"
 
 for link in "${file_links[@]}"; do
   IFS=":" read -r source target <<<"$link"
@@ -52,7 +53,7 @@ for link in "${directory_links[@]}"; do
   relink "$source" "$target"
 done
 
-for link in "${codex_skill_links[@]}"; do
+for link in "${skill_links[@]}"; do
   IFS=":" read -r source target <<<"$link"
   relink "$source" "$target"
 done

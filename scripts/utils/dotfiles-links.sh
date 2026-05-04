@@ -24,6 +24,20 @@ raise SystemExit(0 if common == directory else 1)
 PY
 }
 
+# Return success when the symlink resolves inside the given directory.
+symlink_points_within_dir() {
+  local candidate="$1"
+  local dir="$2"
+  local target
+
+  [ -L "$candidate" ] || return 1
+  target="$(readlink "$candidate")" || return 1
+  if [[ "$target" != /* ]]; then
+    target="$(dirname "$candidate")/$target"
+  fi
+  is_within_dir "$target" "$dir"
+}
+
 # Refuse links that point back into the dotfiles repo.
 validate_dotfiles_links() {
   local dotfiles_dir="$1"
@@ -31,7 +45,7 @@ validate_dotfiles_links() {
   local target
   local link
 
-  for link in "${file_links[@]}" "${directory_links[@]}" "${codex_skill_links[@]}"; do
+  for link in "${file_links[@]}" "${directory_links[@]}" "${skill_links[@]}"; do
     IFS=":" read -r source target <<<"$link"
 
     if [[ -z "$source" || -z "$target" ]]; then
@@ -48,13 +62,15 @@ validate_dotfiles_links() {
 populate_dotfiles_links() {
   local dotfiles_dir="$1"
   local dir_skills="${DIR_SKILLS:-$dotfiles_dir/ai/skills}"
-  local dir_skills_link="$HOME/.skills"
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
   local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
   local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
   local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
+  local skill_dir
+  local skill_name
+  local skill_root
 
   file_links=(
     "$dotfiles_dir/git/.gitconfig:$HOME/.gitconfig"
@@ -89,21 +105,68 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
-    "$dir_skills:$dir_skills_link"
-    "$dir_skills_link:$dir_claude_code_skills"
-    "$dir_skills_link:$dir_gemini_cli_skills"
     "$dotfiles_dir/mise/conf.d:$HOME/.config/mise/conf.d"
     "$dotfiles_dir/nvim:$HOME/.config/nvim"
     "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
   )
 
-  codex_skill_links=()
+  skill_links=()
   if [ -d "$dir_skills" ]; then
-    local skill_dir
     for skill_dir in "$dir_skills"/*; do
       [ -d "$skill_dir" ] || continue
       [ -L "$skill_dir" ] && continue
-      codex_skill_links+=("$skill_dir:$dir_codex_skills/$(basename "$skill_dir")")
+      skill_name="$(basename "$skill_dir")"
+      for skill_root in \
+        "$dir_claude_code_skills" \
+        "$dir_codex_skills" \
+        "$dir_gemini_cli_skills"; do
+        skill_links+=("$skill_dir:$skill_root/$skill_name")
+      done
     done
   fi
+}
+
+# Remove stale skill symlinks previously published from the repo.
+cleanup_skill_links() {
+  local dotfiles_dir="$1"
+  local dir_skills="${DIR_SKILLS:-$dotfiles_dir/ai/skills}"
+  local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
+  local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
+  local dir_codex="${DIR_CODEX:-$HOME/.codex}"
+  local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
+  local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
+  local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
+  local skill_root
+  local skill_path
+  local skill_target
+
+  for skill_root in \
+    "$dir_claude_code_skills" \
+    "$dir_codex_skills" \
+    "$dir_gemini_cli_skills"; do
+    [ -d "$skill_root" ] || continue
+
+    for skill_path in "$skill_root"/*; do
+      [ -L "$skill_path" ] || continue
+      if ! symlink_points_within_dir "$skill_path" "$dir_skills"; then
+        continue
+      fi
+
+      skill_target="$(readlink "$skill_path")"
+      if [[ "$skill_target" != /* ]]; then
+        skill_target="$(dirname "$skill_path")/$skill_target"
+      fi
+
+      if [ ! -e "$skill_target" ]; then
+        rm -f "$skill_path"
+        info "Removed stale skill symlink: $skill_path"
+        continue
+      fi
+
+      if [ ! -d "$dir_skills/$(basename "$skill_path")" ]; then
+        rm -f "$skill_path"
+        info "Removed stale skill symlink: $skill_path"
+      fi
+    done
+  done
 }
