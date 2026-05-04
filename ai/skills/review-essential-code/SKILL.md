@@ -13,15 +13,16 @@ Review changes with the normal code-review lens first: correctness, regressions,
 
 1. Identify the review target from the user request. If no target is named, inspect the current Git diff, including staged and unstaged changes separately unless the user specifies staged-only or a narrower target.
 2. Read enough surrounding code to understand the existing design, invariants, public contracts, and local style. Do not judge simplicity without context.
-3. Review for concrete correctness risks first: bugs, regressions, missing edge cases, broken API contracts, data loss, security issues, performance problems, and missing or weak tests.
-4. Review for essential design next:
+3. Do not modify the worktree or index while reviewing unless the user explicitly asks for fixes. In particular, do not run `git add`, `git restore --staged`, formatting, or other commands that stage, unstage, rewrite, or normalize the reviewed diff.
+4. Review for concrete correctness risks first: bugs, regressions, missing edge cases, broken API contracts, data loss, security issues, performance problems, and missing or weak tests.
+5. Review for essential design next:
    - Does the change address the root cause, or only suppress the observed failure?
    - Does it preserve existing invariants instead of adding scattered exceptions?
    - Does it remove accidental complexity, or add flags, branches, retries, catches, sleeps, casts, globals, or duplicated logic to force tests green?
    - Is the abstraction justified by real reuse or complexity reduction?
    - Is the behavior clear at the call site and easy for the next maintainer to reason about?
-5. Prefer findings that cite specific lines and concrete failure modes. Avoid style nits unless they affect maintainability or hide a real risk.
-6. If the implementation is simple and sound, say so clearly. Do not invent findings to satisfy the review format.
+6. Prefer findings that cite specific lines and concrete failure modes. Avoid style nits unless they affect maintainability or hide a real risk.
+7. If the implementation is simple and sound, say so clearly. Do not invent findings to satisfy the review format.
 
 ## Workaround Smells
 
