@@ -14,28 +14,29 @@ checksum = "sha256:aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e69
 url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz"
 
 [[tools.atuin]]
-version = "18.15.2"
+version = "18.16.0"
 backend = "aqua:atuinsh/atuin"
 
 [tools.atuin."platforms.linux-x64"]
-checksum = "sha256:84c76ad3e61cb0a3cdbdcc768374d4bcc400e4a8f376d1302c37059d0d9affb1"
-url = "https://github.com/atuinsh/atuin/releases/download/v18.15.2/atuin-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:1b8d633e27f4afc80e99b11a92e01854a84f7f4c77dda1b312ab8a8d80eb2f13"
+url = "https://github.com/atuinsh/atuin/releases/download/v18.16.0/atuin-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.atuin."platforms.macos-arm64"]
-checksum = "sha256:d73608ade168b24a29ddfed119896eb95ff7f5addcd01cab3bfff3c93deeeee1"
-url = "https://github.com/atuinsh/atuin/releases/download/v18.15.2/atuin-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:1c37735c64286449f9be567029d55e678f89f68fe9766c52c42aa734ee560749"
+url = "https://github.com/atuinsh/atuin/releases/download/v18.16.0/atuin-aarch64-apple-darwin.tar.gz"
+provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.41"
+version = "2.34.43"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.41.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.43.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:00bfcf3cd3df60cc194270925802f5e14a0c588093a72904b9d01b0047952dff"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.41.pkg"
+checksum = "blake3:4585036765c3b63125552a8ece564b2dd67663f14bf0b12eae7567a4d08a8354"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.43.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -67,6 +68,18 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x6
 
 [tools.bun."platforms.macos-arm64"]
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
+
+[[tools.copilot]]
+version = "1.0.40"
+backend = "aqua:github/copilot-cli"
+
+[tools.copilot."platforms.linux-x64"]
+checksum = "sha256:113945f763c0f7abc95f7a0405e429c5857aa0a8422b41300048b2df9906ccf6"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.40/copilot-linux-x64.tar.gz"
+
+[tools.copilot."platforms.macos-arm64"]
+checksum = "sha256:866c967d1f0404bbca678c1ef439043a06e5912f08650be82ea4c19595886ae3"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.40/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -139,31 +152,32 @@ checksum = "sha256:4cbf87e8e8a342614c1e3e74670ceb18c2af998c4d4d0c379cfee9b520774
 url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-darwin_arm64.tar.gz"
 
 [[tools.gat]]
-version = "0.27.0"
+version = "0.27.1"
 backend = "github:koki-develop/gat"
 
 [tools.gat."platforms.linux-x64"]
-checksum = "sha256:43148b1860e987fca01612aabd5e5f026330056f84ab5000cd762e16143630cd"
-url = "https://github.com/koki-develop/gat/releases/download/v0.27.0/gat_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/368143910"
+checksum = "sha256:50a9052ced22f10401b881ae442555c033e7d67733cf95210cfd471df8e68e93"
+url = "https://github.com/koki-develop/gat/releases/download/v0.27.1/gat_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/406994439"
 
 [tools.gat."platforms.macos-arm64"]
-checksum = "sha256:3d13cbcf1a74ac7ff980faa75278bf29ffc249780fe16a48e52273b4a191db06"
-url = "https://github.com/koki-develop/gat/releases/download/v0.27.0/gat_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/368143911"
+checksum = "sha256:dd6384dd7a172b9787cd1bc8b417824ac61c0f4a3e00773ec2e800446d6f68b0"
+url = "https://github.com/koki-develop/gat/releases/download/v0.27.1/gat_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/406994449"
 
 [[tools.gh]]
-version = "2.91.0"
+version = "2.92.0"
 backend = "aqua:cli/cli"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:304a0d2460f4a8847d2f192bad4e2a32cd9420d28716e7ae32198181b65b5f9c"
-url = "https://github.com/cli/cli/releases/download/v2.91.0/gh_2.91.0_linux_amd64.tar.gz"
+checksum = "sha256:b57848131bdf0c229cd35e1f2a51aa718199858b2e728410b37e89a428943ec4"
+url = "https://github.com/cli/cli/releases/download/v2.92.0/gh_2.92.0_linux_amd64.tar.gz"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-arm64"]
-checksum = "sha256:20446cd714d9fa1b69fbd410deade3731f38fe09a2b980c8488aa388dd320ada"
-url = "https://github.com/cli/cli/releases/download/v2.91.0/gh_2.91.0_macOS_arm64.zip"
+checksum = "sha256:b11c54f6bd7d15ed6590475079e5b2fcf36f45d3991a80041b29c9d0cc1f1d07"
+url = "https://github.com/cli/cli/releases/download/v2.92.0/gh_2.92.0_macOS_arm64.zip"
+provenance = "github-attestations"
 
 [[tools.ghq]]
 version = "1.10.1"
@@ -330,7 +344,7 @@ checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d95758
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
 
 [[tools.uv]]
-version = "0.11.8"
+version = "0.11.10"
 backend = "asdf:uv"
 
 [[tools.yazi]]
