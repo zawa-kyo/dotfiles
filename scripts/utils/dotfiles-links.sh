@@ -62,14 +62,23 @@ validate_dotfiles_links() {
 populate_dotfiles_links() {
   local dotfiles_dir="$1"
   local dir_skills="${DIR_SKILLS:-$dotfiles_dir/ai/skills}"
+
+  # ClaudeCode
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
+
+  # Codex
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
   local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
+
+  # GitHub Copilot
   local dir_copilot="${DIR_COPILOT:-$HOME/.copilot}"
   local dir_copilot_skills="${DIR_COPILOT_SKILLS:-$dir_copilot/skills}"
+
+  # Gemini
   local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
   local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
+
   local skill_dir
   local skill_name
   local skill_root
