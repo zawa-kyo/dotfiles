@@ -66,6 +66,8 @@ populate_dotfiles_links() {
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
   local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
+  local dir_copilot="${DIR_COPILOT:-$HOME/.copilot}"
+  local dir_copilot_skills="${DIR_COPILOT_SKILLS:-$dir_copilot/skills}"
   local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
   local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
   local skill_dir
@@ -119,6 +121,7 @@ populate_dotfiles_links() {
       for skill_root in \
         "$dir_claude_code_skills" \
         "$dir_codex_skills" \
+        "$dir_copilot_skills" \
         "$dir_gemini_cli_skills"; do
         skill_links+=("$skill_dir:$skill_root/$skill_name")
       done
@@ -134,6 +137,8 @@ cleanup_skill_links() {
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
   local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
+  local dir_copilot="${DIR_COPILOT:-$HOME/.copilot}"
+  local dir_copilot_skills="${DIR_COPILOT_SKILLS:-$dir_copilot/skills}"
   local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
   local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
   local skill_root
@@ -143,6 +148,7 @@ cleanup_skill_links() {
   for skill_root in \
     "$dir_claude_code_skills" \
     "$dir_codex_skills" \
+    "$dir_copilot_skills" \
     "$dir_gemini_cli_skills"; do
     [ -d "$skill_root" ] || continue
 
