@@ -40,7 +40,7 @@ symlink_points_within_dir() {
 
 # Refuse links that point back into the dotfiles repo.
 validate_dotfiles_links() {
-  local dotfiles_dir="$1"
+  local dir_dotfiles="$1"
   local source
   local target
   local link
@@ -52,7 +52,7 @@ validate_dotfiles_links() {
       fail "Invalid link definition: $link"
     fi
 
-    if is_within_dir "$target" "$dotfiles_dir"; then
+    if is_within_dir "$target" "$dir_dotfiles"; then
       fail "Refusing to create a link inside the repository: $target"
     fi
   done
@@ -60,8 +60,8 @@ validate_dotfiles_links() {
 
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
-  local dotfiles_dir="$1"
-  local dir_skills="${DIR_SKILLS:-$dotfiles_dir/ai/skills}"
+  local dir_dotfiles="$1"
+  local dir_skills="${DIR_SKILLS:-$dir_dotfiles/ai/skills}"
 
   # ClaudeCode
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
@@ -84,20 +84,20 @@ populate_dotfiles_links() {
   local skill_root
 
   file_links=(
-    "$dotfiles_dir/git/.gitconfig:$HOME/.gitconfig"
-    "$dotfiles_dir/terminal/.zlogin:$HOME/.zlogin"
-    "$dotfiles_dir/terminal/.zlogout:$HOME/.zlogout"
-    "$dotfiles_dir/terminal/.zprofile:$HOME/.zprofile"
-    "$dotfiles_dir/terminal/.zshenv:$HOME/.zshenv"
-    "$dotfiles_dir/terminal/.zshrc:$HOME/.zshrc"
-    "$dotfiles_dir/borders/bordersrc:$HOME/.config/borders/bordersrc"
-    "$dotfiles_dir/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
-    "$dotfiles_dir/mise/config.global.toml:$HOME/.config/mise/mise.toml"
-    "$dotfiles_dir/mise/config.global.lock:$HOME/.config/mise/mise.lock"
-    "$dotfiles_dir/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
-    "$dotfiles_dir/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
-    "$dotfiles_dir/starship/starship.toml:$HOME/.config/starship.toml"
-    "$dotfiles_dir/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
+    "$dir_dotfiles/git/.gitconfig:$HOME/.gitconfig"
+    "$dir_dotfiles/terminal/.zlogin:$HOME/.zlogin"
+    "$dir_dotfiles/terminal/.zlogout:$HOME/.zlogout"
+    "$dir_dotfiles/terminal/.zprofile:$HOME/.zprofile"
+    "$dir_dotfiles/terminal/.zshenv:$HOME/.zshenv"
+    "$dir_dotfiles/terminal/.zshrc:$HOME/.zshrc"
+    "$dir_dotfiles/borders/bordersrc:$HOME/.config/borders/bordersrc"
+    "$dir_dotfiles/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
+    "$dir_dotfiles/mise/config.global.toml:$HOME/.config/mise/mise.toml"
+    "$dir_dotfiles/mise/config.global.lock:$HOME/.config/mise/mise.lock"
+    "$dir_dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
+    "$dir_dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
+    "$dir_dotfiles/starship/starship.toml:$HOME/.config/starship.toml"
+    "$dir_dotfiles/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
   )
 
   case "$(uname -s)" in
@@ -105,9 +105,9 @@ populate_dotfiles_links() {
     local macos_app_support_dir="$HOME/Library/Application Support"
 
     file_links+=(
-      "$dotfiles_dir/lazygit/config.yml:$macos_app_support_dir/lazygit/config.yml"
-      "$dotfiles_dir/vscode/settings.jsonc:$macos_app_support_dir/Code/User/settings.json"
-      "$dotfiles_dir/vscode/keybindings.jsonc:$macos_app_support_dir/Code/User/keybindings.json"
+      "$dir_dotfiles/lazygit/config.yml:$macos_app_support_dir/lazygit/config.yml"
+      "$dir_dotfiles/vscode/settings.jsonc:$macos_app_support_dir/Code/User/settings.json"
+      "$dir_dotfiles/vscode/keybindings.jsonc:$macos_app_support_dir/Code/User/keybindings.json"
     )
     ;;
   *)
@@ -116,9 +116,9 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
-    "$dotfiles_dir/mise/conf.d:$HOME/.config/mise/conf.d"
-    "$dotfiles_dir/nvim:$HOME/.config/nvim"
-    "$dotfiles_dir/wezterm:$HOME/.config/wezterm"
+    "$dir_dotfiles/mise/conf.d:$HOME/.config/mise/conf.d"
+    "$dir_dotfiles/nvim:$HOME/.config/nvim"
+    "$dir_dotfiles/wezterm:$HOME/.config/wezterm"
   )
 
   skill_links=()
@@ -140,8 +140,8 @@ populate_dotfiles_links() {
 
 # Remove stale skill symlinks previously published from the repo.
 cleanup_skill_links() {
-  local dotfiles_dir="$1"
-  local dir_skills="${DIR_SKILLS:-$dotfiles_dir/ai/skills}"
+  local dir_dotfiles="$1"
+  local dir_skills="${DIR_SKILLS:-$dir_dotfiles/ai/skills}"
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
