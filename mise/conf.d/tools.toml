@@ -25,6 +25,7 @@ actionlint = "latest"
 atuin = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 bat = "latest"
+copilot = "latest"
 delta = "latest"
 eza = "latest"
 fastfetch = "latest"
