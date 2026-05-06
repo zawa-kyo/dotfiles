@@ -13,6 +13,20 @@ provenance = "github-attestations"
 checksum = "sha256:aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f"
 url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz"
 
+[[tools.apm]]
+version = "0.10.0"
+backend = "github:microsoft/apm"
+
+[tools.apm."platforms.linux-x64"]
+checksum = "sha256:26fe68ccfac0c8896eb048a8ab3575de64d8d8b9b61293ae6b72e012ed280e93"
+url = "https://github.com/microsoft/apm/releases/download/v0.10.0/apm-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/406846292"
+
+[tools.apm."platforms.macos-arm64"]
+checksum = "sha256:55f9a30491fe2e5501302a218510700a935dd643e59e319ea5bc168142e056b7"
+url = "https://github.com/microsoft/apm/releases/download/v0.10.0/apm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/406846295"
+
 [[tools.atuin]]
 version = "18.16.0"
 backend = "aqua:atuinsh/atuin"

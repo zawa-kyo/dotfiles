@@ -22,6 +22,7 @@ uv = "0"
 
 # CLI tools
 actionlint = "latest"
+apm = "latest"
 atuin = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 bat = "latest"
@@ -46,4 +47,5 @@ yazi = "latest"
 zoxide = "latest"
 
 [tool_alias]
+apm = "github:microsoft/apm"
 gat = "github:koki-develop/gat"
