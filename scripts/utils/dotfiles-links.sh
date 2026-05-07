@@ -116,6 +116,7 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
+    "$dir_dotfiles/apm:$HOME/.apm"
     "$dir_dotfiles/mise/conf.d:$HOME/.config/mise/conf.d"
     "$dir_dotfiles/nvim:$HOME/.config/nvim"
     "$dir_dotfiles/wezterm:$HOME/.config/wezterm"
