@@ -83,6 +83,7 @@ trap 'rm -f "$tmpfile"' EXIT
 git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
+  ':(exclude)apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 prettier --write < "$tmpfile"
