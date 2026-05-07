@@ -1,0 +1,16 @@
+lockfile_version: '1'
+generated_at: '2026-05-07T13:11:04.019900+00:00'
+apm_version: 0.10.0
+dependencies:
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 2036fb480a8b442c7b6298595b38c9a7a25b97af
+  virtual_path: empirical-prompt-tuning
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .claude/skills/empirical-prompt-tuning
+  - .copilot/skills/empirical-prompt-tuning
+  - .cursor/skills/empirical-prompt-tuning
+  - .gemini/skills/empirical-prompt-tuning
+  content_hash: sha256:9c64f10bca463d3ea059d1659d4dd9fddfd90239825c44f1be20c18a2e15b69a
