@@ -18,9 +18,17 @@ ensure_bun_dir() {
 
 # Point Bun's global install directory at the repo-managed directory.
 link_global_dir() {
+  local bun_real_dir
+  local global_real_dir
+
   mkdir -p "$global_parent_dir" "$global_bin_dir"
+  bun_real_dir="$(realpath "$bun_dir")"
 
   if [ -L "$global_dir" ]; then
+    if global_real_dir="$(realpath "$global_dir" 2>/dev/null)" && [ "$global_real_dir" = "$bun_real_dir" ]; then
+      info "Bun directory already linked."
+      return 0
+    fi
     rm "$global_dir"
     info "Old Bun global symlink removed."
   elif [ -e "$global_dir" ]; then
