@@ -28,15 +28,14 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.0/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.43"
+version = "2.34.45"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.43.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.45.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:4585036765c3b63125552a8ece564b2dd67663f14bf0b12eae7567a4d08a8354"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.43.pkg"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.45.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -70,16 +69,16 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x6
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.40"
+version = "1.0.41"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:113945f763c0f7abc95f7a0405e429c5857aa0a8422b41300048b2df9906ccf6"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.40/copilot-linux-x64.tar.gz"
+checksum = "sha256:eead744dbc46591110cede7f078cdca0708ecc673e43fc7572e01d292bb5ddfb"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.41/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:866c967d1f0404bbca678c1ef439043a06e5912f08650be82ea4c19595886ae3"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.40/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:458448db454dc28250c2b83c08e2881d871b1c9973669ac564ff81ad76dff0ba"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.41/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -94,14 +93,16 @@ checksum = "sha256:9be36612a5a13e9e386dc498fb8e50dc87c72ee42b63db0ea05b32f99a72a
 url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-aarch64-apple-darwin.tar.gz"
 
 [[tools.deno]]
-version = "2.7.13"
+version = "2.7.14"
 backend = "core:deno"
 
 [tools.deno."platforms.linux-x64"]
-url = "https://dl.deno.land/release/v2.7.13/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:3287efef53606966469cb6a02781327be22b908959397f976e2996dc1b64ae0f"
+url = "https://dl.deno.land/release/v2.7.14/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.macos-arm64"]
-url = "https://dl.deno.land/release/v2.7.13/deno-aarch64-apple-darwin.zip"
+checksum = "sha256:aeb5825f83b4a9cd7f9355a1c4ddd666205dacf76ccb7b98c2b10e066bc9e4bb"
+url = "https://dl.deno.land/release/v2.7.14/deno-aarch64-apple-darwin.zip"
 
 [[tools.eza]]
 version = "0.23.4"
@@ -152,18 +153,18 @@ checksum = "sha256:4cbf87e8e8a342614c1e3e74670ceb18c2af998c4d4d0c379cfee9b520774
 url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-darwin_arm64.tar.gz"
 
 [[tools.gat]]
-version = "0.27.1"
+version = "0.27.2"
 backend = "github:koki-develop/gat"
 
 [tools.gat."platforms.linux-x64"]
-checksum = "sha256:50a9052ced22f10401b881ae442555c033e7d67733cf95210cfd471df8e68e93"
-url = "https://github.com/koki-develop/gat/releases/download/v0.27.1/gat_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/406994439"
+checksum = "sha256:b89c1a1f8e50f90813d7fea9c30dde62c924e3ab79cc9ee18589672e8c5138a2"
+url = "https://github.com/koki-develop/gat/releases/download/v0.27.2/gat_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/410165367"
 
 [tools.gat."platforms.macos-arm64"]
-checksum = "sha256:dd6384dd7a172b9787cd1bc8b417824ac61c0f4a3e00773ec2e800446d6f68b0"
-url = "https://github.com/koki-develop/gat/releases/download/v0.27.1/gat_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/406994449"
+checksum = "sha256:e11c4973612a842211aea0c6bbdf953f91504cab4f47a550f57bdfd7fef0f9e2"
+url = "https://github.com/koki-develop/gat/releases/download/v0.27.2/gat_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/410165415"
 
 [[tools.gh]]
 version = "2.92.0"
@@ -271,8 +272,18 @@ url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-linux-x64.tar.gz"
 url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-darwin-arm64.tar.gz"
 
 [[tools.python]]
-version = "3.14.4"
+version = "3.14.5"
 backend = "core:python"
+
+[tools.python."platforms.linux-x64"]
+checksum = "sha256:dc10977b0db3bef1ee2275107fde6fe9c148135b556fa352e83c6baa67d17ed6"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260510/cpython-3.14.5+20260510-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+provenance = "github-attestations"
+
+[tools.python."platforms.macos-arm64"]
+checksum = "blake3:8e7fb40cb57142654daad85c704e742080f2de52394006cf91db55572498ed37"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260510/cpython-3.14.5+20260510-aarch64-apple-darwin-install_only_stripped.tar.gz"
+provenance = "github-attestations"
 
 [[tools.ripgrep]]
 version = "15.1.0"
@@ -319,16 +330,16 @@ checksum = "sha256:56affdd8de5527894dca6dc3d7e0a99a873b0f004d7aabc30ae407d3f48b0
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.aarch64.tar.xz"
 
 [[tools.starship]]
-version = "1.25.0"
+version = "1.25.1"
 backend = "aqua:starship/starship"
 
 [tools.starship."platforms.linux-x64"]
-checksum = "sha256:0169f187e927a0ee9abf41bb80e316717fea6e37e404267bca5134c6ea10c0ed"
-url = "https://github.com/starship/starship/releases/download/v1.25.0/starship-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.macos-arm64"]
-checksum = "sha256:365301b5f4938322a9f378764b4bc640048bca7d6ac28eaabd406cadd6fc703a"
-url = "https://github.com/starship/starship/releases/download/v1.25.0/starship-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:1062a2363489b9335529b83204472f02633c08fc3609f1b325be5eba36feb631"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-apple-darwin.tar.gz"
 
 [[tools.tree-sitter]]
 version = "0.26.8"
@@ -344,7 +355,7 @@ checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d95758
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
 
 [[tools.uv]]
-version = "0.11.10"
+version = "0.11.13"
 backend = "asdf:uv"
 
 [[tools.yazi]]
