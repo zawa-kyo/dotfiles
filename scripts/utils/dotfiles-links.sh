@@ -62,6 +62,7 @@ validate_dotfiles_links() {
 populate_dotfiles_links() {
   local dir_dotfiles="$1"
   local dir_skills="${DIR_SKILLS:-$dir_dotfiles/ai/skills}"
+  local dir_apm_modules="${DIR_APM_MODULES:-$dir_dotfiles/apm/apm_modules}"
 
   # ClaudeCode
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
@@ -137,12 +138,22 @@ populate_dotfiles_links() {
       done
     done
   fi
+
+  if [ -d "$dir_apm_modules" ]; then
+    for skill_dir in "$dir_apm_modules"/*/skills/*; do
+      [ -d "$skill_dir" ] || continue
+      [ -L "$skill_dir" ] && continue
+      skill_name="$(basename "$skill_dir")"
+      skill_links+=("$skill_dir:$dir_codex_skills/$skill_name")
+    done
+  fi
 }
 
 # Remove stale skill symlinks previously published from the repo.
 cleanup_skill_links() {
   local dir_dotfiles="$1"
   local dir_skills="${DIR_SKILLS:-$dir_dotfiles/ai/skills}"
+  local dir_apm_modules="${DIR_APM_MODULES:-$dir_dotfiles/apm/apm_modules}"
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
@@ -184,5 +195,24 @@ cleanup_skill_links() {
         info "Removed stale skill symlink: $skill_path"
       fi
     done
+  done
+
+  [ -d "$dir_codex_skills" ] || return 0
+
+  for skill_path in "$dir_codex_skills"/*; do
+    [ -L "$skill_path" ] || continue
+    if ! symlink_points_within_dir "$skill_path" "$dir_apm_modules"; then
+      continue
+    fi
+
+    skill_target="$(readlink "$skill_path")"
+    if [[ "$skill_target" != /* ]]; then
+      skill_target="$(dirname "$skill_path")/$skill_target"
+    fi
+
+    if [ ! -e "$skill_target" ]; then
+      rm -f "$skill_path"
+      info "Removed stale skill symlink: $skill_path"
+    fi
   done
 }
