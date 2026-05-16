@@ -16,6 +16,9 @@ abbr 'gdl'='z $HOME/Downloads'
 # go-home
 abbr 'gh'='z $HOME'
 
+# go-local
+abbr 'gl'='z $DIR_LOCAL_CONFIG'
+
 # go-root
 abbr 'gr'='z $(git rev-parse --show-toplevel)'
 
