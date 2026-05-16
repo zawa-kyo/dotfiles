@@ -28,14 +28,14 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.0/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.45"
+version = "2.34.48"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.45.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.48.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.45.pkg"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.48.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -69,16 +69,16 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x6
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.41"
+version = "1.0.45"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:eead744dbc46591110cede7f078cdca0708ecc673e43fc7572e01d292bb5ddfb"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.41/copilot-linux-x64.tar.gz"
+checksum = "sha256:f93d872de15edd5133a6f8de5e72e461313187c3a23d3996e64862440a3978a8"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.45/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:458448db454dc28250c2b83c08e2881d871b1c9973669ac564ff81ad76dff0ba"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.41/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:419f1d80cc96ed4197e7ed562b6d61697b4d5bbe41ab7f8c038bbe850e18adbd"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.45/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -137,7 +137,7 @@ version = "8.1.1"
 backend = "asdf:ffmpeg"
 
 [[tools.flutter]]
-version = "3.41.2-stable"
+version = "3.41.9-stable"
 backend = "asdf:flutter"
 
 [[tools.fvm]]
@@ -217,14 +217,16 @@ checksum = "sha256:b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb
 url = "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_darwin_arm64.tar.gz"
 
 [[tools.go]]
-version = "1.26.2"
+version = "1.26.3"
 backend = "core:go"
 
 [tools.go."platforms.linux-x64"]
-url = "https://dl.google.com/go/go1.26.2.linux-amd64.tar.gz"
+checksum = "sha256:2b2cfc7148493da5e73981bffbf3353af381d5f93e789c82c79aff64962eb556"
+url = "https://dl.google.com/go/go1.26.3.linux-amd64.tar.gz"
 
 [tools.go."platforms.macos-arm64"]
-url = "https://dl.google.com/go/go1.26.2.darwin-arm64.tar.gz"
+checksum = "sha256:875cf54a15311eee2c99b9dd67c68c4a49351d489ab622bf2cfd28c8f2078d3c"
+url = "https://dl.google.com/go/go1.26.3.darwin-arm64.tar.gz"
 
 [[tools.java]]
 version = "26.0.1"
@@ -266,8 +268,18 @@ url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 
 [[tools.maestro]]
-version = "cli-2.4.0"
+version = "cli-2.5.1"
 backend = "github:mobile-dev-inc/maestro"
+
+[tools.maestro."platforms.linux-x64"]
+checksum = "sha256:2d924bfd37cccabca438a727213648cbfe4f8bb711559ec8e9d199dc09a5ce52"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.5.1/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/408968468"
+
+[tools.maestro."platforms.macos-arm64"]
+checksum = "sha256:2d924bfd37cccabca438a727213648cbfe4f8bb711559ec8e9d199dc09a5ce52"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.5.1/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/408968468"
 
 [[tools.neovim]]
 version = "0.12.2"
@@ -367,32 +379,32 @@ checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d95758
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
 
 [[tools.uv]]
-version = "0.11.13"
+version = "0.11.14"
 backend = "asdf:uv"
 
 [[tools.yazi]]
-version = "26.1.22"
+version = "26.5.6"
 backend = "aqua:sxyazi/yazi"
 
 [tools.yazi."platforms.linux-x64"]
-checksum = "sha256:b977351968206c0b78d2ef5bf21351685cc191b58a4c7e1c98c37db5d0a381f8"
-url = "https://github.com/sxyazi/yazi/releases/download/v26.1.22/yazi-x86_64-unknown-linux-musl.zip"
+checksum = "sha256:1031a02560d053301537195a6661d227c15cb4ce5c30481050b31e2b88681bff"
+url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-unknown-linux-musl.zip"
 
 [tools.yazi."platforms.macos-arm64"]
-checksum = "sha256:8355ad582dd9f4ef1f88a228080f2b6116bbb483dd48d1bde555d475f4d2afe4"
-url = "https://github.com/sxyazi/yazi/releases/download/v26.1.22/yazi-aarch64-apple-darwin.zip"
+checksum = "sha256:7abd71725e2fe27bed036becbf6ce79fa17964eb68491d34190011c94b8c7ca8"
+url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-apple-darwin.zip"
 
 [[tools.zellij]]
-version = "0.44.1"
+version = "0.44.2"
 backend = "aqua:zellij-org/zellij"
 
 [tools.zellij."platforms.linux-x64"]
-checksum = "sha256:669825021d529fca5d939888263c9d2a90762145191fa07581a15250e8af2b49"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:26e1753b4c8451912523c7d8700c5aed75392ea57f0b1c988560f3bbc7775744"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.zellij."platforms.macos-arm64"]
-checksum = "sha256:544c19a9353f0ecc52877ef1e80b1c1dcbf8f258b4817077f9520099c12cc30c"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:2f914c95d9d57e15573cbfb3848071b8f34a0b7f3f8951876b3de20ec9e32ac7"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-aarch64-apple-darwin.tar.gz"
 
 [[tools.zoxide]]
 version = "0.9.9"
