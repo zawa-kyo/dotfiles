@@ -16,7 +16,7 @@ tree-sitter = "0"
 zellij = "0"
 
 # Frameworks / SDKs
-flutter = "3.41.2-stable"
+flutter = "3.41.9-stable"
 fvm = "latest"
 maestro = "cli-2"
 uv = "0"
