@@ -13,6 +13,9 @@ abbr 'gd'='cd ~/Desktop'
 # go-root
 abbr 'gr'='cd $(git rev-parse --show-toplevel)'
 
+# go-repository-browser
+abbr 'grb'='gh browse'
+
 
 # ===========================
 # Vim
@@ -38,6 +41,9 @@ abbr ':wq'='exit'
 
 # reveal-repository
 abbr 'rr'='reveal-repository'
+
+# reveal-repository-with-browser
+abbr 'rrb'='reveal-repository-with-browser'
 
 # reveal-repository-with-code
 abbr 'rrc'='reveal-repository-with-code'
