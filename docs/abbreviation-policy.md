@@ -22,6 +22,7 @@
 - `a`: add / create / append
 - `d`: delete / remove
 - `s`: search / select
+- `g`: go / move or open the current context
 
 ### object
 
@@ -32,6 +33,7 @@
 
 ### qualifier
 
+- `b`: browser
 - `c`: VS Code
 - `f`: Fork
 - `l`: lazygit
@@ -46,12 +48,19 @@
 
 例:
 
-- `rr` -> `reveal-repository`
+- `rr` -> `reveal-repository-with-zoxide`
+- `rrb` -> `reveal-repository-with-browser`
 - `rrn` -> `reveal-repository-with-neovim`
 - `rrc` -> `reveal-repository-with-code`
 - `rrf` -> `reveal-repository-with-fork`
 - `rrl` -> `reveal-repository-with-lazygit`
 - `rrz` -> `reveal-repository-with-zoxide`
+- `gd` -> `z $HOME/Desktop`
+- `gdl` -> `z $HOME/Downloads`
+- `gh` -> `z $HOME`
+- `gl` -> `z $DIR_LOCAL_CONFIG`
+- `gr` -> `z $(git rev-parse --show-toplevel)`
+- `grb` -> `gh browse`
 - `aw` -> `add-worktree`
 - `awr` -> `add-worktree-remote`
 - `cb` -> `switch-branch`

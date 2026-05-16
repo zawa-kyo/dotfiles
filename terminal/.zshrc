@@ -54,7 +54,7 @@ source_local_files() {
   fi
 }
 
-source_local_files "$HOME/local.d" ".zsh"
+source_local_files "$DIR_LOCAL_CONFIG" ".zsh"
 
 
 # ===========================

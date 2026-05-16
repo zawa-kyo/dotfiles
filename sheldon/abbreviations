@@ -4,14 +4,26 @@
 
 abbr '...'='../../'
 abbr '....'='../../../'
-abbr 'desktop'='cd ~/Desktop'
-abbr 'root'='cd $(git rev-parse --show-toplevel)'
+abbr 'desktop'='z $HOME/Desktop'
+abbr 'root'='z $(git rev-parse --show-toplevel)'
 
 # go-desktop
-abbr 'gd'='cd ~/Desktop'
+abbr 'gd'='z $HOME/Desktop'
+
+# go-downloads
+abbr 'gdl'='z $HOME/Downloads'
+
+# go-home
+abbr 'gh'='z $HOME'
+
+# go-local
+abbr 'gl'='z $DIR_LOCAL_CONFIG'
 
 # go-root
-abbr 'gr'='cd $(git rev-parse --show-toplevel)'
+abbr 'gr'='z $(git rev-parse --show-toplevel)'
+
+# go-repository-browser
+abbr 'grb'='gh browse'
 
 
 # ===========================
@@ -36,8 +48,11 @@ abbr ':wq'='exit'
 # - verb + object
 # - add a qualifier only when verb + object is not enough
 
-# reveal-repository
-abbr 'rr'='reveal-repository'
+# reveal-repository-with-zoxide
+abbr 'rr'='reveal-repository-with-zoxide'
+
+# reveal-repository-with-browser
+abbr 'rrb'='reveal-repository-with-browser'
 
 # reveal-repository-with-code
 abbr 'rrc'='reveal-repository-with-code'
