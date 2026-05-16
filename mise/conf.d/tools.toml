@@ -17,6 +17,7 @@ zellij = "0"
 
 # Frameworks / SDKs
 flutter = "3.41.2-stable"
+fvm = "latest"
 maestro = "cli-2.4.0"
 uv = "0"
 
@@ -46,4 +47,5 @@ yazi = "latest"
 zoxide = "latest"
 
 [tool_alias]
+fvm = "aqua:leoafarias/fvm"
 gat = "github:koki-develop/gat"

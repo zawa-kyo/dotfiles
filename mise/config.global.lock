@@ -140,6 +140,18 @@ backend = "asdf:ffmpeg"
 version = "3.41.2-stable"
 backend = "asdf:flutter"
 
+[[tools.fvm]]
+version = "4.1.0"
+backend = "aqua:leoafarias/fvm"
+
+[tools.fvm."platforms.linux-x64"]
+checksum = "sha256:fc3965eacb67ea8e326503cf79cad35cc6534ab8aca22f352ece3eddeaec8829"
+url = "https://github.com/leoafarias/fvm/releases/download/4.1.0/fvm-4.1.0-linux-x64.tar.gz"
+
+[tools.fvm."platforms.macos-arm64"]
+checksum = "sha256:68c10c490efbf3b845c3c997fdf978dcc7fd16a8cbb81b5ae1828bb7faa233bc"
+url = "https://github.com/leoafarias/fvm/releases/download/4.1.0/fvm-4.1.0-macos-arm64.tar.gz"
+
 [[tools.fzf]]
 version = "0.72.0"
 backend = "aqua:junegunn/fzf"
