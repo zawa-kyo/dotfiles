@@ -10,6 +10,12 @@ abbr 'root'='z $(git rev-parse --show-toplevel)'
 # go-desktop
 abbr 'gd'='z $HOME/Desktop'
 
+# go-downloads
+abbr 'gdl'='z $HOME/Downloads'
+
+# go-home
+abbr 'gh'='z $HOME'
+
 # go-root
 abbr 'gr'='z $(git rev-parse --show-toplevel)'
 
