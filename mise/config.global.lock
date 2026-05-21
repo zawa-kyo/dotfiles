@@ -14,28 +14,29 @@ checksum = "sha256:aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e69
 url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz"
 
 [[tools.atuin]]
-version = "18.16.0"
+version = "18.16.1"
 backend = "aqua:atuinsh/atuin"
 
 [tools.atuin."platforms.linux-x64"]
-checksum = "sha256:1b8d633e27f4afc80e99b11a92e01854a84f7f4c77dda1b312ab8a8d80eb2f13"
-url = "https://github.com/atuinsh/atuin/releases/download/v18.16.0/atuin-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:aeee16faab126d2f11658ad4920c73fa8479b25fbd3e26570450af7310aac70a"
+url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.atuin."platforms.macos-arm64"]
-checksum = "sha256:1c37735c64286449f9be567029d55e678f89f68fe9766c52c42aa734ee560749"
-url = "https://github.com/atuinsh/atuin/releases/download/v18.16.0/atuin-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:0a3fdc4cfa18758d6a872950625f2042233df0412a0c10d0dadf30bfc3bc6d6b"
+url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-aarch64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.48"
+version = "2.34.51"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.48.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.51.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.48.pkg"
+checksum = "blake3:5969e45618c082a5cc52ab13915eaed3de92d66183bd0cdc21ee0551f3727f0a"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.51.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -50,35 +51,40 @@ checksum = "sha256:e30beff26779c9bf60bb541e1d79046250cb74378f2757f8eb250afddb19e
 url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-aarch64-apple-darwin.tar.gz"
 
 [[tools.bun]]
-version = "1.3.13"
+version = "1.3.14"
 backend = "core:bun"
 
 [tools.bun."platforms.linux-x64"]
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64.zip"
+checksum = "sha256:951ee2aee855f08595aeec6225226a298d3fea83a3dcd6465c09cbccdf7e848f"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64.zip"
 
 [tools.bun."platforms.linux-x64-baseline"]
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-baseline.zip"
+checksum = "sha256:a063908ae08b7852ca10939bbdc6ceed3ddabce8fb9402dce83d65d73b36e6c7"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-baseline.zip"
 
 [tools.bun."platforms.linux-x64-musl"]
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-musl.zip"
+checksum = "sha256:14bd9aedeebf1dba67e8def9531c89bc989ecfdf1de42e5bfcaf1b8cd9294719"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-musl.zip"
 
 [tools.bun."platforms.linux-x64-musl-baseline"]
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-musl-baseline.zip"
+checksum = "sha256:56a7d6806cf155536c0178f0ea5fbd098e684fa509ebdb4fc0a7e19fb65382dc"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-musl-baseline.zip"
 
 [tools.bun."platforms.macos-arm64"]
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
+checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652620"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.45"
+version = "1.0.49"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:f93d872de15edd5133a6f8de5e72e461313187c3a23d3996e64862440a3978a8"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.45/copilot-linux-x64.tar.gz"
+checksum = "sha256:e61fa2490bc584fe65c4d9f3b2337ef63439cbd9e0a4f6648eb63223e1b32afd"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.49/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:419f1d80cc96ed4197e7ed562b6d61697b4d5bbe41ab7f8c038bbe850e18adbd"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.45/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:4f91c420a2dbd260626e854c7234b1491a7c7e17438b9f15138b292abef58f28"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.49/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -109,16 +115,16 @@ version = "0.23.4"
 backend = "asdf:eza"
 
 [[tools.fastfetch]]
-version = "2.62.1"
+version = "2.63.1"
 backend = "aqua:fastfetch-cli/fastfetch"
 
 [tools.fastfetch."platforms.linux-x64"]
-checksum = "sha256:52619f3d39f03266ec74f9ae9c86893290ec2aa3ea055137f63750a1ce7ea00d"
-url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.62.1/fastfetch-linux-amd64.tar.gz"
+checksum = "sha256:75dcbcf5dbe51a6c3785767085bda00f5253af46a1292a6444746b33215d4199"
+url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.63.1/fastfetch-linux-amd64.tar.gz"
 
 [tools.fastfetch."platforms.macos-arm64"]
-checksum = "sha256:751f61d5c60b21c4a2f88ac5bf295ed3ff42ba7d3333bc7f08d26d2d5d3455c0"
-url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.62.1/fastfetch-macos-aarch64.tar.gz"
+checksum = "sha256:19a6635e237f93bdc8ea7921eaa5dd72b2584eebb7bdaec91956f895033f1efb"
+url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.63.1/fastfetch-macos-aarch64.tar.gz"
 
 [[tools.fd]]
 version = "10.4.2"
@@ -379,7 +385,7 @@ checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d95758
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
 
 [[tools.uv]]
-version = "0.11.14"
+version = "0.11.15"
 backend = "asdf:uv"
 
 [[tools.yazi]]
@@ -395,16 +401,16 @@ checksum = "sha256:7abd71725e2fe27bed036becbf6ce79fa17964eb68491d34190011c94b8c7
 url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-aarch64-apple-darwin.zip"
 
 [[tools.zellij]]
-version = "0.44.2"
+version = "0.44.3"
 backend = "aqua:zellij-org/zellij"
 
 [tools.zellij."platforms.linux-x64"]
-checksum = "sha256:26e1753b4c8451912523c7d8700c5aed75392ea57f0b1c988560f3bbc7775744"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:0f7c346788627f506c0a28296517768633cff24fc822a739f8264b640ecad751"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.3/zellij-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.zellij."platforms.macos-arm64"]
-checksum = "sha256:2f914c95d9d57e15573cbfb3848071b8f34a0b7f3f8951876b3de20ec9e32ac7"
-url = "https://github.com/zellij-org/zellij/releases/download/v0.44.2/zellij-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:b6acf83a7739cf5f0f4e9bd47709642d4d98acbbf8c34d4a12c6e706f531da61"
+url = "https://github.com/zellij-org/zellij/releases/download/v0.44.3/zellij-aarch64-apple-darwin.tar.gz"
 
 [[tools.zoxide]]
 version = "0.9.9"
