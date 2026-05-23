@@ -834,6 +834,12 @@
     "editor.defaultFormatter": "redhat.java",
   },
 
+  // ========= Kotlin ==========
+  "[kotlin]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esafirm.kotlin-formatter",
+  },
+
   // ========= Swift ==========
   "[swift]": {
     "editor.tabSize": 2,
@@ -859,6 +865,24 @@
   // クロージングラベルを表示
   "dart.closingLabels": true,
 
+  // ========== Go ============
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "golang.go",
+  },
+
+  // ========== Go Mod =========
+  "[gomod]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "golang.go",
+  },
+
+  // ========== Rust ===========
+  "[rust]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
   },
 
   // ======= ShellScript =========
