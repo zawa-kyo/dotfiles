@@ -870,10 +870,9 @@
 
   // markdownlint
   "markdownlint.config": {
-    // リンターで無視する項目
-    "MD007": false, // ul-indent - Unordered list indentation
-    "MD010": false, // no-hard-tabs - Hard tabs
-    "MD022": false, //blanks-around-headings/blanks-around-headers: Headings should be surrounded by blank lines
+    "MD007": false, // ul-indent: Unordered list indentation
+    "MD010": false, // no-hard-tabs: Hard tabs
+    "MD022": false, // blanks-around-headers: Headings should be surrounded by blank lines
     "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
     "MD032": false, // blanks-around-lists: Lists should be surrounded by blank lines
   },
