@@ -769,6 +769,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
+  // ========== Vue ============
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
   // ======= Bun ========
   // Bunのパス
   "bun.runtime": "~/.local/share/mise/shims/bun",
@@ -838,6 +844,11 @@
   "[kotlin]": {
     "editor.tabSize": 4,
     "editor.defaultFormatter": "esafirm.kotlin-formatter",
+  },
+
+  // ======= Objective-C =======
+  "[objective-c]": {
+    "editor.tabSize": 4,
   },
 
   // ========= Swift ==========
