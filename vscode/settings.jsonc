@@ -721,18 +721,6 @@
   // insertSpaces: タブをスペースに変換する
   // tabSize: タブとして代入するスペースの数
 
-  // ========== JSON ===========
-  "[json]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-
-  // ========== JSONC ==========
-  "[jsonc]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-
   // ========== HTML ===========
   "[html]": {
     "editor.tabSize": 2,
@@ -902,6 +890,30 @@
     "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
+  // ========== JSON ===========
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ========== JSONC ==========
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ========== Yaml ==========
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ========== Toml ==========
+  "[toml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+  },
+
   // ======= Markdown =========
   "[markdown]": {
     "editor.tabSize": 2,
@@ -934,18 +946,6 @@
   "markdown-preview-enhanced.scrollSync": false,
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
-
-  // ========== Yaml ==========
-  "[yaml]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-
-  // ========== Toml ==========
-  "[toml]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "tamasfe.even-better-toml",
-  },
 
   // ====== LiveServer ========
   "liveServer.settings.donotShowInfoMsg": true,
