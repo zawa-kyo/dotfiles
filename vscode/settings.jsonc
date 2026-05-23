@@ -721,49 +721,49 @@
   // insertSpaces: タブをスペースに変換する
   // tabSize: タブとして代入するスペースの数
 
-  // ========== HTML ===========
+  // ──  HTML ─────────────────────────────────────────────────────────
   "[html]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ========== CSS ============
+  // ──  CSS ──────────────────────────────────────────────────────────
   "[css]": {
     "editor.tabSize": 2,
   },
 
-  // ======= JavaScript ========
+  // ──  JavaScript ───────────────────────────────────────────────────
   "[javascript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "javascript.preferences.quoteStyle": "double",
   },
 
-  // ==== JavaScript React =====
+  // ──  JavaScript React ─────────────────────────────────────────────
   "[javascriptreact]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ======= TypeScript ========
+  // ──  TypeScript ───────────────────────────────────────────────────
   "[typescript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ==== TypeScript React =====
+  // ──  TypeScript React ─────────────────────────────────────────────
   "[typescriptreact]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ========== Vue ============
+  // ── 󰡄 Vue ──────────────────────────────────────────────────────────
   "[vue]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ======= Bun ========
+  // ──  Bun ──────────────────────────────────────────────────────────
   // Bunのパス
   "bun.runtime": "~/.local/share/mise/shims/bun",
   // デバッグターミナルに登録
@@ -771,7 +771,7 @@
   // デバッガーがプログラムの最初の行で停止するか
   "bun.debugTerminal.stopOnEntry": false,
 
-  // ======== Python ==========
+  // ──  Python ───────────────────────────────────────────────────────
   "[python]": {
     "editor.tabSize": 4,
   },
@@ -806,7 +806,7 @@
   // user設定では開いているファイル中心に診断する
   "python.analysis.diagnosticMode": "openFilesOnly",
 
-  // ====== Lua ========
+  // ──  Lua ──────────────────────────────────────────────────────────
   "[lua]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
@@ -817,29 +817,29 @@
   // グローバル変数として`vim`を無視
   "Lua.diagnostics.globals": ["vim"],
 
-  // ======== Jupyter =========
+  // ──  Jupyter ──────────────────────────────────────────────────────
   "[jupyter]": {
     "editor.tabSize": 2,
   },
 
-  // ========== Java ==========
+  // ──  Java ─────────────────────────────────────────────────────────
   "[java]": {
     "editor.tabSize": 4,
     "editor.defaultFormatter": "redhat.java",
   },
 
-  // ========= Kotlin ==========
+  // ──  Kotlin ───────────────────────────────────────────────────────
   "[kotlin]": {
     "editor.tabSize": 4,
     "editor.defaultFormatter": "esafirm.kotlin-formatter",
   },
 
-  // ======= Objective-C =======
+  // ──  Objective-C ──────────────────────────────────────────────────
   "[objective-c]": {
     "editor.tabSize": 4,
   },
 
-  // ========= Swift ==========
+  // ──  Swift ────────────────────────────────────────────────────────
   "[swift]": {
     "editor.tabSize": 2,
   },
@@ -848,7 +848,7 @@
   "lldb.launch.expressions": "native",
   "lldb.suppressUpdateNotifications": true,
 
-  // ========= Dart ==========
+  // ──  Dart ─────────────────────────────────────────────────────────
   "[dart]": {
     "editor.tabSize": 2,
     "editor.codeActionsOnSave": {
@@ -864,57 +864,57 @@
   // クロージングラベルを表示
   "dart.closingLabels": true,
 
-  // ========== Go ============
+  // ──  Go ───────────────────────────────────────────────────────────
   "[go]": {
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
     "editor.defaultFormatter": "golang.go",
   },
 
-  // ========== Go Mod =========
+  // ──  Go Mod ───────────────────────────────────────────────────────
   "[gomod]": {
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
     "editor.defaultFormatter": "golang.go",
   },
 
-  // ========== Rust ===========
+  // ──  Rust ─────────────────────────────────────────────────────────
   "[rust]": {
     "editor.tabSize": 4,
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
   },
 
-  // ======= ShellScript =========
+  // ──  ShellScript ──────────────────────────────────────────────────
   "[shellscript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
-  // ========== JSON ===========
+  // ──  JSON ─────────────────────────────────────────────────────────
   "[json]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ========== JSONC ==========
+  // ──  JSONC ────────────────────────────────────────────────────────
   "[jsonc]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ========== Yaml ==========
+  // ──  YAML ─────────────────────────────────────────────────────────
   "[yaml]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ========== Toml ==========
+  // ──  TOML ─────────────────────────────────────────────────────────
   "[toml]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "tamasfe.even-better-toml",
   },
 
-  // ======= Markdown =========
+  // ──  Markdown ─────────────────────────────────────────────────────
   "[markdown]": {
     "editor.tabSize": 2,
     "editor.quickSuggestions": {
@@ -947,7 +947,7 @@
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
 
-  // ====== LiveServer ========
+  // ── 󰖟 LiveServer ──────────────────────────────────────────────────
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.CustomBrowser": "chrome",
   "redhat.telemetry.enabled": true,
