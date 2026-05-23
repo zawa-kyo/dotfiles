@@ -744,12 +744,6 @@
     "editor.tabSize": 2,
   },
 
-  // ========== Java ==========
-  "[java]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "redhat.java",
-  },
-
   // ======= JavaScript ========
   "[javascript]": {
     "editor.tabSize": 2,
@@ -818,9 +812,26 @@
   // user設定では開いているファイル中心に診断する
   "python.analysis.diagnosticMode": "openFilesOnly",
 
+  // ====== Lua ========
+  "[lua]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+  },
+  // Luaのランタイムを指定
+  "Lua.runtime.version": "LuaJIT",
+  // グローバル変数として`vim`を無視
+  "Lua.diagnostics.globals": ["vim"],
+
   // ======== Jupyter =========
   "[jupyter]": {
     "editor.tabSize": 2,
+  },
+
+  // ========== Java ==========
+  "[java]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "redhat.java",
   },
 
   // ========= Swift ==========
@@ -848,16 +859,7 @@
   // クロージングラベルを表示
   "dart.closingLabels": true,
 
-  // ====== Lua ========
-  "[lua]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.defaultFormatter": "JohnnyMorganz.stylua",
   },
-  // Luaのランタイムを指定
-  "Lua.runtime.version": "LuaJIT",
-  // グローバル変数として`vim`を無視
-  "Lua.diagnostics.globals": ["vim"],
 
   // ======= ShellScript =========
   "[shellscript]": {
