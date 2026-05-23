@@ -757,8 +757,20 @@
     "javascript.preferences.quoteStyle": "double",
   },
 
+  // ==== JavaScript React =====
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
   // ======= TypeScript ========
   "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ==== TypeScript React =====
+  "[typescriptreact]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
