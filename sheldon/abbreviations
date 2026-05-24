@@ -69,6 +69,15 @@ abbr 'rrn'='reveal-repository-with-neovim'
 # reveal-repository-with-zoxide
 abbr 'rrz'='reveal-repository-with-zoxide'
 
+# reveal-process
+abbr 'rp'='reveal-process'
+
+# reveal-process-cpu
+abbr 'rpc'='reveal-process-cpu'
+
+# reveal-process-memory
+abbr 'rpm'='reveal-process-memory'
+
 # add-worktree
 abbr 'aw'='add-worktree'
 
