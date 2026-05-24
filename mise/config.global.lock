@@ -301,6 +301,10 @@ url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-linux-x64.tar.gz"
 [tools.node."platforms.macos-arm64"]
 url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-darwin-arm64.tar.gz"
 
+[[tools.procs]]
+version = "0.14.11"
+backend = "aqua:dalance/procs"
+
 [[tools.python]]
 version = "3.14.5"
 backend = "core:python"
