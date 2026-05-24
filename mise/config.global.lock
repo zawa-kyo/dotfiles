@@ -28,15 +28,14 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.51"
+version = "2.34.53"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.51.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.53.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:5969e45618c082a5cc52ab13915eaed3de92d66183bd0cdc21ee0551f3727f0a"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.51.pkg"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.53.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -389,7 +388,7 @@ checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d95758
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
 
 [[tools.uv]]
-version = "0.11.15"
+version = "0.11.16"
 backend = "asdf:uv"
 
 [[tools.yazi]]
