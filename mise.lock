@@ -24,6 +24,18 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x6
 checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652620"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
+[[tools.git-lfs]]
+version = "3.7.1"
+backend = "aqua:git-lfs/git-lfs"
+
+[tools.git-lfs."platforms.linux-x64"]
+checksum = "sha256:1c0b6ee5200ca708c5cebebb18fdeb0e1c98f1af5c1a9cba205a4c0ab5a5ec08"
+url = "https://github.com/git-lfs/git-lfs/releases/download/v3.7.1/git-lfs-linux-amd64-v3.7.1.tar.gz"
+
+[tools.git-lfs."platforms.macos-arm64"]
+checksum = "sha256:76260fb34f4ee622ff0a66b857e5954aa49c7e343a92e57a1ec4a760618c94b2"
+url = "https://github.com/git-lfs/git-lfs/releases/download/v3.7.1/git-lfs-darwin-arm64-v3.7.1.zip"
+
 [[tools.prettier]]
 version = "3.8.3"
 backend = "npm:prettier"
