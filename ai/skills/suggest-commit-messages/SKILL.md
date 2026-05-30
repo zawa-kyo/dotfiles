@@ -27,6 +27,7 @@ Draft a small set of concise English commit message candidates from the reposito
 - Use lowercase Conventional Commit types such as `feat`, `fix`, `refactor`, `style`, `chore`, `docs`, `test`, `build`, or `ci`.
 - Capitalize the first word of the subject after `type:`.
 - Prefer messages without a scope unless one is clearly necessary for clarity.
+- Choose the type from the dominant user-visible intent: `docs` for documentation-only changes, `fix` for corrected behavior, `feat` for new capability, `refactor` for internal restructuring without behavior change, `style` for formatting-only changes, `test` for tests, `build` or `ci` for build or CI infrastructure, and `chore` for dependency, tooling, or maintenance updates that do not fit the others.
 - When choosing the recommended message, prefer the candidate that most directly describes the selected changes while sounding natural to an English-speaking maintainer.
 - Match the user's preference for brevity. Good examples:
   - `feat: Simplify eza abbreviations`
