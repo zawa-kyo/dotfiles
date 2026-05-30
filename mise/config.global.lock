@@ -28,14 +28,15 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.53"
+version = "2.34.57"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.53.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.57.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.53.pkg"
+checksum = "blake3:b22f3ca1554aa6666d3a46aa8449e328c9696ea6d2bbc1b1b18dcdb94757d6b6"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.57.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -74,16 +75,16 @@ checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.49"
+version = "1.0.52"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:e61fa2490bc584fe65c4d9f3b2337ef63439cbd9e0a4f6648eb63223e1b32afd"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.49/copilot-linux-x64.tar.gz"
+checksum = "sha256:3e32a4d1de31f2cd975d28ca0f79f4868a391478305396263216d3ffd3228f8f"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.52/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:4f91c420a2dbd260626e854c7234b1491a7c7e17438b9f15138b292abef58f28"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.49/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:0d1d2af7cc28e887dcc7e943bee1b659a1a4cd36dccf8e47cf2a3953c6788d2b"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.52/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -98,16 +99,16 @@ checksum = "sha256:9be36612a5a13e9e386dc498fb8e50dc87c72ee42b63db0ea05b32f99a72a
 url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-aarch64-apple-darwin.tar.gz"
 
 [[tools.deno]]
-version = "2.7.14"
+version = "2.8.0"
 backend = "core:deno"
 
 [tools.deno."platforms.linux-x64"]
-checksum = "sha256:3287efef53606966469cb6a02781327be22b908959397f976e2996dc1b64ae0f"
-url = "https://dl.deno.land/release/v2.7.14/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:be2c8b53c8ca1d66be76feb9b1a524419da708b00d4ca074cf5c633c81c1627b"
+url = "https://dl.deno.land/release/v2.8.0/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.macos-arm64"]
-checksum = "sha256:aeb5825f83b4a9cd7f9355a1c4ddd666205dacf76ccb7b98c2b10e066bc9e4bb"
-url = "https://dl.deno.land/release/v2.7.14/deno-aarch64-apple-darwin.zip"
+checksum = "sha256:dba813b8b69d6218cffb11252b9e4e6036ca2c9d79843cde367b4b369aaf9634"
+url = "https://dl.deno.land/release/v2.8.0/deno-aarch64-apple-darwin.zip"
 
 [[tools.eza]]
 version = "0.23.4"
@@ -273,32 +274,34 @@ url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 
 [[tools.maestro]]
-version = "cli-2.5.1"
+version = "cli-2.6.0"
 backend = "github:mobile-dev-inc/maestro"
 
 [tools.maestro."platforms.linux-x64"]
-checksum = "sha256:2d924bfd37cccabca438a727213648cbfe4f8bb711559ec8e9d199dc09a5ce52"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.5.1/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/408968468"
+checksum = "sha256:80185105a5d7e227e3b3fbcf225f45b312508ea676a9fc8e1b1aa1cac8b9ff6e"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.6.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/426144631"
 
 [tools.maestro."platforms.macos-arm64"]
-checksum = "sha256:2d924bfd37cccabca438a727213648cbfe4f8bb711559ec8e9d199dc09a5ce52"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.5.1/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/408968468"
+checksum = "sha256:80185105a5d7e227e3b3fbcf225f45b312508ea676a9fc8e1b1aa1cac8b9ff6e"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.6.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/426144631"
 
 [[tools.neovim]]
 version = "0.12.2"
 backend = "vfox:mise-plugins/vfox-neovim"
 
 [[tools.node]]
-version = "24.15.0"
+version = "24.16.0"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-linux-x64.tar.gz"
+checksum = "sha256:2faf6a387e9b62b888e21c54f01249fb27537ffecf1842f29f4c919d0a59a0ff"
+url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-x64.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
-url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-darwin-arm64.tar.gz"
+checksum = "sha256:39189dab4eeb15706c424af0ac08a3044c9e48f7db12a7d77f6b7aafc7dd5df6"
+url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-arm64.tar.gz"
 
 [[tools.procs]]
 version = "0.14.11"
@@ -335,7 +338,7 @@ version = "3.4.9"
 backend = "core:ruby"
 
 [[tools.rust]]
-version = "1.95.0"
+version = "1.96.0"
 backend = "asdf:rust"
 
 [[tools.sheldon]]
@@ -375,20 +378,21 @@ checksum = "sha256:1062a2363489b9335529b83204472f02633c08fc3609f1b325be5eba36feb
 url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-apple-darwin.tar.gz"
 
 [[tools.tree-sitter]]
-version = "0.26.8"
+version = "0.26.9"
 backend = "aqua:tree-sitter/tree-sitter"
 
 [tools.tree-sitter."platforms.linux-x64"]
-checksum = "sha256:9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x64.gz"
+checksum = "sha256:9ce82137caa65864e7ca8b869fd391cef88c9bd2a01c4371b9c4dd26c2585efb"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree-sitter-linux-x64.gz"
 provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.macos-arm64"]
-checksum = "sha256:024e2cee34723524d62d41bde4d2b4af23c8bbe0236e116c79c0b37d9575889e"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-macos-arm64.gz"
+checksum = "sha256:e46725b2417c085b0761948abc0cc240bff6a3ab5d2128e3ad0de467ded3388d"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree-sitter-macos-arm64.gz"
+provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.11.16"
+version = "0.11.17"
 backend = "asdf:uv"
 
 [[tools.yazi]]
