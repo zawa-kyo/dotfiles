@@ -44,23 +44,16 @@ install() {
     fi
   fi
 
-  # Check if target already exists
+  # Replace any existing symlink, but leave real files or directories untouched.
   if [ -e "$target_file" ] || [ -L "$target_file" ]; then
     if [ -L "$target_file" ]; then
-      local existing_target
-      existing_target="$(readlink "$target_file")"
       if [ "$(resolve_path "$target_file")" = "$(resolve_path "$source_file")" ]; then
         info "$source_basename already linked."
         return 0
       fi
-      if [ ! -e "$(dirname "$target_file")/$existing_target" ] && [ ! -e "$existing_target" ]; then
-        rm "$target_file"
-        info "Removed stale symlink: $target_file"
-      else
-        fail "$target_file points to a different source ($existing_target)."
-      fi
-    fi
-    if [ -e "$target_file" ] || [ -L "$target_file" ]; then
+      rm "$target_file" || fail "Failed to remove existing symlink: $target_file"
+      info "Removed existing symlink: $target_file"
+    else
       warn "$target_file already exists and is not a symlink! Skipping link!"
       return 0
     fi

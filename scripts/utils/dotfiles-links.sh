@@ -107,6 +107,7 @@ populate_dotfiles_links() {
 
     file_links+=(
       "$dir_dotfiles/lazygit/config.yml:$macos_app_support_dir/lazygit/config.yml"
+      "$dir_dotfiles/procs/procs.toml:$HOME/Library/Preferences/com.github.dalance.procs/config.toml"
       "$dir_dotfiles/vscode/settings.jsonc:$macos_app_support_dir/Code/User/settings.json"
       "$dir_dotfiles/vscode/keybindings.jsonc:$macos_app_support_dir/Code/User/keybindings.json"
     )

@@ -1,7 +1,7 @@
 {
-  // ===========================
-  // Files
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰈙 Files
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // ファイルの文字コードをUTF-8固定から自動判定に変更
   "files.autoGuessEncoding": true,
@@ -152,9 +152,9 @@
     "**/kotlin-js-store/**": true,
   },
 
-  // ===========================
-  // Editor
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Editor
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // ホバー表示を有効化
   "editor.hover.enabled": "on",
@@ -225,9 +225,9 @@
   // CodeLensを有効化
   "editor.codeLens": true,
 
-  // ===========================
-  // Workbench
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Workbench
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // テーマ
   "workbench.colorTheme": "Nord",
@@ -258,9 +258,9 @@
     "statusBar.debuggingBackground": "#1C262C",
   },
 
-  // ===========================
-  // Explorer
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰙅 Explorer
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // File nesting
   "explorer.fileNesting.enabled": true,
@@ -269,8 +269,8 @@
     ".gitignore": ".gitattributes",
     "readme.*": "authors, changelog*, contributing.md, contributors, license*",
     // JavaScript, TypeScript
-    "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.ts": "${capture}.js, ${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
     "tsconfig.json": "tsconfig.*.json",
     // Python
@@ -290,9 +290,9 @@
   // ディレクトリとファイルをソート
   "explorer.sortOrder": "foldersNestsFiles",
 
-  // ===========================
-  // Window
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Window
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // 最後のエディタを閉じたときもウィンドウを閉じない
   "window.closeWhenEmpty": false,
@@ -309,9 +309,9 @@
   // ダークモード時のテーマ
   "workbench.preferredDarkColorTheme": "Nord Deep",
 
-  // ===========================
-  // Search
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Search
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // 検索結果から除外する項目
   "search.exclude": {
@@ -380,9 +380,9 @@
     "**/kotlin-js-store/**": true,
   },
 
-  // ===========================
-  // Terminal
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Terminal
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // ターミナルのフォント設定
   "terminal.integrated.fontSize": 12,
@@ -398,16 +398,16 @@
     "FIG_NEW_SESSION": "1",
   },
 
-  // ===========================
-  // Tasks
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Tasks
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // タスク実行時にプロブレムマッチャーの入力ダイアログを表示しない
   "task.problemMatchers.neverPrompt": true,
 
-  // ===========================
-  // Debug console
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Debug console
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // コンソールのフォントサイズ
   "debug.console.fontSize": 12,
@@ -415,9 +415,9 @@
   // デバッグ実行中でも「デバッグコンソール」を自動で開かない
   "debug.internalConsoleOptions": "neverOpen",
 
-  // ===========================
-  // Neovim
-  // ==========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Neovim
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // Neovimのパス
   "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
@@ -428,9 +428,9 @@
     "asvetliakov.vscode-neovim": 1,
   },
 
-  // ===========================
-  // Update
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰚰 Update
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // アップデート時にリリースノートを表示
   "update.showReleaseNotes": false,
@@ -444,9 +444,9 @@
   // 自動更新を制御
   "update.mode": "manual",
 
-  // ===========================
-  // Git
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Git
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // Git自体を有効化
   "git.enabled": true,
@@ -459,9 +459,9 @@
   // ステージングされたファイルがない場合、すべての変更をコミットする
   "git.enableSmartCommit": false,
 
-  // ===========================
-  // Devcontainer
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰡨 Devcontainer
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // devcontainer起動時もデフォルトでインストールする拡張機能
   "dev.containers.defaultExtensions": [
@@ -474,9 +474,9 @@
   ],
   "dev.containers.dockerComposePath": "docker compose",
 
-  // ===========================
-  // Speed up
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰓅 Speed up
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // 高速化のためビルドタスクフェッチをOFFに変更
   "typescript.tsc.autoDetect": "off",
@@ -485,9 +485,9 @@
   "npm.autoDetect": "off",
   "gulp.autoDetect": "off",
 
-  // ===========================
-  // Extensions
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Extensions
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // IndentRainbow
   "indentRainbow.colors": [
@@ -568,9 +568,9 @@
   // MCPサーバギャラリーを有効化
   "chat.mcp.gallery.enabled": true,
 
-  // ===========================
-  // Linter, formatter
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰉢 Linter, formatter
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // スペルチェックで無視する単語
   "cSpell.userWords": [
@@ -659,8 +659,8 @@
     "plantuml",
     "plottable",
     "println",
-    "psutil",
     "pstmt",
+    "psutil",
     "pubspec",
     "pycache",
     "pyenv",
@@ -709,62 +709,62 @@
     "ylabel",
     "ylim",
     "yzhang",
+    "zawa-kyo",
     "zenn",
   ],
   // スペルチェックを無視するファイル
   "cSpell.ignorePaths": ["**/.gitignore"],
 
-  // ===========================
-  // Language specified settings
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 󰗊 Language specified settings
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   // insertSpaces: タブをスペースに変換する
   // tabSize: タブとして代入するスペースの数
 
-  // ========== JSON ===========
-  "[json]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-
-  // ========== JSONC ==========
-  "[jsonc]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-
-  // ========== HTML ===========
+  // ──  HTML ───────────────────────────
   "[html]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ========== CSS ============
+  // ──  CSS ────────────────────────────
   "[css]": {
     "editor.tabSize": 2,
   },
 
-  // ========== Java ==========
-  "[java]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "redhat.java",
-  },
-
-  // ======= JavaScript ========
+  // ──  JavaScript ─────────────────────
   "[javascript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "files.insertFinalNewline": false,
     "javascript.preferences.quoteStyle": "double",
   },
 
-  // ======= TypeScript ========
+  // ──  JavaScript React ───────────────
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ──  TypeScript ─────────────────────
   "[typescript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // ======= Bun ========
+  // ──  TypeScript React ───────────────
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ── 󰡄 Vue ────────────────────────────
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ──  Bun ────────────────────────────
   // Bunのパス
   "bun.runtime": "~/.local/share/mise/shims/bun",
   // デバッグターミナルに登録
@@ -772,7 +772,7 @@
   // デバッガーがプログラムの最初の行で停止するか
   "bun.debugTerminal.stopOnEntry": false,
 
-  // ======== Python ==========
+  // ──  Python ─────────────────────────
   "[python]": {
     "editor.tabSize": 4,
   },
@@ -807,12 +807,40 @@
   // user設定では開いているファイル中心に診断する
   "python.analysis.diagnosticMode": "openFilesOnly",
 
-  // ======== Jupyter =========
+  // ──  Lua ────────────────────────────
+  "[lua]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+  },
+  // Luaのランタイムを指定
+  "Lua.runtime.version": "LuaJIT",
+  // グローバル変数として`vim`を無視
+  "Lua.diagnostics.globals": ["vim"],
+
+  // ──  Jupyter ────────────────────────
   "[jupyter]": {
     "editor.tabSize": 2,
   },
 
-  // ========= Swift ==========
+  // ──  Java ───────────────────────────
+  "[java]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "redhat.java",
+  },
+
+  // ──  Kotlin ─────────────────────────
+  "[kotlin]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esafirm.kotlin-formatter",
+  },
+
+  // ──  Objective-C ────────────────────
+  "[objective-c]": {
+    "editor.tabSize": 4,
+  },
+
+  // ──  Swift ──────────────────────────
   "[swift]": {
     "editor.tabSize": 2,
   },
@@ -821,7 +849,7 @@
   "lldb.launch.expressions": "native",
   "lldb.suppressUpdateNotifications": true,
 
-  // ========= Dart ==========
+  // ──  Dart ───────────────────────────
   "[dart]": {
     "editor.tabSize": 2,
     "editor.codeActionsOnSave": {
@@ -837,24 +865,57 @@
   // クロージングラベルを表示
   "dart.closingLabels": true,
 
-  // ====== Lua ========
-  "[lua]": {
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+  // ──  Go ─────────────────────────────
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "golang.go",
   },
 
-  // ======= ShellScript =========
+  // ──  Go Mod ─────────────────────────
+  "[gomod]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "golang.go",
+  },
+
+  // ──  Rust ───────────────────────────
+  "[rust]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+  },
+
+  // ──  ShellScript ────────────────────
   "[shellscript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "foxundermoon.shell-format",
   },
-  // Luaのランタイムを指定
-  "Lua.runtime.version": "LuaJIT",
-  // グローバル変数として`vim`を無視
-  "Lua.diagnostics.globals": ["vim"],
 
-  // ======= Markdown =========
+  // ──  JSON ───────────────────────────
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ──  JSONC ──────────────────────────
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ──  YAML ───────────────────────────
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  // ──  TOML ───────────────────────────
+  "[toml]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+  },
+
+  // ──  Markdown ───────────────────────
   "[markdown]": {
     "editor.tabSize": 2,
     "editor.quickSuggestions": {
@@ -870,12 +931,13 @@
 
   // markdownlint
   "markdownlint.config": {
-    // リンターで無視する項目
-    "MD007": false, // ul-indent - Unordered list indentation
-    "MD010": false, // no-hard-tabs - Hard tabs
-    "MD022": false, //blanks-around-headings/blanks-around-headers: Headings should be surrounded by blank lines
+    "MD007": false, // ul-indent: Unordered list indentation
+    "MD010": false, // no-hard-tabs: Hard tabs
+    "MD022": false, // blanks-around-headers: Headings should be surrounded by blank lines
+    "MD025": false, // single-h1: Multiple top-level headings in the same
     "MD031": false, // blanks-around-fences: Fenced code blocks should be surrounded by blank lines
     "MD032": false, // blanks-around-lists: Lists should be surrounded by blank lines
+    "MD041": false, // first-line-h1: First line in a file should be a top-level heading
   },
 
   // markdown-preview-enhanced
@@ -887,27 +949,15 @@
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown.preview.scrollPreviewWithEditor": false,
 
-  // ========== Yaml ==========
-  "[yaml]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-
-  // ========== Toml ==========
-  "[toml]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "tamasfe.even-better-toml",
-  },
-
-  // ====== LiveServer ========
+  // ── 󰖟 LiveServer ─────────────────────
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.CustomBrowser": "chrome",
   "redhat.telemetry.enabled": true,
   "security.workspace.trust.untrustedFiles": "open",
 
-  // ===========================
-  // Ignored Settings
-  // ===========================
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //  Ignored Settings
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   "settingsSync.ignoredExtensions": [
     "sonarlint.pathToNodeExecutable",

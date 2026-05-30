@@ -21,7 +21,6 @@ brew "prettyping"
 brew "rustup"
 brew "sevenzip"
 brew "sl"
-brew "tre-command"
 brew "tree"
 brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
@@ -71,8 +70,8 @@ mas "Keepa - Price Tracker", id: 1533805339
 mas "Kindle", id: 302584613
 mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
-mas "Numbers", id: 409203825
 mas "Numbers", id: 361304891
+mas "Numbers", id: 409203825
 mas "RunCat", id: 1429033973
 mas "Save to Raindrop.io", id: 1549370672
 mas "Spark", id: 1176895641
@@ -89,6 +88,7 @@ vscode "aziznal.dart-import-sorter"
 vscode "be5invis.toml"
 vscode "blaugold.melos-code"
 vscode "cameron.vscode-pytest"
+vscode "catppuccin.catppuccin-vsc"
 vscode "catppuccin.catppuccin-vsc-icons"
 vscode "christian-kohler.path-intellisense"
 vscode "cstrap.python-snippets"
@@ -167,9 +167,11 @@ vscode "usernamehw.errorlens"
 vscode "vscode-icons-team.vscode-icons"
 vscode "wesbos.theme-cobalt2"
 vscode "yoshi389111.visible-whitespace"
+vscode "yoshi47.selection-path-copier"
 vscode "yzhang.markdown-all-in-one"
 vscode "zainchen.json"
 vscode "zignd.html-css-class-completion"
-go "github.com/junegunn/fzf"
 go "cmd/go"
 go "cmd/gofmt"
+go "golang.org/x/tools/gopls"
+go "gotest.tools/gotestsum"

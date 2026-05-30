@@ -11,6 +11,7 @@ This repository manages:
 - editor settings for VS Code in `vscode/`
 - Homebrew packages in `homebrew/Brewfile`
 - Bun global packages in `bun/`
+- procs configuration in `procs/`
 - local setup and published CLI commands in `scripts/`
 - AI tool configuration in `ai/`
 
@@ -74,6 +75,7 @@ switch-branch-remote
 - `scripts/utils/`: shared shell helpers
 - `homebrew/`: tracked `Brewfile`
 - `bun/`: Bun global packages managed in-repo
+- `procs/`: process viewer configuration
 - `sheldon/`: shell plugin manager config and abbreviations
 - `ai/`: AI tool configuration and custom skills
 - `src/samples/`: sample files for editor and LSP checks
