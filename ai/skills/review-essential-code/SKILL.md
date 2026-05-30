@@ -26,7 +26,14 @@ Review changes with the normal code-review lens first: correctness, regressions,
    - Is the abstraction justified by real reuse or complexity reduction?
    - Is the behavior clear at the call site and easy for the next maintainer to reason about?
 6. Prefer findings that cite specific lines and concrete failure modes. Avoid style nits unless they affect maintainability or hide a real risk.
-7. If the implementation is simple and sound, say so clearly. Do not invent findings to satisfy the review format.
+7. When a finding depends on an implied contract, state the assumption explicitly after the findings. If the assumption is weak enough that the risk is only hypothetical, downgrade it to an open question instead of presenting it as a finding.
+8. If the implementation is simple and sound, say so clearly. Do not invent findings to satisfy the review format.
+
+## Severity and Confidence
+
+- Calibrate severity by user-visible impact and likelihood, not by how suspicious the code looks. Data loss, security exposure, broken public contracts, and crashes in normal use are usually high severity; missing tests or maintainability concerns are lower unless they enable a concrete regression.
+- If the reviewed material is a conceptual diff, excerpt, or otherwise incomplete, say what was not verified when it affects confidence. Do not let incomplete context block a finding with a concrete failure mode, but make the assumption visible.
+- Suggest the smallest directionally correct fix. Prefer restoring the local invariant or boundary that owns the behavior over prescribing a large rewrite.
 
 ## Workaround Smells
 
