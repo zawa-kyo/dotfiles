@@ -7,7 +7,7 @@
 ## 基本方針
 
 - 小さな変更では最小限の確認を行う
-- 影響範囲が広い変更では formatter とリポジトリ全体の確認を使う
+- 影響範囲が広い変更ではフォーマッタとリポジトリ全体の確認を使う
 - ドキュメントだけの変更では重い確認は不要
 
 ## 変更種別ごとの確認
@@ -19,9 +19,9 @@
 ### Neovim 設定
 
 - 必要に応じて `mise run format`
-- プラグインや editor 挙動に関わる場合は `nvim` で `:checkhealth`
+- プラグインやエディタ挙動に関わる場合は `nvim` で `:checkhealth`
 
-### shell script / task / terminal 設定
+### シェルスクリプト / タスク / 端末設定
 
 - 必要に応じて `mise run format`
 - 影響範囲が広い場合は `uv run pre-commit run -a`
@@ -35,7 +35,7 @@
 
 - `brew bundle check --file=homebrew/Brewfile`
 
-## formatter
+## フォーマッタ
 
 通常は次を使う。
 
@@ -43,7 +43,7 @@
 mise run format
 ```
 
-この task は Lua, shell, JSON / JSONC / Markdown / YAML, TOML をまとめて整形する。
+このタスクは Lua, shell, JSON / JSONC / Markdown / YAML, TOML をまとめて整形する。
 
 ## リポジトリ全体の確認
 
@@ -60,6 +60,6 @@ uv run pre-commit run -a
 - リポジトリ全体の原則が変わる
   - `docs/`
 - サブシステム固有の詳細規約が変わる
-  - そのディレクトリ直下の policy
+  - そのディレクトリ直下のポリシー
 - エージェントの参照導線が変わる
   - `AGENTS.md`

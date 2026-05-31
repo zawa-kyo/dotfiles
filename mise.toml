@@ -83,6 +83,7 @@ trap 'rm -f "$tmpfile"' EXIT
 git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
+  ':(exclude)apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 prettier --write < "$tmpfile"
@@ -133,12 +134,19 @@ hide = true
 description = "Install tools declared in the local mise configuration"
 run = "mise install"
 
+[tasks.install-apm]
+hide = true
+description = "Install apm-managed AI skills"
+# TODO: Remove cleanup-skill-links after this has run on every PC.
+run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g"]
+
 [tasks.install]
 description = "Run the dotfiles symlink setup and install configured mise tools"
 run = [
   { task = "link-dotfiles" },
   { task = "sync-global-commands" },
   { task = "install-mise-tools" },
+  { task = "install-apm" },
   { task = "install-bun" },
   { task = "install-pre-commit" },
 ]
@@ -163,10 +171,15 @@ run = "uv sync --group dev"
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [
   { task = "upgrade-mise-tools" },
+  { task = "upgrade-apm" },
   { task = "upgrade-nvim-plugins" },
   { task = "upgrade-bun" },
   { task = "upgrade-brew" },
 ]
+
+[tasks.upgrade-apm]
+description = "Update apm-managed AI skills and lock file"
+run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g --update"]
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"

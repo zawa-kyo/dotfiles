@@ -1,0 +1,14 @@
+name: kyohei
+version: 1.0.0
+description: APM project for kyohei
+author: Kyohei Ozawa
+dependencies:
+  apm:
+    - zawa-kyo/skills/meta/review-essential-code
+    - zawa-kyo/skills/meta/suggest-commit-messages
+    - zawa-kyo/skills/meta/fluent-japanese-writing
+    - hardikpandya/stop-slop
+    - mizchi/skills/meta/empirical-prompt-tuning
+  mcp: []
+includes: auto
+scripts: {}

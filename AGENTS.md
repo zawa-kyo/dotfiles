@@ -3,8 +3,8 @@
 ## このファイルの役割
 
 - `AGENTS.md` はエージェント向けの入口です
-- 詳細手順や長い背景説明はここに複製せず、正本への導線だけを置きます
-- 人向けの利用案内は `README.md`、リポジトリ全体の設計判断は `docs/`、サブシステム固有の詳細規約は各ディレクトリ直下の policy を参照します
+- 詳細手順や長い背景説明はここに複製せず、参照先への導線だけを置きます
+- 人向けの利用案内は `README.md`、リポジトリ全体の設計判断は `docs/`、サブシステム固有の詳細規約は各ディレクトリ直下のポリシーを参照します
 
 ## 参照先一覧
 
@@ -16,15 +16,17 @@
 - `docs/architecture.md`
   - リポジトリ全体の構造と責務分担
 - `docs/command-model.md`
-  - 単独実行コマンド / shell function / `mise run` の役割分担
+  - 単独実行コマンド / シェル関数 / `mise run` の役割分担
 - `docs/abbreviation-policy.md`
-  - shell の省略コマンド名の設計原則
+  - シェルの省略コマンド名の設計原則
+- `docs/ai-skills.md`
+  - AI スキル管理の運用方針
 - `docs/operations.md`
   - 変更後の確認方針
 - `nvim/lua/policies/keybinds-policy.md`
-  - Neovim キーバインド設計の正本
+  - Neovim キーバインド設計
 - `nvim/lua/policies/tab-buffer-policy.md`
-  - Neovim のタブ / バッファ表示方針の正本
+  - Neovim のタブ / バッファ表示方針
 
 ## 変更対象ごとの参照先
 
@@ -40,7 +42,7 @@
 - `bun/` を変更する場合
   - `README.md` の Bun 節と `docs/operations.md` を確認する
 - `ai/` を変更する場合
-  - `README.md` の AI Tools 節と `docs/architecture.md` を確認する
+  - `README.md` の AI Tools 節、`docs/architecture.md`、`docs/ai-skills.md` を確認する
 - セットアップや利用手順を変える場合
   - `README.md` を更新する
 - リポジトリ全体に関わる設計判断を変える場合
@@ -49,16 +51,16 @@
 ## 編集ルール
 
 - `AGENTS.md` に `README.md` や `docs/` の内容を複製しない
-- 人向けの手順は `README.md` を正本にする
-- リポジトリ全体の原則は `docs/` を正本にする
-- サブシステム固有の規約は実装の近くに置き、そのファイルを正本にする
+- 人向けの手順は `README.md` にまとめる
+- リポジトリ全体の原則は `docs/` にまとめる
+- サブシステム固有の規約は実装の近くに置く
 - インデントは 2 スペースを基本とする
 - Lua は `.stylua.toml` に従う
-- shell script は既存スタイルに合わせ、可能な限り POSIX 寄りを維持する
-- 新しい関数を追加する場合は、役割がひと目で分かる短い英語の doc comment を付ける
+- シェルスクリプトは既存スタイルに合わせ、可能な限り POSIX 寄りを維持する
+- 新しい関数を追加する場合は、役割がひと目で分かる短い英語の説明コメントを付ける
 - JSON / JSONC / TOML / Markdown は既存フォーマットに合わせる
 - マシン固有の値や秘密情報はコミットしない
-- `ai/skills/*/SKILL.md` と `SKILL-ja.md` は同じ内容を自然な英語・日本語で対応させ、どちらかを変更したら同じ変更内でもう一方も同期する
+- AI スキル本体は原則として外部の apm パッケージリポジトリで管理し、dotfiles には `apm/apm.yml` の依存関係と `apm/apm.lock.yaml` を置く
 
 ## 検証ルール
 
@@ -86,5 +88,5 @@
 
 ## 注意事項
 
-- `README.md` は英語、`AGENTS.md` と `docs/` と policy 文書は日本語を基本とする
+- `README.md` は英語、`AGENTS.md` と `docs/` とポリシーは日本語を基本とする
 - `AGENTS.md` は短い入口として保ち、肥大化させない
