@@ -4,7 +4,7 @@ Personal dotfiles repository for editor, terminal, CLI, and local toolchain conf
 
 ## Overview
 
-This repository manages:
+Included configuration:
 
 - Neovim configuration in `nvim/`
 - terminal and shell configuration in `terminal/`, `ghostty/`, `wezterm/`, `zellij/`, and `starship/`
@@ -38,7 +38,7 @@ Run the standard install flow:
 mise run install
 ```
 
-This install flow links dotfiles-managed files, syncs published global commands, installs local `mise` tools, prepares Bun globals, and installs the repository pre-commit hook.
+`mise run install` links dotfiles-managed files, syncs published global commands, installs local `mise` tools, prepares Bun globals, and installs the repository pre-commit hook.
 
 ## Daily Commands
 
@@ -84,7 +84,7 @@ switch-branch-remote
 
 ### Pre-commit
 
-Python development dependencies are managed with `uv`.
+`uv` manages Python development dependencies.
 
 ```sh
 uv sync --group dev
@@ -99,7 +99,7 @@ uv run pre-commit run -a
 
 ### Git
 
-The base `~/.gitconfig` is managed as a symlink from this repository.
+This repository links the base `~/.gitconfig`.
 
 - Run `scripts/local/link-dotfiles.sh` to link `git/.gitconfig`
 - Put machine-specific overrides in `~/.gitconfig.local`
@@ -115,12 +115,12 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 ### AI Tools
 
-AI tool configuration is grouped under `ai/`.
+The `ai/` directory contains AI tool configuration.
 
-- reusable skills are managed as apm dependencies in `apm/apm.yml`
+- reusable skills live as apm dependencies in `apm/apm.yml`
 - `mise run install` runs `apm install -g` and applies the locked skills
 - `mise run upgrade` updates apm-managed skills and `apm/apm.lock.yaml`
-- canonical paths are managed through `mise/conf.d/env.toml`
+- `mise/conf.d/env.toml` defines canonical paths
 - custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
 ### Bun
@@ -149,7 +149,7 @@ brew bundle dump --file=homebrew/Brewfile --force
 
 ### Task Runner
 
-This repository uses `mise` as the main task entrypoint and discovery interface.
+`mise` provides the main task entrypoint and discovery interface.
 
 - `mise run install` performs the standard local setup
 - `mise run format` formats tracked source files
