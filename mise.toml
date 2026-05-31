@@ -137,7 +137,8 @@ run = "mise install"
 [tasks.install-apm]
 hide = true
 description = "Install APM-managed AI skills"
-run = "apm install -g"
+# TODO: Remove cleanup-skill-links after this has run on every PC.
+run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g"]
 
 [tasks.install]
 description = "Run the dotfiles symlink setup and install configured mise tools"
@@ -178,7 +179,7 @@ run = [
 
 [tasks.upgrade-apm]
 description = "Update APM-managed AI skills and lock file"
-run = "apm update -g"
+run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g --update"]
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
