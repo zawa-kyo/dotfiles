@@ -12,9 +12,9 @@
 ## コマンドとタスクの設計
 
 - [command-model.md](command-model.md)
-  - 単独実行コマンド / shell function / `mise run` の役割分担
+  - 単独実行コマンド / シェル関数 / `mise run` の役割分担
 - [abbreviation-policy.md](abbreviation-policy.md)
-  - shell の省略コマンド名の命名原則
+  - シェルの省略コマンド名の命名原則
 
 ## 運用と確認
 
