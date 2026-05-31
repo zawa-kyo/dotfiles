@@ -1,15 +1,7 @@
 lockfile_version: '1'
-generated_at: '2026-05-31T02:12:25.455710+00:00'
+generated_at: '2026-05-31T14:02:29.195253+00:00'
 apm_version: 0.14.2
 dependencies:
-- repo_url: hardikpandya/stop-slop
-  host: github.com
-  resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/stop-slop
-  - .claude/skills/stop-slop
-  content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a
 - repo_url: mizchi/skills
   host: github.com
   resolved_commit: 89c1b34018ba0d85a770c065ba22f83a8d004d34
@@ -22,31 +14,51 @@ dependencies:
   content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
+  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
+  virtual_path: meta/cleanup-english-writing
+  is_virtual: true
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/cleanup-english-writing
+  - .claude/skills/cleanup-english-writing
+  content_hash: sha256:5aac3bf55c6ab8be6e75f09c338bb8d2307feb3a45425d53d0b1a40d96677d21
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
   virtual_path: meta/fluent-japanese-writing
   is_virtual: true
   package_type: claude_skill
   deployed_files:
   - .agents/skills/fluent-japanese-writing
   - .claude/skills/fluent-japanese-writing
-  content_hash: sha256:51042d6b04472996ae9d4e8cb5c4e06f62f92510a6495ede606029d20c16875d
+  content_hash: sha256:a62343b9e89e267ae1096629cdeabc3a5229ba6ea5e3cc714918222f7a6299b1
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
+  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
   virtual_path: meta/review-essential-code
   is_virtual: true
   package_type: claude_skill
   deployed_files:
   - .agents/skills/review-essential-code
   - .claude/skills/review-essential-code
-  content_hash: sha256:c832376b4f626915b6b010e4dda00aefe45451008a8e5acfdcc1ef4b40cdef7f
+  content_hash: sha256:9e743d91232ad5afb4e9ab8bfc39c1b6476bc2fc3b49e58009fd3ab8f8072c70
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
+  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
   virtual_path: meta/suggest-commit-messages
   is_virtual: true
   package_type: claude_skill
   deployed_files:
   - .agents/skills/suggest-commit-messages
   - .claude/skills/suggest-commit-messages
-  content_hash: sha256:0fbd0ead03e101255f4d6f12492d6516cc5551b124d9eb9dd229264fbfc896bd
+  content_hash: sha256:9ab05ffc905160a063a2f9debed1cb1c1591236dd8cd83e104ed2be5e22864f8
+- repo_url: hardikpandya/stop-slop
+  host: github.com
+  resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/stop-slop
+  - .claude/skills/stop-slop
+  content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a

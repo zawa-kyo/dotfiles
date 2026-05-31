@@ -267,7 +267,9 @@
   "explorer.fileNesting.patterns": {
     // General
     ".gitignore": ".gitattributes",
-    "readme.*": "authors, changelog*, contributing.md, contributors, license*",
+    "readme.*": "readme-ja.*, authors, changelog*, contributing.md, contributors, license*",
+    "skill.*": "skill-ja.*",
+    "agents.*": "agents-ja.*",
     // JavaScript, TypeScript
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.ts": "${capture}.js, ${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
