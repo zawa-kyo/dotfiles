@@ -134,12 +134,18 @@ hide = true
 description = "Install tools declared in the local mise configuration"
 run = "mise install"
 
+[tasks.install-apm]
+hide = true
+description = "Install APM-managed AI skills"
+run = "apm install -g"
+
 [tasks.install]
 description = "Run the dotfiles symlink setup and install configured mise tools"
 run = [
   { task = "link-dotfiles" },
   { task = "sync-global-commands" },
   { task = "install-mise-tools" },
+  { task = "install-apm" },
   { task = "install-bun" },
   { task = "install-pre-commit" },
 ]
@@ -164,10 +170,15 @@ run = "uv sync --group dev"
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
 run = [
   { task = "upgrade-mise-tools" },
+  { task = "upgrade-apm" },
   { task = "upgrade-nvim-plugins" },
   { task = "upgrade-bun" },
   { task = "upgrade-brew" },
 ]
+
+[tasks.upgrade-apm]
+description = "Update APM-managed AI skills and lock file"
+run = "apm update -g"
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"

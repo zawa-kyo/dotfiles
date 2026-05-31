@@ -77,7 +77,7 @@ switch-branch-remote
 - `bun/`: Bun global packages managed in-repo
 - `procs/`: process viewer configuration
 - `sheldon/`: shell plugin manager config and abbreviations
-- `ai/`: AI tool configuration and custom skills
+- `ai/`: AI tool configuration
 - `src/samples/`: sample files for editor and LSP checks
 
 ## Subsystems
@@ -117,8 +117,9 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 AI tool configuration is grouped under `ai/`.
 
-- each skill under `ai/skills/` is published directly into each tool's skills directory
-- the installer links individual skills under `~/.claude/skills/`, `~/.gemini/skills/`, `~/.codex/skills/`, and `~/.copilot/skills/`
+- reusable skills are managed as APM dependencies in `apm/apm.yml`
+- `mise run install` runs `apm install -g` and applies the locked skills
+- `mise run upgrade` runs `apm update -g` and updates `apm/apm.lock.yaml`
 - canonical paths are managed through `mise/conf.d/env.toml`
 - custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
@@ -163,6 +164,7 @@ Repository-wide design and policy documents:
 - [docs/architecture.md](docs/architecture.md)
 - [docs/command-model.md](docs/command-model.md)
 - [docs/abbreviation-policy.md](docs/abbreviation-policy.md)
+- [docs/ai-skills.md](docs/ai-skills.md)
 - [docs/operations.md](docs/operations.md)
 
 Subsystem-local policies:

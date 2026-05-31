@@ -45,7 +45,7 @@ validate_dotfiles_links() {
   local target
   local link
 
-  for link in "${file_links[@]}" "${directory_links[@]}" "${skill_links[@]}"; do
+  for link in "${file_links[@]}" "${directory_links[@]}"; do
     IFS=":" read -r source target <<<"$link"
 
     if [[ -z "$source" || -z "$target" ]]; then
@@ -61,28 +61,6 @@ validate_dotfiles_links() {
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dir_dotfiles="$1"
-  local dir_skills="${DIR_SKILLS:-$dir_dotfiles/ai/skills}"
-  local dir_apm_modules="${DIR_APM_MODULES:-$dir_dotfiles/apm/apm_modules}"
-
-  # ClaudeCode
-  local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
-  local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
-
-  # Codex
-  local dir_codex="${DIR_CODEX:-$HOME/.codex}"
-  local dir_codex_skills="${DIR_CODEX_SKILLS:-$dir_codex/skills}"
-
-  # GitHub Copilot
-  local dir_copilot="${DIR_COPILOT:-$HOME/.copilot}"
-  local dir_copilot_skills="${DIR_COPILOT_SKILLS:-$dir_copilot/skills}"
-
-  # Gemini
-  local dir_gemini_cli="${DIR_GEMINI_CLI:-$HOME/.gemini}"
-  local dir_gemini_cli_skills="${DIR_GEMINI_CLI_SKILLS:-$dir_gemini_cli/skills}"
-
-  local skill_dir
-  local skill_name
-  local skill_root
 
   file_links=(
     "$dir_dotfiles/git/.gitconfig:$HOME/.gitconfig"
@@ -123,31 +101,6 @@ populate_dotfiles_links() {
     "$dir_dotfiles/nvim:$HOME/.config/nvim"
     "$dir_dotfiles/wezterm:$HOME/.config/wezterm"
   )
-
-  skill_links=()
-  if [ -d "$dir_skills" ]; then
-    for skill_dir in "$dir_skills"/*; do
-      [ -d "$skill_dir" ] || continue
-      [ -L "$skill_dir" ] && continue
-      skill_name="$(basename "$skill_dir")"
-      for skill_root in \
-        "$dir_claude_code_skills" \
-        "$dir_codex_skills" \
-        "$dir_copilot_skills" \
-        "$dir_gemini_cli_skills"; do
-        skill_links+=("$skill_dir:$skill_root/$skill_name")
-      done
-    done
-  fi
-
-  if [ -d "$dir_apm_modules" ]; then
-    for skill_dir in "$dir_apm_modules"/*/skills/*; do
-      [ -d "$skill_dir" ] || continue
-      [ -L "$skill_dir" ] && continue
-      skill_name="$(basename "$skill_dir")"
-      skill_links+=("$skill_dir:$dir_codex_skills/$skill_name")
-    done
-  fi
 }
 
 # Remove stale skill symlinks previously published from the repo.

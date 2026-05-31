@@ -96,8 +96,3 @@ for link in "${directory_links[@]}"; do
   IFS=":" read -r source target <<<"$link"
   install_dir "$source" "$target"
 done
-
-for link in "${skill_links[@]}"; do
-  IFS=":" read -r source target <<<"$link"
-  install_dir "$source" "$target"
-done
