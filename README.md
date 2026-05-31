@@ -99,17 +99,18 @@ uv run pre-commit run -a
 
 ### Git
 
-This repository links the base `~/.gitconfig`.
+This repository links the base `$HOME/.gitconfig`.
 
 - Run `scripts/local/link-dotfiles.sh` to link `git/.gitconfig`
-- Put machine-specific overrides in `~/.gitconfig.local`
-- Keep repositories fetched with `ghq get` under `~/Git/ghq`
+- Put machine-specific overrides in `$HOME/.gitconfig.local`
+- Keep repositories fetched with `ghq get` under `$GHQ_ROOT`
+- `mise/conf.d/env.toml` sets `$GHQ_ROOT` to `$HOME/Git/ghq` by default
 
 When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
 
 ### VS Code
 
-On macOS, `scripts/local/link-dotfiles.sh` also links VS Code user files under `~/Library/Application Support/Code/User`.
+On macOS, `scripts/local/link-dotfiles.sh` also links VS Code user files into the VS Code user config directory.
 
 If `settings.json` or `keybindings.json` already exist as real files, the script leaves them in place and prints a warning instead of overwriting them.
 
