@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fluent Japanese Writing"
+  short_description: "Make Japanese technical prose read fluently"
+  default_prompt: "Use $fluent-japanese-writing to make this Japanese technical prose more fluent while preserving commands, paths, and identifiers."
