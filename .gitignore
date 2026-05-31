@@ -17,4 +17,5 @@ nvim.log
 .cache/mise/tasks/
 
 # apm dependencies
+apm_modules/
 **/apm_modules/
