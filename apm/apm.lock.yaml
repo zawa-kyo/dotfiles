@@ -1,16 +1,52 @@
 lockfile_version: '1'
-generated_at: '2026-05-07T13:11:04.019900+00:00'
-apm_version: 0.10.0
+generated_at: '2026-05-31T02:12:25.455710+00:00'
+apm_version: 0.14.2
 dependencies:
+- repo_url: hardikpandya/stop-slop
+  host: github.com
+  resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/stop-slop
+  - .claude/skills/stop-slop
+  content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a
 - repo_url: mizchi/skills
   host: github.com
-  resolved_commit: 2036fb480a8b442c7b6298595b38c9a7a25b97af
-  virtual_path: empirical-prompt-tuning
+  resolved_commit: 89c1b34018ba0d85a770c065ba22f83a8d004d34
+  virtual_path: meta/empirical-prompt-tuning
   is_virtual: true
   package_type: claude_skill
   deployed_files:
+  - .agents/skills/empirical-prompt-tuning
   - .claude/skills/empirical-prompt-tuning
-  - .copilot/skills/empirical-prompt-tuning
-  - .cursor/skills/empirical-prompt-tuning
-  - .gemini/skills/empirical-prompt-tuning
-  content_hash: sha256:9c64f10bca463d3ea059d1659d4dd9fddfd90239825c44f1be20c18a2e15b69a
+  content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
+  virtual_path: meta/fluent-japanese-writing
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/fluent-japanese-writing
+  - .claude/skills/fluent-japanese-writing
+  content_hash: sha256:51042d6b04472996ae9d4e8cb5c4e06f62f92510a6495ede606029d20c16875d
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
+  virtual_path: meta/review-essential-code
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/review-essential-code
+  - .claude/skills/review-essential-code
+  content_hash: sha256:c832376b4f626915b6b010e4dda00aefe45451008a8e5acfdcc1ef4b40cdef7f
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
+  virtual_path: meta/suggest-commit-messages
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/suggest-commit-messages
+  - .claude/skills/suggest-commit-messages
+  content_hash: sha256:0fbd0ead03e101255f4d6f12492d6516cc5551b124d9eb9dd229264fbfc896bd

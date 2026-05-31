@@ -136,7 +136,7 @@ run = "mise install"
 
 [tasks.install-apm]
 hide = true
-description = "Install APM-managed AI skills"
+description = "Install apm-managed AI skills"
 # TODO: Remove cleanup-skill-links after this has run on every PC.
 run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g"]
 
@@ -178,7 +178,7 @@ run = [
 ]
 
 [tasks.upgrade-apm]
-description = "Update APM-managed AI skills and lock file"
+description = "Update apm-managed AI skills and lock file"
 run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g --update"]
 
 [tasks.upgrade-brew]

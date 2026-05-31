@@ -16,5 +16,5 @@ nvim.log
 # Generated mise task wrappers
 .cache/mise/tasks/
 
-# APM dependencies
+# apm dependencies
 **/apm_modules/

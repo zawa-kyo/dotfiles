@@ -117,9 +117,9 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 AI tool configuration is grouped under `ai/`.
 
-- reusable skills are managed as APM dependencies in `apm/apm.yml`
+- reusable skills are managed as apm dependencies in `apm/apm.yml`
 - `mise run install` runs `apm install -g` and applies the locked skills
-- `mise run upgrade` runs `apm update -g` and updates `apm/apm.lock.yaml`
+- `mise run upgrade` updates apm-managed skills and `apm/apm.lock.yaml`
 - canonical paths are managed through `mise/conf.d/env.toml`
 - custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
