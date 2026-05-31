@@ -1,15 +1,7 @@
 lockfile_version: '1'
-generated_at: '2026-05-31T02:12:25.455710+00:00'
+generated_at: '2026-05-31T13:43:51.842542+00:00'
 apm_version: 0.14.2
 dependencies:
-- repo_url: hardikpandya/stop-slop
-  host: github.com
-  resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/stop-slop
-  - .claude/skills/stop-slop
-  content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a
 - repo_url: mizchi/skills
   host: github.com
   resolved_commit: 89c1b34018ba0d85a770c065ba22f83a8d004d34
@@ -20,6 +12,16 @@ dependencies:
   - .agents/skills/empirical-prompt-tuning
   - .claude/skills/empirical-prompt-tuning
   content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: 5324c5390e09f6bc0656e7642e9feeab4d056ea5
+  virtual_path: meta/cleanup-english-writing
+  is_virtual: true
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/cleanup-english-writing
+  - .claude/skills/cleanup-english-writing
+  content_hash: sha256:5aac3bf55c6ab8be6e75f09c338bb8d2307feb3a45425d53d0b1a40d96677d21
 - repo_url: zawa-kyo/skills
   host: github.com
   resolved_commit: 4043db352c04d05c8b8d0d2650f83d80cb4beb9e
@@ -50,3 +52,13 @@ dependencies:
   - .agents/skills/suggest-commit-messages
   - .claude/skills/suggest-commit-messages
   content_hash: sha256:0fbd0ead03e101255f4d6f12492d6516cc5551b124d9eb9dd229264fbfc896bd
+- repo_url: hardikpandya/stop-slop
+  host: github.com
+  resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/stop-slop
+  - .claude/skills/stop-slop
+  content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a

@@ -7,7 +7,7 @@ dependencies:
     - zawa-kyo/skills/meta/review-essential-code
     - zawa-kyo/skills/meta/suggest-commit-messages
     - zawa-kyo/skills/meta/fluent-japanese-writing
-    - hardikpandya/stop-slop
+    - zawa-kyo/skills/meta/cleanup-english-writing
     - mizchi/skills/meta/empirical-prompt-tuning
   mcp: []
 includes: auto
