@@ -15,7 +15,7 @@ Included configuration:
 - local setup and published CLI commands in `scripts/`
 - AI tool configuration in `ai/`
 
-Human-facing setup and usage live in this README. Repository-wide design decisions live under `docs/`. Agent-facing guidance lives in `AGENTS.md`.
+This README covers setup and daily usage. See `docs/` for repository design and `AGENTS.md` for agent guidance.
 
 ## Quick Start
 
@@ -32,7 +32,7 @@ Install `mise` first if it is not already available in your shell.
 brew install mise
 ```
 
-Run the standard install flow:
+Run the installer:
 
 ```sh
 mise run install
@@ -42,7 +42,7 @@ mise run install
 
 ## Daily Commands
 
-Common entrypoints:
+Mise tasks:
 
 ```sh
 mise run install
@@ -53,7 +53,7 @@ mise run format
 mise run upgrade
 ```
 
-Useful direct commands after install:
+Global commands:
 
 ```sh
 add-worktree
@@ -99,17 +99,18 @@ uv run pre-commit run -a
 
 ### Git
 
-This repository links the base `~/.gitconfig`.
+This repository links the base `$HOME/.gitconfig`.
 
 - Run `scripts/local/link-dotfiles.sh` to link `git/.gitconfig`
-- Put machine-specific overrides in `~/.gitconfig.local`
-- Repositories fetched with `ghq get` are expected under `~/Git/ghq`
+- Put machine-specific overrides in `$HOME/.gitconfig.local`
+- Keep repositories fetched with `ghq get` under `$GHQ_ROOT`
+- `mise/conf.d/env.toml` sets `$GHQ_ROOT` to `$HOME/Git/ghq` by default
 
 When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
 
 ### VS Code
 
-On macOS, `scripts/local/link-dotfiles.sh` also links VS Code user files under `~/Library/Application Support/Code/User`.
+On macOS, `scripts/local/link-dotfiles.sh` also links VS Code user files into the VS Code user config directory.
 
 If `settings.json` or `keybindings.json` already exist as real files, the script leaves them in place and prints a warning instead of overwriting them.
 
@@ -117,7 +118,7 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 The `ai/` directory contains AI tool configuration.
 
-- reusable skills live as apm dependencies in `apm/apm.yml`
+- Reusable skills live as apm dependencies in `apm/apm.yml`
 - `mise run install` runs `apm install -g` and applies the locked skills
 - `mise run upgrade` updates apm-managed skills and `apm/apm.lock.yaml`
 - `mise/conf.d/env.toml` defines canonical paths
