@@ -14,18 +14,18 @@ checksum = "sha256:aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e69
 url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz"
 
 [[tools.apm]]
-version = "0.10.0"
+version = "0.14.2"
 backend = "github:microsoft/apm"
 
 [tools.apm."platforms.linux-x64"]
-checksum = "sha256:26fe68ccfac0c8896eb048a8ab3575de64d8d8b9b61293ae6b72e012ed280e93"
-url = "https://github.com/microsoft/apm/releases/download/v0.10.0/apm-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/406846292"
+checksum = "sha256:980b7b01e43bc69bbe349b3e01b75d4837412b027bfd118ae6e6ca467b801288"
+url = "https://github.com/microsoft/apm/releases/download/v0.14.2/apm-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/427443090"
 
 [tools.apm."platforms.macos-arm64"]
-checksum = "sha256:55f9a30491fe2e5501302a218510700a935dd643e59e319ea5bc168142e056b7"
-url = "https://github.com/microsoft/apm/releases/download/v0.10.0/apm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/406846295"
+checksum = "sha256:0c5346f71a78bac599d6dbe65a3b36939135359e8533539c8fe7d330e463cff5"
+url = "https://github.com/microsoft/apm/releases/download/v0.14.2/apm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/427443097"
 
 [[tools.atuin]]
 version = "18.16.1"
@@ -89,16 +89,16 @@ checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.52"
+version = "1.0.53"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:3e32a4d1de31f2cd975d28ca0f79f4868a391478305396263216d3ffd3228f8f"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.52/copilot-linux-x64.tar.gz"
+checksum = "sha256:c3af9da59f728482d0a5d5eb452b8d1eafa04c20675d52575621d575742a53eb"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.53/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:0d1d2af7cc28e887dcc7e943bee1b659a1a4cd36dccf8e47cf2a3953c6788d2b"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.52/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:04a199d97e8bf86b530d5853c43e22c8913b6e5cd9efb2f28f537e5c7a9e84ad"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.53/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -173,16 +173,16 @@ checksum = "sha256:68c10c490efbf3b845c3c997fdf978dcc7fd16a8cbb81b5ae1828bb7faa23
 url = "https://github.com/leoafarias/fvm/releases/download/4.1.0/fvm-4.1.0-macos-arm64.tar.gz"
 
 [[tools.fzf]]
-version = "0.72.0"
+version = "0.73.0"
 backend = "aqua:junegunn/fzf"
 
 [tools.fzf."platforms.linux-x64"]
-checksum = "sha256:0e58e4bd0b3c5d68c56b54c460a6863d0de79633ed18d388575a960ab447b006"
-url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-linux_amd64.tar.gz"
+checksum = "sha256:f0e7068285b63163af5276d134b9bc7c37fbbf3a49441fca64ae2df424c2ff8d"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.0/fzf-0.73.0-linux_amd64.tar.gz"
 
 [tools.fzf."platforms.macos-arm64"]
-checksum = "sha256:4cbf87e8e8a342614c1e3e74670ceb18c2af998c4d4d0c379cfee9b520774e90"
-url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-darwin_arm64.tar.gz"
+checksum = "sha256:7ebbb24c98969d10d9abf7f3fa99601fa5c192f0086ee7a75d68d321a878a25e"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.0/fzf-0.73.0-darwin_arm64.tar.gz"
 
 [[tools.gat]]
 version = "0.27.2"
