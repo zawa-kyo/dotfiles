@@ -70,17 +70,17 @@ English version: [AGENTS.md](AGENTS.md)
 
 - ドキュメントのみの変更:
   - 必須テストはなし。
-  - 必要なら `mise run format`。
+  - Markdown, TOML, JSON, JSONC を変更したら `mise run format` を実行する。
 - `nvim/` を変更した場合:
-  - 必要に応じて `mise run format`。
-  - 必要に応じて `nvim` で `:checkhealth`。
+  - Lua またはフォーマッタ対象ファイルを変更したら `mise run format` を実行する。
+  - プラグイン、provider、runtime 設定を変更したら `nvim` で `:checkhealth` を実行する。
 - `scripts/`, `mise.toml`, `terminal/`, `sheldon/abbreviations` を変更した場合:
-  - 必要に応じて `mise run format`。
-  - 影響範囲が広い場合は `uv run pre-commit run -a`。
+  - シェル、TOML、Markdown ファイルを変更したら `mise run format` を実行する。
+  - セットアップ、シェル起動、PATH、公開コマンドに影響する変更では `uv run pre-commit run -a` を実行する。
 - `homebrew/Brewfile` を変更した場合:
-  - 必要に応じて `brew bundle check --file=homebrew/Brewfile`。
+  - `brew bundle check --file=homebrew/Brewfile` を実行する。
 - `bun/` を変更した場合:
-  - 必要に応じて `mise run install-bun`。
+  - `mise run install-bun` を実行する。
   - その後 `bunx --version` で解決確認。
 
 ## ドキュメント更新ルール

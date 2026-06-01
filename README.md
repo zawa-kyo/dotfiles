@@ -4,7 +4,7 @@ Personal dotfiles repository for editor, terminal, CLI, and local toolchain conf
 
 ## ✨ Overview
 
-Included configuration:
+This repository includes:
 
 - Neovim configuration in `nvim/`
 - terminal and shell configuration in `terminal/`, `ghostty/`, `wezterm/`, `zellij/`, and `starship/`
@@ -122,13 +122,13 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 ### 🤖 AI Tools
 
-The `ai/` directory contains AI tool configuration.
+The `ai/` directory contains AI tool settings.
 
-- Reusable skills live as apm dependencies in `apm/apm.yml`
+- Reusable skills are tracked as apm dependencies in `apm/apm.yml`
 - `mise run install` runs `apm install -g` and applies the locked skills
 - `mise run upgrade` updates apm-managed skills and `apm/apm.lock.yaml`
 - `mise/conf.d/env.toml` defines canonical paths
-- custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
+- Custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
 ### 🥟 Bun
 
@@ -156,10 +156,10 @@ brew bundle dump --file=homebrew/Brewfile --force
 
 ### 🏃 Task Runner
 
-`mise` provides the main task entrypoint and discovery interface.
+`mise` is the main entry point for running and discovering tasks.
 
 - `mise run install` performs the standard local setup
-- `mise run format` formats tracked source files
+- `mise run format` formats tracked files
 - `mise run check-pre-commit` runs the full repository checks
 - published commands in `scripts/global/` are also exposed through generated `mise` task wrappers
 

@@ -70,17 +70,17 @@ Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
 
 - Documentation-only changes:
   - No required tests.
-  - Run `mise run format` when useful.
+  - Run `mise run format` after changing Markdown, TOML, JSON, or JSONC files.
 - Changes under `nvim/`:
-  - Run `mise run format` when useful.
-  - Run `:checkhealth` in `nvim` when useful.
+  - Run `mise run format` after changing Lua or formatter-managed files.
+  - Run `:checkhealth` in `nvim` after changing plugin, provider, or runtime configuration.
 - Changes under `scripts/`, `mise.toml`, `terminal/`, or `sheldon/abbreviations`:
-  - Run `mise run format` when useful.
-  - Run `uv run pre-commit run -a` when the impact is broad.
+  - Run `mise run format` after changing shell, TOML, or Markdown files.
+  - Run `uv run pre-commit run -a` for changes that affect setup, shell startup, PATH, or published commands.
 - Changes to `homebrew/Brewfile`:
-  - Run `brew bundle check --file=homebrew/Brewfile` when useful.
+  - Run `brew bundle check --file=homebrew/Brewfile`.
 - Changes under `bun/`:
-  - Run `mise run install-bun` when useful.
+  - Run `mise run install-bun`.
   - Then confirm resolution with `bunx --version`.
 
 ## Documentation Rules
