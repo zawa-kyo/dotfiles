@@ -58,6 +58,17 @@ validate_dotfiles_links() {
   done
 }
 
+# Remove links from older layouts that are now superseded.
+cleanup_obsolete_dotfiles_links() {
+  local dir_dotfiles="$1"
+  local old_starship_config="$HOME/.config/starship.toml"
+
+  if symlink_points_within_dir "$old_starship_config" "$dir_dotfiles/starship"; then
+    rm -f "$old_starship_config"
+    info "Removed obsolete symlink: $old_starship_config"
+  fi
+}
+
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dir_dotfiles="$1"
@@ -75,7 +86,6 @@ populate_dotfiles_links() {
     "$dir_dotfiles/mise/config.global.lock:$HOME/.config/mise/mise.lock"
     "$dir_dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
     "$dir_dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
-    "$dir_dotfiles/starship/starship.toml:$HOME/.config/starship.toml"
     "$dir_dotfiles/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
   )
 
@@ -99,6 +109,7 @@ populate_dotfiles_links() {
     "$dir_dotfiles/apm:$HOME/.apm"
     "$dir_dotfiles/mise/conf.d:$HOME/.config/mise/conf.d"
     "$dir_dotfiles/nvim:$HOME/.config/nvim"
+    "$dir_dotfiles/starship:$HOME/.config/starship"
     "$dir_dotfiles/wezterm:$HOME/.config/wezterm"
   )
 }

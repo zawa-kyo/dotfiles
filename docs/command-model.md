@@ -37,6 +37,7 @@
 
 - `reveal-repository`
 - `reveal-repository-with-zoxide`
+- `search-theme`
 
 ## 設計原則
 
