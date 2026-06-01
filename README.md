@@ -110,7 +110,7 @@ When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch
 
 ### Starship
 
-Starship uses `$STARSHIP_CONFIG`, with the default set to `$HOME/.config/starship/starship.toml` on shell startup.
+Starship uses `$STARSHIP_CONFIG`, with the default set from `$STARSHIP_DEFAULT_THEME` on shell startup.
 
 Place custom themes in `starship/themes/*.toml`, then run `search-theme` or the `sT` abbreviation to switch the current shell session. Opening a new terminal restores the default theme.
 
