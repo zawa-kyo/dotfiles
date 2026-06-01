@@ -83,6 +83,7 @@ install_dir() {
 
 populate_dotfiles_links "$dotfiles_dir"
 validate_dotfiles_links "$dotfiles_dir"
+cleanup_obsolete_dotfiles_links "$dotfiles_dir"
 cleanup_skill_links "$dotfiles_dir"
 
 # Link listed files from dotfiles into their target locations.

@@ -119,6 +119,14 @@ reveal-repository-with-zoxide () {
   z "$repo"
 }
 
+# Switch Starship config for the current shell session.
+search-theme () {
+  local selected_config
+  selected_config=$(bash "${DOTFILES_ROOT_DIR}/scripts/utils/select-starship-theme.sh") || return
+  export STARSHIP_CONFIG="$selected_config"
+  printf 'starship theme: %s\n' "${selected_config:t:r}"
+}
+
 
 # ===========================
 # Yazi

@@ -117,6 +117,9 @@ abbr 'sln'='search-line-with-neovim'
 # search-task
 abbr 'st'='search-task'
 
+# search-theme
+abbr 'sT'='search-theme'
+
 
 # ===========================
 # fastfetch

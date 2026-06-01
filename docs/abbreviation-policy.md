@@ -68,6 +68,7 @@
 - `dw` -> `delete-worktree`
 - `sb` -> `search-bookmarks`
 - `st` -> `search-task`
+- `sT` -> `search-theme`
 
 ## 避けるもの
 
