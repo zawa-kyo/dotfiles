@@ -1,92 +1,108 @@
-# エージェント向けガイド
+# Agent Guide
 
-## このファイルの役割
+Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
 
-- `AGENTS.md` はエージェント向けの入口です
-- 詳細手順や長い背景説明はここに複製せず、参照先への導線だけを置きます
-- 人向けの利用案内は `README.md`、リポジトリ全体の設計判断は `docs/`、サブシステム固有の詳細規約は各ディレクトリ直下のポリシーを参照します
+## Purpose
 
-## 参照先一覧
+- `AGENTS.md` is the entry point for agents.
+- Do not duplicate detailed procedures or long background explanations here. Keep this file focused on links to the right references.
+- Human-facing usage belongs in `README.md`, repository-wide design decisions belong in `docs/`, and subsystem-specific rules belong near the relevant implementation.
+
+## References
 
 - `README.md`
-  - 人向けの入口
-  - セットアップ、日常運用、主要コマンド、全体構成の概要
+  - Human-facing entry point.
+  - Setup, daily usage, major commands, and repository overview.
+- `README-ja.md`
+  - Japanese version of `README.md`.
 - `docs/index.md`
-  - 設計文書の目次
+  - Design document index.
 - `docs/architecture.md`
-  - リポジトリ全体の構造と責務分担
+  - Repository structure and responsibility boundaries.
 - `docs/command-model.md`
-  - 単独実行コマンド / シェル関数 / `mise run` の役割分担
+  - Role split between standalone commands, shell functions, and `mise run`.
 - `docs/abbreviation-policy.md`
-  - シェルの省略コマンド名の設計原則
+  - Design principles for shell abbreviations.
 - `docs/ai-skills.md`
-  - AI スキル管理の運用方針
+  - Operating policy for AI skill management.
 - `docs/operations.md`
-  - 変更後の確認方針
+  - Verification policy after changes.
 - `nvim/lua/policies/keybinds-policy.md`
-  - Neovim キーバインド設計
+  - Neovim keybinding design.
 - `nvim/lua/policies/tab-buffer-policy.md`
-  - Neovim のタブ / バッファ表示方針
+  - Neovim tab and buffer display policy.
 
-## 変更対象ごとの参照先
+## References by Change Area
 
-- `nvim/` を変更する場合
-  - まず `nvim/lua/policies/` を確認する
-  - キーバインド変更は `nvim/lua/policies/keybinds-policy.md`
-  - タブ/バッファ表示変更は `nvim/lua/policies/tab-buffer-policy.md`
-- `scripts/`, `mise.toml`, `terminal/`, `sheldon/abbreviations` を変更する場合
-  - `docs/command-model.md` と `docs/abbreviation-policy.md` を確認する
-  - `fzf` を使う処理は `docs/command-model.md` の共通化方針に従う
-- `homebrew/` を変更する場合
-  - `README.md` の Homebrew 節と `docs/operations.md` を確認する
-- `bun/` を変更する場合
-  - `README.md` の Bun 節と `docs/operations.md` を確認する
-- `ai/` を変更する場合
-  - `README.md` の AI Tools 節、`docs/architecture.md`、`docs/ai-skills.md` を確認する
-- セットアップや利用手順を変える場合
-  - `README.md` を更新する
-- リポジトリ全体に関わる設計判断を変える場合
-  - `docs/` を更新する
+- When changing `nvim/`:
+  - Check `nvim/lua/policies/` first.
+  - For keybindings, read `nvim/lua/policies/keybinds-policy.md`.
+  - For tab or buffer display, read `nvim/lua/policies/tab-buffer-policy.md`.
+- When changing `scripts/`, `mise.toml`, `terminal/`, or `sheldon/abbreviations`:
+  - Read `docs/command-model.md` and `docs/abbreviation-policy.md`.
+  - Follow the shared `fzf` policy in `docs/command-model.md` for scripts that use `fzf`.
+- When changing `homebrew/`:
+  - Read the Homebrew section in `README.md` and `docs/operations.md`.
+- When changing `bun/`:
+  - Read the Bun section in `README.md` and `docs/operations.md`.
+- When changing `ai/`:
+  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-skills.md`.
+- When changing setup or usage instructions:
+  - Update `README.md` and `README-ja.md`.
+- When changing repository-wide design decisions:
+  - Update `docs/`.
 
-## 編集ルール
+## Editing Rules
 
-- `AGENTS.md` に `README.md` や `docs/` の内容を複製しない
-- 人向けの手順は `README.md` にまとめる
-- リポジトリ全体の原則は `docs/` にまとめる
-- サブシステム固有の規約は実装の近くに置く
-- インデントは 2 スペースを基本とする
-- Lua は `.stylua.toml` に従う
-- シェルスクリプトは既存スタイルに合わせ、可能な限り POSIX 寄りを維持する
-- 新しい関数を追加する場合は、役割がひと目で分かる短い英語の説明コメントを付ける
-- JSON / JSONC / TOML / Markdown は既存フォーマットに合わせる
-- マシン固有の値や秘密情報はコミットしない
-- AI スキル本体は原則として外部の apm パッケージリポジトリで管理し、dotfiles には `apm/apm.yml` の依存関係と `apm/apm.lock.yaml` を置く
+- Do not duplicate the content of `README.md` or `docs/` in `AGENTS.md`.
+- Put human-facing instructions in `README.md`.
+- Put repository-wide principles in `docs/`.
+- Put subsystem-specific rules near the implementation.
+- Use 2 spaces as the default indentation.
+- Follow `.stylua.toml` for Lua.
+- Match the existing style for shell scripts and keep them as POSIX-friendly as practical.
+- Add a short English comment when adding a new function so its role is clear at a glance.
+- Match the existing format for JSON, JSONC, TOML, and Markdown.
+- Do not commit machine-specific values or secrets.
+- Manage AI skill bodies in external apm package repositories by default. In dotfiles, keep only `apm/apm.yml` dependencies and `apm/apm.lock.yaml`.
 
-## 検証ルール
+## Verification Rules
 
-- ドキュメントのみの変更
-  - 必須テストはなし
-  - 必要なら `mise run format`
-- `nvim/` を変更した場合
-  - 必要に応じて `mise run format`
-  - 必要に応じて `nvim` で `:checkhealth`
-- `scripts/`, `mise.toml`, `terminal/`, `sheldon/abbreviations` を変更した場合
-  - 必要に応じて `mise run format`
-  - 影響範囲が広い場合は `uv run pre-commit run -a`
-- `homebrew/Brewfile` を変更した場合
-  - 必要に応じて `brew bundle check --file=homebrew/Brewfile`
-- `bun/` を変更した場合
-  - 必要に応じて `mise run install-bun`
-  - その後 `bunx --version` で解決確認
+- Documentation-only changes:
+  - No required tests.
+  - Run `mise run format` when useful.
+- Changes under `nvim/`:
+  - Run `mise run format` when useful.
+  - Run `:checkhealth` in `nvim` when useful.
+- Changes under `scripts/`, `mise.toml`, `terminal/`, or `sheldon/abbreviations`:
+  - Run `mise run format` when useful.
+  - Run `uv run pre-commit run -a` when the impact is broad.
+- Changes to `homebrew/Brewfile`:
+  - Run `brew bundle check --file=homebrew/Brewfile` when useful.
+- Changes under `bun/`:
+  - Run `mise run install-bun` when useful.
+  - Then confirm resolution with `bunx --version`.
 
-## ドキュメント更新ルール
+## Documentation Rules
 
-- 新しいセットアップ手順を追加したら `README.md` を更新する
-- 新しい全体設計の原則を追加したら `docs/` を更新する
-- 新しい Neovim 規約を追加したら `nvim/lua/policies/` を更新する
-- エージェント向けの参照導線が変わったら `AGENTS.md` を更新する
+- When adding new setup instructions, update `README.md` and `README-ja.md`.
+- When adding new repository-wide design principles, update `docs/`.
+- When adding new Neovim rules, update `nvim/lua/policies/`.
+- When changing agent-facing references, update `AGENTS.md`.
 
-## 注意事項
+## Language Versions
 
-- `README.md` は英語、`AGENTS.md` と `docs/` とポリシーは日本語を基本とする
-- `AGENTS.md` は短い入口として保ち、肥大化させない
+When you generate or edit text in this repository, check whether an English Markdown file and a corresponding Japanese `*-ja.md` file exist for the same content. When one exists, update both files in the same change so they stay aligned.
+
+Keep the versions equivalent in meaning, but write each one naturally in its own language. Do not make the Japanese file a mechanical line-by-line translation when a more natural Japanese expression preserves the same intent.
+
+This applies especially to:
+
+- `README.md` and `README-ja.md`
+- `AGENTS.md` and `AGENTS-ja.md`
+
+## Notes
+
+- `README.md` and `AGENTS.md` are English.
+- `README-ja.md`, `AGENTS-ja.md`, `docs/`, and policy files are Japanese by default.
+- Keep `AGENTS.md` as a short entry point and avoid letting it grow too large.
