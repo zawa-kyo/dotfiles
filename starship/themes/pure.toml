@@ -6,7 +6,6 @@ $git_branch\
 $git_state\
 $git_status\
 $cmd_duration\
-$space\
 $line_break\
 $character"""
 
@@ -23,9 +22,6 @@ style = "bold green"
 format = "[on ]($foreground)[$symbol $branch]($style)"
 style = "bold pink"
 symbol = ""
-
-[space]
-format = ""
 
 [git_status]
 format = "[ $all_status$ahead_behind]($style)"
