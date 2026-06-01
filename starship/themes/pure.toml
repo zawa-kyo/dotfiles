@@ -1,0 +1,38 @@
+palette = "dracula"
+
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+[cmd_duration]
+style = "bold yellow"
+
+[directory]
+style = "bold green"
+
+[git_branch]
+format = "[on ]($foreground)[$symbol $branch]($style)"
+style = "bold pink"
+symbol = ""
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+style = "bold pink"
+
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
