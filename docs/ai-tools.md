@@ -1,4 +1,4 @@
-# AI スキル管理と apm 運用方針
+# AI ツール管理と apm 運用方針
 
 ## 目的
 
@@ -13,6 +13,9 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 
 ## 基本方針
 
+- グローバルなエージェント向け指示は `ai/instructions/AGENTS.md` で管理する
+- `ai/instructions/AGENTS-ja.md` は日本語版として併走させるが、エージェント設定ディレクトリにはリンクしない
+- `ai/instructions/AGENTS.md` は `~/.codex/AGENTS.md` と `~/.claude/CLAUDE.md` にリンクして、Codex と Claude Code で同じ内容を読む
 - スキルは apm で運用、管理する
 - dotfiles では公開済みの再利用可能なスキルの依存関係を管理する
 - apm の展開先は `apm/apm.lock.yaml` の `deployed_files` を正とする

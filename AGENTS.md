@@ -1,7 +1,5 @@
 # Agent Guide
 
-Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
-
 ## Purpose
 
 - `AGENTS.md` is the entry point for agents.
@@ -23,8 +21,8 @@ Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
   - Role split between standalone commands, shell functions, and `mise run`.
 - `docs/abbreviation-policy.md`
   - Design principles for shell abbreviations.
-- `docs/ai-skills.md`
-  - Operating policy for AI skill management.
+- `docs/ai-tools.md`
+  - Operating policy for AI tool management.
 - `docs/operations.md`
   - Verification policy after changes.
 - `nvim/lua/policies/keybinds-policy.md`
@@ -46,7 +44,7 @@ Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
 - When changing `bun/`:
   - Read the Bun section in `README.md` and `docs/operations.md`.
 - When changing `ai/`:
-  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-skills.md`.
+  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-tools.md`.
 - When changing setup or usage instructions:
   - Update `README.md` and `README-ja.md`.
 - When changing repository-wide design decisions:
@@ -93,6 +91,8 @@ Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
 ## Language Versions
 
 When you generate or edit text in this repository, check whether an English Markdown file and a corresponding Japanese `*-ja.md` file exist for the same content. When one exists, update both files in the same change so they stay aligned.
+
+The Japanese counterpart of an English Markdown file is the `*-ja.md` file in the same directory.
 
 Keep the versions equivalent in meaning, but write each one naturally in its own language. Do not make the Japanese file a mechanical line-by-line translation when a more natural Japanese expression preserves the same intent.
 

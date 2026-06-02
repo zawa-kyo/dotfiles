@@ -171,7 +171,7 @@ brew bundle dump --file=homebrew/Brewfile --force
 - [docs/architecture.md](docs/architecture.md)
 - [docs/command-model.md](docs/command-model.md)
 - [docs/abbreviation-policy.md](docs/abbreviation-policy.md)
-- [docs/ai-skills.md](docs/ai-skills.md)
+- [docs/ai-tools.md](docs/ai-tools.md)
 - [docs/operations.md](docs/operations.md)
 
 サブシステム固有のポリシー:
