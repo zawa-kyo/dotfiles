@@ -72,6 +72,16 @@
 - Mention files changed when that helps the user review the work.
 - Do not claim tests passed unless they were actually run.
 
+## Natural Prose
+
+- When writing Japanese, think in Japanese instead of drafting in English and translating. Translation-shaped prose often overuses katakana or keeps English sentence patterns.
+- Do not force a Japanese replacement for domain terms that are common in Japanese, lack a clear Japanese equivalent, or would become less precise when translated.
+- Use bold text sparingly, mainly for first definitions or note labels.
+- Prefer prose when a long bullet list would read mechanically.
+- Introduce technical terms with a short explanation instead of assuming the reader already knows them.
+- Do not overuse file names, paths, or code identifiers in prose. Use document titles or concept names when literal names interrupt the prose.
+- Avoid overusing callout boxes or note blocks when the point fits in the surrounding prose.
+
 ## Instruction Hygiene
 
 - Keep this global file short enough to load in every session without crowding out project context.
