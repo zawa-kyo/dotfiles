@@ -1,7 +1,5 @@
 # Global Agent Guide
 
-Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
-
 ## Scope
 
 - This file is global user-level guidance for coding agents.
