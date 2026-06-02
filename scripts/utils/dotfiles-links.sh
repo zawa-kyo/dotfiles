@@ -62,11 +62,21 @@ validate_dotfiles_links() {
 cleanup_obsolete_dotfiles_links() {
   local dir_dotfiles="$1"
   local old_starship_config="$HOME/.config/starship.toml"
+  local codex_agents="$HOME/.codex/AGENTS.md"
+  local claude_agents="$HOME/.claude/CLAUDE.md"
+  local agent_instructions
 
   if symlink_points_within_dir "$old_starship_config" "$dir_dotfiles/starship"; then
     rm -f "$old_starship_config"
     info "Removed obsolete symlink: $old_starship_config"
   fi
+
+  for agent_instructions in "$codex_agents" "$claude_agents"; do
+    if [ -f "$agent_instructions" ] && [ ! -L "$agent_instructions" ] && [ ! -s "$agent_instructions" ]; then
+      rm -f "$agent_instructions"
+      info "Removed empty agent instructions placeholder: $agent_instructions"
+    fi
+  done
 }
 
 # Fill file_links and directory_links for the given repo root.
@@ -74,6 +84,8 @@ populate_dotfiles_links() {
   local dir_dotfiles="$1"
 
   file_links=(
+    "$dir_dotfiles/AGENTS.md:$HOME/.codex/AGENTS.md"
+    "$dir_dotfiles/AGENTS.md:$HOME/.claude/CLAUDE.md"
     "$dir_dotfiles/git/.gitconfig:$HOME/.gitconfig"
     "$dir_dotfiles/terminal/.zlogin:$HOME/.zlogin"
     "$dir_dotfiles/terminal/.zlogout:$HOME/.zlogout"
