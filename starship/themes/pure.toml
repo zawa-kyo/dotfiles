@@ -2,7 +2,7 @@ palette = "colors"
 
 format = """
 ${custom.directory}\
-$git_branch\
+${custom.git_branch}\
 $git_state\
 $git_status\
 $cmd_duration\
@@ -25,10 +25,11 @@ format = "[$output ]($style)"
 style = "bold green"
 when = "true"
 
-[git_branch]
-format = "[on ]($foreground)[$symbol $branch]($style)"
+[custom.git_branch]
+command = "starship-git-branch"
+format = "[on ]($foreground)[$output]($style)"
 style = "bold pink"
-symbol = ""
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
 
 [git_status]
 format = "[ $all_status$ahead_behind]($style)"
