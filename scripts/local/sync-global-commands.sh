@@ -119,12 +119,13 @@ remove_stale_mise_tasks() {
 
 is_generated_task_link() {
   local file="$1"
+  local legacy_tasks_dir="$dotfiles_dir/.cache/mise/tasks"
   local link_target
 
   [ -L "$file" ] || return 1
   link_target="$(readlink "$file")"
   case "$link_target" in
-  */.cache/mise/tasks/*) return 0 ;;
+  "$legacy_tasks_dir"/*) return 0 ;;
   *) return 1 ;;
   esac
 }
@@ -137,6 +138,7 @@ remove_legacy_generated_wrappers() {
 
   for file in "$legacy_tasks_dir"/*; do
     [ -e "$file" ] || continue
+    is_generated_wrapper "$file" || continue
     rm -f "$file"
     info "Removed legacy generated wrapper: $file"
   done
