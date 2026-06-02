@@ -124,8 +124,6 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 The `ai/` directory contains AI tool settings.
 
-- Global agent instructions are managed from `AGENTS.md`
-- `scripts/local/link-dotfiles.sh` links `AGENTS.md` to `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md`
 - Reusable skills are tracked as apm dependencies in `apm/apm.yml`
 - `mise run install` runs `apm install -g` and applies the locked skills
 - `mise run upgrade` updates apm-managed skills and `apm/apm.lock.yaml`
@@ -173,7 +171,7 @@ Repository-wide design and policy documents:
 - [docs/architecture.md](docs/architecture.md)
 - [docs/command-model.md](docs/command-model.md)
 - [docs/abbreviation-policy.md](docs/abbreviation-policy.md)
-- [docs/ai-skills.md](docs/ai-skills.md)
+- [docs/ai-tools.md](docs/ai-tools.md)
 - [docs/operations.md](docs/operations.md)
 
 Subsystem-local policies:

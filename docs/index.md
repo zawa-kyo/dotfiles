@@ -6,8 +6,8 @@
 
 - [architecture.md](architecture.md)
   - リポジトリ全体の構造と責務分担
-- [ai-skills.md](ai-skills.md)
-  - AI スキルを管理するための運用方針
+- [ai-tools.md](ai-tools.md)
+  - AI ツールを管理するための運用方針
 
 ## コマンドとタスクの設計
 

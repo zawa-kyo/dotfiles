@@ -23,8 +23,8 @@ Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
   - Role split between standalone commands, shell functions, and `mise run`.
 - `docs/abbreviation-policy.md`
   - Design principles for shell abbreviations.
-- `docs/ai-skills.md`
-  - Operating policy for AI skill management.
+- `docs/ai-tools.md`
+  - Operating policy for AI tool management.
 - `docs/operations.md`
   - Verification policy after changes.
 - `nvim/lua/policies/keybinds-policy.md`
@@ -46,7 +46,7 @@ Japanese version: [AGENTS-ja.md](AGENTS-ja.md)
 - When changing `bun/`:
   - Read the Bun section in `README.md` and `docs/operations.md`.
 - When changing `ai/`:
-  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-skills.md`.
+  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-tools.md`.
 - When changing setup or usage instructions:
   - Update `README.md` and `README-ja.md`.
 - When changing repository-wide design decisions:
