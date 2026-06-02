@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-05-31T14:02:29.195253+00:00'
+generated_at: '2026-06-02T14:12:26.801565+00:00'
 apm_version: 0.14.2
 dependencies:
 - repo_url: mizchi/skills
@@ -14,7 +14,7 @@ dependencies:
   content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
+  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
   virtual_path: meta/cleanup-english-writing
   is_virtual: true
   package_type: hybrid
@@ -24,7 +24,7 @@ dependencies:
   content_hash: sha256:5aac3bf55c6ab8be6e75f09c338bb8d2307feb3a45425d53d0b1a40d96677d21
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
+  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
   virtual_path: meta/fluent-japanese-writing
   is_virtual: true
   package_type: claude_skill
@@ -34,7 +34,7 @@ dependencies:
   content_hash: sha256:a62343b9e89e267ae1096629cdeabc3a5229ba6ea5e3cc714918222f7a6299b1
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
+  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
   virtual_path: meta/review-essential-code
   is_virtual: true
   package_type: claude_skill
@@ -44,7 +44,7 @@ dependencies:
   content_hash: sha256:9e743d91232ad5afb4e9ab8bfc39c1b6476bc2fc3b49e58009fd3ab8f8072c70
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: a0d3a33f85c4b1046e697003f10f2843c9b64907
+  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
   virtual_path: meta/suggest-commit-messages
   is_virtual: true
   package_type: claude_skill
