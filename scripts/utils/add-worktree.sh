@@ -6,7 +6,6 @@ run_add_worktree() {
   local existing_path
   local local_branch
   local ref_name
-  local repo_base_path
   local repo_path
   local repo_root
 
@@ -32,8 +31,7 @@ run_add_worktree() {
     return 0
   fi
 
-  repo_base_path="${repo_root%%+*}"
-  repo_path="${repo_base_path}+${local_branch//\//_}"
+  repo_path="$(worktree_path_for_branch "$repo_root" "$local_branch")"
   if [ -d "$repo_path" ]; then
     warn "directory already exists: $repo_path"
     printf '%s\n' "$repo_path"
