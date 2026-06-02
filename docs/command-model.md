@@ -73,8 +73,8 @@
   - 公開する単独実行コマンド
 - `scripts/utils/`
   - 共通補助スクリプト
-- `.cache/mise/tasks/`
-  - 生成された `mise` ラッパー
+- `~/.config/mise/tasks/`
+  - 生成されたグローバル `mise` ラッパー
 
 ## 公開フロー
 
@@ -82,7 +82,7 @@
 
 1. `scripts/global/` にコマンドを置く
 2. `scripts/local/sync-global-commands.sh` で `~/.local/bin` にリンクする
-3. 同じ同期処理で `.cache/mise/tasks/` にラッパーを生成する
+3. 同じ同期処理で `~/.config/mise/tasks/` にラッパーを生成する
 4. `mise` からタスクとして実行できるようにする
 
 ## 変更時の判断基準
