@@ -6,14 +6,14 @@ Personal dotfiles repository for editor, terminal, CLI, and local toolchain conf
 
 This repository includes:
 
-- Neovim configuration in `nvim/`
-- terminal and shell configuration in `terminal/`, `ghostty/`, `wezterm/`, `zellij/`, and `starship/`
-- editor settings for VS Code in `vscode/`
-- Homebrew packages in `homebrew/Brewfile`
-- Bun global packages in `bun/`
-- procs configuration in `procs/`
+- Neovim configuration in `config/editors/nvim/`
+- terminal and shell configuration in `config/shell/terminal/`, `config/terminal-apps/ghostty/`, `config/terminal-apps/wezterm/`, `config/terminal-apps/zellij/`, and `config/shell/starship/`
+- editor settings for VS Code in `config/editors/vscode/`
+- Homebrew packages in `config/tools/homebrew/Brewfile`
+- Bun global packages in `config/tools/bun/`
+- procs configuration in `config/tools/procs/`
 - local setup and published CLI commands in `scripts/`
-- AI tool configuration in `ai/`
+- AI tool configuration in `config/ai/`
 
 This README covers setup and daily usage. See `docs/` for repository design and `AGENTS.md` for agent guidance.
 
@@ -68,17 +68,17 @@ switch-branch-remote
 
 ## 🗂️ Repository Layout
 
-- `nvim/`: Neovim configuration and plugin setup
-- `vscode/`: VS Code settings and keybindings
+- `config/editors/nvim/`: Neovim configuration and plugin setup
+- `config/editors/vscode/`: VS Code settings and keybindings
 - `scripts/local/`: setup and repository-local scripts
 - `scripts/global/`: published standalone CLI commands
 - `scripts/utils/`: shared shell helpers
-- `homebrew/`: tracked `Brewfile`
-- `bun/`: Bun global packages managed in-repo
-- `procs/`: process viewer configuration
-- `sheldon/`: shell plugin manager config and abbreviations
-- `ai/`: AI tool configuration
-- `src/samples/`: sample files for editor and LSP checks
+- `config/tools/homebrew/`: tracked `Brewfile`
+- `config/tools/bun/`: Bun global packages managed in-repo
+- `config/tools/procs/`: process viewer configuration
+- `config/shell/sheldon/`: shell plugin manager config and abbreviations
+- `config/ai/`: AI tool configuration
+- `config/editors/samples/`: sample files for editor and LSP checks
 
 ## 🧩 Subsystems
 
@@ -101,18 +101,18 @@ uv run pre-commit run -a
 
 This repository links the base `$HOME/.gitconfig`.
 
-- Run `scripts/local/link-dotfiles.sh` to link `git/.gitconfig`
+- Run `scripts/local/link-dotfiles.sh` to link `config/tools/git/.gitconfig`
 - Put machine-specific overrides in `$HOME/.gitconfig.local`
 - Keep repositories fetched with `ghq get` under `$GHQ_ROOT`
-- `mise/conf.d/env.toml` sets `$GHQ_ROOT` to `$HOME/Git/ghq` by default
+- `config/tools/mise/conf.d/env.toml` sets `$GHQ_ROOT` to `$HOME/Git/ghq` by default
 
-When `terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
+When `config/shell/terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
 
 ### 🚀 Starship
 
 Starship uses `$STARSHIP_CONFIG`, with the default set from `$STARSHIP_DEFAULT_THEME` on shell startup.
 
-Place custom themes in `starship/themes/*.toml`, then run `search-theme` or the `sT` abbreviation to switch the current shell session. Opening a new terminal restores the default theme.
+Place custom themes in `config/shell/starship/themes/*.toml`, then run `search-theme` or the `sT` abbreviation to switch the current shell session. Opening a new terminal restores the default theme.
 
 ### 🧑‍💻 VS Code
 
@@ -122,12 +122,12 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 
 ### 🤖 AI Tools
 
-The `ai/` directory contains AI tool settings.
+The `config/ai/` directory contains AI tool settings.
 
-- Reusable skills are tracked as apm dependencies in `apm/apm.yml`
+- Reusable skills are tracked as apm dependencies in `config/ai/apm/apm.yml`
 - `mise run install` runs `apm install -g` and applies the locked skills
-- `mise run upgrade` updates apm-managed skills and `apm/apm.lock.yaml`
-- `mise/conf.d/env.toml` defines canonical paths
+- `mise run upgrade` updates apm-managed skills and `config/ai/apm/apm.lock.yaml`
+- `config/tools/mise/conf.d/env.toml` defines canonical paths
 - Custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
 
 ### 🥟 Bun
@@ -138,20 +138,20 @@ Prepare the Bun global environment with:
 mise run install-bun
 ```
 
-This links the managed Bun global directory and installs dependencies from `bun/package.json`.
+This links the managed Bun global directory and installs dependencies from `config/tools/bun/package.json`.
 
 ### 🍺 Homebrew
 
 Install tracked Homebrew packages:
 
 ```sh
-brew bundle --file=homebrew/Brewfile
+brew bundle --file=config/tools/homebrew/Brewfile
 ```
 
 Update the tracked `Brewfile` from the current machine state:
 
 ```sh
-brew bundle dump --file=homebrew/Brewfile --force
+brew bundle dump --file=config/tools/homebrew/Brewfile --force
 ```
 
 ### 🏃 Task Runner
@@ -176,5 +176,5 @@ Repository-wide design and policy documents:
 
 Subsystem-local policies:
 
-- [nvim/lua/policies/keybinds-policy.md](nvim/lua/policies/keybinds-policy.md)
-- [nvim/lua/policies/tab-buffer-policy.md](nvim/lua/policies/tab-buffer-policy.md)
+- [config/editors/nvim/lua/policies/keybinds-policy.md](config/editors/nvim/lua/policies/keybinds-policy.md)
+- [config/editors/nvim/lua/policies/tab-buffer-policy.md](config/editors/nvim/lua/policies/tab-buffer-policy.md)

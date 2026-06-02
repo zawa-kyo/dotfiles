@@ -25,25 +25,25 @@
   - Operating policy for AI tool management.
 - `docs/operations.md`
   - Verification policy after changes.
-- `nvim/lua/policies/keybinds-policy.md`
+- `config/editors/nvim/lua/policies/keybinds-policy.md`
   - Neovim keybinding design.
-- `nvim/lua/policies/tab-buffer-policy.md`
+- `config/editors/nvim/lua/policies/tab-buffer-policy.md`
   - Neovim tab and buffer display policy.
 
 ## References by Change Area
 
-- When changing `nvim/`:
-  - Check `nvim/lua/policies/` first.
-  - For keybindings, read `nvim/lua/policies/keybinds-policy.md`.
-  - For tab or buffer display, read `nvim/lua/policies/tab-buffer-policy.md`.
-- When changing `scripts/`, `mise.toml`, `terminal/`, or `sheldon/abbreviations`:
+- When changing `config/editors/nvim/`:
+  - Check `config/editors/nvim/lua/policies/` first.
+  - For keybindings, read `config/editors/nvim/lua/policies/keybinds-policy.md`.
+  - For tab or buffer display, read `config/editors/nvim/lua/policies/tab-buffer-policy.md`.
+- When changing `scripts/`, `mise.toml`, `config/shell/terminal/`, or `config/shell/sheldon/abbreviations`:
   - Read `docs/command-model.md` and `docs/abbreviation-policy.md`.
   - Follow the shared `fzf` policy in `docs/command-model.md` for scripts that use `fzf`.
-- When changing `homebrew/`:
+- When changing `config/tools/homebrew/`:
   - Read the Homebrew section in `README.md` and `docs/operations.md`.
-- When changing `bun/`:
+- When changing `config/tools/bun/`:
   - Read the Bun section in `README.md` and `docs/operations.md`.
-- When changing `ai/`:
+- When changing `config/ai/`:
   - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-tools.md`.
 - When changing setup or usage instructions:
   - Update `README.md` and `README-ja.md`.
@@ -62,22 +62,22 @@
 - Add a short English comment when adding a new function so its role is clear at a glance.
 - Match the existing format for JSON, JSONC, TOML, and Markdown.
 - Do not commit machine-specific values or secrets.
-- Manage AI skill bodies in external apm package repositories by default. In dotfiles, keep only `apm/apm.yml` dependencies and `apm/apm.lock.yaml`.
+- Manage AI skill bodies in external apm package repositories by default. In dotfiles, keep only `config/ai/apm/apm.yml` dependencies and `config/ai/apm/apm.lock.yaml`.
 
 ## Verification Rules
 
 - Documentation-only changes:
   - No required tests.
   - Run `mise run format` after changing Markdown, TOML, JSON, or JSONC files.
-- Changes under `nvim/`:
+- Changes under `config/editors/nvim/`:
   - Run `mise run format` after changing Lua or formatter-managed files.
   - Run `:checkhealth` in `nvim` after changing plugin, provider, or runtime configuration.
-- Changes under `scripts/`, `mise.toml`, `terminal/`, or `sheldon/abbreviations`:
+- Changes under `scripts/`, `mise.toml`, `config/shell/terminal/`, or `config/shell/sheldon/abbreviations`:
   - Run `mise run format` after changing shell, TOML, or Markdown files.
   - Run `uv run pre-commit run -a` for changes that affect setup, shell startup, PATH, or published commands.
-- Changes to `homebrew/Brewfile`:
-  - Run `brew bundle check --file=homebrew/Brewfile`.
-- Changes under `bun/`:
+- Changes to `config/tools/homebrew/Brewfile`:
+  - Run `brew bundle check --file=config/tools/homebrew/Brewfile`.
+- Changes under `config/tools/bun/`:
   - Run `mise run install-bun`.
   - Then confirm resolution with `bunx --version`.
 
@@ -85,7 +85,7 @@
 
 - When adding new setup instructions, update `README.md` and `README-ja.md`.
 - When adding new repository-wide design principles, update `docs/`.
-- When adding new Neovim rules, update `nvim/lua/policies/`.
+- When adding new Neovim rules, update `config/editors/nvim/lua/policies/`.
 - When changing agent-facing references, update `AGENTS.md`.
 
 ## Language Versions

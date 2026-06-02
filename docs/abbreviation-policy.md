@@ -78,7 +78,7 @@
 
 ## Neovim キーバインドとの関係
 
-この方針は `nvim/lua/policies/keybinds-policy.md` と同じ発想です。どちらも「意味ベースの辞書で覚えられること」を優先します。
+この方針は `config/editors/nvim/lua/policies/keybinds-policy.md` と同じ発想です。どちらも「意味ベースの辞書で覚えられること」を優先します。
 
 ただし対象は異なります。
 

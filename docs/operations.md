@@ -33,7 +33,7 @@
 
 ### Homebrew
 
-- `brew bundle check --file=homebrew/Brewfile`
+- `brew bundle check --file=config/tools/homebrew/Brewfile`
 
 ## フォーマッタ
 

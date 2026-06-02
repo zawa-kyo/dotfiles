@@ -83,7 +83,7 @@ trap 'rm -f "$tmpfile"' EXIT
 git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
-  ':(exclude)apm/apm.lock.yaml' \
+  ':(exclude)config/ai/apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 prettier --write < "$tmpfile"
@@ -183,7 +183,10 @@ run = ["bash scripts/local/cleanup-skill-links.sh", "apm install -g --update"]
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
-run = ["brew upgrade", "brew bundle dump --file=homebrew/Brewfile --force"]
+run = [
+  "brew upgrade",
+  "brew bundle dump --file=config/tools/homebrew/Brewfile --force",
+]
 
 [tasks.upgrade-bun]
 description = "Update Bun global packages to their latest versions"
@@ -204,6 +207,6 @@ run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 [tasks.upgrade-nvim-plugins]
 description = "Upgrade Neovim plugins managed by lazy.nvim"
 run = '''
-XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp \
-nvim --headless -u nvim/init.lua "+Lazy! update" +qa
+XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/config/editors" \
+nvim --headless --cmd 'set runtimepath^=config/editors/nvim' -u config/editors/nvim/init.lua "+Lazy! update" +qa
 '''

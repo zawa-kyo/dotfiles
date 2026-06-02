@@ -52,7 +52,7 @@ procs_config_path() {
 
   script_path="$(realpath "${BASH_SOURCE[0]}")"
   script_dir="$(cd "$(dirname "$script_path")" && pwd)"
-  printf '%s\n' "$script_dir/../../procs/procs.toml"
+  printf '%s\n' "$script_dir/../../config/tools/procs/procs.toml"
 }
 
 with_sort_column() {

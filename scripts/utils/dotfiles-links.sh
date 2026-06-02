@@ -84,21 +84,21 @@ populate_dotfiles_links() {
   local dir_dotfiles="$1"
 
   file_links=(
-    "$dir_dotfiles/ai/instructions/AGENTS.md:$HOME/.codex/AGENTS.md"
-    "$dir_dotfiles/ai/instructions/AGENTS.md:$HOME/.claude/CLAUDE.md"
-    "$dir_dotfiles/git/.gitconfig:$HOME/.gitconfig"
-    "$dir_dotfiles/terminal/.zlogin:$HOME/.zlogin"
-    "$dir_dotfiles/terminal/.zlogout:$HOME/.zlogout"
-    "$dir_dotfiles/terminal/.zprofile:$HOME/.zprofile"
-    "$dir_dotfiles/terminal/.zshenv:$HOME/.zshenv"
-    "$dir_dotfiles/terminal/.zshrc:$HOME/.zshrc"
-    "$dir_dotfiles/borders/bordersrc:$HOME/.config/borders/bordersrc"
-    "$dir_dotfiles/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
-    "$dir_dotfiles/mise/config.global.toml:$HOME/.config/mise/mise.toml"
-    "$dir_dotfiles/mise/config.global.lock:$HOME/.config/mise/mise.lock"
-    "$dir_dotfiles/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
-    "$dir_dotfiles/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
-    "$dir_dotfiles/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
+    "$dir_dotfiles/config/ai/instructions/AGENTS.md:$HOME/.codex/AGENTS.md"
+    "$dir_dotfiles/config/ai/instructions/AGENTS.md:$HOME/.claude/CLAUDE.md"
+    "$dir_dotfiles/config/tools/git/.gitconfig:$HOME/.gitconfig"
+    "$dir_dotfiles/config/shell/terminal/.zlogin:$HOME/.zlogin"
+    "$dir_dotfiles/config/shell/terminal/.zlogout:$HOME/.zlogout"
+    "$dir_dotfiles/config/shell/terminal/.zprofile:$HOME/.zprofile"
+    "$dir_dotfiles/config/shell/terminal/.zshenv:$HOME/.zshenv"
+    "$dir_dotfiles/config/shell/terminal/.zshrc:$HOME/.zshrc"
+    "$dir_dotfiles/config/tools/borders/bordersrc:$HOME/.config/borders/bordersrc"
+    "$dir_dotfiles/config/terminal-apps/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
+    "$dir_dotfiles/config/tools/mise/config.global.toml:$HOME/.config/mise/mise.toml"
+    "$dir_dotfiles/config/tools/mise/config.global.lock:$HOME/.config/mise/mise.lock"
+    "$dir_dotfiles/config/shell/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
+    "$dir_dotfiles/config/shell/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
+    "$dir_dotfiles/config/terminal-apps/zellij/config.kdl:$HOME/.config/zellij/config.kdl"
   )
 
   case "$(uname -s)" in
@@ -106,10 +106,10 @@ populate_dotfiles_links() {
     local macos_app_support_dir="$HOME/Library/Application Support"
 
     file_links+=(
-      "$dir_dotfiles/lazygit/config.yml:$macos_app_support_dir/lazygit/config.yml"
-      "$dir_dotfiles/procs/procs.toml:$HOME/Library/Preferences/com.github.dalance.procs/config.toml"
-      "$dir_dotfiles/vscode/settings.jsonc:$macos_app_support_dir/Code/User/settings.json"
-      "$dir_dotfiles/vscode/keybindings.jsonc:$macos_app_support_dir/Code/User/keybindings.json"
+      "$dir_dotfiles/config/tools/lazygit/config.yml:$macos_app_support_dir/lazygit/config.yml"
+      "$dir_dotfiles/config/tools/procs/procs.toml:$HOME/Library/Preferences/com.github.dalance.procs/config.toml"
+      "$dir_dotfiles/config/editors/vscode/settings.jsonc:$macos_app_support_dir/Code/User/settings.json"
+      "$dir_dotfiles/config/editors/vscode/keybindings.jsonc:$macos_app_support_dir/Code/User/keybindings.json"
     )
     ;;
   *)
@@ -118,19 +118,19 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
-    "$dir_dotfiles/apm:$HOME/.apm"
-    "$dir_dotfiles/mise/conf.d:$HOME/.config/mise/conf.d"
-    "$dir_dotfiles/nvim:$HOME/.config/nvim"
-    "$dir_dotfiles/starship:$HOME/.config/starship"
-    "$dir_dotfiles/wezterm:$HOME/.config/wezterm"
+    "$dir_dotfiles/config/ai/apm:$HOME/.apm"
+    "$dir_dotfiles/config/tools/mise/conf.d:$HOME/.config/mise/conf.d"
+    "$dir_dotfiles/config/editors/nvim:$HOME/.config/nvim"
+    "$dir_dotfiles/config/shell/starship:$HOME/.config/starship"
+    "$dir_dotfiles/config/terminal-apps/wezterm:$HOME/.config/wezterm"
   )
 }
 
 # Remove stale skill symlinks previously published from the repo.
 cleanup_skill_links() {
   local dir_dotfiles="$1"
-  local dir_skills="${DIR_SKILLS:-$dir_dotfiles/ai/skills}"
-  local dir_apm_modules="${DIR_APM_MODULES:-$dir_dotfiles/apm/apm_modules}"
+  local dir_skills="${DIR_SKILLS:-$dir_dotfiles/config/ai/skills}"
+  local dir_apm_modules="${DIR_APM_MODULES:-$dir_dotfiles/config/ai/apm/apm_modules}"
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
   local dir_codex="${DIR_CODEX:-$HOME/.codex}"
