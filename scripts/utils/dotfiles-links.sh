@@ -84,8 +84,8 @@ populate_dotfiles_links() {
   local dir_dotfiles="$1"
 
   file_links=(
-    "$dir_dotfiles/AGENTS.md:$HOME/.codex/AGENTS.md"
-    "$dir_dotfiles/AGENTS.md:$HOME/.claude/CLAUDE.md"
+    "$dir_dotfiles/ai/instructions/AGENTS.md:$HOME/.codex/AGENTS.md"
+    "$dir_dotfiles/ai/instructions/AGENTS.md:$HOME/.claude/CLAUDE.md"
     "$dir_dotfiles/git/.gitconfig:$HOME/.gitconfig"
     "$dir_dotfiles/terminal/.zlogin:$HOME/.zlogin"
     "$dir_dotfiles/terminal/.zlogout:$HOME/.zlogout"
