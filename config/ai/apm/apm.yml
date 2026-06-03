@@ -12,6 +12,7 @@ dependencies:
   - git: refoundai/lenny-skills
     skills:
     - running-decision-processes
+  - mattpocock/skills/skills/productivity/grill-me
   mcp: []
 includes: auto
 scripts: {}
