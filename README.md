@@ -38,7 +38,7 @@ Run the installer:
 mise run install
 ```
 
-`mise run install` links dotfiles-managed files, syncs published global commands, installs local `mise` tools, prepares Bun globals, and installs the repository pre-commit hook.
+`mise run install` links dotfiles-managed files, syncs published global commands, installs local `mise` tools, applies apm-managed skills, prepares Bun globals, and installs the repository pre-commit hook.
 
 ## 🛠️ Daily Commands
 
@@ -125,7 +125,7 @@ If `settings.json` or `keybindings.json` already exist as real files, the script
 The `config/ai/` directory contains AI tool settings.
 
 - Reusable skills are tracked as apm dependencies in `config/ai/apm/apm.yml`
-- `mise run install` runs `apm install -g` and applies the locked skills
+- `mise run install` installs the apm CLI through the global mise configuration, then applies the locked skills
 - `mise run upgrade` updates apm-managed skills and `config/ai/apm/apm.lock.yaml`
 - `config/tools/mise/conf.d/env.toml` defines canonical paths
 - Custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
