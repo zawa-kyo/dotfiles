@@ -1,21 +1,18 @@
 # 🏠 dotfiles
 
-Personal dotfiles repository for editor, terminal, CLI, and local toolchain configuration.
+Dotfiles repository for editor, terminal, CLI, and local toolchain configuration.
 
-## ✨ Overview
+This README covers the initial setup and the commands used most often.
+Check `docs/` for design and operations, and `AGENTS.md` for agent guidance.
 
-This repository includes:
+## ✨ Managed Areas
 
-- Neovim configuration in `config/editors/nvim/`
-- terminal and shell configuration in `config/shell/terminal/`, `config/terminal-apps/ghostty/`, `config/terminal-apps/wezterm/`, `config/terminal-apps/zellij/`, and `config/shell/starship/`
-- editor settings for VS Code in `config/editors/vscode/`
-- Homebrew packages in `config/tools/homebrew/Brewfile`
-- Bun global packages in `config/tools/bun/`
-- procs configuration in `config/tools/procs/`
-- local setup and published CLI commands in `scripts/`
-- AI tool configuration in `config/ai/`
-
-This README covers setup and daily usage. See `docs/` for repository design and `AGENTS.md` for agent guidance.
+- Editor configuration for Neovim and VS Code
+- Terminal-related configuration for Zsh, Starship, Ghostty, WezTerm, and Zellij
+- Local tool configuration for Homebrew, Bun, mise, procs, and related tools
+- Published workflow CLI commands in `scripts/global/`
+- AI tool configuration for Codex, Claude Code, and related tools
+- Sample files for editor and LSP checks
 
 ## 🚀 Quick Start
 
@@ -32,131 +29,58 @@ Install `mise` first if it is not already available in your shell.
 brew install mise
 ```
 
-Run the installer:
+Run the standard setup task:
 
 ```sh
 mise run install
 ```
 
-`mise run install` links dotfiles-managed files, syncs published global commands, installs local `mise` tools, applies apm-managed skills, prepares Bun globals, and installs the repository pre-commit hook.
+This task:
 
-## 🛠️ Daily Commands
+- links dotfiles-managed files
+- syncs utility commands
+- installs mise-managed tools
+- applies apm-managed skills
+- prepares the Bun global environment
+- installs the pre-commit hook
 
-Mise tasks:
+## 🛠️ Common Commands
 
-```sh
-mise run install
-mise run relink
-mise run check-pre-commit
-mise run format
-mise run upgrade
-```
+| Command                     | Purpose                                                      |
+| --------------------------- | ------------------------------------------------------------ |
+| `mise run install`          | Run the standard local setup                                 |
+| `mise run relink`           | Relink dotfiles-managed files without overwriting real files |
+| `mise run format`           | Format tracked files                                         |
+| `mise run check-pre-commit` | Run all pre-commit checks                                    |
+| `mise run upgrade`          | Update mise, apm, Neovim, Bun, and Homebrew dependencies     |
+| `mise tasks`                | List available mise tasks                                    |
 
-Global commands:
-
-```sh
-add-worktree
-add-worktree-remote
-delete-worktree
-reveal-repository-with-neovim
-search-abbreviation
-search-task
-switch-branch
-switch-branch-remote
-```
+The setup links commands in `scripts/global/` globally.
+This directory contains small CLI tools for daily work, such as Git operations and task search.
 
 ## 🗂️ Repository Layout
 
-- `config/editors/nvim/`: Neovim configuration and plugin setup
-- `config/editors/vscode/`: VS Code settings and keybindings
-- `scripts/local/`: setup and repository-local scripts
-- `scripts/global/`: published standalone CLI commands
-- `scripts/utils/`: shared shell helpers
-- `config/tools/homebrew/`: tracked `Brewfile`
-- `config/tools/bun/`: Bun global packages managed in-repo
-- `config/tools/procs/`: process viewer configuration
-- `config/shell/sheldon/`: shell plugin manager config and abbreviations
-- `config/ai/`: AI tool configuration
-- `config/editors/samples/`: sample files for editor and LSP checks
+| Path                    | Role                                                        |
+| ----------------------- | ----------------------------------------------------------- |
+| `config/editors/`       | Neovim, VS Code, and editor sample configuration            |
+| `config/shell/`         | Shell configuration for Zsh, Sheldon, Starship, and others  |
+| `config/terminal-apps/` | Terminal app configuration for Ghostty, WezTerm, and Zellij |
+| `config/tools/`         | Tool configuration for Homebrew, Bun, Git, mise, and procs  |
+| `config/ai/`            | Agent instructions and apm-managed AI tool settings         |
+| `scripts/local/`        | Local setup and maintenance scripts                         |
+| `scripts/global/`       | Published standalone CLI commands                           |
+| `scripts/utils/`        | Shared helpers for shell scripts                            |
+| `docs/`                 | Repository-wide design and operational policy               |
 
-## 🧩 Subsystems
+## 📚 Documentation
 
-### 🪝 Pre-commit
+The README stays short. Use these documents for design and operations:
 
-Run all pre-commit checks:
+- [docs/index.md](docs/index.md): documentation index
+- [docs/architecture.md](docs/architecture.md): repository layout and responsibility boundaries
+- [docs/command-model.md](docs/command-model.md): standalone commands, shell functions, and mise tasks
+- [docs/abbreviation-policy.md](docs/abbreviation-policy.md): shell abbreviation policy
+- [docs/ai-tools.md](docs/ai-tools.md): AI tool and apm policy
+- [docs/operations.md](docs/operations.md): verification policy by change type
 
-```sh
-mise run check-pre-commit
-```
-
-### 🌿 Git
-
-This repository links the base `$HOME/.gitconfig`.
-
-- Run `scripts/local/link-dotfiles.sh` to link `config/tools/git/.gitconfig`
-- Put machine-specific overrides in `$HOME/.gitconfig.local`
-- Keep repositories fetched with `ghq get` under `$GHQ_ROOT`
-- `config/tools/mise/conf.d/env.toml` sets `$GHQ_ROOT` to `$HOME/Git/ghq` by default
-
-When `config/shell/terminal/.zshrc` is linked, `add-worktree`, `add-worktree-remote`, `switch-branch`, `switch-branch-remote`, and `delete-worktree` provide interactive branch and worktree management with `fzf`.
-
-### 🚀 Starship
-
-Starship uses `$STARSHIP_CONFIG`, with the default set from `$STARSHIP_DEFAULT_THEME` on shell startup.
-
-Place custom themes in `config/shell/starship/themes/*.toml`, then run `search-theme` or the `sT` abbreviation to switch the current shell session. Opening a new terminal restores the default theme.
-
-### 🧑‍💻 VS Code
-
-On macOS, `scripts/local/link-dotfiles.sh` also links VS Code user files into the VS Code user config directory.
-
-If `settings.json` or `keybindings.json` already exist as real files, the script leaves them in place and prints a warning instead of overwriting them.
-
-### 🤖 AI Tools
-
-The `config/ai/` directory contains AI tool settings.
-
-- Reusable skills are tracked as apm dependencies in `config/ai/apm/apm.yml`
-- `mise run install` installs the apm CLI through the global mise configuration, then applies the locked skills
-- `mise run upgrade` updates apm-managed skills and `config/ai/apm/apm.lock.yaml`
-- `config/tools/mise/conf.d/env.toml` defines canonical paths
-- Custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
-
-### 🍺 Homebrew
-
-Install tracked Homebrew packages:
-
-```sh
-brew bundle --file=config/tools/homebrew/Brewfile
-```
-
-Update the tracked `Brewfile` from the current machine state:
-
-```sh
-brew bundle dump --file=config/tools/homebrew/Brewfile --force
-```
-
-### 🏃 Task Runner
-
-`mise` is the main entry point for running and discovering tasks.
-
-- `mise run install` performs the standard local setup
-- `mise run format` formats tracked files
-- `mise run check-pre-commit` runs the full repository checks
-- published commands in `scripts/global/` are also exposed through generated `mise` task wrappers
-
-## 📚 Design Documents
-
-Repository-wide design and policy documents:
-
-- [docs/index.md](docs/index.md)
-- [docs/architecture.md](docs/architecture.md)
-- [docs/command-model.md](docs/command-model.md)
-- [docs/abbreviation-policy.md](docs/abbreviation-policy.md)
-- [docs/ai-tools.md](docs/ai-tools.md)
-- [docs/operations.md](docs/operations.md)
-
-Subsystem-local policies:
-
-- [config/editors/nvim/lua/policies/keybinds-policy.md](config/editors/nvim/lua/policies/keybinds-policy.md)
-- [config/editors/nvim/lua/policies/tab-buffer-policy.md](config/editors/nvim/lua/policies/tab-buffer-policy.md)
+Neovim-specific policies live in `config/editors/nvim/lua/policies/`.
