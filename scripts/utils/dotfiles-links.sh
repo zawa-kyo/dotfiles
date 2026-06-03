@@ -130,6 +130,7 @@ populate_dotfiles_links() {
 cleanup_skill_links() {
   local dir_dotfiles="$1"
   local dir_skills="${DIR_SKILLS:-$dir_dotfiles/config/ai/skills}"
+  local legacy_dir_skills="$dir_dotfiles/ai/skills"
   local dir_apm_modules="${DIR_APM_MODULES:-$dir_dotfiles/config/ai/apm/apm_modules}"
   local dir_claude_code="${DIR_CLAUDE_CODE:-$HOME/.claude}"
   local dir_claude_code_skills="${DIR_CLAUDE_CODE_SKILLS:-$dir_claude_code/skills}"
@@ -152,7 +153,7 @@ cleanup_skill_links() {
 
     for skill_path in "$skill_root"/*; do
       [ -L "$skill_path" ] || continue
-      if ! symlink_points_within_dir "$skill_path" "$dir_skills"; then
+      if ! symlink_points_within_dir "$skill_path" "$dir_skills" && ! symlink_points_within_dir "$skill_path" "$legacy_dir_skills"; then
         continue
       fi
 
@@ -167,7 +168,7 @@ cleanup_skill_links() {
         continue
       fi
 
-      if [ ! -d "$dir_skills/$(basename "$skill_path")" ]; then
+      if [ ! -d "$dir_skills/$(basename "$skill_path")" ] && [ ! -d "$legacy_dir_skills/$(basename "$skill_path")" ]; then
         rm -f "$skill_path"
         info "Removed stale skill symlink: $skill_path"
       fi

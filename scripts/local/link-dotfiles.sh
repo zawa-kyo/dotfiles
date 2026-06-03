@@ -7,7 +7,7 @@ source "$script_dir/../utils/log.sh"
 
 # Print the canonical absolute path for a file or directory.
 resolve_path() {
-  realpath "$1"
+  realpath "$1" 2>/dev/null
 }
 
 # Create a symlink from source to target if safe.
