@@ -14,7 +14,7 @@ export TZ="Asia/Tokyo"
 
 # Load shared log helpers here because .zshenv runs before the other zsh startup files.
 DOTFILES_TERMINAL_DIR="${${(%):-%N}:P:h}"
-DOTFILES_ROOT_DIR="${DOTFILES_TERMINAL_DIR}/.."
+DOTFILES_ROOT_DIR="${DOTFILES_TERMINAL_DIR:h:h:h}"
 source "${DOTFILES_ROOT_DIR}/scripts/utils/log.sh"
 
 # ===========================

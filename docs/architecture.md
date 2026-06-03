@@ -17,11 +17,11 @@
 
 ## 主要ディレクトリの役割
 
-- `nvim/`
+- `config/editors/nvim/`
   - Neovim の設定とプラグイン定義
-- `terminal/`, `ghostty/`, `wezterm/`, `zellij/`, `starship/`
+- `config/shell/terminal/`, `config/terminal-apps/ghostty/`, `config/terminal-apps/wezterm/`, `config/terminal-apps/zellij/`, `config/shell/starship/`
   - 端末・シェル・プロンプト関連の設定
-- `vscode/`
+- `config/editors/vscode/`
   - VS Code の設定
 - `scripts/local/`
   - セットアップやリポジトリ内で使うローカルスクリプト
@@ -29,13 +29,13 @@
   - `~/.local/bin` と `mise` タスクに公開する単独実行コマンドの置き場所
 - `scripts/utils/`
   - シェル用の共通補助スクリプト
-- `homebrew/`
+- `config/tools/homebrew/`
   - Homebrew パッケージ定義
-- `bun/`
+- `config/tools/bun/`
   - Bun グローバルパッケージ定義
-- `ai/`
+- `config/ai/`
   - AI ツール設定
-  - 再利用可能なスキルは `apm/apm.yml` の依存関係として管理する
+  - 再利用可能なスキルは `config/ai/apm/apm.yml` の依存関係として管理する
 
 ## 設計原則
 
@@ -55,7 +55,7 @@
 
 ### 3. 局所ルールは局所に置く
 
-- Neovim のキーバインドや表示方針は `nvim/lua/policies/` に置く
+- Neovim のキーバインドや表示方針は `config/editors/nvim/lua/policies/` に置く
 - リポジトリ全体のドキュメントには要約とリンクだけを置く
 - 新しい関数には、役割がひと目で分かる短い英語の説明コメントを付ける
 

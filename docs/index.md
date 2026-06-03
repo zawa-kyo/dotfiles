@@ -23,9 +23,9 @@
 
 ## サブシステム固有ポリシー
 
-- [../nvim/lua/policies/keybinds-policy.md](../nvim/lua/policies/keybinds-policy.md)
+- [../config/editors/nvim/lua/policies/keybinds-policy.md](../config/editors/nvim/lua/policies/keybinds-policy.md)
   - Neovim キーバインド設計
-- [../nvim/lua/policies/tab-buffer-policy.md](../nvim/lua/policies/tab-buffer-policy.md)
+- [../config/editors/nvim/lua/policies/tab-buffer-policy.md](../config/editors/nvim/lua/policies/tab-buffer-policy.md)
   - Neovim タブ/バッファ表示方針
 
 ## 配置ルール

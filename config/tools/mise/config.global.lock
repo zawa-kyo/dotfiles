@@ -42,15 +42,15 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.57"
+version = "2.34.58"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.57.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.58.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:b22f3ca1554aa6666d3a46aa8449e328c9696ea6d2bbc1b1b18dcdb94757d6b6"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.57.pkg"
+checksum = "blake3:f68ee8a82845799f4ba6f5146631e58750b012c8928ceac67b57d71cb36ecf57"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.58.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -89,16 +89,16 @@ checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.53"
+version = "1.0.55"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:c3af9da59f728482d0a5d5eb452b8d1eafa04c20675d52575621d575742a53eb"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.53/copilot-linux-x64.tar.gz"
+checksum = "sha256:b1cd8dfaaa9632011f75ff2564e9dfc4b4328239dec7c98728f48ab8fd21aecf"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.55/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:04a199d97e8bf86b530d5853c43e22c8913b6e5cd9efb2f28f537e5c7a9e84ad"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.53/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:fe4b1806145f3962112a7a69b7cd541e0f1df79f4294c13804c35fc731fb9555"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.55/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -173,16 +173,16 @@ checksum = "sha256:68c10c490efbf3b845c3c997fdf978dcc7fd16a8cbb81b5ae1828bb7faa23
 url = "https://github.com/leoafarias/fvm/releases/download/4.1.0/fvm-4.1.0-macos-arm64.tar.gz"
 
 [[tools.fzf]]
-version = "0.73.0"
+version = "0.73.1"
 backend = "aqua:junegunn/fzf"
 
 [tools.fzf."platforms.linux-x64"]
-checksum = "sha256:f0e7068285b63163af5276d134b9bc7c37fbbf3a49441fca64ae2df424c2ff8d"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.0/fzf-0.73.0-linux_amd64.tar.gz"
+checksum = "sha256:f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_amd64.tar.gz"
 
 [tools.fzf."platforms.macos-arm64"]
-checksum = "sha256:7ebbb24c98969d10d9abf7f3fa99601fa5c192f0086ee7a75d68d321a878a25e"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.0/fzf-0.73.0-darwin_arm64.tar.gz"
+checksum = "sha256:d27fd68c04fb9b42f7c73a3f7d38069a74d308e40174f64a072c747213e97286"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-darwin_arm64.tar.gz"
 
 [[tools.gat]]
 version = "0.27.2"
@@ -430,7 +430,7 @@ url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.11.17"
+version = "0.11.18"
 backend = "asdf:uv"
 
 [[tools.yazi]]

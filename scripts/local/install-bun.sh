@@ -4,7 +4,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/../.." && pwd)"
-bun_dir="$dotfiles_dir/bun"
+bun_dir="$dotfiles_dir/config/tools/bun"
 global_dir="${DIR_BUN_GLOBAL:-$HOME/.bun/install/global}"
 global_parent_dir="$(dirname "$global_dir")"
 global_bin_dir="${DIR_BUN_BIN:-$HOME/.bun/bin}"
