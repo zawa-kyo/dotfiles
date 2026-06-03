@@ -12,6 +12,16 @@ dependencies:
   - .agents/skills/empirical-prompt-tuning
   - .claude/skills/empirical-prompt-tuning
   content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
+- repo_url: refoundai/lenny-skills
+  host: github.com
+  resolved_commit: 280a57aa42fed3b6f35f51f0d9e71013b4c8ae74
+  package_type: skill_bundle
+  deployed_files:
+  - .agents/skills/running-decision-processes
+  - .claude/skills/running-decision-processes
+  content_hash: sha256:a7aba44b1d9284986d163e564306303271d581ab2624161993dfd2618b30030f
+  skill_subset:
+  - running-decision-processes
 - repo_url: zawa-kyo/skills
   host: github.com
   resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
