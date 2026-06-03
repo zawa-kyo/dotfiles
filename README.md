@@ -47,7 +47,6 @@ Mise tasks:
 ```sh
 mise run install
 mise run relink
-mise run install-pre-commit
 mise run check-pre-commit
 mise run format
 mise run upgrade
@@ -84,17 +83,10 @@ switch-branch-remote
 
 ### 🪝 Pre-commit
 
-`uv` manages Python development dependencies.
+Run all pre-commit checks:
 
 ```sh
-uv sync --group dev
-uv run pre-commit install
-```
-
-Run all checks:
-
-```sh
-uv run pre-commit run -a
+mise run check-pre-commit
 ```
 
 ### 🌿 Git
@@ -129,16 +121,6 @@ The `config/ai/` directory contains AI tool settings.
 - `mise run upgrade` updates apm-managed skills and `config/ai/apm/apm.lock.yaml`
 - `config/tools/mise/conf.d/env.toml` defines canonical paths
 - Custom skills should respond in the user's request language unless the requested artifact has an explicit language requirement such as English commit messages
-
-### 🥟 Bun
-
-Prepare the Bun global environment with:
-
-```sh
-mise run install-bun
-```
-
-This links the managed Bun global directory and installs dependencies from `config/tools/bun/package.json`.
 
 ### 🍺 Homebrew
 
