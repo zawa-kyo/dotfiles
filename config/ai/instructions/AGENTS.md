@@ -55,8 +55,10 @@
 - Do not force a Japanese replacement for domain terms that are common in Japanese, lack a clear Japanese equivalent, or would become less precise when translated.
 - Use bold text sparingly, mainly for first definitions or note labels.
 - Prefer prose when a long bullet list would read mechanically.
+- In documents where order or content may change later, do not hard-code numbers in headings or prose. Use Markdown list syntax when sequence matters.
 - Introduce technical terms with a short explanation instead of assuming the reader knows them.
 - Use document titles or concept names when file names, paths, or code identifiers interrupt the prose.
+- When showing complex structures, use maintainable diagram notation such as Mermaid instead of ASCII art.
 - Avoid overusing callout boxes or note blocks when the point fits in the surrounding prose.
 - Organize this file from abstract principles to concrete practices, and keep it under 300 lines.
 - Move task-specific or tool-specific workflows into skills, commands, or project-level docs.
