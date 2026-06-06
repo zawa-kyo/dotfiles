@@ -50,11 +50,15 @@
 ## Prose and Maintenance
 
 - When writing Japanese, think in Japanese instead of drafting in English and translating. Translation-shaped prose often overuses katakana or keeps English sentence patterns.
-- Do not force a Japanese replacement for domain terms that are common in Japanese, lack a clear Japanese equivalent, or would become less precise when translated.
+- Use the `revise-japanese-writing` skill as the source of truth for detailed Japanese tone, notation, terminology, and punctuation decisions.
+- When editing Japanese Markdown, comments, policies, or guides, use the `revise-japanese-writing` skill and match the existing document's tone and terminology.
+- In ordinary conversation output, also respect the Japanese guidance from `revise-japanese-writing`: do not omit particles, avoid translation-shaped prose, and avoid unnecessary English mixing.
 - Use bold text sparingly, mainly for first definitions or note labels.
 - Prefer prose when a long bullet list would read mechanically.
+- In documents where order or content may change later, do not hard-code numbers in headings or prose. Use Markdown list syntax when sequence matters.
 - Introduce technical terms with a short explanation instead of assuming the reader knows them.
 - Use document titles or concept names when file names, paths, or code identifiers interrupt the prose.
+- When showing complex structures, use maintainable diagram notation such as Mermaid instead of ASCII art.
 - Avoid overusing callout boxes or note blocks when the point fits in the surrounding prose.
 - Organize this file from abstract principles to concrete practices, and keep it under 300 lines.
 - Move task-specific or tool-specific workflows into skills, commands, or project-level docs.

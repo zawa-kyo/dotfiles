@@ -94,7 +94,7 @@ dependencies:
   apm:
     - zawa-kyo/skills/meta/review-essential-code
     - zawa-kyo/skills/meta/suggest-commit-messages
-    - zawa-kyo/skills/meta/fluent-japanese-writing
+    - zawa-kyo/skills/meta/revise-japanese-writing
 ```
 
 タグを指定しておくと、意図しない更新を避けやすい。実際に使われるコミットは lock ファイルに記録される。
