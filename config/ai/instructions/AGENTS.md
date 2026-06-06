@@ -52,8 +52,11 @@
 - When writing Japanese, think in Japanese instead of drafting in English and translating. Translation-shaped prose often overuses katakana or keeps English sentence patterns.
 - Japanese particles are important. Do not omit particles except in intentional quotations or code snippets.
 - When editing existing files, check the surrounding prose style and choose polite or plain Japanese appropriately.
+- Match the surrounding document's terminology, notation, and symbol usage, and do not mix multiple forms for the same concept.
 - Do not force a Japanese replacement for domain terms that are common in Japanese, lack a clear Japanese equivalent, or would become less precise when translated.
+- Use technical terms, loanwords, and abbreviations according to the reader and document purpose. Define or explain abbreviations on first use.
 - Use bold text sparingly, mainly for first definitions or note labels.
+- Use punctuation, brackets, question marks, exclamation points, and similar symbols consistently within a document, and avoid overusing them.
 - Prefer prose when a long bullet list would read mechanically.
 - In documents where order or content may change later, do not hard-code numbers in headings or prose. Use Markdown list syntax when sequence matters.
 - Introduce technical terms with a short explanation instead of assuming the reader knows them.
