@@ -14,18 +14,18 @@ checksum = "sha256:aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e69
 url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz"
 
 [[tools.apm]]
-version = "0.15.0"
+version = "0.16.0"
 backend = "github:microsoft/apm"
 
 [tools.apm."platforms.linux-x64"]
-checksum = "sha256:f045d35f5b59656e85e04d315f85cb36634d5f767c95c7cab88f11fb7772f1aa"
-url = "https://github.com/microsoft/apm/releases/download/v0.15.0/apm-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/430600179"
+checksum = "sha256:2b6ace79257328a9599b2569f4751e5e372e21aeada9e90b423d51df95f24f4d"
+url = "https://github.com/microsoft/apm/releases/download/v0.16.0/apm-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/432088197"
 
 [tools.apm."platforms.macos-arm64"]
-checksum = "sha256:e73dceaddeb1b5b74ea5c97c47f9c68db39568f40142aae102131bbbddb220d5"
-url = "https://github.com/microsoft/apm/releases/download/v0.15.0/apm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/430600180"
+checksum = "sha256:f990cca0396658807622e03f23c4e801b1f9dfbf9c06503e0ae77516c514c701"
+url = "https://github.com/microsoft/apm/releases/download/v0.16.0/apm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/432088191"
 
 [[tools.atuin]]
 version = "18.16.1"
@@ -42,15 +42,15 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.34.60"
+version = "2.34.63"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.60.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.34.63.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:9d934b99bb516f25552e3a020f530d2958147463d99df3ddc9e58f2ef1ed0dca"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.60.pkg"
+checksum = "blake3:053fb2a30a00f5b19168c6b008d7a1c7d1493e51f744b001dbce3bc4b5516b9b"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.34.63.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -89,16 +89,16 @@ checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.55"
+version = "1.0.57"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:b1cd8dfaaa9632011f75ff2564e9dfc4b4328239dec7c98728f48ab8fd21aecf"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.55/copilot-linux-x64.tar.gz"
+checksum = "sha256:d0d0d64ba259d07ce7bfe9a12cbd9a30d1dfa30bd1a20323bf7e9ea712a940f9"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.57/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:fe4b1806145f3962112a7a69b7cd541e0f1df79f4294c13804c35fc731fb9555"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.55/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:6e83dbd6e0c4738d9e784b89cd1db07ecb711349b66fecdf92dbbd2d4e6de9bb"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.57/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -199,17 +199,17 @@ url = "https://github.com/koki-develop/gat/releases/download/v0.27.3/gat_Darwin_
 url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/431117539"
 
 [[tools.gh]]
-version = "2.92.0"
+version = "2.93.0"
 backend = "aqua:cli/cli"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:b57848131bdf0c229cd35e1f2a51aa718199858b2e728410b37e89a428943ec4"
-url = "https://github.com/cli/cli/releases/download/v2.92.0/gh_2.92.0_linux_amd64.tar.gz"
+checksum = "sha256:02d1290eba130e0b896f3709ffff22e1c75a51475ddb70476a85abc6b5807af0"
+url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_linux_amd64.tar.gz"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-arm64"]
-checksum = "sha256:b11c54f6bd7d15ed6590475079e5b2fcf36f45d3991a80041b29c9d0cc1f1d07"
-url = "https://github.com/cli/cli/releases/download/v2.92.0/gh_2.92.0_macOS_arm64.zip"
+checksum = "sha256:a86be4e0a86c26456cf71177d6572d6f1165cf1679e532b72f7f15918ee51fd2"
+url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_macOS_arm64.zip"
 provenance = "github-attestations"
 
 [[tools.ghq]]
@@ -290,16 +290,16 @@ checksum = "sha256:a9fe3ea2f86dfc72f6728417521ec9067b343277152b114f4e98d8cb0e263
 url = "https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-macos-arm64"
 
 [[tools.lazygit]]
-version = "0.62.0"
+version = "0.62.1"
 backend = "aqua:jesseduffield/lazygit"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:c57dd766436a42c2da52c3138034f55ca6d8bb935983ee8ae272f0d0386aca6a"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.0/lazygit_0.62.0_linux_x86_64.tar.gz"
+checksum = "sha256:99d78cce8883b24150c2f4ba151f6a0443644f63f63794f18d6643e99f75be09"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.1/lazygit_0.62.1_linux_x86_64.tar.gz"
 
 [tools.lazygit."platforms.macos-arm64"]
-checksum = "sha256:01aa2231718ae63d5c445de97ce492af55f7bdd9cbeaa200b4c94a782dd15ccf"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.0/lazygit_0.62.0_darwin_arm64.tar.gz"
+checksum = "sha256:878697eb72157915f5bff4d4a40f7ea896f096b308190a1a1b20fe17576cfd0d"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.1/lazygit_0.62.1_darwin_arm64.tar.gz"
 
 [[tools.lua]]
 version = "5.5.0"
@@ -430,7 +430,7 @@ url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.11.18"
+version = "0.11.19"
 backend = "asdf:uv"
 
 [[tools.yazi]]
