@@ -50,6 +50,8 @@
 ## Prose and Maintenance
 
 - When writing Japanese, think in Japanese instead of drafting in English and translating. Translation-shaped prose often overuses katakana or keeps English sentence patterns.
+- Japanese particles are important. Do not omit particles except in intentional quotations or code snippets.
+- When editing existing files, check the surrounding prose style and choose polite or plain Japanese appropriately.
 - Do not force a Japanese replacement for domain terms that are common in Japanese, lack a clear Japanese equivalent, or would become less precise when translated.
 - Use bold text sparingly, mainly for first definitions or note labels.
 - Prefer prose when a long bullet list would read mechanically.
