@@ -23,6 +23,7 @@
 ## Implementation Practice
 
 - Read the surrounding code and project docs before making non-trivial changes.
+- When checking how a library, SDK, CLI, or similar tool behaves or should be configured, consult its official documentation first. When the goal can be achieved through officially recommended and maintained settings, options, or environment variables, use those. If no official path exists, propose a practical workaround as a compromise.
 - Make code show the processing flow, and make tests show behavior from the user's perspective.
 - Use commit bodies or comments to explain Why or Why not when the context matters.
 - Add comments only when they clarify behavior that is hard to infer from the code itself.
@@ -55,6 +56,7 @@
 - In ordinary conversation output, also respect the Japanese guidance from `revise-japanese-writing`: do not omit particles, avoid translation-shaped prose, and avoid unnecessary English mixing.
 - Use bold text sparingly, mainly for first definitions or note labels.
 - Prefer prose when a long bullet list would read mechanically.
+- Before adding to or revising an existing section, review that section and the document's overall section structure. If the change suggests that the section structure should be reorganized, propose the reorganization first and wait for user confirmation before changing it.
 - In documents where order or content may change later, do not hard-code numbers in headings or prose. Use Markdown list syntax when sequence matters.
 - Introduce technical terms with a short explanation instead of assuming the reader knows them.
 - Use document titles or concept names when file names, paths, or code identifiers interrupt the prose.
