@@ -23,6 +23,7 @@
 ## Implementation Practice
 
 - Read the surrounding code and project docs before making non-trivial changes.
+- When checking how a library, SDK, CLI, or similar tool behaves or should be configured, consult its official documentation first. When the goal can be achieved through officially recommended and maintained settings, options, or environment variables, use those. If no official path exists, propose a practical workaround as a compromise.
 - Make code show the processing flow, and make tests show behavior from the user's perspective.
 - Use commit bodies or comments to explain Why or Why not when the context matters.
 - Add comments only when they clarify behavior that is hard to infer from the code itself.
@@ -35,6 +36,8 @@
 - If the task requires installing dependencies, changing global tools, or modifying machine-level configuration, ask the user before doing it.
 - Do not use destructive commands unless the user clearly asks for them.
 - Do not stage, unstage, commit, push, or publish changes unless the user asks for that Git operation.
+- Treat any command that changes the Git index as a staging or unstaging operation, even when it also edits the working tree. This includes `git add`, `git mv`, `git rm`, `git restore --staged`, and similar commands. Do not run them unless the user explicitly asks for that Git operation.
+- When moving, renaming, or deleting tracked files without a staging request, use normal filesystem operations such as `mv` and verify with `git status --short` that the changes remain unstaged.
 - Do not revert or overwrite changes you did not make unless explicitly asked.
 - Keep generated values, machine-specific values, secrets, local paths, and credentials out of commits.
 
@@ -55,6 +58,7 @@
 - In ordinary conversation output, also respect the Japanese guidance from `revise-japanese-writing`: do not omit particles, avoid translation-shaped prose, and avoid unnecessary English mixing.
 - Use bold text sparingly, mainly for first definitions or note labels.
 - Prefer prose when a long bullet list would read mechanically.
+- Before adding to or revising an existing section, review that section and the document's overall section structure. If the change suggests that the section structure should be reorganized, propose the reorganization first and wait for user confirmation before changing it.
 - In documents where order or content may change later, do not hard-code numbers in headings or prose. Use Markdown list syntax when sequence matters.
 - Introduce technical terms with a short explanation instead of assuming the reader knows them.
 - Use document titles or concept names when file names, paths, or code identifiers interrupt the prose.
