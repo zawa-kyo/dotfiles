@@ -4,16 +4,16 @@ description: APM project for kyohei
 author: Kyohei Ozawa
 dependencies:
   apm:
-    - mattpocock/skills/skills/productivity/grill-me
-    - mizchi/skills/meta/empirical-prompt-tuning
     - git: refoundai/lenny-skills
       skills:
         - running-decision-processes
+    - mattpocock/skills/skills/productivity/grill-me
+    - mizchi/skills/meta/empirical-prompt-tuning
     - zawa-kyo/skills/dev/review-essential-code
     - zawa-kyo/skills/dev/suggest-commit-messages
-    - zawa-kyo/skills/writing/revise-japanese-writing
-    - zawa-kyo/skills/writing/revise-english-writing
     - zawa-kyo/skills/writing/edit-existing-document
+    - zawa-kyo/skills/writing/revise-english-writing
+    - zawa-kyo/skills/writing/revise-japanese-writing
     - zawa-kyo/skills/writing/summarize-discussion-coherently
   mcp: []
 includes: auto
