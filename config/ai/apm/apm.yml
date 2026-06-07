@@ -14,6 +14,7 @@ dependencies:
     - zawa-kyo/skills/writing/revise-japanese-writing
     - zawa-kyo/skills/writing/revise-english-writing
     - zawa-kyo/skills/writing/edit-existing-document
+    - zawa-kyo/skills/writing/summarize-discussion-coherently
   mcp: []
 includes: auto
 scripts: {}
