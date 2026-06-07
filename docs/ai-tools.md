@@ -119,6 +119,10 @@ dependencies:
 
 タグを指定しておくと、意図しない更新を避けやすい。実際に使われるコミットは lock ファイルに記録される。
 
+スキル本体が `SKILL.md` として各ディレクトリにある構成では、依存関係もそのスキルのディレクトリを直接指定する。`git: <repo>` に `skills:` を添えてリポジトリ全体を参照すると、依存解決はできても `.agents/skills` や `.claude/skills` に配備されないことがある。
+
+判断に迷ったときは、まず依存先リポジトリのルート構成を見る。ルートに `apm.yml` がある APM package は `owner/repo/path/to/skill` の形で個別スキルを参照し、ルート直下や `skills/` 配下にスキルがまとまっている skill bundle は `git: <repo>` と `skills:` を使う。
+
 公開スキルを更新するときは、スキルリポジトリ側で変更、確認、タグ作成まで行う。その後 dotfiles 側で apm 更新タスクを実行し、`config/ai/apm/apm.lock.yaml` の差分を確認する。
 
 ## プライベートリポジトリ内だけで使うスキル
