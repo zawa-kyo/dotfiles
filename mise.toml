@@ -137,11 +137,11 @@ run = "mise install"
 [tasks.install-apm]
 hide = true
 description = "Install apm-managed AI skills"
-# TODO: Remove cleanup-skill-links after this has run on every PC.
 run = [
-  "bash scripts/local/cleanup-skill-links.sh",
+  # Temporary workaround: reset APM-generated paths because APM 0.16.0 refuses stale skill directory deletions.
+  "bash scripts/local/reset-apm-managed-skills.sh",
   "mise -C ~ install apm",
-  "mise -C ~ exec -- apm install -g",
+  "mise -C ~ exec -- apm install -g --frozen",
 ]
 
 [tasks.install]
@@ -184,7 +184,8 @@ run = [
 [tasks.upgrade-apm]
 description = "Update apm-managed AI skills and lock file"
 run = [
-  "bash scripts/local/cleanup-skill-links.sh",
+  # Temporary workaround: reset APM-generated paths because APM 0.16.0 refuses stale skill directory deletions.
+  "bash scripts/local/reset-apm-managed-skills.sh",
   "mise -C ~ install apm",
   "mise -C ~ exec -- apm install -g --update",
 ]
