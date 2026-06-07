@@ -36,6 +36,8 @@
 - If the task requires installing dependencies, changing global tools, or modifying machine-level configuration, ask the user before doing it.
 - Do not use destructive commands unless the user clearly asks for them.
 - Do not stage, unstage, commit, push, or publish changes unless the user asks for that Git operation.
+- Treat any command that changes the Git index as a staging or unstaging operation, even when it also edits the working tree. This includes `git add`, `git mv`, `git rm`, `git restore --staged`, and similar commands. Do not run them unless the user explicitly asks for that Git operation.
+- When moving, renaming, or deleting tracked files without a staging request, use normal filesystem operations such as `mv` and verify with `git status --short` that the changes remain unstaged.
 - Do not revert or overwrite changes you did not make unless explicitly asked.
 - Keep generated values, machine-specific values, secrets, local paths, and credentials out of commits.
 
