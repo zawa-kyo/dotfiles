@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-06-06T14:25:55.753518+00:00'
+generated_at: '2026-06-07T03:31:00.532416+00:00'
 apm_version: 0.16.0
 dependencies:
 - repo_url: mattpocock/skills
@@ -34,51 +34,12 @@ dependencies:
   - running-decision-processes
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
-  virtual_path: meta/cleanup-english-writing
-  is_virtual: true
-  package_type: hybrid
-  deployed_files:
-  - .agents/skills/cleanup-english-writing
-  - .claude/skills/cleanup-english-writing
-  content_hash: sha256:5aac3bf55c6ab8be6e75f09c338bb8d2307feb3a45425d53d0b1a40d96677d21
-- repo_url: zawa-kyo/skills
-  host: github.com
-  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
-  virtual_path: meta/review-essential-code
-  is_virtual: true
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/review-essential-code
-  - .claude/skills/review-essential-code
-  content_hash: sha256:9e743d91232ad5afb4e9ab8bfc39c1b6476bc2fc3b49e58009fd3ab8f8072c70
-- repo_url: zawa-kyo/skills
-  host: github.com
-  resolved_commit: 12c777729cb7f4a3e11e3f346482f3654a98ebc3
-  virtual_path: meta/revise-japanese-writing
-  is_virtual: true
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/revise-japanese-writing
-  - .claude/skills/revise-japanese-writing
-  content_hash: sha256:ebe5dc0351f0824b279e27b8bf99922e29d869c978c4755dde45d1f8ba7b081a
-- repo_url: zawa-kyo/skills
-  host: github.com
-  resolved_commit: 0d3ec09a7c9952e25ba14eb303d4470a5b97d636
-  virtual_path: meta/suggest-commit-messages
-  is_virtual: true
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/suggest-commit-messages
-  - .claude/skills/suggest-commit-messages
-  content_hash: sha256:9ab05ffc905160a063a2f9debed1cb1c1591236dd8cd83e104ed2be5e22864f8
-- repo_url: hardikpandya/stop-slop
-  host: github.com
-  resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
-  depth: 2
-  resolved_by: zawa-kyo/skills
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/stop-slop
-  - .claude/skills/stop-slop
-  content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a
+  resolved_commit: c6b2eb4667e8c68b17a57f778f622320f645f2f3
+  package_type: apm_package
+  content_hash: sha256:894a8960bd761074ca8ed8acea0d79105b53b2b9c999004363b97e1dd15991ce
+  skill_subset:
+  - dev/review-essential-code
+  - dev/suggest-commit-messages
+  - writing/edit-existing-document
+  - writing/revise-english-writing
+  - writing/revise-japanese-writing
