@@ -185,18 +185,18 @@ checksum = "sha256:d27fd68c04fb9b42f7c73a3f7d38069a74d308e40174f64a072c747213e97
 url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-darwin_arm64.tar.gz"
 
 [[tools.gat]]
-version = "0.27.3"
+version = "0.29.0"
 backend = "github:koki-develop/gat"
 
 [tools.gat."platforms.linux-x64"]
-checksum = "sha256:6679ee5aa043c05891d6bcc1f7ae8d87e40ff31a952539e63f5af0d4464359de"
-url = "https://github.com/koki-develop/gat/releases/download/v0.27.3/gat_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/431117540"
+checksum = "sha256:f208b8147a08a5cb89e4129b0681aa0dfecb8765cb22d52d7c5e459f52ee9021"
+url = "https://github.com/koki-develop/gat/releases/download/v0.29.0/gat_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/434333518"
 
 [tools.gat."platforms.macos-arm64"]
-checksum = "sha256:ad2dbb6f0fdf9e817ab5d4f1d6971edb1f152756466809c9824353b7eb95d8f8"
-url = "https://github.com/koki-develop/gat/releases/download/v0.27.3/gat_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/431117539"
+checksum = "sha256:bf4f23154a4ae16883555719d1652f956543f83a6405d757c66852d4d02c7a8a"
+url = "https://github.com/koki-develop/gat/releases/download/v0.29.0/gat_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/434333516"
 
 [[tools.gh]]
 version = "2.93.0"
@@ -374,6 +374,11 @@ url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15
 [[tools.ruby]]
 version = "3.4.9"
 backend = "core:ruby"
+
+[tools.ruby.options]
+compile = "true"
+ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
+ruby_install = "false"
 
 [[tools.rust]]
 version = "1.96.0"
