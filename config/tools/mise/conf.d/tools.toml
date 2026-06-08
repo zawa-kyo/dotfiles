@@ -47,6 +47,7 @@ ripgrep = "latest"
 sheldon = "latest"
 shellcheck = "latest"
 starship = "latest"
+tmux = "latest"
 yazi = "latest"
 zoxide = "latest"
 
