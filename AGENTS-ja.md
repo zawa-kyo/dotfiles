@@ -63,6 +63,7 @@
 - JSON / JSONC / TOML / Markdown は既存フォーマットに合わせる。
 - マシン固有の値や秘密情報はコミットしない。
 - AI スキル本体は原則として外部の apm パッケージリポジトリで管理し、dotfiles には `config/ai/apm/apm.yml` の依存関係と `config/ai/apm/apm.lock.yaml` を置く。
+- 対話型 CLI の利用を提案する場合は、まず `tmux` 経由で起動する案を勧める。
 
 ## 検証ルール
 
