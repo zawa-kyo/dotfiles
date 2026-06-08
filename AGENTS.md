@@ -63,6 +63,7 @@
 - Match the existing format for JSON, JSONC, TOML, and Markdown.
 - Do not commit machine-specific values or secrets.
 - Manage AI skill bodies in external apm package repositories by default. In dotfiles, keep only `config/ai/apm/apm.yml` dependencies and `config/ai/apm/apm.lock.yaml`.
+- When suggesting use of an interactive CLI, recommend starting it in `tmux` first.
 
 ## Verification Rules
 
