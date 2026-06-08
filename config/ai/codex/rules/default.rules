@@ -1,0 +1,89 @@
+prefix_rule(
+    pattern = ["cp"],
+    decision = "allow",
+    justification = "Allows low-risk file copy operations in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["gh", "auth", "status"],
+    decision = "allow",
+    justification = "Allows read-only GitHub authentication inspection via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["gh", "issue", ["list", "status", "view"]],
+    decision = "allow",
+    justification = "Allows read-only GitHub issue inspection via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["gh", "pr", ["checks", "diff", "list", "status", "view"]],
+    decision = "allow",
+    justification = "Allows read-only GitHub pull request inspection via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["gh", "release", ["list", "view"]],
+    decision = "allow",
+    justification = "Allows read-only GitHub release inspection via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["gh", "repo", ["list", "view"]],
+    decision = "allow",
+    justification = "Allows read-only GitHub repository inspection via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["gh", "run", ["list", "view"]],
+    decision = "allow",
+    justification = "Allows read-only GitHub Actions inspection via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["gh", "search", ["code", "commits", "issues", "prs", "repos"]],
+    decision = "allow",
+    justification = "Allows read-only GitHub search via gh CLI.",
+)
+
+prefix_rule(
+    pattern = ["git", "add"],
+    decision = "deny",
+    justification = "Prevents staging changes without an explicit user request.",
+)
+
+prefix_rule(
+    pattern = ["git", "commit"],
+    decision = "deny",
+    justification = "Prevents creating commits without an explicit user request.",
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "deny",
+    justification = "Prevents pushing changes without an explicit user request.",
+)
+
+prefix_rule(
+    pattern = ["ls"],
+    decision = "allow",
+    justification = "Allows low-risk directory inspection in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["mkdir"],
+    decision = "allow",
+    justification = "Allows creating directories in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["mv"],
+    decision = "allow",
+    justification = "Allows moving files in the workspace when needed.",
+)
+
+prefix_rule(
+    pattern = ["touch"],
+    decision = "allow",
+    justification = "Allows creating empty files in the workspace.",
+)
