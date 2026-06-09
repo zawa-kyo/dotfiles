@@ -40,6 +40,7 @@
 - When moving, renaming, or deleting tracked files without a staging request, use normal filesystem operations such as `mv` and verify with `git status --short` that the changes remain unstaged.
 - Do not revert or overwrite changes you did not make unless explicitly asked.
 - Keep generated values, machine-specific values, secrets, local paths, and credentials out of commits.
+- Do not read secrets unless the user explicitly asks for that exact file or value.
 
 ## Review and Reporting
 

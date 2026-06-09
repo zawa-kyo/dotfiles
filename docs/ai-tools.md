@@ -24,6 +24,17 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 - `mise run install` で lock ファイルに従ってスキルを反映する
 - `mise run upgrade` でスキルを更新し、lock ファイルも更新する
 
+## 実行許可設定の管理
+
+スキル配布とは別に、各 CLI の実行許可設定は dotfiles 側で個別に管理する。設定形式がそろっていないため、共通 YAML や生成は使わず、各ツールの設定ファイルまたは許可ルール用ファイルをそのままリンクする。
+
+当面の対応対象は Claude Code と Codex に絞る。
+
+| CLI         | 管理ファイル                                         | 反映先                         | 備考                                                                   |
+| ----------- | ---------------------------------------------------- | ------------------------------ | ---------------------------------------------------------------------- |
+| Claude Code | `config/ai/claude/settings.json`                     | `~/.claude/settings.json`      | `permissions.allow` と `permissions.deny` をこのファイルで管理する     |
+| Codex       | `config/ai/codex/rules/default.rules`                | `~/.codex/rules/default.rules` | コマンド単位の allow / deny をこのファイルで管理する                   |
+
 ## dotfiles で管理するもの
 
 dotfiles は公開リポジトリなので、ここで管理するスキルは公開して問題ないものに限定する。

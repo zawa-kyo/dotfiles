@@ -86,6 +86,8 @@ populate_dotfiles_links() {
   file_links=(
     "$dir_dotfiles/config/ai/instructions/AGENTS.md:$HOME/.codex/AGENTS.md"
     "$dir_dotfiles/config/ai/instructions/AGENTS.md:$HOME/.claude/CLAUDE.md"
+    "$dir_dotfiles/config/ai/claude/settings.json:$HOME/.claude/settings.json"
+    "$dir_dotfiles/config/ai/codex/rules/default.rules:$HOME/.codex/rules/default.rules"
     "$dir_dotfiles/config/tools/git/.gitconfig:$HOME/.gitconfig"
     "$dir_dotfiles/config/shell/terminal/.zlogin:$HOME/.zlogin"
     "$dir_dotfiles/config/shell/terminal/.zlogout:$HOME/.zlogout"
