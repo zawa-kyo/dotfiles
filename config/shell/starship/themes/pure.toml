@@ -47,6 +47,10 @@ staged = ":${count} "
 renamed = "󰑕:${count} "
 deleted = "󰆴:${count} "
 
+[git_state]
+format = '[ $state( $progress_current/$progress_total) ]($style)'
+style = "bold red"
+
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
