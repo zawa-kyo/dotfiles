@@ -47,6 +47,12 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["grep"],
+    decision = "allow",
+    justification = "Allows low-risk text search in the workspace.",
+)
+
+prefix_rule(
     pattern = ["git", "add"],
     decision = "deny",
     justification = "Prevents staging changes without an explicit user request.",

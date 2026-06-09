@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(cp *)",
+      "Bash(grep *)",
       "Bash(gh auth status:*)",
       "Bash(gh issue list:*)",
       "Bash(gh issue status:*)",
