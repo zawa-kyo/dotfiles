@@ -12,7 +12,7 @@ $character"""
 [cmd_duration]
 disabled = false
 format = '[  $duration ]($style)'
-min_time = 1
+min_time = 1000                    # ms
 style = "bold yellow"
 
 [directory]
