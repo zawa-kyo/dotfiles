@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
+      "Bash(basename *)",
+      "Bash(bat *)",
+      "Bash(cat *)",
       "Bash(cp *)",
+      "Bash(dirname *)",
+      "Bash(eza *)",
+      "Bash(fd *)",
+      "Bash(find *)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show:*)",
+      "Bash(git status:*)",
       "Bash(grep *)",
       "Bash(gh auth status:*)",
       "Bash(gh issue list:*)",
@@ -23,11 +35,18 @@
       "Bash(gh search issues:*)",
       "Bash(gh search prs:*)",
       "Bash(gh search repos:*)",
+      "Bash(jq *)",
       "Bash(ls)",
       "Bash(ls *)",
       "Bash(mkdir *)",
       "Bash(mv *)",
-      "Bash(touch *)"
+      "Bash(pwd)",
+      "Bash(rg *)",
+      "Bash(sed *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(touch *)",
+      "Bash(wc *)"
     ],
     "deny": [
       "Bash(git add:*)",
