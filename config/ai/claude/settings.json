@@ -52,8 +52,6 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Read(**/*secret*)",
-      "Read(**/*token*)",
       "Read(**/.env*)",
       "Read(~/.aws/**)",
       "Read(~/.ssh/**)"
