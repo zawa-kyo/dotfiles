@@ -17,15 +17,45 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["cd"],
+    decision = "allow",
+    justification = "Allows low-risk working directory changes during shell inspection.",
+)
+
+prefix_rule(
     pattern = ["cp"],
     decision = "allow",
     justification = "Allows low-risk file copy operations in the workspace.",
 )
 
 prefix_rule(
+    pattern = ["cut"],
+    decision = "allow",
+    justification = "Allows low-risk text field extraction from command output.",
+)
+
+prefix_rule(
+    pattern = ["date"],
+    decision = "allow",
+    justification = "Allows low-risk current date and time inspection.",
+)
+
+prefix_rule(
+    pattern = ["df"],
+    decision = "allow",
+    justification = "Allows low-risk filesystem capacity inspection.",
+)
+
+prefix_rule(
     pattern = ["dirname"],
     decision = "allow",
     justification = "Allows low-risk path inspection in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["du"],
+    decision = "allow",
+    justification = "Allows low-risk disk usage inspection.",
 )
 
 prefix_rule(
@@ -38,6 +68,12 @@ prefix_rule(
     pattern = ["fd"],
     decision = "allow",
     justification = "Allows low-risk file discovery in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["file"],
+    decision = "allow",
+    justification = "Allows low-risk file type inspection.",
 )
 
 prefix_rule(
@@ -107,9 +143,33 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["git", "blame"],
+    decision = "allow",
+    justification = "Allows read-only Git line history inspection.",
+)
+
+prefix_rule(
+    pattern = ["git", "branch"],
+    decision = "allow",
+    justification = "Allows read-only Git branch inspection.",
+)
+
+prefix_rule(
     pattern = ["git", "diff"],
     decision = "allow",
     justification = "Allows read-only Git diff inspection.",
+)
+
+prefix_rule(
+    pattern = ["git", "grep"],
+    decision = "allow",
+    justification = "Allows read-only Git-tracked text search.",
+)
+
+prefix_rule(
+    pattern = ["git", "ls-files"],
+    decision = "allow",
+    justification = "Allows read-only Git-tracked file listing.",
 )
 
 prefix_rule(
@@ -128,6 +188,12 @@ prefix_rule(
     pattern = ["git", "push"],
     decision = "deny",
     justification = "Prevents pushing changes without an explicit user request.",
+)
+
+prefix_rule(
+    pattern = ["git", "remote"],
+    decision = "allow",
+    justification = "Allows read-only Git remote inspection.",
 )
 
 prefix_rule(
@@ -173,9 +239,33 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["printenv"],
+    decision = "allow",
+    justification = "Allows low-risk environment inspection.",
+)
+
+prefix_rule(
+    pattern = ["ps"],
+    decision = "allow",
+    justification = "Allows low-risk process inspection.",
+)
+
+prefix_rule(
     pattern = ["pwd"],
     decision = "allow",
     justification = "Allows low-risk working directory inspection.",
+)
+
+prefix_rule(
+    pattern = ["readlink"],
+    decision = "allow",
+    justification = "Allows low-risk symlink target inspection.",
+)
+
+prefix_rule(
+    pattern = ["realpath"],
+    decision = "allow",
+    justification = "Allows low-risk path resolution.",
 )
 
 prefix_rule(
@@ -191,9 +281,27 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["sort"],
+    decision = "allow",
+    justification = "Allows low-risk sorting of command output.",
+)
+
+prefix_rule(
+    pattern = ["stat"],
+    decision = "allow",
+    justification = "Allows low-risk file metadata inspection.",
+)
+
+prefix_rule(
     pattern = ["tail"],
     decision = "allow",
     justification = "Allows low-risk partial file reads in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["tr"],
+    decision = "allow",
+    justification = "Allows low-risk text transformation of command output.",
 )
 
 prefix_rule(
@@ -203,7 +311,43 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["tree"],
+    decision = "allow",
+    justification = "Allows low-risk directory tree inspection.",
+)
+
+prefix_rule(
+    pattern = ["uname"],
+    decision = "allow",
+    justification = "Allows low-risk system information inspection.",
+)
+
+prefix_rule(
+    pattern = ["uniq"],
+    decision = "allow",
+    justification = "Allows low-risk duplicate filtering of command output.",
+)
+
+prefix_rule(
+    pattern = ["which"],
+    decision = "allow",
+    justification = "Allows low-risk command path inspection.",
+)
+
+prefix_rule(
+    pattern = ["whoami"],
+    decision = "allow",
+    justification = "Allows low-risk current user inspection.",
+)
+
+prefix_rule(
     pattern = ["wc"],
     decision = "allow",
     justification = "Allows low-risk output counting in the workspace.",
+)
+
+prefix_rule(
+    pattern = ["z"],
+    decision = "allow",
+    justification = "Allows low-risk directory changes through the z directory jumper.",
 )
