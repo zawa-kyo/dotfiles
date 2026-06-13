@@ -1,209 +1,152 @@
-prefix_rule(
-    pattern = ["basename"],
-    decision = "allow",
-    justification = "Allows low-risk path inspection in the workspace.",
+def allow(pattern, justification):
+    prefix_rule(
+        pattern = pattern,
+        decision = "allow",
+        justification = justification,
+    )
+
+
+def forbid(pattern, justification, match, not_match = []):
+    prefix_rule(
+        pattern = pattern,
+        decision = "forbidden",
+        justification = justification,
+        match = match,
+        not_match = not_match,
+    )
+
+
+for command in [
+    "basename",
+    "dirname",
+    "pwd",
+    "readlink",
+    "realpath",
+    "which",
+]:
+    allow([command], "Allows low-risk path and working directory inspection.")
+
+for command in [
+    "bat",
+    "cat",
+    "cut",
+    "file",
+    "head",
+    "jq",
+    "sed",
+    "sort",
+    "stat",
+    "tail",
+    "tr",
+    "uniq",
+    "wc",
+]:
+    allow([command], "Allows low-risk file and command output inspection.")
+
+for command in [
+    "df",
+    "du",
+    "ls",
+    "eza",
+    "fd",
+    "find",
+    "grep",
+    "rg",
+    "tree",
+]:
+    allow([command], "Allows low-risk filesystem discovery and search.")
+
+for command in [
+    "date",
+    "printenv",
+    "ps",
+    "uname",
+    "whoami",
+]:
+    allow([command], "Allows low-risk environment and system inspection.")
+
+for command in [
+    "cd",
+    "z",
+]:
+    allow([command], "Allows low-risk working directory changes during shell inspection.")
+
+for command in [
+    "cp",
+    "mkdir",
+    "mv",
+    "touch",
+]:
+    allow([command], "Allows existing low-risk workspace file maintenance commands.")
+
+allow(
+    ["git", [
+        "blame",
+        "branch",
+        "diff",
+        "grep",
+        "log",
+        "ls-files",
+        "remote",
+        "rev-parse",
+        "show",
+        "status",
+    ]],
+    "Allows read-only Git inspection.",
 )
 
-prefix_rule(
-    pattern = ["bat"],
-    decision = "allow",
-    justification = "Allows low-risk file reads in the workspace.",
+forbid(
+    ["git", "add"],
+    "Do not allow Codex to stage changes.",
+    match = ["git add README.md", "git add ."],
+    not_match = ["git status --short"],
 )
 
-prefix_rule(
-    pattern = ["cat"],
-    decision = "allow",
-    justification = "Allows low-risk file reads in the workspace.",
+forbid(
+    ["git", "commit"],
+    "Do not allow Codex to create commits.",
+    match = ["git commit -m update"],
+    not_match = ["git log --oneline"],
 )
 
-prefix_rule(
-    pattern = ["cp"],
-    decision = "allow",
-    justification = "Allows low-risk file copy operations in the workspace.",
+forbid(
+    ["git", "push"],
+    "Do not allow Codex to push changes.",
+    match = ["git push", "git push origin main"],
+    not_match = ["git remote -v"],
 )
 
-prefix_rule(
-    pattern = ["dirname"],
-    decision = "allow",
-    justification = "Allows low-risk path inspection in the workspace.",
+allow(
+    ["gh", "auth", "status"],
+    "Allows read-only GitHub authentication inspection via gh CLI.",
 )
 
-prefix_rule(
-    pattern = ["eza"],
-    decision = "allow",
-    justification = "Allows low-risk directory inspection in the workspace.",
+allow(
+    ["gh", "issue", ["list", "status", "view"]],
+    "Allows read-only GitHub issue inspection via gh CLI.",
 )
 
-prefix_rule(
-    pattern = ["fd"],
-    decision = "allow",
-    justification = "Allows low-risk file discovery in the workspace.",
+allow(
+    ["gh", "pr", ["checks", "diff", "list", "status", "view"]],
+    "Allows read-only GitHub pull request inspection via gh CLI.",
 )
 
-prefix_rule(
-    pattern = ["find"],
-    decision = "allow",
-    justification = "Allows low-risk file discovery in the workspace.",
+allow(
+    ["gh", "release", ["list", "view"]],
+    "Allows read-only GitHub release inspection via gh CLI.",
 )
 
-prefix_rule(
-    pattern = ["gh", "auth", "status"],
-    decision = "allow",
-    justification = "Allows read-only GitHub authentication inspection via gh CLI.",
+allow(
+    ["gh", "repo", ["list", "view"]],
+    "Allows read-only GitHub repository inspection via gh CLI.",
 )
 
-prefix_rule(
-    pattern = ["gh", "issue", ["list", "status", "view"]],
-    decision = "allow",
-    justification = "Allows read-only GitHub issue inspection via gh CLI.",
+allow(
+    ["gh", "run", ["list", "view"]],
+    "Allows read-only GitHub Actions inspection via gh CLI.",
 )
 
-prefix_rule(
-    pattern = ["gh", "pr", ["checks", "diff", "list", "status", "view"]],
-    decision = "allow",
-    justification = "Allows read-only GitHub pull request inspection via gh CLI.",
-)
-
-prefix_rule(
-    pattern = ["gh", "release", ["list", "view"]],
-    decision = "allow",
-    justification = "Allows read-only GitHub release inspection via gh CLI.",
-)
-
-prefix_rule(
-    pattern = ["gh", "repo", ["list", "view"]],
-    decision = "allow",
-    justification = "Allows read-only GitHub repository inspection via gh CLI.",
-)
-
-prefix_rule(
-    pattern = ["gh", "run", ["list", "view"]],
-    decision = "allow",
-    justification = "Allows read-only GitHub Actions inspection via gh CLI.",
-)
-
-prefix_rule(
-    pattern = ["gh", "search", ["code", "commits", "issues", "prs", "repos"]],
-    decision = "allow",
-    justification = "Allows read-only GitHub search via gh CLI.",
-)
-
-prefix_rule(
-    pattern = ["grep"],
-    decision = "allow",
-    justification = "Allows low-risk text search in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["head"],
-    decision = "allow",
-    justification = "Allows low-risk partial file reads in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["git", "add"],
-    decision = "deny",
-    justification = "Prevents staging changes without an explicit user request.",
-)
-
-prefix_rule(
-    pattern = ["git", "diff"],
-    decision = "allow",
-    justification = "Allows read-only Git diff inspection.",
-)
-
-prefix_rule(
-    pattern = ["git", "log"],
-    decision = "allow",
-    justification = "Allows read-only Git history inspection.",
-)
-
-prefix_rule(
-    pattern = ["git", "commit"],
-    decision = "deny",
-    justification = "Prevents creating commits without an explicit user request.",
-)
-
-prefix_rule(
-    pattern = ["git", "push"],
-    decision = "deny",
-    justification = "Prevents pushing changes without an explicit user request.",
-)
-
-prefix_rule(
-    pattern = ["git", "rev-parse"],
-    decision = "allow",
-    justification = "Allows read-only Git repository metadata inspection.",
-)
-
-prefix_rule(
-    pattern = ["git", "show"],
-    decision = "allow",
-    justification = "Allows read-only Git object inspection.",
-)
-
-prefix_rule(
-    pattern = ["git", "status"],
-    decision = "allow",
-    justification = "Allows read-only Git working tree inspection.",
-)
-
-prefix_rule(
-    pattern = ["jq"],
-    decision = "allow",
-    justification = "Allows low-risk structured output inspection in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["ls"],
-    decision = "allow",
-    justification = "Allows low-risk directory inspection in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["mkdir"],
-    decision = "allow",
-    justification = "Allows creating directories in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["mv"],
-    decision = "allow",
-    justification = "Allows moving files in the workspace when needed.",
-)
-
-prefix_rule(
-    pattern = ["pwd"],
-    decision = "allow",
-    justification = "Allows low-risk working directory inspection.",
-)
-
-prefix_rule(
-    pattern = ["rg"],
-    decision = "allow",
-    justification = "Allows low-risk fast text and file search in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["sed"],
-    decision = "allow",
-    justification = "Allows low-risk partial file reads and simple text inspection.",
-)
-
-prefix_rule(
-    pattern = ["tail"],
-    decision = "allow",
-    justification = "Allows low-risk partial file reads in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["touch"],
-    decision = "allow",
-    justification = "Allows creating empty files in the workspace.",
-)
-
-prefix_rule(
-    pattern = ["wc"],
-    decision = "allow",
-    justification = "Allows low-risk output counting in the workspace.",
+allow(
+    ["gh", "search", ["code", "commits", "issues", "prs", "repos"]],
+    "Allows read-only GitHub search via gh CLI.",
 )
