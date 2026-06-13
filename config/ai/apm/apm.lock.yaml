@@ -1,10 +1,10 @@
 lockfile_version: '1'
-generated_at: '2026-06-09T15:19:53.067504+00:00'
-apm_version: 0.16.1
+generated_at: '2026-06-13T08:18:35.360955+00:00'
+apm_version: 0.18.0
 dependencies:
 - repo_url: mattpocock/skills
   host: github.com
-  resolved_commit: 2bf70051928429983de3b5718d277150926f8c89
+  resolved_commit: 694fa30311e02c2639942308513555e61ee84a6f
   virtual_path: skills/productivity/grill-me
   is_virtual: true
   package_type: claude_skill

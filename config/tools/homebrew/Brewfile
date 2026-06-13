@@ -1,68 +1,119 @@
-tap "arto-app/tap"
-tap "felixkratz/formulae"
+tap "arto-app/tap", trusted: true
+tap "felixkratz/formulae", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
+# Core application library for C
 brew "glib"
+# Dependency manager for Cocoa projects
 brew "cocoapods"
+# Access GitHub's .gitignore boilerplates
 brew "gibo"
+# Distributed revision control system
 brew "git"
+# Prevents you from committing sensitive information to a git repo
 brew "git-secrets"
+# OpenType text shaping engine
 brew "harfbuzz"
+# TIFF library and utilities
 brew "libtiff"
+# Color management engine supporting ICC profiles
 brew "little-cms2"
+# Library for JPEG-2000 image manipulation
 brew "openjpeg"
+# Image format providing lossless and lossy compression for web images
 brew "webp"
+# Image processing and image analysis library
 brew "leptonica"
+# Multi-format archive and compression library
 brew "libarchive"
+# Mac App Store command-line interface
 brew "mas"
+# Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Rust toolchain installer
 brew "rustup"
+# 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Prints a steam locomotive if you type sl instead of ls
 brew "sl"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# A window border system for macOS
 brew "felixkratz/formulae/borders"
+# Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# Tools for building Android applications
 cask "android-studio"
+# Application uninstaller
 cask "appcleaner"
+# The Art of Reading Markdown.
 cask "arto-app/tap/arto"
+# Display management tool
 cask "betterdisplay"
+# Desktop password and login vault
 cask "bitwarden"
+# OpenAI's Codex desktop app for managing coding agents
 cask "codex-app"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# App for note taking, organising, task lists, and archiving
 cask "evernote"
+# Collaborative team software
 cask "figma"
 cask "font-fira-code"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
 cask "font-moralerspace"
 cask "font-symbols-only-nerd-font"
+# GIT client
 cask "fork"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Java IDE by JetBrains
 cask "intellij-idea"
+# Menu bar manager
 cask "jordanbaird-ice"
+# Keyboard customiser
 cask "karabiner-elements"
+# Find shortcuts for any installed application
 cask "keyclu"
+# Interface for reading and syncing eBooks
 cask "kindle"
+# Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Tool to control external monitor brightness & volume
 cask "monitorcontrol"
+# Finder Toolbar app to open the current directory in Editor
 cask "openineditor-lite"
+# Finder Toolbar app to open the current directory in Terminal
 cask "openinterminal-lite"
+# Used to access context-specific actions when text is selected
 cask "popclip"
+# Collaboration platform for API development
 cask "postman"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
+# Team communication and collaboration software
 cask "slack"
+# Unpacks archive files
 cask "the-unarchiver"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# Install and switch between multiple versions of Xcode
 cask "xcodes-app"
+# Lossless audio decoder
 cask "xld"
+# Video communication and virtual meeting platform
 cask "zoom"
 mas "Adblock Plus", id: 1432731683
 mas "AdGuard for Safari", id: 1440147259
 mas "BetterSnapTool", id: 417375580
-mas "Bitwarden", id: 1352778147
 mas "CotEditor", id: 1024640650
 mas "GIPHY CAPTURE", id: 668208984
 mas "Grila", id: 6444335028
@@ -173,7 +224,6 @@ vscode "zainchen.json"
 vscode "zignd.html-css-class-completion"
 go "cmd/go"
 go "cmd/gofmt"
-go "golang.org/x/tools/gopls"
 uv "specify-cli"
 npm "@anthropic-ai/claude-code"
 npm "corepack"
