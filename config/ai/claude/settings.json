@@ -1,11 +1,11 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
       "Bash(basename *)",
       "Bash(bat *)",
       "Bash(cat *)",
       "Bash(cd *)",
-      "Bash(cp *)",
       "Bash(cut *)",
       "Bash(date)",
       "Bash(df *)",
@@ -50,8 +50,6 @@
       "Bash(jq *)",
       "Bash(ls)",
       "Bash(ls *)",
-      "Bash(mkdir *)",
-      "Bash(mv *)",
       "Bash(printenv *)",
       "Bash(ps *)",
       "Bash(pwd)",
@@ -63,7 +61,6 @@
       "Bash(stat *)",
       "Bash(tail *)",
       "Bash(tr *)",
-      "Bash(touch *)",
       "Bash(tree *)",
       "Bash(uname *)",
       "Bash(uniq *)",
