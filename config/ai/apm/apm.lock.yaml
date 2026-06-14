@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-06-13T08:18:35.360955+00:00'
+generated_at: '2026-06-14T06:10:59.392053+00:00'
 apm_version: 0.18.0
 dependencies:
 - repo_url: mattpocock/skills
@@ -34,7 +34,17 @@ dependencies:
   - running-decision-processes
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 2b8d11e51534ac626490fb8797791c030392bfb0
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
+  virtual_path: dev/bootstrap-repo-docs
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/bootstrap-repo-docs
+  - .claude/skills/bootstrap-repo-docs
+  content_hash: sha256:4db0781503ecce736e6befaba54e5d2faf55e62b3d4581995025521b93e41cee
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
   virtual_path: dev/review-essential-code
   is_virtual: true
   package_type: claude_skill
@@ -44,7 +54,7 @@ dependencies:
   content_hash: sha256:9e743d91232ad5afb4e9ab8bfc39c1b6476bc2fc3b49e58009fd3ab8f8072c70
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 2b8d11e51534ac626490fb8797791c030392bfb0
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
   package_type: claude_skill
@@ -54,7 +64,7 @@ dependencies:
   content_hash: sha256:9ab05ffc905160a063a2f9debed1cb1c1591236dd8cd83e104ed2be5e22864f8
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 2b8d11e51534ac626490fb8797791c030392bfb0
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
   virtual_path: writing/edit-existing-document
   is_virtual: true
   package_type: hybrid
@@ -64,7 +74,7 @@ dependencies:
   content_hash: sha256:078ae0e9b00cb1f33cb9d95ad0976342788bebdf2e0728c6e7d36a85b811ba09
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 2b8d11e51534ac626490fb8797791c030392bfb0
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
   virtual_path: writing/revise-english-writing
   is_virtual: true
   package_type: hybrid
@@ -74,17 +84,17 @@ dependencies:
   content_hash: sha256:e935a17a72345b792848c401eeabd3a29f6488800db0abd7e3eb801a9eec1414
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 2b8d11e51534ac626490fb8797791c030392bfb0
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
   package_type: claude_skill
   deployed_files:
   - .agents/skills/revise-japanese-writing
   - .claude/skills/revise-japanese-writing
-  content_hash: sha256:ebe5dc0351f0824b279e27b8bf99922e29d869c978c4755dde45d1f8ba7b081a
+  content_hash: sha256:73c61b307b2322069f608c1de6bcf6e9be9bce9e87113fb629d452d51b223f7d
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 2b8d11e51534ac626490fb8797791c030392bfb0
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
   package_type: claude_skill
@@ -92,16 +102,6 @@ dependencies:
   - .agents/skills/summarize-discussion-coherently
   - .claude/skills/summarize-discussion-coherently
   content_hash: sha256:f2ffa4e6793ce640d041bf53551ffc5b0de82f78ac70cbe17a3476bdb2e78f85
-- repo_url: zawa-kyo/skills
-  host: github.com
-  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
-  virtual_path: dev/bootstrap-repo-docs
-  is_virtual: true
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/bootstrap-repo-docs
-  - .claude/skills/bootstrap-repo-docs
-  content_hash: sha256:4db0781503ecce736e6befaba54e5d2faf55e62b3d4581995025521b93e41cee
 - repo_url: hardikpandya/stop-slop
   host: github.com
   resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
