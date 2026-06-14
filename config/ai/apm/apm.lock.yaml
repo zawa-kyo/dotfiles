@@ -92,6 +92,16 @@ dependencies:
   - .agents/skills/summarize-discussion-coherently
   - .claude/skills/summarize-discussion-coherently
   content_hash: sha256:f2ffa4e6793ce640d041bf53551ffc5b0de82f78ac70cbe17a3476bdb2e78f85
+- repo_url: zawa-kyo/skills
+  host: github.com
+  resolved_commit: aff9e85384461576f5f641cb1630f3334ffa8321
+  virtual_path: dev/bootstrap-repo-docs
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/bootstrap-repo-docs
+  - .claude/skills/bootstrap-repo-docs
+  content_hash: sha256:4db0781503ecce736e6befaba54e5d2faf55e62b3d4581995025521b93e41cee
 - repo_url: hardikpandya/stop-slop
   host: github.com
   resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
