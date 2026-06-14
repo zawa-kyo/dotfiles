@@ -9,6 +9,7 @@ dependencies:
         - running-decision-processes
     - mattpocock/skills/skills/productivity/grill-me
     - mizchi/skills/meta/empirical-prompt-tuning
+    - zawa-kyo/skills/dev/bootstrap-repo-docs
     - zawa-kyo/skills/dev/review-essential-code
     - zawa-kyo/skills/dev/suggest-commit-messages
     - zawa-kyo/skills/writing/edit-existing-document
