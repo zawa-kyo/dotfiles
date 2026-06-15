@@ -345,18 +345,18 @@ checksum = "sha256:39189dab4eeb15706c424af0ac08a3044c9e48f7db12a7d77f6b7aafc7dd5
 url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-arm64.tar.gz"
 
 [[tools.pouch]]
-version = "0.1.1"
+version = "0.1.2"
 backend = "github:zawa-kyo/pouch"
 
 [tools.pouch."platforms.linux-x64"]
-checksum = "sha256:80ccab7fcfba325e3cb2f4d565c0c3e35f938db952c5d4aad3dc62f21413d4a9"
-url = "https://github.com/zawa-kyo/pouch/releases/download/v0.1.1/pouch_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/zawa-kyo/pouch/releases/assets/447270463"
+checksum = "sha256:1cf313bd742b704bda4431d8520510a33fb00b30922e392e61a0bce8846b797e"
+url = "https://github.com/zawa-kyo/pouch/releases/download/v0.1.2/pouch_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/zawa-kyo/pouch/releases/assets/447287987"
 
 [tools.pouch."platforms.macos-arm64"]
-checksum = "sha256:673ea19affb819e15b97067c031997ff9843728dd598d42c25ac492248ae84dc"
-url = "https://github.com/zawa-kyo/pouch/releases/download/v0.1.1/pouch_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/zawa-kyo/pouch/releases/assets/447270367"
+checksum = "sha256:a1cef542a4a8e156d7d8783831008a44a60cf68a5eb611d20623cf392ec4a7bf"
+url = "https://github.com/zawa-kyo/pouch/releases/download/v0.1.2/pouch_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/zawa-kyo/pouch/releases/assets/447288060"
 
 [[tools.procs]]
 version = "0.14.11"
