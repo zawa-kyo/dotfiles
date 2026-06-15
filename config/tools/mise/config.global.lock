@@ -344,6 +344,20 @@ url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-x64.tar.gz"
 checksum = "sha256:39189dab4eeb15706c424af0ac08a3044c9e48f7db12a7d77f6b7aafc7dd5df6"
 url = "https://nodejs.org/dist/v24.16.0/node-v24.16.0-darwin-arm64.tar.gz"
 
+[[tools.pouch]]
+version = "0.1.1"
+backend = "github:zawa-kyo/pouch"
+
+[tools.pouch."platforms.linux-x64"]
+checksum = "sha256:80ccab7fcfba325e3cb2f4d565c0c3e35f938db952c5d4aad3dc62f21413d4a9"
+url = "https://github.com/zawa-kyo/pouch/releases/download/v0.1.1/pouch_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/zawa-kyo/pouch/releases/assets/447270463"
+
+[tools.pouch."platforms.macos-arm64"]
+checksum = "sha256:673ea19affb819e15b97067c031997ff9843728dd598d42c25ac492248ae84dc"
+url = "https://github.com/zawa-kyo/pouch/releases/download/v0.1.1/pouch_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/zawa-kyo/pouch/releases/assets/447270367"
+
 [[tools.procs]]
 version = "0.14.11"
 backend = "aqua:dalance/procs"
