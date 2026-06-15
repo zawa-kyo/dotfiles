@@ -463,9 +463,27 @@ checksum = "sha256:e46725b2417c085b0761948abc0cc240bff6a3ab5d2128e3ad0de467ded33
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree-sitter-macos-arm64.gz"
 provenance = "github-attestations"
 
+[[tools.ttyd]]
+version = "1.7.7"
+backend = "github:tsl0922/ttyd"
+
+[tools.ttyd."platforms.linux-x64"]
+checksum = "sha256:8a217c968aba172e0dbf3f34447218dc015bc4d5e59bf51db2f2cd12b7be4f55"
+url = "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64"
+url_api = "https://api.github.com/repos/tsl0922/ttyd/releases/assets/159377628"
+
+[tools.ttyd."platforms.macos-arm64"]
+checksum = "sha256:b38acadd89d1d396a0f5649aa52c539edbad07f4bc7348b27b4f4b7219dd4165"
+url = "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.aarch64"
+url_api = "https://api.github.com/repos/tsl0922/ttyd/releases/assets/159377644"
+
 [[tools.uv]]
 version = "0.11.21"
 backend = "asdf:uv"
+
+[[tools.vhs]]
+version = "0.11.0"
+backend = "github:charmbracelet/vhs"
 
 [[tools.yazi]]
 version = "26.5.6"
