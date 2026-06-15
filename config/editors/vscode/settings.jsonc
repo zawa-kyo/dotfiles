@@ -782,6 +782,10 @@
   // pytest
   // Python標準のunittestモジュールを無効化
   "python.testing.unittestEnabled": false,
+  // 統合ターミナルへ後から activate コマンドを流し込ませない
+  "python.terminal.activateEnvironment": false,
+  // 既存ターミナルも Python 拡張から再アクティベートしない
+  "python.terminal.activateEnvInCurrentTerminal": false,
   // ユニットテストツールとしてpytestを有効化
   "python.testing.pytestEnabled": true,
   // ファイル保存時の自動探索は重くなりやすいため無効化
