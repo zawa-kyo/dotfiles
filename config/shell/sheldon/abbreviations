@@ -43,6 +43,7 @@ abbr 'view'='nvim -R'
 abbr '.'='source'
 abbr ':q'='exit'
 abbr ':wq'='exit'
+abbr 'here'='pwd'
 
 # Custom utility policy:
 # - verb + object
