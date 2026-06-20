@@ -1,17 +1,22 @@
 lockfile_version: '1'
-generated_at: '2026-06-15T07:37:09.421883+00:00'
-apm_version: 0.18.0
+generated_at: '2026-06-20T02:42:43.901951+00:00'
+apm_version: 0.20.0
 dependencies:
 - repo_url: mattpocock/skills
   host: github.com
-  resolved_commit: 694fa30311e02c2639942308513555e61ee84a6f
+  resolved_commit: 6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461
   virtual_path: skills/productivity/grill-me
   is_virtual: true
   package_type: claude_skill
   deployed_files:
   - .agents/skills/grill-me
+  - .agents/skills/grill-me/SKILL.md
   - .claude/skills/grill-me
-  content_hash: sha256:784f0dbb7403b0f00324bce9a112f715342777a0daee7bbb7385f9c6f0a170ea
+  - .claude/skills/grill-me/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/grill-me/SKILL.md: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
+    .claude/skills/grill-me/SKILL.md: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
+  content_hash: sha256:f321507f77702a54af1db66549ec1685fc625390d06c57d7949cdcda8eb1b5c7
 - repo_url: mizchi/skills
   host: github.com
   resolved_commit: 89c1b34018ba0d85a770c065ba22f83a8d004d34
@@ -20,7 +25,16 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/empirical-prompt-tuning
+  - .agents/skills/empirical-prompt-tuning/SKILL-ja.md
+  - .agents/skills/empirical-prompt-tuning/SKILL.md
   - .claude/skills/empirical-prompt-tuning
+  - .claude/skills/empirical-prompt-tuning/SKILL-ja.md
+  - .claude/skills/empirical-prompt-tuning/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
+    .agents/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
+    .claude/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
+    .claude/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
   content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
 - repo_url: refoundai/lenny-skills
   host: github.com
@@ -28,7 +42,16 @@ dependencies:
   package_type: skill_bundle
   deployed_files:
   - .agents/skills/running-decision-processes
+  - .agents/skills/running-decision-processes/SKILL.md
+  - .agents/skills/running-decision-processes/references/guest-insights.md
   - .claude/skills/running-decision-processes
+  - .claude/skills/running-decision-processes/SKILL.md
+  - .claude/skills/running-decision-processes/references/guest-insights.md
+  deployed_file_hashes:
+    .agents/skills/running-decision-processes/SKILL.md: sha256:402bf4041e8d780c0132440a26ad0d08ba78e4c2e75d3e229fea803f611c8355
+    .agents/skills/running-decision-processes/references/guest-insights.md: sha256:8916d5e4afd592ded87c0488f24d5031c08c83a6872a0a955b80fdb6bbea0269
+    .claude/skills/running-decision-processes/SKILL.md: sha256:402bf4041e8d780c0132440a26ad0d08ba78e4c2e75d3e229fea803f611c8355
+    .claude/skills/running-decision-processes/references/guest-insights.md: sha256:8916d5e4afd592ded87c0488f24d5031c08c83a6872a0a955b80fdb6bbea0269
   content_hash: sha256:a7aba44b1d9284986d163e564306303271d581ab2624161993dfd2618b30030f
   skill_subset:
   - running-decision-processes
@@ -40,7 +63,20 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/bootstrap-repo-docs
+  - .agents/skills/bootstrap-repo-docs/SKILL-ja.md
+  - .agents/skills/bootstrap-repo-docs/SKILL.md
+  - .agents/skills/bootstrap-repo-docs/agents/openai.yaml
   - .claude/skills/bootstrap-repo-docs
+  - .claude/skills/bootstrap-repo-docs/SKILL-ja.md
+  - .claude/skills/bootstrap-repo-docs/SKILL.md
+  - .claude/skills/bootstrap-repo-docs/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/bootstrap-repo-docs/SKILL-ja.md: sha256:020cb6b409d7e12ce27e1ba8651a66de0d1cb0d51e61ce73f30f31eadb204d1e
+    .agents/skills/bootstrap-repo-docs/SKILL.md: sha256:31e7c0182157007e1914c74b8621d7d573ab2f6e7e6b09245c297169dc81b3d0
+    .agents/skills/bootstrap-repo-docs/agents/openai.yaml: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
+    .claude/skills/bootstrap-repo-docs/SKILL-ja.md: sha256:020cb6b409d7e12ce27e1ba8651a66de0d1cb0d51e61ce73f30f31eadb204d1e
+    .claude/skills/bootstrap-repo-docs/SKILL.md: sha256:31e7c0182157007e1914c74b8621d7d573ab2f6e7e6b09245c297169dc81b3d0
+    .claude/skills/bootstrap-repo-docs/agents/openai.yaml: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
   content_hash: sha256:4db0781503ecce736e6befaba54e5d2faf55e62b3d4581995025521b93e41cee
 - repo_url: zawa-kyo/skills
   host: github.com
@@ -50,7 +86,20 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/review-essential-code
+  - .agents/skills/review-essential-code/SKILL-ja.md
+  - .agents/skills/review-essential-code/SKILL.md
+  - .agents/skills/review-essential-code/agents/openai.yaml
   - .claude/skills/review-essential-code
+  - .claude/skills/review-essential-code/SKILL-ja.md
+  - .claude/skills/review-essential-code/SKILL.md
+  - .claude/skills/review-essential-code/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/review-essential-code/SKILL-ja.md: sha256:246ad4b33b0d873fbeb14e81ee9372613a72fc72b99f07decaea6c80a28bd13a
+    .agents/skills/review-essential-code/SKILL.md: sha256:c462aa83c22973982c997ff13d241457b6c2df6a703e1dd5a1fc61169e50573d
+    .agents/skills/review-essential-code/agents/openai.yaml: sha256:efebbb0626d7b020b9c0c62f9a9809e4711183d7b731a6f75d130dcbecab3967
+    .claude/skills/review-essential-code/SKILL-ja.md: sha256:246ad4b33b0d873fbeb14e81ee9372613a72fc72b99f07decaea6c80a28bd13a
+    .claude/skills/review-essential-code/SKILL.md: sha256:c462aa83c22973982c997ff13d241457b6c2df6a703e1dd5a1fc61169e50573d
+    .claude/skills/review-essential-code/agents/openai.yaml: sha256:efebbb0626d7b020b9c0c62f9a9809e4711183d7b731a6f75d130dcbecab3967
   content_hash: sha256:9e743d91232ad5afb4e9ab8bfc39c1b6476bc2fc3b49e58009fd3ab8f8072c70
 - repo_url: zawa-kyo/skills
   host: github.com
@@ -60,7 +109,20 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/suggest-commit-messages
+  - .agents/skills/suggest-commit-messages/SKILL-ja.md
+  - .agents/skills/suggest-commit-messages/SKILL.md
+  - .agents/skills/suggest-commit-messages/agents/openai.yaml
   - .claude/skills/suggest-commit-messages
+  - .claude/skills/suggest-commit-messages/SKILL-ja.md
+  - .claude/skills/suggest-commit-messages/SKILL.md
+  - .claude/skills/suggest-commit-messages/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/suggest-commit-messages/SKILL-ja.md: sha256:032f80eada67e65d37b77e1cf14f647ace552502796f0d11aee406345bd29ae1
+    .agents/skills/suggest-commit-messages/SKILL.md: sha256:49d468a6a3b5fb54571cd448321524db54441b95ed6bcb10998a1f3469c38450
+    .agents/skills/suggest-commit-messages/agents/openai.yaml: sha256:563387fbcbc5b827ffa36edc034be437a88b18f9e94713264fa29feca0d341be
+    .claude/skills/suggest-commit-messages/SKILL-ja.md: sha256:032f80eada67e65d37b77e1cf14f647ace552502796f0d11aee406345bd29ae1
+    .claude/skills/suggest-commit-messages/SKILL.md: sha256:49d468a6a3b5fb54571cd448321524db54441b95ed6bcb10998a1f3469c38450
+    .claude/skills/suggest-commit-messages/agents/openai.yaml: sha256:563387fbcbc5b827ffa36edc034be437a88b18f9e94713264fa29feca0d341be
   content_hash: sha256:9ab05ffc905160a063a2f9debed1cb1c1591236dd8cd83e104ed2be5e22864f8
 - repo_url: zawa-kyo/skills
   host: github.com
@@ -70,7 +132,24 @@ dependencies:
   package_type: hybrid
   deployed_files:
   - .agents/skills/edit-existing-document
+  - .agents/skills/edit-existing-document/SKILL-ja.md
+  - .agents/skills/edit-existing-document/SKILL.md
+  - .agents/skills/edit-existing-document/agents/openai.yaml
+  - .agents/skills/edit-existing-document/apm.yml
   - .claude/skills/edit-existing-document
+  - .claude/skills/edit-existing-document/SKILL-ja.md
+  - .claude/skills/edit-existing-document/SKILL.md
+  - .claude/skills/edit-existing-document/agents/openai.yaml
+  - .claude/skills/edit-existing-document/apm.yml
+  deployed_file_hashes:
+    .agents/skills/edit-existing-document/SKILL-ja.md: sha256:b1c96c4fea8f214c45e40f2248116053777dbd9358cf256ab3b6361c35eaac59
+    .agents/skills/edit-existing-document/SKILL.md: sha256:68babd570ee60c7d8a73db850426527c9a8f782513d9a17ceb6fad4224746699
+    .agents/skills/edit-existing-document/agents/openai.yaml: sha256:8092cbbfa847cc068b9437f1a5a60909ec3f711b662bed438673daf477381ebc
+    .agents/skills/edit-existing-document/apm.yml: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
+    .claude/skills/edit-existing-document/SKILL-ja.md: sha256:b1c96c4fea8f214c45e40f2248116053777dbd9358cf256ab3b6361c35eaac59
+    .claude/skills/edit-existing-document/SKILL.md: sha256:68babd570ee60c7d8a73db850426527c9a8f782513d9a17ceb6fad4224746699
+    .claude/skills/edit-existing-document/agents/openai.yaml: sha256:8092cbbfa847cc068b9437f1a5a60909ec3f711b662bed438673daf477381ebc
+    .claude/skills/edit-existing-document/apm.yml: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
   content_hash: sha256:078ae0e9b00cb1f33cb9d95ad0976342788bebdf2e0728c6e7d36a85b811ba09
 - repo_url: zawa-kyo/skills
   host: github.com
@@ -80,7 +159,24 @@ dependencies:
   package_type: hybrid
   deployed_files:
   - .agents/skills/revise-english-writing
+  - .agents/skills/revise-english-writing/SKILL-ja.md
+  - .agents/skills/revise-english-writing/SKILL.md
+  - .agents/skills/revise-english-writing/agents/openai.yaml
+  - .agents/skills/revise-english-writing/apm.yml
   - .claude/skills/revise-english-writing
+  - .claude/skills/revise-english-writing/SKILL-ja.md
+  - .claude/skills/revise-english-writing/SKILL.md
+  - .claude/skills/revise-english-writing/agents/openai.yaml
+  - .claude/skills/revise-english-writing/apm.yml
+  deployed_file_hashes:
+    .agents/skills/revise-english-writing/SKILL-ja.md: sha256:b75ff638047c6c0bde01c283e1bb1d5f04fd17236c7eef28bbe79b7a7cb3d935
+    .agents/skills/revise-english-writing/SKILL.md: sha256:8073e83e8aea65288a54d927d01d9c87f2db872612a79e84bed29bacd58f5789
+    .agents/skills/revise-english-writing/agents/openai.yaml: sha256:c886479fec2bad3a4cd22f284e792d525b1f622e0d3496dbbf5db6ac4334c450
+    .agents/skills/revise-english-writing/apm.yml: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
+    .claude/skills/revise-english-writing/SKILL-ja.md: sha256:b75ff638047c6c0bde01c283e1bb1d5f04fd17236c7eef28bbe79b7a7cb3d935
+    .claude/skills/revise-english-writing/SKILL.md: sha256:8073e83e8aea65288a54d927d01d9c87f2db872612a79e84bed29bacd58f5789
+    .claude/skills/revise-english-writing/agents/openai.yaml: sha256:c886479fec2bad3a4cd22f284e792d525b1f622e0d3496dbbf5db6ac4334c450
+    .claude/skills/revise-english-writing/apm.yml: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
   content_hash: sha256:e935a17a72345b792848c401eeabd3a29f6488800db0abd7e3eb801a9eec1414
 - repo_url: zawa-kyo/skills
   host: github.com
@@ -90,7 +186,20 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/revise-japanese-writing
+  - .agents/skills/revise-japanese-writing/SKILL-ja.md
+  - .agents/skills/revise-japanese-writing/SKILL.md
+  - .agents/skills/revise-japanese-writing/agents/openai.yaml
   - .claude/skills/revise-japanese-writing
+  - .claude/skills/revise-japanese-writing/SKILL-ja.md
+  - .claude/skills/revise-japanese-writing/SKILL.md
+  - .claude/skills/revise-japanese-writing/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:d8eba22ae54afbcd69a9106f32a28fa89e4797fff2f4bfbfd8b751f9676baefe
+    .agents/skills/revise-japanese-writing/SKILL.md: sha256:1657226005e1331b326c0f02a05e3aeaf73f93d4bc67931d789918d6f9282979
+    .agents/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
+    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:d8eba22ae54afbcd69a9106f32a28fa89e4797fff2f4bfbfd8b751f9676baefe
+    .claude/skills/revise-japanese-writing/SKILL.md: sha256:1657226005e1331b326c0f02a05e3aeaf73f93d4bc67931d789918d6f9282979
+    .claude/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
   content_hash: sha256:87b059eb41c13ad73ff91d24948fcb7c4731c23944999976fc82f36921352f6f
 - repo_url: zawa-kyo/skills
   host: github.com
@@ -100,7 +209,20 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/summarize-discussion-coherently
+  - .agents/skills/summarize-discussion-coherently/SKILL-ja.md
+  - .agents/skills/summarize-discussion-coherently/SKILL.md
+  - .agents/skills/summarize-discussion-coherently/agents/openai.yaml
   - .claude/skills/summarize-discussion-coherently
+  - .claude/skills/summarize-discussion-coherently/SKILL-ja.md
+  - .claude/skills/summarize-discussion-coherently/SKILL.md
+  - .claude/skills/summarize-discussion-coherently/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/summarize-discussion-coherently/SKILL-ja.md: sha256:c70bfb31865a0ddb6898f3048bc7d4f82b35837873bbe45b531b8937cdcc4e8f
+    .agents/skills/summarize-discussion-coherently/SKILL.md: sha256:79e982651c71790cb11bb939284b7e0fe600427e2bd18eb7139fedbe55a483d9
+    .agents/skills/summarize-discussion-coherently/agents/openai.yaml: sha256:1d14c160d7fdeb8cd2d39864643d1bfca7c898963c50845da78c1cb377ada756
+    .claude/skills/summarize-discussion-coherently/SKILL-ja.md: sha256:c70bfb31865a0ddb6898f3048bc7d4f82b35837873bbe45b531b8937cdcc4e8f
+    .claude/skills/summarize-discussion-coherently/SKILL.md: sha256:79e982651c71790cb11bb939284b7e0fe600427e2bd18eb7139fedbe55a483d9
+    .claude/skills/summarize-discussion-coherently/agents/openai.yaml: sha256:1d14c160d7fdeb8cd2d39864643d1bfca7c898963c50845da78c1cb377ada756
   content_hash: sha256:f2ffa4e6793ce640d041bf53551ffc5b0de82f78ac70cbe17a3476bdb2e78f85
 - repo_url: hardikpandya/stop-slop
   host: github.com
@@ -110,5 +232,34 @@ dependencies:
   package_type: claude_skill
   deployed_files:
   - .agents/skills/stop-slop
+  - .agents/skills/stop-slop/CHANGELOG.md
+  - .agents/skills/stop-slop/LICENSE
+  - .agents/skills/stop-slop/README.md
+  - .agents/skills/stop-slop/SKILL.md
+  - .agents/skills/stop-slop/references/examples.md
+  - .agents/skills/stop-slop/references/phrases.md
+  - .agents/skills/stop-slop/references/structures.md
   - .claude/skills/stop-slop
+  - .claude/skills/stop-slop/CHANGELOG.md
+  - .claude/skills/stop-slop/LICENSE
+  - .claude/skills/stop-slop/README.md
+  - .claude/skills/stop-slop/SKILL.md
+  - .claude/skills/stop-slop/references/examples.md
+  - .claude/skills/stop-slop/references/phrases.md
+  - .claude/skills/stop-slop/references/structures.md
+  deployed_file_hashes:
+    .agents/skills/stop-slop/CHANGELOG.md: sha256:fe2f1484ef02abf22efc09def89bac186a2235831fd0da13d4895edb19cc6dd0
+    .agents/skills/stop-slop/LICENSE: sha256:2e2b2beaf41cc0ce28485455a62aed81777cdcdf68702e142427aef1cd720f2c
+    .agents/skills/stop-slop/README.md: sha256:d5c699e712e62d286aa4314e6b4ba02cde7a9da36ce56102660f98d1a8ceebba
+    .agents/skills/stop-slop/SKILL.md: sha256:7432a1d9ebdd42b27666da8458af252edf549f723fb14bcd4791425103930310
+    .agents/skills/stop-slop/references/examples.md: sha256:49c592899eb4457f95d0767e15e3143569e2cef50f2927c3174e62432984cd3d
+    .agents/skills/stop-slop/references/phrases.md: sha256:4ca1b7e97123b5c67eff3dc97e5e977332e0b24021265c1553888a93ec33fa93
+    .agents/skills/stop-slop/references/structures.md: sha256:ffbf1316c7fb5aaf552de005609a64a9639b546ecd76bfb0e482864d5bbe6f58
+    .claude/skills/stop-slop/CHANGELOG.md: sha256:fe2f1484ef02abf22efc09def89bac186a2235831fd0da13d4895edb19cc6dd0
+    .claude/skills/stop-slop/LICENSE: sha256:2e2b2beaf41cc0ce28485455a62aed81777cdcdf68702e142427aef1cd720f2c
+    .claude/skills/stop-slop/README.md: sha256:d5c699e712e62d286aa4314e6b4ba02cde7a9da36ce56102660f98d1a8ceebba
+    .claude/skills/stop-slop/SKILL.md: sha256:7432a1d9ebdd42b27666da8458af252edf549f723fb14bcd4791425103930310
+    .claude/skills/stop-slop/references/examples.md: sha256:49c592899eb4457f95d0767e15e3143569e2cef50f2927c3174e62432984cd3d
+    .claude/skills/stop-slop/references/phrases.md: sha256:4ca1b7e97123b5c67eff3dc97e5e977332e0b24021265c1553888a93ec33fa93
+    .claude/skills/stop-slop/references/structures.md: sha256:ffbf1316c7fb5aaf552de005609a64a9639b546ecd76bfb0e482864d5bbe6f58
   content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a
