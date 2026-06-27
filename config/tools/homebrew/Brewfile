@@ -1,5 +1,5 @@
 tap "arto-app/tap", trusted: true
-tap "felixkratz/formulae", trusted: true
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
 # Core application library for C
@@ -42,6 +42,8 @@ brew "sevenzip"
 brew "sl"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Command-line tool for sharing terminal over the web
+brew "ttyd"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
@@ -225,6 +227,7 @@ vscode "zainchen.json"
 vscode "zignd.html-css-class-completion"
 go "cmd/go"
 go "cmd/gofmt"
+go "golang.org/x/tools/gopls"
 uv "specify-cli"
 npm "@anthropic-ai/claude-code"
 npm "corepack"

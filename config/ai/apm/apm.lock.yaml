@@ -1,10 +1,10 @@
 lockfile_version: '1'
-generated_at: '2026-06-20T02:42:43.901951+00:00'
-apm_version: 0.20.0
+generated_at: '2026-06-27T06:58:02.574166+00:00'
+apm_version: 0.21.0
 dependencies:
 - repo_url: mattpocock/skills
   host: github.com
-  resolved_commit: 6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461
+  resolved_commit: 5d78bd0903420f97c791f834201e550c765699f8
   virtual_path: skills/productivity/grill-me
   is_virtual: true
   package_type: claude_skill
@@ -19,23 +19,27 @@ dependencies:
   content_hash: sha256:f321507f77702a54af1db66549ec1685fc625390d06c57d7949cdcda8eb1b5c7
 - repo_url: mizchi/skills
   host: github.com
-  resolved_commit: 89c1b34018ba0d85a770c065ba22f83a8d004d34
+  resolved_commit: d7999453cdb4e0e09df1c7f82fd23752539c546c
   virtual_path: meta/empirical-prompt-tuning
   is_virtual: true
   package_type: claude_skill
   deployed_files:
   - .agents/skills/empirical-prompt-tuning
+  - .agents/skills/empirical-prompt-tuning/README.md
   - .agents/skills/empirical-prompt-tuning/SKILL-ja.md
   - .agents/skills/empirical-prompt-tuning/SKILL.md
   - .claude/skills/empirical-prompt-tuning
+  - .claude/skills/empirical-prompt-tuning/README.md
   - .claude/skills/empirical-prompt-tuning/SKILL-ja.md
   - .claude/skills/empirical-prompt-tuning/SKILL.md
   deployed_file_hashes:
+    .agents/skills/empirical-prompt-tuning/README.md: sha256:c7db7d27122bcffe416e5607700a7cd1778cad260d3e104c5bb6da7b7f976b3d
     .agents/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
     .agents/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
+    .claude/skills/empirical-prompt-tuning/README.md: sha256:c7db7d27122bcffe416e5607700a7cd1778cad260d3e104c5bb6da7b7f976b3d
     .claude/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
     .claude/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
-  content_hash: sha256:0caa36857ba4e1f7193fa9ee3e22cac38d7e9787eda95e1726d4a39e40fb9479
+  content_hash: sha256:20e7fba93c7267ba6e3a7b27787ca49191b762dffcfb804b01da9183b1b0c891
 - repo_url: refoundai/lenny-skills
   host: github.com
   resolved_commit: 280a57aa42fed3b6f35f51f0d9e71013b4c8ae74
