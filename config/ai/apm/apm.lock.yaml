@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-06-28T02:18:51.590878+00:00'
+generated_at: '2026-06-28T07:50:26.377894+00:00'
 apm_version: 0.21.0
 dependencies:
 - repo_url: mattpocock/skills
@@ -76,7 +76,7 @@ dependencies:
   - running-decision-processes
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
   package_type: claude_skill
@@ -99,7 +99,7 @@ dependencies:
   content_hash: sha256:4db0781503ecce736e6befaba54e5d2faf55e62b3d4581995025521b93e41cee
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: dev/review-essential-code
   is_virtual: true
   package_type: claude_skill
@@ -122,7 +122,7 @@ dependencies:
   content_hash: sha256:9e743d91232ad5afb4e9ab8bfc39c1b6476bc2fc3b49e58009fd3ab8f8072c70
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
   package_type: claude_skill
@@ -145,7 +145,7 @@ dependencies:
   content_hash: sha256:9ab05ffc905160a063a2f9debed1cb1c1591236dd8cd83e104ed2be5e22864f8
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: writing/edit-existing-document
   is_virtual: true
   package_type: hybrid
@@ -172,7 +172,7 @@ dependencies:
   content_hash: sha256:078ae0e9b00cb1f33cb9d95ad0976342788bebdf2e0728c6e7d36a85b811ba09
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: writing/revise-english-writing
   is_virtual: true
   package_type: hybrid
@@ -199,7 +199,7 @@ dependencies:
   content_hash: sha256:e935a17a72345b792848c401eeabd3a29f6488800db0abd7e3eb801a9eec1414
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
   package_type: claude_skill
@@ -208,21 +208,25 @@ dependencies:
   - .agents/skills/revise-japanese-writing/SKILL-ja.md
   - .agents/skills/revise-japanese-writing/SKILL.md
   - .agents/skills/revise-japanese-writing/agents/openai.yaml
+  - .agents/skills/revise-japanese-writing/references/background.md
   - .claude/skills/revise-japanese-writing
   - .claude/skills/revise-japanese-writing/SKILL-ja.md
   - .claude/skills/revise-japanese-writing/SKILL.md
   - .claude/skills/revise-japanese-writing/agents/openai.yaml
+  - .claude/skills/revise-japanese-writing/references/background.md
   deployed_file_hashes:
-    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:d8eba22ae54afbcd69a9106f32a28fa89e4797fff2f4bfbfd8b751f9676baefe
-    .agents/skills/revise-japanese-writing/SKILL.md: sha256:1657226005e1331b326c0f02a05e3aeaf73f93d4bc67931d789918d6f9282979
+    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:a1151bbaa23c417b42224393618abaa8c6b2607b79f1bc48512c253c3c08ceca
+    .agents/skills/revise-japanese-writing/SKILL.md: sha256:e403328b4153983423a9c4c23d5f50b59f368a2cd19f96e8e6b39863e76ea113
     .agents/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
-    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:d8eba22ae54afbcd69a9106f32a28fa89e4797fff2f4bfbfd8b751f9676baefe
-    .claude/skills/revise-japanese-writing/SKILL.md: sha256:1657226005e1331b326c0f02a05e3aeaf73f93d4bc67931d789918d6f9282979
+    .agents/skills/revise-japanese-writing/references/background.md: sha256:0252b1439b036e2db0ce7d11ef949017bd7f02052d4c8829493b893f4f4111d8
+    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:a1151bbaa23c417b42224393618abaa8c6b2607b79f1bc48512c253c3c08ceca
+    .claude/skills/revise-japanese-writing/SKILL.md: sha256:e403328b4153983423a9c4c23d5f50b59f368a2cd19f96e8e6b39863e76ea113
     .claude/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
-  content_hash: sha256:87b059eb41c13ad73ff91d24948fcb7c4731c23944999976fc82f36921352f6f
+    .claude/skills/revise-japanese-writing/references/background.md: sha256:0252b1439b036e2db0ce7d11ef949017bd7f02052d4c8829493b893f4f4111d8
+  content_hash: sha256:a2cceadf761e860c0d38c8297023b9e571de7a5d5874a5070ca92d5b3a239740
 - repo_url: zawa-kyo/skills
   host: github.com
-  resolved_commit: 0f551ca837f3de95d3f2f91b6cb3fdeb41a67914
+  resolved_commit: c3339ed0f690a46eed2ab9b2923f8d11d02139e9
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
   package_type: claude_skill
