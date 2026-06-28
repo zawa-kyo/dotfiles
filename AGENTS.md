@@ -2,9 +2,9 @@
 
 ## Purpose
 
-- `AGENTS.md` is the entry point for agents.
-- Do not duplicate detailed procedures or long background explanations here. Keep this file focused on links to the right references.
-- Human-facing usage belongs in `README.md`, repository-wide design decisions belong in `docs/`, and subsystem-specific rules belong near the relevant implementation.
+- `AGENTS.md` points agents to the right repository guidance.
+- Keep detailed procedures and long background explanations out of this file.
+- Put user-facing usage in `README.md`, repository-wide design decisions in `docs/`, and subsystem-specific rules near the relevant implementation.
 
 ## References
 
@@ -18,11 +18,11 @@
 - `docs/architecture.md`
   - Repository structure and responsibility boundaries.
 - `docs/command-model.md`
-  - Role split between standalone commands, shell functions, and `mise run`.
+  - How standalone commands, shell functions, and `mise run` split responsibilities.
 - `docs/abbreviation-policy.md`
   - Design principles for shell abbreviations.
 - `docs/ai-tools.md`
-  - Operating policy for AI tool management.
+  - AI tool management policy.
 - `docs/operations.md`
   - Verification policy after changes.
 - `config/editors/nvim/lua/policies/keybinds-policy.md`
@@ -45,7 +45,7 @@
   - Read the Bun section in `README.md` and `docs/operations.md`.
 - When changing `config/ai/`:
   - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-tools.md`.
-- When changing setup or usage instructions:
+- When changing setup or usage documentation:
   - Update `README.md` and `README-ja.md`.
 - When changing repository-wide design decisions:
   - Update `docs/`.
@@ -58,11 +58,11 @@
 - Put subsystem-specific rules near the implementation.
 - Use 2 spaces as the default indentation.
 - Follow `.stylua.toml` for Lua.
-- Match the existing style for shell scripts and keep them as POSIX-friendly as practical.
+- Match the existing shell script style and stay POSIX-friendly when practical.
 - Add a short English comment when adding a new function so its role is clear at a glance.
 - Match the existing format for JSON, JSONC, TOML, and Markdown.
 - Do not commit machine-specific values or secrets.
-- Manage AI skill bodies in external apm package repositories by default. In dotfiles, keep only `config/ai/apm/apm.yml` dependencies and `config/ai/apm/apm.lock.yaml`.
+- Keep AI skill bodies in external apm package repositories by default. In dotfiles, keep only `config/ai/apm/apm.yml` dependencies and `config/ai/apm/apm.lock.yaml`.
 - When suggesting use of an interactive CLI, recommend starting it in `tmux` first.
 
 ## Verification Rules
@@ -80,7 +80,7 @@
   - Run `brew bundle check --file=config/tools/homebrew/Brewfile`.
 - Changes under `config/tools/bun/`:
   - Run `mise run install-bun`.
-  - Then confirm resolution with `bunx --version`.
+- Confirm resolution with `bunx --version`.
 
 ## Documentation Rules
 
@@ -91,7 +91,7 @@
 
 ## Language Versions
 
-When you generate or edit text in this repository, check whether an English Markdown file and a corresponding Japanese `*-ja.md` file exist for the same content. When one exists, update both files in the same change so they stay aligned.
+When you generate or edit prose in this repository, check whether an English Markdown file and a corresponding Japanese `*-ja.md` file cover the same content. When one exists, update both files in the same change so they stay aligned.
 
 The Japanese counterpart of an English Markdown file is the `*-ja.md` file in the same directory.
 

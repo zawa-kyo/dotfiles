@@ -1,22 +1,22 @@
 # 🏠 dotfiles
 
-エディタ、ターミナル、CLI、ローカルツールチェーンの設定をまとめて管理する dotfiles リポジトリです。
+エディタ、ターミナル、CLI ツール、ローカルツールチェーンを管理する dotfiles リポジトリです。
 
-この README は、初回セットアップと普段使う入口だけを扱います。
-設計や運用の詳細は `docs/`、エージェント向けの案内は `AGENTS.md` を確認してください。
+この README では、初回セットアップとよく使うコマンドを扱います。
+設計や運用は `docs/`、エージェント向けの案内は `AGENTS.md` を確認してください。
 
 ## ✨ 管理対象
 
 - Neovim と VS Code のエディタ設定
 - Zsh、Starship、Ghostty、WezTerm、Zellij などのターミナル周辺設定
 - Homebrew、Bun、mise、procs などのローカルツール設定
-- `scripts/global/` で公開する作業用 CLI コマンド
+- `scripts/global/` で公開する単独実行 CLI コマンド
 - Codex や Claude Code などで使う AI ツール設定
 - エディタと LSP の動作確認に使うサンプルファイル
 
 ## 🚀 クイックスタート
 
-リポジトリを clone して作業ディレクトリへ移動します。
+リポジトリをクローンして作業ディレクトリへ移動します。
 
 ```sh
 git clone [repository_url]
@@ -56,7 +56,7 @@ mise run install
 | `mise tasks`                | 利用できる mise タスクを一覧する                          |
 
 `scripts/global/` のコマンドはグローバルにリンクします。
-Git 操作やタスク検索など、日常作業で直接使う小さな CLI ツールをここに置いています。
+このディレクトリには、Git 操作やタスク検索など日常作業で直接使う小さな CLI ツールを置いています。
 
 ## 🗂️ リポジトリ構成
 
