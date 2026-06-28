@@ -1,16 +1,16 @@
 # 🏠 dotfiles
 
-Dotfiles repository for editor, terminal, CLI, and local toolchain configuration.
+Dotfiles repository for editors, terminals, CLI tools, and the local toolchain.
 
-This README covers the initial setup and the commands used most often.
-Check `docs/` for design and operations, and `AGENTS.md` for agent guidance.
+This README covers initial setup and common commands.
+For design and operations, read `docs/`. For agent guidance, read `AGENTS.md`.
 
 ## ✨ Managed Areas
 
 - Editor configuration for Neovim and VS Code
 - Terminal-related configuration for Zsh, Starship, Ghostty, WezTerm, and Zellij
 - Local tool configuration for Homebrew, Bun, mise, procs, and related tools
-- Published workflow CLI commands in `scripts/global/`
+- Standalone workflow CLI commands in `scripts/global/`
 - AI tool configuration for Codex, Claude Code, and related tools
 - Sample files for editor and LSP checks
 
@@ -55,8 +55,8 @@ This task:
 | `mise run upgrade`          | Update mise, apm, Neovim, Bun, and Homebrew dependencies     |
 | `mise tasks`                | List available mise tasks                                    |
 
-The setup links commands in `scripts/global/` globally.
-This directory contains small CLI tools for daily work, such as Git operations and task search.
+The setup links commands from `scripts/global/` globally.
+That directory contains small CLI tools for daily work, such as Git operations and task search.
 
 ## 🗂️ Repository Layout
 
@@ -70,7 +70,7 @@ This directory contains small CLI tools for daily work, such as Git operations a
 | `scripts/local/`        | Local setup and maintenance scripts                         |
 | `scripts/global/`       | Published standalone CLI commands                           |
 | `scripts/utils/`        | Shared helpers for shell scripts                            |
-| `docs/`                 | Repository-wide design and operational policy               |
+| `docs/`                 | Repository-wide design and operations policy                |
 
 ## 📚 Documentation
 
