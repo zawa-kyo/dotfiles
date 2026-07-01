@@ -270,6 +270,9 @@
     "readme.*": "readme-ja.*, authors, changelog*, contributing.md, contributors, license*",
     "skill.*": "skill-ja.*",
     "agents.*": "agents-ja.*",
+    // Utils
+    "apm.yml": "apm.lock.yml, apm.lock.yaml",
+    "mise.toml": "mise.lock",
     // JavaScript, TypeScript
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.ts": "${capture}.js, ${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",

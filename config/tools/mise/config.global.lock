@@ -42,15 +42,15 @@ url = "https://github.com/atuinsh/atuin/releases/download/v18.16.1/atuin-aarch64
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.35.11"
+version = "2.35.13"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.35.11.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.35.13.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:4ef853850521c7acff5fdaa71bf4628e8c178490d7c4f77d1b9edf7b33c0c254"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.35.11.pkg"
+checksum = "blake3:88c3f147fcecb0900c24aec2ed952bb05280dcf2519841e0d8bf5fb635a3dae8"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.35.13.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -89,16 +89,16 @@ checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [[tools.copilot]]
-version = "1.0.64"
+version = "1.0.65"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:3c4125ab23fef5f33e8a1924e482a7fb5802c0508b6938be06980d45e13e0d56"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.64/copilot-linux-x64.tar.gz"
+checksum = "sha256:da36be29a5afc7c6cef63b25ac10ee1862216a0f5efabed502ed42c4e0f62af8"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.65/copilot-linux-x64.tar.gz"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:0293b5db24671f60c5b6b7221fa3e1d73ff885a31f5ae7eb1f0b7edbdb283ae7"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.64/copilot-darwin-arm64.tar.gz"
+checksum = "sha256:98a039a1246b78d766270fdda197480a2cc21157133787fdb7989f1288d5b29c"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.65/copilot-darwin-arm64.tar.gz"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -129,16 +129,16 @@ version = "0.23.4"
 backend = "asdf:eza"
 
 [[tools.fastfetch]]
-version = "2.64.2"
+version = "2.65.1"
 backend = "aqua:fastfetch-cli/fastfetch"
 
 [tools.fastfetch."platforms.linux-x64"]
-checksum = "sha256:5dc341ec4853ddeb0c0efa62e033fed57b0a00f7d805ebb6d354241ca244aba5"
-url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.64.2/fastfetch-linux-amd64.tar.gz"
+checksum = "sha256:3b6d58e167142067f8231132f428cfe91a94633e33be0a6d867bdcd84e68294d"
+url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.65.1/fastfetch-linux-amd64.tar.gz"
 
 [tools.fastfetch."platforms.macos-arm64"]
-checksum = "sha256:bd5e0283c5f55b2887e7476e65a875283afbf21c279e637ce0e8ed024c523760"
-url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.64.2/fastfetch-macos-aarch64.tar.gz"
+checksum = "sha256:b746531308d626af82192316ac887ec09fbbd1da026cb5ec18732d72b9261af4"
+url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.65.1/fastfetch-macos-aarch64.tar.gz"
 
 [[tools.fd]]
 version = "10.4.2"
@@ -340,16 +340,16 @@ url = "https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86
 url = "https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-macos-arm64.tar.gz"
 
 [[tools.node]]
-version = "24.17.0"
+version = "24.18.0"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:e0472427aa791ad80bdc426ff7cc73cdd28ed0f616d1ff9689a23a7f47f1265f"
-url = "https://nodejs.org/dist/v24.17.0/node-v24.17.0-linux-x64.tar.gz"
+checksum = "sha256:783130984963db7ba9cbd01089eaf2c2efb055c7c1693c943174b967b3050cb8"
+url = "https://nodejs.org/dist/v24.18.0/node-v24.18.0-linux-x64.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:4fc3266a3702eebc39cc37661cf4eeceeade307e242ab64e4d7ce7949197e11f"
-url = "https://nodejs.org/dist/v24.17.0/node-v24.17.0-darwin-arm64.tar.gz"
+checksum = "sha256:e1a97e14c99c803e96c7339403282ea05a499c32f8d83defe9ef5ec66f979ed1"
+url = "https://nodejs.org/dist/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz"
 
 [[tools.pouch]]
 version = "0.4.1"
@@ -405,7 +405,7 @@ ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
 ruby_install = "false"
 
 [[tools.rust]]
-version = "1.96.0"
+version = "1.96.1"
 backend = "asdf:rust"
 
 [[tools.sheldon]]
@@ -485,7 +485,7 @@ url = "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.aarch64"
 url_api = "https://api.github.com/repos/tsl0922/ttyd/releases/assets/159377644"
 
 [[tools.uv]]
-version = "0.11.25"
+version = "0.11.26"
 backend = "asdf:uv"
 
 [[tools.vhs]]
