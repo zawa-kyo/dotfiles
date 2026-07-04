@@ -74,8 +74,6 @@ cask "font-udev-gothic-nf"
 cask "fork"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Java IDE by JetBrains
-cask "intellij-idea"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Keyboard customiser
