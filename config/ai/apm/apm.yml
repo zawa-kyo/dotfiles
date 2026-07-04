@@ -13,6 +13,7 @@ dependencies:
     - zawa-kyo/skills/dev/bootstrap-repo-docs
     - zawa-kyo/skills/dev/review-essential-code
     - zawa-kyo/skills/dev/suggest-commit-messages
+    - zawa-kyo/skills/dev/guide-unit-tests
     - zawa-kyo/skills/writing/edit-existing-document
     - zawa-kyo/skills/writing/revise-english-writing
     - zawa-kyo/skills/writing/revise-japanese-writing
