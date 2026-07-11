@@ -88,6 +88,20 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x6
 checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652620"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
+[[tools.ccsession]]
+version = "1.0.1"
+backend = "github:sorafujitani/ccsession"
+
+[tools.ccsession."platforms.linux-x64"]
+checksum = "sha256:fc9f31f376544bcb2a76c125b94313b7bd92b776b8e5b57bc2910ef38d51fa2d"
+url = "https://github.com/sorafujitani/ccsession/releases/download/v1.0.1/ccsession_1.0.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/465561392"
+
+[tools.ccsession."platforms.macos-arm64"]
+checksum = "sha256:34919e2cef23ba51a9233d572f8217b10bc9bfee1e1177f681f3317c620b7a01"
+url = "https://github.com/sorafujitani/ccsession/releases/download/v1.0.1/ccsession_1.0.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/465561394"
+
 [[tools.copilot]]
 version = "1.0.69"
 backend = "aqua:github/copilot-cli"

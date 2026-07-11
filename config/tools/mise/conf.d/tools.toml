@@ -27,6 +27,7 @@ apm = "latest"
 atuin = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 bat = "latest"
+ccsession = "latest"
 copilot = "latest"
 delta = "latest"
 eza = "latest"
@@ -55,6 +56,7 @@ zoxide = "latest"
 
 [tool_alias]
 apm = "github:microsoft/apm"
+ccsession = "github:sorafujitani/ccsession"
 fvm = "aqua:leoafarias/fvm"
 gat = "github:koki-develop/gat"
 procs = "aqua:dalance/procs"
