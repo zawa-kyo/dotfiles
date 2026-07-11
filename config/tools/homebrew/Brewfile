@@ -52,8 +52,6 @@ brew "felixkratz/formulae/sketchybar"
 cask "android-studio"
 # Application uninstaller
 cask "appcleaner"
-# The Art of Reading Markdown.
-cask "arto-app/tap/arto"
 # Display management tool
 cask "betterdisplay"
 # Desktop password and login vault
@@ -156,7 +154,6 @@ vscode "ecmel.vscode-html-css"
 vscode "esafirm.kotlin-formatter"
 vscode "esbenp.prettier-vscode"
 vscode "firsttris.vscode-jest-runner"
-vscode "foam.foam-vscode"
 vscode "foxundermoon.shell-format"
 vscode "fwcd.kotlin"
 vscode "github.copilot"
@@ -224,5 +221,5 @@ vscode "zignd.html-css-class-completion"
 go "cmd/go"
 go "cmd/gofmt"
 go "golang.org/x/tools/gopls"
-uv "specify-cli"
+uv "specify-cli", source: "git+https://github.com/github/spec-kit.git"
 npm "corepack"
