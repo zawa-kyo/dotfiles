@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-07-04T03:56:47.096884+00:00'
-apm_version: 0.22.0
+generated_at: '2026-07-11T02:33:34.367029+00:00'
+apm_version: 0.23.1
 dependencies:
 - repo_url: mattpocock/skills
   name: skills
   host: github.com
-  resolved_commit: 272f99b22574f50e4266791c86b9302682970e23
+  resolved_commit: 391a2701dd948f94f56a39f7533f8eea9a859c87
   version: unknown
   virtual_path: skills/productivity/grill-me
   is_virtual: true
@@ -20,10 +20,10 @@ dependencies:
     .claude/skills/grill-me/SKILL.md: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
   content_hash: sha256:f321507f77702a54af1db66549ec1685fc625390d06c57d7949cdcda8eb1b5c7
 - repo_url: mattpocock/skills
-  name: grilling
+  name: skills
   host: github.com
-  resolved_commit: 272f99b22574f50e4266791c86b9302682970e23
-  version: 1.0.0
+  resolved_commit: 391a2701dd948f94f56a39f7533f8eea9a859c87
+  version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
   package_type: claude_skill
@@ -33,9 +33,9 @@ dependencies:
   - .claude/skills/grilling
   - .claude/skills/grilling/SKILL.md
   deployed_file_hashes:
-    .agents/skills/grilling/SKILL.md: sha256:4fc8087fb48b0174b4f02e03a5ab7e331830f921fd440c51393895902d22e445
-    .claude/skills/grilling/SKILL.md: sha256:4fc8087fb48b0174b4f02e03a5ab7e331830f921fd440c51393895902d22e445
-  content_hash: sha256:bf1e75d96966edd298902d63348c828921b8b095d7306d0cdd56b4a591a7a82b
+    .agents/skills/grilling/SKILL.md: sha256:5a35925d03a391bcfa46940868b649b72dba89ec9c19525e785bbb6bd3a7f478
+    .claude/skills/grilling/SKILL.md: sha256:5a35925d03a391bcfa46940868b649b72dba89ec9c19525e785bbb6bd3a7f478
+  content_hash: sha256:1de9e777a60b184b29412fadacb7bbde8c14bb7037e5c4d9d086c941281d1742
 - repo_url: mizchi/skills
   name: skills
   host: github.com
@@ -85,7 +85,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: skills
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: unknown
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
@@ -110,7 +110,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: skills
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: unknown
   virtual_path: dev/guide-unit-tests
   is_virtual: true
@@ -207,7 +207,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: skills
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: unknown
   virtual_path: dev/review-essential-code
   is_virtual: true
@@ -232,7 +232,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: skills
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: unknown
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
@@ -257,7 +257,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: edit-existing-document
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: 0.1.0
   virtual_path: writing/edit-existing-document
   is_virtual: true
@@ -286,7 +286,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: revise-english-writing
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: 0.1.0
   virtual_path: writing/revise-english-writing
   is_virtual: true
@@ -313,10 +313,10 @@ dependencies:
     .claude/skills/revise-english-writing/apm.yml: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
   content_hash: sha256:3c865da6d15d60a83658a826a3e6f088783bd9ecfbd8a573b34a059258005fae
 - repo_url: zawa-kyo/skills
-  name: revise-japanese-writing
+  name: skills
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
-  version: 1.0.0
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
+  version: unknown
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
   package_type: claude_skill
@@ -344,7 +344,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: skills
   host: github.com
-  resolved_commit: 13e4f68b8d7f14fbf28c5d879937318522dab3f3
+  resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: unknown
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true

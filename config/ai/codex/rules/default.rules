@@ -150,3 +150,7 @@ allow(
     ["gh", "search", ["code", "commits", "issues", "prs", "repos"]],
     "Allows read-only GitHub search via gh CLI.",
 )
+prefix_rule(pattern=["go", "test"], decision="allow")
+prefix_rule(pattern=["npx", "--yes"], decision="allow")
+prefix_rule(pattern=["gh", "release", "view"], decision="allow")
+prefix_rule(pattern=["npx", "--yes", "--package"], decision="allow")
