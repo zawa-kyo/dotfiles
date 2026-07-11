@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-07-11T02:33:34.367029+00:00'
+generated_at: '2026-07-11T15:10:19.564176+00:00'
 apm_version: 0.23.1
 dependencies:
 - repo_url: mattpocock/skills
@@ -83,12 +83,21 @@ dependencies:
   skill_subset:
   - running-decision-processes
 - repo_url: zawa-kyo/skills
+  name: zawa-kyo-skills
+  host: github.com
+  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  version: 0.1.0
+  package_type: apm_package
+  content_hash: sha256:519636045d3c61982700b3e5cc167fade9ba5e901b605a8b23038a921ba5e1b3
+- repo_url: zawa-kyo/skills
   name: skills
   host: github.com
   resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: unknown
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
   - .agents/skills/bootstrap-repo-docs
@@ -114,6 +123,8 @@ dependencies:
   version: unknown
   virtual_path: dev/guide-unit-tests
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
   - .agents/skills/guide-unit-tests
@@ -211,6 +222,8 @@ dependencies:
   version: unknown
   virtual_path: dev/review-essential-code
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
   - .agents/skills/review-essential-code
@@ -236,6 +249,8 @@ dependencies:
   version: unknown
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
   - .agents/skills/suggest-commit-messages
@@ -255,12 +270,41 @@ dependencies:
     .claude/skills/suggest-commit-messages/agents/openai.yaml: sha256:563387fbcbc5b827ffa36edc034be437a88b18f9e94713264fa29feca0d341be
   content_hash: sha256:75bf08f26a12ed865686e5ccc3bd352fc7c54891616e6d6288a897e244465a07
 - repo_url: zawa-kyo/skills
+  name: skills
+  host: github.com
+  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  version: unknown
+  virtual_path: thinking/refine-reasoning-logic
+  is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/refine-reasoning-logic
+  - .agents/skills/refine-reasoning-logic/SKILL-ja.md
+  - .agents/skills/refine-reasoning-logic/SKILL.md
+  - .agents/skills/refine-reasoning-logic/agents/openai.yaml
+  - .claude/skills/refine-reasoning-logic
+  - .claude/skills/refine-reasoning-logic/SKILL-ja.md
+  - .claude/skills/refine-reasoning-logic/SKILL.md
+  - .claude/skills/refine-reasoning-logic/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/refine-reasoning-logic/SKILL-ja.md: sha256:ef42d24295a56efd711e66495d309d5a534bf187e134a47c4f92714dfc5189dc
+    .agents/skills/refine-reasoning-logic/SKILL.md: sha256:2e0d160cdc0a4fbd58c5b9ecf573343e5ee133d58235bf76f351c306b2c5a381
+    .agents/skills/refine-reasoning-logic/agents/openai.yaml: sha256:0f02a4a783a6db60c9a3b8b45967eb9bfc0748870377bc571af120f03b970ad2
+    .claude/skills/refine-reasoning-logic/SKILL-ja.md: sha256:ef42d24295a56efd711e66495d309d5a534bf187e134a47c4f92714dfc5189dc
+    .claude/skills/refine-reasoning-logic/SKILL.md: sha256:2e0d160cdc0a4fbd58c5b9ecf573343e5ee133d58235bf76f351c306b2c5a381
+    .claude/skills/refine-reasoning-logic/agents/openai.yaml: sha256:0f02a4a783a6db60c9a3b8b45967eb9bfc0748870377bc571af120f03b970ad2
+  content_hash: sha256:2873a9ca10f43794395cc20dc0bf9a4ef190579a5f04a088c268a291a23f85a4
+- repo_url: zawa-kyo/skills
   name: edit-existing-document
   host: github.com
   resolved_commit: 7cee4e0bfc14c8dd0f09a657aa968a053bec7032
   version: 0.1.0
   virtual_path: writing/edit-existing-document
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: hybrid
   deployed_files:
   - .agents/skills/edit-existing-document
@@ -290,6 +334,8 @@ dependencies:
   version: 0.1.0
   virtual_path: writing/revise-english-writing
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: hybrid
   deployed_files:
   - .agents/skills/revise-english-writing
@@ -319,6 +365,8 @@ dependencies:
   version: unknown
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
   - .agents/skills/revise-japanese-writing
@@ -348,6 +396,8 @@ dependencies:
   version: unknown
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
   - .agents/skills/summarize-discussion-coherently
@@ -371,7 +421,7 @@ dependencies:
   host: github.com
   resolved_commit: 8da1f030185bdfe8471220585162991eaeb970e9
   version: unknown
-  depth: 2
+  depth: 3
   resolved_by: zawa-kyo/skills
   package_type: claude_skill
   deployed_files:
