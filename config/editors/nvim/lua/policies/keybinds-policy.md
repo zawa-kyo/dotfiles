@@ -5,7 +5,8 @@
 - 追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計する
   - 動詞（1 打鍵目）は「操作の種類」
   - 目的語（2 打鍵目以降）は固定された“辞書”に従う
-- Vim 標準操作（`hjkl`, `d`, `c`, `x`, `y`, `p`, `f/F/t/T`, `w/e/b` など）は尊重する
+- Vim 標準操作は尊重する
+  - 例：`hjkl` / `d` / `c` / `x` / `y` / `p` / `f/F/t/T` / `w/e/b`
 - プラグイン単位ではなく「操作の意味」で分類する
 
 ## 動詞キー一覧
@@ -26,7 +27,8 @@
 - 目的語は固定の辞書で統一する
   - 例：b=buffer, d=diagnostic, f=file/format, s=symbol
 - 動詞の割当は必ず守る
-  - `g`=ジャンプ, `s`=一覧/検索 UI, `r`=表示, `t`=状態反転, `m`=書き換え, `X`=実行, `[ ]`=巡回, `z`=画面操作
+  - `g`=ジャンプ, `s`=一覧/検索 UI, `r`=表示, `t`=状態反転
+  - `m`=書き換え, `X`=実行, `[ ]`=巡回, `z`=画面操作
   - `g` はカーソル位置を基準に移動/参照する操作、`s` はカーソル位置に依存しない検索/一覧を開く操作とする
   - Normal モードのみ `t` を toggle として再定義し、Operator-pending の `t/T` は維持する
   - 一覧を見てから選択するものは `r`、即時実行は `X` に寄せる
@@ -42,6 +44,33 @@
   - コメントのトグルは VSCode のキーマップに寄せるため `<leader>/` を維持する
   - mini.files は操作性の都合で `-` / `_` を維持する
   - mark は `m` を使わず `M` に移動する (modify を `m` に割り当てるため)
+
+## 目的語キー一覧
+
+| Key | Object         | 用途                            |
+| --- | -------------- | ------------------------------- |
+| `a` | action         | code action、自動保存などの操作 |
+| `b` | buffer         | バッファ                        |
+| `c` | comment / call | コメント、call hierarchy        |
+| `d` | diagnostic     | 診断                            |
+| `e` | explorer       | ファイルツリー                  |
+| `f` | file / format  | ファイル、フォーマット          |
+| `g` | git            | Git 関連の一覧や操作            |
+| `h` | help / hidden  | ヘルプ、隠しファイル            |
+| `i` | info / ignored | hover 情報、ignored file        |
+| `j` | jumplist       | jumplist                        |
+| `k` | keymap         | キーマップ                      |
+| `l` | loclist        | location list                   |
+| `m` | markdown       | Markdown 関連の操作             |
+| `n` | notification   | 通知                            |
+| `p` | picker / pair  | picker 一覧、対応する括弧       |
+| `q` | quickfix       | quickfix                        |
+| `r` | register       | レジスタ                        |
+| `s` | symbol/status  | シンボル、Git status            |
+| `t` | tab / todo     | タブ、TODO                      |
+| `u` | undo           | undo 履歴                       |
+| `w` | word / window  | 単語検索、ウィンドウ            |
+| `z` | zoxide         | zoxide で管理するディレクトリ   |
 
 ## Insert Mode Policy
 
