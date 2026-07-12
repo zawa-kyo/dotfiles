@@ -36,7 +36,7 @@ local options = {
   -- Prefer stable, built-in folding
   foldmethod = "indent",
   -- GUI font setting for GUIs like Neovide
-  guifont = "monospace:h17",
+  guifont = "UDEV Gothic NF:h17",
   -- Highlight search matches
   hlsearch = true,
   -- Ignore case when searching by default
