@@ -21,7 +21,36 @@ path=(
 )
 
 # Mise
-eval "$(mise activate zsh)"
+eval "$(mise activate zsh --no-hook-env)"
+
+# Refresh the mise environment at startup and after directory changes.
+_mise_refresh_env() {
+  local reason="${1:-}"
+  local hook_output
+
+  print -Pn "\r%F{yellow}[mise] updating environment...%f"
+  if [[ -n "$reason" ]]; then
+    hook_output="$(mise hook-env -s zsh --reason "$reason")" || {
+      print -Pn "\r\033[2K"
+      return 1
+    }
+  else
+    hook_output="$(mise hook-env -s zsh)" || {
+      print -Pn "\r\033[2K"
+      return 1
+    }
+  fi
+  eval "$hook_output"
+  print -Pn "\r\033[2K"
+}
+
+_mise_refresh_env_on_chpwd() {
+  _mise_refresh_env chpwd
+}
+
+autoload -Uz add-zsh-hook
+_mise_refresh_env
+add-zsh-hook chpwd _mise_refresh_env_on_chpwd
 
 # Sheldon
 eval "$(sheldon source)"
