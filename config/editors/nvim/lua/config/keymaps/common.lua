@@ -82,8 +82,8 @@ keymap("n", "j", "gj", opts("Move down wrapped lines"))
 keymap("n", "k", "gk", opts("Move up wrapped lines"))
 
 -- Jump history
-keymap("n", "]l", "<C-i>", opts("Jump to next location"))
-keymap("n", "[l", "<C-o>", opts("Jump to previous location"))
+keymap("n", "]j", "<C-i>", opts("Jump to next jumplist location"))
+keymap("n", "[j", "<C-o>", opts("Jump to previous jumplist location"))
 keymap("n", "]]", "<C-i>", opts("Jump to next location"))
 keymap("n", "[[", "<C-o>", opts("Jump to previous location"))
 
