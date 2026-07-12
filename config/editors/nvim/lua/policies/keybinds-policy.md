@@ -47,30 +47,30 @@
 
 ## 目的語キー一覧
 
-| Key | Object         | 用途                            |
-| --- | -------------- | ------------------------------- |
-| `a` | action         | code action、自動保存などの操作 |
-| `b` | buffer         | バッファ                        |
-| `c` | comment / call | コメント、call hierarchy        |
-| `d` | diagnostic     | 診断                            |
-| `e` | explorer       | ファイルツリー                  |
-| `f` | file / format  | ファイル、フォーマット          |
-| `g` | git            | Git 関連の一覧や操作            |
-| `h` | help / hidden  | ヘルプ、隠しファイル            |
-| `i` | info / ignored | hover 情報、ignored file        |
-| `j` | jumplist       | jumplist                        |
-| `k` | keymap         | キーマップ                      |
-| `l` | loclist        | location list                   |
-| `m` | markdown       | Markdown 関連の操作             |
-| `n` | notification   | 通知                            |
-| `p` | picker / pair  | picker 一覧、対応する括弧       |
-| `q` | quickfix       | quickfix                        |
-| `r` | register       | レジスタ                        |
-| `s` | symbol/status  | シンボル、Git status            |
-| `t` | tab / todo     | タブ、TODO                      |
-| `u` | undo           | undo 履歴                       |
-| `w` | word / window  | 単語検索、ウィンドウ            |
-| `z` | zoxide         | zoxide で管理するディレクトリ   |
+| Key | Object                  | 用途                                  |
+| --- | ----------------------- | ------------------------------------- |
+| `a` | action                  | code action、自動保存などの操作       |
+| `b` | buffer                  | バッファ                              |
+| `c` | comment / call          | コメント、call hierarchy              |
+| `d` | diagnostic              | 診断                                  |
+| `e` | explorer                | ファイルツリー                        |
+| `f` | file / format           | ファイル、フォーマット                |
+| `g` | git                     | Git 関連の一覧や操作                  |
+| `h` | help / hidden           | ヘルプ、隠しファイル                  |
+| `i` | info / ignored          | hover 情報、ignored file              |
+| `j` | jumplist                | jumplist                              |
+| `k` | keymap                  | キーマップ                            |
+| `l` | loclist                 | location list                         |
+| `m` | markdown                | Markdown 関連の操作                   |
+| `n` | notification            | 通知                                  |
+| `p` | picker / pair / preview | picker 一覧、対応する括弧、プレビュー |
+| `q` | quickfix                | quickfix                              |
+| `r` | register                | レジスタ                              |
+| `s` | symbol/status           | シンボル、Git status                  |
+| `t` | tab / todo              | タブ、TODO                            |
+| `u` | undo                    | undo 履歴                             |
+| `w` | word / window           | 単語検索、ウィンドウ                  |
+| `z` | zoxide                  | zoxide で管理するディレクトリ         |
 
 ## Insert Mode Policy
 
