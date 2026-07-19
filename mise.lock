@@ -37,11 +37,11 @@ checksum = "sha256:76260fb34f4ee622ff0a66b857e5954aa49c7e343a92e57a1ec4a760618c9
 url = "https://github.com/git-lfs/git-lfs/releases/download/v3.7.1/git-lfs-darwin-arm64-v3.7.1.zip"
 
 [[tools.prettier]]
-version = "3.9.4"
+version = "3.9.5"
 backend = "npm:prettier"
 
 [[tools.rust]]
-version = "1.97.0"
+version = "1.97.1"
 backend = "asdf:rust"
 
 [[tools.shfmt]]
@@ -81,5 +81,5 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aa
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323110"
 
 [[tools.uv]]
-version = "0.11.28"
+version = "0.11.29"
 backend = "asdf:uv"
