@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-07-11T15:12:29.772727+00:00'
-apm_version: 0.23.1
+generated_at: '2026-07-19T07:08:06.848139+00:00'
+apm_version: 0.24.1
 dependencies:
 - repo_url: mattpocock/skills
   name: skills
   host: github.com
-  resolved_commit: 391a2701dd948f94f56a39f7533f8eea9a859c87
+  resolved_commit: 9603c1cc8118d08bc1b3bf34cf714f62178dea3b
   version: unknown
   virtual_path: skills/productivity/grill-me
   is_virtual: true
@@ -13,16 +13,20 @@ dependencies:
   deployed_files:
   - .agents/skills/grill-me
   - .agents/skills/grill-me/SKILL.md
+  - .agents/skills/grill-me/agents/openai.yaml
   - .claude/skills/grill-me
   - .claude/skills/grill-me/SKILL.md
+  - .claude/skills/grill-me/agents/openai.yaml
   deployed_file_hashes:
     .agents/skills/grill-me/SKILL.md: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
+    .agents/skills/grill-me/agents/openai.yaml: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
     .claude/skills/grill-me/SKILL.md: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
-  content_hash: sha256:f321507f77702a54af1db66549ec1685fc625390d06c57d7949cdcda8eb1b5c7
+    .claude/skills/grill-me/agents/openai.yaml: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
+  content_hash: sha256:0ac1a28d5e7ab05c4a51046c9d74fd7bfc070ba6a3b9ec8451bd274e746d67b6
 - repo_url: mattpocock/skills
   name: skills
   host: github.com
-  resolved_commit: 391a2701dd948f94f56a39f7533f8eea9a859c87
+  resolved_commit: 9603c1cc8118d08bc1b3bf34cf714f62178dea3b
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -30,16 +34,20 @@ dependencies:
   deployed_files:
   - .agents/skills/grilling
   - .agents/skills/grilling/SKILL.md
+  - .agents/skills/grilling/agents/openai.yaml
   - .claude/skills/grilling
   - .claude/skills/grilling/SKILL.md
+  - .claude/skills/grilling/agents/openai.yaml
   deployed_file_hashes:
-    .agents/skills/grilling/SKILL.md: sha256:5a35925d03a391bcfa46940868b649b72dba89ec9c19525e785bbb6bd3a7f478
-    .claude/skills/grilling/SKILL.md: sha256:5a35925d03a391bcfa46940868b649b72dba89ec9c19525e785bbb6bd3a7f478
-  content_hash: sha256:1de9e777a60b184b29412fadacb7bbde8c14bb7037e5c4d9d086c941281d1742
+    .agents/skills/grilling/SKILL.md: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
+    .agents/skills/grilling/agents/openai.yaml: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
+    .claude/skills/grilling/SKILL.md: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
+    .claude/skills/grilling/agents/openai.yaml: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
+  content_hash: sha256:1f05b0ffe26fb4d4457e3e40b41ec2f3e379ae2d6877613240bc6ffef5f7f338
 - repo_url: mizchi/skills
   name: skills
   host: github.com
-  resolved_commit: 5aaf2d126a04a8b079fd5184eb1860f232afffd3
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
   version: unknown
   virtual_path: meta/empirical-prompt-tuning
   is_virtual: true
@@ -64,36 +72,24 @@ dependencies:
 - repo_url: refoundai/lenny-skills
   name: lenny-skills
   host: github.com
-  resolved_commit: 280a57aa42fed3b6f35f51f0d9e71013b4c8ae74
+  resolved_commit: 13598cc54e09399bc1bc1398b0fca284110efb2f
   version: unknown
   package_type: skill_bundle
-  deployed_files:
-  - .agents/skills/running-decision-processes
-  - .agents/skills/running-decision-processes/SKILL.md
-  - .agents/skills/running-decision-processes/references/guest-insights.md
-  - .claude/skills/running-decision-processes
-  - .claude/skills/running-decision-processes/SKILL.md
-  - .claude/skills/running-decision-processes/references/guest-insights.md
-  deployed_file_hashes:
-    .agents/skills/running-decision-processes/SKILL.md: sha256:402bf4041e8d780c0132440a26ad0d08ba78e4c2e75d3e229fea803f611c8355
-    .agents/skills/running-decision-processes/references/guest-insights.md: sha256:8916d5e4afd592ded87c0488f24d5031c08c83a6872a0a955b80fdb6bbea0269
-    .claude/skills/running-decision-processes/SKILL.md: sha256:402bf4041e8d780c0132440a26ad0d08ba78e4c2e75d3e229fea803f611c8355
-    .claude/skills/running-decision-processes/references/guest-insights.md: sha256:8916d5e4afd592ded87c0488f24d5031c08c83a6872a0a955b80fdb6bbea0269
-  content_hash: sha256:a7aba44b1d9284986d163e564306303271d581ab2624161993dfd2618b30030f
+  content_hash: sha256:59c93254d90e4cc10ac9f9f35fac8d1f31d38537a24eb806ad28796628abee51
   skill_subset:
   - running-decision-processes
 - repo_url: zawa-kyo/skills
   name: zawa-kyo-skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
   version: 0.1.0
   package_type: apm_package
-  content_hash: sha256:d80683ec089c4bd2e34c1b59513b721499a2ef5c80fcab9a3208fdf250ad75d4
+  content_hash: sha256:5fd685c209569ae3b14d4f44f9a5640218589b51d3ca6486af89bc37829ea374
 - repo_url: zawa-kyo/skills
-  name: bootstrap-repo-docs
+  name: skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
-  version: 1.0.0
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  version: unknown
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
   depth: 2
@@ -117,10 +113,10 @@ dependencies:
     .claude/skills/bootstrap-repo-docs/agents/openai.yaml: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
   content_hash: sha256:d4e61b6c2bbe52d8aeb920bfd5fe4dfc2d37b00538450d814b715e33d976528d
 - repo_url: zawa-kyo/skills
-  name: guide-unit-tests
+  name: skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
-  version: 1.0.0
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  version: unknown
   virtual_path: dev/guide-unit-tests
   is_virtual: true
   depth: 2
@@ -218,7 +214,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: review-essential-code
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
   version: 0.1.0
   virtual_path: dev/review-essential-code
   is_virtual: true
@@ -248,10 +244,10 @@ dependencies:
   content_hash: sha256:833bb408a470fe3a913075c7de35d9a40c39c28bb7049c927ca24e0c310d2746
   declared_license: MIT
 - repo_url: zawa-kyo/skills
-  name: suggest-commit-messages
+  name: skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
-  version: 1.0.0
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  version: unknown
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
   depth: 2
@@ -277,7 +273,34 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  version: unknown
+  virtual_path: thinking/apply-adversarial-verification
+  is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/apply-adversarial-verification
+  - .agents/skills/apply-adversarial-verification/SKILL-ja.md
+  - .agents/skills/apply-adversarial-verification/SKILL.md
+  - .agents/skills/apply-adversarial-verification/agents/openai.yaml
+  - .claude/skills/apply-adversarial-verification
+  - .claude/skills/apply-adversarial-verification/SKILL-ja.md
+  - .claude/skills/apply-adversarial-verification/SKILL.md
+  - .claude/skills/apply-adversarial-verification/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/apply-adversarial-verification/SKILL-ja.md: sha256:49325fd56c80da5a28a1aa64a8d82c44410c45e20f80295bd758cad09dbbbc6d
+    .agents/skills/apply-adversarial-verification/SKILL.md: sha256:2aaba3f321c49e8a70773843ee5f45dfd9251adef1711b927c235ba56db956e0
+    .agents/skills/apply-adversarial-verification/agents/openai.yaml: sha256:5ac3ab5b68a6f4d390e95b42cb6a5c73d47339dc96855161c1ddd191f0cdb8c7
+    .claude/skills/apply-adversarial-verification/SKILL-ja.md: sha256:49325fd56c80da5a28a1aa64a8d82c44410c45e20f80295bd758cad09dbbbc6d
+    .claude/skills/apply-adversarial-verification/SKILL.md: sha256:2aaba3f321c49e8a70773843ee5f45dfd9251adef1711b927c235ba56db956e0
+    .claude/skills/apply-adversarial-verification/agents/openai.yaml: sha256:5ac3ab5b68a6f4d390e95b42cb6a5c73d47339dc96855161c1ddd191f0cdb8c7
+  content_hash: sha256:2339c06d9e063f9d55d5eb9f9706fc4f869e151c939d0b347cff3ce1d1e72c58
+- repo_url: zawa-kyo/skills
+  name: skills
+  host: github.com
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
   version: unknown
   virtual_path: thinking/refine-reasoning-logic
   is_virtual: true
@@ -304,7 +327,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: edit-existing-document
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
   version: 0.1.0
   virtual_path: writing/edit-existing-document
   is_virtual: true
@@ -335,7 +358,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: revise-english-writing
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
   version: 0.1.0
   virtual_path: writing/revise-english-writing
   is_virtual: true
@@ -364,10 +387,10 @@ dependencies:
     .claude/skills/revise-english-writing/apm.yml: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
   content_hash: sha256:3c865da6d15d60a83658a826a3e6f088783bd9ecfbd8a573b34a059258005fae
 - repo_url: zawa-kyo/skills
-  name: revise-japanese-writing
+  name: skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
-  version: 1.0.0
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  version: unknown
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
   depth: 2
@@ -395,10 +418,10 @@ dependencies:
     .claude/skills/revise-japanese-writing/references/idea.md: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
   content_hash: sha256:a1c84c11f3c096aa85c2c822b42955363833a0f395a3e471a91a5ae219d5bfdd
 - repo_url: zawa-kyo/skills
-  name: summarize-discussion-coherently
+  name: skills
   host: github.com
-  resolved_commit: f23ee2b906ce0525949c63b0cdc797ff0b4ee54c
-  version: 1.0.0
+  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  version: unknown
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
   depth: 2

@@ -76,9 +76,6 @@ cask "ghostty"
 cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
-# Find shortcuts for any installed application
-cask "keyclu"
-# Interface for reading and syncing eBooks
 cask "kindle"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
@@ -220,6 +217,5 @@ vscode "zainchen.json"
 vscode "zignd.html-css-class-completion"
 go "cmd/go"
 go "cmd/gofmt"
-go "golang.org/x/tools/gopls"
 uv "specify-cli", source: "git+https://github.com/github/spec-kit.git"
 npm "corepack"
