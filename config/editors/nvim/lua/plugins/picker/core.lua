@@ -43,8 +43,8 @@ return {
       win = {
         input = {
           keys = {
-            ["<tab>"] = { "list_down", mode = { "i", "n" } },
-            ["<s-tab>"] = { "list_up", mode = { "i", "n" } },
+            ["<c-n>"] = { "list_down", mode = { "i", "n" } },
+            ["<c-p>"] = { "list_up", mode = { "i", "n" } },
             ["<c-x>"] = { "toggle_select", mode = { "i", "n" } },
             ["<c-u>"] = { "toggle_hidden", mode = { "i", "n" } },
             ["<c-o>"] = { "toggle_ignored", mode = { "i", "n" } },
@@ -54,8 +54,8 @@ return {
         },
         list = {
           keys = {
-            ["<tab>"] = "list_down",
-            ["<s-tab>"] = "list_up",
+            ["<c-n>"] = "list_down",
+            ["<c-p>"] = "list_up",
             ["<c-x>"] = "toggle_select",
             ["<c-u>"] = "toggle_hidden",
             ["<c-o>"] = "toggle_ignored",

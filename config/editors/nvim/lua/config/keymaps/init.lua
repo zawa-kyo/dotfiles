@@ -30,7 +30,7 @@ vim.g.maplocalleader = " "
 --   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
 --   [j / ]j   … Jumplist movement
 --   ] / [     … “Next / Previous” common UI (diagnostic/quickfix/loclist/…)
---   n/N       … Keep default search repeat (unless overridden elsewhere)
+--   n/N       … Keep default search repeat in Normal mode
 --   Flash     … f/F/t/T behavior is handled in flash.nvim config
 
 require("config.keymaps.common")

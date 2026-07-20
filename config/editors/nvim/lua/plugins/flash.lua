@@ -13,10 +13,11 @@ return {
       },
       char = {
         jump_labels = true,
-        keys = { "f", "F", "t", "T", "n", "N", ";", "," },
+        keys = { "f", "F", "t", "T", "n", "p", "N", ";", "," },
         char_actions = function(motion)
           return {
             ["n"] = "next",
+            ["p"] = "prev",
             ["N"] = "prev",
             [motion:lower()] = "next",
             [motion:upper()] = "prev",
