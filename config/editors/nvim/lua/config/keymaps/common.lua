@@ -99,13 +99,6 @@ keymap("n", "mO", function()
   vim.fn.append(vim.fn.line(".") - 1, "")
 end, opts("Add blank line above"))
 
----Escape text for the replacement side of :substitute.
----@param text string
----@return string
-local function escape_substitute_replacement(text)
-  return vim.fn.escape(text, [[/\&]])
-end
-
 ---Prompt for replacement text and reuse the last search pattern.
 ---@param command string Command prefix such as "%s" or "cfdo %s"
 ---@param title string Notification title
@@ -119,32 +112,43 @@ local function replace_last_search(command, title, update)
   local replacement = vim.fn.input("Replace with: ")
   local suffix = update and " | update" or ""
 
-  vim.cmd(("%s//%s/gc%s"):format(command, escape_substitute_replacement(replacement), suffix))
+  vim.g.config_last_search_replacement = replacement
+  local ok, err = pcall(vim.cmd, ([=[%s//\=g:config_last_search_replacement/gc%s]=]):format(command, suffix))
+  vim.g.config_last_search_replacement = nil
+  if not ok then
+    error(err)
+  end
 end
 
 ---Find the current line match for a search pattern.
 ---@param pattern string Vim search pattern
 ---@return integer|nil start_col
 ---@return integer|nil end_col
+---@return boolean zero_width
 local function current_line_match(pattern)
   local cursor = vim.api.nvim_win_get_cursor(0)
   local line = vim.api.nvim_get_current_line()
   local match = vim.fn.matchstrpos(line, pattern, cursor[2])
-  if match[2] < 0 or match[3] <= match[2] then
-    return nil, nil
+  if match[2] < 0 then
+    return nil, nil, false
   end
 
-  return match[2], match[3]
+  return match[2], match[3], match[3] <= match[2]
 end
 
 ---Replace the current match with literal replacement text.
 ---@param pattern string Vim search pattern
 ---@param replacement string Replacement text
 ---@return boolean replaced
+---@return string|nil error_reason
 local function replace_current_match(pattern, replacement)
-  local start_col, end_col = current_line_match(pattern)
+  local start_col, end_col, zero_width = current_line_match(pattern)
+  if zero_width then
+    return false, "zero_width"
+  end
+
   if not start_col or not end_col then
-    return false
+    return false, "not_found"
   end
 
   local row = vim.api.nvim_win_get_cursor(0)[1] - 1
@@ -169,11 +173,13 @@ local function replace_last_search_in_file()
   while vim.fn.search(pattern, "cW") > 0 do
     vim.cmd("redraw")
     vim.api.nvim_echo({
-      { "Replace match? ", "Question" },
-      { "r", "MoreMsg" },
-      { "=replace next, " },
-      { "R", "MoreMsg" },
-      { "=replace all, n=skip, q=quit" },
+      { "Replace m/atch? ",    "Question" },
+      { "n",                   "MoreMsg" },
+      { "=next, " },
+      { "s",                   "MoreMsg" },
+      { "=skip, " },
+      { "a",                   "MoreMsg" },
+      { "=replace all, q=quit" },
     }, false, {})
 
     local key = vim.fn.getcharstr()
@@ -181,20 +187,32 @@ local function replace_last_search_in_file()
       break
     end
 
-    if key == "R" then
+    if key == "a" then
       repeat
-        if replace_current_match(pattern, replacement) then
+        local replaced_current, error_reason = replace_current_match(pattern, replacement)
+        if error_reason == "zero_width" then
+          vim.notify("Zero-width search patterns are not supported", vim.log.levels.WARN, { title = title })
+          break
+        end
+
+        if replaced_current then
           replaced = replaced + 1
         end
       until vim.fn.search(pattern, "W") == 0
       break
     end
 
-    if key == "r" then
-      if replace_current_match(pattern, replacement) then
+    if key == "n" then
+      local replaced_current, error_reason = replace_current_match(pattern, replacement)
+      if error_reason == "zero_width" then
+        vim.notify("Zero-width search patterns are not supported", vim.log.levels.WARN, { title = title })
+        break
+      end
+
+      if replaced_current then
         replaced = replaced + 1
       end
-    else
+    elseif key == "s" then
       vim.fn.search(pattern, "W")
     end
   end
