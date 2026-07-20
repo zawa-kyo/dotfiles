@@ -30,10 +30,10 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 
 当面の対応対象は Claude Code と Codex に絞る。
 
-| CLI         | 管理ファイル                                         | 反映先                         | 備考                                                                   |
-| ----------- | ---------------------------------------------------- | ------------------------------ | ---------------------------------------------------------------------- |
-| Claude Code | `config/ai/claude/settings.json`                     | `~/.claude/settings.json`      | `permissions.allow` と `permissions.deny` をこのファイルで管理する     |
-| Codex       | `config/ai/codex/rules/default.rules`                | `~/.codex/rules/default.rules` | コマンド単位の allow / deny をこのファイルで管理する                   |
+| CLI         | 管理ファイル                          | 反映先                         | 備考                                                               |
+| ----------- | ------------------------------------- | ------------------------------ | ------------------------------------------------------------------ |
+| Claude Code | `config/ai/claude/settings.json`      | `~/.claude/settings.json`      | `permissions.allow` と `permissions.deny` をこのファイルで管理する |
+| Codex       | `config/ai/codex/rules/default.rules` | `~/.codex/rules/default.rules` | コマンド単位の allow / deny をこのファイルで管理する               |
 
 ## dotfiles で管理するもの
 

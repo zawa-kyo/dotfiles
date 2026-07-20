@@ -31,15 +31,18 @@
   - `m`=書き換え, `X`=実行, `[ ]`=巡回, `z`=画面操作
   - `g` はカーソル位置を基準に移動/参照する操作、`s` はカーソル位置に依存しない検索/一覧を開く操作とする
   - Normal モードのみ `t` を toggle として再定義し、Operator-pending の `t/T` は維持する
-  - 一覧を見てから選択するものは `r`、即時実行は `X` に寄せる
+  - カーソル位置に依存する候補表示や詳細表示は `r`、カーソル位置に依存しない検索/一覧 UI は `s`、即時実行は `X` に寄せる
 - 小文字/大文字は使い分ける
   - 小文字=狭い範囲、大文字=広い範囲。近い意味は使用頻度の高い方を小文字にする
-- `<leader>` は例外枠として扱い、既存ルールと整合しない機能に使う
-  - window/tab/buffer など Vim コアの操作は `<leader>` に集約する
+- `<leader>` は、頻繁に使う Vim コア操作の補助パスとして扱う
+  - 意味別の通常キーバインドを妨げず、作成・削除・一覧表示・サイズ変更などの操作を `<leader>` にも置く
   - `<leader>w` は window 操作、`<leader>b` は buffer 操作、`<leader>t` は tab 操作に固定する
   - window の移動は `<C-h/j/k/l>` に固定し、作成/操作は `<leader>w…` に寄せる
 - 例外/固定ルール
-  - `s/S`, `r/R` は使わず、誤入力防止のため `<Nop>` にする
+  - 単独の `s` / `S` と `r` / `R` は通常操作に割り当てず、誤入力防止のため `<Nop>` にする
+  - flash のように候補集合だけを巡回する UI では、候補内の移動を `n`=次、`p`=前に寄せる
+  - picker や補完のように入力欄を含む候補 UI では、候補内の移動を `<C-n>`=次、`<C-p>`=前に寄せる
+  - 前後移動を指定してから対象種別を選ぶ巡回操作は `[ ]` に寄せる
   - LSP hover は頻繁に使うため `K` を維持する
   - コメントのトグルは VSCode のキーマップに寄せるため `<leader>/` を維持する
   - mini.files は操作性の都合で `-` / `_` を維持する
@@ -91,6 +94,8 @@
 | `s` (search) | `sf`         | search file             | ファイル検索          |
 | `s` (search) | `sF`         | search recent           | 最近のファイル検索    |
 | `s` (search) | `sb`         | search buffer           | バッファ検索          |
+| `s` (search) | `sw`         | search word             | ファイル内検索        |
+| `s` (search) | `sW`         | search word workspace   | ワークスペース検索    |
 | `r` (reveal) | `rd`         | reveal diagnostic float | diagnostic float 表示 |
 | `r` (reveal) | `ra`         | reveal code actions     | code action 一覧表示  |
 | `r` (reveal) | `rq`         | reveal quickfix list    | quickfix を開く       |
@@ -100,6 +105,8 @@
 | `t` (toggle) | `tl`         | toggle location list    | loclist の ON/OFF     |
 | `m` (modify) | `mr`         | modify rename           | rename                |
 | `m` (modify) | `mf`         | modify format           | format                |
+| `m` (modify) | `mw`         | modify word             | 直前検索を置換        |
+| `m` (modify) | `mW`         | modify word workspace   | quickfix 対象を置換   |
 | `[`, `]`     | `[d`         | cycle prev diagnostic   | 前の diagnostic       |
 | `[`, `]`     | `]d`         | cycle next diagnostic   | 次の diagnostic       |
 | `[`, `]`     | `[t`         | cycle prev tab          | 前のタブ              |

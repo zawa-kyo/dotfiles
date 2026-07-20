@@ -99,6 +99,144 @@ keymap("n", "mO", function()
   vim.fn.append(vim.fn.line(".") - 1, "")
 end, opts("Add blank line above"))
 
+---Prompt for replacement text and reuse the last search pattern.
+---@param command string Command prefix such as "%s" or "cfdo %s"
+---@param title string Notification title
+---@param update boolean Whether to write changed buffers after replacement
+local function replace_last_search(command, title, update)
+  if vim.fn.getreg("/") == "" then
+    vim.notify("Search pattern is empty", vim.log.levels.WARN, { title = title })
+    return
+  end
+
+  local replacement = vim.fn.input("Replace with: ")
+  local suffix = update and " | update" or ""
+
+  vim.g.config_last_search_replacement = replacement
+  local ok, err = pcall(vim.cmd, ([=[%s//\=g:config_last_search_replacement/gc%s]=]):format(command, suffix))
+  vim.g.config_last_search_replacement = nil
+  if not ok then
+    error(err)
+  end
+end
+
+---Find the current line match for a search pattern.
+---@param pattern string Vim search pattern
+---@return integer|nil start_col
+---@return integer|nil end_col
+---@return boolean zero_width
+local function current_line_match(pattern)
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local line = vim.api.nvim_get_current_line()
+  local match = vim.fn.matchstrpos(line, pattern, cursor[2])
+  if match[2] < 0 then
+    return nil, nil, false
+  end
+
+  return match[2], match[3], match[3] <= match[2]
+end
+
+---Replace the current match with literal replacement text.
+---@param pattern string Vim search pattern
+---@param replacement string Replacement text
+---@return boolean replaced
+---@return string|nil error_reason
+local function replace_current_match(pattern, replacement)
+  local start_col, end_col, zero_width = current_line_match(pattern)
+  if zero_width then
+    return false, "zero_width"
+  end
+
+  if not start_col or not end_col then
+    return false, "not_found"
+  end
+
+  local row = vim.api.nvim_win_get_cursor(0)[1] - 1
+  vim.api.nvim_buf_set_text(0, row, start_col, row, end_col, { replacement })
+  vim.api.nvim_win_set_cursor(0, { row + 1, start_col + #replacement })
+  return true
+end
+
+---Replace the latest / or ? search pattern in the current file.
+local function replace_last_search_in_file()
+  local pattern = vim.fn.getreg("/")
+  local title = "Replace in File"
+  if pattern == "" then
+    vim.notify("Search pattern is empty", vim.log.levels.WARN, { title = title })
+    return
+  end
+
+  local replacement = vim.fn.input("Replace with: ")
+  local replaced = 0
+  vim.api.nvim_win_set_cursor(0, { 1, 0 })
+
+  while vim.fn.search(pattern, "cW") > 0 do
+    vim.cmd("redraw")
+    vim.api.nvim_echo({
+      { "Replace m/atch? ",    "Question" },
+      { "n",                   "MoreMsg" },
+      { "=next, " },
+      { "s",                   "MoreMsg" },
+      { "=skip, " },
+      { "a",                   "MoreMsg" },
+      { "=replace all, q=quit" },
+    }, false, {})
+
+    local key = vim.fn.getcharstr()
+    if key == "q" or key == "\027" then
+      break
+    end
+
+    if key == "a" then
+      repeat
+        local replaced_current, error_reason = replace_current_match(pattern, replacement)
+        if error_reason == "zero_width" then
+          vim.notify("Zero-width search patterns are not supported", vim.log.levels.WARN, { title = title })
+          break
+        end
+
+        if replaced_current then
+          replaced = replaced + 1
+        end
+      until vim.fn.search(pattern, "W") == 0
+      break
+    end
+
+    if key == "n" then
+      local replaced_current, error_reason = replace_current_match(pattern, replacement)
+      if error_reason == "zero_width" then
+        vim.notify("Zero-width search patterns are not supported", vim.log.levels.WARN, { title = title })
+        break
+      end
+
+      if replaced_current then
+        replaced = replaced + 1
+      end
+    elseif key == "s" then
+      vim.fn.search(pattern, "W")
+    end
+  end
+
+  vim.notify(("Replaced %d match%s"):format(replaced, replaced == 1 and "" or "es"), vim.log.levels.INFO, {
+    title = title,
+  })
+end
+
+-- Replace the latest / or ? search pattern without opening a separate UI.
+keymap("n", "mw", function()
+  replace_last_search_in_file()
+end, opts("Replace last search in current file"))
+
+keymap("n", "mW", function()
+  local info = vim.fn.getqflist({ size = 0 })
+  if not info or info.size == 0 then
+    vim.notify("Quickfix list is empty", vim.log.levels.WARN, { title = "Replace in Quickfix Files" })
+    return
+  end
+
+  replace_last_search("cfdo %s", "Replace in Quickfix Files", true)
+end, opts("Replace last search in quickfix files"))
+
 -- Marks (use M to avoid clashing with the modify prefix)
 keymap("n", "M", "m", opts("Set mark"))
 
