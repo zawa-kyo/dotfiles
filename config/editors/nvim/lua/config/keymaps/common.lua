@@ -173,12 +173,12 @@ local function replace_last_search_in_file()
   while vim.fn.search(pattern, "cW") > 0 do
     vim.cmd("redraw")
     vim.api.nvim_echo({
-      { "Replace m/atch? ",    "Question" },
-      { "n",                   "MoreMsg" },
+      { "Replace m/atch? ", "Question" },
+      { "n", "MoreMsg" },
       { "=next, " },
-      { "s",                   "MoreMsg" },
+      { "s", "MoreMsg" },
       { "=skip, " },
-      { "a",                   "MoreMsg" },
+      { "a", "MoreMsg" },
       { "=replace all, q=quit" },
     }, false, {})
 
