@@ -109,8 +109,23 @@ return {
           preset = "cmdline",
           ["<Esc>"] = { "cancel", "fallback" },
         },
+        sources = function()
+          local cmdtype = vim.fn.getcmdtype()
+          if cmdtype == "/" or cmdtype == "?" then
+            return {}
+          end
+          if cmdtype == ":" or cmdtype == "@" then
+            return { "cmdline", "buffer" }
+          end
+          return {}
+        end,
         completion = {
-          menu = { auto_show = true },
+          menu = {
+            auto_show = function()
+              local cmdtype = vim.fn.getcmdtype()
+              return cmdtype ~= "/" and cmdtype ~= "?"
+            end,
+          },
         },
       },
       fuzzy = {

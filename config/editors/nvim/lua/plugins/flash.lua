@@ -27,6 +27,21 @@ return {
     },
   },
 
+  config = function(_, opts)
+    require("flash").setup(opts)
+
+    local search = require("flash.plugins.search")
+    local jump = search.jump
+    search.jump = function(match, state)
+      -- Drop the consumed label before native search can report it as part of the pattern.
+      local cmdtype = vim.fn.getcmdtype()
+      if not search.op and (cmdtype == "/" or cmdtype == "?") then
+        vim.fn.setcmdline(state.pattern())
+      end
+      jump(match, state)
+    end
+  end,
+
   keys = {
     {
       "?",
