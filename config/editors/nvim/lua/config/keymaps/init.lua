@@ -24,12 +24,12 @@ vim.g.maplocalleader = " "
 --   command_mode = 'c',
 --
 -- Prefix design (movement/navigation):
---   <leader>w … Window ops (move/split/resize/equalize/close)
---   <leader>t … Tab ops (new/move/close)
---   <leader>b … Buffer ops (next/prev/list/delete)
+--   <leader>w … Window action path (split/resize/equalize/close)
+--   <leader>t … Tab action path (new/split/close)
+--   <leader>b … Buffer action path (list/delete/reload)
 --   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
 --   [j / ]j   … Jumplist movement
---   ] / [     … “Next / Previous” common UI (diagnostic/quickfix/loclist/…)
+--   ] / [     … “Next / Previous” cycle UI (window/buffer/tab/diagnostic/quickfix/loclist/…)
 --   n/N       … Keep default search repeat in Normal mode
 --   Flash     … f/F/t/T behavior is handled in flash.nvim config
 
