@@ -94,6 +94,8 @@
 | `s` (search) | `sf`         | search file             | ファイル検索          |
 | `s` (search) | `sF`         | search recent           | 最近のファイル検索    |
 | `s` (search) | `sb`         | search buffer           | バッファ検索          |
+| `s` (search) | `sw`         | search word             | ファイル内検索        |
+| `s` (search) | `sW`         | search word workspace   | ワークスペース検索    |
 | `r` (reveal) | `rd`         | reveal diagnostic float | diagnostic float 表示 |
 | `r` (reveal) | `ra`         | reveal code actions     | code action 一覧表示  |
 | `r` (reveal) | `rq`         | reveal quickfix list    | quickfix を開く       |
@@ -103,6 +105,8 @@
 | `t` (toggle) | `tl`         | toggle location list    | loclist の ON/OFF     |
 | `m` (modify) | `mr`         | modify rename           | rename                |
 | `m` (modify) | `mf`         | modify format           | format                |
+| `m` (modify) | `mw`         | modify word             | 直前検索を置換        |
+| `m` (modify) | `mW`         | modify word workspace   | quickfix 対象を置換   |
 | `[`, `]`     | `[d`         | cycle prev diagnostic   | 前の diagnostic       |
 | `[`, `]`     | `]d`         | cycle next diagnostic   | 次の diagnostic       |
 | `[`, `]`     | `[t`         | cycle prev tab          | 前のタブ              |
