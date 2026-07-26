@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-07-19T07:08:06.848139+00:00'
-apm_version: 0.24.1
+generated_at: '2026-07-26T03:10:42.416261+00:00'
+apm_version: 0.26.0
 dependencies:
 - repo_url: mattpocock/skills
-  name: skills
+  name: grill-me
   host: github.com
-  resolved_commit: 9603c1cc8118d08bc1b3bf34cf714f62178dea3b
+  resolved_commit: ed37663cc5fbef691ddfecd080dff42f7e7e350d
   version: unknown
   virtual_path: skills/productivity/grill-me
   is_virtual: true
@@ -24,9 +24,9 @@ dependencies:
     .claude/skills/grill-me/agents/openai.yaml: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
   content_hash: sha256:0ac1a28d5e7ab05c4a51046c9d74fd7bfc070ba6a3b9ec8451bd274e746d67b6
 - repo_url: mattpocock/skills
-  name: skills
+  name: grilling
   host: github.com
-  resolved_commit: 9603c1cc8118d08bc1b3bf34cf714f62178dea3b
+  resolved_commit: ed37663cc5fbef691ddfecd080dff42f7e7e350d
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -45,7 +45,7 @@ dependencies:
     .claude/skills/grilling/agents/openai.yaml: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
   content_hash: sha256:1f05b0ffe26fb4d4457e3e40b41ec2f3e379ae2d6877613240bc6ffef5f7f338
 - repo_url: mizchi/skills
-  name: skills
+  name: empirical-prompt-tuning
   host: github.com
   resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
   version: unknown
@@ -81,14 +81,14 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: zawa-kyo-skills
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: 0.1.0
   package_type: apm_package
-  content_hash: sha256:5fd685c209569ae3b14d4f44f9a5640218589b51d3ca6486af89bc37829ea374
+  content_hash: sha256:7b98fea9c4e05d39db5aece27a9ec3d9123f356bc613a0101f6b3a162db8de42
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: bootstrap-repo-docs
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: unknown
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
@@ -113,108 +113,72 @@ dependencies:
     .claude/skills/bootstrap-repo-docs/agents/openai.yaml: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
   content_hash: sha256:d4e61b6c2bbe52d8aeb920bfd5fe4dfc2d37b00538450d814b715e33d976528d
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: guide-automated-tests
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
-  version: unknown
-  virtual_path: dev/guide-unit-tests
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  version: 0.1.0
+  virtual_path: dev/guide-automated-tests
   is_virtual: true
   depth: 2
   resolved_by: zawa-kyo/skills
-  package_type: claude_skill
+  package_type: hybrid
   deployed_files:
-  - .agents/skills/guide-unit-tests
-  - .agents/skills/guide-unit-tests/SKILL-ja.md
-  - .agents/skills/guide-unit-tests/SKILL.md
-  - .agents/skills/guide-unit-tests/agents/openai.yaml
-  - .agents/skills/guide-unit-tests/maintenance-ja/design.md
-  - .agents/skills/guide-unit-tests/maintenance-ja/rule-index.md
-  - .agents/skills/guide-unit-tests/maintenance-ja/sources.md
-  - .agents/skills/guide-unit-tests/maintenance/design.md
-  - .agents/skills/guide-unit-tests/maintenance/rule-index.md
-  - .agents/skills/guide-unit-tests/maintenance/sources.md
-  - .agents/skills/guide-unit-tests/references-ja/01-purpose.md
-  - .agents/skills/guide-unit-tests/references-ja/02-context.md
-  - .agents/skills/guide-unit-tests/references-ja/03-test-strategy.md
-  - .agents/skills/guide-unit-tests/references-ja/04-test-design.md
-  - .agents/skills/guide-unit-tests/references-ja/05-implementation.md
-  - .agents/skills/guide-unit-tests/references-ja/06-self-review.md
-  - .agents/skills/guide-unit-tests/references/01-purpose.md
-  - .agents/skills/guide-unit-tests/references/02-context.md
-  - .agents/skills/guide-unit-tests/references/03-test-strategy.md
-  - .agents/skills/guide-unit-tests/references/04-test-design.md
-  - .agents/skills/guide-unit-tests/references/05-implementation.md
-  - .agents/skills/guide-unit-tests/references/06-self-review.md
-  - .claude/skills/guide-unit-tests
-  - .claude/skills/guide-unit-tests/SKILL-ja.md
-  - .claude/skills/guide-unit-tests/SKILL.md
-  - .claude/skills/guide-unit-tests/agents/openai.yaml
-  - .claude/skills/guide-unit-tests/maintenance-ja/design.md
-  - .claude/skills/guide-unit-tests/maintenance-ja/rule-index.md
-  - .claude/skills/guide-unit-tests/maintenance-ja/sources.md
-  - .claude/skills/guide-unit-tests/maintenance/design.md
-  - .claude/skills/guide-unit-tests/maintenance/rule-index.md
-  - .claude/skills/guide-unit-tests/maintenance/sources.md
-  - .claude/skills/guide-unit-tests/references-ja/01-purpose.md
-  - .claude/skills/guide-unit-tests/references-ja/02-context.md
-  - .claude/skills/guide-unit-tests/references-ja/03-test-strategy.md
-  - .claude/skills/guide-unit-tests/references-ja/04-test-design.md
-  - .claude/skills/guide-unit-tests/references-ja/05-implementation.md
-  - .claude/skills/guide-unit-tests/references-ja/06-self-review.md
-  - .claude/skills/guide-unit-tests/references/01-purpose.md
-  - .claude/skills/guide-unit-tests/references/02-context.md
-  - .claude/skills/guide-unit-tests/references/03-test-strategy.md
-  - .claude/skills/guide-unit-tests/references/04-test-design.md
-  - .claude/skills/guide-unit-tests/references/05-implementation.md
-  - .claude/skills/guide-unit-tests/references/06-self-review.md
+  - .agents/skills/guide-automated-tests
+  - .agents/skills/guide-automated-tests/SKILL-ja.md
+  - .agents/skills/guide-automated-tests/SKILL.md
+  - .agents/skills/guide-automated-tests/agents/openai.yaml
+  - .agents/skills/guide-automated-tests/apm.yml
+  - .agents/skills/guide-automated-tests/evals/evals.json
+  - .agents/skills/guide-automated-tests/evals/fixtures/checkout-service.md
+  - .agents/skills/guide-automated-tests/maintenance-ja/architecture.md
+  - .agents/skills/guide-automated-tests/maintenance-ja/sources.md
+  - .agents/skills/guide-automated-tests/maintenance/architecture.md
+  - .agents/skills/guide-automated-tests/maintenance/sources.md
+  - .agents/skills/guide-automated-tests/references-ja/guidance.md
+  - .agents/skills/guide-automated-tests/references/guidance.md
+  - .claude/skills/guide-automated-tests
+  - .claude/skills/guide-automated-tests/SKILL-ja.md
+  - .claude/skills/guide-automated-tests/SKILL.md
+  - .claude/skills/guide-automated-tests/agents/openai.yaml
+  - .claude/skills/guide-automated-tests/apm.yml
+  - .claude/skills/guide-automated-tests/evals/evals.json
+  - .claude/skills/guide-automated-tests/evals/fixtures/checkout-service.md
+  - .claude/skills/guide-automated-tests/maintenance-ja/architecture.md
+  - .claude/skills/guide-automated-tests/maintenance-ja/sources.md
+  - .claude/skills/guide-automated-tests/maintenance/architecture.md
+  - .claude/skills/guide-automated-tests/maintenance/sources.md
+  - .claude/skills/guide-automated-tests/references-ja/guidance.md
+  - .claude/skills/guide-automated-tests/references/guidance.md
   deployed_file_hashes:
-    .agents/skills/guide-unit-tests/SKILL-ja.md: sha256:50d280c05c538150b91547b07e70b7e6fb67a2843100aa78e50afa81c056ee8d
-    .agents/skills/guide-unit-tests/SKILL.md: sha256:48bbcdc4a37c2d6b18046ad4567498600081dad383de69b8f8bb07215b0022eb
-    .agents/skills/guide-unit-tests/agents/openai.yaml: sha256:716887fb9e0f9283e94a31517a97794faaefa610363f9a6a0c80b759f8bb14b1
-    .agents/skills/guide-unit-tests/maintenance-ja/design.md: sha256:4e8d0ec2ecb7290702022ef75166043a5de5e263f015d7a9df936926e1a45cdb
-    .agents/skills/guide-unit-tests/maintenance-ja/rule-index.md: sha256:ae087d04514a37ccf33f07970422ee282a20dafea689892cc8badb6d2a7a46e2
-    .agents/skills/guide-unit-tests/maintenance-ja/sources.md: sha256:4b0c09f1e7d532ea96109f10a7ef7baf22f079e10d1dedb3a000cc0411b16618
-    .agents/skills/guide-unit-tests/maintenance/design.md: sha256:c039c67739d2999817017a2eea6f78820dd2c1ecedcde5be35b67dbea0c98ecd
-    .agents/skills/guide-unit-tests/maintenance/rule-index.md: sha256:26acfda6ff7952cac1a3f849b7ed6f795838d8616b74901f187564c360e21ea0
-    .agents/skills/guide-unit-tests/maintenance/sources.md: sha256:00547a66e8f5d5dd32172867771fc7f72777ea8eabbf8bb97e6953fb1857bb83
-    .agents/skills/guide-unit-tests/references-ja/01-purpose.md: sha256:27ede96085d3fe0d8d9a7a5982ec782fcbadc50bed9004ca8c3ce71a321fa5bd
-    .agents/skills/guide-unit-tests/references-ja/02-context.md: sha256:142010e60f0cb23fe6c75d4bda909d2cc7bf00d9a59ecf8f936f37641b1a1810
-    .agents/skills/guide-unit-tests/references-ja/03-test-strategy.md: sha256:7a6d959f74972762d65b95cc9b88d4a0897e5533acf434c89da0f4bf31f56d05
-    .agents/skills/guide-unit-tests/references-ja/04-test-design.md: sha256:57752907065f7ff391fc589e0b5ead612c45caed1eb438157ea564b3723efa4f
-    .agents/skills/guide-unit-tests/references-ja/05-implementation.md: sha256:ca33dac5495c7dc49103f4e545de56560d0d2b294e6d652c7072dab8c54340cd
-    .agents/skills/guide-unit-tests/references-ja/06-self-review.md: sha256:266b698346817a2dd2febbefdbc06ebc413469190377851c0140976e03afffc4
-    .agents/skills/guide-unit-tests/references/01-purpose.md: sha256:fe5404f92564818954911c6d103adabc26f30fab310a9e598c5830d0e21a8f80
-    .agents/skills/guide-unit-tests/references/02-context.md: sha256:e16954c98bd3ce2fbcd2d1036bce76d9f968ef3c51be66e24b073c16e923ebe4
-    .agents/skills/guide-unit-tests/references/03-test-strategy.md: sha256:60aff121a6d1eac0f0fc38bfe79060737fb9dc88d38e75db912441c6cdfe4c08
-    .agents/skills/guide-unit-tests/references/04-test-design.md: sha256:ff8b6ea0d1fbc903d48b3d4156858f9defe368c5d9585c7329cd82fb8dd0ae4f
-    .agents/skills/guide-unit-tests/references/05-implementation.md: sha256:af3ba88930ff7aedcbe64ff4f2c7c53cded3e4f72c2ba7e820db6e76a6badcab
-    .agents/skills/guide-unit-tests/references/06-self-review.md: sha256:93597c3e941ad615ee6c22e12d90f38dae841b3c0c756eb2ef530123a17326ab
-    .claude/skills/guide-unit-tests/SKILL-ja.md: sha256:50d280c05c538150b91547b07e70b7e6fb67a2843100aa78e50afa81c056ee8d
-    .claude/skills/guide-unit-tests/SKILL.md: sha256:48bbcdc4a37c2d6b18046ad4567498600081dad383de69b8f8bb07215b0022eb
-    .claude/skills/guide-unit-tests/agents/openai.yaml: sha256:716887fb9e0f9283e94a31517a97794faaefa610363f9a6a0c80b759f8bb14b1
-    .claude/skills/guide-unit-tests/maintenance-ja/design.md: sha256:4e8d0ec2ecb7290702022ef75166043a5de5e263f015d7a9df936926e1a45cdb
-    .claude/skills/guide-unit-tests/maintenance-ja/rule-index.md: sha256:ae087d04514a37ccf33f07970422ee282a20dafea689892cc8badb6d2a7a46e2
-    .claude/skills/guide-unit-tests/maintenance-ja/sources.md: sha256:4b0c09f1e7d532ea96109f10a7ef7baf22f079e10d1dedb3a000cc0411b16618
-    .claude/skills/guide-unit-tests/maintenance/design.md: sha256:c039c67739d2999817017a2eea6f78820dd2c1ecedcde5be35b67dbea0c98ecd
-    .claude/skills/guide-unit-tests/maintenance/rule-index.md: sha256:26acfda6ff7952cac1a3f849b7ed6f795838d8616b74901f187564c360e21ea0
-    .claude/skills/guide-unit-tests/maintenance/sources.md: sha256:00547a66e8f5d5dd32172867771fc7f72777ea8eabbf8bb97e6953fb1857bb83
-    .claude/skills/guide-unit-tests/references-ja/01-purpose.md: sha256:27ede96085d3fe0d8d9a7a5982ec782fcbadc50bed9004ca8c3ce71a321fa5bd
-    .claude/skills/guide-unit-tests/references-ja/02-context.md: sha256:142010e60f0cb23fe6c75d4bda909d2cc7bf00d9a59ecf8f936f37641b1a1810
-    .claude/skills/guide-unit-tests/references-ja/03-test-strategy.md: sha256:7a6d959f74972762d65b95cc9b88d4a0897e5533acf434c89da0f4bf31f56d05
-    .claude/skills/guide-unit-tests/references-ja/04-test-design.md: sha256:57752907065f7ff391fc589e0b5ead612c45caed1eb438157ea564b3723efa4f
-    .claude/skills/guide-unit-tests/references-ja/05-implementation.md: sha256:ca33dac5495c7dc49103f4e545de56560d0d2b294e6d652c7072dab8c54340cd
-    .claude/skills/guide-unit-tests/references-ja/06-self-review.md: sha256:266b698346817a2dd2febbefdbc06ebc413469190377851c0140976e03afffc4
-    .claude/skills/guide-unit-tests/references/01-purpose.md: sha256:fe5404f92564818954911c6d103adabc26f30fab310a9e598c5830d0e21a8f80
-    .claude/skills/guide-unit-tests/references/02-context.md: sha256:e16954c98bd3ce2fbcd2d1036bce76d9f968ef3c51be66e24b073c16e923ebe4
-    .claude/skills/guide-unit-tests/references/03-test-strategy.md: sha256:60aff121a6d1eac0f0fc38bfe79060737fb9dc88d38e75db912441c6cdfe4c08
-    .claude/skills/guide-unit-tests/references/04-test-design.md: sha256:ff8b6ea0d1fbc903d48b3d4156858f9defe368c5d9585c7329cd82fb8dd0ae4f
-    .claude/skills/guide-unit-tests/references/05-implementation.md: sha256:af3ba88930ff7aedcbe64ff4f2c7c53cded3e4f72c2ba7e820db6e76a6badcab
-    .claude/skills/guide-unit-tests/references/06-self-review.md: sha256:93597c3e941ad615ee6c22e12d90f38dae841b3c0c756eb2ef530123a17326ab
-  content_hash: sha256:1761361070452117d1a115b32463e74818fdac2644b3478700e2f2ffe3b915ef
+    .agents/skills/guide-automated-tests/SKILL-ja.md: sha256:bd2c124242f496349489e7d425b7aaa1ec6e163b58d0ca27d3ddf0e20e5f7f44
+    .agents/skills/guide-automated-tests/SKILL.md: sha256:11ee74d12d11059f66351d10b14873e4b13737fd32c5fc0fe62c49487dc394b9
+    .agents/skills/guide-automated-tests/agents/openai.yaml: sha256:67c9e114006ab290de574103742af38e53550cfb4f30dbdc3cf6dce85aa4da19
+    .agents/skills/guide-automated-tests/apm.yml: sha256:c834a9d04f74685748dde7fd3eb603a9d7283e7a05ea17e57cf215ae23f06090
+    .agents/skills/guide-automated-tests/evals/evals.json: sha256:2e5f371288bce9bf72c68ca3ecc338939adab4288ad9553811a76152e91dd09b
+    .agents/skills/guide-automated-tests/evals/fixtures/checkout-service.md: sha256:ee22e267415808bbec9df8c3460af13307f3ec3047c618b2a2747c3e223de07d
+    .agents/skills/guide-automated-tests/maintenance-ja/architecture.md: sha256:391633e969be12e38435d5a1bba8d5fd3add9f89c3d64c6eead2063479b4c2a9
+    .agents/skills/guide-automated-tests/maintenance-ja/sources.md: sha256:8b7adc6384f6542fe82731ff8c50cb9d9ea7910bf160c57e6c77a7555521fef0
+    .agents/skills/guide-automated-tests/maintenance/architecture.md: sha256:013a53768001c8791138402a1597de5553392b6bcbe534e30cc2a889d97e7699
+    .agents/skills/guide-automated-tests/maintenance/sources.md: sha256:82d23d059e6ee747e24fd46520c071bf5596338d0fcf248246edb178d247d4de
+    .agents/skills/guide-automated-tests/references-ja/guidance.md: sha256:4ad43ea753e50a2dca84a498d3c287daec68b626f25cdf91eb4e7889767f5d0b
+    .agents/skills/guide-automated-tests/references/guidance.md: sha256:79a6cc768c69939cc068261464b89c4c1edea18ce36dfdf4c8cfd9721013f12d
+    .claude/skills/guide-automated-tests/SKILL-ja.md: sha256:bd2c124242f496349489e7d425b7aaa1ec6e163b58d0ca27d3ddf0e20e5f7f44
+    .claude/skills/guide-automated-tests/SKILL.md: sha256:11ee74d12d11059f66351d10b14873e4b13737fd32c5fc0fe62c49487dc394b9
+    .claude/skills/guide-automated-tests/agents/openai.yaml: sha256:67c9e114006ab290de574103742af38e53550cfb4f30dbdc3cf6dce85aa4da19
+    .claude/skills/guide-automated-tests/apm.yml: sha256:c834a9d04f74685748dde7fd3eb603a9d7283e7a05ea17e57cf215ae23f06090
+    .claude/skills/guide-automated-tests/evals/evals.json: sha256:2e5f371288bce9bf72c68ca3ecc338939adab4288ad9553811a76152e91dd09b
+    .claude/skills/guide-automated-tests/evals/fixtures/checkout-service.md: sha256:ee22e267415808bbec9df8c3460af13307f3ec3047c618b2a2747c3e223de07d
+    .claude/skills/guide-automated-tests/maintenance-ja/architecture.md: sha256:391633e969be12e38435d5a1bba8d5fd3add9f89c3d64c6eead2063479b4c2a9
+    .claude/skills/guide-automated-tests/maintenance-ja/sources.md: sha256:8b7adc6384f6542fe82731ff8c50cb9d9ea7910bf160c57e6c77a7555521fef0
+    .claude/skills/guide-automated-tests/maintenance/architecture.md: sha256:013a53768001c8791138402a1597de5553392b6bcbe534e30cc2a889d97e7699
+    .claude/skills/guide-automated-tests/maintenance/sources.md: sha256:82d23d059e6ee747e24fd46520c071bf5596338d0fcf248246edb178d247d4de
+    .claude/skills/guide-automated-tests/references-ja/guidance.md: sha256:4ad43ea753e50a2dca84a498d3c287daec68b626f25cdf91eb4e7889767f5d0b
+    .claude/skills/guide-automated-tests/references/guidance.md: sha256:79a6cc768c69939cc068261464b89c4c1edea18ce36dfdf4c8cfd9721013f12d
+  content_hash: sha256:9193b4420c3bee266cd296b3a914f6404a1fdccb01310cd59f2c25a652fd3a10
 - repo_url: zawa-kyo/skills
   name: review-essential-code
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: 0.1.0
   virtual_path: dev/review-essential-code
   is_virtual: true
@@ -233,20 +197,20 @@ dependencies:
   - .claude/skills/review-essential-code/agents/openai.yaml
   - .claude/skills/review-essential-code/apm.yml
   deployed_file_hashes:
-    .agents/skills/review-essential-code/SKILL-ja.md: sha256:2660e161779504b1b323835772a550f5ccba3e72b31ff820a5f30ea8538bca0c
-    .agents/skills/review-essential-code/SKILL.md: sha256:a4b232434f35cf7d0ec0a405ead0cdde71969f0826eb2fb8d85ad635db3a9444
+    .agents/skills/review-essential-code/SKILL-ja.md: sha256:2438682b74a62acc3aa0252b30208ca51ddeb345b3223395723d964d8a45cb28
+    .agents/skills/review-essential-code/SKILL.md: sha256:5d4d49e15354a3bdd085cc3c78fb01e6432e9ba400b0c1a97a67f49da8d17b54
     .agents/skills/review-essential-code/agents/openai.yaml: sha256:efebbb0626d7b020b9c0c62f9a9809e4711183d7b731a6f75d130dcbecab3967
-    .agents/skills/review-essential-code/apm.yml: sha256:2fe94ad35331d7e2711a320bad0f71e4ca6e91ee7b0698a4a487fa2a381e31fe
-    .claude/skills/review-essential-code/SKILL-ja.md: sha256:2660e161779504b1b323835772a550f5ccba3e72b31ff820a5f30ea8538bca0c
-    .claude/skills/review-essential-code/SKILL.md: sha256:a4b232434f35cf7d0ec0a405ead0cdde71969f0826eb2fb8d85ad635db3a9444
+    .agents/skills/review-essential-code/apm.yml: sha256:94aa0dd8d18d64527cfaa416e0b69324e44f4a3c7709291221dbdda807d184eb
+    .claude/skills/review-essential-code/SKILL-ja.md: sha256:2438682b74a62acc3aa0252b30208ca51ddeb345b3223395723d964d8a45cb28
+    .claude/skills/review-essential-code/SKILL.md: sha256:5d4d49e15354a3bdd085cc3c78fb01e6432e9ba400b0c1a97a67f49da8d17b54
     .claude/skills/review-essential-code/agents/openai.yaml: sha256:efebbb0626d7b020b9c0c62f9a9809e4711183d7b731a6f75d130dcbecab3967
-    .claude/skills/review-essential-code/apm.yml: sha256:2fe94ad35331d7e2711a320bad0f71e4ca6e91ee7b0698a4a487fa2a381e31fe
-  content_hash: sha256:833bb408a470fe3a913075c7de35d9a40c39c28bb7049c927ca24e0c310d2746
+    .claude/skills/review-essential-code/apm.yml: sha256:94aa0dd8d18d64527cfaa416e0b69324e44f4a3c7709291221dbdda807d184eb
+  content_hash: sha256:b38d09f250f3bff26d5fb9a6ba6158789756dfc0e190ee5ccea69e8447ec26c5
   declared_license: MIT
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: suggest-commit-messages
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: unknown
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
@@ -271,9 +235,9 @@ dependencies:
     .claude/skills/suggest-commit-messages/agents/openai.yaml: sha256:563387fbcbc5b827ffa36edc034be437a88b18f9e94713264fa29feca0d341be
   content_hash: sha256:75bf08f26a12ed865686e5ccc3bd352fc7c54891616e6d6288a897e244465a07
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: apply-adversarial-verification
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: unknown
   virtual_path: thinking/apply-adversarial-verification
   is_virtual: true
@@ -298,9 +262,9 @@ dependencies:
     .claude/skills/apply-adversarial-verification/agents/openai.yaml: sha256:5ac3ab5b68a6f4d390e95b42cb6a5c73d47339dc96855161c1ddd191f0cdb8c7
   content_hash: sha256:2339c06d9e063f9d55d5eb9f9706fc4f869e151c939d0b347cff3ce1d1e72c58
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: refine-reasoning-logic
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: unknown
   virtual_path: thinking/refine-reasoning-logic
   is_virtual: true
@@ -327,7 +291,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: edit-existing-document
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: 0.1.0
   virtual_path: writing/edit-existing-document
   is_virtual: true
@@ -358,7 +322,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: revise-english-writing
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: 0.1.0
   virtual_path: writing/revise-english-writing
   is_virtual: true
@@ -387,9 +351,9 @@ dependencies:
     .claude/skills/revise-english-writing/apm.yml: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
   content_hash: sha256:3c865da6d15d60a83658a826a3e6f088783bd9ecfbd8a573b34a059258005fae
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: revise-japanese-writing
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: unknown
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
@@ -408,19 +372,19 @@ dependencies:
   - .claude/skills/revise-japanese-writing/agents/openai.yaml
   - .claude/skills/revise-japanese-writing/references/idea.md
   deployed_file_hashes:
-    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:5958cfb853b8c2a29ca5f8fcf1060f96164d00a303a559750127239c1ada8e73
-    .agents/skills/revise-japanese-writing/SKILL.md: sha256:1692d91eeb94afb24bc4a7be4ded0c1a3b2feb5b2de4954f39615650e0d59c8a
+    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
+    .agents/skills/revise-japanese-writing/SKILL.md: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
     .agents/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
     .agents/skills/revise-japanese-writing/references/idea.md: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
-    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:5958cfb853b8c2a29ca5f8fcf1060f96164d00a303a559750127239c1ada8e73
-    .claude/skills/revise-japanese-writing/SKILL.md: sha256:1692d91eeb94afb24bc4a7be4ded0c1a3b2feb5b2de4954f39615650e0d59c8a
+    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
+    .claude/skills/revise-japanese-writing/SKILL.md: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
     .claude/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
     .claude/skills/revise-japanese-writing/references/idea.md: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
-  content_hash: sha256:a1c84c11f3c096aa85c2c822b42955363833a0f395a3e471a91a5ae219d5bfdd
+  content_hash: sha256:0bb7d3e0afc3cda35d7a697bc0a7a98179fd4b664f856e642532061bcf346a25
 - repo_url: zawa-kyo/skills
-  name: skills
+  name: summarize-discussion-coherently
   host: github.com
-  resolved_commit: 8eb44d174d23313659ea24fd918d672ee0dd3d7b
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
   version: unknown
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
@@ -485,3 +449,2217 @@ dependencies:
     .claude/skills/stop-slop/references/phrases.md: sha256:4ca1b7e97123b5c67eff3dc97e5e977332e0b24021265c1553888a93ec33fa93
     .claude/skills/stop-slop/references/structures.md: sha256:ffbf1316c7fb5aaf552de005609a64a9639b546ecd76bfb0e482864d5bbe6f58
   content_hash: sha256:2e93df9fc59dbc268f98b75b51be8751f8db4e8c3943bb7f4beafa244a05785a
+- repo_url: zawa-kyo/skills
+  name: guide-e2e-tests
+  host: github.com
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  version: 0.1.0
+  virtual_path: dev/guide-e2e-tests
+  is_virtual: true
+  depth: 3
+  resolved_by: zawa-kyo/skills
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/guide-e2e-tests
+  - .agents/skills/guide-e2e-tests/SKILL-ja.md
+  - .agents/skills/guide-e2e-tests/SKILL.md
+  - .agents/skills/guide-e2e-tests/agents/openai.yaml
+  - .agents/skills/guide-e2e-tests/apm.yml
+  - .agents/skills/guide-e2e-tests/evals/evals.json
+  - .agents/skills/guide-e2e-tests/evals/fixtures/local-e2e-boundary.md
+  - .agents/skills/guide-e2e-tests/maintenance-ja/sources.md
+  - .agents/skills/guide-e2e-tests/maintenance/sources.md
+  - .agents/skills/guide-e2e-tests/references-ja/guidance.md
+  - .agents/skills/guide-e2e-tests/references/guidance.md
+  - .claude/skills/guide-e2e-tests
+  - .claude/skills/guide-e2e-tests/SKILL-ja.md
+  - .claude/skills/guide-e2e-tests/SKILL.md
+  - .claude/skills/guide-e2e-tests/agents/openai.yaml
+  - .claude/skills/guide-e2e-tests/apm.yml
+  - .claude/skills/guide-e2e-tests/evals/evals.json
+  - .claude/skills/guide-e2e-tests/evals/fixtures/local-e2e-boundary.md
+  - .claude/skills/guide-e2e-tests/maintenance-ja/sources.md
+  - .claude/skills/guide-e2e-tests/maintenance/sources.md
+  - .claude/skills/guide-e2e-tests/references-ja/guidance.md
+  - .claude/skills/guide-e2e-tests/references/guidance.md
+  deployed_file_hashes:
+    .agents/skills/guide-e2e-tests/SKILL-ja.md: sha256:37d8804a68714b14ab6cc5e590396ecfafd5dfe2cd844bf57df027065d84fa5c
+    .agents/skills/guide-e2e-tests/SKILL.md: sha256:8f695e5448b0813280b011ff4c9167e684451d2d500ebe91b60c4aeb662fea77
+    .agents/skills/guide-e2e-tests/agents/openai.yaml: sha256:ee1907fca84cc84bb9cf36e40ec9c3ba79ece3cf785440cc098dba422e0cddec
+    .agents/skills/guide-e2e-tests/apm.yml: sha256:6ddc0935d87545b51bd592e709078c63c816c9fc60a7854f295af4a130f53bb4
+    .agents/skills/guide-e2e-tests/evals/evals.json: sha256:8772c7fe77e83fc60298effd73ecaa2e56655ba3fda4e2f1e7462e3e8b5bcfbd
+    .agents/skills/guide-e2e-tests/evals/fixtures/local-e2e-boundary.md: sha256:37da50a9b32d036a405ec1d7841cf8880c4ca7b7bedaec11f7a5ebba76642a96
+    .agents/skills/guide-e2e-tests/maintenance-ja/sources.md: sha256:b073cfdbfbc11b26c2281d886b18679bfee1b658578a34a22b454f987c0483fe
+    .agents/skills/guide-e2e-tests/maintenance/sources.md: sha256:93f62fbbec96d2a9f80ae031263cdcf6f04452405f8405b8ab17006302bc6a0d
+    .agents/skills/guide-e2e-tests/references-ja/guidance.md: sha256:477e324aea1dedac117aeaf5a0f342f183dcbd172888051db42a632ef1d205c7
+    .agents/skills/guide-e2e-tests/references/guidance.md: sha256:dd7ad27366b5cefa6b7bc68e493a2549fae83d6a9ccf7755f2edf62f4ac4182b
+    .claude/skills/guide-e2e-tests/SKILL-ja.md: sha256:37d8804a68714b14ab6cc5e590396ecfafd5dfe2cd844bf57df027065d84fa5c
+    .claude/skills/guide-e2e-tests/SKILL.md: sha256:8f695e5448b0813280b011ff4c9167e684451d2d500ebe91b60c4aeb662fea77
+    .claude/skills/guide-e2e-tests/agents/openai.yaml: sha256:ee1907fca84cc84bb9cf36e40ec9c3ba79ece3cf785440cc098dba422e0cddec
+    .claude/skills/guide-e2e-tests/apm.yml: sha256:6ddc0935d87545b51bd592e709078c63c816c9fc60a7854f295af4a130f53bb4
+    .claude/skills/guide-e2e-tests/evals/evals.json: sha256:8772c7fe77e83fc60298effd73ecaa2e56655ba3fda4e2f1e7462e3e8b5bcfbd
+    .claude/skills/guide-e2e-tests/evals/fixtures/local-e2e-boundary.md: sha256:37da50a9b32d036a405ec1d7841cf8880c4ca7b7bedaec11f7a5ebba76642a96
+    .claude/skills/guide-e2e-tests/maintenance-ja/sources.md: sha256:b073cfdbfbc11b26c2281d886b18679bfee1b658578a34a22b454f987c0483fe
+    .claude/skills/guide-e2e-tests/maintenance/sources.md: sha256:93f62fbbec96d2a9f80ae031263cdcf6f04452405f8405b8ab17006302bc6a0d
+    .claude/skills/guide-e2e-tests/references-ja/guidance.md: sha256:477e324aea1dedac117aeaf5a0f342f183dcbd172888051db42a632ef1d205c7
+    .claude/skills/guide-e2e-tests/references/guidance.md: sha256:dd7ad27366b5cefa6b7bc68e493a2549fae83d6a9ccf7755f2edf62f4ac4182b
+  content_hash: sha256:f177fa2857a71cf8b037792eaee2b9396eb60e82d3ecda4d2e4e6cf17261bfa2
+- repo_url: zawa-kyo/skills
+  name: guide-integration-tests
+  host: github.com
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  version: 0.1.0
+  virtual_path: dev/guide-integration-tests
+  is_virtual: true
+  depth: 3
+  resolved_by: zawa-kyo/skills
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/guide-integration-tests
+  - .agents/skills/guide-integration-tests/SKILL-ja.md
+  - .agents/skills/guide-integration-tests/SKILL.md
+  - .agents/skills/guide-integration-tests/agents/openai.yaml
+  - .agents/skills/guide-integration-tests/apm.yml
+  - .agents/skills/guide-integration-tests/evals/evals.json
+  - .agents/skills/guide-integration-tests/evals/fixtures/user-repository.md
+  - .agents/skills/guide-integration-tests/maintenance-ja/sources.md
+  - .agents/skills/guide-integration-tests/maintenance/sources.md
+  - .agents/skills/guide-integration-tests/references-ja/guidance.md
+  - .agents/skills/guide-integration-tests/references/guidance.md
+  - .claude/skills/guide-integration-tests
+  - .claude/skills/guide-integration-tests/SKILL-ja.md
+  - .claude/skills/guide-integration-tests/SKILL.md
+  - .claude/skills/guide-integration-tests/agents/openai.yaml
+  - .claude/skills/guide-integration-tests/apm.yml
+  - .claude/skills/guide-integration-tests/evals/evals.json
+  - .claude/skills/guide-integration-tests/evals/fixtures/user-repository.md
+  - .claude/skills/guide-integration-tests/maintenance-ja/sources.md
+  - .claude/skills/guide-integration-tests/maintenance/sources.md
+  - .claude/skills/guide-integration-tests/references-ja/guidance.md
+  - .claude/skills/guide-integration-tests/references/guidance.md
+  deployed_file_hashes:
+    .agents/skills/guide-integration-tests/SKILL-ja.md: sha256:2bd9ee7e42143769dad2270b3695975d66cefac560cd2e6fc4a0044774c8b49b
+    .agents/skills/guide-integration-tests/SKILL.md: sha256:ccab2fa75a6fb2c702b49a181a4e7dc34f5adc687ae9e0803674c110d8816806
+    .agents/skills/guide-integration-tests/agents/openai.yaml: sha256:6e780b5ad8c0709adca4cca906175eb33b2b9a8a8a6a6ea6e2539ca5dbece06b
+    .agents/skills/guide-integration-tests/apm.yml: sha256:f879c263f500b9433f7111ab69cb82b4e4b6163782189b5b2da8d179f3eb5008
+    .agents/skills/guide-integration-tests/evals/evals.json: sha256:5639a41d075bce5f6a275372d93b9a33bc354caf74ce0fd2ab2391ce8cc4ad84
+    .agents/skills/guide-integration-tests/evals/fixtures/user-repository.md: sha256:bf07301fb263c7d02b2e54f2b52bdefcde21e33ba4971a523b0368d34194eb7e
+    .agents/skills/guide-integration-tests/maintenance-ja/sources.md: sha256:20c65e5f4a9b45807f5888519a9d59029cb87cb9f6845caa24ba48f6bc896145
+    .agents/skills/guide-integration-tests/maintenance/sources.md: sha256:5440abf1dbef93e1b4fc07acdbaf30956d4d30b71cccf91fd80c43f93c4e3ff7
+    .agents/skills/guide-integration-tests/references-ja/guidance.md: sha256:f47df9542d0d9c1145d690a976781f07a7f0c129fcaa6f580f80c49672ed8c32
+    .agents/skills/guide-integration-tests/references/guidance.md: sha256:9f03c2cde8d8cc40fea50752cf2a2ab3036560df101444b633bb62483c8585e6
+    .claude/skills/guide-integration-tests/SKILL-ja.md: sha256:2bd9ee7e42143769dad2270b3695975d66cefac560cd2e6fc4a0044774c8b49b
+    .claude/skills/guide-integration-tests/SKILL.md: sha256:ccab2fa75a6fb2c702b49a181a4e7dc34f5adc687ae9e0803674c110d8816806
+    .claude/skills/guide-integration-tests/agents/openai.yaml: sha256:6e780b5ad8c0709adca4cca906175eb33b2b9a8a8a6a6ea6e2539ca5dbece06b
+    .claude/skills/guide-integration-tests/apm.yml: sha256:f879c263f500b9433f7111ab69cb82b4e4b6163782189b5b2da8d179f3eb5008
+    .claude/skills/guide-integration-tests/evals/evals.json: sha256:5639a41d075bce5f6a275372d93b9a33bc354caf74ce0fd2ab2391ce8cc4ad84
+    .claude/skills/guide-integration-tests/evals/fixtures/user-repository.md: sha256:bf07301fb263c7d02b2e54f2b52bdefcde21e33ba4971a523b0368d34194eb7e
+    .claude/skills/guide-integration-tests/maintenance-ja/sources.md: sha256:20c65e5f4a9b45807f5888519a9d59029cb87cb9f6845caa24ba48f6bc896145
+    .claude/skills/guide-integration-tests/maintenance/sources.md: sha256:5440abf1dbef93e1b4fc07acdbaf30956d4d30b71cccf91fd80c43f93c4e3ff7
+    .claude/skills/guide-integration-tests/references-ja/guidance.md: sha256:f47df9542d0d9c1145d690a976781f07a7f0c129fcaa6f580f80c49672ed8c32
+    .claude/skills/guide-integration-tests/references/guidance.md: sha256:9f03c2cde8d8cc40fea50752cf2a2ab3036560df101444b633bb62483c8585e6
+  content_hash: sha256:f9ab5e7ec8927c7a2688f17e0d39017c6e5c552d6c79eda5a4991309f97648b8
+- repo_url: zawa-kyo/skills
+  name: guide-unit-tests
+  host: github.com
+  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  version: 0.1.0
+  virtual_path: dev/guide-unit-tests
+  is_virtual: true
+  depth: 3
+  resolved_by: zawa-kyo/skills
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/guide-unit-tests
+  - .agents/skills/guide-unit-tests/SKILL-ja.md
+  - .agents/skills/guide-unit-tests/SKILL.md
+  - .agents/skills/guide-unit-tests/agents/openai.yaml
+  - .agents/skills/guide-unit-tests/apm.yml
+  - .agents/skills/guide-unit-tests/evals/evals.json
+  - .agents/skills/guide-unit-tests/evals/fixtures/subscription-service.md
+  - .agents/skills/guide-unit-tests/maintenance-ja/design.md
+  - .agents/skills/guide-unit-tests/maintenance-ja/rule-index.md
+  - .agents/skills/guide-unit-tests/maintenance-ja/sources.md
+  - .agents/skills/guide-unit-tests/maintenance/design.md
+  - .agents/skills/guide-unit-tests/maintenance/rule-index.md
+  - .agents/skills/guide-unit-tests/maintenance/sources.md
+  - .agents/skills/guide-unit-tests/references-ja/01-purpose.md
+  - .agents/skills/guide-unit-tests/references-ja/02-context.md
+  - .agents/skills/guide-unit-tests/references-ja/03-test-strategy.md
+  - .agents/skills/guide-unit-tests/references-ja/04-test-design.md
+  - .agents/skills/guide-unit-tests/references-ja/05-implementation.md
+  - .agents/skills/guide-unit-tests/references-ja/06-self-review.md
+  - .agents/skills/guide-unit-tests/references-ja/guidance.md
+  - .agents/skills/guide-unit-tests/references/01-purpose.md
+  - .agents/skills/guide-unit-tests/references/02-context.md
+  - .agents/skills/guide-unit-tests/references/03-test-strategy.md
+  - .agents/skills/guide-unit-tests/references/04-test-design.md
+  - .agents/skills/guide-unit-tests/references/05-implementation.md
+  - .agents/skills/guide-unit-tests/references/06-self-review.md
+  - .agents/skills/guide-unit-tests/references/guidance.md
+  - .claude/skills/guide-unit-tests
+  - .claude/skills/guide-unit-tests/SKILL-ja.md
+  - .claude/skills/guide-unit-tests/SKILL.md
+  - .claude/skills/guide-unit-tests/agents/openai.yaml
+  - .claude/skills/guide-unit-tests/apm.yml
+  - .claude/skills/guide-unit-tests/evals/evals.json
+  - .claude/skills/guide-unit-tests/evals/fixtures/subscription-service.md
+  - .claude/skills/guide-unit-tests/maintenance-ja/sources.md
+  - .claude/skills/guide-unit-tests/maintenance/sources.md
+  - .claude/skills/guide-unit-tests/references-ja/guidance.md
+  - .claude/skills/guide-unit-tests/references/guidance.md
+  deployed_file_hashes:
+    .agents/skills/guide-unit-tests/SKILL-ja.md: sha256:5342497c918bc9534e3e0770c2a0b34485125efb8984f26061304f28f41766e1
+    .agents/skills/guide-unit-tests/SKILL.md: sha256:5c1f68e3c242c078b28fdc307434b0cce506d757db9cac4f5d09a1efdfac6755
+    .agents/skills/guide-unit-tests/agents/openai.yaml: sha256:f70e5d65684f26816b451b20292317b897ebed3a4987ea086bba3191fcd23fe2
+    .agents/skills/guide-unit-tests/apm.yml: sha256:f1ee2b73d2e8f1f4ed430742d261d14dfc99741a689410e52309b70143d7d258
+    .agents/skills/guide-unit-tests/evals/evals.json: sha256:bcea86703280eab0efb6b6ae14af71e704ff5a7af3ff09b97f86b871e8831961
+    .agents/skills/guide-unit-tests/evals/fixtures/subscription-service.md: sha256:c7021aed479d6756bec7f810615e3966930864e09867ab85d201a42505d52ddd
+    .agents/skills/guide-unit-tests/maintenance-ja/design.md: sha256:4e8d0ec2ecb7290702022ef75166043a5de5e263f015d7a9df936926e1a45cdb
+    .agents/skills/guide-unit-tests/maintenance-ja/rule-index.md: sha256:ae087d04514a37ccf33f07970422ee282a20dafea689892cc8badb6d2a7a46e2
+    .agents/skills/guide-unit-tests/maintenance-ja/sources.md: sha256:32033e2481f2be61916733dd917b1d8455de1fbbfa98c0c4c7f516bdb0aaa375
+    .agents/skills/guide-unit-tests/maintenance/design.md: sha256:c039c67739d2999817017a2eea6f78820dd2c1ecedcde5be35b67dbea0c98ecd
+    .agents/skills/guide-unit-tests/maintenance/rule-index.md: sha256:26acfda6ff7952cac1a3f849b7ed6f795838d8616b74901f187564c360e21ea0
+    .agents/skills/guide-unit-tests/maintenance/sources.md: sha256:21e5c0cb87a1c315f88198ee7e62c16f7a5c00d808f4a5f9d08086b558d58570
+    .agents/skills/guide-unit-tests/references-ja/01-purpose.md: sha256:27ede96085d3fe0d8d9a7a5982ec782fcbadc50bed9004ca8c3ce71a321fa5bd
+    .agents/skills/guide-unit-tests/references-ja/02-context.md: sha256:142010e60f0cb23fe6c75d4bda909d2cc7bf00d9a59ecf8f936f37641b1a1810
+    .agents/skills/guide-unit-tests/references-ja/03-test-strategy.md: sha256:7a6d959f74972762d65b95cc9b88d4a0897e5533acf434c89da0f4bf31f56d05
+    .agents/skills/guide-unit-tests/references-ja/04-test-design.md: sha256:57752907065f7ff391fc589e0b5ead612c45caed1eb438157ea564b3723efa4f
+    .agents/skills/guide-unit-tests/references-ja/05-implementation.md: sha256:ca33dac5495c7dc49103f4e545de56560d0d2b294e6d652c7072dab8c54340cd
+    .agents/skills/guide-unit-tests/references-ja/06-self-review.md: sha256:266b698346817a2dd2febbefdbc06ebc413469190377851c0140976e03afffc4
+    .agents/skills/guide-unit-tests/references-ja/guidance.md: sha256:91232188587cec08faa35cd66c2f0da46429750def6a67244a255b705c3fba43
+    .agents/skills/guide-unit-tests/references/01-purpose.md: sha256:fe5404f92564818954911c6d103adabc26f30fab310a9e598c5830d0e21a8f80
+    .agents/skills/guide-unit-tests/references/02-context.md: sha256:e16954c98bd3ce2fbcd2d1036bce76d9f968ef3c51be66e24b073c16e923ebe4
+    .agents/skills/guide-unit-tests/references/03-test-strategy.md: sha256:60aff121a6d1eac0f0fc38bfe79060737fb9dc88d38e75db912441c6cdfe4c08
+    .agents/skills/guide-unit-tests/references/04-test-design.md: sha256:ff8b6ea0d1fbc903d48b3d4156858f9defe368c5d9585c7329cd82fb8dd0ae4f
+    .agents/skills/guide-unit-tests/references/05-implementation.md: sha256:af3ba88930ff7aedcbe64ff4f2c7c53cded3e4f72c2ba7e820db6e76a6badcab
+    .agents/skills/guide-unit-tests/references/06-self-review.md: sha256:93597c3e941ad615ee6c22e12d90f38dae841b3c0c756eb2ef530123a17326ab
+    .agents/skills/guide-unit-tests/references/guidance.md: sha256:4192b02d188ab4d0a18be2cd1e2cf83ffc672326a3e55d2b29304d181baf634d
+    .claude/skills/guide-unit-tests/SKILL-ja.md: sha256:5342497c918bc9534e3e0770c2a0b34485125efb8984f26061304f28f41766e1
+    .claude/skills/guide-unit-tests/SKILL.md: sha256:5c1f68e3c242c078b28fdc307434b0cce506d757db9cac4f5d09a1efdfac6755
+    .claude/skills/guide-unit-tests/agents/openai.yaml: sha256:f70e5d65684f26816b451b20292317b897ebed3a4987ea086bba3191fcd23fe2
+    .claude/skills/guide-unit-tests/apm.yml: sha256:f1ee2b73d2e8f1f4ed430742d261d14dfc99741a689410e52309b70143d7d258
+    .claude/skills/guide-unit-tests/evals/evals.json: sha256:bcea86703280eab0efb6b6ae14af71e704ff5a7af3ff09b97f86b871e8831961
+    .claude/skills/guide-unit-tests/evals/fixtures/subscription-service.md: sha256:c7021aed479d6756bec7f810615e3966930864e09867ab85d201a42505d52ddd
+    .claude/skills/guide-unit-tests/maintenance-ja/sources.md: sha256:32033e2481f2be61916733dd917b1d8455de1fbbfa98c0c4c7f516bdb0aaa375
+    .claude/skills/guide-unit-tests/maintenance/sources.md: sha256:21e5c0cb87a1c315f88198ee7e62c16f7a5c00d808f4a5f9d08086b558d58570
+    .claude/skills/guide-unit-tests/references-ja/guidance.md: sha256:91232188587cec08faa35cd66c2f0da46429750def6a67244a255b705c3fba43
+    .claude/skills/guide-unit-tests/references/guidance.md: sha256:4192b02d188ab4d0a18be2cd1e2cf83ffc672326a3e55d2b29304d181baf634d
+  content_hash: sha256:4901e55fce6c8e489f1ee0ec4f4601debf21d82c7867f0af1bff45ff7b20da4c
+deployments:
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/maintenance-ja/design.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:4e8d0ec2ecb7290702022ef75166043a5de5e263f015d7a9df936926e1a45cdb
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/maintenance-ja/rule-index.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:ae087d04514a37ccf33f07970422ee282a20dafea689892cc8badb6d2a7a46e2
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/maintenance/design.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:c039c67739d2999817017a2eea6f78820dd2c1ecedcde5be35b67dbea0c98ecd
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/maintenance/rule-index.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:26acfda6ff7952cac1a3f849b7ed6f795838d8616b74901f187564c360e21ea0
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references-ja/01-purpose.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:27ede96085d3fe0d8d9a7a5982ec782fcbadc50bed9004ca8c3ce71a321fa5bd
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references-ja/02-context.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:142010e60f0cb23fe6c75d4bda909d2cc7bf00d9a59ecf8f936f37641b1a1810
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references-ja/03-test-strategy.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:7a6d959f74972762d65b95cc9b88d4a0897e5533acf434c89da0f4bf31f56d05
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references-ja/04-test-design.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:57752907065f7ff391fc589e0b5ead612c45caed1eb438157ea564b3723efa4f
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references-ja/05-implementation.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:ca33dac5495c7dc49103f4e545de56560d0d2b294e6d652c7072dab8c54340cd
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references-ja/06-self-review.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:266b698346817a2dd2febbefdbc06ebc413469190377851c0140976e03afffc4
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references/01-purpose.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:fe5404f92564818954911c6d103adabc26f30fab310a9e598c5830d0e21a8f80
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references/02-context.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:e16954c98bd3ce2fbcd2d1036bce76d9f968ef3c51be66e24b073c16e923ebe4
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references/03-test-strategy.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:60aff121a6d1eac0f0fc38bfe79060737fb9dc88d38e75db912441c6cdfe4c08
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references/04-test-design.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:ff8b6ea0d1fbc903d48b3d4156858f9defe368c5d9585c7329cd82fb8dd0ae4f
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references/05-implementation.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:af3ba88930ff7aedcbe64ff4f2c7c53cded3e4f72c2ba7e820db6e76a6badcab
+- kind: project-relative
+  target: agents
+  value: .agents/skills/guide-unit-tests/references/06-self-review.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:93597c3e941ad615ee6c22e12d90f38dae841b3c0c756eb2ef530123a17326ab
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apply-adversarial-verification
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apply-adversarial-verification/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: sha256:49325fd56c80da5a28a1aa64a8d82c44410c45e20f80295bd758cad09dbbbc6d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apply-adversarial-verification/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: sha256:2aaba3f321c49e8a70773843ee5f45dfd9251adef1711b927c235ba56db956e0
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apply-adversarial-verification/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: sha256:5ac3ab5b68a6f4d390e95b42cb6a5c73d47339dc96855161c1ddd191f0cdb8c7
+- kind: project-relative
+  target: claude
+  value: .claude/skills/bootstrap-repo-docs
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/bootstrap-repo-docs/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: sha256:015539233365ba8b9f2ca2bc25cb6969e26fa06b75f70853cc6a72158beb09f3
+- kind: project-relative
+  target: claude
+  value: .claude/skills/bootstrap-repo-docs/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: sha256:31e7c0182157007e1914c74b8621d7d573ab2f6e7e6b09245c297169dc81b3d0
+- kind: project-relative
+  target: claude
+  value: .claude/skills/bootstrap-repo-docs/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
+- kind: project-relative
+  target: claude
+  value: .claude/skills/edit-existing-document
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/edit-existing-document/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:1254f1b1e6ae4e98fb4e75437c43e0620fe7e29eb8921ce8202aa3e675f8801b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/edit-existing-document/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:68babd570ee60c7d8a73db850426527c9a8f782513d9a17ceb6fad4224746699
+- kind: project-relative
+  target: claude
+  value: .claude/skills/edit-existing-document/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:8092cbbfa847cc068b9437f1a5a60909ec3f711b662bed438673daf477381ebc
+- kind: project-relative
+  target: claude
+  value: .claude/skills/edit-existing-document/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
+- kind: project-relative
+  target: claude
+  value: .claude/skills/empirical-prompt-tuning
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/empirical-prompt-tuning/README.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: sha256:c7db7d27122bcffe416e5607700a7cd1778cad260d3e104c5bb6da7b7f976b3d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/empirical-prompt-tuning/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
+- kind: project-relative
+  target: claude
+  value: .claude/skills/empirical-prompt-tuning/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
+- kind: project-relative
+  target: claude
+  value: .claude/skills/grill-me
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grill-me
+  active_owner: mattpocock/skills/skills/productivity/grill-me
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/grill-me/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grill-me
+  active_owner: mattpocock/skills/skills/productivity/grill-me
+  content_hash: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
+- kind: project-relative
+  target: claude
+  value: .claude/skills/grill-me/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grill-me
+  active_owner: mattpocock/skills/skills/productivity/grill-me
+  content_hash: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/grilling
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/grilling/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
+- kind: project-relative
+  target: claude
+  value: .claude/skills/grilling/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:bd2c124242f496349489e7d425b7aaa1ec6e163b58d0ca27d3ddf0e20e5f7f44
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:11ee74d12d11059f66351d10b14873e4b13737fd32c5fc0fe62c49487dc394b9
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:67c9e114006ab290de574103742af38e53550cfb4f30dbdc3cf6dce85aa4da19
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:c834a9d04f74685748dde7fd3eb603a9d7283e7a05ea17e57cf215ae23f06090
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:2e5f371288bce9bf72c68ca3ecc338939adab4288ad9553811a76152e91dd09b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/evals/fixtures/checkout-service.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:ee22e267415808bbec9df8c3460af13307f3ec3047c618b2a2747c3e223de07d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/maintenance-ja/architecture.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:391633e969be12e38435d5a1bba8d5fd3add9f89c3d64c6eead2063479b4c2a9
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:8b7adc6384f6542fe82731ff8c50cb9d9ea7910bf160c57e6c77a7555521fef0
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/maintenance/architecture.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:013a53768001c8791138402a1597de5553392b6bcbe534e30cc2a889d97e7699
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:82d23d059e6ee747e24fd46520c071bf5596338d0fcf248246edb178d247d4de
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:4ad43ea753e50a2dca84a498d3c287daec68b626f25cdf91eb4e7889767f5d0b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-automated-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:79a6cc768c69939cc068261464b89c4c1edea18ce36dfdf4c8cfd9721013f12d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:37d8804a68714b14ab6cc5e590396ecfafd5dfe2cd844bf57df027065d84fa5c
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:8f695e5448b0813280b011ff4c9167e684451d2d500ebe91b60c4aeb662fea77
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:ee1907fca84cc84bb9cf36e40ec9c3ba79ece3cf785440cc098dba422e0cddec
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:6ddc0935d87545b51bd592e709078c63c816c9fc60a7854f295af4a130f53bb4
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:8772c7fe77e83fc60298effd73ecaa2e56655ba3fda4e2f1e7462e3e8b5bcfbd
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/evals/fixtures/local-e2e-boundary.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:37da50a9b32d036a405ec1d7841cf8880c4ca7b7bedaec11f7a5ebba76642a96
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:b073cfdbfbc11b26c2281d886b18679bfee1b658578a34a22b454f987c0483fe
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:93f62fbbec96d2a9f80ae031263cdcf6f04452405f8405b8ab17006302bc6a0d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:477e324aea1dedac117aeaf5a0f342f183dcbd172888051db42a632ef1d205c7
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-e2e-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:dd7ad27366b5cefa6b7bc68e493a2549fae83d6a9ccf7755f2edf62f4ac4182b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:2bd9ee7e42143769dad2270b3695975d66cefac560cd2e6fc4a0044774c8b49b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:ccab2fa75a6fb2c702b49a181a4e7dc34f5adc687ae9e0803674c110d8816806
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:6e780b5ad8c0709adca4cca906175eb33b2b9a8a8a6a6ea6e2539ca5dbece06b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:f879c263f500b9433f7111ab69cb82b4e4b6163782189b5b2da8d179f3eb5008
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:5639a41d075bce5f6a275372d93b9a33bc354caf74ce0fd2ab2391ce8cc4ad84
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/evals/fixtures/user-repository.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:bf07301fb263c7d02b2e54f2b52bdefcde21e33ba4971a523b0368d34194eb7e
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:20c65e5f4a9b45807f5888519a9d59029cb87cb9f6845caa24ba48f6bc896145
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:5440abf1dbef93e1b4fc07acdbaf30956d4d30b71cccf91fd80c43f93c4e3ff7
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:f47df9542d0d9c1145d690a976781f07a7f0c129fcaa6f580f80c49672ed8c32
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-integration-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:9f03c2cde8d8cc40fea50752cf2a2ab3036560df101444b633bb62483c8585e6
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:5342497c918bc9534e3e0770c2a0b34485125efb8984f26061304f28f41766e1
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:5c1f68e3c242c078b28fdc307434b0cce506d757db9cac4f5d09a1efdfac6755
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:f70e5d65684f26816b451b20292317b897ebed3a4987ea086bba3191fcd23fe2
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:f1ee2b73d2e8f1f4ed430742d261d14dfc99741a689410e52309b70143d7d258
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:bcea86703280eab0efb6b6ae14af71e704ff5a7af3ff09b97f86b871e8831961
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/evals/fixtures/subscription-service.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:c7021aed479d6756bec7f810615e3966930864e09867ab85d201a42505d52ddd
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:32033e2481f2be61916733dd917b1d8455de1fbbfa98c0c4c7f516bdb0aaa375
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:21e5c0cb87a1c315f88198ee7e62c16f7a5c00d808f4a5f9d08086b558d58570
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:91232188587cec08faa35cd66c2f0da46429750def6a67244a255b705c3fba43
+- kind: project-relative
+  target: claude
+  value: .claude/skills/guide-unit-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:4192b02d188ab4d0a18be2cd1e2cf83ffc672326a3e55d2b29304d181baf634d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/refine-reasoning-logic
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/refine-reasoning-logic/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: sha256:ef42d24295a56efd711e66495d309d5a534bf187e134a47c4f92714dfc5189dc
+- kind: project-relative
+  target: claude
+  value: .claude/skills/refine-reasoning-logic/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: sha256:2e0d160cdc0a4fbd58c5b9ecf573343e5ee133d58235bf76f351c306b2c5a381
+- kind: project-relative
+  target: claude
+  value: .claude/skills/refine-reasoning-logic/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: sha256:0f02a4a783a6db60c9a3b8b45967eb9bfc0748870377bc571af120f03b970ad2
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-essential-code
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-essential-code/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:2438682b74a62acc3aa0252b30208ca51ddeb345b3223395723d964d8a45cb28
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-essential-code/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:5d4d49e15354a3bdd085cc3c78fb01e6432e9ba400b0c1a97a67f49da8d17b54
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-essential-code/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:efebbb0626d7b020b9c0c62f9a9809e4711183d7b731a6f75d130dcbecab3967
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-essential-code/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:94aa0dd8d18d64527cfaa416e0b69324e44f4a3c7709291221dbdda807d184eb
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-english-writing
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-english-writing/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:227231d701788c91088997904ed11bf7b5cbec3a4eb6d0032cb168f617d3ba1d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-english-writing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:8073e83e8aea65288a54d927d01d9c87f2db872612a79e84bed29bacd58f5789
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-english-writing/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:c886479fec2bad3a4cd22f284e792d525b1f622e0d3496dbbf5db6ac4334c450
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-english-writing/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-japanese-writing
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-japanese-writing/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-japanese-writing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-japanese-writing/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/revise-japanese-writing/references/idea.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/CHANGELOG.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:fe2f1484ef02abf22efc09def89bac186a2235831fd0da13d4895edb19cc6dd0
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/LICENSE
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:2e2b2beaf41cc0ce28485455a62aed81777cdcdf68702e142427aef1cd720f2c
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/README.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:d5c699e712e62d286aa4314e6b4ba02cde7a9da36ce56102660f98d1a8ceebba
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:7432a1d9ebdd42b27666da8458af252edf549f723fb14bcd4791425103930310
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:49c592899eb4457f95d0767e15e3143569e2cef50f2927c3174e62432984cd3d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/references/phrases.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:4ca1b7e97123b5c67eff3dc97e5e977332e0b24021265c1553888a93ec33fa93
+- kind: project-relative
+  target: claude
+  value: .claude/skills/stop-slop/references/structures.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:ffbf1316c7fb5aaf552de005609a64a9639b546ecd76bfb0e482864d5bbe6f58
+- kind: project-relative
+  target: claude
+  value: .claude/skills/suggest-commit-messages
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/suggest-commit-messages/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: sha256:9c3391a770f24fa7504ed846a42e942323855823fbed598c6dfea3d3df2533b2
+- kind: project-relative
+  target: claude
+  value: .claude/skills/suggest-commit-messages/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: sha256:49d468a6a3b5fb54571cd448321524db54441b95ed6bcb10998a1f3469c38450
+- kind: project-relative
+  target: claude
+  value: .claude/skills/suggest-commit-messages/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: sha256:563387fbcbc5b827ffa36edc034be437a88b18f9e94713264fa29feca0d341be
+- kind: project-relative
+  target: claude
+  value: .claude/skills/summarize-discussion-coherently
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/summarize-discussion-coherently/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: sha256:dbef87d7ba102b990eeb2fa9de2cce1ac24870604d9983773927861683cb5280
+- kind: project-relative
+  target: claude
+  value: .claude/skills/summarize-discussion-coherently/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: sha256:79e982651c71790cb11bb939284b7e0fe600427e2bd18eb7139fedbe55a483d9
+- kind: project-relative
+  target: claude
+  value: .claude/skills/summarize-discussion-coherently/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: sha256:1d14c160d7fdeb8cd2d39864643d1bfca7c898963c50845da78c1cb377ada756
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/apply-adversarial-verification
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/apply-adversarial-verification/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: sha256:49325fd56c80da5a28a1aa64a8d82c44410c45e20f80295bd758cad09dbbbc6d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/apply-adversarial-verification/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: sha256:2aaba3f321c49e8a70773843ee5f45dfd9251adef1711b927c235ba56db956e0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/apply-adversarial-verification/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/apply-adversarial-verification
+  active_owner: zawa-kyo/skills/thinking/apply-adversarial-verification
+  content_hash: sha256:5ac3ab5b68a6f4d390e95b42cb6a5c73d47339dc96855161c1ddd191f0cdb8c7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/bootstrap-repo-docs
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/bootstrap-repo-docs/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: sha256:015539233365ba8b9f2ca2bc25cb6969e26fa06b75f70853cc6a72158beb09f3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/bootstrap-repo-docs/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: sha256:31e7c0182157007e1914c74b8621d7d573ab2f6e7e6b09245c297169dc81b3d0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/bootstrap-repo-docs/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/bootstrap-repo-docs
+  active_owner: zawa-kyo/skills/dev/bootstrap-repo-docs
+  content_hash: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/edit-existing-document
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/edit-existing-document/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:1254f1b1e6ae4e98fb4e75437c43e0620fe7e29eb8921ce8202aa3e675f8801b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/edit-existing-document/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:68babd570ee60c7d8a73db850426527c9a8f782513d9a17ceb6fad4224746699
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/edit-existing-document/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:8092cbbfa847cc068b9437f1a5a60909ec3f711b662bed438673daf477381ebc
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/edit-existing-document/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/edit-existing-document
+  active_owner: zawa-kyo/skills/writing/edit-existing-document
+  content_hash: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/empirical-prompt-tuning
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/empirical-prompt-tuning/README.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: sha256:c7db7d27122bcffe416e5607700a7cd1778cad260d3e104c5bb6da7b7f976b3d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/empirical-prompt-tuning/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/empirical-prompt-tuning/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/meta/empirical-prompt-tuning
+  active_owner: mizchi/skills/meta/empirical-prompt-tuning
+  content_hash: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/grill-me
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grill-me
+  active_owner: mattpocock/skills/skills/productivity/grill-me
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/grill-me/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grill-me
+  active_owner: mattpocock/skills/skills/productivity/grill-me
+  content_hash: sha256:6189dfceb7304a6e5558f75d87e68fa3bc7fcf7ba120e44f21f8a61fe01eba54
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/grill-me/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grill-me
+  active_owner: mattpocock/skills/skills/productivity/grill-me
+  content_hash: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/grilling
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/grilling/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/grilling/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:bd2c124242f496349489e7d425b7aaa1ec6e163b58d0ca27d3ddf0e20e5f7f44
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:11ee74d12d11059f66351d10b14873e4b13737fd32c5fc0fe62c49487dc394b9
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:67c9e114006ab290de574103742af38e53550cfb4f30dbdc3cf6dce85aa4da19
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:c834a9d04f74685748dde7fd3eb603a9d7283e7a05ea17e57cf215ae23f06090
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:2e5f371288bce9bf72c68ca3ecc338939adab4288ad9553811a76152e91dd09b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/evals/fixtures/checkout-service.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:ee22e267415808bbec9df8c3460af13307f3ec3047c618b2a2747c3e223de07d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/maintenance-ja/architecture.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:391633e969be12e38435d5a1bba8d5fd3add9f89c3d64c6eead2063479b4c2a9
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:8b7adc6384f6542fe82731ff8c50cb9d9ea7910bf160c57e6c77a7555521fef0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/maintenance/architecture.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:013a53768001c8791138402a1597de5553392b6bcbe534e30cc2a889d97e7699
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:82d23d059e6ee747e24fd46520c071bf5596338d0fcf248246edb178d247d4de
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:4ad43ea753e50a2dca84a498d3c287daec68b626f25cdf91eb4e7889767f5d0b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-automated-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-automated-tests
+  active_owner: zawa-kyo/skills/dev/guide-automated-tests
+  content_hash: sha256:79a6cc768c69939cc068261464b89c4c1edea18ce36dfdf4c8cfd9721013f12d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:37d8804a68714b14ab6cc5e590396ecfafd5dfe2cd844bf57df027065d84fa5c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:8f695e5448b0813280b011ff4c9167e684451d2d500ebe91b60c4aeb662fea77
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:ee1907fca84cc84bb9cf36e40ec9c3ba79ece3cf785440cc098dba422e0cddec
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:6ddc0935d87545b51bd592e709078c63c816c9fc60a7854f295af4a130f53bb4
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:8772c7fe77e83fc60298effd73ecaa2e56655ba3fda4e2f1e7462e3e8b5bcfbd
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/evals/fixtures/local-e2e-boundary.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:37da50a9b32d036a405ec1d7841cf8880c4ca7b7bedaec11f7a5ebba76642a96
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:b073cfdbfbc11b26c2281d886b18679bfee1b658578a34a22b454f987c0483fe
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:93f62fbbec96d2a9f80ae031263cdcf6f04452405f8405b8ab17006302bc6a0d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:477e324aea1dedac117aeaf5a0f342f183dcbd172888051db42a632ef1d205c7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-e2e-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-e2e-tests
+  active_owner: zawa-kyo/skills/dev/guide-e2e-tests
+  content_hash: sha256:dd7ad27366b5cefa6b7bc68e493a2549fae83d6a9ccf7755f2edf62f4ac4182b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:2bd9ee7e42143769dad2270b3695975d66cefac560cd2e6fc4a0044774c8b49b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:ccab2fa75a6fb2c702b49a181a4e7dc34f5adc687ae9e0803674c110d8816806
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:6e780b5ad8c0709adca4cca906175eb33b2b9a8a8a6a6ea6e2539ca5dbece06b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:f879c263f500b9433f7111ab69cb82b4e4b6163782189b5b2da8d179f3eb5008
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:5639a41d075bce5f6a275372d93b9a33bc354caf74ce0fd2ab2391ce8cc4ad84
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/evals/fixtures/user-repository.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:bf07301fb263c7d02b2e54f2b52bdefcde21e33ba4971a523b0368d34194eb7e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:20c65e5f4a9b45807f5888519a9d59029cb87cb9f6845caa24ba48f6bc896145
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:5440abf1dbef93e1b4fc07acdbaf30956d4d30b71cccf91fd80c43f93c4e3ff7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:f47df9542d0d9c1145d690a976781f07a7f0c129fcaa6f580f80c49672ed8c32
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-integration-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-integration-tests
+  active_owner: zawa-kyo/skills/dev/guide-integration-tests
+  content_hash: sha256:9f03c2cde8d8cc40fea50752cf2a2ab3036560df101444b633bb62483c8585e6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:5342497c918bc9534e3e0770c2a0b34485125efb8984f26061304f28f41766e1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:5c1f68e3c242c078b28fdc307434b0cce506d757db9cac4f5d09a1efdfac6755
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:f70e5d65684f26816b451b20292317b897ebed3a4987ea086bba3191fcd23fe2
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:f1ee2b73d2e8f1f4ed430742d261d14dfc99741a689410e52309b70143d7d258
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:bcea86703280eab0efb6b6ae14af71e704ff5a7af3ff09b97f86b871e8831961
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/evals/fixtures/subscription-service.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:c7021aed479d6756bec7f810615e3966930864e09867ab85d201a42505d52ddd
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/maintenance-ja/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:32033e2481f2be61916733dd917b1d8455de1fbbfa98c0c4c7f516bdb0aaa375
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/maintenance/sources.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:21e5c0cb87a1c315f88198ee7e62c16f7a5c00d808f4a5f9d08086b558d58570
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/references-ja/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:91232188587cec08faa35cd66c2f0da46429750def6a67244a255b705c3fba43
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/guide-unit-tests/references/guidance.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/guide-unit-tests
+  active_owner: zawa-kyo/skills/dev/guide-unit-tests
+  content_hash: sha256:4192b02d188ab4d0a18be2cd1e2cf83ffc672326a3e55d2b29304d181baf634d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/refine-reasoning-logic
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/refine-reasoning-logic/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: sha256:ef42d24295a56efd711e66495d309d5a534bf187e134a47c4f92714dfc5189dc
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/refine-reasoning-logic/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: sha256:2e0d160cdc0a4fbd58c5b9ecf573343e5ee133d58235bf76f351c306b2c5a381
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/refine-reasoning-logic/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/refine-reasoning-logic
+  active_owner: zawa-kyo/skills/thinking/refine-reasoning-logic
+  content_hash: sha256:0f02a4a783a6db60c9a3b8b45967eb9bfc0748870377bc571af120f03b970ad2
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/review-essential-code
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/review-essential-code/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:2438682b74a62acc3aa0252b30208ca51ddeb345b3223395723d964d8a45cb28
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/review-essential-code/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:5d4d49e15354a3bdd085cc3c78fb01e6432e9ba400b0c1a97a67f49da8d17b54
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/review-essential-code/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:efebbb0626d7b020b9c0c62f9a9809e4711183d7b731a6f75d130dcbecab3967
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/review-essential-code/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/review-essential-code
+  active_owner: zawa-kyo/skills/dev/review-essential-code
+  content_hash: sha256:94aa0dd8d18d64527cfaa416e0b69324e44f4a3c7709291221dbdda807d184eb
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-english-writing
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-english-writing/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:227231d701788c91088997904ed11bf7b5cbec3a4eb6d0032cb168f617d3ba1d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-english-writing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:8073e83e8aea65288a54d927d01d9c87f2db872612a79e84bed29bacd58f5789
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-english-writing/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:c886479fec2bad3a4cd22f284e792d525b1f622e0d3496dbbf5db6ac4334c450
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-english-writing/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-english-writing
+  active_owner: zawa-kyo/skills/writing/revise-english-writing
+  content_hash: sha256:28d312b8f337423739aa5498601118d564d13321685ac7053624b9dc5b266ffb
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-japanese-writing
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-japanese-writing/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-japanese-writing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-japanese-writing/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/revise-japanese-writing/references/idea.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/revise-japanese-writing
+  active_owner: zawa-kyo/skills/writing/revise-japanese-writing
+  content_hash: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/CHANGELOG.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:fe2f1484ef02abf22efc09def89bac186a2235831fd0da13d4895edb19cc6dd0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/LICENSE
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:2e2b2beaf41cc0ce28485455a62aed81777cdcdf68702e142427aef1cd720f2c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/README.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:d5c699e712e62d286aa4314e6b4ba02cde7a9da36ce56102660f98d1a8ceebba
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:7432a1d9ebdd42b27666da8458af252edf549f723fb14bcd4791425103930310
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:49c592899eb4457f95d0767e15e3143569e2cef50f2927c3174e62432984cd3d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/references/phrases.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:4ca1b7e97123b5c67eff3dc97e5e977332e0b24021265c1553888a93ec33fa93
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/stop-slop/references/structures.md
+  runtime: null
+  scope: project
+  owners:
+  - hardikpandya/stop-slop
+  active_owner: hardikpandya/stop-slop
+  content_hash: sha256:ffbf1316c7fb5aaf552de005609a64a9639b546ecd76bfb0e482864d5bbe6f58
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/suggest-commit-messages
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/suggest-commit-messages/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: sha256:9c3391a770f24fa7504ed846a42e942323855823fbed598c6dfea3d3df2533b2
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/suggest-commit-messages/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: sha256:49d468a6a3b5fb54571cd448321524db54441b95ed6bcb10998a1f3469c38450
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/suggest-commit-messages/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/dev/suggest-commit-messages
+  active_owner: zawa-kyo/skills/dev/suggest-commit-messages
+  content_hash: sha256:563387fbcbc5b827ffa36edc034be437a88b18f9e94713264fa29feca0d341be
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/summarize-discussion-coherently
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/summarize-discussion-coherently/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: sha256:dbef87d7ba102b990eeb2fa9de2cce1ac24870604d9983773927861683cb5280
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/summarize-discussion-coherently/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: sha256:79e982651c71790cb11bb939284b7e0fe600427e2bd18eb7139fedbe55a483d9
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/summarize-discussion-coherently/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/summarize-discussion-coherently
+  active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
+  content_hash: sha256:1d14c160d7fdeb8cd2d39864643d1bfca7c898963c50845da78c1cb377ada756
