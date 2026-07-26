@@ -3,7 +3,7 @@ return {
 
   cond = not vim.g.vscode,
   keys = {
-    { "J", "<Cmd>HopWord<CR>", desc = "Hop to word" },
+    { "gl", "<Cmd>HopLine<CR>", desc = "Hop to line" },
   },
 
   config = function()

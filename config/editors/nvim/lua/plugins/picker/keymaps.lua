@@ -7,9 +7,19 @@ local function picker()
   return require("snacks").picker
 end
 
+-- Search lines in the current buffer.
+local function search_buffer_lines()
+  picker().lines()
+end
+
 local colorscheme_picker = require("plugins.picker.colorschemes")
 
 M.keys = {
+  {
+    "/",
+    search_buffer_lines,
+    desc = "Search lines in current buffer",
+  },
   {
     "sb",
     function()
@@ -250,9 +260,7 @@ M.keys = {
   },
   {
     "sw",
-    function()
-      picker().lines()
-    end,
+    search_buffer_lines,
     desc = "Search lines in current buffer",
   },
   {
@@ -291,6 +299,7 @@ M.vscode = function()
   utils.vscode_map("sf", "workbench.action.quickOpen", "Search files in workspace (VSCode)")
   utils.vscode_map("sW", "workbench.action.findInFiles", "Search words in workspace (VSCode)")
   utils.vscode_map("sw", "actions.find", "Search words in file (VSCode)")
+  utils.vscode_map("/", "actions.find", "Search words in file (VSCode)")
 end
 
 return M
