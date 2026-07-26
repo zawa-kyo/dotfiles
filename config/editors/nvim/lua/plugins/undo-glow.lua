@@ -49,6 +49,7 @@ return {
             animation_type = "strobe",
           },
         })
+        require("hlslens").start()
       end,
       mode = "n",
       desc = "Search next with glow",
@@ -62,6 +63,7 @@ return {
             animation_type = "strobe",
           },
         })
+        require("hlslens").start()
       end,
       mode = "n",
       desc = "Search prev with glow",

@@ -41,8 +41,8 @@ local options = {
   hlsearch = true,
   -- Ignore case when searching by default
   ignorecase = true,
-  -- Avoid native incsearch errors when flash.nvim consumes search labels
-  incsearch = false,
+  -- Show matches while typing a search pattern
+  incsearch = true,
   -- Enable mouse support
   mouse = "a",
   -- Reduce trackpad/mouse scroll speed (default: ver:3,hor:6)
