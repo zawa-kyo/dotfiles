@@ -16,11 +16,6 @@ local colorscheme_picker = require("plugins.picker.colorschemes")
 
 M.keys = {
   {
-    "/",
-    search_buffer_lines,
-    desc = "Search lines in current buffer",
-  },
-  {
     "sb",
     function()
       picker().buffers()
