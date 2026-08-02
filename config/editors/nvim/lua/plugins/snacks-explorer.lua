@@ -14,6 +14,7 @@ local function configure_preview_window(picker)
   preview.opts.row = nil
   preview.opts.col = 1
   preview.opts.border = "rounded"
+  preview:update()
 end
 
 -- Return explorer options with preview rendered in the main editor window.
@@ -22,7 +23,7 @@ local function explorer_opts()
     on_show = configure_preview_window,
     layout = {
       preset = "sidebar",
-      preview = { enabled = false, main = true },
+      preview = { enabled = true, main = true },
     },
   })
 end
