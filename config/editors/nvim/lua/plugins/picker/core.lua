@@ -1,8 +1,13 @@
 local picker_keymaps = require("plugins.picker.keymaps")
-local snacks_toggles = require("config.snacks-toggles")
+local file_visibility = require("config.file-visibility")
 
 if vim.g.vscode then
   picker_keymaps.vscode()
+end
+
+-- Synchronize visibility after closing a file-navigation picker.
+local function sync_file_visibility(picker)
+  file_visibility.sync_navigation(picker.opts)
 end
 
 return {
@@ -18,10 +23,13 @@ return {
           picker.list:select()
         end,
       },
-      on_close = function(picker)
-        snacks_toggles.sync_from_opts(picker.opts)
-      end,
       sources = {
+        explorer = {
+          on_close = sync_file_visibility,
+        },
+        files = {
+          on_close = sync_file_visibility,
+        },
         buffers = {
           win = {
             input = {

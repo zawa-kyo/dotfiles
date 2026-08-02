@@ -1,7 +1,7 @@
 local M = {}
 
 local snippets = require("plugins.picker.snippets")
-local snacks_toggles = require("config.snacks-toggles")
+local file_visibility = require("config.file-visibility")
 
 local function picker()
   return require("snacks").picker
@@ -25,7 +25,7 @@ M.keys = {
   {
     "sB",
     function()
-      picker().grep(vim.tbl_extend("force", { buffers = true }, snacks_toggles.opts()))
+      picker().grep({ buffers = true })
     end,
     desc = "Search words in current buffers",
   },
@@ -53,7 +53,7 @@ M.keys = {
   {
     "sf",
     function()
-      picker().files(snacks_toggles.opts())
+      picker().files(file_visibility.navigation_opts())
     end,
     desc = "Search files in workspace",
   },
@@ -88,7 +88,7 @@ M.keys = {
   {
     "sgF",
     function()
-      picker().git_files(snacks_toggles.opts())
+      picker().git_files()
     end,
     desc = "Search git files",
   },
@@ -261,7 +261,7 @@ M.keys = {
   {
     "sW",
     function()
-      picker().grep(snacks_toggles.opts())
+      picker().grep(file_visibility.search_opts())
     end,
     desc = "Search words in workspace",
   },
@@ -275,16 +275,16 @@ M.keys = {
   {
     "th", -- toggle hidden files
     function()
-      snacks_toggles.toggle_hidden()
+      file_visibility.toggle_hidden()
     end,
-    desc = "Toggle snacks hidden files",
+    desc = "Toggle dotfiles in file navigation",
   },
   {
     "ti", -- toggle ignored files
     function()
-      snacks_toggles.toggle_ignored()
+      file_visibility.toggle_ignored()
     end,
-    desc = "Toggle snacks ignored files",
+    desc = "Toggle Git-ignored files in file navigation",
   },
 }
 
