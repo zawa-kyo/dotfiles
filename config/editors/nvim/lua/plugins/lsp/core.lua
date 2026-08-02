@@ -10,6 +10,21 @@ local servers = {
   "ts_ls", -- TypeScript
 }
 
+local required_executables = {
+  rust_analyzer = { vim.env.RUSTC or "rustc", "cargo" },
+}
+
+-- Return whether a server's external runtime dependencies are available.
+local function can_enable(server)
+  for _, executable in ipairs(required_executables[server] or {}) do
+    if vim.fn.executable(executable) == 0 then
+      return false
+    end
+  end
+
+  return true
+end
+
 return {
   {
     "folke/neoconf.nvim",
@@ -68,7 +83,9 @@ return {
             on_attach = common.on_attach,
           })
         )
-        vim.lsp.enable(server)
+        if can_enable(server) then
+          vim.lsp.enable(server)
+        end
       end
 
       if type(mason_lspconfig.setup_handlers) == "function" then
