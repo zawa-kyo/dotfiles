@@ -1,11 +1,6 @@
 local utils = require("config.utils")
 local file_visibility = require("config.file-visibility")
 
-if not vim.g.vscode then
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
-end
-
 if vim.g.vscode then
   utils.vscode_map("te", "workbench.action.toggleSidebarVisibility", "Toggle Explorer (VSCode)")
   utils.vscode_map("re", "workbench.action.toggleSidebarVisibility", "Show Explorer (VSCode)")

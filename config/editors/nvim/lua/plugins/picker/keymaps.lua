@@ -277,14 +277,14 @@ M.keys = {
     function()
       file_visibility.toggle_hidden()
     end,
-    desc = "Toggle snacks hidden files",
+    desc = "Toggle dotfiles in file navigation",
   },
   {
     "ti", -- toggle ignored files
     function()
       file_visibility.toggle_ignored()
     end,
-    desc = "Toggle snacks ignored files",
+    desc = "Toggle Git-ignored files in file navigation",
   },
 }
 

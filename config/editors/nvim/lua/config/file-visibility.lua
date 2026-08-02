@@ -1,7 +1,7 @@
 local M = {}
-local file_ignore = require("config.ignore")
+local file_exclusions = require("config.file-exclusions")
 
-M.state = {
+local state = {
   hidden = true,
   ignored = false,
 }
@@ -17,14 +17,9 @@ local function notify(name, visible)
   })
 end
 
--- Return open explorer pickers without requiring Snacks during startup.
+-- Return open explorer pickers on the current tab.
 local function active_explorers()
-  local ok, snacks = pcall(require, "snacks")
-  if not ok or not snacks.picker then
-    return {}
-  end
-
-  return snacks.picker.get({ source = "explorer" }) or {}
+  return require("snacks").picker.get({ source = "explorer" })
 end
 
 -- Toggle a visibility option and refresh any open explorer pickers.
@@ -33,12 +28,12 @@ local function toggle(name)
   local current = explorers[1] and explorers[1].opts[name]
   local value
   if current == nil then
-    value = not M.state[name]
+    value = not state[name]
   else
     value = not current
   end
 
-  M.state[name] = value
+  state[name] = value
   for _, picker in ipairs(explorers) do
     if not picker.closed and picker.opts[name] ~= value then
       picker:action("toggle_" .. name)
@@ -59,9 +54,9 @@ end
 -- Return shared visibility options for file navigation.
 function M.navigation_opts()
   return {
-    hidden = M.state.hidden,
-    ignored = M.state.ignored,
-    exclude = file_ignore.exact_names,
+    hidden = state.hidden,
+    ignored = state.ignored,
+    exclude = file_exclusions.names,
   }
 end
 
@@ -70,7 +65,7 @@ function M.search_opts()
   return {
     hidden = true,
     ignored = false,
-    exclude = file_ignore.exact_names,
+    exclude = file_exclusions.names,
   }
 end
 
@@ -80,10 +75,10 @@ function M.sync_navigation(opts)
     return
   end
   if opts.hidden ~= nil then
-    M.state.hidden = opts.hidden
+    state.hidden = opts.hidden
   end
   if opts.ignored ~= nil then
-    M.state.ignored = opts.ignored
+    state.ignored = opts.ignored
   end
 end
 

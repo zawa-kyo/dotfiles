@@ -5,6 +5,11 @@ if vim.g.vscode then
   picker_keymaps.vscode()
 end
 
+-- Synchronize visibility after closing a file-navigation picker.
+local function sync_file_visibility(picker)
+  file_visibility.sync_navigation(picker.opts)
+end
+
 return {
   "folke/snacks.nvim",
 
@@ -18,12 +23,13 @@ return {
           picker.list:select()
         end,
       },
-      on_close = function(picker)
-        if picker.opts.source == "explorer" or picker.opts.source == "files" then
-          file_visibility.sync_navigation(picker.opts)
-        end
-      end,
       sources = {
+        explorer = {
+          on_close = sync_file_visibility,
+        },
+        files = {
+          on_close = sync_file_visibility,
+        },
         buffers = {
           win = {
             input = {
