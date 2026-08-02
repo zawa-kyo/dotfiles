@@ -44,15 +44,15 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/477075557"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.8"
+version = "2.36.14"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.8.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.14.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:a8f412bd2152706ad3699e7d5ae80cacbfc0b98505e6d90a5ba122c869bedce9"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.8.pkg"
+checksum = "blake3:46ca0cafd6f5ec600d14a5e430a77ce8a2d0099548029bae8aa8aa25caee3c70"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.14.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -105,18 +105,18 @@ url = "https://github.com/sorafujitani/ccsession/releases/download/v1.1.0/ccsess
 url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/468889631"
 
 [[tools.copilot]]
-version = "1.0.72"
+version = "1.0.76"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:2a79c76a6381a09d8e96dde2affc22cfd33363503482a4f90a06c546bd9e1ccd"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.72/copilot-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/483734826"
+checksum = "sha256:56a98decbd01732951b0f8caa9ab32bc1293c27897292c216ea593701c8b2988"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.76/copilot-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/494736457"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:e1bcd770a4db0756198ff0cc3b7bc9282e03160c32c98b7c4a73e439b0693f0e"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.72/copilot-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/483734787"
+checksum = "sha256:291391b420c2c0d24b995127855ccbc8b68b274640d6e88fa888536c40eb4362"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.76/copilot-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/494736313"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -131,16 +131,16 @@ checksum = "sha256:9be36612a5a13e9e386dc498fb8e50dc87c72ee42b63db0ea05b32f99a72a
 url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-aarch64-apple-darwin.tar.gz"
 
 [[tools.deno]]
-version = "2.9.3"
+version = "2.9.4"
 backend = "core:deno"
 
 [tools.deno."platforms.linux-x64"]
-checksum = "sha256:c4b10edac3e33cba510bd0e5783526d753a148071a9f0e86c693ea48b50512f2"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:c24f955d9fbfe0ea5ae2b501c8e71ae76e31e4c9782390a54a284b3364fda725"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.macos-arm64"]
-checksum = "sha256:fecdfd2f962061c796eda4ce4c5753fdec33cdea4af4b5d1c513cf68f4e98955"
-url = "https://dl.deno.land/release/v2.9.3/deno-aarch64-apple-darwin.zip"
+checksum = "sha256:6d17647fdbf9c587a581dba205054c4ccf732dae0a196cc1e9b44c07589db412"
+url = "https://dl.deno.land/release/v2.9.4/deno-aarch64-apple-darwin.zip"
 
 [[tools.eza]]
 version = "0.23.4"
@@ -297,19 +297,19 @@ checksum = "sha256:124e5c44dd05abd8f2019bb23e31cc32d700e7f2f15f74692afde53b8c30a
 url = "https://github.com/orf/gping/releases/download/gping-v1.20.4/gping-macOS-arm64.tar.gz"
 
 [[tools.java]]
-version = "26.0.1"
+version = "26.0.2"
 backend = "core:java"
 
 [tools.java.options]
 shorthand_vendor = "openjdk"
 
 [tools.java."platforms.linux-x64"]
-checksum = "sha256:2f2802d57b5fc414f1ddf6648ba12cc9a6454cf67b32ac95407c018f2e6ab0b0"
-url = "https://download.java.net/java/GA/jdk26.0.1/458fda22e4c54d5ba572ab8d2b22eb83/8/GPL/openjdk-26.0.1_linux-x64_bin.tar.gz"
+checksum = "sha256:2da09e9db53e5c4f9eeec045f49e7d8fbcd8e4153edbf0c269f520ff82fd4198"
+url = "https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_linux-x64_bin.tar.gz"
 
 [tools.java."platforms.macos-arm64"]
-checksum = "sha256:b2d57405194a312ed4ec6ec08e83b314d3fd2e425e895d704ec5ef8ea6059e17"
-url = "https://download.java.net/java/GA/jdk26.0.1/458fda22e4c54d5ba572ab8d2b22eb83/8/GPL/openjdk-26.0.1_macos-aarch64_bin.tar.gz"
+checksum = "sha256:c99b35ad3063ef555361a243c44280b048e24e3cbbc4a59ee3b368e5a8958f3a"
+url = "https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_macos-aarch64_bin.tar.gz"
 
 [[tools.jq]]
 version = "1.8.2"
@@ -350,18 +350,18 @@ url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 
 [[tools.maestro]]
-version = "cli-2.6.1"
+version = "cli-2.7.0"
 backend = "github:mobile-dev-inc/maestro"
 
 [tools.maestro."platforms.linux-x64"]
-checksum = "sha256:3440825f514f537c6a96bcf5de995780c2a4a7f83a43208fdc95d4f1fecfad3b"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.6.1/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/445637237"
+checksum = "sha256:a4ccab6b604617e7aef6db4f885666056eabe5cfa32befaa3bc994041b8fcbb5"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.7.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/483681911"
 
 [tools.maestro."platforms.macos-arm64"]
-checksum = "sha256:3440825f514f537c6a96bcf5de995780c2a4a7f83a43208fdc95d4f1fecfad3b"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.6.1/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/445637237"
+checksum = "sha256:a4ccab6b604617e7aef6db4f885666056eabe5cfa32befaa3bc994041b8fcbb5"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.7.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/483681911"
 
 [[tools.neovim]]
 version = "0.12.4"
@@ -541,7 +541,7 @@ url = "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.aarch64"
 url_api = "https://api.github.com/repos/tsl0922/ttyd/releases/assets/159377644"
 
 [[tools.uv]]
-version = "0.11.32"
+version = "0.12.1"
 backend = "asdf:uv"
 
 [[tools.vhs]]
