@@ -44,6 +44,40 @@ local function is_floating_window(win)
   return vim.api.nvim_win_get_config(win).relative ~= ""
 end
 
+-- Check if a window belongs to the persistent Snacks explorer.
+-- @param win integer
+-- @return boolean
+local function is_explorer_window(win)
+  local snacks = package.loaded["snacks"]
+  if not snacks or not snacks.picker then
+    return false
+  end
+
+  for _, picker in ipairs(snacks.picker.get({ source = "explorer" })) do
+    local layout = picker.layout
+    if layout then
+      local windows = { layout.root }
+      vim.list_extend(windows, vim.tbl_values(layout.wins or {}))
+      vim.list_extend(windows, vim.tbl_values(layout.box_wins or {}))
+
+      for _, picker_win in ipairs(windows) do
+        if picker_win and picker_win.win == win then
+          return true
+        end
+      end
+    end
+  end
+
+  return false
+end
+
+-- Check if Escape may close a floating window.
+-- @param win integer
+-- @return boolean
+local function is_closable_floating_window(win)
+  return is_floating_window(win) and not is_explorer_window(win)
+end
+
 -- Check if a window is a Noice window
 -- @param win integer
 -- @return boolean
@@ -76,7 +110,7 @@ local function close_window()
     return
   end
 
-  if close_windows(is_floating_window) then
+  if close_windows(is_closable_floating_window) then
     return
   end
 

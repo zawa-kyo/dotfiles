@@ -26,6 +26,18 @@ return {
       sources = {
         explorer = {
           on_close = sync_file_visibility,
+          win = {
+            input = {
+              keys = {
+                ["<Esc>"] = false,
+              },
+            },
+            list = {
+              keys = {
+                ["<Esc>"] = false,
+              },
+            },
+          },
         },
         files = {
           on_close = sync_file_visibility,
