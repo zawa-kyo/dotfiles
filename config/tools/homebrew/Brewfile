@@ -105,22 +105,6 @@ cask "xcodes-app"
 cask "xld"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "Adblock Plus", id: 1432731683
-mas "AdGuard for Safari", id: 1440147259
-mas "BetterSnapTool", id: 417375580
-mas "CotEditor", id: 1024640650
-mas "GIPHY CAPTURE", id: 668208984
-mas "Grila", id: 6444335028
-mas "Keepa - Price Tracker", id: 1533805339
-mas "Kindle", id: 302584613
-mas "LINE", id: 539883307
-mas "Magnet", id: 441258766
-mas "Numbers", id: 361304891
-mas "Numbers", id: 409203825
-mas "RunCat", id: 1429033973
-mas "Save to Raindrop.io", id: 1549370672
-mas "Spark", id: 1176895641
-mas "Table Tool", id: 1122008420
 vscode "1yib.rust-bundle"
 vscode "3w36zj6.textlint"
 vscode "anilbeesetti.evans-dark-theme"
