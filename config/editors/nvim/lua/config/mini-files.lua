@@ -89,7 +89,11 @@ end
 -- Toggle dotfile visibility and refresh mini.files.
 local function toggle_hidden()
   is_hidden_visible = not is_hidden_visible
-  require("mini.files").refresh()
+  require("mini.files").refresh({
+    content = {
+      filter = filter_entry,
+    },
+  })
 end
 
 -- Close mini.files unless the current search highlight should be cleared first.
@@ -145,12 +149,13 @@ function M.setup()
     },
   })
 
-  vim.api.nvim_create_autocmd("FileType", {
+  vim.api.nvim_create_autocmd("User", {
     group = keymap_group,
-    pattern = "minifiles",
+    pattern = "MiniFilesBufferCreate",
     callback = function(args)
-      keymap("n", "H", toggle_hidden, { buffer = args.buf, desc = "Toggle hidden files" })
-      keymap("n", "<Esc>", close_or_clear_search, { buffer = args.buf, desc = "Close mini.files" })
+      local buf_id = args.data.buf_id
+      keymap("n", "H", toggle_hidden, { buffer = buf_id, desc = "Toggle hidden files" })
+      keymap("n", "<Esc>", close_or_clear_search, { buffer = buf_id, desc = "Close mini.files" })
     end,
   })
 end
