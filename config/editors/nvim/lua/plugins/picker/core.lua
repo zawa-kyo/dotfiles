@@ -1,5 +1,5 @@
 local picker_keymaps = require("plugins.picker.keymaps")
-local snacks_toggles = require("config.snacks-toggles")
+local file_visibility = require("config.file-visibility")
 
 if vim.g.vscode then
   picker_keymaps.vscode()
@@ -19,7 +19,9 @@ return {
         end,
       },
       on_close = function(picker)
-        snacks_toggles.sync_from_opts(picker.opts)
+        if picker.opts.source == "explorer" or picker.opts.source == "files" then
+          file_visibility.sync_navigation(picker.opts)
+        end
       end,
       sources = {
         buffers = {

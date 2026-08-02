@@ -1,5 +1,5 @@
 local utils = require("config.utils")
-local snacks_toggles = require("config.snacks-toggles")
+local file_visibility = require("config.file-visibility")
 
 if not vim.g.vscode then
   vim.g.loaded_netrw = 1
@@ -11,25 +11,21 @@ if vim.g.vscode then
   utils.vscode_map("re", "workbench.action.toggleSidebarVisibility", "Show Explorer (VSCode)")
 end
 
-local function toggle_explorer(reveal)
+-- Toggle the Snacks explorer with shared navigation visibility.
+local function toggle_explorer()
+  require("snacks").explorer.open(file_visibility.navigation_opts())
+end
+
+-- Show the Snacks explorer and reveal the current file.
+local function reveal_in_explorer()
   local Snacks = require("snacks")
-  local pickers = Snacks.picker.get({ source = "explorer" })
-  local picker = pickers and pickers[1]
+  local explorer = Snacks.picker.get({ source = "explorer" })[1]
 
-  if picker and not picker.closed then
-    picker:close()
-    return
+  if not explorer then
+    Snacks.explorer.open(file_visibility.navigation_opts())
   end
 
-  if reveal then
-    if not (picker and not picker.closed) then
-      Snacks.explorer.open(snacks_toggles.opts())
-    end
-    Snacks.explorer.reveal()
-    return
-  end
-
-  Snacks.explorer.open(snacks_toggles.opts())
+  Snacks.explorer.reveal()
 end
 
 return {
@@ -38,16 +34,12 @@ return {
   keys = {
     {
       "te",
-      function()
-        toggle_explorer(false)
-      end,
+      toggle_explorer,
       desc = "Toggle explorer",
     },
     {
       "re",
-      function()
-        toggle_explorer(true)
-      end,
+      reveal_in_explorer,
       desc = "Show or reveal in explorer",
     },
   },
@@ -55,17 +47,6 @@ return {
     explorer = {
       replace_netrw = false,
       trash = true,
-      on_close = function(picker)
-        snacks_toggles.sync_from_opts(picker.opts)
-      end,
-      win = {
-        list = {
-          keys = {
-            ["th"] = "toggle_hidden",
-            ["ti"] = "toggle_ignored",
-          },
-        },
-      },
     },
   },
 }

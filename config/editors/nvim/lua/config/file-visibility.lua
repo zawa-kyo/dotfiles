@@ -1,13 +1,19 @@
 local M = {}
+local file_ignore = require("config.ignore")
 
 M.state = {
   hidden = true,
   ignored = false,
 }
 
-local function notify(label, value)
-  vim.notify(("Snacks %s: %s"):format(label, value and "on" or "off"), vim.log.levels.INFO, {
-    title = "Snacks",
+local labels = {
+  hidden = "Dotfiles",
+  ignored = "Git-ignored files",
+}
+
+local function notify(name, visible)
+  vim.notify(("%s: %s"):format(labels[name], visible and "shown" or "hidden"), vim.log.levels.INFO, {
+    title = "File visibility",
   })
 end
 
@@ -25,7 +31,12 @@ end
 local function toggle(name)
   local explorers = active_explorers()
   local current = explorers[1] and explorers[1].opts[name]
-  local value = not (current == nil and M.state[name] or current)
+  local value
+  if current == nil then
+    value = not M.state[name]
+  else
+    value = not current
+  end
 
   M.state[name] = value
   for _, picker in ipairs(explorers) do
@@ -45,14 +56,26 @@ function M.toggle_ignored()
   toggle("ignored")
 end
 
-function M.opts()
+-- Return shared visibility options for file navigation.
+function M.navigation_opts()
   return {
     hidden = M.state.hidden,
     ignored = M.state.ignored,
+    exclude = file_ignore.exact_names,
   }
 end
 
-function M.sync_from_opts(opts)
+-- Return stable workspace-search options without navigation toggle state.
+function M.search_opts()
+  return {
+    hidden = true,
+    ignored = false,
+    exclude = file_ignore.exact_names,
+  }
+end
+
+-- Synchronize shared navigation state from a file picker.
+function M.sync_navigation(opts)
   if not opts then
     return
   end
