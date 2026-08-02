@@ -6,9 +6,20 @@ if vim.g.vscode then
   utils.vscode_map("re", "workbench.action.toggleSidebarVisibility", "Show Explorer (VSCode)")
 end
 
+-- Resize and position the main-window preview after Snacks initializes it.
+local function configure_preview_window(picker)
+  local preview = picker.preview.win
+  preview.opts.width = 0.6
+  preview.opts.height = 0.55
+  preview.opts.row = nil
+  preview.opts.col = 1
+  preview.opts.border = "rounded"
+end
+
 -- Return explorer options with preview rendered in the main editor window.
 local function explorer_opts()
   return vim.tbl_deep_extend("force", file_visibility.navigation_opts(), {
+    on_show = configure_preview_window,
     layout = {
       preset = "sidebar",
       preview = { enabled = false, main = true },
