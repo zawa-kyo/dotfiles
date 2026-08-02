@@ -14,6 +14,7 @@
   "evergarden": { "branch": "main", "commit": "6a47a90e5caf1b21e54ff7967017c255bab80fdd" },
   "extend_word_motion.nvim": { "branch": "main", "commit": "dc4dc282ee91c347335dafb9aabc14c71620990a" },
   "fidget.nvim": { "branch": "main", "commit": "6f793b2bcd2d35e201c09520f698bb763220908a" },
+  "flash.nvim": { "branch": "main", "commit": "b6346946d10d07998efee029fb0f7a593806d0cd" },
   "flutter-tools.nvim": { "branch": "main", "commit": "7d1acfd139215e02d2784733af69a61aaebe06e8" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
   "git-messenger.vim": { "branch": "master", "commit": "fd124457378a295a5d1036af4954b35d6b807385" },
