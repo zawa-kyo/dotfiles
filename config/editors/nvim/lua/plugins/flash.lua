@@ -21,6 +21,9 @@ return {
     modes = {
       char = { enabled = false },
       search = { enabled = false },
+      treesitter_search = {
+        search = { multi_window = false },
+      },
     },
   },
 }
