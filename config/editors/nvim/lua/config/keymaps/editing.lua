@@ -63,11 +63,8 @@ keymap("i", "<S-Tab>", "<C-d>", opts("Outdent line"))
 --------------------
 
 -- Indentation
-keymap("x", "<", "<gv", opts("Add indentation"))
-keymap("x", ">", ">gv", opts("Reduce indentation"))
-
--- Align Visual behavior
-keymap("x", "v", "<Esc>V", opts("Select the whole line"))
+keymap("x", "<", "<gv", opts("Reduce indentation"))
+keymap("x", ">", ">gv", opts("Add indentation"))
 
 -- Paste without replacing the unnamed register
 keymap("x", "p", '"_dP', opts("Paste without changing register"))
