@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-08-02T02:44:04.292410+00:00'
+generated_at: '2026-08-06T14:29:47.151815+00:00'
 apm_version: 0.26.0
 dependencies:
 - repo_url: mattpocock/skills
   name: grill-me
   host: github.com
-  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  resolved_commit: 6acc160e4e0cd062dbbbd7a1b26ae92855edf07e
   version: unknown
   virtual_path: skills/productivity/grill-me
   is_virtual: true
@@ -26,7 +26,7 @@ dependencies:
 - repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: 2ab958093e83e0ec752e6c1c5932da465bf23e0c
+  resolved_commit: 6acc160e4e0cd062dbbbd7a1b26ae92855edf07e
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -39,11 +39,11 @@ dependencies:
   - .claude/skills/grilling/SKILL.md
   - .claude/skills/grilling/agents/openai.yaml
   deployed_file_hashes:
-    .agents/skills/grilling/SKILL.md: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
-    .agents/skills/grilling/agents/openai.yaml: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
-    .claude/skills/grilling/SKILL.md: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
-    .claude/skills/grilling/agents/openai.yaml: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
-  content_hash: sha256:1f05b0ffe26fb4d4457e3e40b41ec2f3e379ae2d6877613240bc6ffef5f7f338
+    .agents/skills/grilling/SKILL.md: sha256:fa5c1e5ee76b1c8f1ae56101f52c9e239de75d5c578adc61227b92d10b7e52ef
+    .agents/skills/grilling/agents/openai.yaml: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
+    .claude/skills/grilling/SKILL.md: sha256:fa5c1e5ee76b1c8f1ae56101f52c9e239de75d5c578adc61227b92d10b7e52ef
+    .claude/skills/grilling/agents/openai.yaml: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
+  content_hash: sha256:6f3a681f493ac92bf3c0f1263a9bf89f10f8f406623f3fbe5c87268e6d09e91e
 - repo_url: mizchi/skills
   name: empirical-prompt-tuning
   host: github.com
@@ -988,7 +988,7 @@ deployments:
   owners:
   - mattpocock/skills/skills/productivity/grilling
   active_owner: mattpocock/skills/skills/productivity/grilling
-  content_hash: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
+  content_hash: sha256:fa5c1e5ee76b1c8f1ae56101f52c9e239de75d5c578adc61227b92d10b7e52ef
 - kind: project-relative
   target: claude
   value: .claude/skills/grilling/agents/openai.yaml
@@ -997,7 +997,7 @@ deployments:
   owners:
   - mattpocock/skills/skills/productivity/grilling
   active_owner: mattpocock/skills/skills/productivity/grilling
-  content_hash: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
+  content_hash: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
 - kind: project-relative
   target: claude
   value: .claude/skills/guide-automated-tests
@@ -1924,7 +1924,7 @@ deployments:
   owners:
   - mattpocock/skills/skills/productivity/grilling
   active_owner: mattpocock/skills/skills/productivity/grilling
-  content_hash: sha256:44331dda57f461db4fec3f2efb6ddabe7aaaa0a57ae0f88a883bc61aed8a0587
+  content_hash: sha256:fa5c1e5ee76b1c8f1ae56101f52c9e239de75d5c578adc61227b92d10b7e52ef
 - kind: project-relative
   target: copilot
   value: .agents/skills/grilling/agents/openai.yaml
@@ -1933,7 +1933,7 @@ deployments:
   owners:
   - mattpocock/skills/skills/productivity/grilling
   active_owner: mattpocock/skills/skills/productivity/grilling
-  content_hash: sha256:cf29b9a8dbf35a58a908a6ca4f64dcd86c2b2130291eee0a78b9f706b138825b
+  content_hash: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
 - kind: project-relative
   target: copilot
   value: .agents/skills/guide-automated-tests

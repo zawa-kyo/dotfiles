@@ -41,7 +41,7 @@ version = "3.9.6"
 backend = "npm:prettier"
 
 [[tools.rust]]
-version = "1.97.1"
+version = "1"
 backend = "asdf:rust"
 
 [[tools.shfmt]]
@@ -81,5 +81,5 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aa
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323110"
 
 [[tools.uv]]
-version = "0.12.1"
+version = "0.12.2"
 backend = "asdf:uv"
