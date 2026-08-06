@@ -117,8 +117,8 @@ keymap("n", "Y", function()
   yank_file_path_range(line, line)
 end, opts("Yank file path and line"))
 
--- Delete words with backspace
-keymap("x", "<BS>", "_d", opts("Delete selection with backspace"))
+-- Delete selection without yanking
+keymap("x", "<BS>", '"_d', opts("Delete selection with backspace"))
 
 -- Replace selection with a newline (VSCode-like Enter)
 keymap("x", "<CR>", "c<CR>", opts("Replace selection with newline"))
