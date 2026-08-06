@@ -10,9 +10,12 @@ local keymap = utils.getKeymap
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
 keymap("x", "a", "<Esc>ggVG", opts("Select all"))
 
--- Do not yank with x
+-- Delete without yanking
 keymap("n", "x", '"_x', opts("Do not yank with x"))
-keymap("n", "<BS>", '"_x', opts("Do not yank with backspace"))
+keymap("n", "<BS>", function()
+  local move_left = vim.fn.charcol(".") < vim.fn.charcol("$") - 1
+  return '"_x' .. (move_left and "h" or "")
+end, opts("Delete character and move left with backspace", nil, nil, true))
 
 -- Create new lines without reaching for o/O
 keymap("n", "<CR>", "o", opts("Insert new line below"))
