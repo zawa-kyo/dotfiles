@@ -28,31 +28,31 @@ url = "https://github.com/microsoft/apm/releases/download/v0.26.0/apm-darwin-arm
 url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/481831785"
 
 [[tools.atuin]]
-version = "18.17.1"
+version = "18.18.1"
 backend = "aqua:atuinsh/atuin"
 
 [tools.atuin."platforms.linux-x64"]
-checksum = "sha256:5772df4121174a9f0b71c17260727794fde22a71b5a3ee5ac07b227eebcbfa9a"
-url = "https://github.com/atuinsh/atuin/releases/download/v18.17.1/atuin-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/477075637"
+checksum = "sha256:732bcb4cbb57fa3bb7c9eaf1d866eabd673ba5f5978dc87fc6697369c5e8b33b"
+url = "https://github.com/atuinsh/atuin/releases/download/v18.18.1/atuin-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/492109525"
 provenance = "github-attestations"
 
 [tools.atuin."platforms.macos-arm64"]
-checksum = "sha256:f4f6ff23452d42d1e981c0878ade4f3edaee4bd5ce83c39b0d134d926ca04377"
-url = "https://github.com/atuinsh/atuin/releases/download/v18.17.1/atuin-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/477075557"
+checksum = "sha256:2c2bd7a4fb5a093cb222c5befb199bd09700f9b13b830c80a05dd5b2e7950457"
+url = "https://github.com/atuinsh/atuin/releases/download/v18.18.1/atuin-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/492109389"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.14"
+version = "2.36.17"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.14.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.17.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:46ca0cafd6f5ec600d14a5e430a77ce8a2d0099548029bae8aa8aa25caee3c70"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.14.pkg"
+checksum = "blake3:612cdf2f7208abee1f6c87816ab2c96cfa5dc03dd51dfe92516d33d838f61603"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.17.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -105,18 +105,18 @@ url = "https://github.com/sorafujitani/ccsession/releases/download/v1.1.0/ccsess
 url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/468889631"
 
 [[tools.copilot]]
-version = "1.0.76"
+version = "1.0.77"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:56a98decbd01732951b0f8caa9ab32bc1293c27897292c216ea593701c8b2988"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.76/copilot-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/494736457"
+checksum = "sha256:c6414f99c5b29b049a3b0929ba824f0ff0ae88b85eb52559be45631b96b00f4c"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.77/copilot-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/495997983"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:291391b420c2c0d24b995127855ccbc8b68b274640d6e88fa888536c40eb4362"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.76/copilot-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/494736313"
+checksum = "sha256:3ab9366cd96c06e4d90c6e77d7a9ffa06e2502aa1196ba20c555306c0d7a9592"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.77/copilot-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/495997905"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -374,16 +374,16 @@ url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86
 url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-macos-arm64.tar.gz"
 
 [[tools.node]]
-version = "24.18.0"
+version = "24.18.1"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:783130984963db7ba9cbd01089eaf2c2efb055c7c1693c943174b967b3050cb8"
-url = "https://nodejs.org/dist/v24.18.0/node-v24.18.0-linux-x64.tar.gz"
+checksum = "sha256:9f5eb6ac21845a66c493c91a253b1da32fd684e89e9b7202d4936982336be4ca"
+url = "https://nodejs.org/dist/v24.18.1/node-v24.18.1-linux-x64.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:e1a97e14c99c803e96c7339403282ea05a499c32f8d83defe9ef5ec66f979ed1"
-url = "https://nodejs.org/dist/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz"
+checksum = "sha256:eb02f7fab96d3d67de40c5ec8566096fcb4c2026728787683ae5a97eb612b941"
+url = "https://nodejs.org/dist/v24.18.1/node-v24.18.1-darwin-arm64.tar.gz"
 
 [[tools.pouch]]
 version = "0.4.2"
@@ -460,7 +460,7 @@ url = "https://github.com/jdx/ruby/releases/download/3.4.10-2/ruby-3.4.10.macos.
 provenance = "github-attestations"
 
 [[tools.rust]]
-version = "1.97.1"
+version = "1"
 backend = "asdf:rust"
 
 [[tools.sheldon]]
@@ -544,7 +544,7 @@ url = "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.aarch64"
 url_api = "https://api.github.com/repos/tsl0922/ttyd/releases/assets/159377644"
 
 [[tools.uv]]
-version = "0.12.1"
+version = "0.12.2"
 backend = "asdf:uv"
 
 [[tools.vhs]]
