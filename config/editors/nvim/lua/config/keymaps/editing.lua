@@ -63,11 +63,8 @@ keymap("i", "<S-Tab>", "<C-d>", opts("Outdent line"))
 --------------------
 
 -- Indentation
-keymap("x", "<", "<gv", opts("Add indentation"))
-keymap("x", ">", ">gv", opts("Reduce indentation"))
-
--- Align Visual behavior
-keymap("x", "v", "<Esc>V", opts("Select the whole line"))
+keymap("x", "<", "<gv", opts("Reduce indentation"))
+keymap("x", ">", ">gv", opts("Add indentation"))
 
 -- Paste without replacing the unnamed register
 keymap("x", "p", '"_dP', opts("Paste without changing register"))
@@ -120,8 +117,8 @@ keymap("n", "Y", function()
   yank_file_path_range(line, line)
 end, opts("Yank file path and line"))
 
--- Delete words with backspace
-keymap("x", "<BS>", "_d", opts("Delete selection with backspace"))
+-- Delete selection without yanking
+keymap("x", "<BS>", '"_d', opts("Delete selection with backspace"))
 
 -- Replace selection with a newline (VSCode-like Enter)
 keymap("x", "<CR>", "c<CR>", opts("Replace selection with newline"))
