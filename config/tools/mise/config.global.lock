@@ -104,6 +104,15 @@ checksum = "sha256:9e875381b34ee0849a8a4c1c3e5c38dcd4b82329eab0d9c643e7b0384ad85
 url = "https://github.com/sorafujitani/ccsession/releases/download/v1.2.0/ccsession_1.2.0_darwin_arm64.tar.gz"
 url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/500992891"
 
+[[tools.container]]
+version = "1.2.0"
+backend = "aqua:apple/container"
+
+[tools.container."platforms.macos-arm64"]
+checksum = "sha256:d140d4076ff0593d6b4f7c58722717b2abe87d75452cfe0a203792ba7f48f07c"
+url = "https://github.com/apple/container/releases/download/1.2.0/container-1.2.0-installer-signed.pkg"
+url_api = "https://api.github.com/repos/apple/container/releases/assets/493423194"
+
 [[tools.copilot]]
 version = "1.0.78"
 backend = "aqua:github/copilot-cli"
