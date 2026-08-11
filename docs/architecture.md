@@ -33,6 +33,8 @@
   - Homebrew パッケージ定義
 - `config/tools/bun/`
   - Bun グローバルパッケージ定義
+- `config/tools/worktrunk/`
+  - Git worktree の配置と削除方法の設定
 - `config/ai/`
   - AI ツール設定
   - 再利用可能なスキルは `config/ai/apm/apm.yml` の依存関係として管理する

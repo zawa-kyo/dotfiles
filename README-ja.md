@@ -58,6 +58,17 @@ mise run install
 `scripts/global/` のコマンドはグローバルにリンクします。
 このディレクトリには、Git 操作やタスク検索など日常作業で直接使う小さな CLI ツールを置いています。
 
+### Git worktree
+
+ghq で取得したリポジトリの worktree は Worktrunk で管理します。新しい worktree は元のリポジトリと同じ階層に作成し、worktree を削除してもブランチは残します。
+
+| コマンド               | 用途                                                 |
+| ---------------------- | ---------------------------------------------------- |
+| `wt switch --branches` | worktree またはローカルブランチを選択して移動する    |
+| `wt switch --remotes`  | リモートブランチも含めて worktree の移動先を選択する |
+| `wt list`              | worktree と状態を一覧表示する                        |
+| `wt remove`            | ブランチを残したまま現在の worktree を削除する       |
+
 ## 🗂️ リポジトリ構成
 
 | パス                    | 役割                                             |

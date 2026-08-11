@@ -98,6 +98,7 @@ populate_dotfiles_links() {
     "$dir_dotfiles/config/terminal-apps/ghostty/config.ghostty:$HOME/.config/ghostty/config.ghostty"
     "$dir_dotfiles/config/tools/mise/config.global.toml:$HOME/.config/mise/mise.toml"
     "$dir_dotfiles/config/tools/mise/config.global.lock:$HOME/.config/mise/mise.lock"
+    "$dir_dotfiles/config/tools/worktrunk/config.toml:$HOME/.config/worktrunk/config.toml"
     "$dir_dotfiles/config/shell/sheldon/abbreviations:$HOME/.config/zsh-abbr/user-abbreviations"
     "$dir_dotfiles/config/shell/sheldon/plugins.toml:$HOME/.config/sheldon/plugins.toml"
     "$dir_dotfiles/config/terminal-apps/zellij/config.kdl:$HOME/.config/zellij/config.kdl"

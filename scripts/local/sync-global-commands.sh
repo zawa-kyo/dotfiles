@@ -117,6 +117,40 @@ remove_stale_mise_tasks() {
   done
 }
 
+# Remove command links whose managed source no longer exists.
+remove_stale_global_commands() {
+  local -a expected_names=("$@")
+  local file
+  local keep
+  local link_target
+  local name
+
+  [ -d "$local_bin_dir" ] || return 0
+
+  for file in "$local_bin_dir"/*; do
+    [ -L "$file" ] || continue
+    link_target="$(readlink "$file")"
+    case "$link_target" in
+    "$global_commands_dir"/*) ;;
+    *) continue ;;
+    esac
+
+    name="$(basename "$file")"
+    keep=false
+    for expected in "${expected_names[@]}"; do
+      if [ "$name" = "$expected" ]; then
+        keep=true
+        break
+      fi
+    done
+
+    if [ "$keep" = false ]; then
+      rm -f "$file"
+      info "Removed stale global command link: $file"
+    fi
+  done
+}
+
 is_generated_task_link() {
   local file="$1"
   local legacy_tasks_dir="$dotfiles_dir/.cache/mise/tasks"
@@ -176,6 +210,7 @@ main() {
     write_wrapper_if_changed "$command_name" "$description"
   done
 
+  remove_stale_global_commands "${command_names[@]}"
   remove_stale_mise_tasks "${command_names[@]}"
   remove_legacy_generated_wrappers
 }

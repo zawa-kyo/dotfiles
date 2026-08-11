@@ -56,6 +56,10 @@ github = "olets/zsh-abbr"
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh)"'
 
+# Git worktree management
+[plugins.worktrunk]
+inline = 'eval "$(wt config shell init zsh)"'
+
 # Prompt customization
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'

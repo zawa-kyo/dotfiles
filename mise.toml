@@ -50,7 +50,10 @@ set -eu
 tmpfile="$(mktemp)"
 trap 'rm -f "$tmpfile"' EXIT
 
-git ls-files -z -- '*.lua' > "$tmpfile"
+git ls-files -z -- '*.lua' |
+while IFS= read -r -d '' file; do
+  [ -f "$file" ] && printf '%s\0' "$file"
+done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 stylua < "$tmpfile"
 fi
@@ -65,7 +68,10 @@ set -eu
 tmpfile="$(mktemp)"
 trap 'rm -f "$tmpfile"' EXIT
 
-git ls-files -z -- '*.sh' '*.bash' '*.zsh' > "$tmpfile"
+git ls-files -z -- '*.sh' '*.bash' '*.zsh' |
+while IFS= read -r -d '' file; do
+  [ -f "$file" ] && printf '%s\0' "$file"
+done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 shfmt -w < "$tmpfile"
 fi
@@ -84,7 +90,10 @@ git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
   ':(exclude)config/ai/apm/apm.lock.yaml' \
-  ':(exclude)**/*.lock' > "$tmpfile"
+  ':(exclude)**/*.lock' |
+while IFS= read -r -d '' file; do
+  [ -f "$file" ] && printf '%s\0' "$file"
+done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 prettier --write < "$tmpfile"
 fi
@@ -101,7 +110,10 @@ trap 'rm -f "$tmpfile"' EXIT
 
 git ls-files -z -- \
   '*.toml' \
-  ':(exclude)**/*.lock' > "$tmpfile"
+  ':(exclude)**/*.lock' |
+while IFS= read -r -d '' file; do
+  [ -f "$file" ] && printf '%s\0' "$file"
+done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 taplo fmt < "$tmpfile"
 fi

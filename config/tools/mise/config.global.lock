@@ -561,6 +561,20 @@ checksum = "sha256:eec91ee450ba50b6d4fce2800593b2ac5fdd88a73056367d2c3b870ee44de
 url = "https://github.com/charmbracelet/vhs/releases/download/v0.11.0/vhs_0.11.0_Darwin_arm64.tar.gz"
 url_api = "https://api.github.com/repos/charmbracelet/vhs/releases/assets/370996182"
 
+[[tools.worktrunk]]
+version = "0.71.0"
+backend = "aqua:max-sixty/worktrunk"
+
+[tools.worktrunk."platforms.linux-x64"]
+checksum = "sha256:287f0de1bc5dec271dd5546895c73a085bc090f0eb862946062d7cb18effbdd2"
+url = "https://github.com/max-sixty/worktrunk/releases/download/v0.71.0/worktrunk-x86_64-unknown-linux-musl.tar.xz"
+url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/495845692"
+
+[tools.worktrunk."platforms.macos-arm64"]
+checksum = "sha256:429b31306f50e39d2c90de5da293aa14e6983ffe28a49a4fcedaa3632d28b94c"
+url = "https://github.com/max-sixty/worktrunk/releases/download/v0.71.0/worktrunk-aarch64-apple-darwin.tar.xz"
+url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/495845661"
+
 [[tools.yazi]]
 version = "26.5.6"
 backend = "aqua:sxyazi/yazi"
