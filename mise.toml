@@ -52,7 +52,9 @@ trap 'rm -f "$tmpfile"' EXIT
 
 git ls-files -z -- '*.lua' |
 while IFS= read -r -d '' file; do
-  [ -f "$file" ] && printf '%s\0' "$file"
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
 done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 stylua < "$tmpfile"
@@ -70,7 +72,9 @@ trap 'rm -f "$tmpfile"' EXIT
 
 git ls-files -z -- '*.sh' '*.bash' '*.zsh' |
 while IFS= read -r -d '' file; do
-  [ -f "$file" ] && printf '%s\0' "$file"
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
 done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 shfmt -w < "$tmpfile"
@@ -92,7 +96,9 @@ git ls-files -z -- \
   ':(exclude)config/ai/apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' |
 while IFS= read -r -d '' file; do
-  [ -f "$file" ] && printf '%s\0' "$file"
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
 done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 prettier --write < "$tmpfile"
@@ -112,7 +118,9 @@ git ls-files -z -- \
   '*.toml' \
   ':(exclude)**/*.lock' |
 while IFS= read -r -d '' file; do
-  [ -f "$file" ] && printf '%s\0' "$file"
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
 done > "$tmpfile"
 if [ -s "$tmpfile" ]; then
   xargs -0 taplo fmt < "$tmpfile"

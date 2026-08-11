@@ -21,13 +21,13 @@ disabled = true
 style = "bold green"
 
 [custom.directory]
-command = "starship-directory"
+command = "starship-git-context directory"
 format = "[$output ]($style)"
 style = "bold green"
 when = "true"
 
 [custom.git_branch]
-command = "starship-git-branch"
+command = "starship-git-context branch"
 format = "[on ]($foreground)[$output]($style)"
 style = "bold pink"
 when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
