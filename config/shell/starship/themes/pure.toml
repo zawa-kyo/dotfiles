@@ -30,7 +30,7 @@ when = "true"
 command = "starship-git-context branch"
 format = "[on ]($foreground)[$output]($style)"
 style = "bold pink"
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+when = true
 
 [git_status]
 format = "[ $all_status$ahead_behind]($style)"
