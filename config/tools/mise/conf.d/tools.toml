@@ -51,6 +51,7 @@ shellcheck = "latest"
 starship = "latest"
 vhs = "latest"
 tmux = "latest"
+worktrunk = "latest"
 yazi = "latest"
 zoxide = "latest"
 

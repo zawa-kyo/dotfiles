@@ -61,11 +61,11 @@
 - `gl` -> `z $DIR_LOCAL_CONFIG`
 - `gr` -> `z $(git rev-parse --show-toplevel)`
 - `grb` -> `gh browse`
-- `aw` -> `add-worktree`
-- `awr` -> `add-worktree-remote`
+- `aw` -> `wt switch --branches`
+- `awr` -> `wt switch --remotes`
 - `cb` -> `switch-branch`
 - `cbr` -> `switch-branch-remote`
-- `dw` -> `delete-worktree`
+- `dw` -> `wt remove`
 - `sb` -> `search-bookmarks`
 - `st` -> `search-task`
 - `sT` -> `search-theme`

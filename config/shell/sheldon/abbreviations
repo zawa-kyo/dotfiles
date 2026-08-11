@@ -79,14 +79,14 @@ abbr 'rpc'='reveal-process-cpu'
 # reveal-process-memory
 abbr 'rpm'='reveal-process-memory'
 
-# add-worktree
-abbr 'aw'='add-worktree'
+# Worktrunk: add or switch to a local branch worktree
+abbr 'aw'='wt switch --branches'
 
-# add-worktree-remote
-abbr 'awr'='add-worktree-remote'
+# Worktrunk: add or switch to a remote branch worktree
+abbr 'awr'='wt switch --remotes'
 
-# delete-worktree
-abbr 'dw'='delete-worktree'
+# Worktrunk: remove the current worktree
+abbr 'dw'='wt remove'
 
 # change-branch
 abbr 'cb'='switch-branch'
