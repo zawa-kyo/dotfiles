@@ -88,6 +88,68 @@ test_apm_directory_migration() {
   assert_link "$foreign_home_dir/.apm" "$foreign_dir"
 }
 
+# Verify Bun declarations stay in the repo while generated modules move outside it.
+test_bun_data_migration() {
+  local source_dir="$fixtures_dir/bun-source"
+  local global_dir="$fixtures_dir/bun-global"
+  local global_bin_dir="$fixtures_dir/bun-bin"
+  local fake_bin_dir="$fixtures_dir/fake-bin"
+  local foreign_dir="$fixtures_dir/foreign-bun"
+
+  mkdir -p "$source_dir/node_modules/.bin" "$fake_bin_dir" "$foreign_dir"
+  printf '{"dependencies":{}}\n' >"$source_dir/package.json"
+  printf 'lock-before\n' >"$source_dir/bun.lock"
+  printf '[install]\n' >"$source_dir/bunfig.toml"
+  printf '#!/usr/bin/env bash\n' >"$source_dir/node_modules/.bin/example"
+  chmod +x "$source_dir/node_modules/.bin/example"
+  ln -s "$source_dir" "$global_dir"
+
+  cat >"$fake_bin_dir/bun" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+mode="$1"
+shift
+runtime_dir=""
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+  --cwd)
+    runtime_dir="$2"
+    shift 2
+    ;;
+  *) shift ;;
+  esac
+done
+
+if [ "$mode" = update ]; then
+  printf '{"updated":true}\n' >"$runtime_dir/package.json"
+  printf 'lock-after\n' >"$runtime_dir/bun.lock"
+fi
+EOF
+  chmod +x "$fake_bin_dir/bun"
+
+  PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
+    bash "$repo_dir/scripts/local/install-bun.sh" >/dev/null
+
+  [ -d "$global_dir" ] && [ ! -L "$global_dir" ] || fail_test "Bun runtime directory is not a real directory"
+  [ ! -e "$source_dir/node_modules" ] || fail_test "Bun modules remained in the repository source"
+  [ -f "$global_dir/node_modules/.bin/example" ] || fail_test "Bun modules were not migrated"
+  assert_link "$global_bin_dir/example" "$(realpath "$global_dir/node_modules/.bin/example")"
+
+  PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
+    bash "$repo_dir/scripts/local/install-bun.sh" upgrade >/dev/null
+  grep -Fqx '{"updated":true}' "$source_dir/package.json" || fail_test "updated Bun manifest was not copied back"
+  grep -Fqx 'lock-after' "$source_dir/bun.lock" || fail_test "updated Bun lock file was not copied back"
+
+  rm -rf "$global_dir"
+  ln -s "$foreign_dir" "$global_dir"
+  if PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
+    bash "$repo_dir/scripts/local/install-bun.sh" >/dev/null 2>&1; then
+    fail_test "foreign Bun link was replaced"
+  fi
+  assert_link "$global_dir" "$foreign_dir"
+}
+
 # Verify existing regular files remain untouched.
 test_regular_file_conflict() {
   local home_dir="$fixtures_dir/conflict-home"
@@ -211,6 +273,7 @@ trap cleanup EXIT
 
 test_dotfile_links
 test_apm_directory_migration
+test_bun_data_migration
 test_regular_file_conflict
 test_platform_links
 test_link_inventory

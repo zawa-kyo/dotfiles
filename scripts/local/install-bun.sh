@@ -4,48 +4,79 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/../.." && pwd)"
-bun_dir="$dotfiles_dir/config/tools/bun"
+bun_dir="${DIR_BUN_SOURCE:-$dotfiles_dir/config/tools/bun}"
 global_dir="${DIR_BUN_GLOBAL:-$HOME/.bun/install/global}"
 global_parent_dir="$(dirname "$global_dir")"
 global_bin_dir="${DIR_BUN_BIN:-$HOME/.bun/bin}"
 
 source "$script_dir/../utils/log.sh"
 
-# Ensure the repo-managed Bun directory exists.
+# Ensure the repo-managed Bun declarations exist.
 ensure_bun_dir() {
   [ -d "$bun_dir" ] || fail "Bun directory not found in dotfiles: $bun_dir"
+  [ -f "$bun_dir/package.json" ] || fail "Bun package manifest not found: $bun_dir/package.json"
+  [ -f "$bun_dir/bun.lock" ] || fail "Bun lock file not found: $bun_dir/bun.lock"
+  [ -f "$bun_dir/bunfig.toml" ] || fail "Bun config not found: $bun_dir/bunfig.toml"
 }
 
-# Point Bun's global install directory at the repo-managed directory.
-link_global_dir() {
-  local bun_real_dir
+# Replace the legacy source link with a real Bun runtime directory.
+prepare_global_dir() {
   local global_real_dir
+  local migrate_modules=false
 
   mkdir -p "$global_parent_dir" "$global_bin_dir"
-  bun_real_dir="$(realpath "$bun_dir")"
 
   if [ -L "$global_dir" ]; then
-    if global_real_dir="$(realpath "$global_dir" 2>/dev/null)" && [ "$global_real_dir" = "$bun_real_dir" ]; then
-      info "Bun directory already linked."
-      return 0
+    if ! global_real_dir="$(realpath "$global_dir" 2>/dev/null)" || [ "$global_real_dir" != "$(realpath "$bun_dir")" ]; then
+      fail "Refusing to replace an unmanaged Bun symlink: $global_dir"
     fi
+
     rm "$global_dir"
-    info "Old Bun global symlink removed."
+    info "Removed legacy Bun directory symlink: $global_dir"
   elif [ -e "$global_dir" ]; then
-    fail "$global_dir already exists and is not a symlink. Move it manually before linking."
+    [ -d "$global_dir" ] || fail "Bun global path exists and is not a directory: $global_dir"
   fi
 
-  ln -s "$bun_dir" "$global_dir"
-  info "Bun directory linked successfully."
+  if [ ! -d "$global_dir" ]; then
+    mkdir -p "$global_dir"
+    info "Created directory: $global_dir"
+  fi
+
+  if [ -L "$bun_dir/node_modules" ] && [ -e "$global_dir/node_modules" ] &&
+    [ "$(realpath "$bun_dir/node_modules")" = "$(realpath "$global_dir/node_modules")" ]; then
+    migrate_modules=false
+  elif [ -d "$bun_dir/node_modules" ]; then
+    migrate_modules=true
+  fi
+
+  if [ "$migrate_modules" = true ]; then
+    if [ -e "$global_dir/node_modules" ]; then
+      fail "Refusing to replace existing Bun modules: $global_dir/node_modules"
+    fi
+    mv "$bun_dir/node_modules" "$global_dir/node_modules"
+    info "Migrated Bun modules: $global_dir/node_modules"
+  fi
 }
 
-# Install dependencies from the tracked Bun lockfile.
+# Copy tracked declarations into the Bun runtime directory.
+sync_declarations_to_runtime() {
+  cp "$bun_dir/package.json" "$global_dir/package.json"
+  cp "$bun_dir/bun.lock" "$global_dir/bun.lock"
+  cp "$bun_dir/bunfig.toml" "$global_dir/bunfig.toml"
+}
+
+# Install dependencies from the tracked declarations.
 install_dependencies() {
-  (
-    cd "$global_dir"
-    bun install --frozen-lockfile
-  )
+  bun install --cwd "$global_dir" --frozen-lockfile
   info "Bun dependencies installed successfully."
+}
+
+# Update dependencies and copy the changed declarations back to the repo.
+upgrade_dependencies() {
+  bun update --cwd "$global_dir" --latest
+  cp "$global_dir/package.json" "$bun_dir/package.json"
+  cp "$global_dir/bun.lock" "$bun_dir/bun.lock"
+  info "Bun dependencies updated successfully."
 }
 
 # Rebuild global CLI symlinks from the managed node_modules/.bin directory.
@@ -95,11 +126,20 @@ sync_global_bins() {
   info "Bun global binaries linked successfully."
 }
 
-# Run the full Bun global setup flow.
+# Run the requested Bun global setup flow.
 main() {
+  local mode="${1:-install}"
+
   ensure_bun_dir
-  link_global_dir
-  install_dependencies
+  prepare_global_dir
+  sync_declarations_to_runtime
+
+  case "$mode" in
+  install) install_dependencies ;;
+  upgrade) upgrade_dependencies ;;
+  *) fail "Unknown Bun setup mode: $mode" ;;
+  esac
+
   sync_global_bins
 }
 

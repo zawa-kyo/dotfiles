@@ -32,7 +32,8 @@
 - `config/tools/homebrew/`
   - Homebrew パッケージ定義
 - `config/tools/bun/`
-  - Bun グローバルパッケージ定義
+  - Bun グローバルパッケージの宣言と lock ファイル
+  - `node_modules/` は `~/.bun/install/global` に生成し、リポジトリ内には置かない
 - `config/tools/worktrunk/`
   - Git worktree の配置と削除方法の設定
 - `config/ai/`

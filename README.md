@@ -58,6 +58,12 @@ This task:
 The setup links commands from `scripts/global/` globally.
 That directory contains small CLI tools for daily work, such as Git operations and task search.
 
+### Bun global packages
+
+The repository tracks the Bun global `package.json`, `bun.lock`, and `bunfig.toml` files in `config/tools/bun/`.
+`mise run install-bun` copies those files to `~/.bun/install/global` and installs dependencies there, so generated `node_modules/` content stays outside the repository.
+`mise run upgrade-bun` updates the runtime directory and copies the changed manifest and lock file back to `config/tools/bun/`.
+
 ### Git worktrees
 
 Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are created next to the primary repository, and removing a worktree keeps its branch.

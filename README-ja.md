@@ -58,6 +58,12 @@ mise run install
 `scripts/global/` のコマンドはグローバルにリンクします。
 このディレクトリには、Git 操作やタスク検索など日常作業で直接使う小さな CLI ツールを置いています。
 
+### Bun グローバルパッケージ
+
+Bun のグローバル環境で使う `package.json`、`bun.lock`、`bunfig.toml` は `config/tools/bun/` で管理します。
+`mise run install-bun` はこれらのファイルを `~/.bun/install/global` へコピーし、依存関係を同じディレクトリへインストールします。生成される `node_modules/` はリポジトリ内に置きません。
+`mise run upgrade-bun` は実行用ディレクトリで依存関係を更新し、変更されたパッケージ宣言と lock ファイルを `config/tools/bun/` へ戻します。
+
 ### Git worktree
 
 ghq で取得したリポジトリの worktree は Worktrunk で管理します。新しい worktree は元のリポジトリと同じ階層に作成し、worktree を削除してもブランチは残します。

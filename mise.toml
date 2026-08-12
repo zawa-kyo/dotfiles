@@ -175,7 +175,7 @@ run = [
 ]
 
 [tasks.install-bun]
-description = "Link Bun globals and install Bun dependencies"
+description = "Install Bun globals outside the repository"
 file = "scripts/local/install-bun.sh"
 
 [tasks.relink]
@@ -213,7 +213,7 @@ run = [
 
 [tasks.upgrade-bun]
 description = "Update Bun global packages to their latest versions"
-run = "bun update -g --latest"
+run = "bash scripts/local/install-bun.sh upgrade"
 
 [tasks.upgrade-global-tools]
 description = "Upgrade global mise tools within their configured version ranges"
