@@ -1,4 +1,17 @@
 worktree-path = "{{ repo_path }}/../{{ repo }}+{{ branch | sanitize }}"
 
+[pre-start]
+# Trust mise configuration when creating a worktree
+mise-trust = "mise trust"
+
+[post-start]
+# Copy gitignored files after creating a worktree
+copy = "wt step copy-ignored"
+
+[list]
+# Use the envelope format for JSON output
+json-schema = 2
+
 [remove]
+# Keep the branch after removing its worktree
 delete-branch = false

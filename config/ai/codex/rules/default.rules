@@ -46,11 +46,11 @@ for command in [
 for command in [
     "df",
     "du",
-    "ls",
     "eza",
     "fd",
     "find",
     "grep",
+    "ls",
     "rg",
     "tree",
 ]:
@@ -151,12 +151,37 @@ allow(
     "Allows read-only GitHub search via gh CLI.",
 )
 
-prefix_rule(pattern=["gh", "release", "view"], decision="allow")
-prefix_rule(pattern=["go", "test"], decision="allow")
-prefix_rule(pattern=["mise", "install"], decision="allow")
-prefix_rule(pattern=["mise", "run", "format"], decision="allow")
-prefix_rule(pattern=["npx", "--yes"], decision="allow")
-prefix_rule(pattern=["npx", "--yes", "--package"], decision="allow")
-prefix_rule(pattern=["npx", "--yes", "--package", "textlint"], decision="allow")
-prefix_rule(pattern=["nvim", "--headless"], decision="allow")
-prefix_rule(pattern=["mise", "lock", "--global"], decision="allow")
+allow(
+    ["go", "test"],
+    "Allows Go test execution.",
+)
+
+allow(
+    ["mise", "install"],
+    "Allows installation of mise-managed tools.",
+)
+
+allow(
+    ["mise", "lock", "--global"],
+    "Allows global mise lockfile updates.",
+)
+
+allow(
+    ["mise", "run", "format"],
+    "Allows repository formatting through mise.",
+)
+
+allow(
+    ["npx", "--yes"],
+    "Allows non-interactive npx command execution.",
+)
+
+allow(
+    ["nvim", "--headless"],
+    "Allows headless Neovim execution.",
+)
+
+allow(
+    ["uv", "run", "pre-commit"],
+    "Allows pre-commit checks through uv.",
+)
