@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Print a worktree-aware directory or branch label for Starship
+# DESCRIPTION: Print a worktree-aware directory or branch label for Starship
 
 set -euo pipefail
 

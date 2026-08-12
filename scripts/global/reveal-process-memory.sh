@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Show memory-heavy processes with procs
+# DESCRIPTION: Show memory-heavy processes with procs
 
 set -euo pipefail
 

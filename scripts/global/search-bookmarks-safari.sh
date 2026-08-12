@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a Safari bookmark with fzf and open it
+# DESCRIPTION: Select a Safari bookmark with fzf and open it
 
 set -euo pipefail
 

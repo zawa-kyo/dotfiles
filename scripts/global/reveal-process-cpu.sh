@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Show CPU-heavy processes with procs
+# DESCRIPTION: Show CPU-heavy processes with procs
 
 set -euo pipefail
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a remote branch with fzf and switch to its local tracking branch
+# DESCRIPTION: Select a remote branch with fzf and switch to its local tracking branch
 
 set -euo pipefail
 

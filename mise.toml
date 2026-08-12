@@ -150,7 +150,7 @@ run = "bash scripts/local/link-dotfiles.sh"
 
 [tasks.sync-global-commands]
 hide = true
-description = "Link global CLI commands and generate mise task wrappers"
+description = "Link global CLI commands and remove legacy mise wrappers"
 run = "bash scripts/local/sync-global-commands.sh"
 
 [tasks.install-mise-tools]

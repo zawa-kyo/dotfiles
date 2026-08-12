@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Browse zsh abbreviations with fzf and print the selected abbreviation
+# DESCRIPTION: Browse zsh abbreviations with fzf and print the selected abbreviation
 
 set -euo pipefail
 

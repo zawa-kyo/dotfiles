@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a repository with ghq/fzf and open it in lazygit
+# DESCRIPTION: Select a repository with ghq/fzf and open it in lazygit
 
 set -euo pipefail
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a global mise task with fzf and run it
+# DESCRIPTION: Select a mise task with fzf and run it
 
 set -euo pipefail
 
@@ -12,7 +12,7 @@ main() {
   local task_name
 
   selected="$(
-    mise tasks ls --global 2>/dev/null |
+    mise tasks ls 2>/dev/null |
       run_fzf --prompt='mise task> '
   )" || exit 1
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a local branch with fzf and switch to it
+# DESCRIPTION: Select a local branch with fzf and switch to it
 
 set -euo pipefail
 

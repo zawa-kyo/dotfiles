@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a repository with ghq/fzf and open it in Neovim
+# DESCRIPTION: Select a repository with ghq/fzf and open it in Neovim
 
 set -euo pipefail
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Search Google with the default browser
+# DESCRIPTION: Search Google with the default browser
 
 set -euo pipefail
 

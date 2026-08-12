@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Search lines with ripgrep and open the selected result in Neovim
+# DESCRIPTION: Search lines with ripgrep and open the selected result in Neovim
 
 set -euo pipefail
 

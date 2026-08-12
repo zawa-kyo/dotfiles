@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# MISE_DESCRIPTION: Select a repository with ghq/fzf and open it in VS Code
+# DESCRIPTION: Select a repository with ghq/fzf and open it in VS Code
 
 set -euo pipefail
 
