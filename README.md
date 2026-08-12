@@ -50,6 +50,8 @@ This task:
 | --------------------------- | ------------------------------------------------------------ |
 | `mise run install`          | Run the standard local setup                                 |
 | `mise run relink`           | Relink dotfiles-managed files without overwriting real files |
+| `mise run check-deployment` | Check managed links without changing files                   |
+| `mise run diff-deployment`  | Preview links, relinks, and conflicts                        |
 | `mise run format`           | Format tracked files                                         |
 | `mise run check-pre-commit` | Run all pre-commit checks                                    |
 | `mise run upgrade`          | Update mise, apm, Neovim, Bun, and Homebrew dependencies     |

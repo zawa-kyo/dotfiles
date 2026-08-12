@@ -45,8 +45,9 @@ test_dotfile_links() {
   local second_links="$fixtures_dir/links-second.txt"
 
   mkdir -p "$home_dir"
+  ln -s "$repo_dir/config/ai/apm" "$home_dir/.apm"
 
-  HOME="$home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null
+  HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null
   assert_link "$home_dir/.gitconfig" "$repo_dir/config/tools/git/.gitconfig"
   assert_link "$home_dir/.config/nvim" "$repo_dir/config/editors/nvim"
   [ -d "$home_dir/.apm" ] && [ ! -L "$home_dir/.apm" ] || fail_test "APM user data directory is not a real directory"
@@ -54,7 +55,10 @@ test_dotfile_links() {
   assert_link "$home_dir/.apm/apm.lock.yaml" "$repo_dir/config/ai/apm/apm.lock.yaml"
 
   record_links "$home_dir" "$first_links"
-  HOME="$home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null
+  HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" check >/dev/null
+  [ -z "$(HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff)" ] ||
+    fail_test "deployed links still have a pending diff"
+  HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null
   record_links "$home_dir" "$second_links"
   cmp -s "$first_links" "$second_links" || fail_test "repeated linking changed the managed links"
 }
@@ -74,15 +78,14 @@ test_apm_directory_migration() {
 
   (
     HOME="$home_dir"
-    source "$repo_dir/scripts/utils/dotfiles-links.sh"
-    migrate_apm_config_dir "$repo_copy"
+    bash "$repo_dir/deploy/migrations/001-cleanup-legacy-links.sh" "$repo_copy"
   ) >/dev/null
   [ -d "$home_dir/.apm" ] && [ ! -L "$home_dir/.apm" ] || fail_test "legacy APM link was not migrated"
   [ -f "$home_dir/.apm/apm_modules/test-package/content" ] || fail_test "APM modules were not migrated"
   [ ! -e "$repo_copy/config/ai/apm/apm_modules" ] || fail_test "legacy APM modules remained in the repository"
 
   ln -s "$foreign_dir" "$foreign_home_dir/.apm"
-  if HOME="$foreign_home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null 2>&1; then
+  if HOME="$foreign_home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
     fail_test "foreign APM link was replaced"
   fi
   assert_link "$foreign_home_dir/.apm" "$foreign_dir"
@@ -153,86 +156,63 @@ EOF
 # Verify existing regular files remain untouched.
 test_regular_file_conflict() {
   local home_dir="$fixtures_dir/conflict-home"
+  local foreign_dir="$fixtures_dir/conflict-foreign"
 
-  mkdir -p "$home_dir"
+  mkdir -p "$home_dir/.config" "$foreign_dir"
   printf 'user-owned\n' >"$home_dir/.gitconfig"
+  ln -s "$foreign_dir" "$home_dir/.config/nvim"
 
-  HOME="$home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null
+  if HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
+    fail_test "deployment with a regular-file conflict succeeded"
+  fi
 
   [ ! -L "$home_dir/.gitconfig" ] || fail_test "an existing regular file was replaced"
   [ "$(sed -n '1p' "$home_dir/.gitconfig")" = "user-owned" ] || fail_test "an existing regular file was modified"
+  assert_link "$home_dir/.config/nvim" "$foreign_dir"
+}
+
+# Verify a migration removes only the obsolete link owned by this repository.
+test_obsolete_link_cleanup() {
+  local home_dir="$fixtures_dir/obsolete-home"
+  local foreign_home_dir="$fixtures_dir/obsolete-foreign-home"
+  local foreign_dir="$fixtures_dir/obsolete-foreign"
+  local repo_copy="$fixtures_dir/obsolete-repo"
+
+  mkdir -p "$home_dir/.config" "$foreign_home_dir/.config" "$foreign_dir" "$repo_copy/starship"
+  ln -s "$repo_copy/starship/config.toml" "$home_dir/.config/starship.toml"
+  ln -s "$foreign_dir/config.toml" "$foreign_home_dir/.config/starship.toml"
+
+  HOME="$home_dir" bash "$repo_dir/deploy/migrations/001-cleanup-legacy-links.sh" "$repo_copy" >/dev/null
+  [ ! -L "$home_dir/.config/starship.toml" ] || fail_test "obsolete managed link was not removed"
+
+  HOME="$foreign_home_dir" bash "$repo_dir/deploy/migrations/001-cleanup-legacy-links.sh" "$repo_copy" >/dev/null
+  assert_link "$foreign_home_dir/.config/starship.toml" "$foreign_dir/config.toml"
 }
 
 # Verify platform-specific link definitions stay isolated from common links.
 test_platform_links() {
   local home_dir="$fixtures_dir/platform-home"
+  local linux_diff="$fixtures_dir/linux-diff.txt"
+  local darwin_diff="$fixtures_dir/darwin-diff.txt"
 
   mkdir -p "$home_dir"
 
-  (
-    HOME="$home_dir"
-    source "$repo_dir/scripts/utils/dotfiles-links.sh"
-    uname() { printf 'Linux\n'; }
-    populate_dotfiles_links "$repo_dir"
+  HOME="$home_dir" DOTFILES_PLATFORM=linux bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff >"$linux_diff"
+  HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff >"$darwin_diff"
 
-    for link in "${file_links[@]}"; do
-      case "$link" in
-      *"Library/Application Support"* | *"Library/Preferences"*)
-        fail_test "macOS-specific link included for Linux"
-        ;;
-      esac
-    done
-  )
-
-  (
-    local found_vscode=false
-
-    HOME="$home_dir"
-    source "$repo_dir/scripts/utils/dotfiles-links.sh"
-    uname() { printf 'Darwin\n'; }
-    populate_dotfiles_links "$repo_dir"
-
-    for link in "${file_links[@]}"; do
-      case "$link" in
-      *"Library/Application Support/Code/User/settings.json") found_vscode=true ;;
-      esac
-    done
-
-    [ "$found_vscode" = true ] || fail_test "macOS-specific links were not defined for Darwin"
-  )
+  if grep -Eq 'Library/(Application Support|Preferences)' "$linux_diff"; then
+    fail_test "macOS-specific link included for Linux"
+  fi
+  grep -Fq 'Library/Application Support/Code/User/settings.json' "$darwin_diff" ||
+    fail_test "macOS-specific links were not defined for Darwin"
 }
 
-# Verify every link definition has a source and a unique target.
+# Verify every link definition passes manifest validation.
 test_link_inventory() {
   local home_dir="$fixtures_dir/inventory-home"
-  local targets="$fixtures_dir/link-targets.txt"
-  local source
-  local target
 
   mkdir -p "$home_dir"
-
-  (
-    HOME="$home_dir"
-    source "$repo_dir/scripts/utils/dotfiles-links.sh"
-    populate_dotfiles_links "$repo_dir"
-
-    : >"$targets"
-    for link in "${file_links[@]}"; do
-      IFS=: read -r source target <<<"$link"
-      [ -f "$source" ] || fail_test "missing file source: $source"
-      [ -n "$target" ] || fail_test "missing file target for $source"
-      printf '%s\n' "$target" >>"$targets"
-    done
-    for link in "${directory_links[@]}"; do
-      IFS=: read -r source target <<<"$link"
-      [ -d "$source" ] || fail_test "missing directory source: $source"
-      [ -n "$target" ] || fail_test "missing directory target for $source"
-      printf '%s\n' "$target" >>"$targets"
-    done
-  )
-
-  [ "$(wc -l <"$targets" | tr -d ' ')" = "$(sort -u "$targets" | wc -l | tr -d ' ')" ] ||
-    fail_test "duplicate link targets found"
+  HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff >/dev/null
 }
 
 # Verify command publication preserves unrelated entries and is idempotent.
@@ -280,6 +260,7 @@ test_dotfile_links
 test_apm_directory_migration
 test_bun_data_migration
 test_regular_file_conflict
+test_obsolete_link_cleanup
 test_platform_links
 test_link_inventory
 test_global_command_inventory

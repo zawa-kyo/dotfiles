@@ -19,8 +19,10 @@
 
 - `config/editors/nvim/`
   - Neovim の設定とプラグイン定義
-- `config/shell/terminal/`, `config/terminal-apps/ghostty/`, `config/terminal-apps/wezterm/`, `config/terminal-apps/zellij/`, `config/shell/starship/`
+- `config/shell/terminal/`, `config/shell/starship/`
   - 端末・シェル・プロンプト関連の設定
+- `config/terminal-apps/ghostty/`, `config/terminal-apps/wezterm/`, `config/terminal-apps/zellij/`
+  - 端末アプリケーションの設定
 - `config/editors/vscode/`
   - VS Code の設定
 - `scripts/local/`
@@ -29,6 +31,8 @@
   - `~/.local/bin` と `mise` タスクに公開する単独実行コマンドの置き場所
 - `scripts/utils/`
   - シェル用の共通補助スクリプト
+- `deploy/`
+  - ホームディレクトリへの配備一覧と、旧構成からの移行処理
 - `config/tools/homebrew/`
   - Homebrew パッケージ定義
 - `config/tools/bun/`
@@ -67,6 +71,15 @@
 - 反復的なセットアップはタスク化する
 - グローバルコマンドは公開経路をそろえる
 - フォーマッタと pre-commit を使って揺れを抑える
+
+### 5. 配備を宣言と実行に分ける
+
+- `deploy/links.sh` に配備元、配備先、対象 OS を宣言する
+- `scripts/local/deploy-dotfiles.sh` は同じ宣言から `apply`、`check`、`diff` を実行する
+- 初回セットアップ前でも実行できるように、配備処理は Bash だけで動かす
+- `apply` は、正しいリンクを変更せず、このリポジトリ内を指す古いリンクだけを張り直す
+- 通常ファイル、実ディレクトリ、管理対象外を指すリンクは競合として扱い、変更しない
+- 旧構成の掃除は `deploy/migrations/` に分離し、`apply` の前に実行する
 
 ## ドキュメントの階層
 

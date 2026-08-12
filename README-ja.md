@@ -50,6 +50,8 @@ mise run install
 | --------------------------- | --------------------------------------------------------- |
 | `mise run install`          | 標準のローカルセットアップを実行する                      |
 | `mise run relink`           | 実ファイルを上書きせず、dotfiles 管理のリンクだけ張り直す |
+| `mise run check-deployment` | ファイルを変更せず、管理対象のリンクを確認する            |
+| `mise run diff-deployment`  | 作成、張り直し、競合が必要なリンクを事前に表示する        |
 | `mise run format`           | Git の追跡対象ファイルを整形する                          |
 | `mise run check-pre-commit` | リポジトリ全体の pre-commit チェックを実行する            |
 | `mise run upgrade`          | mise、apm、Neovim、Bun、Homebrew の依存関係を更新する     |

@@ -146,7 +146,7 @@ run = [
 [tasks.link-dotfiles]
 hide = true
 description = "Link dotfiles-managed files into the home directory"
-run = "bash scripts/local/link-dotfiles.sh"
+run = "bash scripts/local/deploy-dotfiles.sh apply"
 
 [tasks.sync-global-commands]
 hide = true
@@ -180,7 +180,15 @@ file = "scripts/local/install-bun.sh"
 
 [tasks.relink]
 description = "Relink dotfiles-managed symlinks without overwriting real files"
-file = "scripts/local/relink-dotfiles.sh"
+run = "bash scripts/local/deploy-dotfiles.sh apply"
+
+[tasks.check-deployment]
+description = "Check dotfile deployment without changing files"
+run = "bash scripts/local/deploy-dotfiles.sh check"
+
+[tasks.diff-deployment]
+description = "Show pending dotfile deployment changes"
+run = "bash scripts/local/deploy-dotfiles.sh diff"
 
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
