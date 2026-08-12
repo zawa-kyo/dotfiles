@@ -61,15 +61,15 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/500652047"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.20"
+version = "2.36.21"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.20.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.21.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:bb63eaf2e2cf2d44c89182d40e524c607d05a5ac6c7625872a3b17e45f2df816"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.20.pkg"
+checksum = "blake3:ed55562edb97949b36236af4c78dc785045c16eca8272808ee0fc756b591578b"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.21.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -506,7 +506,7 @@ url = "https://github.com/jdx/ruby/releases/download/3.4.10-2/ruby-3.4.10.macos.
 provenance = "github-attestations"
 
 [[tools.rust]]
-version = "1.97.1"
+version = "1"
 backend = "asdf:rust"
 
 [[tools.sheldon]]
