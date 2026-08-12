@@ -21,6 +21,10 @@ minimum_release_age = "7d"
 description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]
 
+[tasks.test-deployment]
+description = "Test dotfile links and global command publication in an isolated HOME"
+file = "tests/test-deployment.sh"
+
 [tasks.format-check-tools]
 hide = true
 description = "Check required formatters for the repository"
