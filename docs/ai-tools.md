@@ -13,14 +13,14 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 
 ## 基本方針
 
-- グローバルなエージェント向け指示は `config/ai/instructions/AGENTS.md` で管理する
-- `config/ai/instructions/AGENTS-ja.md` は日本語版として併走させるが、エージェント設定ディレクトリにはリンクしない
-- `config/ai/instructions/AGENTS.md` は `~/.codex/AGENTS.md` と `~/.claude/CLAUDE.md` にリンクして、Codex と Claude Code で同じ内容を読む
+- グローバルなエージェント向け指示は `home/.codex/AGENTS.md` で管理する
+- `home/.codex/AGENTS-ja.md` は日本語版として併走させるが、エージェント設定ディレクトリにはリンクしない
+- `home/.codex/AGENTS.md` は `~/.codex/AGENTS.md` と `~/.claude/CLAUDE.md` にリンクして、Codex と Claude Code で同じ内容を読む
 - スキルは apm で運用、管理する
 - dotfiles では公開済みの再利用可能なスキルの依存関係を管理する
-- `config/ai/apm/` 内の管理ファイルだけを `~/.apm` へ個別にリンクする
+- `packages/apm/` 内の管理ファイルだけを `~/.apm` へ個別にリンクする
 - `~/.apm` は通常のディレクトリとし、`apm_modules/` などの生成物をリポジトリ外に置く
-- apm の展開先は `config/ai/apm/apm.lock.yaml` の `deployed_files` を正とする
+- apm の展開先は `packages/apm/apm.lock.yaml` の `deployed_files` を正とする
 - 現行のユーザー単位インストールでは `.agents/skills` と `.claude/skills` に展開する
 - スキル本体は用途に応じてパブリックリポジトリ、プライベートリポジトリ、またはプロジェクト単位の apm 管理に置く
 - `mise run install` で lock ファイルに従ってスキルを反映する
@@ -34,23 +34,25 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 
 | CLI         | 管理ファイル                          | 反映先                         | 備考                                                               |
 | ----------- | ------------------------------------- | ------------------------------ | ------------------------------------------------------------------ |
-| Claude Code | `config/ai/claude/settings.json`      | `~/.claude/settings.json`      | `permissions.allow` と `permissions.deny` をこのファイルで管理する |
+| Claude Code | `home/.claude/settings.json`          | `~/.claude/settings.json`      | `permissions.allow` と `permissions.deny` をこのファイルで管理する |
 | Codex       | `config/ai/codex/rules/default.rules` | `~/.codex/rules/default.rules` | コマンド単位の allow / deny をこのファイルで管理する               |
 
 ## dotfiles で管理するもの
 
 dotfiles は公開リポジトリなので、ここで管理するスキルは公開して問題ないものに限定する。
 
-dotfiles では `config/ai/apm/` にユーザー単位の依存関係リストと設定を置き、`apm.yml`、`apm.lock.yaml`、`config.json` を `~/.apm` へ個別にリンクする。スキル本体は原則として個別の apm パッケージリポジトリに置き、dotfiles には参照と lock ファイルだけを置く。
+dotfiles では `packages/apm/` にユーザー単位の依存関係リストと設定を置く。
+`apm.yml`、`apm.lock.yaml`、`config.json` は `~/.apm` へ個別にリンクする。
+スキル本体は原則として個別の apm パッケージリポジトリに置き、dotfiles には参照と lock ファイルだけを置く。
 
-- `config/ai/apm/apm.yml`
+- `packages/apm/apm.yml`
   - インストールする公開 apm パッケージを宣言する
-- `config/ai/apm/apm.lock.yaml`
+- `packages/apm/apm.lock.yaml`
   - 解決済みのコミットと内容のハッシュを記録する
 - `mise.toml`
   - apm CLI の準備、インストール、更新の実行入口を定義する
 
-`config/ai/apm/apm.lock.yaml` は再現性のためにコミットする。手で編集せず、apm コマンドの結果をそのまま反映する。
+`packages/apm/apm.lock.yaml` は再現性のためにコミットする。手で編集せず、apm コマンドの結果をそのまま反映する。
 
 ## 通常運用の入口
 
@@ -62,15 +64,22 @@ dotfiles では `config/ai/apm/` にユーザー単位の依存関係リスト�
 4. `mise -C ~ exec -- apm install -g --frozen` を実行する
 5. Bun や pre-commit など、既存のセットアップ処理を続ける
 
-`mise -C ~ exec -- apm install -g --frozen` は `config/ai/apm/apm.lock.yaml` を基準にし、`apm.yml` と lock ファイルがずれているときは失敗する。通常のセットアップでは、この lock ファイルを正としてスキルを再生成する。apm CLI 自体は `config/tools/mise/conf.d/tools.toml` のグローバル mise 設定で管理する。
+`mise -C ~ exec -- apm install -g --frozen` は `packages/apm/apm.lock.yaml` を基準にする。
+`apm.yml` と lock ファイルがずれているときは失敗する。
+通常のセットアップでは、この lock ファイルを正としてスキルを再生成する。
+apm CLI 自体は `home/.config/mise/conf.d/tools.toml` のグローバル mise 設定で管理する。
 
 `~/.apm` は通常のディレクトリとして作成し、`apm_modules/` は apm が管理する生成先として扱う。`~/.agents/skills` と `~/.claude/skills` も apm の所有情報に従って更新し、インストール前にディレクトリ全体を削除しない。
 
-旧構成の `~/.apm` が `config/ai/apm/` へのシンボリックリンクである場合、リンク処理は `~/.apm` を通常のディレクトリへ置き換える。既存の `config/ai/apm/apm_modules/` は新しい `~/.apm/apm_modules/` へ移し、管理ファイルだけを個別にリンクする。別の場所を指す `~/.apm` のシンボリックリンクや通常ファイルは、所有元を確認できないため変更しない。
+旧構成の `~/.apm` が `config/ai/apm/` へのシンボリックリンクである場合、リンク処理は `~/.apm` を通常のディレクトリへ置き換える。
+既存の `config/ai/apm/apm_modules/` は新しい `~/.apm/apm_modules/` へ移し、管理ファイルだけを個別にリンクする。
+別の場所を指す `~/.apm` のシンボリックリンクや通常ファイルは、所有元を確認できないため変更しない。
 
-移行後に問題が起きた場合は、apm の処理を停止したうえで、管理ファイルのリンクを外し、`~/.apm/apm_modules/` を `config/ai/apm/` へ戻してから、`~/.apm` を従来のディレクトリリンクへ戻せる。通常運用では新しい構成を使い、この手順は切り戻しに限って使用する。
+移行後に問題が起きた場合は、まず apm の処理を停止し、管理ファイルのリンクを外す。
+その後、`~/.apm/apm_modules/` を `packages/apm/` へ戻し、`~/.apm` をそのディレクトリへのリンクにできる。
+通常運用では新しい構成を使い、この手順は切り戻しに限って使用する。
 
-`mise run upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。更新された `config/ai/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
+`mise run upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。更新された `packages/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
 
 ## 既知の TODO
 
@@ -83,7 +92,7 @@ dotfiles では `config/ai/apm/` にユーザー単位の依存関係リスト�
 
 ## 知識と手順の分離
 
-AI ツール向けの文脈は、知識と手順を分けて管理する。知識はエージェントが常時参照したい前提であり、手順は特定の作業で実行するワークフローである。
+AI ツール向けの文脈は、知識と手順を分けて管理する。知識はエージェントが常時参照する前提として扱い、手順は特定の作業で実行するワークフローとして扱う。
 
 | 内容                   | 再利用範囲                   | 管理先                                           | 使い分け                                                                                         |
 | ---------------------- | ---------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
@@ -108,20 +117,20 @@ AI ツール向けの文脈は、知識と手順を分けて管理する。知�
 | dotfiles の運用にだけ必要で、公開して問題ない内容 | dotfiles 内の apm 管理に置くか、公開 apm パッケージに分ける                |
 | 自分の全作業環境で使うが公開したくない内容        | dotfiles には置かず、プライベート GitHub リポジトリの apm パッケージに置く |
 
-apm の展開先である `.agents/skills` や `.claude/skills`、旧運用で使っていた `.codex/skills` などを直接編集しない。人が編集する場所は apm パッケージ側の `.apm/skills`、プロジェクト単位の `.apm/skills`、または dotfiles の `config/ai/apm/apm.yml` に限定する。
+apm の展開先である `.agents/skills` や `.claude/skills`、旧運用で使っていた `.codex/skills` などを直接編集しない。人が編集する場所は apm パッケージ側の `.apm/skills`、プロジェクト単位の `.apm/skills`、または dotfiles の `packages/apm/apm.yml` に限定する。
 
 ## 公開スキルの運用
 
 公開して問題ない再利用可能なスキルは、dotfiles に直接置かず、個別の apm パッケージリポジトリで管理する。
 
-対象例:
+対象は次のとおり。
 
 - `review-essential-code`
 - `suggest-commit-messages`
 
-各スキルリポジトリは apm パッケージとして構成し、dotfiles 側の `config/ai/apm/apm.yml` から GitHub 依存関係として参照する。
+各スキルリポジトリは apm パッケージとして構成し、dotfiles 側の `packages/apm/apm.yml` から GitHub 依存関係として参照する。
 
-例:
+設定例を示す。
 
 ```yaml
 dependencies:
@@ -135,15 +144,17 @@ dependencies:
 
 スキル本体が `SKILL.md` として各ディレクトリにある構成では、依存関係もそのスキルのディレクトリを直接指定する。`git: <repo>` に `skills:` を添えてリポジトリ全体を参照すると、依存解決はできても `.agents/skills` や `.claude/skills` に配備されないことがある。
 
-判断に迷ったときは、まず依存先リポジトリのルート構成を見る。ルートに `apm.yml` がある APM package は `owner/repo/path/to/skill` の形で個別スキルを参照し、ルート直下や `skills/` 配下にスキルがまとまっている skill bundle は `git: <repo>` と `skills:` を使う。
+判断に迷ったときは、まず依存先リポジトリのルート構成を見る。
+ルートに `apm.yml` がある APM package は、`owner/repo/path/to/skill` の形で個別スキルを参照する。
+ルート直下や `skills/` 配下にスキルがまとまっている skill bundle は、`git: <repo>` と `skills:` を使う。
 
-公開スキルを更新するときは、スキルリポジトリ側で変更、確認、タグ作成まで行う。その後 dotfiles 側で apm 更新タスクを実行し、`config/ai/apm/apm.lock.yaml` の差分を確認する。
+公開スキルを更新するときは、スキルリポジトリ側で変更、確認、タグ作成まで行う。その後 dotfiles 側で apm 更新タスクを実行し、`packages/apm/apm.lock.yaml` の差分を確認する。
 
 ## プライベートリポジトリ内だけで使うスキル
 
 特定のプライベートリポジトリ内でだけ使うスキルは、そのリポジトリ自身のプロジェクト単位の apm 管理に置く。dotfiles 側には追加しない。
 
-例:
+構成例を示す。
 
 ```text
 private-repo/
@@ -159,7 +170,8 @@ private-repo/
 
 この形にすると、リポジトリ内では `.apm/skills` を編集場所とし、各ツール向けの配置は apm の処理結果として扱える。
 
-プロジェクト単位のスキルは、そのリポジトリのコード、設計、運用、ドメイン知識に強く依存するものに限定する。複数リポジトリで同じ内容が必要になった場合は、プライベートな再利用可能スキルへの分離を検討する。
+プロジェクト単位で管理するのは、対象リポジトリ固有のコード、設計、運用、ドメイン知識へ強く依存するスキルに限る。
+複数リポジトリで同じ内容が必要になった場合は、プライベートな再利用可能スキルへの分離を検討する。
 
 ## プライベートな再利用可能スキルの運用
 
@@ -169,7 +181,7 @@ private-repo/
 
 認証情報は環境変数で渡し、リポジトリには含めない。
 
-例:
+設定例を示す。
 
 ```yaml
 dependencies:
@@ -195,7 +207,7 @@ dependencies:
 ## スキルを更新するときの手順
 
 1. スキルの管理リポジトリで内容を変更する
-2. そのリポジトリで必要な確認を行う
+2. そのリポジトリで必要な確認をする
 3. 再利用可能なスキルならタグを作成する
 4. 参照側で apm 更新タスクを実行する
 5. lock ファイルのコミット、内容のハッシュ、展開先の差分を確認する
@@ -207,9 +219,10 @@ dependencies:
 
 dotfiles で共通利用するスキルは、公開 apm 依存関係として扱う。dotfiles 内に直接スキル本体を置く方式は避ける。
 
-旧 `ai/skills/` 配下にあったスキルを継続利用する場合も、運用上は公開 apm パッケージリポジトリに分けてから `config/ai/apm/apm.yml` で参照する。移動後は `ai/skills/` を日常的な編集場所として使わない。
+旧 `ai/skills/` 配下にあったスキルを継続利用する場合も、運用上は公開 apm パッケージリポジトリに分けてから `packages/apm/apm.yml` で参照する。移動後は `ai/skills/` を日常的な編集場所として使わない。
 
-例外として、dotfiles の運用にしか意味がない補助スキルが必要になった場合は、dotfiles 内の apm 管理に置いてよい。ただし公開リポジトリに含める以上、内容は公開可能なものに限定する。
+dotfiles の運用にしか意味がない補助スキルは、例外として dotfiles 内の apm 管理に置いてよい。
+ただし公開リポジトリに含める以上、内容は公開可能なものに限定する。
 
 ## 実装上の注意
 

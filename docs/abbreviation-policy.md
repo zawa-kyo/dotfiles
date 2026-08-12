@@ -46,7 +46,7 @@
 - 同じ object は同じ対象を保つ
 - 展開先は `mise run ...` ではなく実コマンドにする
 
-例:
+例を示す。
 
 - `rr` -> `reveal-repository-with-zoxide`
 - `rrb` -> `reveal-repository-with-browser`
@@ -73,12 +73,12 @@
 ## 避けるもの
 
 - `mise run ...` という実装詳細を名前に含めること
-- 一回限りの語呂合わせ
+- 1 回限りの語呂合わせ
 - 同じ接頭辞に複数の意味を持たせること
 
 ## Neovim キーバインドとの関係
 
-この方針は `config/editors/nvim/lua/policies/keybinds-policy.md` と同じ発想です。どちらも「意味ベースの辞書で覚えられること」を優先します。
+この方針は `home/.config/nvim/lua/policies/keybinds-policy.md` と同じ発想です。どちらも「意味ベースの辞書で覚えられること」を優先します。
 
 ただし対象は異なります。
 

@@ -45,20 +45,25 @@ test_dotfile_links() {
   local second_links="$fixtures_dir/links-second.txt"
 
   mkdir -p "$home_dir"
-  ln -s "$repo_dir/config/ai/apm" "$home_dir/.apm"
+  ln -s "$repo_dir/packages/apm" "$home_dir/.apm"
+  mkdir -p "$home_dir/.config"
+  ln -s "$repo_dir/config/terminal-apps/ghostty" "$home_dir/.config/ghostty"
 
-  HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null
-  assert_link "$home_dir/.gitconfig" "$repo_dir/config/tools/git/.gitconfig"
-  assert_link "$home_dir/.config/nvim" "$repo_dir/config/editors/nvim"
+  HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" apply >/dev/null
+  assert_link "$home_dir/.gitconfig" "$repo_dir/home/.gitconfig"
+  assert_link "$home_dir/.config/nvim" "$repo_dir/home/.config/nvim"
+  [ -d "$home_dir/.config/ghostty" ] && [ ! -L "$home_dir/.config/ghostty" ] ||
+    fail_test "legacy managed parent link was not replaced"
+  assert_link "$home_dir/.config/ghostty/config.ghostty" "$repo_dir/home/.config/ghostty/config.ghostty"
   [ -d "$home_dir/.apm" ] && [ ! -L "$home_dir/.apm" ] || fail_test "APM user data directory is not a real directory"
-  assert_link "$home_dir/.apm/apm.yml" "$repo_dir/config/ai/apm/apm.yml"
-  assert_link "$home_dir/.apm/apm.lock.yaml" "$repo_dir/config/ai/apm/apm.lock.yaml"
+  assert_link "$home_dir/.apm/apm.yml" "$repo_dir/packages/apm/apm.yml"
+  assert_link "$home_dir/.apm/apm.lock.yaml" "$repo_dir/packages/apm/apm.lock.yaml"
 
   record_links "$home_dir" "$first_links"
-  HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" check >/dev/null
-  [ -z "$(HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff)" ] ||
+  HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" check >/dev/null
+  [ -z "$(HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" diff)" ] ||
     fail_test "deployed links still have a pending diff"
-  HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null
+  HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" apply >/dev/null
   record_links "$home_dir" "$second_links"
   cmp -s "$first_links" "$second_links" || fail_test "repeated linking changed the managed links"
 }
@@ -71,7 +76,7 @@ test_apm_directory_migration() {
   local repo_copy="$fixtures_dir/apm-repo"
 
   mkdir -p "$home_dir" "$foreign_home_dir" "$foreign_dir" "$repo_copy/config/ai/apm"
-  cp "$repo_dir/config/ai/apm/apm.yml" "$repo_copy/config/ai/apm/apm.yml"
+  cp "$repo_dir/packages/apm/apm.yml" "$repo_copy/config/ai/apm/apm.yml"
   mkdir -p "$repo_copy/config/ai/apm/apm_modules/test-package"
   printf 'cached\n' >"$repo_copy/config/ai/apm/apm_modules/test-package/content"
   ln -s "$repo_copy/config/ai/apm" "$home_dir/.apm"
@@ -85,7 +90,7 @@ test_apm_directory_migration() {
   [ ! -e "$repo_copy/config/ai/apm/apm_modules" ] || fail_test "legacy APM modules remained in the repository"
 
   ln -s "$foreign_dir" "$foreign_home_dir/.apm"
-  if HOME="$foreign_home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
+  if HOME="$foreign_home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
     fail_test "foreign APM link was replaced"
   fi
   assert_link "$foreign_home_dir/.apm" "$foreign_dir"
@@ -94,18 +99,19 @@ test_apm_directory_migration() {
 # Verify Bun declarations stay in the repo while generated modules move outside it.
 test_bun_data_migration() {
   local source_dir="$fixtures_dir/bun-source"
+  local legacy_source_dir="$fixtures_dir/bun-legacy-source"
   local global_dir="$fixtures_dir/bun-global"
   local global_bin_dir="$fixtures_dir/bun-bin"
   local fake_bin_dir="$fixtures_dir/fake-bin"
   local foreign_dir="$fixtures_dir/foreign-bun"
 
-  mkdir -p "$source_dir/node_modules/.bin" "$fake_bin_dir" "$foreign_dir"
+  mkdir -p "$source_dir" "$legacy_source_dir/node_modules/.bin" "$fake_bin_dir" "$foreign_dir"
   printf '{"dependencies":{}}\n' >"$source_dir/package.json"
   printf 'lock-before\n' >"$source_dir/bun.lock"
   printf '[install]\n' >"$source_dir/bunfig.toml"
-  printf '#!/usr/bin/env bash\n' >"$source_dir/node_modules/.bin/example"
-  chmod +x "$source_dir/node_modules/.bin/example"
-  ln -s "$source_dir" "$global_dir"
+  printf '#!/usr/bin/env bash\n' >"$legacy_source_dir/node_modules/.bin/example"
+  chmod +x "$legacy_source_dir/node_modules/.bin/example"
+  ln -s "$legacy_source_dir" "$global_dir"
 
   cat >"$fake_bin_dir/bun" <<'EOF'
 #!/usr/bin/env bash
@@ -131,23 +137,26 @@ fi
 EOF
   chmod +x "$fake_bin_dir/bun"
 
-  PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
-    bash "$repo_dir/scripts/local/install-bun.sh" >/dev/null
+  PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_LEGACY_SOURCE="$legacy_source_dir" \
+    DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
+    bash "$repo_dir/tasks/install-bun.sh" >/dev/null
 
   [ -d "$global_dir" ] && [ ! -L "$global_dir" ] || fail_test "Bun runtime directory is not a real directory"
-  [ ! -e "$source_dir/node_modules" ] || fail_test "Bun modules remained in the repository source"
+  [ ! -e "$legacy_source_dir/node_modules" ] || fail_test "Bun modules remained in the legacy repository source"
   [ -f "$global_dir/node_modules/.bin/example" ] || fail_test "Bun modules were not migrated"
   assert_link "$global_bin_dir/example" "$(realpath "$global_dir/node_modules/.bin/example")"
 
-  PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
-    bash "$repo_dir/scripts/local/install-bun.sh" upgrade >/dev/null
+  PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_LEGACY_SOURCE="$legacy_source_dir" \
+    DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
+    bash "$repo_dir/tasks/install-bun.sh" upgrade >/dev/null
   grep -Fqx '{"updated":true}' "$source_dir/package.json" || fail_test "updated Bun manifest was not copied back"
   grep -Fqx 'lock-after' "$source_dir/bun.lock" || fail_test "updated Bun lock file was not copied back"
 
   rm -rf "$global_dir"
   ln -s "$foreign_dir" "$global_dir"
-  if PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
-    bash "$repo_dir/scripts/local/install-bun.sh" >/dev/null 2>&1; then
+  if PATH="$fake_bin_dir:$PATH" DIR_BUN_SOURCE="$source_dir" DIR_BUN_LEGACY_SOURCE="$legacy_source_dir" \
+    DIR_BUN_GLOBAL="$global_dir" DIR_BUN_BIN="$global_bin_dir" \
+    bash "$repo_dir/tasks/install-bun.sh" >/dev/null 2>&1; then
     fail_test "foreign Bun link was replaced"
   fi
   assert_link "$global_dir" "$foreign_dir"
@@ -162,7 +171,7 @@ test_regular_file_conflict() {
   printf 'user-owned\n' >"$home_dir/.gitconfig"
   ln -s "$foreign_dir" "$home_dir/.config/nvim"
 
-  if HOME="$home_dir" bash "$repo_dir/scripts/local/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
+  if HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
     fail_test "deployment with a regular-file conflict succeeded"
   fi
 
@@ -197,8 +206,8 @@ test_platform_links() {
 
   mkdir -p "$home_dir"
 
-  HOME="$home_dir" DOTFILES_PLATFORM=linux bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff >"$linux_diff"
-  HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff >"$darwin_diff"
+  HOME="$home_dir" DOTFILES_PLATFORM=linux bash "$repo_dir/tasks/deploy-dotfiles.sh" diff >"$linux_diff"
+  HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/tasks/deploy-dotfiles.sh" diff >"$darwin_diff"
 
   if grep -Eq 'Library/(Application Support|Preferences)' "$linux_diff"; then
     fail_test "macOS-specific link included for Linux"
@@ -212,7 +221,7 @@ test_link_inventory() {
   local home_dir="$fixtures_dir/inventory-home"
 
   mkdir -p "$home_dir"
-  HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/scripts/local/deploy-dotfiles.sh" diff >/dev/null
+  HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/tasks/deploy-dotfiles.sh" diff >/dev/null
 }
 
 # Verify command publication preserves unrelated entries and is idempotent.
@@ -220,6 +229,7 @@ test_global_command_inventory() {
   local local_bin_dir="$fixtures_dir/bin"
   local mise_tasks_dir="$fixtures_dir/mise-tasks"
   local unrelated_target="$fixtures_dir/unrelated"
+  local foreign_command_target="$fixtures_dir/foreign-command"
   local unrelated_task="$mise_tasks_dir/unrelated"
   local stale_task="$mise_tasks_dir/stale"
   local first_links="$fixtures_dir/commands-first.txt"
@@ -230,14 +240,17 @@ test_global_command_inventory() {
   mkdir -p "$local_bin_dir" "$mise_tasks_dir"
   : >"$unrelated_target"
   ln -s "$unrelated_target" "$local_bin_dir/unrelated"
+  : >"$foreign_command_target"
+  ln -s "$foreign_command_target" "$local_bin_dir/search-google"
   printf '# user-owned\n' >"$unrelated_task"
   printf '#!/usr/bin/env bash\n# Generated by scripts/local/sync-global-commands.sh. Do not edit.\n' >"$stale_task"
 
   DIR_LOCAL_BIN="$local_bin_dir" DIR_MISE_TASKS="$mise_tasks_dir" \
-    bash "$repo_dir/scripts/local/sync-global-commands.sh" >/dev/null
+    bash "$repo_dir/tasks/sync-global-commands.sh" >/dev/null
 
-  for command_path in "$repo_dir/scripts/global/"*.sh; do
+  for command_path in "$repo_dir/bin/"*.sh; do
     command_name="$(basename "${command_path%.sh}")"
+    [ "$command_name" != search-google ] || continue
     assert_link "$local_bin_dir/$command_name" "$command_path"
     [ -x "$command_path" ] || fail_test "$command_path is not executable"
     grep -q '^# DESCRIPTION: .' "$command_path" || fail_test "$command_path has no description"
@@ -245,11 +258,12 @@ test_global_command_inventory() {
   done
 
   assert_link "$local_bin_dir/unrelated" "$unrelated_target"
+  assert_link "$local_bin_dir/search-google" "$foreign_command_target"
   [ -f "$unrelated_task" ] || fail_test "unrelated mise task was removed"
   [ ! -e "$stale_task" ] || fail_test "generated mise wrapper was not removed"
   record_links "$local_bin_dir" "$first_links"
   DIR_LOCAL_BIN="$local_bin_dir" DIR_MISE_TASKS="$mise_tasks_dir" \
-    bash "$repo_dir/scripts/local/sync-global-commands.sh" >/dev/null
+    bash "$repo_dir/tasks/sync-global-commands.sh" >/dev/null
   record_links "$local_bin_dir" "$second_links"
   cmp -s "$first_links" "$second_links" || fail_test "repeated command sync changed published links"
 }

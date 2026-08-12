@@ -33,7 +33,7 @@
 
 - `mise run install-bun`
 - `bunx --version`
-- `config/tools/bun/node_modules/` が生成されていないことを確認する
+- `packages/bun/node_modules/` が生成されていないことを確認する
 
 旧構成では、`~/.bun/install/global` が `config/tools/bun/` へのシンボリックリンクになっている場合がある。
 この場合、`mise run install-bun` はリンクを実行用ディレクトリへ置き換える。
@@ -41,12 +41,12 @@
 別の場所を指すリンクや通常ファイルは変更しない。
 
 移行後に問題が起きた場合は、まず Bun を使う処理を停止する。
-その後、`node_modules/` を `config/tools/bun/` へ戻し、`~/.bun/install/global` を従来のリンクへ戻せる。
+その後、`node_modules/` を `packages/bun/` へ戻し、`~/.bun/install/global` をそのディレクトリへのリンクにできる。
 この手順は切り戻しに限って使用する。
 
 ### Homebrew
 
-- `brew bundle check --file=config/tools/homebrew/Brewfile`
+- `brew bundle check --file=packages/homebrew/Brewfile`
 
 ## フォーマッタ
 

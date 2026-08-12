@@ -10,7 +10,7 @@
 - Neovim と VS Code のエディタ設定
 - Zsh、Starship、Ghostty、WezTerm、Zellij などのターミナル周辺設定
 - Homebrew、Bun、mise、procs などのローカルツール設定
-- `scripts/global/` で公開する単独実行 CLI コマンド
+- `bin/` で公開する単独実行 CLI コマンド
 - Codex や Claude Code などで使う AI ツール設定
 - エディタと LSP の動作確認に使うサンプルファイル
 
@@ -57,14 +57,14 @@ mise run install
 | `mise run upgrade`          | mise、apm、Neovim、Bun、Homebrew の依存関係を更新する     |
 | `mise tasks`                | 利用できる mise タスクを一覧する                          |
 
-`scripts/global/` のコマンドはグローバルにリンクします。
+`bin/` のコマンドはグローバルにリンクします。
 このディレクトリには、Git 操作やタスク検索など日常作業で直接使う小さな CLI ツールを置いています。
 
 ### Bun グローバルパッケージ
 
-Bun のグローバル環境で使う `package.json`、`bun.lock`、`bunfig.toml` は `config/tools/bun/` で管理します。
+Bun のグローバル環境で使う `package.json`、`bun.lock`、`bunfig.toml` は `packages/bun/` で管理します。
 `mise run install-bun` はこれらのファイルを `~/.bun/install/global` へコピーし、依存関係を同じディレクトリへインストールします。生成される `node_modules/` はリポジトリ内に置きません。
-`mise run upgrade-bun` は実行用ディレクトリで依存関係を更新し、変更されたパッケージ宣言と lock ファイルを `config/tools/bun/` へ戻します。
+`mise run upgrade-bun` は実行用ディレクトリで依存関係を更新し、変更されたパッケージ宣言と lock ファイルを `packages/bun/` へ戻します。
 
 ### Git worktree
 
@@ -79,17 +79,17 @@ ghq で取得したリポジトリの worktree は Worktrunk で管理します�
 
 ## 🗂️ リポジトリ構成
 
-| パス                    | 役割                                             |
-| ----------------------- | ------------------------------------------------ |
-| `config/editors/`       | Neovim、VS Code、確認用サンプルの設定            |
-| `config/shell/`         | Zsh、Sheldon、Starship などのシェル設定          |
-| `config/terminal-apps/` | Ghostty、WezTerm、Zellij などの端末アプリ設定    |
-| `config/tools/`         | Homebrew、Bun、Git、mise、procs などのツール設定 |
-| `config/ai/`            | AI ツール向けの指示と apm 管理設定               |
-| `scripts/local/`        | セットアップや保守用のローカルスクリプト         |
-| `scripts/global/`       | グローバルに公開する単独実行 CLI コマンド        |
-| `scripts/utils/`        | シェルスクリプトから共有するヘルパー             |
-| `docs/`                 | リポジトリ全体の設計と運用ポリシー               |
+| パス        | 役割                                            |
+| ----------- | ----------------------------------------------- |
+| `home/`     | ホームディレクトリと XDG 設定へ配備するファイル |
+| `macos/`    | macOS 固有の Library 配下へ配備するファイル     |
+| `packages/` | Homebrew、Bun、apm のパッケージ定義             |
+| `bin/`      | グローバルに公開する単独実行 CLI コマンド       |
+| `tasks/`    | セットアップや保守用のローカルスクリプト        |
+| `libexec/`  | シェルスクリプトから共有するヘルパー            |
+| `deploy/`   | 配備一覧と旧構成からの移行処理                  |
+| `examples/` | 配備しない動作確認用サンプル                    |
+| `docs/`     | リポジトリ全体の設計と運用ポリシー              |
 
 ## 📚 詳細ドキュメント
 
@@ -102,4 +102,4 @@ README は概要に留め、詳しい設計や運用は次のドキュメント�
 - [docs/ai-tools.md](docs/ai-tools.md): AI ツールと apm の運用方針
 - [docs/operations.md](docs/operations.md): 変更内容に応じた確認方法
 
-Neovim 固有の方針は `config/editors/nvim/lua/policies/` に置いています。
+Neovim 固有の方針は `home/.config/nvim/lua/policies/` に置いています。

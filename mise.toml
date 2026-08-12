@@ -117,7 +117,7 @@ trap 'rm -f "$tmpfile"' EXIT
 git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
-  ':(exclude)config/ai/apm/apm.lock.yaml' \
+  ':(exclude)packages/apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' |
 while IFS= read -r -d '' file; do
   if [ -f "$file" ]; then
@@ -166,12 +166,12 @@ run = [
 [tasks.link-dotfiles]
 hide = true
 description = "Link dotfiles-managed files into the home directory"
-run = "bash scripts/local/deploy-dotfiles.sh apply"
+run = "bash tasks/deploy-dotfiles.sh apply"
 
 [tasks.sync-global-commands]
 hide = true
 description = "Link global CLI commands and remove legacy mise wrappers"
-run = "bash scripts/local/sync-global-commands.sh"
+run = "bash tasks/sync-global-commands.sh"
 
 [tasks.install-mise-tools]
 hide = true
@@ -196,23 +196,23 @@ run = [
 
 [tasks.install-bun]
 description = "Install Bun globals outside the repository"
-file = "scripts/local/install-bun.sh"
+file = "tasks/install-bun.sh"
 
 [tasks.relink]
 description = "Relink dotfiles-managed symlinks without overwriting real files"
-run = "bash scripts/local/deploy-dotfiles.sh apply"
+run = "bash tasks/deploy-dotfiles.sh apply"
 
 [tasks.check-deployment]
 description = "Check dotfile deployment without changing files"
-run = "bash scripts/local/deploy-dotfiles.sh check"
+run = "bash tasks/deploy-dotfiles.sh check"
 
 [tasks.diff-deployment]
 description = "Show pending dotfile deployment changes"
-run = "bash scripts/local/deploy-dotfiles.sh diff"
+run = "bash tasks/deploy-dotfiles.sh diff"
 
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
-file = "scripts/local/install-pre-commit.sh"
+file = "tasks/install-pre-commit.sh"
 
 [tasks.sync-python]
 description = "Sync Python development dependencies with uv"
@@ -236,12 +236,12 @@ run = ["mise -C ~ install apm", "mise -C ~ exec -- apm update -g --yes"]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
 run = [
   "brew upgrade",
-  "brew bundle dump --file=config/tools/homebrew/Brewfile --force",
+  "brew bundle dump --file=packages/homebrew/Brewfile --force",
 ]
 
 [tasks.upgrade-bun]
 description = "Update Bun global packages to their latest versions"
-run = "bash scripts/local/install-bun.sh upgrade"
+run = "bash tasks/install-bun.sh upgrade"
 
 [tasks.upgrade-global-tools]
 description = "Upgrade global mise tools within their configured version ranges"
@@ -258,6 +258,6 @@ run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 [tasks.upgrade-nvim-plugins]
 description = "Upgrade Neovim plugins managed by lazy.nvim"
 run = '''
-XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/config/editors" \
-nvim --headless --cmd 'set runtimepath^=config/editors/nvim' -u config/editors/nvim/init.lua "+Lazy! update" +qa
+XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/home/.config" \
+nvim --headless --cmd 'set runtimepath^=home/.config/nvim' -u home/.config/nvim/init.lua "+Lazy! update" +qa
 '''

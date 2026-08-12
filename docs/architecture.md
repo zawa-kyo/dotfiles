@@ -17,32 +17,27 @@
 
 ## 主要ディレクトリの役割
 
-- `config/editors/nvim/`
-  - Neovim の設定とプラグイン定義
-- `config/shell/terminal/`, `config/shell/starship/`
-  - 端末・シェル・プロンプト関連の設定
-- `config/terminal-apps/ghostty/`, `config/terminal-apps/wezterm/`, `config/terminal-apps/zellij/`
-  - 端末アプリケーションの設定
-- `config/editors/vscode/`
-  - VS Code の設定
-- `scripts/local/`
+- `home/`
+  - ホームディレクトリへ配備する設定
+  - `.config/` 以下は XDG の配備先と同じ構造にする
+- `macos/`
+  - `Library/` 以下へ配備する macOS 固有の設定
+- `packages/`
+  - Homebrew、Bun、apm のパッケージ定義と lock ファイル
+- `tasks/`
   - セットアップやリポジトリ内で使うローカルスクリプト
-- `scripts/global/`
-  - `~/.local/bin` と `mise` タスクに公開する単独実行コマンドの置き場所
-- `scripts/utils/`
+- `bin/`
+  - `~/.local/bin` に公開する単独実行コマンドの置き場所
+- `libexec/`
   - シェル用の共通補助スクリプト
 - `deploy/`
   - ホームディレクトリへの配備一覧と、旧構成からの移行処理
-- `config/tools/homebrew/`
-  - Homebrew パッケージ定義
-- `config/tools/bun/`
-  - Bun グローバルパッケージの宣言と lock ファイル
-  - `node_modules/` は `~/.bun/install/global` に生成し、リポジトリ内には置かない
-- `config/tools/worktrunk/`
-  - Git worktree の配置と削除方法の設定
-- `config/ai/`
-  - AI ツール設定
-  - 再利用可能なスキルは `config/ai/apm/apm.yml` の依存関係として管理する
+- `examples/`
+  - エディタや設定の動作確認に使い、ホームディレクトリへ配備しないファイル
+
+`node_modules/` などの生成状態は `home/` や `packages/` に置かない。
+Bun は `~/.bun/install/global`、apm は `~/.apm` に生成する。
+Codex の実行許可ルールは移行中のユーザー差分を保護するため、当面 `config/ai/codex/rules/default.rules` に残す。
 
 ## 設計原則
 
@@ -55,27 +50,33 @@
 
 ### 2. 実装と運用の境界を明確にする
 
-- 単独実行コマンドは `scripts/global/` に置く
-- リポジトリのセットアップ処理は `scripts/local/` に置く
-- 共通処理は `scripts/utils/` に置く
+- 単独実行コマンドは `bin/` に置く
+- リポジトリのセットアップ処理は `tasks/` に置く
+- 共通処理は `libexec/` に置く
 - `mise` はタスクの入口と一覧のために使う
 
-### 3. 局所ルールは局所に置く
+### 3. 配備先と配置を対応させる
 
-- Neovim のキーバインドや表示方針は `config/editors/nvim/lua/policies/` に置く
+- HOME/XDG の設定は `home/` 以下に配備先と同じ相対パスで置く
+- macOS の `Library/` に置く設定は `macos/Library/` に置く
+- 配備先を配置から判断できない例外だけを `deploy/links.sh` に明記する
+
+### 4. 局所ルールは局所に置く
+
+- Neovim のキーバインドや表示方針は `home/.config/nvim/lua/policies/` に置く
 - リポジトリ全体のドキュメントには要約とリンクだけを置く
 - 新しい関数には、役割がひと目で分かる短い英語の説明コメントを付ける
 
-### 4. 機械可読な運用を優先する
+### 5. 機械可読な運用を優先する
 
 - 反復的なセットアップはタスク化する
 - グローバルコマンドは公開経路をそろえる
 - フォーマッタと pre-commit を使って揺れを抑える
 
-### 5. 配備を宣言と実行に分ける
+### 6. 配備を宣言と実行に分ける
 
 - `deploy/links.sh` に配備元、配備先、対象 OS を宣言する
-- `scripts/local/deploy-dotfiles.sh` は同じ宣言から `apply`、`check`、`diff` を実行する
+- `tasks/deploy-dotfiles.sh` は同じ宣言から `apply`、`check`、`diff` を実行する
 - 初回セットアップ前でも実行できるように、配備処理は Bash だけで動かす
 - `apply` は、正しいリンクを変更せず、このリポジトリ内を指す古いリンクだけを張り直す
 - 通常ファイル、実ディレクトリ、管理対象外を指すリンクは競合として扱い、変更しない

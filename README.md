@@ -10,7 +10,7 @@ For design and operations, read `docs/`. For agent guidance, read `AGENTS.md`.
 - Editor configuration for Neovim and VS Code
 - Terminal-related configuration for Zsh, Starship, Ghostty, WezTerm, and Zellij
 - Local tool configuration for Homebrew, Bun, mise, procs, and related tools
-- Standalone workflow CLI commands in `scripts/global/`
+- Standalone workflow CLI commands in `bin/`
 - AI tool configuration for Codex, Claude Code, and related tools
 - Sample files for editor and LSP checks
 
@@ -57,14 +57,14 @@ This task:
 | `mise run upgrade`          | Update mise, apm, Neovim, Bun, and Homebrew dependencies     |
 | `mise tasks`                | List available mise tasks                                    |
 
-The setup links commands from `scripts/global/` globally.
+The setup links commands from `bin/` globally.
 That directory contains small CLI tools for daily work, such as Git operations and task search.
 
 ### Bun global packages
 
-The repository tracks the Bun global `package.json`, `bun.lock`, and `bunfig.toml` files in `config/tools/bun/`.
+The repository tracks the Bun global `package.json`, `bun.lock`, and `bunfig.toml` files in `packages/bun/`.
 `mise run install-bun` copies those files to `~/.bun/install/global` and installs dependencies there, so generated `node_modules/` content stays outside the repository.
-`mise run upgrade-bun` updates the runtime directory and copies the changed manifest and lock file back to `config/tools/bun/`.
+`mise run upgrade-bun` updates the runtime directory and copies the changed manifest and lock file back to `packages/bun/`.
 
 ### Git worktrees
 
@@ -79,17 +79,17 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 
 ## 🗂️ Repository Layout
 
-| Path                    | Role                                                        |
-| ----------------------- | ----------------------------------------------------------- |
-| `config/editors/`       | Neovim, VS Code, and editor sample configuration            |
-| `config/shell/`         | Shell configuration for Zsh, Sheldon, Starship, and others  |
-| `config/terminal-apps/` | Terminal app configuration for Ghostty, WezTerm, and Zellij |
-| `config/tools/`         | Tool configuration for Homebrew, Bun, Git, mise, and procs  |
-| `config/ai/`            | Agent instructions and apm-managed AI tool settings         |
-| `scripts/local/`        | Local setup and maintenance scripts                         |
-| `scripts/global/`       | Published standalone CLI commands                           |
-| `scripts/utils/`        | Shared helpers for shell scripts                            |
-| `docs/`                 | Repository-wide design and operations policy                |
+| Path        | Role                                                   |
+| ----------- | ------------------------------------------------------ |
+| `home/`     | Files deployed under the home directory and XDG config |
+| `macos/`    | Files deployed to macOS-specific Library paths         |
+| `packages/` | Package declarations for Homebrew, Bun, and apm        |
+| `bin/`      | Published standalone CLI commands                      |
+| `tasks/`    | Local setup and maintenance scripts                    |
+| `libexec/`  | Shared helpers for shell scripts                       |
+| `deploy/`   | Deployment manifest and migrations                     |
+| `examples/` | Sample files that are not deployed                     |
+| `docs/`     | Repository-wide design and operations policy           |
 
 ## 📚 Documentation
 
@@ -102,4 +102,4 @@ The README stays short. Use these documents for design and operations:
 - [docs/ai-tools.md](docs/ai-tools.md): AI tool and apm policy
 - [docs/operations.md](docs/operations.md): verification policy by change type
 
-Neovim-specific policies live in `config/editors/nvim/lua/policies/`.
+Neovim-specific policies live in `home/.config/nvim/lua/policies/`.
