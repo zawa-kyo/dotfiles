@@ -159,8 +159,8 @@ main() {
   local bookmarks
   local selected
   local browser
-  local location
-  local title
+  local _location
+  local _title
   local url
 
   require_command python3
@@ -197,6 +197,7 @@ main() {
     exit 0
   fi
 
+  # shellcheck disable=SC2016 # Expanded by the nested preview shell.
   selected="$(
     printf '%s\n' "$bookmarks" |
       run_fzf_with_preview '
@@ -223,7 +224,7 @@ main() {
 
   [ -n "$selected" ] || exit 1
 
-  IFS="$(printf '\t')" read -r browser location title url <<EOF
+  IFS="$(printf '\t')" read -r browser _location _title url <<EOF
 $selected
 EOF
 

@@ -76,6 +76,7 @@
   - Run `:checkhealth` in `nvim` after changing plugin, provider, or runtime configuration.
 - Changes under `scripts/`, `mise.toml`, `config/shell/terminal/`, or `config/shell/sheldon/abbreviations`:
   - Run `mise run format` after changing shell, TOML, or Markdown files.
+  - Run `mise run check-shell` after changing Bash or sh scripts.
   - Run `uv run pre-commit run -a` for changes that affect setup, shell startup, PATH, or published commands.
 - Changes to `config/tools/homebrew/Brewfile`:
   - Run `brew bundle check --file=config/tools/homebrew/Brewfile`.

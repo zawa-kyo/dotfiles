@@ -9,6 +9,7 @@ select_repository() {
   local query="${*:-}"
   local preview_cmd
 
+  # shellcheck disable=SC2016 # Expanded by the preview shell, not this script.
   preview_cmd='
     git_status=$(git -C {} status --short 2>/dev/null)
     if [ -n "$git_status" ]; then

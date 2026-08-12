@@ -24,6 +24,7 @@
 ### シェルスクリプト / タスク / 端末設定
 
 - shell、TOML、Markdown を変更した場合は `mise run format`
+- Bash または sh のスクリプトを変更した場合は `mise run check-shell`
 - 配備処理やグローバルコマンドの公開に関わる場合は `mise run test-deployment`
 - 実際のホームディレクトリへの配備状況は `mise run check-deployment` で確認する
 - 影響範囲が広い場合は `uv run pre-commit run -a`

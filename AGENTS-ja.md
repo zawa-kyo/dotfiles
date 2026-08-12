@@ -76,6 +76,7 @@
   - プラグイン、provider、runtime 設定を変更したら `nvim` で `:checkhealth` を実行する。
 - `scripts/`, `mise.toml`, `config/shell/terminal/`, `config/shell/sheldon/abbreviations` を変更した場合:
   - シェル、TOML、Markdown ファイルを変更したら `mise run format` を実行する。
+  - Bash または sh のスクリプトを変更したら `mise run check-shell` を実行する。
   - セットアップ、シェル起動、PATH、公開コマンドに影響する変更では `uv run pre-commit run -a` を実行する。
 - `config/tools/homebrew/Brewfile` を変更した場合:
   - `brew bundle check --file=config/tools/homebrew/Brewfile` を実行する。
