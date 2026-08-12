@@ -42,6 +42,7 @@ relink() {
 populate_dotfiles_links "$dotfiles_dir"
 validate_dotfiles_links "$dotfiles_dir"
 cleanup_skill_links "$dotfiles_dir"
+migrate_apm_config_dir "$dotfiles_dir"
 
 for link in "${file_links[@]}"; do
   IFS=":" read -r source target <<<"$link"

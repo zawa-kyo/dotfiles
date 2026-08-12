@@ -161,12 +161,7 @@ run = "mise install"
 [tasks.install-apm]
 hide = true
 description = "Install apm-managed AI skills"
-run = [
-  # Temporary workaround: reset APM-generated paths because APM 0.16.0 refuses stale skill directory deletions.
-  "bash scripts/local/reset-apm-managed-skills.sh",
-  "mise -C ~ install apm",
-  "mise -C ~ exec -- apm install -g --frozen",
-]
+run = ["mise -C ~ install apm", "mise -C ~ exec -- apm install -g --frozen"]
 
 [tasks.install]
 description = "Run the dotfiles symlink setup and install configured mise tools"
@@ -207,12 +202,7 @@ run = [
 
 [tasks.upgrade-apm]
 description = "Update apm-managed AI skills and lock file"
-run = [
-  # Temporary workaround: reset APM-generated paths because APM 0.16.0 refuses stale skill directory deletions.
-  "bash scripts/local/reset-apm-managed-skills.sh",
-  "mise -C ~ install apm",
-  "mise -C ~ exec -- apm install -g --update",
-]
+run = ["mise -C ~ install apm", "mise -C ~ exec -- apm update -g --yes"]
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"

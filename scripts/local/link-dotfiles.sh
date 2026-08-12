@@ -85,6 +85,7 @@ populate_dotfiles_links "$dotfiles_dir"
 validate_dotfiles_links "$dotfiles_dir"
 cleanup_obsolete_dotfiles_links "$dotfiles_dir"
 cleanup_skill_links "$dotfiles_dir"
+migrate_apm_config_dir "$dotfiles_dir"
 
 # Link listed files from dotfiles into their target locations.
 for link in "${file_links[@]}"; do

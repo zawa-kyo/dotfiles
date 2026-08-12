@@ -18,6 +18,8 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 - `config/ai/instructions/AGENTS.md` は `~/.codex/AGENTS.md` と `~/.claude/CLAUDE.md` にリンクして、Codex と Claude Code で同じ内容を読む
 - スキルは apm で運用、管理する
 - dotfiles では公開済みの再利用可能なスキルの依存関係を管理する
+- `config/ai/apm/` 内の管理ファイルだけを `~/.apm` へ個別にリンクする
+- `~/.apm` は通常のディレクトリとし、`apm_modules/` などの生成物をリポジトリ外に置く
 - apm の展開先は `config/ai/apm/apm.lock.yaml` の `deployed_files` を正とする
 - 現行のユーザー単位インストールでは `.agents/skills` と `.claude/skills` に展開する
 - スキル本体は用途に応じてパブリックリポジトリ、プライベートリポジトリ、またはプロジェクト単位の apm 管理に置く
@@ -39,7 +41,7 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 
 dotfiles は公開リポジトリなので、ここで管理するスキルは公開して問題ないものに限定する。
 
-dotfiles では `config/ai/apm/` を `~/.apm` にリンクし、公開済みの再利用可能なスキルをユーザー単位に反映するための依存関係リストとして扱う。スキル本体は原則として個別の apm パッケージリポジトリに置き、dotfiles には参照と lock ファイルだけを置く。
+dotfiles では `config/ai/apm/` にユーザー単位の依存関係リストと設定を置き、`apm.yml`、`apm.lock.yaml`、`config.json` を `~/.apm` へ個別にリンクする。スキル本体は原則として個別の apm パッケージリポジトリに置き、dotfiles には参照と lock ファイルだけを置く。
 
 - `config/ai/apm/apm.yml`
   - インストールする公開 apm パッケージを宣言する
@@ -57,17 +59,18 @@ dotfiles では `config/ai/apm/` を `~/.apm` にリンクし、公開済みの�
 1. dotfiles 管理ファイルをリンクする
 2. `mise` 管理ツールをインストールする
 3. グローバル mise 設定から apm CLI をインストールする
-4. apm 管理の生成物ディレクトリをリセットする
-5. `mise -C ~ exec -- apm install -g --frozen` を実行する
-6. Bun や pre-commit など、既存のセットアップ処理を続ける
+4. `mise -C ~ exec -- apm install -g --frozen` を実行する
+5. Bun や pre-commit など、既存のセットアップ処理を続ける
 
 `mise -C ~ exec -- apm install -g --frozen` は `config/ai/apm/apm.lock.yaml` を基準にし、`apm.yml` と lock ファイルがずれているときは失敗する。通常のセットアップでは、この lock ファイルを正としてスキルを再生成する。apm CLI 自体は `config/tools/mise/conf.d/tools.toml` のグローバル mise 設定で管理する。
 
-apm 0.16.0 は古いスキルディレクトリを自動削除せず、`Refused to remove directory entry` 警告を出すことがある。そのため暫定対応として、インストール前に `~/.agents/skills`、`~/.claude/skills`、`~/.apm/apm_modules` を消してから再展開する。
+`~/.apm` は通常のディレクトリとして作成し、`apm_modules/` は apm が管理する生成先として扱う。`~/.agents/skills` と `~/.claude/skills` も apm の所有情報に従って更新し、インストール前にディレクトリ全体を削除しない。
 
-この運用では、`~/.agents/skills` と `~/.claude/skills` を `config/ai/apm/apm.lock.yaml` から毎回再生成する専用出力先として扱う。lock ファイルに含まれないスキルは保持しない。
+旧構成の `~/.apm` が `config/ai/apm/` へのシンボリックリンクである場合、リンク処理は `~/.apm` を通常のディレクトリへ置き換える。既存の `config/ai/apm/apm_modules/` は新しい `~/.apm/apm_modules/` へ移し、管理ファイルだけを個別にリンクする。別の場所を指す `~/.apm` のシンボリックリンクや通常ファイルは、所有元を確認できないため変更しない。
 
-`mise run upgrade` では apm パッケージを更新する。更新された `config/ai/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
+移行後に問題が起きた場合は、apm の処理を停止したうえで、管理ファイルのリンクを外し、`~/.apm/apm_modules/` を `config/ai/apm/` へ戻してから、`~/.apm` を従来のディレクトリリンクへ戻せる。通常運用では新しい構成を使い、この手順は切り戻しに限って使用する。
+
+`mise run upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。更新された `config/ai/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
 
 ## 既知の TODO
 

@@ -49,11 +49,43 @@ test_dotfile_links() {
   HOME="$home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null
   assert_link "$home_dir/.gitconfig" "$repo_dir/config/tools/git/.gitconfig"
   assert_link "$home_dir/.config/nvim" "$repo_dir/config/editors/nvim"
+  [ -d "$home_dir/.apm" ] && [ ! -L "$home_dir/.apm" ] || fail_test "APM user data directory is not a real directory"
+  assert_link "$home_dir/.apm/apm.yml" "$repo_dir/config/ai/apm/apm.yml"
+  assert_link "$home_dir/.apm/apm.lock.yaml" "$repo_dir/config/ai/apm/apm.lock.yaml"
 
   record_links "$home_dir" "$first_links"
   HOME="$home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null
   record_links "$home_dir" "$second_links"
   cmp -s "$first_links" "$second_links" || fail_test "repeated linking changed the managed links"
+}
+
+# Verify the legacy whole-directory APM link migrates without replacing foreign links.
+test_apm_directory_migration() {
+  local home_dir="$fixtures_dir/apm-migration-home"
+  local foreign_home_dir="$fixtures_dir/apm-foreign-home"
+  local foreign_dir="$fixtures_dir/foreign-apm"
+  local repo_copy="$fixtures_dir/apm-repo"
+
+  mkdir -p "$home_dir" "$foreign_home_dir" "$foreign_dir" "$repo_copy/config/ai/apm"
+  cp "$repo_dir/config/ai/apm/apm.yml" "$repo_copy/config/ai/apm/apm.yml"
+  mkdir -p "$repo_copy/config/ai/apm/apm_modules/test-package"
+  printf 'cached\n' >"$repo_copy/config/ai/apm/apm_modules/test-package/content"
+  ln -s "$repo_copy/config/ai/apm" "$home_dir/.apm"
+
+  (
+    HOME="$home_dir"
+    source "$repo_dir/scripts/utils/dotfiles-links.sh"
+    migrate_apm_config_dir "$repo_copy"
+  ) >/dev/null
+  [ -d "$home_dir/.apm" ] && [ ! -L "$home_dir/.apm" ] || fail_test "legacy APM link was not migrated"
+  [ -f "$home_dir/.apm/apm_modules/test-package/content" ] || fail_test "APM modules were not migrated"
+  [ ! -e "$repo_copy/config/ai/apm/apm_modules" ] || fail_test "legacy APM modules remained in the repository"
+
+  ln -s "$foreign_dir" "$foreign_home_dir/.apm"
+  if HOME="$foreign_home_dir" bash "$repo_dir/scripts/local/link-dotfiles.sh" >/dev/null 2>&1; then
+    fail_test "foreign APM link was replaced"
+  fi
+  assert_link "$foreign_home_dir/.apm" "$foreign_dir"
 }
 
 # Verify existing regular files remain untouched.
@@ -178,6 +210,7 @@ test_global_command_inventory() {
 trap cleanup EXIT
 
 test_dotfile_links
+test_apm_directory_migration
 test_regular_file_conflict
 test_platform_links
 test_link_inventory

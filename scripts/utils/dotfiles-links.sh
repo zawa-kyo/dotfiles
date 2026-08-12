@@ -79,11 +79,50 @@ cleanup_obsolete_dotfiles_links() {
   done
 }
 
+# Replace the legacy whole-directory APM link with a real user data directory.
+migrate_apm_config_dir() {
+  local dir_dotfiles="$1"
+  local source_dir="$dir_dotfiles/config/ai/apm"
+  local target_dir="$HOME/.apm"
+  local legacy_modules="$source_dir/apm_modules"
+  local migrate_modules=false
+
+  if [ -L "$target_dir" ]; then
+    if [ "$(realpath "$target_dir")" != "$(realpath "$source_dir")" ]; then
+      fail "Refusing to replace an unmanaged APM symlink: $target_dir"
+    fi
+
+    if [ -d "$legacy_modules" ]; then
+      migrate_modules=true
+    fi
+    rm "$target_dir" || fail "Failed to remove the legacy APM symlink: $target_dir"
+    info "Removed legacy APM directory symlink: $target_dir"
+  elif [ -e "$target_dir" ] && [ ! -d "$target_dir" ]; then
+    fail "APM path exists and is not a directory: $target_dir"
+  fi
+
+  if [ ! -d "$target_dir" ]; then
+    mkdir -p "$target_dir" || fail "Failed to create APM directory: $target_dir"
+    info "Created directory: $target_dir"
+  fi
+
+  if [ "$migrate_modules" = true ]; then
+    if [ -e "$target_dir/apm_modules" ]; then
+      fail "Refusing to replace an existing APM modules directory: $target_dir/apm_modules"
+    fi
+    mv "$legacy_modules" "$target_dir/apm_modules" || fail "Failed to migrate APM modules"
+    info "Migrated APM modules: $target_dir/apm_modules"
+  fi
+}
+
 # Fill file_links and directory_links for the given repo root.
 populate_dotfiles_links() {
   local dir_dotfiles="$1"
 
   file_links=(
+    "$dir_dotfiles/config/ai/apm/apm.lock.yaml:$HOME/.apm/apm.lock.yaml"
+    "$dir_dotfiles/config/ai/apm/apm.yml:$HOME/.apm/apm.yml"
+    "$dir_dotfiles/config/ai/apm/config.json:$HOME/.apm/config.json"
     "$dir_dotfiles/config/ai/instructions/AGENTS.md:$HOME/.codex/AGENTS.md"
     "$dir_dotfiles/config/ai/instructions/AGENTS.md:$HOME/.claude/CLAUDE.md"
     "$dir_dotfiles/config/ai/claude/settings.json:$HOME/.claude/settings.json"
@@ -121,7 +160,6 @@ populate_dotfiles_links() {
   esac
 
   directory_links=(
-    "$dir_dotfiles/config/ai/apm:$HOME/.apm"
     "$dir_dotfiles/config/tools/mise/conf.d:$HOME/.config/mise/conf.d"
     "$dir_dotfiles/config/editors/nvim:$HOME/.config/nvim"
     "$dir_dotfiles/config/shell/starship:$HOME/.config/starship"
