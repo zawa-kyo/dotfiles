@@ -59,6 +59,7 @@
 - Use 2 spaces as the default indentation.
 - Follow `.stylua.toml` for Lua.
 - Match the existing shell script style and stay POSIX-friendly when practical.
+- Use `rg` for text searches. Use `ast-grep` when a search or rewrite depends on code structure rather than exact text.
 - Add a short English comment when adding a new function so its role is clear at a glance.
 - Match the existing format for JSON, JSONC, TOML, and Markdown.
 - Do not commit machine-specific values or secrets.

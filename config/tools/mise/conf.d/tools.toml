@@ -24,6 +24,7 @@ uv = "0"
 # CLI tools
 actionlint = "latest"
 apm = "latest"
+ast-grep = "latest"
 atuin = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 bat = "latest"
