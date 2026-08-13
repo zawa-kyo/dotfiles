@@ -1,0 +1,6 @@
+[dotfiles]
+"~/Library/Application Support/Code/User/keybindings.json" = "config/editors/vscode/keybindings.jsonc"
+"~/Library/Application Support/Code/User/settings.json" = "config/editors/vscode/settings.jsonc"
+"~/Library/Application Support/lazygit/config.yml" = "config/tools/lazygit/config.yml"
+"~/Library/Preferences/com.github.dalance.procs/config.toml" = "config/tools/procs/procs.toml"
+"~/.config/borders/bordersrc" = "config/tools/borders/bordersrc"

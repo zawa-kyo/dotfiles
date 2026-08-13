@@ -18,6 +18,30 @@ lockfile = true
 lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
+[dotfiles]
+"~/.apm" = { source = "config/ai/apm", mode = "symlink-each" }
+"~/.claude/CLAUDE.md" = "config/ai/instructions/AGENTS.md"
+"~/.claude/settings.json" = "config/ai/claude/settings.json"
+"~/.codex/AGENTS.md" = "config/ai/instructions/AGENTS.md"
+"~/.codex/rules/default.rules" = "config/ai/codex/rules/default.rules"
+"~/.config/ghostty/config.ghostty" = "config/terminal-apps/ghostty/config.ghostty"
+"~/.config/mise/conf.d" = "config/tools/mise/conf.d"
+"~/.config/mise/mise.lock" = "config/tools/mise/mise.lock"
+"~/.config/mise/mise.toml" = "config/tools/mise/mise.toml"
+"~/.config/nvim" = "config/editors/nvim"
+"~/.config/sheldon/plugins.toml" = "config/shell/sheldon/plugins.toml"
+"~/.config/starship" = "config/shell/starship"
+"~/.config/wezterm" = "config/terminal-apps/wezterm"
+"~/.config/worktrunk/config.toml" = "config/tools/worktrunk/config.toml"
+"~/.config/zellij/config.kdl" = "config/terminal-apps/zellij/config.kdl"
+"~/.config/zsh-abbr/user-abbreviations" = "config/shell/sheldon/abbreviations"
+"~/.gitconfig" = "config/tools/git/.gitconfig"
+"~/.zlogin" = "config/shell/terminal/.zlogin"
+"~/.zlogout" = "config/shell/terminal/.zlogout"
+"~/.zprofile" = "config/shell/terminal/.zprofile"
+"~/.zshenv" = "config/shell/terminal/.zshenv"
+"~/.zshrc" = "config/shell/terminal/.zshrc"
+
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]
