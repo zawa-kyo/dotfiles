@@ -37,7 +37,7 @@ func TestDotfilesApply(t *testing.T) {
 	configCommand.Dir = home
 	configCommand.Env = replaceEnvironment(
 		environmentWithout(os.Environ(), "MISE_GLOBAL_CONFIG_FILE"),
-		map[string]string{"HOME": home, "MISE_TRUSTED_CONFIG_PATHS": repo},
+		isolatedMiseEnvironment(repo, home),
 	)
 	configOutputBytes, err := configCommand.CombinedOutput()
 	if err != nil {
@@ -150,16 +150,25 @@ func runMise(t *testing.T, repo, home string, env map[string]string, args ...str
 func miseCommand(repo, home string, env map[string]string, args ...string) *exec.Cmd {
 	command := exec.Command("mise", args...)
 	command.Dir = repo
-	values := map[string]string{
-		"HOME":                      home,
-		"MISE_GLOBAL_CONFIG_FILE":   filepath.Join(home, "global-mise.toml"),
-		"MISE_TRUSTED_CONFIG_PATHS": repo,
-	}
+	values := isolatedMiseEnvironment(repo, home)
+	values["MISE_GLOBAL_CONFIG_FILE"] = filepath.Join(home, "global-mise.toml")
 	for key, value := range env {
 		values[key] = value
 	}
 	command.Env = replaceEnvironment(os.Environ(), values)
 	return command
+}
+
+// isolatedMiseEnvironment keeps all mise state inside the temporary home.
+func isolatedMiseEnvironment(repo, home string) map[string]string {
+	return map[string]string{
+		"HOME":                      home,
+		"MISE_CACHE_DIR":            filepath.Join(home, ".cache", "mise"),
+		"MISE_CONFIG_DIR":           filepath.Join(home, ".config", "mise"),
+		"MISE_DATA_DIR":             filepath.Join(home, ".local", "share", "mise"),
+		"MISE_STATE_DIR":            filepath.Join(home, ".local", "state", "mise"),
+		"MISE_TRUSTED_CONFIG_PATHS": repo,
+	}
 }
 
 // replaceEnvironment replaces selected variables without keeping duplicate entries.
