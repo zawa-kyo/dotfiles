@@ -195,21 +195,6 @@ run = [
   ] },
 ]
 
-[tasks.link-dotfiles]
-hide = true
-description = "Link dotfiles-managed files into the home directory"
-run = "bash tasks/deploy-dotfiles.sh apply"
-
-[tasks.sync-global-commands]
-hide = true
-description = "Link global CLI commands and remove legacy mise wrappers"
-run = "bash tasks/sync-global-commands.sh"
-
-[tasks.install-mise-tools]
-hide = true
-description = "Install tools declared in the local mise configuration"
-run = "mise install"
-
 [tasks.install-apm]
 hide = true
 description = "Install apm-managed AI skills"
@@ -229,7 +214,6 @@ hide = true
 description = "Finish cross-platform setup not covered by declarative bootstrap steps"
 run = [
   { task = "install-global-tools" },
-  { task = "sync-global-commands" },
   { task = "install-apm" },
   { task = "install-bun" },
   { task = "install-pre-commit" },
@@ -243,18 +227,6 @@ run = [{ task = "bootstrap-common" }]
 [tasks.install-bun]
 description = "Install Bun globals outside the repository"
 file = "tasks/install-bun.sh"
-
-[tasks.relink]
-description = "Relink dotfiles-managed symlinks without overwriting real files"
-run = "bash tasks/deploy-dotfiles.sh apply"
-
-[tasks.check-deployment]
-description = "Check dotfile deployment without changing files"
-run = "bash tasks/deploy-dotfiles.sh check"
-
-[tasks.diff-deployment]
-description = "Show pending dotfile deployment changes"
-run = "bash tasks/deploy-dotfiles.sh diff"
 
 [tasks.install-pre-commit]
 description = "Install the repository pre-commit hook with uv"
