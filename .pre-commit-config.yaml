@@ -25,7 +25,7 @@ repos:
         name: Check shell scripts with ShellCheck
         entry: shellcheck
         language: system
-        files: '\.(sh|bash)$'
+        files: '(^bin/)|\.(sh|bash)$'
       - id: check-username-paths
         name: Reject local username paths
         entry: "(/Users|/home)/kyohei(/|$)"

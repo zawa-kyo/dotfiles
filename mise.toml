@@ -36,6 +36,7 @@ minimum_release_age = "7d"
 "~/.config/zellij/config.kdl" = "config/terminal-apps/zellij/config.kdl"
 "~/.config/zsh-abbr/user-abbreviations" = "config/shell/sheldon/abbreviations"
 "~/.gitconfig" = "config/tools/git/.gitconfig"
+"~/.local/bin" = { source = "bin", mode = "symlink-each" }
 "~/.zlogin" = "config/shell/terminal/.zlogin"
 "~/.zlogout" = "config/shell/terminal/.zlogout"
 "~/.zprofile" = "config/shell/terminal/.zprofile"
@@ -58,7 +59,7 @@ set -eu
 tmpfile="$(mktemp)"
 trap 'rm -f "$tmpfile"' EXIT
 
-git ls-files -z -- '*.sh' '*.bash' |
+git ls-files -z -- '*.sh' '*.bash' 'bin/*' |
 while IFS= read -r -d '' file; do
   if [ -f "$file" ]; then
     printf '%s\0' "$file"
@@ -118,7 +119,7 @@ set -eu
 tmpfile="$(mktemp)"
 trap 'rm -f "$tmpfile"' EXIT
 
-git ls-files -z -- '*.sh' '*.bash' '*.zsh' |
+git ls-files -z -- '*.sh' '*.bash' '*.zsh' 'bin/*' |
 while IFS= read -r -d '' file; do
   if [ -f "$file" ]; then
     printf '%s\0' "$file"

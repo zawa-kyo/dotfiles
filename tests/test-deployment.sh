@@ -258,8 +258,8 @@ test_global_command_inventory() {
   DIR_LOCAL_BIN="$local_bin_dir" DIR_MISE_TASKS="$mise_tasks_dir" \
     bash "$repo_dir/tasks/sync-global-commands.sh" >/dev/null
 
-  for command_path in "$repo_dir/bin/"*.sh; do
-    command_name="$(basename "${command_path%.sh}")"
+  for command_path in "$repo_dir/bin/"*; do
+    command_name="$(basename "$command_path")"
     [ "$command_name" != search-google ] || continue
     assert_link "$local_bin_dir/$command_name" "$command_path"
     [ -x "$command_path" ] || fail_test "$command_path is not executable"

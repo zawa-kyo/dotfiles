@@ -131,7 +131,6 @@ remove_generated_mise_tasks() {
 main() {
   local command_path
   local command_name
-  local command_basename
   local -a command_names=()
 
   ensure_dir "$local_bin_dir"
@@ -139,12 +138,7 @@ main() {
   for command_path in "$global_commands_dir"/*; do
     [ -f "$command_path" ] || continue
 
-    command_basename="$(basename "$command_path")"
-    case "$command_basename" in
-    *.sh) command_name="${command_basename%.sh}" ;;
-    *.bash) command_name="${command_basename%.bash}" ;;
-    *) command_name="$command_basename" ;;
-    esac
+    command_name="$(basename "$command_path")"
 
     command_names+=("$command_name")
     install_symlink "$command_path" "$local_bin_dir/$command_name"
