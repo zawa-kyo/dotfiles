@@ -226,6 +226,14 @@ test_link_inventory() {
   HOME="$home_dir" DOTFILES_PLATFORM=darwin bash "$repo_dir/tasks/deploy-dotfiles.sh" diff >/dev/null
 }
 
+# Verify shell startup resolves repository helpers from the domain-based layout.
+test_shell_startup_paths() {
+  local output
+
+  output="$(zsh -df -c "source '$repo_dir/config/shell/terminal/.zshenv'" 2>&1)"
+  printf '%s\n' "$output" | grep -Fq 'Sourced: .zshenv' || fail_test "zshenv did not load repository helpers"
+}
+
 # Verify command publication preserves unrelated entries and is idempotent.
 test_global_command_inventory() {
   local local_bin_dir="$fixtures_dir/bin"
@@ -279,6 +287,7 @@ test_regular_file_conflict
 test_obsolete_link_cleanup
 test_platform_links
 test_link_inventory
+test_shell_startup_paths
 test_global_command_inventory
 
 printf 'Deployment tests passed.\n'
