@@ -49,7 +49,7 @@ minimum_release_age = "7d"
 [bootstrap.hooks.pre-dotfiles]
 run = '''
 repo_root="$(git rev-parse --show-toplevel)"
-bash "$repo_root/deploy/migrations/001-cleanup-legacy-links.sh" "$repo_root"
+bash "$repo_root/deploy/migrations/migrate-to-mise-bootstrap.sh" "$repo_root"
 '''
 
 [bootstrap.hooks.post-dotfiles]
