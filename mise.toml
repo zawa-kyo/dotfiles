@@ -43,6 +43,12 @@ minimum_release_age = "7d"
 "~/.zshenv" = "config/shell/terminal/.zshenv"
 "~/.zshrc" = "config/shell/terminal/.zshrc"
 
+[bootstrap.hooks.pre-dotfiles]
+run = '''
+repo_root="$(git rev-parse --show-toplevel)"
+bash "$repo_root/deploy/migrations/001-cleanup-legacy-links.sh" "$repo_root"
+'''
+
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]
@@ -209,15 +215,29 @@ description = "Install apm-managed AI skills"
 run = ["mise -C ~ install apm", "mise -C ~ exec -- apm install -g --frozen"]
 
 [tasks.install]
-description = "Run the dotfiles symlink setup and install configured mise tools"
+description = "Compatibility entrypoint for the standard machine bootstrap"
+run = "mise bootstrap"
+
+[tasks.install-global-tools]
+hide = true
+description = "Install tools declared in the linked global mise configuration"
+run = "mise -C ~ install"
+
+[tasks.bootstrap-common]
+hide = true
+description = "Finish cross-platform setup not covered by declarative bootstrap steps"
 run = [
-  { task = "link-dotfiles" },
+  { task = "install-global-tools" },
   { task = "sync-global-commands" },
-  { task = "install-mise-tools" },
   { task = "install-apm" },
   { task = "install-bun" },
   { task = "install-pre-commit" },
 ]
+
+[tasks.bootstrap]
+hide = true
+description = "Finish setup not covered by declarative bootstrap steps"
+run = [{ task = "bootstrap-common" }]
 
 [tasks.install-bun]
 description = "Install Bun globals outside the repository"
