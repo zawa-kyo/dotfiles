@@ -45,19 +45,19 @@ test_dotfile_links() {
   local second_links="$fixtures_dir/links-second.txt"
 
   mkdir -p "$home_dir"
-  ln -s "$repo_dir/packages/apm" "$home_dir/.apm"
+  ln -s "$repo_dir/config/ai/apm" "$home_dir/.apm"
   mkdir -p "$home_dir/.config"
   ln -s "$repo_dir/config/terminal-apps/ghostty" "$home_dir/.config/ghostty"
 
   HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" apply >/dev/null
-  assert_link "$home_dir/.gitconfig" "$repo_dir/home/.gitconfig"
-  assert_link "$home_dir/.config/nvim" "$repo_dir/home/.config/nvim"
+  assert_link "$home_dir/.gitconfig" "$repo_dir/config/tools/git/.gitconfig"
+  assert_link "$home_dir/.config/nvim" "$repo_dir/config/editors/nvim"
   [ -d "$home_dir/.config/ghostty" ] && [ ! -L "$home_dir/.config/ghostty" ] ||
     fail_test "legacy managed parent link was not replaced"
-  assert_link "$home_dir/.config/ghostty/config.ghostty" "$repo_dir/home/.config/ghostty/config.ghostty"
+  assert_link "$home_dir/.config/ghostty/config.ghostty" "$repo_dir/config/terminal-apps/ghostty/config.ghostty"
   [ -d "$home_dir/.apm" ] && [ ! -L "$home_dir/.apm" ] || fail_test "APM user data directory is not a real directory"
-  assert_link "$home_dir/.apm/apm.yml" "$repo_dir/packages/apm/apm.yml"
-  assert_link "$home_dir/.apm/apm.lock.yaml" "$repo_dir/packages/apm/apm.lock.yaml"
+  assert_link "$home_dir/.apm/apm.yml" "$repo_dir/config/ai/apm/apm.yml"
+  assert_link "$home_dir/.apm/apm.lock.yaml" "$repo_dir/config/ai/apm/apm.lock.yaml"
 
   record_links "$home_dir" "$first_links"
   HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" check >/dev/null
@@ -76,7 +76,7 @@ test_apm_directory_migration() {
   local repo_copy="$fixtures_dir/apm-repo"
 
   mkdir -p "$home_dir" "$foreign_home_dir" "$foreign_dir" "$repo_copy/config/ai/apm"
-  cp "$repo_dir/packages/apm/apm.yml" "$repo_copy/config/ai/apm/apm.yml"
+  cp "$repo_dir/config/ai/apm/apm.yml" "$repo_copy/config/ai/apm/apm.yml"
   mkdir -p "$repo_copy/config/ai/apm/apm_modules/test-package"
   printf 'cached\n' >"$repo_copy/config/ai/apm/apm_modules/test-package/content"
   ln -s "$repo_copy/config/ai/apm" "$home_dir/.apm"
@@ -170,6 +170,7 @@ test_regular_file_conflict() {
   mkdir -p "$home_dir/.config" "$foreign_dir"
   printf 'user-owned\n' >"$home_dir/.gitconfig"
   ln -s "$foreign_dir" "$home_dir/.config/nvim"
+  ln -s "$foreign_dir" "$home_dir/.config/ghostty"
 
   if HOME="$home_dir" bash "$repo_dir/tasks/deploy-dotfiles.sh" apply >/dev/null 2>&1; then
     fail_test "deployment with a regular-file conflict succeeded"
@@ -178,6 +179,7 @@ test_regular_file_conflict() {
   [ ! -L "$home_dir/.gitconfig" ] || fail_test "an existing regular file was replaced"
   [ "$(sed -n '1p' "$home_dir/.gitconfig")" = "user-owned" ] || fail_test "an existing regular file was modified"
   assert_link "$home_dir/.config/nvim" "$foreign_dir"
+  assert_link "$home_dir/.config/ghostty" "$foreign_dir"
 }
 
 # Verify a migration removes only the obsolete link owned by this repository.

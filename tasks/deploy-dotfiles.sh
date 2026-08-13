@@ -114,18 +114,6 @@ apply_link() {
     return 0
   fi
 
-  if [ -L "$target" ]; then
-    if ! symlink_points_within_dir "$target" "$DOTFILES_ROOT"; then
-      warn "Refusing to replace an unmanaged symlink: $target"
-      return 1
-    fi
-    rm "$target"
-    info "Removed managed symlink: $target"
-  elif [ -e "$target" ]; then
-    warn "Refusing to replace an existing path: $target"
-    return 1
-  fi
-
   target_parent="$(dirname "$target")"
   if [ -L "$target_parent" ]; then
     if ! symlink_points_within_dir "$target_parent" "$DOTFILES_ROOT"; then
@@ -138,6 +126,19 @@ apply_link() {
     warn "Refusing to replace an existing parent path: $target_parent"
     return 1
   fi
+
+  if [ -L "$target" ]; then
+    if ! symlink_points_within_dir "$target" "$DOTFILES_ROOT"; then
+      warn "Refusing to replace an unmanaged symlink: $target"
+      return 1
+    fi
+    rm "$target"
+    info "Removed managed symlink: $target"
+  elif [ -e "$target" ]; then
+    warn "Refusing to replace an existing path: $target"
+    return 1
+  fi
+
   if [ ! -d "$target_parent" ]; then
     mkdir -p "$target_parent"
     info "Created directory: $target_parent"

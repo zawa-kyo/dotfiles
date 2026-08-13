@@ -19,8 +19,8 @@ cleanup_obsolete_links() {
 
 # Replace the former APM directory link with a real user data directory.
 migrate_apm_config_dir() {
-  local source_dir="$dotfiles_dir/packages/apm"
-  local legacy_source_dir="$dotfiles_dir/config/ai/apm"
+  local source_dir="$dotfiles_dir/config/ai/apm"
+  local legacy_source_dir="$dotfiles_dir/packages/apm"
   local target_dir="$HOME/.apm"
   local legacy_modules="$source_dir/apm_modules"
   local link_target
@@ -59,7 +59,7 @@ migrate_apm_config_dir() {
 cleanup_legacy_skill_links() {
   local dir_skills="${DIR_SKILLS:-$dotfiles_dir/config/ai/skills}"
   local legacy_dir_skills="$dotfiles_dir/ai/skills"
-  local dir_apm_modules="${DIR_APM_MODULES:-$dotfiles_dir/packages/apm/apm_modules}"
+  local dir_apm_modules="${DIR_APM_MODULES:-$dotfiles_dir/config/ai/apm/apm_modules}"
   local skill_root
   local skill_path
 
