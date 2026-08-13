@@ -52,6 +52,17 @@ repo_root="$(git rev-parse --show-toplevel)"
 bash "$repo_root/deploy/migrations/001-cleanup-legacy-links.sh" "$repo_root"
 '''
 
+[bootstrap.hooks.post-dotfiles]
+run = '''
+for config_file in \
+  "$HOME/.config/mise/mise.toml" \
+  "$HOME/.config/mise/mise.lock" \
+  "$HOME/.config/mise/conf.d/"*.toml; do
+  [ -f "$config_file" ] || continue
+  mise trust "$config_file"
+done
+'''
+
 [tasks.check-pre-commit]
 description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]

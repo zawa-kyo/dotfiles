@@ -33,6 +33,21 @@ func TestDotfilesApply(t *testing.T) {
 	assertFileContent(t, filepath.Join(home, ".local", "bin", "unrelated"), "user-owned\n")
 	assertFileContent(t, filepath.Join(home, ".apm", "apm_modules", "cached", "data"), "cached\n")
 
+	configCommand := exec.Command("mise", "config", "ls")
+	configCommand.Dir = home
+	configCommand.Env = replaceEnvironment(
+		environmentWithout(os.Environ(), "MISE_GLOBAL_CONFIG_FILE"),
+		map[string]string{"HOME": home, "MISE_TRUSTED_CONFIG_PATHS": repo},
+	)
+	configOutputBytes, err := configCommand.CombinedOutput()
+	if err != nil {
+		t.Fatalf("load linked global mise configuration: %v\n%s", err, configOutputBytes)
+	}
+	configOutput := string(configOutputBytes)
+	if !strings.Contains(configOutput, filepath.Join(home, ".config", "mise", "conf.d", "tools.toml")) {
+		t.Fatalf("linked global mise configuration was not loaded:\n%s", configOutput)
+	}
+
 	before := symlinksUnder(t, home)
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
@@ -161,6 +176,25 @@ func replaceEnvironment(base []string, replacements map[string]string) []string 
 	}
 	for key, value := range replacements {
 		result = append(result, key+"="+value)
+	}
+	return result
+}
+
+// environmentWithout removes variables that would bypass the isolated defaults.
+func environmentWithout(base []string, keys ...string) []string {
+	removed := make(map[string]struct{}, len(keys))
+	for _, key := range keys {
+		removed[key] = struct{}{}
+	}
+	result := make([]string, 0, len(base))
+	for _, entry := range base {
+		key, _, found := strings.Cut(entry, "=")
+		if found {
+			if _, remove := removed[key]; remove {
+				continue
+			}
+		}
+		result = append(result, entry)
 	}
 	return result
 }
