@@ -8,8 +8,3 @@
 [tasks.install-brew]
 description = "Install missing Homebrew dependencies without upgrading existing packages"
 run = "brew bundle install --file=config/tools/homebrew/Brewfile --no-upgrade"
-
-[tasks.bootstrap]
-hide = true
-description = "Finish setup not covered by declarative bootstrap steps"
-run = [{ task = "bootstrap-common" }, { task = "install-brew" }]

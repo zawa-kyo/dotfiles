@@ -125,6 +125,34 @@ func TestPlatformDeclarations(t *testing.T) {
 	}
 }
 
+// TestBootstrapExcludesHomebrewInstall keeps package provisioning explicit.
+func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
+	if runtime.GOOS != "darwin" {
+		t.Skip("Homebrew task is declared only on macOS")
+	}
+
+	repo := repositoryRoot(t)
+	home := t.TempDir()
+	output := runMise(t, repo, home, nil, "bootstrap", "--dry-run", "--yes")
+	if strings.Contains(output, "install-brew") || strings.Contains(output, "brew bundle install") {
+		t.Fatalf("bootstrap unexpectedly includes Homebrew installation:\n%s", output)
+	}
+
+	tasks := runMise(t, repo, home, nil, "tasks", "--json")
+	var taskList []struct {
+		Name string `json:"name"`
+	}
+	if err := json.Unmarshal([]byte(tasks), &taskList); err != nil {
+		t.Fatalf("decode mise task list: %v\n%s", err, tasks)
+	}
+	for _, task := range taskList {
+		if task.Name == "install-brew" {
+			return
+		}
+	}
+	t.Fatalf("explicit Homebrew install task is missing:\n%s", tasks)
+}
+
 // repositoryRoot returns the repository containing this test file.
 func repositoryRoot(t *testing.T) string {
 	t.Helper()

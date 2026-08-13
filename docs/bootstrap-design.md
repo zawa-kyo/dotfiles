@@ -6,13 +6,14 @@ dotfiles の定常的な配備を mise の標準機能へ寄せ、リポジト�
 
 ## 責務境界
 
-| 責務                           | 管理場所                         |
-| ------------------------------ | -------------------------------- |
-| 共通の dotfiles 宣言           | `mise.toml` の `[dotfiles]`      |
+| 責務                           | 管理場所                          |
+| ------------------------------ | --------------------------------- |
+| 共通の dotfiles 宣言           | `mise.toml` の `[dotfiles]`       |
 | macOS 固有の dotfiles 宣言     | `mise.macos.toml` の `[dotfiles]` |
-| 配備前に必要な旧構成の移行     | `deploy/migrations/`             |
-| 配備後のツールや依存関係の導入 | `mise.toml` の bootstrap タスク  |
-| 配備と移行の結合テスト         | `tests/` の Go テスト            |
+| 配備前に必要な旧構成の移行     | `deploy/migrations/`              |
+| 配備後のツールや依存関係の導入 | `mise.toml` の bootstrap タスク   |
+| Homebrew 依存関係の導入        | 明示的な `mise run install-brew`  |
+| 配備と移行の結合テスト         | `tests/` の Go テスト             |
 
 `mise bootstrap` を正式な入口とし、`mise run install` は同じ処理を呼ぶ互換入口に留めます。独自の配備マニフェスト、所有権台帳、`apply`・`check`・`diff` の再実装は持ちません。
 
@@ -53,10 +54,13 @@ mise は過去の宣言を所有権台帳として保存しません。管理対
 2. mise が `[dotfiles]` を反映する
 3. post-dotfiles hook で、配備したグローバル mise 設定だけを信頼する
 4. mise がリポジトリ内のツールをインストールする
-5. OS 固有の bootstrap タスクを実行する
-6. 共通タスクでグローバル mise ツール、apm、Bun、pre-commit を準備する
+5. 共通の bootstrap タスクでグローバル mise ツール、apm、Bun、pre-commit を準備する
 
 各処理は再実行できることを前提にします。移行処理は、移行済みなら変更せず、管理元を確認できないパスでは失敗します。途中で失敗した場合は診断を確認して原因を直し、`mise bootstrap` を再実行します。`--force` で競合を一括上書きする運用は標準手順にしません。
+
+Homebrew の導入は bootstrap に含めません。
+Brewfile は、明示的に実行する `mise run install-brew` と `mise run upgrade` から扱います。
+これにより、標準セットアップは Homebrew の状態に左右されません。
 
 ## テスト方針
 

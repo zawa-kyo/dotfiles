@@ -39,6 +39,8 @@
 
 ### Homebrew
 
+- 不足している Brewfile 依存関係を導入する場合は `mise run install-brew`
+- Homebrew の導入は `mise bootstrap` と `mise run install` に含めない
 - `brew bundle check --file=config/tools/homebrew/Brewfile`
 
 ## 配備状態の確認

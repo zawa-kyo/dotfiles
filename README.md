@@ -44,6 +44,7 @@ This command:
 - installs the pre-commit hook
 
 `mise run install` remains as a compatibility alias for `mise bootstrap`.
+Homebrew packages are not installed by either command. On macOS, run `mise run install-brew` explicitly when you want to install missing Brewfile dependencies.
 
 ## 🛠️ Common Commands
 
@@ -55,6 +56,7 @@ This command:
 | `mise bootstrap dotfiles apply --yes`     | Apply the declared dotfile links                         |
 | `mise run format`                         | Format tracked files                                     |
 | `mise run check-pre-commit`               | Run all pre-commit checks                                |
+| `mise run install-brew`                   | Install missing Brewfile dependencies on macOS           |
 | `mise run test-deployment`                | Test bootstrap behavior in isolated home directories     |
 | `mise run upgrade`                        | Update mise, apm, Neovim, Bun, and Homebrew dependencies |
 | `mise tasks`                              | List available mise tasks                                |
