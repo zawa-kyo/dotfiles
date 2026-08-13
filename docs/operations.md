@@ -2,102 +2,102 @@
 
 ## 目的
 
-変更対象に応じて、過不足の少ない確認を選べるようにする。
+変更対象に応じて、過不足の少ない確認を選べるようにします。
 
 ## 基本方針
 
-- 小さな変更では最小限の確認をする
-- 影響範囲が広い変更ではフォーマッタとリポジトリ全体の確認を使う
-- ドキュメントだけの変更では重い確認は不要
+- 小さな変更では対象に近い箇所だけを確認する
+- セットアップや PATH に関わる変更では結合テストと pre-commit を実行する
+- 実際のホームディレクトリへ反映する前に、状態確認または dry-run を行う
+- ドキュメントだけの変更では重いテストを求めない
 
 ## 変更種別ごとの確認
 
 ### ドキュメントのみ
 
-- Markdown、TOML、JSON、JSONC を変更した場合は `mise run format`
+- `mise run format`
 
 ### Neovim 設定
 
-- Lua やフォーマッタの対象ファイルを変更した場合は `mise run format`
-- プラグインやエディタ挙動に関わる場合は `nvim` で `:checkhealth`
+- Lua やフォーマッタ対象ファイルを変更した場合は `mise run format`
+- プラグイン、provider、runtime 設定を変更した場合は `nvim` で `:checkhealth`
 
-### シェルスクリプト / タスク / 端末設定
+### シェルスクリプト、タスク、端末設定
 
-- shell、TOML、Markdown を変更した場合は `mise run format`
-- Bash または sh のスクリプトを変更した場合は `mise run check-shell`
-- 配備処理やグローバルコマンドの公開に関わる場合は `mise run test-deployment`
-- 実際のホームディレクトリへの配備状況は `mise run check-deployment` で確認する
+- `mise run format`
+- Bash または sh を変更した場合は `mise run check-shell`
+- セットアップ、PATH、公開コマンド、配備宣言に関わる場合は `mise run test-deployment`
 - 影響範囲が広い場合は `uv run pre-commit run -a`
 
 ### Bun
 
 - `mise run install-bun`
 - `bunx --version`
-- `packages/bun/node_modules/` が生成されていないことを確認する
+- `config/tools/bun/node_modules/` が生成されていないことを確認する
 
-旧構成では、`~/.bun/install/global` が `config/tools/bun/` へのシンボリックリンクになっている場合がある。
-この場合、`mise run install-bun` はリンクを実行用ディレクトリへ置き換える。
-既存の `node_modules/` は新しいディレクトリへ移動する。
-別の場所を指すリンクや通常ファイルは変更しない。
-
-移行後に問題が起きた場合は、まず Bun を使う処理を停止する。
-その後、`node_modules/` を `packages/bun/` へ戻し、`~/.bun/install/global` をそのディレクトリへのリンクにできる。
-この手順は切り戻しに限って使用する。
+旧構成では、`~/.bun/install/global` が旧リポジトリ内の Bun ディレクトリへのリンクになっている場合があります。`mise run install-bun` は、旧構成が所有していると確認できたリンクだけを実行用ディレクトリへ置き換え、既存の `node_modules/` を移します。別の場所を指すリンクや通常ファイルは変更しません。
 
 ### Homebrew
 
-- `brew bundle check --file=packages/homebrew/Brewfile`
+- `brew bundle check --file=config/tools/homebrew/Brewfile`
 
-## フォーマッタ
+## 配備状態の確認
 
-通常は次を使う。
-
-```sh
-mise run format
-```
-
-このタスクは Lua, shell, JSON / JSONC / Markdown / YAML, TOML をまとめて整形する。
-
-## リポジトリ全体の確認
-
-広い変更やリリース前確認では次を使う。
+実際のホームディレクトリを変更せずに、現在の状態を確認できます。
 
 ```sh
-uv run pre-commit run -a
+mise bootstrap dotfiles status
+mise bootstrap dotfiles status --missing
+mise bootstrap dotfiles apply --dry-run
 ```
 
-## 配備処理の確認
+`status` は各配備先の状態を表示します。`status --missing` は不足や不一致がある場合に失敗します。`apply --dry-run` は、適用時に行われる変更と競合を確認するために使います。
 
-リンク処理やグローバルコマンドの公開を変更した場合は、次を実行する。
+確認後にリンクを反映します。
+
+```sh
+mise bootstrap dotfiles apply --yes
+```
+
+既存の通常ファイルや実ディレクトリは競合として保護されます。既存のシンボリックリンクは、mise の標準仕様に従って宣言した配備元へ変更される場合があります。競合を一括で上書きする `--force` は、通常運用では使いません。
+
+## 配備処理のテスト
 
 ```sh
 mise run test-deployment
 ```
 
-このタスクは一時的な `HOME` を作り、現在の配備元と配備先、繰り返し実行した場合の結果、通常ファイルとの競合、OS 固有のリンク、公開コマンドの基本要件を確認する。
-実際のホームディレクトリは変更しない。
+このタスクは Go テストを実行します。一時的な `HOME` と関連する状態ディレクトリを使い、実際の mise による配備、競合、冪等性、OS 別宣言、APM と Bun の移行を確認します。実際のホームディレクトリは変更しません。
 
-実際のホームディレクトリは、変更を加えずに次のコマンドで確認できる。
+配備や移行の Go コードを変更した場合は、データ競合と静的な問題も確認します。
 
 ```sh
-mise run check-deployment
-mise run diff-deployment
+mise exec -- go test -race ./tests
+mise exec -- go vet ./tests
 ```
 
-`check-deployment` は不一致があれば失敗し、`diff-deployment` は必要な操作を `link`、`relink`、`conflict` として表示する。
-変更を適用する場合は `mise run relink` を使う。
-配備先が通常ファイル、実ディレクトリ、または管理対象外を指すリンクである場合、この処理は配備先を変更せずに失敗する。
+## 管理対象を削除する場合
 
-配備処理の変更に問題があった場合は、変更前のコミットへ戻して `mise run relink` を再実行する。
-配備元のパスだけを変更した段階では、古いリンクもリポジトリ内を指す管理対象として判定されるため、変更前の一覧から再配備できる。
+mise は過去の宣言を所有権台帳として保持しません。`[dotfiles]` から項目を削除する前に、`mise bootstrap dotfiles unapply` の対象を確認して不要なリンクを外します。宣言を先に削除した場合、mise はそのリンクが過去の管理対象だったか判断できません。
+
+生成データを伴う移行では、単純な `unapply` だけで済ませません。データを退避し、所有元を確認する migration を用意します。
+
+## フォーマットと全体確認
+
+```sh
+mise run format
+uv run pre-commit run -a
+```
+
+`mise run format` は Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。広い変更やマージ前の確認では pre-commit も実行します。
 
 ## ドキュメント更新の判断
 
-- 手順が変わる
-  - `README.md`
+- セットアップや利用手順が変わる
+  - `README.md` と `README-ja.md`
 - リポジトリ全体の原則が変わる
   - `docs/`
 - サブシステム固有の詳細規約が変わる
-  - そのディレクトリ直下のポリシー
-- エージェントの参照導線が変わる
-  - `AGENTS.md`
+  - 実装に近いポリシーファイル
+- エージェントの参照先が変わる
+  - `AGENTS.md` と `AGENTS-ja.md`

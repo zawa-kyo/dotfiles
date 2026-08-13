@@ -6,6 +6,8 @@
 
 - [architecture.md](architecture.md)
   - リポジトリ全体の構造と責務分担
+- [bootstrap-design.md](bootstrap-design.md)
+  - mise bootstrap の責務、競合規則、移行とテストの境界
 - [ai-tools.md](ai-tools.md)
   - AI ツールを管理するための運用方針
 
@@ -28,9 +30,9 @@
 
 ## サブシステム固有ポリシー
 
-- [../home/.config/nvim/lua/policies/keybinds-policy.md](../home/.config/nvim/lua/policies/keybinds-policy.md)
+- [../config/editors/nvim/lua/policies/keybinds-policy.md](../config/editors/nvim/lua/policies/keybinds-policy.md)
   - Neovim キーバインド設計
-- [../home/.config/nvim/lua/policies/tab-buffer-policy.md](../home/.config/nvim/lua/policies/tab-buffer-policy.md)
+- [../config/editors/nvim/lua/policies/tab-buffer-policy.md](../config/editors/nvim/lua/policies/tab-buffer-policy.md)
   - Neovim タブ/バッファ表示方針
 
 ## 配置ルール
