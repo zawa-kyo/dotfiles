@@ -8,20 +8,20 @@ script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 source "$script_dir/../libexec/fzf.sh"
 
 main() {
-  local selected
-  local task_name
+	local selected
+	local task_name
 
-  selected="$(
-    mise tasks ls 2>/dev/null |
-      run_fzf --prompt='mise task> '
-  )" || exit 1
+	selected="$(
+		mise tasks ls 2>/dev/null |
+			run_fzf --prompt='mise task> '
+	)" || exit 1
 
-  [ -n "$selected" ] || exit 1
+	[ -n "$selected" ] || exit 1
 
-  task_name="${selected%%[[:space:]]*}"
-  [ -n "$task_name" ] || exit 1
+	task_name="${selected%%[[:space:]]*}"
+	[ -n "$task_name" ] || exit 1
 
-  exec mise run "$task_name"
+	exec mise run "$task_name"
 }
 
 main "$@"

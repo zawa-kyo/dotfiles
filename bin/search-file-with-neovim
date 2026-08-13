@@ -8,13 +8,13 @@ script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 source "$script_dir/../libexec/fzf.sh"
 
 main() {
-  local file
+	local file
 
-  file="$(
-    run_fzf_with_preview 'bat --style=numbers --color=always {}'
-  )" || exit 1
-  [ -n "$file" ] || exit 1
-  exec nvim "$file"
+	file="$(
+		run_fzf_with_preview 'bat --style=numbers --color=always {}'
+	)" || exit 1
+	[ -n "$file" ] || exit 1
+	exec nvim "$file"
 }
 
 main "$@"

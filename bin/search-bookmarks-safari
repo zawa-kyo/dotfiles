@@ -5,7 +5,7 @@ set -euo pipefail
 
 bootstrap_utils_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../libexec"
 if [ ! -f "$bootstrap_utils_dir/script-path.sh" ] && [ -L "${BASH_SOURCE[0]}" ]; then
-  bootstrap_utils_dir="$(cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")")" && pwd)/../libexec"
+	bootstrap_utils_dir="$(cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")")" && pwd)/../libexec"
 fi
 source "$bootstrap_utils_dir/script-path.sh"
 
