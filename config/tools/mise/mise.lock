@@ -506,7 +506,7 @@ url = "https://github.com/jdx/ruby/releases/download/3.4.10-2/ruby-3.4.10.macos.
 provenance = "github-attestations"
 
 [[tools.rust]]
-version = "1.97.1"
+version = "1"
 backend = "asdf:rust"
 
 [[tools.sheldon]]
