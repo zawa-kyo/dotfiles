@@ -1,6 +1,7 @@
 [tools]
 # Languages
 bun = "1"
+go = "1"
 rust = "1"
 
 # Editors / Formatters
@@ -54,8 +55,8 @@ description = "Run all pre-commit checks with uv"
 run = ["uv sync --group dev", "uv run pre-commit run -a"]
 
 [tasks.test-deployment]
-description = "Test dotfile links and global command publication in an isolated HOME"
-file = "tests/test-deployment.sh"
+description = "Test mise bootstrap deployment in isolated home directories"
+run = "go test ./tests"
 
 [tasks.check-shell]
 description = "Check tracked shell scripts with ShellCheck"
