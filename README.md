@@ -29,10 +29,11 @@ Install `mise` first if it is not already available in your shell.
 brew install mise
 ```
 
-Run the standard setup:
+Trust the repository, then run the standard setup:
 
 ```sh
-mise bootstrap
+mise trust
+mise bootstrap --yes
 ```
 
 This command:

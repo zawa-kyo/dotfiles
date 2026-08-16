@@ -57,7 +57,7 @@
 - [x] apm が lock ファイルを書き直した後も、`mise bootstrap` を再実行できることを検査する
 - [x] apm の更新結果をリポジトリの lock ファイルへ戻す
 - [x] 拡張子なしにした公開コマンドのラッパー参照を修正し、参照先の存在を検査する
-- [ ] 初回実行を `mise trust`、`mise bootstrap --yes` の順に統一する
+- [x] 初回実行を `mise trust`、`mise bootstrap --yes` の順に統一する
 - [x] mise の `symlink-each` が記録する状態を設計文書へ反映する
 
 ### 導入後の確認

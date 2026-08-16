@@ -29,10 +29,11 @@ cd [cloned_repository_path]
 brew install mise
 ```
 
-セットアップは次のコマンドに集約しています。
+リポジトリを信頼済みにしてから、セットアップを実行します。
 
 ```sh
-mise bootstrap
+mise trust
+mise bootstrap --yes
 ```
 
 このコマンドでは、次の作業をまとめて行います。
