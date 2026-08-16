@@ -9,7 +9,7 @@ import (
 
 const miseBootstrapMigration = "setup/migrations/migrate-to-mise-bootstrap.sh"
 
-// TestLegacyAPMDataMigration verifies generated modules survive the layout change.
+// Generated APM modules survive migration from the oldest layout.
 func TestLegacyAPMDataMigration(t *testing.T) {
 	repo := repositoryRoot(t)
 	fixtureRepo := t.TempDir()
@@ -29,7 +29,7 @@ func TestLegacyAPMDataMigration(t *testing.T) {
 	}
 }
 
-// TestPreviousAPMSourceMigration verifies links from the former config layout remain migratable.
+// APM modules also migrate from the former config layout.
 func TestPreviousAPMSourceMigration(t *testing.T) {
 	repo := repositoryRoot(t)
 	fixtureRepo := t.TempDir()
@@ -46,7 +46,7 @@ func TestPreviousAPMSourceMigration(t *testing.T) {
 	assertFileContent(t, filepath.Join(home, ".apm", "apm_modules", "example", "data"), "cached\n")
 }
 
-// TestLegacyAPMMigrationRejectsForeignLink verifies migration requires known ownership.
+// Migration rejects an APM link without known ownership.
 func TestLegacyAPMMigrationRejectsForeignLink(t *testing.T) {
 	repo := repositoryRoot(t)
 	fixtureRepo := t.TempDir()
@@ -66,7 +66,7 @@ func TestLegacyAPMMigrationRejectsForeignLink(t *testing.T) {
 	assertLink(t, target, foreignSource)
 }
 
-// TestLegacyCommandWrapperCleanup verifies migration removes only generated wrappers.
+// Migration removes generated wrappers while preserving user-owned commands.
 func TestLegacyCommandWrapperCleanup(t *testing.T) {
 	repo := repositoryRoot(t)
 	fixtureRepo := t.TempDir()
@@ -85,7 +85,38 @@ func TestLegacyCommandWrapperCleanup(t *testing.T) {
 	assertFileContent(t, filepath.Join(tasksDir, "unrelated"), "#!/usr/bin/env bash\n# user-owned\n")
 }
 
-// TestBunDataMigration verifies generated modules survive both earlier layouts.
+// Migration removes stale skill links only from known layouts.
+func TestLegacySkillLinkCleanup(t *testing.T) {
+	repo := repositoryRoot(t)
+	fixtureRepo := t.TempDir()
+	home := t.TempDir()
+	legacySkills := filepath.Join(fixtureRepo, "ai", "skills")
+	skillRoot := filepath.Join(home, ".claude", "skills")
+	activeSource := filepath.Join(legacySkills, "active")
+	staleLink := filepath.Join(skillRoot, "stale")
+	activeLink := filepath.Join(skillRoot, "active")
+	foreignLink := filepath.Join(skillRoot, "foreign")
+	apmLink := filepath.Join(home, ".codex", "skills", "apm-stale")
+
+	mustWriteFile(t, filepath.Join(fixtureRepo, "dotfiles", "ai", "apm", "apm.yml"), "dependencies: []\n", 0o644)
+	mustWriteFile(t, filepath.Join(activeSource, "SKILL.md"), "active\n", 0o644)
+	mustSymlink(t, filepath.Join(legacySkills, "stale"), staleLink)
+	mustSymlink(t, activeSource, activeLink)
+	mustSymlink(t, filepath.Join(fixtureRepo, "foreign", "stale"), foreignLink)
+	mustSymlink(t, filepath.Join(home, ".apm", "apm_modules", "stale"), apmLink)
+
+	runCommand(t, repo, migrationEnvironment(home), "bash", filepath.Join(repo, miseBootstrapMigration), fixtureRepo)
+
+	for _, removed := range []string{staleLink, apmLink} {
+		if _, err := os.Lstat(removed); !os.IsNotExist(err) {
+			t.Fatalf("stale managed skill link was not removed: %s: %v", removed, err)
+		}
+	}
+	assertLink(t, activeLink, activeSource)
+	assertLink(t, foreignLink, filepath.Join(fixtureRepo, "foreign", "stale"))
+}
+
+// Generated Bun modules survive migration from both earlier layouts.
 func TestBunDataMigration(t *testing.T) {
 	for _, sourceKind := range []string{"previous", "legacy"} {
 		t.Run(sourceKind, func(t *testing.T) {

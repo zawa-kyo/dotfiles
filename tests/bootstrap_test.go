@@ -17,7 +17,7 @@ type dotfilesStatus struct {
 	} `json:"files"`
 }
 
-// TestDotfilesApply verifies the declared links, additive directories, and idempotency.
+// Declared links preserve additive directories and remain idempotent.
 func TestDotfilesApply(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
@@ -58,7 +58,7 @@ func TestDotfilesApply(t *testing.T) {
 	}
 }
 
-// TestAPMLockCopyRoundTrip verifies migration from symlink-each and capture after an update.
+// An APM lock migrates from symlink-each and returns to the repository after an update.
 func TestAPMLockCopyRoundTrip(t *testing.T) {
 	repo := t.TempDir()
 	home := t.TempDir()
@@ -89,7 +89,27 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 }
 
-// TestPublishedCommandWrappers verifies each wrapper delegates to the intended public behavior.
+// The production APM task captures the lock only after completing its update.
+func TestAPMUpgradeCapturesLockFile(t *testing.T) {
+	repo := repositoryRoot(t)
+	home := t.TempDir()
+	output := runMise(t, repo, home, nil, "run", "--dry-run", "upgrade-apm")
+
+	previous := -1
+	for _, expected := range []string{
+		"mise -C ~ install apm",
+		"mise -C ~ exec -- apm update -g --yes",
+		"mise bootstrap dotfiles add --yes ~/.apm/apm.lock.yaml",
+	} {
+		position := strings.Index(output, expected)
+		if position <= previous {
+			t.Fatalf("upgrade-apm does not run %q in order:\n%s", expected, output)
+		}
+		previous = position
+	}
+}
+
+// Each wrapper delegates to its intended public behavior.
 func TestPublishedCommandWrappers(t *testing.T) {
 	repo := repositoryRoot(t)
 	fakeBin := t.TempDir()
@@ -131,7 +151,7 @@ printf '%s\n' '{"Children":[{"WebBookmarkType":"WebBookmarkTypeLeaf","URIDiction
 	}
 }
 
-// TestDotfileConflictSemantics verifies regular-file protection and symlink convergence.
+// Regular files remain protected while symlinks converge to their declarations.
 func TestDotfileConflictSemantics(t *testing.T) {
 	repo := repositoryRoot(t)
 
@@ -156,7 +176,7 @@ func TestDotfileConflictSemantics(t *testing.T) {
 	})
 }
 
-// TestLegacyAPMLinkMigration verifies that a dangling legacy link is migrated before apply.
+// A dangling legacy APM link migrates before dotfiles are applied.
 func TestLegacyAPMLinkMigration(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
@@ -175,7 +195,7 @@ func TestLegacyAPMLinkMigration(t *testing.T) {
 	assertLink(t, filepath.Join(target, "apm.yml"), filepath.Join(repo, "dotfiles", "ai", "apm", "apm.yml"))
 }
 
-// TestPlatformDeclarations verifies that common config does not contain macOS targets.
+// Common declarations exclude macOS targets while the platform config includes them.
 func TestPlatformDeclarations(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
@@ -199,7 +219,7 @@ func TestPlatformDeclarations(t *testing.T) {
 	}
 }
 
-// TestBootstrapExcludesHomebrewInstall keeps package provisioning explicit.
+// Bootstrap leaves Homebrew installation behind an explicit task.
 func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	if runtime.GOOS != "darwin" {
 		t.Skip("Homebrew task is declared only on macOS")
@@ -227,7 +247,7 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	t.Fatalf("explicit Homebrew install task is missing:\n%s", tasks)
 }
 
-// TestBootstrapUsesLefthook verifies Git hooks no longer require Python tooling.
+// Bootstrap installs Git hooks without Python tooling.
 func TestBootstrapUsesLefthook(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
