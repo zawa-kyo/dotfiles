@@ -41,7 +41,7 @@ mise bootstrap
 - mise 管理ツールのインストール
 - apm 管理スキルの反映
 - Bun グローバル環境の準備
-- pre-commit hook のインストール
+- Lefthook による Git pre-commit hook のインストール
 
 `mise run install` は `mise bootstrap` の互換入口として残しています。
 どちらのコマンドも Homebrew パッケージはインストールしません。macOS で Brewfile の不足分を導入する場合は、`mise run install-brew` を明示的に実行します。
@@ -55,7 +55,7 @@ mise bootstrap
 | `mise bootstrap dotfiles apply --dry-run` | dotfiles の変更と競合を事前に確認する                   |
 | `mise bootstrap dotfiles apply --yes`     | 宣言した dotfiles のリンクを反映する                    |
 | `mise run format`                         | Git の追跡対象ファイルを整形する                        |
-| `mise run check-pre-commit`               | リポジトリ全体の pre-commit チェックを実行する          |
+| `mise run check`                          | リポジトリ全体の検査を実行する                          |
 | `mise run install-brew`                   | macOS で Brewfile の不足分をインストールする            |
 | `mise run test-deployment`                | 一時的なホームディレクトリで bootstrap の動作を確認する |
 | `mise run upgrade`                        | mise、apm、Neovim、Bun、Homebrew の依存関係を更新する   |

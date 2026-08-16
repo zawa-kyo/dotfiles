@@ -7,7 +7,7 @@
 ## 基本方針
 
 - 小さな変更では対象に近い箇所だけを確認する
-- セットアップや PATH に関わる変更では結合テストと pre-commit を実行する
+- セットアップや PATH に関わる変更では結合テストと `mise run check` を実行する
 - 実際のホームディレクトリへ反映する前に、状態確認または dry-run を行う
 - ドキュメントだけの変更では重いテストを求めない
 
@@ -27,7 +27,7 @@
 - `mise run format`
 - Bash または sh を変更した場合は `mise run check-shell`
 - セットアップ、PATH、公開コマンド、配備宣言に関わる場合は `mise run test-deployment`
-- 影響範囲が広い場合は `uv run pre-commit run -a`
+- 影響範囲が広い場合は `mise run check`
 
 ### Bun
 
@@ -88,10 +88,10 @@ mise は過去の宣言を所有権台帳として保持しません。`[dotfile
 
 ```sh
 mise run format
-uv run pre-commit run -a
+mise run check
 ```
 
-`mise run format` は Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。広い変更やマージ前の確認では pre-commit も実行します。
+`mise run format` は Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。`mise run check` は Lefthook から各フォーマッタ、ShellCheck、Gitleaks、Git の差分を検査します。Git pre-commit hook ではステージ済みファイル、手動実行では追跡対象ファイル全体を確認します。
 
 ## ドキュメント更新の判断
 

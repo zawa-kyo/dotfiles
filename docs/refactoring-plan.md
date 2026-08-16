@@ -39,7 +39,7 @@
 - migration は旧構成が所有したと確認できるパスだけを変更する
 - bootstrap は再実行可能にし、競合を `--force` で一括上書きしない
 - テストは mise の配備ロジックや production の所有判定を再実装しない
-- Python は配備テストに採用しない。Go の補助コードが保守できなくなった場合に限り TypeScript と Bun を再評価する
+- Python へ依存する検証環境は持たず、Lefthook と既存の検査ツールを直接実行する
 
 ## 残っている TODO
 
@@ -70,7 +70,7 @@ mise run check-shell
 mise run test-deployment
 mise exec -- go test -race ./tests
 mise exec -- go vet ./tests
-uv run pre-commit run -a
+mise run check
 ```
 
 実際のホームディレクトリへの適用はコード検証と分けます。

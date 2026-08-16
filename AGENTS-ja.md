@@ -77,7 +77,7 @@
 - `bin/`、`tasks/`、`libexec/`、`mise.toml`、または `config/shell/` を変更した場合:
   - シェル、TOML、Markdown ファイルを変更したら `mise run format` を実行する。
   - Bash または sh のスクリプトを変更したら `mise run check-shell` を実行する。
-  - セットアップ、シェル起動、PATH、公開コマンドに影響する変更では `uv run pre-commit run -a` を実行する。
+  - セットアップ、シェル起動、PATH、公開コマンドに影響する変更では `mise run check` を実行する。
 - `config/tools/homebrew/Brewfile` を変更した場合:
   - `brew bundle check --file=config/tools/homebrew/Brewfile` を実行する。
 - `config/tools/bun/` を変更した場合:

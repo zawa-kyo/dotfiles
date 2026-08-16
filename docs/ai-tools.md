@@ -63,7 +63,7 @@ dotfiles では `config/ai/apm/` にユーザー単位の依存関係リスト�
 2. `mise` 管理ツールをインストールする
 3. グローバル mise 設定から apm CLI をインストールする
 4. `mise -C ~ exec -- apm install -g --frozen` を実行する
-5. Bun や pre-commit など、既存のセットアップ処理を続ける
+5. Bun の準備と Lefthook による Git hook の導入を続ける
 
 `mise -C ~ exec -- apm install -g --frozen` は `config/ai/apm/apm.lock.yaml` を基準にする。
 `apm.yml` と lock ファイルがずれているときは失敗する。
