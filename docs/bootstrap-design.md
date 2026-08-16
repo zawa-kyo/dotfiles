@@ -10,7 +10,7 @@ dotfiles の定常的な配備を mise の標準機能へ寄せ、リポジト�
 | ------------------------------ | --------------------------------- |
 | 共通の dotfiles 宣言           | `mise.toml` の `[dotfiles]`       |
 | macOS 固有の dotfiles 宣言     | `mise.macos.toml` の `[dotfiles]` |
-| 配備前に必要な旧構成の移行     | `deploy/migrations/`              |
+| 配備前に必要な旧構成の移行     | `setup/migrations/`               |
 | 配備後のツールや依存関係の導入 | `mise.toml` の bootstrap タスク   |
 | Homebrew 依存関係の導入        | 明示的な `mise run install-brew`  |
 | 配備と移行の結合テスト         | `tests/` の Go テスト             |

@@ -66,9 +66,9 @@ mise bootstrap
 
 ### Bun グローバルパッケージ
 
-Bun のグローバル環境で使う `package.json`、`bun.lock`、`bunfig.toml` は `config/tools/bun/` で管理します。
+Bun のグローバル環境で使う `package.json`、`bun.lock`、`bunfig.toml` は `setup/bun/` で管理します。
 `mise run install-bun` はこれらのファイルを `~/.bun/install/global` へコピーし、依存関係を同じディレクトリへインストールします。生成される `node_modules/` はリポジトリ内に置きません。
-`mise run upgrade-bun` は実行用ディレクトリで依存関係を更新し、変更されたパッケージ宣言と lock ファイルを `config/tools/bun/` へ戻します。
+`mise run upgrade-bun` は実行用ディレクトリで依存関係を更新し、変更されたパッケージ宣言と lock ファイルを `setup/bun/` へ戻します。
 
 ### Git worktree
 
@@ -83,15 +83,14 @@ ghq で取得したリポジトリの worktree は Worktrunk で管理します�
 
 ## 🗂️ リポジトリ構成
 
-| パス       | 役割                                                    |
-| ---------- | ------------------------------------------------------- |
-| `config/`  | 管理するツールまたは領域ごとにまとめた設定              |
-| `bin/`     | `~/.local/bin` へ公開する単独実行 CLI コマンド          |
-| `tasks/`   | mise bootstrap で扱わないセットアップや保守用スクリプト |
-| `libexec/` | シェルスクリプトから共有するヘルパー                    |
-| `deploy/`  | 旧構成から移行するための限定的な処理                    |
-| `tests/`   | 一時的なホームディレクトリを使う Go の結合テスト        |
-| `docs/`    | リポジトリ全体の設計と運用ポリシー                      |
+| パス        | 役割                                             |
+| ----------- | ------------------------------------------------ |
+| `dotfiles/` | ホームディレクトリへリンクする設定               |
+| `bin/`      | `~/.local/bin` へ公開する単独実行 CLI コマンド   |
+| `libexec/`  | 公開コマンドから使う非公開の補助処理             |
+| `setup/`    | 環境構築用の宣言、スクリプト、migration          |
+| `tests/`    | 一時的なホームディレクトリを使う Go の結合テスト |
+| `docs/`     | リポジトリ全体の設計と運用ポリシー               |
 
 ## 📚 詳細ドキュメント
 
@@ -105,4 +104,4 @@ README は概要に留め、詳しい設計や運用は次のドキュメント�
 - [docs/ai-tools.md](docs/ai-tools.md): AI ツールと apm の運用方針
 - [docs/operations.md](docs/operations.md): 変更内容に応じた確認方法
 
-Neovim 固有の方針は `config/editors/nvim/lua/policies/` に置いています。
+Neovim 固有の方針は `dotfiles/editors/nvim/lua/policies/` に置いています。

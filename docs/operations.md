@@ -33,7 +33,7 @@
 
 - `mise run install-bun`
 - `bunx --version`
-- `config/tools/bun/node_modules/` が生成されていないことを確認する
+- `setup/bun/node_modules/` が生成されていないことを確認する
 
 旧構成では、`~/.bun/install/global` が旧リポジトリ内の Bun ディレクトリへのリンクになっている場合があります。`mise run install-bun` は、旧構成が所有していると確認できたリンクだけを実行用ディレクトリへ置き換え、既存の `node_modules/` を移します。別の場所を指すリンクや通常ファイルは変更しません。
 
@@ -41,7 +41,7 @@
 
 - 不足している Brewfile 依存関係を導入する場合は `mise run install-brew`
 - Homebrew の導入は `mise bootstrap` と `mise run install` に含めない
-- `brew bundle check --file=config/tools/homebrew/Brewfile`
+- `brew bundle check --file=setup/homebrew/Brewfile`
 
 ## 配備状態の確認
 

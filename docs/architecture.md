@@ -17,27 +17,26 @@
 
 ## 主要ディレクトリ
 
-- `config/`
-  - 管理するツールまたは領域ごとの宣言的な設定
+- `dotfiles/`
+  - ホームディレクトリへリンクする宣言的な設定
   - `ai/`、`editors/`、`shell/`、`terminal-apps/`、`tools/` に分ける
 - `bin/`
   - `~/.local/bin` へ公開する単独実行コマンド
-- `tasks/`
-  - 依存関係の導入や更新など、mise の dotfiles 機能だけでは扱わない処理
 - `libexec/`
-  - シェルスクリプトから共有する補助処理
-- `deploy/migrations/`
-  - 旧構成が所有していたデータや生成物を一度だけ移行する処理
+  - 公開コマンドから共有する非公開の補助処理
+- `setup/`
+  - 環境構築に使う Homebrew と Bun の宣言およびスクリプト
+  - `migrations/` には、旧構成が所有していたデータや生成物を一度だけ移行する処理を置く
 - `tests/`
   - 一時的なホームディレクトリと実際の mise を使う Go の結合テスト
 
-`node_modules/` や `apm_modules/` などの生成状態は `config/` に置きません。Bun は `~/.bun/install/global`、apm は `~/.apm` に生成します。
+`node_modules/` や `apm_modules/` などの生成状態はリポジトリに置きません。Bun は `~/.bun/install/global`、apm は `~/.apm` に生成します。
 
 ## 設計原則
 
 ### 管理対象を起点に配置する
 
-リポジトリ内の探索は、配備先ではなく変更理由を起点にします。たとえば、Neovim は `config/editors/nvim/`、Bun は `config/tools/bun/`、Zsh は `config/shell/terminal/` に置きます。同じツールの設定とパッケージ宣言が複数の最上位ディレクトリへ分散しないため、変更時に探す範囲を限定できます。
+リポジトリ内の探索は、配備先ではなく変更理由を起点にします。たとえば、Neovim は `dotfiles/editors/nvim/`、Zsh は `dotfiles/shell/terminal/` に置きます。Bun の環境構築に使う宣言は `setup/bun/` に置き、ホームディレクトリへリンクする設定と区別します。
 
 ホームディレクトリや macOS の `Library/` との対応は、`mise.toml` と `mise.macos.toml` の `[dotfiles]` で明示します。配備先を配置だけから推測できることより、関連する設定を一か所で変更できることを優先します。
 
@@ -46,8 +45,8 @@
 - 定常的なリンクは mise の `[dotfiles]` に宣言する
 - OS 固有の宣言は OS 別の mise 設定へ分ける
 - 追加型のディレクトリは `symlink-each` を使い、管理外の隣接ファイルを残す
-- 依存関係の導入や更新は `tasks/` に置く
-- 旧構成からの移行だけを `deploy/migrations/` に残す
+- 依存関係の導入や更新は `setup/` に置く
+- 旧構成からの移行だけを `setup/migrations/` に残す
 
 独自の配備一覧や所有権データベースは持ちません。定常処理は mise の仕様へ寄せ、リポジトリ側のコードはデータ移行など固有の責務に限定します。詳しい境界は [bootstrap-design.md](bootstrap-design.md) を参照してください。
 
@@ -61,7 +60,7 @@
 
 ### 局所ルールは実装の近くに置く
 
-Neovim のキーバインドや表示方針は `config/editors/nvim/lua/policies/` に置きます。全体文書には要約と参照先だけを置き、同じ規則を複製しません。
+Neovim のキーバインドや表示方針は `dotfiles/editors/nvim/lua/policies/` に置きます。全体文書には要約と参照先だけを置き、同じ規則を複製しません。
 
 ### 生成物と利用者データを追跡しない
 

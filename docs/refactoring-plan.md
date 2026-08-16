@@ -20,7 +20,10 @@
 
 ## 完了した変更
 
-- [x] 設定とパッケージ宣言を管理対象別の `config/` へ移す
+- [x] リンクする設定を管理対象別の `dotfiles/` へ移す
+- [x] 環境構築の宣言と処理を `setup/` へまとめる
+- [x] `mise.toml`、テスト、ドキュメントの参照を新しい構成へ合わせる
+- [x] 役割を終えた `Makefile` と空になった旧ディレクトリを削除する
 - [x] 共通宣言を `mise.toml`、macOS 固有宣言を `mise.macos.toml` へ分ける
 - [x] 初回セットアップを `mise bootstrap` に集約する
 - [x] `mise run install` を互換入口として残す
@@ -46,14 +49,6 @@
 - Python へ依存する検証環境は持たず、Lefthook と既存の検査ツールを直接実行する
 
 ## 残っている TODO
-
-### ディレクトリ構成
-
-- [ ] リンクする設定を `config/` から `dotfiles/` へ移す
-- [ ] Homebrew と Bun の宣言、セットアップ処理、migration を `setup/` へまとめる
-- [ ] `mise.toml`、テスト、ドキュメントに記載されたパスを新しい構成へ合わせる
-- [ ] 役割を終えた `Makefile` を削除する
-- [ ] 移動で空になった `config/`、`tasks/`、`deploy/` を残さない
 
 ### 導入後の確認
 

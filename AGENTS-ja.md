@@ -25,25 +25,25 @@
   - AI ツール管理の運用方針。
 - `docs/operations.md`
   - 変更後の確認方針。
-- `config/editors/nvim/lua/policies/keybinds-policy.md`
+- `dotfiles/editors/nvim/lua/policies/keybinds-policy.md`
   - Neovim キーバインド設計。
-- `config/editors/nvim/lua/policies/tab-buffer-policy.md`
+- `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md`
   - Neovim のタブ / バッファ表示方針。
 
 ## 変更対象ごとの参照先
 
-- `config/editors/nvim/` を変更する場合:
-  - まず `config/editors/nvim/lua/policies/` を確認する。
-  - キーバインド変更は `config/editors/nvim/lua/policies/keybinds-policy.md` を確認する。
-  - タブ / バッファ表示変更は `config/editors/nvim/lua/policies/tab-buffer-policy.md` を確認する。
-- `bin/`、`tasks/`、`libexec/`、`mise.toml`、または `config/shell/` を変更する場合:
+- `dotfiles/editors/nvim/` を変更する場合:
+  - まず `dotfiles/editors/nvim/lua/policies/` を確認する。
+  - キーバインド変更は `dotfiles/editors/nvim/lua/policies/keybinds-policy.md` を確認する。
+  - タブ / バッファ表示変更は `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md` を確認する。
+- `bin/`、`setup/`、`libexec/`、`mise.toml`、または `dotfiles/shell/` を変更する場合:
   - `docs/command-model.md` と `docs/abbreviation-policy.md` を確認する。
   - `fzf` を使う処理は `docs/command-model.md` の共通化方針に従う。
-- `config/tools/homebrew/` を変更する場合:
+- `setup/homebrew/` を変更する場合:
   - `README.md` の Homebrew 節と `docs/operations.md` を確認する。
-- `config/tools/bun/` を変更する場合:
+- `setup/bun/` を変更する場合:
   - `README.md` の Bun 節と `docs/operations.md` を確認する。
-- `config/ai/` を変更する場合:
+- `dotfiles/ai/` を変更する場合:
   - `README.md` の AI Tools 節、`docs/architecture.md`、`docs/ai-tools.md` を確認する。
 - セットアップや利用手順の文書を変える場合:
   - `README.md` と `README-ja.md` を更新する。
@@ -63,7 +63,7 @@
 - 新しい関数を追加する場合は、役割がひと目で分かる短い英語の説明コメントを付ける。
 - JSON / JSONC / TOML / Markdown は既存フォーマットに合わせる。
 - マシン固有の値や秘密情報はコミットしない。
-- AI スキル本体は、原則として外部の apm パッケージリポジトリで管理する。dotfiles には `config/ai/apm/apm.yml` の依存関係と `config/ai/apm/apm.lock.yaml` だけを置く。
+- AI スキル本体は、原則として外部の apm パッケージリポジトリで管理する。このリポジトリには `dotfiles/ai/apm/apm.yml` の依存関係と `dotfiles/ai/apm/apm.lock.yaml` だけを置く。
 - 対話型 CLI の利用を提案する場合は、まず `tmux` 経由で起動する案を勧める。
 
 ## 検証ルール
@@ -71,16 +71,16 @@
 - ドキュメントのみの変更:
   - 必須テストはなし。
   - Markdown, TOML, JSON, JSONC を変更したら `mise run format` を実行する。
-- `config/editors/nvim/` を変更した場合:
+- `dotfiles/editors/nvim/` を変更した場合:
   - Lua またはフォーマッタ対象ファイルを変更したら `mise run format` を実行する。
   - プラグイン、provider、runtime 設定を変更したら `nvim` で `:checkhealth` を実行する。
-- `bin/`、`tasks/`、`libexec/`、`mise.toml`、または `config/shell/` を変更した場合:
+- `bin/`、`setup/`、`libexec/`、`mise.toml`、または `dotfiles/shell/` を変更した場合:
   - シェル、TOML、Markdown ファイルを変更したら `mise run format` を実行する。
   - Bash または sh のスクリプトを変更したら `mise run check-shell` を実行する。
   - セットアップ、シェル起動、PATH、公開コマンドに影響する変更では `mise run check` を実行する。
-- `config/tools/homebrew/Brewfile` を変更した場合:
-  - `brew bundle check --file=config/tools/homebrew/Brewfile` を実行する。
-- `config/tools/bun/` を変更した場合:
+- `setup/homebrew/Brewfile` を変更した場合:
+  - `brew bundle check --file=setup/homebrew/Brewfile` を実行する。
+- `setup/bun/` を変更した場合:
   - `mise run install-bun` を実行する。
 - `bunx --version` で解決を確認する。
 
@@ -88,7 +88,7 @@
 
 - 新しいセットアップ手順を追加したら `README.md` と `README-ja.md` を更新する。
 - 新しい全体設計の原則を追加したら `docs/` を更新する。
-- 新しい Neovim 規約を追加したら `config/editors/nvim/lua/policies/` を更新する。
+- 新しい Neovim 規約を追加したら `dotfiles/editors/nvim/lua/policies/` を更新する。
 - エージェント向けの参照導線が変わったら `AGENTS.md` を更新する。
 
 ## 言語版

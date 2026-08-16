@@ -66,9 +66,9 @@ That directory contains small CLI tools for daily work, such as Git operations a
 
 ### Bun global packages
 
-The repository tracks the Bun global `package.json`, `bun.lock`, and `bunfig.toml` files in `config/tools/bun/`.
+The repository tracks the Bun global `package.json`, `bun.lock`, and `bunfig.toml` files in `setup/bun/`.
 `mise run install-bun` copies those files to `~/.bun/install/global` and installs dependencies there, so generated `node_modules/` content stays outside the repository.
-`mise run upgrade-bun` updates the runtime directory and copies the changed manifest and lock file back to `config/tools/bun/`.
+`mise run upgrade-bun` updates the runtime directory and copies the changed manifest and lock file back to `setup/bun/`.
 
 ### Git worktrees
 
@@ -83,15 +83,14 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 
 ## 🗂️ Repository Layout
 
-| Path       | Role                                                        |
-| ---------- | ----------------------------------------------------------- |
-| `config/`  | Configuration grouped by the tool or domain being managed   |
-| `bin/`     | Standalone CLI commands published to `~/.local/bin`         |
-| `tasks/`   | Setup and maintenance scripts not covered by mise bootstrap |
-| `libexec/` | Shared helpers for shell scripts                            |
-| `deploy/`  | Narrowly scoped migrations from superseded layouts          |
-| `tests/`   | Go integration tests using isolated home directories        |
-| `docs/`    | Repository-wide design and operations policy                |
+| Path        | Role                                                 |
+| ----------- | ---------------------------------------------------- |
+| `dotfiles/` | Configuration linked into the home directory         |
+| `bin/`      | Standalone CLI commands published to `~/.local/bin`  |
+| `libexec/`  | Private helpers used by published commands           |
+| `setup/`    | Machine setup declarations, scripts, and migrations  |
+| `tests/`    | Go integration tests using isolated home directories |
+| `docs/`     | Repository-wide design and operations policy         |
 
 ## 📚 Documentation
 
@@ -105,4 +104,4 @@ The README stays short. Use these documents for design and operations:
 - [docs/ai-tools.md](docs/ai-tools.md): AI tool and apm policy
 - [docs/operations.md](docs/operations.md): verification policy by change type
 
-Neovim-specific policies live in `config/editors/nvim/lua/policies/`.
+Neovim-specific policies live in `dotfiles/editors/nvim/lua/policies/`.
