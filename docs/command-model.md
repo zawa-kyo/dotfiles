@@ -74,7 +74,9 @@
 
 ## コマンドの公開
 
-`bin/` に実行可能なファイルを追加すると、次回の `mise bootstrap dotfiles apply` で `~/.local/bin` にリンクされます。削除したコマンドのリンクも削除する場合は、宣言を変える前に `mise bootstrap dotfiles unapply` の対象を確認します。mise は管理台帳を持たないため、宣言から先に消した項目を後から自動判定して掃除する設計にはしません。
+`bin/` に実行可能なファイルを追加すると、次回の `mise bootstrap dotfiles apply` で `~/.local/bin` にリンクされます。`symlink-each` が作成したリンクは mise の状態ディレクトリに記録されるため、配備元から削除したコマンドのリンクは次回の適用で削除されます。`[dotfiles]` の宣言自体を削除する場合は、先に `mise bootstrap dotfiles unapply` の対象を確認します。
+
+公開コマンドから別の公開コマンドを呼ぶ場合も、拡張子なしの公開名を使います。ラッパーを変更したときは、参照先が `bin/` に存在することを検査します。
 
 ## 変更時の判断基準
 

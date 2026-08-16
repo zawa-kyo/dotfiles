@@ -19,7 +19,8 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 - Codex と Claude Code は、リンクした同じ指示を読む
 - スキルは apm で運用、管理する
 - dotfiles では公開済みの再利用可能なスキルの依存関係を管理する
-- `dotfiles/ai/apm/` 内の管理ファイルだけを `~/.apm` へ個別にリンクする
+- `apm.yml` と `config.json` は `~/.apm` へ個別にリンクする
+- apm が書き換える `apm.lock.yaml` は `~/.apm` へコピーし、更新後に宣言元へ戻す
 - `~/.apm` は通常のディレクトリとし、`apm_modules/` などの生成物をリポジトリ外に置く
 - apm の展開先は `dotfiles/ai/apm/apm.lock.yaml` の `deployed_files` を正とする
 - 現行のユーザー単位インストールでは `.agents/skills` と `.claude/skills` に展開する
@@ -43,7 +44,7 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 dotfiles は公開リポジトリなので、ここで管理するスキルは公開して問題ないものに限定する。
 
 dotfiles では `dotfiles/ai/apm/` にユーザー単位の依存関係リストと設定を置く。
-`apm.yml`、`apm.lock.yaml`、`config.json` は `~/.apm` へ個別にリンクする。
+`apm.yml` と `config.json` は `symlink-each` で `~/.apm` へリンクする。`apm.lock.yaml` はその対象から除外し、mise の `copy` で配備する。
 スキル本体は原則として個別の apm パッケージリポジトリに置き、dotfiles には参照と lock ファイルだけを置く。
 
 - `dotfiles/ai/apm/apm.yml`
@@ -59,13 +60,14 @@ dotfiles では `dotfiles/ai/apm/` にユーザー単位の依存関係リスト
 
 `mise run install` では次の順に処理する。
 
-1. dotfiles 管理ファイルをリンクする
+1. `apm.yml` と `config.json` をリンクし、lock ファイルをコピーする
 2. `mise` 管理ツールをインストールする
 3. グローバル mise 設定から apm CLI をインストールする
 4. `mise -C ~ exec -- apm install -g --frozen` を実行する
 5. Bun の準備と Lefthook による Git hook の導入を続ける
 
-`mise -C ~ exec -- apm install -g --frozen` は `dotfiles/ai/apm/apm.lock.yaml` を基準にする。
+`mise -C ~ exec -- apm install -g --frozen` は、`~/.apm/apm.lock.yaml` を基準にする。
+このファイルは `dotfiles/ai/apm/apm.lock.yaml` からコピーする。
 `apm.yml` と lock ファイルがずれているときは失敗する。
 通常のセットアップでは、この lock ファイルを正としてスキルを再生成する。
 apm CLI 自体は `dotfiles/tools/mise/conf.d/tools.toml` のグローバル mise 設定で管理する。
@@ -73,13 +75,15 @@ apm CLI 自体は `dotfiles/tools/mise/conf.d/tools.toml` のグローバル mis
 `~/.apm` は通常のディレクトリとして作成し、`apm_modules/` は apm が管理する生成先として扱う。`~/.agents/skills` と `~/.claude/skills` も apm の所有情報に従って更新し、インストール前にディレクトリ全体を削除しない。
 
 旧構成の `~/.apm` が `config/ai/apm/` へのシンボリックリンクである場合、migration は `~/.apm` を通常のディレクトリへ置き換える。
-既存の `config/ai/apm/apm_modules/` は新しい `~/.apm/apm_modules/` へ移し、`dotfiles/ai/apm/` の管理ファイルだけを個別にリンクする。
+既存の `config/ai/apm/apm_modules/` は新しい `~/.apm/apm_modules/` へ移す。移行後は宣言ファイルを個別にリンクし、lock ファイルをコピーする。
 別の場所を指す `~/.apm` のシンボリックリンクや通常ファイルは、所有元を確認できないため変更しない。
 
 移行後に問題が起きた場合は、まず apm の処理を停止し、管理ファイルのリンクを外す。
 その後、`~/.apm/apm_modules/` を旧構成のディレクトリへ戻し、`~/.apm` をそのディレクトリへのリンクにできます。この手順は切り戻しに限って使用します。
 
-`mise run --continue-on-error upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。更新された `dotfiles/ai/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
+`mise run --continue-on-error upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。
+更新後に `mise bootstrap dotfiles add ~/.apm/apm.lock.yaml` を実行し、lock ファイルを宣言元へ戻す。
+更新された lock ファイルは、他の lock ファイルと同じくレビュー対象にする。
 
 ## 既知の TODO
 

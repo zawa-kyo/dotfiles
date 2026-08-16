@@ -80,7 +80,7 @@ mise exec -- go vet ./tests
 
 ## 管理対象を削除する場合
 
-mise は過去の宣言を所有権台帳として保持しません。`[dotfiles]` から項目を削除する前に、`mise bootstrap dotfiles unapply` の対象を確認して不要なリンクを外します。宣言を先に削除した場合、mise はそのリンクが過去の管理対象だったか判断できません。
+mise は `symlink-each` が作成したリンクを状態ディレクトリに記録しますが、すべての配備モードに共通する所有権台帳は持ちません。`[dotfiles]` から項目を削除する前に、`mise bootstrap dotfiles unapply` の対象を確認して不要なリンクを外します。
 
 生成データを伴う移行では、単純な `unapply` だけで済ませません。データを退避し、所有元を確認する migration を用意します。
 
