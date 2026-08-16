@@ -159,7 +159,7 @@ func TestBunDataMigration(t *testing.T) {
 	}
 }
 
-// migrationEnvironment isolates every user-controlled migration path.
+// Isolate every user-controlled migration path.
 func migrationEnvironment(home string) map[string]string {
 	return map[string]string{
 		"HOME":                   home,
@@ -171,33 +171,4 @@ func migrationEnvironment(home string) map[string]string {
 		"DIR_SKILLS":             filepath.Join(home, ".local", "share", "dotfiles", "skills"),
 		"DIR_APM_MODULES":        filepath.Join(home, ".apm", "apm_modules"),
 	}
-}
-
-// assertLinkResolves compares canonical targets across platform path aliases.
-func assertLinkResolves(t *testing.T, path string, expected string) {
-	t.Helper()
-	actualTarget, err := filepath.EvalSymlinks(path)
-	if err != nil {
-		t.Fatalf("resolve symlink %s: %v", path, err)
-	}
-	expectedTarget, err := filepath.EvalSymlinks(expected)
-	if err != nil {
-		t.Fatalf("resolve expected path %s: %v", expected, err)
-	}
-	if actualTarget != expectedTarget {
-		t.Fatalf("symlink %s resolves to %s, want %s", path, actualTarget, expectedTarget)
-	}
-}
-
-// runCommand runs a repository helper with controlled environment variables.
-func runCommand(t *testing.T, workingDirectory string, env map[string]string, name string, args ...string) string {
-	t.Helper()
-	command := exec.Command(name, args...)
-	command.Dir = workingDirectory
-	command.Env = replaceEnvironment(os.Environ(), env)
-	output, err := command.CombinedOutput()
-	if err != nil {
-		t.Fatalf("%s failed: %v\n%s", name, err, output)
-	}
-	return string(output)
 }
