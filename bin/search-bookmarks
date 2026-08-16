@@ -25,7 +25,7 @@ emit_chrome_bookmarks() {
 	local root
 	local path
 	local profile
-	local reader="$script_dir/../libexec/bookmarks.ts"
+	local reader="$script_dir/../libexec/bookmarks.go"
 
 	root="${CHROME_BOOKMARKS_ROOT:-$HOME/Library/Application Support/Google/Chrome}"
 
@@ -33,18 +33,18 @@ emit_chrome_bookmarks() {
 		[ -f "$path" ] || continue
 		profile="$(basename "$(dirname "$path")")"
 
-		bun "$reader" chrome "$profile" "$path"
+		go run "$reader" chrome "$profile" "$path"
 	done
 }
 
 emit_safari_bookmarks() {
 	local plist
-	local reader="$script_dir/../libexec/bookmarks.ts"
+	local reader="$script_dir/../libexec/bookmarks.go"
 
 	plist="${SAFARI_BOOKMARKS_PLIST:-$HOME/Library/Safari/Bookmarks.plist}"
 	[ -f "$plist" ] || return 0
 
-	if ! bun "$reader" safari "$plist"; then
+	if ! go run "$reader" safari "$plist"; then
 		warn "Safari bookmarks could not be read."
 		warn "Check Safari bookmark file access and format."
 		return 0
@@ -96,7 +96,7 @@ main() {
 	local _title
 	local url
 
-	require_command bun
+	require_command go
 
 	while [ "$#" -gt 0 ]; do
 		case "$1" in
