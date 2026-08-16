@@ -30,6 +30,7 @@ func TestDotfilesApply(t *testing.T) {
 	assertLink(t, filepath.Join(home, ".gitconfig"), filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
 	assertLink(t, filepath.Join(home, ".config", "nvim"), filepath.Join(repo, "dotfiles", "editors", "nvim"))
 	assertLink(t, filepath.Join(home, ".local", "bin", "search-google"), filepath.Join(repo, "bin", "search-google"))
+	assertRegularFile(t, filepath.Join(home, ".apm", "apm.lock.yaml"))
 	assertFileContent(t, filepath.Join(home, ".local", "bin", "unrelated"), "user-owned\n")
 	assertFileContent(t, filepath.Join(home, ".apm", "apm_modules", "cached", "data"), "cached\n")
 
@@ -55,6 +56,37 @@ func TestDotfilesApply(t *testing.T) {
 	if !reflect.DeepEqual(before, after) {
 		t.Fatalf("second apply changed symlinks\nbefore: %v\nafter:  %v", before, after)
 	}
+}
+
+// TestAPMLockCopyRoundTrip verifies migration from symlink-each and capture after an update.
+func TestAPMLockCopyRoundTrip(t *testing.T) {
+	repo := t.TempDir()
+	home := t.TempDir()
+	sourceDir := filepath.Join(repo, "dotfiles", "ai", "apm")
+	targetLock := filepath.Join(home, ".apm", "apm.lock.yaml")
+	sourceLock := filepath.Join(sourceDir, "apm.lock.yaml")
+
+	mustWriteFile(t, filepath.Join(sourceDir, "apm.yml"), "dependencies: {}\n", 0o644)
+	mustWriteFile(t, filepath.Join(sourceDir, "config.json"), "{}\n", 0o644)
+	mustWriteFile(t, sourceLock, "version: old\n", 0o644)
+	mustWriteFile(t, filepath.Join(repo, "mise.toml"), `[dotfiles]
+"~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each" }
+`, 0o644)
+
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	assertLinkResolves(t, targetLock, sourceLock)
+
+	mustWriteFile(t, filepath.Join(repo, "mise.toml"), `[dotfiles]
+"~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each", exclude = ["apm.lock.yaml"] }
+"~/.apm/apm.lock.yaml" = { source = "dotfiles/ai/apm/apm.lock.yaml", mode = "copy" }
+`, 0o644)
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	assertRegularFile(t, targetLock)
+
+	mustWriteFile(t, targetLock, "version: new\n", 0o644)
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "add", "--yes", "~/.apm/apm.lock.yaml")
+	assertFileContent(t, sourceLock, "version: new\n")
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 }
 
 // TestDotfileConflictSemantics verifies regular-file protection and symlink convergence.
@@ -283,6 +315,18 @@ func assertLink(t *testing.T, path, expected string) {
 	}
 	if actual != expected {
 		t.Fatalf("%s points to %s, want %s", path, actual, expected)
+	}
+}
+
+// assertRegularFile verifies that a target is a real file rather than a symlink.
+func assertRegularFile(t *testing.T, path string) {
+	t.Helper()
+	info, err := os.Lstat(path)
+	if err != nil {
+		t.Fatalf("stat regular file %s: %v", path, err)
+	}
+	if !info.Mode().IsRegular() {
+		t.Fatalf("%s is not a regular file: %s", path, info.Mode())
 	}
 }
 

@@ -22,7 +22,10 @@ lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [dotfiles]
-"~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each" }
+"~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each", exclude = [
+  "apm.lock.yaml",
+] }
+"~/.apm/apm.lock.yaml" = { source = "dotfiles/ai/apm/apm.lock.yaml", mode = "copy" }
 "~/.claude/CLAUDE.md" = "dotfiles/ai/instructions/AGENTS.md"
 "~/.claude/settings.json" = "dotfiles/ai/claude/settings.json"
 "~/.codex/AGENTS.md" = "dotfiles/ai/instructions/AGENTS.md"
@@ -257,7 +260,11 @@ run = [
 
 [tasks.upgrade-apm]
 description = "Update apm-managed AI skills and lock file"
-run = ["mise -C ~ install apm", "mise -C ~ exec -- apm update -g --yes"]
+run = [
+  "mise -C ~ install apm",
+  "mise -C ~ exec -- apm update -g --yes",
+  "mise bootstrap dotfiles add --yes ~/.apm/apm.lock.yaml",
+]
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
