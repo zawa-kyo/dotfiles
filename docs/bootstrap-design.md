@@ -59,7 +59,7 @@ mise は過去の宣言を所有権台帳として保存しません。管理対
 各処理は再実行できることを前提にします。移行処理は、移行済みなら変更せず、管理元を確認できないパスでは失敗します。途中で失敗した場合は診断を確認して原因を直し、`mise bootstrap` を再実行します。`--force` で競合を一括上書きする運用は標準手順にしません。
 
 Homebrew の導入は bootstrap に含めません。
-Brewfile は、明示的に実行する `mise run install-brew` と `mise run upgrade` から扱います。
+Brewfile は、明示的に実行する `mise run install-brew` と `mise run --continue-on-error upgrade` から扱います。
 これにより、標準セットアップは Homebrew の状態に左右されません。
 
 ## テスト方針

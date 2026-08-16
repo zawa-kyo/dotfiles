@@ -58,7 +58,7 @@ Homebrew packages are not installed by either command. On macOS, run `mise run i
 | `mise run check`                          | Run all repository checks                                |
 | `mise run install-brew`                   | Install missing Brewfile dependencies on macOS           |
 | `mise run test-deployment`                | Test bootstrap behavior in isolated home directories     |
-| `mise run upgrade`                        | Update mise, apm, Neovim, Bun, and Homebrew dependencies |
+| `mise run --continue-on-error upgrade`    | Update mise, apm, Neovim, Bun, and Homebrew dependencies |
 | `mise tasks`                              | List available mise tasks                                |
 
 The setup links commands from `bin/` globally.

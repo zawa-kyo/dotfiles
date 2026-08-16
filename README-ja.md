@@ -58,7 +58,7 @@ mise bootstrap
 | `mise run check`                          | リポジトリ全体の検査を実行する                          |
 | `mise run install-brew`                   | macOS で Brewfile の不足分をインストールする            |
 | `mise run test-deployment`                | 一時的なホームディレクトリで bootstrap の動作を確認する |
-| `mise run upgrade`                        | mise、apm、Neovim、Bun、Homebrew の依存関係を更新する   |
+| `mise run --continue-on-error upgrade`    | mise、apm、Neovim、Bun、Homebrew の依存関係を更新する   |
 | `mise tasks`                              | 利用できる mise タスクを一覧する                        |
 
 `bin/` のコマンドはグローバルにリンクします。

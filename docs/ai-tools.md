@@ -25,7 +25,7 @@ AI ツールごとのスキル配置を手で個別に管理せず、[apm](https
 - 現行のユーザー単位インストールでは `.agents/skills` と `.claude/skills` に展開する
 - スキル本体は用途に応じてパブリックリポジトリ、プライベートリポジトリ、またはプロジェクト単位の apm 管理に置く
 - `mise run install` で lock ファイルに従ってスキルを反映する
-- `mise run upgrade` でスキルを更新し、lock ファイルも更新する
+- `mise run --continue-on-error upgrade` でスキルを更新し、lock ファイルも更新する
 
 ## 実行許可設定の管理
 
@@ -79,7 +79,7 @@ apm CLI 自体は `dotfiles/tools/mise/conf.d/tools.toml` のグローバル mis
 移行後に問題が起きた場合は、まず apm の処理を停止し、管理ファイルのリンクを外す。
 その後、`~/.apm/apm_modules/` を旧構成のディレクトリへ戻し、`~/.apm` をそのディレクトリへのリンクにできます。この手順は切り戻しに限って使用します。
 
-`mise run upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。更新された `dotfiles/ai/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
+`mise run --continue-on-error upgrade` では `apm update -g --yes` を使って apm パッケージを更新する。更新された `dotfiles/ai/apm/apm.lock.yaml` は他の lock ファイルと同じくレビュー対象にする。
 
 ## 既知の TODO
 
