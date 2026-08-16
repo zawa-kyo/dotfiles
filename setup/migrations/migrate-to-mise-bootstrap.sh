@@ -19,7 +19,8 @@ cleanup_obsolete_links() {
 
 # Replace the former APM directory link with a real user data directory.
 migrate_apm_config_dir() {
-  local source_dir="$dotfiles_dir/config/ai/apm"
+  local source_dir="$dotfiles_dir/dotfiles/ai/apm"
+  local previous_source_dir="$dotfiles_dir/config/ai/apm"
   local legacy_source_dir="$dotfiles_dir/packages/apm"
   local target_dir="$HOME/.apm"
   local legacy_modules="$source_dir/apm_modules"
@@ -31,11 +32,17 @@ migrate_apm_config_dir() {
     if [[ "$link_target" != /* ]]; then
       link_target="$(dirname "$target_dir")/$link_target"
     fi
-    if ! symlink_points_to "$target_dir" "$source_dir" && [ "$link_target" != "$legacy_source_dir" ]; then
+    if ! symlink_points_to "$target_dir" "$source_dir" &&
+      [ "$link_target" != "$previous_source_dir" ] &&
+      [ "$link_target" != "$legacy_source_dir" ]; then
       fail "Refusing to replace an unmanaged APM symlink: $target_dir"
     fi
 
-    [ ! -d "$legacy_source_dir/apm_modules" ] || legacy_modules="$legacy_source_dir/apm_modules"
+    if [ -d "$previous_source_dir/apm_modules" ]; then
+      legacy_modules="$previous_source_dir/apm_modules"
+    elif [ -d "$legacy_source_dir/apm_modules" ]; then
+      legacy_modules="$legacy_source_dir/apm_modules"
+    fi
     [ -d "$legacy_modules" ] && migrate_modules=true
     rm "$target_dir" || fail "Failed to remove the legacy APM symlink: $target_dir"
     info "Removed legacy APM directory symlink: $target_dir"
@@ -57,9 +64,9 @@ migrate_apm_config_dir() {
 
 # Remove stale skill links published by layouts that predate APM ownership.
 cleanup_legacy_skill_links() {
-  local dir_skills="${DIR_SKILLS:-$dotfiles_dir/config/ai/skills}"
+  local dir_skills="${DIR_SKILLS:-$dotfiles_dir/dotfiles/ai/skills}"
   local legacy_dir_skills="$dotfiles_dir/ai/skills"
-  local dir_apm_modules="${DIR_APM_MODULES:-$dotfiles_dir/config/ai/apm/apm_modules}"
+  local dir_apm_modules="${DIR_APM_MODULES:-$dotfiles_dir/dotfiles/ai/apm/apm_modules}"
   local skill_root
   local skill_path
 

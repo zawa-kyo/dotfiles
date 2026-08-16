@@ -4,7 +4,8 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="$(cd "$script_dir/.." && pwd)"
-bun_dir="${DIR_BUN_SOURCE:-$dotfiles_dir/config/tools/bun}"
+bun_dir="${DIR_BUN_SOURCE:-$dotfiles_dir/setup/bun}"
+previous_bun_dir="${DIR_BUN_PREVIOUS_SOURCE:-$dotfiles_dir/config/tools/bun}"
 legacy_bun_dir="${DIR_BUN_LEGACY_SOURCE:-$dotfiles_dir/packages/bun}"
 global_dir="${DIR_BUN_GLOBAL:-$HOME/.bun/install/global}"
 global_parent_dir="$(dirname "$global_dir")"
@@ -35,7 +36,9 @@ prepare_global_dir() {
       link_target="$(dirname "$global_dir")/$link_target"
     fi
     global_real_dir="$(realpath "$global_dir" 2>/dev/null || true)"
-    if [ "$global_real_dir" != "$(realpath "$bun_dir")" ] && [ "$link_target" != "$legacy_bun_dir" ]; then
+    if [ "$global_real_dir" != "$(realpath "$bun_dir")" ] &&
+      [ "$link_target" != "$previous_bun_dir" ] &&
+      [ "$link_target" != "$legacy_bun_dir" ]; then
       fail "Refusing to replace an unmanaged Bun symlink: $global_dir"
     fi
 
@@ -50,8 +53,12 @@ prepare_global_dir() {
     info "Created directory: $global_dir"
   fi
 
-  if [ ! -e "$modules_dir" ] && [ -d "$legacy_bun_dir/node_modules" ]; then
-    modules_dir="$legacy_bun_dir/node_modules"
+  if [ ! -e "$modules_dir" ]; then
+    if [ -d "$previous_bun_dir/node_modules" ]; then
+      modules_dir="$previous_bun_dir/node_modules"
+    elif [ -d "$legacy_bun_dir/node_modules" ]; then
+      modules_dir="$legacy_bun_dir/node_modules"
+    fi
   fi
 
   if [ -L "$modules_dir" ] && [ -e "$global_dir/node_modules" ] &&

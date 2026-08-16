@@ -4,15 +4,17 @@ min_version = "2026.8.4"
 # Languages
 bun = "1"
 go = "1"
+node = "24"
 rust = "1"
 
-# Editors / Formatters
-shfmt = "latest"
-stylua = "latest"
+# Repository checks
+gitleaks = "latest"
+lefthook = "2"
 prettier = "latest"
 shellcheck = "latest"
+shfmt = "latest"
+stylua = "latest"
 taplo = "latest"
-lefthook = "2"
 
 [settings]
 lockfile = true
@@ -20,34 +22,34 @@ lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [dotfiles]
-"~/.apm" = { source = "config/ai/apm", mode = "symlink-each" }
-"~/.claude/CLAUDE.md" = "config/ai/instructions/AGENTS.md"
-"~/.claude/settings.json" = "config/ai/claude/settings.json"
-"~/.codex/AGENTS.md" = "config/ai/instructions/AGENTS.md"
-"~/.codex/rules/default.rules" = "config/ai/codex/rules/default.rules"
-"~/.config/ghostty/config.ghostty" = "config/terminal-apps/ghostty/config.ghostty"
-"~/.config/mise/conf.d" = "config/tools/mise/conf.d"
-"~/.config/mise/mise.lock" = "config/tools/mise/mise.lock"
-"~/.config/mise/mise.toml" = "config/tools/mise/mise.toml"
-"~/.config/nvim" = "config/editors/nvim"
-"~/.config/sheldon/plugins.toml" = "config/shell/sheldon/plugins.toml"
-"~/.config/starship" = "config/shell/starship"
-"~/.config/wezterm" = "config/terminal-apps/wezterm"
-"~/.config/worktrunk/config.toml" = "config/tools/worktrunk/config.toml"
-"~/.config/zellij/config.kdl" = "config/terminal-apps/zellij/config.kdl"
-"~/.config/zsh-abbr/user-abbreviations" = "config/shell/sheldon/abbreviations"
-"~/.gitconfig" = "config/tools/git/.gitconfig"
+"~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each" }
+"~/.claude/CLAUDE.md" = "dotfiles/ai/instructions/AGENTS.md"
+"~/.claude/settings.json" = "dotfiles/ai/claude/settings.json"
+"~/.codex/AGENTS.md" = "dotfiles/ai/instructions/AGENTS.md"
+"~/.codex/rules/default.rules" = "dotfiles/ai/codex/rules/default.rules"
+"~/.config/ghostty/config.ghostty" = "dotfiles/terminal-apps/ghostty/config.ghostty"
+"~/.config/mise/conf.d" = "dotfiles/tools/mise/conf.d"
+"~/.config/mise/mise.lock" = "dotfiles/tools/mise/mise.lock"
+"~/.config/mise/mise.toml" = "dotfiles/tools/mise/mise.toml"
+"~/.config/nvim" = "dotfiles/editors/nvim"
+"~/.config/sheldon/plugins.toml" = "dotfiles/shell/sheldon/plugins.toml"
+"~/.config/starship" = "dotfiles/shell/starship"
+"~/.config/wezterm" = "dotfiles/terminal-apps/wezterm"
+"~/.config/worktrunk/config.toml" = "dotfiles/tools/worktrunk/config.toml"
+"~/.config/zellij/config.kdl" = "dotfiles/terminal-apps/zellij/config.kdl"
+"~/.config/zsh-abbr/user-abbreviations" = "dotfiles/shell/sheldon/abbreviations"
+"~/.gitconfig" = "dotfiles/tools/git/.gitconfig"
 "~/.local/bin" = { source = "bin", mode = "symlink-each" }
-"~/.zlogin" = "config/shell/terminal/.zlogin"
-"~/.zlogout" = "config/shell/terminal/.zlogout"
-"~/.zprofile" = "config/shell/terminal/.zprofile"
-"~/.zshenv" = "config/shell/terminal/.zshenv"
-"~/.zshrc" = "config/shell/terminal/.zshrc"
+"~/.zlogin" = "dotfiles/shell/terminal/.zlogin"
+"~/.zlogout" = "dotfiles/shell/terminal/.zlogout"
+"~/.zprofile" = "dotfiles/shell/terminal/.zprofile"
+"~/.zshenv" = "dotfiles/shell/terminal/.zshenv"
+"~/.zshrc" = "dotfiles/shell/terminal/.zshrc"
 
 [bootstrap.hooks.pre-dotfiles]
 run = '''
 repo_root="$(git rev-parse --show-toplevel)"
-bash "$repo_root/deploy/migrations/migrate-to-mise-bootstrap.sh" "$repo_root"
+bash "$repo_root/setup/migrations/migrate-to-mise-bootstrap.sh" "$repo_root"
 '''
 
 [bootstrap.hooks.post-dotfiles]
@@ -160,7 +162,7 @@ trap 'rm -f "$tmpfile"' EXIT
 git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
-  ':(exclude)config/ai/apm/apm.lock.yaml' \
+  ':(exclude)dotfiles/ai/apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' |
 while IFS= read -r -d '' file; do
   if [ -f "$file" ]; then
@@ -237,7 +239,7 @@ run = [{ task = "bootstrap-common" }]
 
 [tasks.install-bun]
 description = "Install Bun globals outside the repository"
-file = "tasks/install-bun.sh"
+file = "setup/install-bun.sh"
 
 [tasks.install-git-hooks]
 description = "Install repository Git hooks with Lefthook"
@@ -261,12 +263,12 @@ run = ["mise -C ~ install apm", "mise -C ~ exec -- apm update -g --yes"]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
 run = [
   "brew upgrade",
-  "brew bundle dump --file=config/tools/homebrew/Brewfile --force",
+  "brew bundle dump --file=setup/homebrew/Brewfile --force",
 ]
 
 [tasks.upgrade-bun]
 description = "Update Bun global packages to their latest versions"
-run = "bash tasks/install-bun.sh upgrade"
+run = "bash setup/install-bun.sh upgrade"
 
 [tasks.upgrade-global-tools]
 description = "Upgrade global mise tools within their configured version ranges"
@@ -283,6 +285,6 @@ run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 [tasks.upgrade-nvim-plugins]
 description = "Upgrade Neovim plugins managed by lazy.nvim"
 run = '''
-XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/config/editors" \
-nvim --headless --cmd 'set runtimepath^=config/editors/nvim' -u config/editors/nvim/init.lua "+Lazy! update" +qa
+XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/dotfiles/editors" \
+nvim --headless --cmd 'set runtimepath^=dotfiles/editors/nvim' -u dotfiles/editors/nvim/init.lua "+Lazy! update" +qa
 '''

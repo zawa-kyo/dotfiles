@@ -27,8 +27,8 @@ func TestDotfilesApply(t *testing.T) {
 
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
 
-	assertLink(t, filepath.Join(home, ".gitconfig"), filepath.Join(repo, "config", "tools", "git", ".gitconfig"))
-	assertLink(t, filepath.Join(home, ".config", "nvim"), filepath.Join(repo, "config", "editors", "nvim"))
+	assertLink(t, filepath.Join(home, ".gitconfig"), filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
+	assertLink(t, filepath.Join(home, ".config", "nvim"), filepath.Join(repo, "dotfiles", "editors", "nvim"))
 	assertLink(t, filepath.Join(home, ".local", "bin", "search-google"), filepath.Join(repo, "bin", "search-google"))
 	assertFileContent(t, filepath.Join(home, ".local", "bin", "unrelated"), "user-owned\n")
 	assertFileContent(t, filepath.Join(home, ".apm", "apm_modules", "cached", "data"), "cached\n")
@@ -78,7 +78,7 @@ func TestDotfileConflictSemantics(t *testing.T) {
 		mustSymlink(t, t.TempDir(), target)
 
 		runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.config/nvim", "--yes")
-		assertLink(t, target, filepath.Join(repo, "config", "editors", "nvim"))
+		assertLink(t, target, filepath.Join(repo, "dotfiles", "editors", "nvim"))
 	})
 }
 
@@ -98,7 +98,7 @@ func TestLegacyAPMLinkMigration(t *testing.T) {
 	if !info.IsDir() || info.Mode()&os.ModeSymlink != 0 {
 		t.Fatalf("APM target is not a real directory: %s", target)
 	}
-	assertLink(t, filepath.Join(target, "apm.yml"), filepath.Join(repo, "config", "ai", "apm", "apm.yml"))
+	assertLink(t, filepath.Join(target, "apm.yml"), filepath.Join(repo, "dotfiles", "ai", "apm", "apm.yml"))
 }
 
 // TestPlatformDeclarations verifies that common config does not contain macOS targets.

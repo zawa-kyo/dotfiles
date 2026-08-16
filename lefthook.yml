@@ -22,7 +22,7 @@ pre-commit:
         - "**/*.yml"
       exclude:
         - "**/lazy-lock.json"
-        - "config/ai/apm/apm.lock.yaml"
+        - "dotfiles/ai/apm/apm.lock.yaml"
         - "*.lock"
         - "**/*.lock"
       run: prettier --check --ignore-unknown {staged_files}
@@ -81,7 +81,7 @@ check:
         - "**/*.yml"
       exclude:
         - "**/lazy-lock.json"
-        - "config/ai/apm/apm.lock.yaml"
+        - "dotfiles/ai/apm/apm.lock.yaml"
         - "*.lock"
         - "**/*.lock"
       run: prettier --check --ignore-unknown {all_files}
