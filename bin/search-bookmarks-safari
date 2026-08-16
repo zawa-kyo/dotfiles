@@ -10,4 +10,4 @@ fi
 source "$bootstrap_utils_dir/script-path.sh"
 
 script_dir="$(resolve_script_dir "${BASH_SOURCE[0]}")"
-exec "$script_dir/search-bookmarks.sh" safari "$@"
+exec "$script_dir/search-bookmarks" safari "$@"

@@ -89,6 +89,31 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 }
 
+// TestPublishedCommandWrappers verifies that extensionless wrappers reach their public commands.
+func TestPublishedCommandWrappers(t *testing.T) {
+	repo := repositoryRoot(t)
+	fakeBin := t.TempDir()
+	mustWriteFile(t, filepath.Join(fakeBin, "procs"), "#!/bin/sh\nprintf 'PID CPU\\n-- ---\\n1 1\\n'\n", 0o755)
+	mustWriteFile(t, filepath.Join(fakeBin, "python3"), "#!/bin/sh\nexit 0\n", 0o755)
+	env := map[string]string{"PATH": fakeBin + string(os.PathListSeparator) + os.Getenv("PATH")}
+
+	tests := []struct {
+		name string
+		args []string
+	}{
+		{name: "reveal-process-cpu"},
+		{name: "reveal-process-memory"},
+		{name: "search-bookmarks-chrome", args: []string{"--help"}},
+		{name: "search-bookmarks-safari", args: []string{"--help"}},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			runCommand(t, repo, env, filepath.Join(repo, "bin", test.name), test.args...)
+		})
+	}
+}
+
 // TestDotfileConflictSemantics verifies regular-file protection and symlink convergence.
 func TestDotfileConflictSemantics(t *testing.T) {
 	repo := repositoryRoot(t)
