@@ -12,9 +12,7 @@ stylua = "latest"
 prettier = "latest"
 shellcheck = "latest"
 taplo = "latest"
-
-# Frameworks / SDKs
-uv = "0"
+lefthook = "2"
 
 [settings]
 lockfile = true
@@ -63,9 +61,9 @@ for config_file in \
 done
 '''
 
-[tasks.check-pre-commit]
-description = "Run all pre-commit checks with uv"
-run = ["uv sync --group dev", "uv run pre-commit run -a"]
+[tasks.check]
+description = "Run repository checks on all tracked files"
+run = "lefthook run check"
 
 [tasks.test-deployment]
 description = "Test mise bootstrap deployment in isolated home directories"
@@ -229,7 +227,7 @@ run = [
   { task = "install-global-tools" },
   { task = "install-apm" },
   { task = "install-bun" },
-  { task = "install-pre-commit" },
+  { task = "install-git-hooks" },
 ]
 
 [tasks.bootstrap]
@@ -241,13 +239,9 @@ run = [{ task = "bootstrap-common" }]
 description = "Install Bun globals outside the repository"
 file = "tasks/install-bun.sh"
 
-[tasks.install-pre-commit]
-description = "Install the repository pre-commit hook with uv"
-file = "tasks/install-pre-commit.sh"
-
-[tasks.sync-python]
-description = "Sync Python development dependencies with uv"
-run = "uv sync --group dev"
+[tasks.install-git-hooks]
+description = "Install repository Git hooks with Lefthook"
+run = "lefthook install"
 
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"

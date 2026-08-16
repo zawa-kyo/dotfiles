@@ -153,6 +153,22 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	t.Fatalf("explicit Homebrew install task is missing:\n%s", tasks)
 }
 
+// TestBootstrapUsesLefthook verifies Git hooks no longer require Python tooling.
+func TestBootstrapUsesLefthook(t *testing.T) {
+	repo := repositoryRoot(t)
+	home := t.TempDir()
+	output := runMise(t, repo, home, nil, "bootstrap", "--dry-run", "--yes")
+
+	if !strings.Contains(output, "install-git-hooks") || !strings.Contains(output, "lefthook install") {
+		t.Fatalf("bootstrap does not install Git hooks with Lefthook:\n%s", output)
+	}
+	for _, unexpected := range []string{"install-pre-commit", "uv sync", "pre_commit"} {
+		if strings.Contains(output, unexpected) {
+			t.Fatalf("bootstrap still contains Python pre-commit tooling %q:\n%s", unexpected, output)
+		}
+	}
+}
+
 // repositoryRoot returns the repository containing this test file.
 func repositoryRoot(t *testing.T) string {
 	t.Helper()

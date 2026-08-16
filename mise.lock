@@ -48,6 +48,22 @@ url = "https://dl.google.com/go/go1.26.5.linux-amd64.tar.gz"
 checksum = "sha256:efb87ff28af9a188d0536ef5d42e63dd52ba8263cd7344a993cc48dd11dedb6a"
 url = "https://dl.google.com/go/go1.26.5.darwin-arm64.tar.gz"
 
+[[tools.lefthook]]
+version = "2.1.10"
+backend = "aqua:evilmartians/lefthook"
+
+[tools.lefthook."platforms.linux-x64"]
+checksum = "sha256:0b14162a0bb2f0c64ae0759f6102f6e19c4d00981666a8ac73d4f5a6878ada4f"
+url = "https://github.com/evilmartians/lefthook/releases/download/v2.1.10/lefthook_2.1.10_Linux_x86_64.gz"
+url_api = "https://api.github.com/repos/evilmartians/lefthook/releases/assets/470227493"
+provenance = "github-attestations"
+
+[tools.lefthook."platforms.macos-arm64"]
+checksum = "sha256:1dd4dc7b4c50efb1f9d9122cd6535c793738d6e59751c228d49f768ec9dbb604"
+url = "https://github.com/evilmartians/lefthook/releases/download/v2.1.10/lefthook_2.1.10_MacOS_arm64.gz"
+url_api = "https://api.github.com/repos/evilmartians/lefthook/releases/assets/470227499"
+provenance = "github-attestations"
+
 [[tools.prettier]]
 version = "3.9.6"
 backend = "npm:prettier"
@@ -105,7 +121,3 @@ url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 [tools.taplo."platforms.macos-arm64"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aarch64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323110"
-
-[[tools.uv]]
-version = "0.12.3"
-backend = "asdf:uv"
