@@ -89,27 +89,44 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 }
 
-// TestPublishedCommandWrappers verifies that extensionless wrappers reach their public commands.
+// TestPublishedCommandWrappers verifies each wrapper delegates to the intended public behavior.
 func TestPublishedCommandWrappers(t *testing.T) {
 	repo := repositoryRoot(t)
 	fakeBin := t.TempDir()
+	home := t.TempDir()
+	chromeRoot := filepath.Join(home, "Chrome")
+	safariPlist := filepath.Join(home, "Safari", "Bookmarks.plist")
 	mustWriteFile(t, filepath.Join(fakeBin, "procs"), "#!/bin/sh\nprintf 'PID CPU\\n-- ---\\n1 1\\n'\n", 0o755)
-	mustWriteFile(t, filepath.Join(fakeBin, "python3"), "#!/bin/sh\nexit 0\n", 0o755)
-	env := map[string]string{"PATH": fakeBin + string(os.PathListSeparator) + os.Getenv("PATH")}
+	mustWriteFile(t, filepath.Join(fakeBin, "plutil"), `#!/bin/sh
+printf '%s\n' '{"Children":[{"WebBookmarkType":"WebBookmarkTypeLeaf","URIDictionary":{"title":"Safari Example"},"URLString":"https://safari.example"}]}'
+`, 0o755)
+	mustWriteFile(t, filepath.Join(chromeRoot, "Default", "Bookmarks"), `{"roots":{"bookmark_bar":{"children":[{"type":"url","name":"Chrome Example","url":"https://chrome.example"}]}}}
+`, 0o644)
+	mustWriteFile(t, safariPlist, "fixture\n", 0o644)
+	env := map[string]string{
+		"CHROME_BOOKMARKS_ROOT":  chromeRoot,
+		"HOME":                   home,
+		"PATH":                   fakeBin + string(os.PathListSeparator) + os.Getenv("PATH"),
+		"SAFARI_BOOKMARKS_PLIST": safariPlist,
+	}
 
 	tests := []struct {
-		name string
-		args []string
+		name     string
+		args     []string
+		expected string
 	}{
-		{name: "reveal-process-cpu"},
-		{name: "reveal-process-memory"},
-		{name: "search-bookmarks-chrome", args: []string{"--help"}},
-		{name: "search-bookmarks-safari", args: []string{"--help"}},
+		{name: "reveal-process-cpu", expected: "processes by CPU usage"},
+		{name: "reveal-process-memory", expected: "processes by memory usage"},
+		{name: "search-bookmarks-chrome", args: []string{"--dump"}, expected: "Chrome\tDefault\tChrome Example\thttps://chrome.example"},
+		{name: "search-bookmarks-safari", args: []string{"--dump"}, expected: "Safari\tBookmarks\tSafari Example\thttps://safari.example"},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			runCommand(t, repo, env, filepath.Join(repo, "bin", test.name), test.args...)
+			output := runCommand(t, repo, env, filepath.Join(repo, "bin", test.name), test.args...)
+			if !strings.Contains(output, test.expected) {
+				t.Fatalf("%s output does not contain %q:\n%s", test.name, test.expected, output)
+			}
 		})
 	}
 }

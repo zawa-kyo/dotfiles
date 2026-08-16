@@ -25,6 +25,7 @@ emit_chrome_bookmarks() {
 	local root
 	local path
 	local profile
+	local reader="$script_dir/../libexec/bookmarks.ts"
 
 	root="${CHROME_BOOKMARKS_ROOT:-$HOME/Library/Application Support/Google/Chrome}"
 
@@ -32,86 +33,18 @@ emit_chrome_bookmarks() {
 		[ -f "$path" ] || continue
 		profile="$(basename "$(dirname "$path")")"
 
-		python3 - "$profile" "$path" <<'PY'
-import json
-import sys
-
-profile = sys.argv[1]
-path = sys.argv[2]
-
-def walk(node, entries):
-    if isinstance(node, dict):
-        if node.get("type") == "url":
-            url = str(node.get("url", ""))
-            if url:
-                title = str(node.get("name", "")) or url
-                entries.add((title, url))
-        else:
-            for child in node.values():
-                walk(child, entries)
-    elif isinstance(node, list):
-        for child in node:
-            walk(child, entries)
-
-with open(path, "r", encoding="utf-8") as f:
-    data = json.load(f)
-
-entries = set()
-walk(data, entries)
-
-for title, url in sorted(entries, key=lambda item: (item[0].lower(), item[1])):
-    print("\t".join(("Chrome", profile, title, url)))
-PY
+		bun "$reader" chrome "$profile" "$path"
 	done
 }
 
 emit_safari_bookmarks() {
 	local plist
+	local reader="$script_dir/../libexec/bookmarks.ts"
 
 	plist="${SAFARI_BOOKMARKS_PLIST:-$HOME/Library/Safari/Bookmarks.plist}"
 	[ -f "$plist" ] || return 0
 
-	if ! python3 - "$plist" <<'PY'; then
-import plistlib
-import sys
-
-path = sys.argv[1]
-
-def title_for(node):
-    uri = node.get("URIDictionary")
-    if isinstance(uri, dict) and uri.get("title"):
-        return str(uri["title"])
-
-    title = node.get("Title")
-    if title:
-        return str(title)
-
-    return ""
-
-def walk(node, entries):
-    if isinstance(node, dict):
-        node_type = node.get("WebBookmarkType")
-        if node_type == "WebBookmarkTypeLeaf":
-            url = str(node.get("URLString", ""))
-            if url:
-                title = title_for(node) or url
-                entries.add((title, url))
-        else:
-            for child in node.values():
-                walk(child, entries)
-    elif isinstance(node, list):
-        for child in node:
-            walk(child, entries)
-
-with open(path, "rb") as f:
-    data = plistlib.load(f)
-
-entries = set()
-walk(data, entries)
-
-for title, url in sorted(entries, key=lambda item: (item[0].lower(), item[1])):
-    print("\t".join(("Safari", "Bookmarks", title, url)))
-PY
+	if ! bun "$reader" safari "$plist"; then
 		warn "Safari bookmarks could not be read."
 		warn "Check Safari bookmark file access and format."
 		return 0
@@ -163,7 +96,7 @@ main() {
 	local _title
 	local url
 
-	require_command python3
+	require_command bun
 
 	while [ "$#" -gt 0 ]; do
 		case "$1" in
