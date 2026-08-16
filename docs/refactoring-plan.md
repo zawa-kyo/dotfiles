@@ -62,7 +62,7 @@
 
 ### 導入後の確認
 
-- [ ] 実際のホームディレクトリで `mise bootstrap dotfiles apply --dry-run` の結果を確認する
+- [x] 実際のホームディレクトリで `mise bootstrap dotfiles apply --dry-run` の結果を確認する
 - [ ] 利用者の承認後に `mise bootstrap` を実行し、2 回目の実行で意図しない変更がないことを確認する
 - [ ] Linux 環境で共通宣言と bootstrap タスクを実行し、macOS 固有設定が読み込まれないことを確認する
 
