@@ -5,9 +5,9 @@
 ## 全体設計
 
 - [architecture.md](architecture.md)
-  - リポジトリ全体の構造と責務分担
+  - リポジトリ全体の構造とファイルの置き場所
 - [bootstrap-design.md](bootstrap-design.md)
-  - mise bootstrap の責務、競合規則、移行とテストの境界
+  - mise bootstrap の役割、競合時の動作、移行とテストの設計
 - [ai-tools.md](ai-tools.md)
   - AI ツールを管理するための運用方針
 
@@ -23,7 +23,7 @@
 - [operations.md](operations.md)
   - 変更後の確認方針
 
-## サブシステム固有ポリシー
+## 各ツールのポリシー
 
 - [../dotfiles/editors/nvim/lua/policies/keybinds-policy.md](../dotfiles/editors/nvim/lua/policies/keybinds-policy.md)
   - Neovim キーバインド設計
