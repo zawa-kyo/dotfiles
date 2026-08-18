@@ -40,7 +40,10 @@ local function focus_explorer()
   local explorer = Snacks.picker.get({ source = "explorer" })[1]
 
   if explorer and explorer:is_focused() then
-    local editor = editor_windows[explorer] or explorer.main
+    local editor = editor_windows[explorer]
+    if not (editor and vim.api.nvim_win_is_valid(editor)) then
+      editor = explorer.main
+    end
     if editor and vim.api.nvim_win_is_valid(editor) then
       vim.api.nvim_set_current_win(editor)
     end
