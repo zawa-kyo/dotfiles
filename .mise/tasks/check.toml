@@ -12,22 +12,3 @@ run = "lefthook run pre-commit"
 [test-deployment]
 description = "Test mise bootstrap deployment in isolated home directories"
 run = "go test ./tests"
-
-[check-shell]
-description = "Check tracked shell scripts with ShellCheck"
-run = '''
-set -eu
-
-tmpfile="$(mktemp)"
-trap 'rm -f "$tmpfile"' EXIT
-
-git ls-files -z -- '*.sh' '*.bash' 'bin/*' |
-while IFS= read -r -d '' file; do
-  if [ -f "$file" ]; then
-    printf '%s\0' "$file"
-  fi
-done > "$tmpfile"
-if [ -s "$tmpfile" ]; then
-  xargs -0 shellcheck < "$tmpfile"
-fi
-'''

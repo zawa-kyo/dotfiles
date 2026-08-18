@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#MISE hide=true
+#MISE description="Format TOML files with Taplo"
+
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- \
+	'*.toml' \
+	':(exclude)**/*.lock' |
+	while IFS= read -r -d '' file; do
+		if [ -f "$file" ]; then
+			printf '%s\0' "$file"
+		fi
+	done >"$tmpfile"
+if [ -s "$tmpfile" ]; then
+	xargs -0 taplo fmt <"$tmpfile"
+fi
