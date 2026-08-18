@@ -23,13 +23,9 @@ AI ツールの共通設定とスキルの依存関係を一か所で管理し�
 
 `~/.apm` は通常のディレクトリとして使い、`apm_modules/` などの生成物はリポジトリへ含めません。スキルの展開結果は `apm.lock.yaml` の `deployed_files` を基準に確認します。
 
-セットアップでは、次のコマンドが lock ファイルに従ってユーザー単位のスキルを反映します。
+初回セットアップでは、`mise bootstrap` が lock ファイルに従ってユーザー単位のスキルを反映します。
 
-```sh
-mise -C ~ exec -- apm install -g --frozen
-```
-
-依存関係の更新には、リポジトリの更新タスクを使います。このタスクは apm の更新後に `mise bootstrap dotfiles add` を実行し、`~/.apm/apm.lock.yaml` を宣言元へ戻します。
+依存関係の更新には、リポジトリの更新タスクを使います。このタスクは apm の更新結果を `dotfiles/ai/apm/apm.lock.yaml` へ戻します。
 
 ```sh
 mise run --continue-on-error upgrade

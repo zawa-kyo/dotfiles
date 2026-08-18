@@ -59,7 +59,7 @@ mise bootstrap dotfiles apply --dry-run
 mise bootstrap dotfiles apply --yes
 ```
 
-既存の通常ファイルや実ディレクトリは競合として保護されます。既存のシンボリックリンクは、mise の標準仕様に従って宣言した配備元へ変更される場合があります。競合を一括で上書きする `--force` は、通常運用では使いません。
+競合時の動作は、[mise bootstrap 設計](bootstrap-design.md#競合の扱い)を参照してください。競合を一括で上書きする `--force` は、通常運用では使いません。
 
 ## 配備処理のテスト
 

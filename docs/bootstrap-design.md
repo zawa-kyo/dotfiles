@@ -37,18 +37,11 @@ mise の標準動作を次のように採用します。
 
 定常的な配備では mise の仕様を正とし、管理外リンクを独自判定で保護する処理は追加しません。pre-dotfiles migration はデータを移動するため、管理元を確認できたリンクだけを変更します。
 
-## 状態確認と変更
+## 状態管理
 
-```sh
-mise bootstrap dotfiles status
-mise bootstrap dotfiles status --missing
-mise bootstrap dotfiles apply --dry-run
-mise bootstrap dotfiles apply --yes
-```
+mise は全配備モードに共通する所有権台帳を持ちませんが、`symlink-each` が作成したリンクは `$MISE_STATE_DIR/dotfiles` に記録します。`[dotfiles]` の宣言を削除する場合は、管理対象のリンクを先に解除します。この順序を守れない変更では、所有元を狭く判定できる一時的な migration を用意します。
 
-`status` と `apply --dry-run` は変更前の確認に使います。`status --missing` は不足や不一致があれば失敗するため、確認処理にも利用できます。
-
-mise は全配備モードに共通する所有権台帳を持ちませんが、`symlink-each` が作成したリンクは `$MISE_STATE_DIR/dotfiles` に記録します。`[dotfiles]` の宣言を削除する場合は、先に `mise bootstrap dotfiles unapply` の対象を確認します。この順序を守れない変更では、所有元を狭く判定できる一時的な migration を用意します。
+状態確認、dry-run、適用、管理対象の削除に使うコマンドは、[運用と確認](operations.md)を参照してください。
 
 ## bootstrap の実行順序
 
