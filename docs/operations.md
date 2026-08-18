@@ -75,7 +75,7 @@ mise run test-deployment
 
 ```sh
 mise exec -- go test -race ./tests
-mise exec -- go vet ./tests
+mise exec -- go vet ./...
 ```
 
 ## 管理対象を削除する場合
@@ -91,7 +91,7 @@ mise run format
 mise run check
 ```
 
-`mise run format` は Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。`mise run check` は Lefthook から各フォーマッタ、ShellCheck、Gitleaks、Git の差分を検査します。Git pre-commit hook ではステージ済みファイル、手動実行では追跡対象ファイル全体を確認します。
+`mise run format` は Go、Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。`mise run check` は Lefthook から各フォーマッタ、`go vet`、ShellCheck、Gitleaks、Git の差分を検査します。Git pre-commit hook ではステージ済みファイル、手動実行では追跡対象ファイル全体を確認します。
 
 ## ドキュメント更新の判断
 

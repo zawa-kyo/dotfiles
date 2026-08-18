@@ -39,6 +39,11 @@ pre-commit:
         - "*.lock"
         - "**/*.lock"
       run: taplo fmt --check {staged_files}
+    - name: gofmt
+      glob:
+        - "*.go"
+        - "**/*.go"
+      run: test -z "$(gofmt -l {staged_files})"
     - name: shfmt
       glob:
         - "bin/*"
@@ -98,6 +103,13 @@ check:
         - "*.lock"
         - "**/*.lock"
       run: taplo fmt --check {all_files}
+    - name: gofmt
+      glob:
+        - "*.go"
+        - "**/*.go"
+      run: test -z "$(gofmt -l {all_files})"
+    - name: Go vet
+      run: go vet ./...
     - name: shfmt
       glob:
         - "bin/*"

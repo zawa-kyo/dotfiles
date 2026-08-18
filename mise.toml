@@ -100,7 +100,7 @@ run = '''
 set -eu
 
 missing_tools=""
-for tool in stylua shfmt prettier taplo; do
+for tool in gofmt stylua shfmt prettier taplo; do
   if ! command -v "$tool" >/dev/null 2>&1; then
     missing_tools="$missing_tools $tool"
   fi
@@ -110,6 +110,26 @@ if [ -n "$missing_tools" ]; then
   echo "Missing required formatter(s):$missing_tools" >&2
   echo "Install them first, then run: mise run format" >&2
   exit 1
+fi
+'''
+
+[tasks.format-go]
+hide = true
+description = "Format Go files with gofmt"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.go' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 gofmt -w < "$tmpfile"
 fi
 '''
 
@@ -204,6 +224,7 @@ description = "Format the repository"
 run = [
   { task = "format-check-tools" },
   { tasks = [
+    "format-go",
     "format-lua",
     "format-shell",
     "format-prettier",
