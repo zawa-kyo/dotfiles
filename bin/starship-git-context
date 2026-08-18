@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+# DESCRIPTION: Print a worktree-aware directory or branch label for Starship
+
+set -euo pipefail
+
+# Return success when the repository directory matches the branch-derived worktree name.
+is_branch_worktree() {
+	local branch="$1"
+	local repo_dir_name="$2"
+	local suffix
+
+	case "$repo_dir_name" in
+	*+*) suffix="${repo_dir_name#*+}" ;;
+	*) return 1 ;;
+	esac
+
+	[ "$suffix" = "${branch//\//-}" ] || [ "$suffix" = "${branch//\//_}" ]
+}
+
+# Print the current directory path relative to the repository root.
+relative_path_from_repo_root() {
+	local repo_root="$1"
+	local current_dir="$2"
+
+	case "$current_dir" in
+	"$repo_root") return 0 ;;
+	"$repo_root"/*) printf '%s\n' "${current_dir#"$repo_root"/}" ;;
+	*) return 0 ;;
+	esac
+}
+
+# Read the repository root and branch with one Git process.
+read_git_context() {
+	git rev-parse --show-toplevel --abbrev-ref HEAD 2>/dev/null
+}
+
+# Print the compact directory label used by the prompt.
+print_directory() {
+	local branch="$1"
+	local repo_root="$2"
+	local current_dir="$PWD"
+	local display_root_name
+	local relative_path
+	local repo_dir_name
+
+	repo_dir_name="${repo_root##*/}"
+	display_root_name="$repo_dir_name"
+
+	if [ "$branch" != "HEAD" ] && is_branch_worktree "$branch" "$repo_dir_name"; then
+		display_root_name="${repo_dir_name%%+*}"
+	fi
+
+	relative_path="$(relative_path_from_repo_root "$repo_root" "$current_dir")"
+	if [ -n "$relative_path" ]; then
+		printf '%s/%s\n' "$display_root_name" "$relative_path"
+	else
+		printf '%s\n' "$display_root_name"
+	fi
+}
+
+# Print the branch label with a worktree-specific icon.
+print_branch() {
+	local branch="$1"
+	local repo_root="$2"
+	local repo_dir_name
+	local symbol=""
+
+	[ "$branch" != "HEAD" ] || return 1
+
+	repo_dir_name="${repo_root##*/}"
+	if is_branch_worktree "$branch" "$repo_dir_name"; then
+		symbol=""
+	fi
+
+	printf '%s %s\n' "$symbol" "$branch"
+}
+
+main() {
+	local mode="${1:-}"
+	local git_context
+	local repo_root
+	local branch
+
+	if ! git_context="$(read_git_context)"; then
+		[ "$mode" = "directory" ] || return 1
+		printf '%s\n' "${PWD##*/}"
+		return 0
+	fi
+
+	repo_root="${git_context%%$'\n'*}"
+	branch="${git_context#*$'\n'}"
+
+	case "$mode" in
+	directory) print_directory "$branch" "$repo_root" ;;
+	branch) print_branch "$branch" "$repo_root" ;;
+	*)
+		printf 'usage: %s <directory|branch>\n' "${0##*/}" >&2
+		return 2
+		;;
+	esac
+}
+
+main "$@"

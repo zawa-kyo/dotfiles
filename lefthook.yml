@@ -1,0 +1,130 @@
+glob_matcher: doublestar
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: Git whitespace and conflict markers
+      run: git diff --cached --check
+    - name: Machine-specific paths
+      run: >-
+        ! git grep --cached -nE '(/Users|/home)/kyohei(/|$)' -- {staged_files}
+    - name: Prettier
+      glob:
+        - "*.json"
+        - "**/*.json"
+        - "*.jsonc"
+        - "**/*.jsonc"
+        - "*.md"
+        - "**/*.md"
+        - "*.yaml"
+        - "**/*.yaml"
+        - "*.yml"
+        - "**/*.yml"
+      exclude:
+        - "**/lazy-lock.json"
+        - "dotfiles/ai/apm/apm.lock.yaml"
+        - "*.lock"
+        - "**/*.lock"
+      run: prettier --check --ignore-unknown {staged_files}
+    - name: StyLua
+      glob:
+        - "*.lua"
+        - "**/*.lua"
+      run: stylua --check {staged_files}
+    - name: Taplo
+      glob:
+        - "*.toml"
+        - "**/*.toml"
+      exclude:
+        - "*.lock"
+        - "**/*.lock"
+      run: taplo fmt --check {staged_files}
+    - name: gofmt
+      glob:
+        - "*.go"
+        - "**/*.go"
+      run: test -z "$(gofmt -l {staged_files})"
+    - name: shfmt
+      glob:
+        - "bin/*"
+        - "*.bash"
+        - "**/*.bash"
+        - "*.sh"
+        - "**/*.sh"
+      run: shfmt -d {staged_files}
+    - name: ShellCheck
+      glob:
+        - "bin/*"
+        - "*.bash"
+        - "**/*.bash"
+        - "*.sh"
+        - "**/*.sh"
+      run: shellcheck {staged_files}
+    - name: Gitleaks
+      run: gitleaks git --pre-commit --redact --staged --verbose
+
+check:
+  parallel: true
+  jobs:
+    - name: Git whitespace and conflict markers
+      run: >-
+        ! git grep -nIE '([[:blank:]]+$|^(<<<<<<<|=======|>>>>>>>)( |$))' -- {all_files}
+    - name: Machine-specific paths
+      run: >-
+        ! git grep -nE '(/Users|/home)/kyohei(/|$)' -- {all_files}
+    - name: Prettier
+      glob:
+        - "*.json"
+        - "**/*.json"
+        - "*.jsonc"
+        - "**/*.jsonc"
+        - "*.md"
+        - "**/*.md"
+        - "*.yaml"
+        - "**/*.yaml"
+        - "*.yml"
+        - "**/*.yml"
+      exclude:
+        - "**/lazy-lock.json"
+        - "dotfiles/ai/apm/apm.lock.yaml"
+        - "*.lock"
+        - "**/*.lock"
+      run: prettier --check --ignore-unknown {all_files}
+    - name: StyLua
+      glob:
+        - "*.lua"
+        - "**/*.lua"
+      run: stylua --check {all_files}
+    - name: Taplo
+      glob:
+        - "*.toml"
+        - "**/*.toml"
+      exclude:
+        - "*.lock"
+        - "**/*.lock"
+      run: taplo fmt --check {all_files}
+    - name: gofmt
+      glob:
+        - "*.go"
+        - "**/*.go"
+      run: test -z "$(gofmt -l {all_files})"
+    - name: Go vet
+      run: go vet ./...
+    - name: shfmt
+      glob:
+        - "bin/*"
+        - "*.bash"
+        - "**/*.bash"
+        - "*.sh"
+        - "**/*.sh"
+      run: shfmt -d {all_files}
+    - name: ShellCheck
+      glob:
+        - "bin/*"
+        - "*.bash"
+        - "**/*.bash"
+        - "*.sh"
+        - "**/*.sh"
+      run: shellcheck {all_files}
+    - name: Gitleaks
+      run: gitleaks dir --redact --verbose .

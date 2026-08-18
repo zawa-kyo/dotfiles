@@ -5,7 +5,9 @@
 ## 全体設計
 
 - [architecture.md](architecture.md)
-  - リポジトリ全体の構造と責務分担
+  - リポジトリ全体の構造とファイルの置き場所
+- [bootstrap-design.md](bootstrap-design.md)
+  - mise bootstrap の役割、競合時の動作、移行とテストの設計
 - [ai-tools.md](ai-tools.md)
   - AI ツールを管理するための運用方針
 
@@ -21,16 +23,9 @@
 - [operations.md](operations.md)
   - 変更後の確認方針
 
-## サブシステム固有ポリシー
+## 各ツールのポリシー
 
-- [../config/editors/nvim/lua/policies/keybinds-policy.md](../config/editors/nvim/lua/policies/keybinds-policy.md)
+- [../dotfiles/editors/nvim/lua/policies/keybinds-policy.md](../dotfiles/editors/nvim/lua/policies/keybinds-policy.md)
   - Neovim キーバインド設計
-- [../config/editors/nvim/lua/policies/tab-buffer-policy.md](../config/editors/nvim/lua/policies/tab-buffer-policy.md)
+- [../dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md](../dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md)
   - Neovim タブ/バッファ表示方針
-
-## 配置ルール
-
-- 人向けの入口は `README.md`
-- エージェント向けの入口は `AGENTS.md`
-- リポジトリ全体の長い設計判断は `docs/`
-- サブシステム固有の詳細規約は実装の近くに置く

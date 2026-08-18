@@ -1,0 +1,198 @@
+# zshの設定ファイル
+# シェルスクリプトの実行時には読み込まれないことに注意
+
+# ===========================
+# Homebrew
+# ===========================
+
+# (N-/): もしそのディレクトリが存在していれば PATH に追加し、存在しなければ無視するオプション
+typeset -U path PATH
+path=(
+  "$HOME/.local/bin"(N-/)
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /Library/Apple/usr/bin
+)
+
+# Mise
+eval "$(mise activate zsh --no-hook-env)"
+
+# Refresh the mise environment at startup and after directory changes.
+_mise_refresh_env() {
+  local reason="${1:-}"
+  local hook_output
+
+  print -Pn "\r%F{yellow}[mise] updating environment...%f"
+  if [[ -n "$reason" ]]; then
+    hook_output="$(mise hook-env -s zsh --reason "$reason")" || {
+      print -Pn "\r\033[2K"
+      return 1
+    }
+  else
+    hook_output="$(mise hook-env -s zsh)" || {
+      print -Pn "\r\033[2K"
+      return 1
+    }
+  fi
+  eval "$hook_output"
+  print -Pn "\r\033[2K"
+}
+
+_mise_refresh_env_on_chpwd() {
+  _mise_refresh_env chpwd
+}
+
+autoload -Uz add-zsh-hook
+_mise_refresh_env
+add-zsh-hook chpwd _mise_refresh_env_on_chpwd
+
+# Sheldon
+eval "$(sheldon source)"
+
+
+# ===========================
+# Source local files
+# ===========================
+
+# Source all matching local shell snippets and log what was loaded.
+source_local_files() {
+  local config_dir="$1"
+  local extension="$2"
+  local found=false
+  local file
+
+  if [[ ! -d "$config_dir" ]]; then
+    missing "$config_dir"
+    return
+  fi
+
+  for file in "$config_dir"/*"$extension"(N); do
+    found=true
+    source "$file"
+    sourced "$file"
+  done
+
+  if [[ "$found" == false ]]; then
+    not_found "$config_dir" "$extension"
+  fi
+}
+
+source_local_files "$DIR_LOCAL_CONFIG" ".zsh"
+
+
+# ===========================
+# History
+# ===========================
+
+# 履歴ファイルの保存先
+export HISTFILE="$HOME/.zsh_history"
+
+# メモリに保存される履歴の件数
+export HISTSIZE=1000
+
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000
+
+setopt EXTENDED_HISTORY         # 開始と終了を記録する
+setopt hist_ignore_all_dups     # 履歴が重複した場合に古い履歴を削除する
+setopt hist_ignore_dups         # 古いコマンドの場合は履歴に追加しない
+setopt hist_no_store            # historyコマンドは履歴に登録しない
+setopt hist_reduce_blanks       # 余分な空白は詰めて記録する
+setopt hist_save_no_dups        # 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
+setopt inc_append_history       # コマンド実行後すぐ履歴ファイルに追加
+setopt inc_append_history_time  # 実行時間も含めて追加
+setopt share_history            # 全てのセッションで履歴を共有する
+
+
+# ===========================
+# Options
+# ===========================
+
+setopt auto_cd            # ディレクトリ名でcdする
+setopt correct            # コマンドのスペルミスを指摘
+setopt ignoreeof          # Ctrl+d でシェルを終了しない
+setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
+setopt no_beep            # ビープ音を鳴らさない
+
+# cd後に自動でlsする
+function chpwd() {
+  eza --color=always --group-directories-first --icons
+}
+
+# カレントディレクトリをターミナルのタブに表示
+precmd() {
+  print -Pn "\e]0;%~\a"
+}
+
+# brew installしたコマンドを即座に認識
+zstyle ":completion:*:commands" rehash 1
+
+
+# Reveal a repository by changing into it.
+reveal-repository () {
+  local repo
+  repo=$(bash "${DOTFILES_ROOT_DIR}/libexec/select-repository.sh" "$@") || return
+  cd "$repo"
+}
+
+# Reveal a repository with zoxide.
+reveal-repository-with-zoxide () {
+  local repo
+  repo=$(bash "${DOTFILES_ROOT_DIR}/libexec/select-repository.sh" "$@") || return
+  z "$repo"
+}
+
+# Switch Starship config for the current shell session.
+search-theme () {
+  local selected_config
+  selected_config=$(bash "${DOTFILES_ROOT_DIR}/libexec/select-starship-theme.sh") || return
+  export STARSHIP_CONFIG="$selected_config"
+  printf 'starship theme: %s\n' "${selected_config:t:r}"
+}
+
+
+# ===========================
+# Yazi
+# ===========================
+
+# Open Yazi and change directory to the one selected on exit
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+# ===========================
+# Utilities
+# ===========================
+
+# Create a directory (if not exists) and move into it
+mkcd() {
+  mkdir -p "$1" && cd "$1" || return 1
+}
+
+# Move up N levels in the directory tree (default: 1)
+# Usage example: up 3 # moves ../../..
+up() {
+  local count=${1:-1}
+  cd "$(printf '../%.0s' $(seq 1 $count))" || return 1
+}
+
+alias rm="echo ' Heads up: rm is dangerous. Use trash instead!'"
+
+
+# ===========================
+# Comments
+# ===========================
+
+sourced ".zshrc"

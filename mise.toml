@@ -1,25 +1,97 @@
+min_version = "2026.8.4"
+
 [tools]
 # Languages
 bun = "1"
+go = "1"
+node = "24"
 rust = "1"
 
-# Editors / Formatters
+# Repository checks
+gitleaks = "latest"
+lefthook = "2"
+prettier = "latest"
+shellcheck = "latest"
 shfmt = "latest"
 stylua = "latest"
-prettier = "latest"
 taplo = "latest"
-
-# Frameworks / SDKs
-uv = "0"
 
 [settings]
 lockfile = true
 lockfile_platforms = ["macos-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
-[tasks.check-pre-commit]
-description = "Run all pre-commit checks with uv"
-run = ["uv sync --group dev", "uv run pre-commit run -a"]
+[dotfiles]
+"~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each", exclude = [
+  "apm.lock.yaml",
+] }
+"~/.apm/apm.lock.yaml" = { source = "dotfiles/ai/apm/apm.lock.yaml", mode = "copy" }
+"~/.claude/CLAUDE.md" = "dotfiles/ai/instructions/AGENTS.md"
+"~/.claude/settings.json" = "dotfiles/ai/claude/settings.json"
+"~/.codex/AGENTS.md" = "dotfiles/ai/instructions/AGENTS.md"
+"~/.codex/rules/default.rules" = "dotfiles/ai/codex/rules/default.rules"
+"~/.config/ghostty/config.ghostty" = "dotfiles/terminal-apps/ghostty/config.ghostty"
+"~/.config/mise/conf.d" = "dotfiles/tools/mise/conf.d"
+"~/.config/mise/mise.lock" = "dotfiles/tools/mise/mise.lock"
+"~/.config/mise/mise.toml" = "dotfiles/tools/mise/mise.toml"
+"~/.config/nvim" = "dotfiles/editors/nvim"
+"~/.config/sheldon/plugins.toml" = "dotfiles/shell/sheldon/plugins.toml"
+"~/.config/starship" = "dotfiles/shell/starship"
+"~/.config/wezterm" = "dotfiles/terminal-apps/wezterm"
+"~/.config/worktrunk/config.toml" = "dotfiles/tools/worktrunk/config.toml"
+"~/.config/zellij/config.kdl" = "dotfiles/terminal-apps/zellij/config.kdl"
+"~/.config/zsh-abbr/user-abbreviations" = "dotfiles/shell/sheldon/abbreviations"
+"~/.gitconfig" = "dotfiles/tools/git/.gitconfig"
+"~/.local/bin" = { source = "bin", mode = "symlink-each" }
+"~/.zlogin" = "dotfiles/shell/terminal/.zlogin"
+"~/.zlogout" = "dotfiles/shell/terminal/.zlogout"
+"~/.zprofile" = "dotfiles/shell/terminal/.zprofile"
+"~/.zshenv" = "dotfiles/shell/terminal/.zshenv"
+"~/.zshrc" = "dotfiles/shell/terminal/.zshrc"
+
+[bootstrap.hooks.pre-dotfiles]
+run = '''
+repo_root="$(git rev-parse --show-toplevel)"
+bash "$repo_root/setup/migrations/migrate-to-mise-bootstrap.sh" "$repo_root"
+'''
+
+[bootstrap.hooks.post-dotfiles]
+run = '''
+for config_file in \
+  "$HOME/.config/mise/mise.toml" \
+  "$HOME/.config/mise/mise.lock" \
+  "$HOME/.config/mise/conf.d/"*.toml; do
+  [ -f "$config_file" ] || continue
+  mise trust "$config_file"
+done
+'''
+
+[tasks.check]
+description = "Run repository checks on all tracked files"
+run = "lefthook run check"
+
+[tasks.test-deployment]
+description = "Test mise bootstrap deployment in isolated home directories"
+run = "go test ./tests"
+
+[tasks.check-shell]
+description = "Check tracked shell scripts with ShellCheck"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.sh' '*.bash' 'bin/*' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 shellcheck < "$tmpfile"
+fi
+'''
 
 [tasks.format-check-tools]
 hide = true
@@ -28,7 +100,7 @@ run = '''
 set -eu
 
 missing_tools=""
-for tool in stylua shfmt prettier taplo; do
+for tool in gofmt stylua shfmt prettier taplo; do
   if ! command -v "$tool" >/dev/null 2>&1; then
     missing_tools="$missing_tools $tool"
   fi
@@ -38,6 +110,26 @@ if [ -n "$missing_tools" ]; then
   echo "Missing required formatter(s):$missing_tools" >&2
   echo "Install them first, then run: mise run format" >&2
   exit 1
+fi
+'''
+
+[tasks.format-go]
+hide = true
+description = "Format Go files with gofmt"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.go' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 gofmt -w < "$tmpfile"
 fi
 '''
 
@@ -70,7 +162,7 @@ set -eu
 tmpfile="$(mktemp)"
 trap 'rm -f "$tmpfile"' EXIT
 
-git ls-files -z -- '*.sh' '*.bash' '*.zsh' |
+git ls-files -z -- '*.sh' '*.bash' '*.zsh' 'bin/*' |
 while IFS= read -r -d '' file; do
   if [ -f "$file" ]; then
     printf '%s\0' "$file"
@@ -93,7 +185,7 @@ trap 'rm -f "$tmpfile"' EXIT
 git ls-files -z -- \
   '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
   ':(exclude)**/lazy-lock.json' \
-  ':(exclude)config/ai/apm/apm.lock.yaml' \
+  ':(exclude)dotfiles/ai/apm/apm.lock.yaml' \
   ':(exclude)**/*.lock' |
 while IFS= read -r -d '' file; do
   if [ -f "$file" ]; then
@@ -132,6 +224,7 @@ description = "Format the repository"
 run = [
   { task = "format-check-tools" },
   { tasks = [
+    "format-go",
     "format-lua",
     "format-shell",
     "format-prettier",
@@ -139,57 +232,42 @@ run = [
   ] },
 ]
 
-[tasks.link-dotfiles]
-hide = true
-description = "Link dotfiles-managed files into the home directory"
-run = "bash scripts/local/link-dotfiles.sh"
-
-[tasks.sync-global-commands]
-hide = true
-description = "Link global CLI commands and generate mise task wrappers"
-run = "bash scripts/local/sync-global-commands.sh"
-
-[tasks.install-mise-tools]
-hide = true
-description = "Install tools declared in the local mise configuration"
-run = "mise install"
-
 [tasks.install-apm]
 hide = true
 description = "Install apm-managed AI skills"
-run = [
-  # Temporary workaround: reset APM-generated paths because APM 0.16.0 refuses stale skill directory deletions.
-  "bash scripts/local/reset-apm-managed-skills.sh",
-  "mise -C ~ install apm",
-  "mise -C ~ exec -- apm install -g --frozen",
-]
+run = ["mise -C ~ install apm", "mise -C ~ exec -- apm install -g --frozen"]
 
 [tasks.install]
-description = "Run the dotfiles symlink setup and install configured mise tools"
+description = "Compatibility entrypoint for the standard machine bootstrap"
+run = "mise bootstrap"
+
+[tasks.install-global-tools]
+hide = true
+description = "Install tools declared in the linked global mise configuration"
+run = "mise -C ~ install"
+
+[tasks.bootstrap-common]
+hide = true
+description = "Finish cross-platform setup not covered by declarative bootstrap steps"
 run = [
-  { task = "link-dotfiles" },
-  { task = "sync-global-commands" },
-  { task = "install-mise-tools" },
+  { task = "install-global-tools" },
   { task = "install-apm" },
   { task = "install-bun" },
-  { task = "install-pre-commit" },
+  { task = "install-git-hooks" },
 ]
 
+[tasks.bootstrap]
+hide = true
+description = "Finish setup not covered by declarative bootstrap steps"
+run = [{ task = "bootstrap-common" }]
+
 [tasks.install-bun]
-description = "Link Bun globals and install Bun dependencies"
-file = "scripts/local/install-bun.sh"
+description = "Install Bun globals outside the repository"
+file = "setup/install-bun.sh"
 
-[tasks.relink]
-description = "Relink dotfiles-managed symlinks without overwriting real files"
-file = "scripts/local/relink-dotfiles.sh"
-
-[tasks.install-pre-commit]
-description = "Install the repository pre-commit hook with uv"
-file = "scripts/local/install-pre-commit.sh"
-
-[tasks.sync-python]
-description = "Sync Python development dependencies with uv"
-run = "uv sync --group dev"
+[tasks.install-git-hooks]
+description = "Install repository Git hooks with Lefthook"
+run = "lefthook install"
 
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
@@ -204,22 +282,21 @@ run = [
 [tasks.upgrade-apm]
 description = "Update apm-managed AI skills and lock file"
 run = [
-  # Temporary workaround: reset APM-generated paths because APM 0.16.0 refuses stale skill directory deletions.
-  "bash scripts/local/reset-apm-managed-skills.sh",
   "mise -C ~ install apm",
-  "mise -C ~ exec -- apm install -g --update",
+  "mise -C ~ exec -- apm update -g --yes",
+  "mise bootstrap dotfiles add --yes ~/.apm/apm.lock.yaml",
 ]
 
 [tasks.upgrade-brew]
 description = "Upgrade Homebrew packages and sync the tracked Brewfile"
 run = [
   "brew upgrade",
-  "brew bundle dump --file=config/tools/homebrew/Brewfile --force",
+  "brew bundle dump --file=setup/homebrew/Brewfile --force",
 ]
 
 [tasks.upgrade-bun]
 description = "Update Bun global packages to their latest versions"
-run = "bun update -g --latest"
+run = "bash setup/install-bun.sh upgrade"
 
 [tasks.upgrade-global-tools]
 description = "Upgrade global mise tools within their configured version ranges"
@@ -236,6 +313,6 @@ run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
 [tasks.upgrade-nvim-plugins]
 description = "Upgrade Neovim plugins managed by lazy.nvim"
 run = '''
-XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/config/editors" \
-nvim --headless --cmd 'set runtimepath^=config/editors/nvim' -u config/editors/nvim/init.lua "+Lazy! update" +qa
+XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/dotfiles/editors" \
+nvim --headless --cmd 'set runtimepath^=dotfiles/editors/nvim' -u dotfiles/editors/nvim/init.lua "+Lazy! update" +qa
 '''

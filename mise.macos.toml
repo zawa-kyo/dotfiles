@@ -1,0 +1,10 @@
+[dotfiles]
+"~/Library/Application Support/Code/User/keybindings.json" = "dotfiles/editors/vscode/keybindings.jsonc"
+"~/Library/Application Support/Code/User/settings.json" = "dotfiles/editors/vscode/settings.jsonc"
+"~/Library/Application Support/lazygit/config.yml" = "dotfiles/tools/lazygit/config.yml"
+"~/Library/Preferences/com.github.dalance.procs/config.toml" = "dotfiles/tools/procs/procs.toml"
+"~/.config/borders/bordersrc" = "dotfiles/tools/borders/bordersrc"
+
+[tasks.install-brew]
+description = "Install missing Homebrew dependencies without upgrading existing packages"
+run = "brew bundle install --file=setup/homebrew/Brewfile --no-upgrade"
