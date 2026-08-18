@@ -18,7 +18,7 @@ taplo = "latest"
 
 [settings]
 lockfile = true
-lockfile_platforms = ["macos-arm64", "linux-x64"]
+lockfile_platforms = ["macos-arm64", "linux-arm64", "linux-x64"]
 minimum_release_age = "7d"
 
 [dotfiles]
