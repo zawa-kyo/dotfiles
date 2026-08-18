@@ -8,5 +8,7 @@ return {
     "sirasagi62/tinysegmenter.nvim",
   },
 
-  opts = {},
+  opts = {
+    extend_motions = { "w", "b", "e" },
+  },
 }
