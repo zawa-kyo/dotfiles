@@ -76,9 +76,25 @@ mise exec -- go test -race ./tests
 mise exec -- go vet ./...
 ```
 
-## 管理対象を削除する場合
+## dotfiles の配備を解除する場合
 
-mise は `symlink-each` で作成したリンクを状態ディレクトリに記録しますが、ほかの配備方法で作成したファイルまでは記録しません。`[dotfiles]` から項目を削除する前に、`mise bootstrap dotfiles unapply` の対象を確認して不要なリンクを外します。
+解除される対象を dry-run で確認してから実行します。
+
+```sh
+mise bootstrap dotfiles unapply --dry-run
+mise bootstrap dotfiles unapply --yes
+```
+
+`unapply` は、現在の `[dotfiles]` 宣言とファイルの状態から mise が管理中と判定できる対象だけを削除します。`symlink-each` の配備先にある管理外の項目は残ります。配備後に内容が変わった `copy` のファイルがある場合は、操作全体が中止されます。必要な変更を配備元へ保存するか、配備元と同じ内容に戻してから再実行します。変更済みのファイルも削除する `--force` は、通常の初期化には使いません。
+
+この操作で解除されるのは dotfiles の配備だけです。bootstrap タスクで導入したツール、パッケージ、生成データ、Git hook は残ります。dotfiles を再配備する場合は `mise bootstrap dotfiles apply --yes`、セットアップ全体を再実行する場合は `mise bootstrap --yes` を使います。
+
+`[dotfiles]` から項目を削除する場合は、宣言を消す前に対象を指定して解除します。
+
+```sh
+mise bootstrap dotfiles unapply --dry-run ~/.zshrc
+mise bootstrap dotfiles unapply --yes ~/.zshrc
+```
 
 生成データを伴う移行では、単純な `unapply` だけで済ませません。データを退避し、このリポジトリが作成したファイルだけを変更する migration を用意します。
 

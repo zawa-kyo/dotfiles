@@ -65,7 +65,7 @@
 
 - セットアップ、整形、検証、アップグレードの入口に使う
 - 短い直接操作をすべて `mise run` で包まない
-- dotfiles の状態確認や反映には `mise bootstrap dotfiles` の標準操作を使う
+- dotfiles の状態確認、反映、解除には `mise bootstrap dotfiles` の標準操作を使う
 
 ### シェル関数
 

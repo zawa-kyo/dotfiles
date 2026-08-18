@@ -49,18 +49,20 @@ Homebrew packages are not installed by either command. On macOS, run `mise run i
 
 ## 🛠️ Common Commands
 
-| Command                                   | Purpose                                                  |
-| ----------------------------------------- | -------------------------------------------------------- |
-| `mise bootstrap`                          | Run the standard local setup                             |
-| `mise bootstrap dotfiles status`          | Inspect declared dotfile targets without changing them   |
-| `mise bootstrap dotfiles apply --dry-run` | Preview dotfile changes and conflicts                    |
-| `mise bootstrap dotfiles apply --yes`     | Apply the declared dotfile links                         |
-| `mise run format`                         | Format tracked files                                     |
-| `mise run check`                          | Run all repository checks                                |
-| `mise run install-brew`                   | Install missing Brewfile dependencies on macOS           |
-| `mise run test-deployment`                | Test bootstrap behavior in isolated home directories     |
-| `mise run --continue-on-error upgrade`    | Update mise, apm, Neovim, Bun, and Homebrew dependencies |
-| `mise tasks`                              | List available mise tasks                                |
+| Command                                     | Purpose                                                  |
+| ------------------------------------------- | -------------------------------------------------------- |
+| `mise bootstrap`                            | Run the standard local setup                             |
+| `mise bootstrap dotfiles status`            | Inspect declared dotfile targets without changing them   |
+| `mise bootstrap dotfiles apply --dry-run`   | Preview dotfile changes and conflicts                    |
+| `mise bootstrap dotfiles apply --yes`       | Apply the declared dotfile links                         |
+| `mise bootstrap dotfiles unapply --dry-run` | Preview removal of managed dotfiles                      |
+| `mise bootstrap dotfiles unapply --yes`     | Remove managed dotfiles that remain unchanged            |
+| `mise run format`                           | Format tracked files                                     |
+| `mise run check`                            | Run all repository checks                                |
+| `mise run install-brew`                     | Install missing Brewfile dependencies on macOS           |
+| `mise run test-deployment`                  | Test bootstrap behavior in isolated home directories     |
+| `mise run --continue-on-error upgrade`      | Update mise, apm, Neovim, Bun, and Homebrew dependencies |
+| `mise tasks`                                | List available mise tasks                                |
 
 The setup links commands from `bin/` globally.
 That directory contains small CLI tools for daily work, such as Git operations and task search.
