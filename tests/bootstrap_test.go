@@ -58,6 +58,50 @@ func TestDotfilesApply(t *testing.T) {
 	}
 }
 
+// Unapply removes identifiable managed files and preserves neighboring user data.
+func TestDotfilesUnapply(t *testing.T) {
+	repo := repositoryRoot(t)
+	home := t.TempDir()
+	unrelated := filepath.Join(home, ".local", "bin", "unrelated")
+	generated := filepath.Join(home, ".apm", "apm_modules", "cached", "data")
+	lockFile := filepath.Join(home, ".apm", "apm.lock.yaml")
+	gitConfig := filepath.Join(home, ".gitconfig")
+
+	mustWriteFile(t, unrelated, "user-owned\n", 0o644)
+	mustWriteFile(t, generated, "cached\n", 0o644)
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	mustWriteFile(t, lockFile, "user-modified\n", 0o644)
+
+	if output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes").CombinedOutput(); err == nil {
+		t.Fatalf("unapply unexpectedly removed a modified copy:\n%s", output)
+	}
+	assertLink(t, gitConfig, filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
+	assertFileContent(t, lockFile, "user-modified\n")
+
+	sourceLock, err := os.ReadFile(filepath.Join(repo, "dotfiles", "ai", "apm", "apm.lock.yaml"))
+	if err != nil {
+		t.Fatalf("read source APM lock: %v", err)
+	}
+	mustWriteFile(t, lockFile, string(sourceLock), 0o644)
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "unapply", "--dry-run")
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes")
+
+	if _, err := os.Lstat(gitConfig); !os.IsNotExist(err) {
+		t.Fatalf("managed symlink remains after unapply: %v", err)
+	}
+	if _, err := os.Lstat(filepath.Join(home, ".local", "bin", "search-google")); !os.IsNotExist(err) {
+		t.Fatalf("managed symlink-each entry remains after unapply: %v", err)
+	}
+	assertFileContent(t, unrelated, "user-owned\n")
+	assertFileContent(t, generated, "cached\n")
+	if _, err := os.Lstat(lockFile); !os.IsNotExist(err) {
+		t.Fatalf("managed copy remains after unapply: %v", err)
+	}
+
+	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.gitconfig", "--yes")
+	assertLink(t, gitConfig, filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
+}
+
 // An APM lock migrates from symlink-each and returns to the repository after an update.
 func TestAPMLockCopyRoundTrip(t *testing.T) {
 	repo := t.TempDir()
