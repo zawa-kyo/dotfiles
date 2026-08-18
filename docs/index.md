@@ -23,11 +23,6 @@
 - [operations.md](operations.md)
   - 変更後の確認方針
 
-## 改善計画
-
-- [refactoring-plan.md](refactoring-plan.md)
-  - 配備処理とディレクトリ構成を段階的に見直すための計画と TODO
-
 ## サブシステム固有ポリシー
 
 - [../dotfiles/editors/nvim/lua/policies/keybinds-policy.md](../dotfiles/editors/nvim/lua/policies/keybinds-policy.md)
