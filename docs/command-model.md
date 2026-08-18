@@ -65,6 +65,8 @@
 
 - セットアップ、整形、検証、アップグレードの入口に使う
 - 短い直接操作をすべて `mise run` で包まない
+- 環境と配備の宣言は `mise.toml`、タスク定義は `.mise/tasks/` に置く
+- タスク定義は bootstrap、検査、整形、更新の目的ごとに TOML ファイルを分ける
 - dotfiles の状態確認、反映、解除には `mise bootstrap dotfiles` の標準操作を使う
 
 ### シェル関数

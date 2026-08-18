@@ -1,0 +1,140 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+[format-check-tools]
+hide = true
+description = "Check required formatters for the repository"
+run = '''
+set -eu
+
+missing_tools=""
+for tool in gofmt stylua shfmt prettier taplo; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    missing_tools="$missing_tools $tool"
+  fi
+done
+
+if [ -n "$missing_tools" ]; then
+  echo "Missing required formatter(s):$missing_tools" >&2
+  echo "Install them first, then run: mise run format" >&2
+  exit 1
+fi
+'''
+
+[format-go]
+hide = true
+description = "Format Go files with gofmt"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.go' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 gofmt -w < "$tmpfile"
+fi
+'''
+
+[format-lua]
+hide = true
+description = "Format Lua files with Stylua"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.lua' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 stylua < "$tmpfile"
+fi
+'''
+
+[format-shell]
+hide = true
+description = "Format shell files with shfmt"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.sh' '*.bash' '*.zsh' 'bin/*' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 shfmt -w < "$tmpfile"
+fi
+'''
+
+[format-prettier]
+hide = true
+description = "Format JSON, Markdown, and YAML files with Prettier"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- \
+  '*.json' '*.jsonc' '*.md' '*.yaml' '*.yml' \
+  ':(exclude)**/lazy-lock.json' \
+  ':(exclude)dotfiles/ai/apm/apm.lock.yaml' \
+  ':(exclude)**/*.lock' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 prettier --write < "$tmpfile"
+fi
+'''
+
+[format-toml]
+hide = true
+description = "Format TOML files with Taplo"
+run = '''
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- \
+  '*.toml' \
+  ':(exclude)**/*.lock' |
+while IFS= read -r -d '' file; do
+  if [ -f "$file" ]; then
+    printf '%s\0' "$file"
+  fi
+done > "$tmpfile"
+if [ -s "$tmpfile" ]; then
+  xargs -0 taplo fmt < "$tmpfile"
+fi
+'''
+
+[format]
+description = "Format the repository"
+run = [
+  { task = "format-check-tools" },
+  { tasks = [
+    "format-go",
+    "format-lua",
+    "format-shell",
+    "format-prettier",
+    "format-toml",
+  ] },
+]
