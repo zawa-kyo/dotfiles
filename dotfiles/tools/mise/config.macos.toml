@@ -1,0 +1,21 @@
+[env]
+
+# ===========================
+# Bookmarks
+# ===========================
+
+CHROME_BOOKMARKS_ROOT = "{{env.HOME}}/Library/Application Support/Google/Chrome"
+SAFARI_BOOKMARKS_PLIST = "{{env.HOME}}/Library/Safari/Bookmarks.plist"
+
+
+# ===========================
+# Paths / Directories
+# ===========================
+
+ANDROID_SDK_ROOT = "{{env.HOME}}/Library/Android/sdk"
+ANDROID_HOME = "{{env.ANDROID_SDK_ROOT}}"
+
+_.path = [
+  "{{env.HOME}}/.rd/bin",                    # Rancher Desktop
+  "{{env.ANDROID_SDK_ROOT}}/platform-tools", # Android Studio adb/fastboot
+]

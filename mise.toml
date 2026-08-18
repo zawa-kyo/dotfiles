@@ -31,6 +31,7 @@ minimum_release_age = "7d"
 "~/.codex/AGENTS.md" = "dotfiles/ai/instructions/AGENTS.md"
 "~/.codex/rules/default.rules" = "dotfiles/ai/codex/rules/default.rules"
 "~/.config/ghostty/config.ghostty" = "dotfiles/terminal-apps/ghostty/config.ghostty"
+"~/.config/mise/miserc.toml" = ".miserc.toml"
 "~/.config/mise/conf.d" = "dotfiles/tools/mise/conf.d"
 "~/.config/mise/mise.lock" = "dotfiles/tools/mise/mise.lock"
 "~/.config/mise/mise.toml" = "dotfiles/tools/mise/mise.toml"
@@ -60,6 +61,7 @@ run = '''
 for config_file in \
   "$HOME/.config/mise/mise.toml" \
   "$HOME/.config/mise/mise.lock" \
+  "$HOME/.config/mise/"config.*.toml \
   "$HOME/.config/mise/conf.d/"*.toml; do
   [ -f "$config_file" ] || continue
   mise trust "$config_file"

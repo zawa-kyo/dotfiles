@@ -1,13 +1,12 @@
 #:schema https://mise.jdx.dev/schema/mise-task.json
 
 [upgrade]
-description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
+description = "Upgrade mise-managed tools and Bun globals"
 run = [
   { task = "upgrade-mise-tools" },
   { task = "upgrade-apm" },
   { task = "upgrade-nvim-plugins" },
   { task = "upgrade-bun" },
-  { task = "upgrade-brew" },
 ]
 
 [upgrade-apm]
@@ -16,13 +15,6 @@ run = [
   "mise -C ~ install apm",
   "mise -C ~ exec -- apm update -g --yes",
   "mise bootstrap dotfiles add --yes ~/.apm/apm.lock.yaml",
-]
-
-[upgrade-brew]
-description = "Upgrade Homebrew packages and sync the tracked Brewfile"
-run = [
-  "brew upgrade",
-  "brew bundle dump --file=setup/homebrew/Brewfile --force",
 ]
 
 [upgrade-bun]

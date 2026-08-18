@@ -29,6 +29,7 @@ func TestDotfilesApply(t *testing.T) {
 
 	assertLink(t, filepath.Join(home, ".gitconfig"), filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
 	assertLink(t, filepath.Join(home, ".config", "nvim"), filepath.Join(repo, "dotfiles", "editors", "nvim"))
+	assertLink(t, filepath.Join(home, ".config", "mise", "miserc.toml"), filepath.Join(repo, ".miserc.toml"))
 	assertLink(t, filepath.Join(home, ".local", "bin", "search-google"), filepath.Join(repo, "bin", "search-google"))
 	assertRegularFile(t, filepath.Join(home, ".apm", "apm.lock.yaml"))
 	assertFileContent(t, filepath.Join(home, ".local", "bin", "unrelated"), "user-owned\n")
@@ -47,6 +48,48 @@ func TestDotfilesApply(t *testing.T) {
 	configOutput := string(configOutputBytes)
 	if !strings.Contains(configOutput, filepath.Join(home, ".config", "mise", "conf.d", "tools.toml")) {
 		t.Fatalf("linked global mise configuration was not loaded:\n%s", configOutput)
+	}
+	macOSConfig := filepath.Join(home, ".config", "mise", "config.macos.toml")
+	if runtime.GOOS == "darwin" {
+		assertLink(t, macOSConfig, filepath.Join(repo, "dotfiles", "tools", "mise", "config.macos.toml"))
+		if !strings.Contains(configOutput, macOSConfig) {
+			t.Fatalf("linked macOS mise configuration was not loaded:\n%s", configOutput)
+		}
+	} else if _, err := os.Lstat(macOSConfig); !os.IsNotExist(err) {
+		t.Fatalf("macOS mise configuration was deployed on %s: %v", runtime.GOOS, err)
+	}
+
+	envCommand := exec.Command("mise", "env", "--json")
+	envCommand.Dir = home
+	envCommand.Env = replaceEnvironment(
+		environmentWithout(os.Environ(), "MISE_GLOBAL_CONFIG_FILE"),
+		isolatedMiseEnvironment(repo, home),
+	)
+	envOutput, err := envCommand.Output()
+	if err != nil {
+		t.Fatalf("load linked global mise environment: %v", err)
+	}
+	var linkedEnv map[string]string
+	if err := json.Unmarshal(envOutput, &linkedEnv); err != nil {
+		t.Fatalf("decode linked global mise environment: %v\n%s", err, envOutput)
+	}
+	_, hasChromeBookmarks := linkedEnv["CHROME_BOOKMARKS_ROOT"]
+	if runtime.GOOS == "darwin" && !hasChromeBookmarks {
+		t.Fatal("macOS bookmark environment was not loaded")
+	}
+	if runtime.GOOS != "darwin" && hasChromeBookmarks {
+		t.Fatal("macOS bookmark environment was loaded outside macOS")
+	}
+	linkedPath := linkedEnv["PATH"]
+	if !strings.Contains(linkedPath, filepath.Join(home, ".local", "bin")) {
+		t.Fatalf("common PATH entries were not loaded: %s", linkedPath)
+	}
+	macOSPath := filepath.Join(home, "Library", "Android", "sdk", "platform-tools")
+	if runtime.GOOS == "darwin" && !strings.Contains(linkedPath, macOSPath) {
+		t.Fatalf("macOS PATH entries were not loaded: %s", linkedPath)
+	}
+	if runtime.GOOS != "darwin" && strings.Contains(linkedPath, macOSPath) {
+		t.Fatalf("macOS PATH entries were loaded outside macOS: %s", linkedPath)
 	}
 
 	before := symlinksUnder(t, home)
@@ -265,15 +308,19 @@ func TestPlatformDeclarations(t *testing.T) {
 
 // Bootstrap leaves Homebrew installation behind an explicit task.
 func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
-	if runtime.GOOS != "darwin" {
-		t.Skip("Homebrew task is declared only on macOS")
-	}
-
 	repo := repositoryRoot(t)
 	home := t.TempDir()
-	output := runMise(t, repo, home, nil, "bootstrap", "--dry-run", "--yes")
+	output := runMise(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "bootstrap", "--dry-run", "--yes")
 	if strings.Contains(output, "install-brew") || strings.Contains(output, "brew bundle install") {
 		t.Fatalf("bootstrap unexpectedly includes Homebrew installation:\n%s", output)
+	}
+	upgradeOutput := runMise(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "run", "--dry-run", "upgrade")
+	if strings.Contains(upgradeOutput, "upgrade-brew") || strings.Contains(upgradeOutput, "brew upgrade") {
+		t.Fatalf("common upgrade unexpectedly includes Homebrew:\n%s", upgradeOutput)
+	}
+
+	if runtime.GOOS != "darwin" {
+		return
 	}
 
 	tasks := runMise(t, repo, home, nil, "tasks", "--json")
@@ -285,6 +332,10 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	}
 	for _, task := range taskList {
 		if task.Name == "install-brew" {
+			platformUpgradeOutput := runMise(t, repo, home, nil, "run", "--dry-run", "upgrade")
+			if !strings.Contains(platformUpgradeOutput, "upgrade-brew") || !strings.Contains(platformUpgradeOutput, "brew upgrade") {
+				t.Fatalf("macOS upgrade does not include Homebrew:\n%s", platformUpgradeOutput)
+			}
 			return
 		}
 	}

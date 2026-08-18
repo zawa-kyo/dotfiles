@@ -47,6 +47,7 @@
 
 - 通常のリンクは mise の `[dotfiles]` に宣言する
 - OS 固有の宣言は OS 別の mise 設定へ分ける
+- OS 固有のツールと環境変数は、mise の `os` 制約または OS 別設定へ分ける
 - 既存のファイルを残したいディレクトリでは `symlink-each` を使う
 - Homebrew と Bun の宣言や導入処理は `setup/` に置く
 - 現在の宣言だけでは扱えないデータ移行を `setup/migrations/` に置く
