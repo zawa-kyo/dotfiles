@@ -70,6 +70,11 @@ done
 description = "Run repository checks on all tracked files"
 run = "lefthook run check"
 
+[tasks.pre-commit]
+hide = true
+description = "Run pre-commit checks on staged files"
+run = "lefthook run pre-commit"
+
 [tasks.test-deployment]
 description = "Test mise bootstrap deployment in isolated home directories"
 run = "go test ./tests"
@@ -267,7 +272,7 @@ file = "setup/install-bun.sh"
 
 [tasks.install-git-hooks]
 description = "Install repository Git hooks with Lefthook"
-run = "lefthook install"
+run = "mise generate git-pre-commit --write --task=pre-commit"
 
 [tasks.upgrade]
 description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
