@@ -1,29 +1,8 @@
 #:schema https://mise.jdx.dev/schema/mise-task.json
 
-[format-check-tools]
-hide = true
-description = "Check required formatters for the repository"
-run = '''
-set -eu
-
-missing_tools=""
-for tool in gofmt stylua shfmt prettier taplo; do
-  if ! command -v "$tool" >/dev/null 2>&1; then
-    missing_tools="$missing_tools $tool"
-  fi
-done
-
-if [ -n "$missing_tools" ]; then
-  echo "Missing required formatter(s):$missing_tools" >&2
-  echo "Install them first, then run: mise run format" >&2
-  exit 1
-fi
-'''
-
 [format]
 description = "Format the repository"
 run = [
-  { task = "format-check-tools" },
   { tasks = [
     "format-go",
     "format-lua",
