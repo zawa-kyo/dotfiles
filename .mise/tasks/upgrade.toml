@@ -39,7 +39,7 @@ run = "mise upgrade --local"
 
 [upgrade-mise-tools]
 description = "Upgrade local and global mise-managed tools within their configured version ranges"
-run = ["mise run upgrade-local-tools", "mise run upgrade-global-tools"]
+run = [{ task = "upgrade-local-tools" }, { task = "upgrade-global-tools" }]
 
 [upgrade-nvim-plugins]
 description = "Upgrade Neovim plugins managed by lazy.nvim"
