@@ -46,19 +46,25 @@ pre-commit:
       run: test -z "$(gofmt -l {staged_files})"
     - name: shfmt
       glob:
+        - ".mise/tasks/*"
         - "bin/*"
         - "*.bash"
         - "**/*.bash"
         - "*.sh"
         - "**/*.sh"
+      exclude:
+        - ".mise/tasks/*.toml"
       run: shfmt -d {staged_files}
     - name: ShellCheck
       glob:
+        - ".mise/tasks/*"
         - "bin/*"
         - "*.bash"
         - "**/*.bash"
         - "*.sh"
         - "**/*.sh"
+      exclude:
+        - ".mise/tasks/*.toml"
       run: shellcheck {staged_files}
     - name: Gitleaks
       run: gitleaks git --pre-commit --redact --staged --verbose
@@ -112,19 +118,25 @@ check:
       run: go vet ./...
     - name: shfmt
       glob:
+        - ".mise/tasks/*"
         - "bin/*"
         - "*.bash"
         - "**/*.bash"
         - "*.sh"
         - "**/*.sh"
+      exclude:
+        - ".mise/tasks/*.toml"
       run: shfmt -d {all_files}
     - name: ShellCheck
       glob:
+        - ".mise/tasks/*"
         - "bin/*"
         - "*.bash"
         - "**/*.bash"
         - "*.sh"
         - "**/*.sh"
+      exclude:
+        - ".mise/tasks/*.toml"
       run: shellcheck {all_files}
     - name: Gitleaks
       run: gitleaks dir --redact --verbose .

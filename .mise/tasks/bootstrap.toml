@@ -1,0 +1,38 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+[install-apm]
+hide = true
+description = "Install apm-managed AI skills"
+run = ["mise -C ~ install apm", "mise -C ~ exec -- apm install -g --frozen"]
+
+[install]
+description = "Compatibility entrypoint for the standard machine bootstrap"
+run = "mise bootstrap"
+
+[install-global-tools]
+hide = true
+description = "Install tools declared in the linked global mise configuration"
+run = "mise -C ~ install"
+
+[bootstrap-common]
+hide = true
+description = "Finish cross-platform setup not covered by declarative bootstrap steps"
+run = [
+  { task = "install-global-tools" },
+  { task = "install-apm" },
+  { task = "install-bun" },
+  { task = "install-git-hooks" },
+]
+
+[bootstrap]
+hide = true
+description = "Finish setup not covered by declarative bootstrap steps"
+run = [{ task = "bootstrap-common" }]
+
+[install-bun]
+description = "Install Bun globals outside the repository"
+file = "setup/install-bun.sh"
+
+[install-git-hooks]
+description = "Install repository Git hooks with Lefthook"
+run = "mise generate git-pre-commit --write --task=pre-commit"

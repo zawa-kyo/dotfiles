@@ -1,0 +1,13 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+[format]
+description = "Format the repository"
+run = [
+  { tasks = [
+    "format-go",
+    "format-lua",
+    "format-shell",
+    "format-prettier",
+    "format-toml",
+  ] },
+]

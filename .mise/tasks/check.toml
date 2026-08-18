@@ -1,0 +1,14 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+[check]
+description = "Run repository checks on all tracked files"
+run = "lefthook run check"
+
+[pre-commit]
+hide = true
+description = "Run pre-commit checks on staged files"
+run = "lefthook run pre-commit"
+
+[test-deployment]
+description = "Test mise bootstrap deployment in isolated home directories"
+run = "go test ./tests"

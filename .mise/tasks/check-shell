@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#MISE description="Check tracked shell scripts with ShellCheck"
+
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- \
+	'*.sh' '*.bash' 'bin/*' '.mise/tasks/*' \
+	':(exclude).mise/tasks/*.toml' |
+	while IFS= read -r -d '' file; do
+		if [ -f "$file" ]; then
+			printf '%s\0' "$file"
+		fi
+	done >"$tmpfile"
+if [ -s "$tmpfile" ]; then
+	xargs -0 shellcheck <"$tmpfile"
+fi

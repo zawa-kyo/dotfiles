@@ -1,0 +1,49 @@
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+[upgrade]
+description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
+run = [
+  { task = "upgrade-mise-tools" },
+  { task = "upgrade-apm" },
+  { task = "upgrade-nvim-plugins" },
+  { task = "upgrade-bun" },
+  { task = "upgrade-brew" },
+]
+
+[upgrade-apm]
+description = "Update apm-managed AI skills and lock file"
+run = [
+  "mise -C ~ install apm",
+  "mise -C ~ exec -- apm update -g --yes",
+  "mise bootstrap dotfiles add --yes ~/.apm/apm.lock.yaml",
+]
+
+[upgrade-brew]
+description = "Upgrade Homebrew packages and sync the tracked Brewfile"
+run = [
+  "brew upgrade",
+  "brew bundle dump --file=setup/homebrew/Brewfile --force",
+]
+
+[upgrade-bun]
+description = "Update Bun global packages to their latest versions"
+run = "bash setup/install-bun.sh upgrade"
+
+[upgrade-global-tools]
+description = "Upgrade global mise tools within their configured version ranges"
+run = "mise -C ~ upgrade"
+
+[upgrade-local-tools]
+description = "Upgrade local mise tools within their configured version ranges"
+run = "mise upgrade --local"
+
+[upgrade-mise-tools]
+description = "Upgrade local and global mise-managed tools within their configured version ranges"
+run = [{ task = "upgrade-local-tools" }, { task = "upgrade-global-tools" }]
+
+[upgrade-nvim-plugins]
+description = "Upgrade Neovim plugins managed by lazy.nvim"
+run = '''
+XDG_CACHE_HOME=/tmp XDG_STATE_HOME=/tmp XDG_CONFIG_HOME="$PWD/dotfiles/editors" \
+nvim --headless --cmd 'set runtimepath^=dotfiles/editors/nvim' -u dotfiles/editors/nvim/init.lua "+Lazy! update" +qa
+'''

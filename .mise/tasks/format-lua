@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#MISE hide=true
+#MISE description="Format Lua files with Stylua"
+
+set -eu
+
+tmpfile="$(mktemp)"
+trap 'rm -f "$tmpfile"' EXIT
+
+git ls-files -z -- '*.lua' |
+	while IFS= read -r -d '' file; do
+		if [ -f "$file" ]; then
+			printf '%s\0' "$file"
+		fi
+	done >"$tmpfile"
+if [ -s "$tmpfile" ]; then
+	xargs -0 stylua <"$tmpfile"
+fi
