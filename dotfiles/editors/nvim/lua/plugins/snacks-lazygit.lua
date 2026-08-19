@@ -8,7 +8,7 @@ return {
       function()
         require("snacks").lazygit()
       end,
-      mode = { "n", "t" },
+      mode = "n",
       desc = "Toggle lazygit",
     },
     {
