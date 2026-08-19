@@ -43,6 +43,10 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 -- Override V behavior
 keymap("n", "V", "v$", opts("Select until the end of the line"))
 
+-- Toggle comments with Neovim's built-in comment operator.
+keymap("n", "tc", "gcc", { desc = "Toggle comment", remap = true, silent = true })
+keymap("n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true, silent = true })
+
 --------------------
 -- Insert Mode
 --------------------
@@ -122,6 +126,10 @@ keymap("x", "<BS>", '"_d', opts("Delete selection with backspace"))
 
 -- Replace selection with a newline (VSCode-like Enter)
 keymap("x", "<CR>", "c<CR>", opts("Replace selection with newline"))
+
+-- Toggle comments with Neovim's built-in comment operator.
+keymap("x", "tc", "gc", { desc = "Toggle comment", remap = true, silent = true })
+keymap("x", "<leader>/", "gc", { desc = "Toggle comment", remap = true, silent = true })
 
 -- Move selected lines
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts("Move selected lines up"))
