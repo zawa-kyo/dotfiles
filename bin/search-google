@@ -7,8 +7,18 @@ main() {
 	local search_query
 	local encoded_query
 
+	if [ "$#" -eq 0 ]; then
+		printf 'usage: search-google QUERY\n' >&2
+		exit 1
+	fi
+
+	command -v jq >/dev/null 2>&1 || {
+		printf 'jq is required\n' >&2
+		exit 1
+	}
+
 	search_query="$*"
-	encoded_query="${search_query// /+}"
+	encoded_query="$(jq -nr --arg query "$search_query" '$query | @uri')"
 	exec open "https://www.google.com/search?q=$encoded_query"
 }
 
