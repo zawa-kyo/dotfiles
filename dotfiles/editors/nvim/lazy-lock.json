@@ -61,7 +61,6 @@
   "onedark.nvim": { "branch": "master", "commit": "df4792accde9db0043121f32628bcf8e645d9aea" },
   "overlook.nvim": { "branch": "master", "commit": "a86f2afc05278a485978cd308fab920b0a490282" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
-  "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "readermode.nvim": { "branch": "main", "commit": "210df66f2baea8834b66a426e8b606d9998a163f" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "tiny-code-action.nvim": { "branch": "main", "commit": "0d040ed81f7953118b81cd12681fcdfcac069803" },
