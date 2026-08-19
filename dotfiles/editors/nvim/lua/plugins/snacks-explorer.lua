@@ -19,9 +19,14 @@ local function configure_preview_window(picker)
 end
 
 -- Return explorer options with preview rendered in the main editor window.
-local function explorer_opts()
+local function explorer_opts(on_show)
   return vim.tbl_deep_extend("force", file_visibility.navigation_opts(), {
-    on_show = configure_preview_window,
+    on_show = function(picker)
+      configure_preview_window(picker)
+      if on_show then
+        on_show()
+      end
+    end,
     layout = {
       preset = "sidebar",
       preview = { enabled = true, main = true },
@@ -63,12 +68,17 @@ end
 local function reveal_in_explorer()
   local Snacks = require("snacks")
   local explorer = Snacks.picker.get({ source = "explorer" })[1]
+  local file = vim.api.nvim_buf_get_name(0)
 
   if not explorer then
-    Snacks.explorer.open(explorer_opts())
+    -- Reveal after the picker is attached to the current tab to avoid opening a duplicate.
+    Snacks.explorer.open(explorer_opts(function()
+      Snacks.explorer.reveal({ file = file })
+    end))
+    return
   end
 
-  Snacks.explorer.reveal()
+  Snacks.explorer.reveal({ file = file })
 end
 
 return {
