@@ -42,12 +42,7 @@ return {
       end
 
       return function()
-        local clients = {}
-        if vim.lsp.get_clients then
-          clients = vim.lsp.get_clients({ bufnr = 0 })
-        else
-          clients = vim.lsp.get_active_clients({ bufnr = 0 })
-        end
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
 
         local names = {}
         for _, client in ipairs(clients) do

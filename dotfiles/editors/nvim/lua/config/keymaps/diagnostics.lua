@@ -53,10 +53,10 @@ end
 
 -- Diagnostics
 keymap("n", "]d", function()
-  vim.diagnostic.goto_next({ float = false })
+  vim.diagnostic.jump({ count = 1 })
 end, opts("Go to next diagnostic"))
 keymap("n", "[d", function()
-  vim.diagnostic.goto_prev({ float = false })
+  vim.diagnostic.jump({ count = -1 })
 end, opts("Go to previous diagnostic"))
 
 if not vim.g.vscode then
