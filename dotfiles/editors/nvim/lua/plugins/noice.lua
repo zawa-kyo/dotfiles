@@ -1,7 +1,6 @@
 -- Unified message/notification manager
 -- - Captures all messages (cmdline, LSP, vim.notify) with a unified UI & history.
--- - nvim-notify: toast-style renderer with its own :Notifications window.
--- - Noice: higher-level manager; here we use nvim-notify as its backend.
+-- - Uses Snacks as the notification renderer.
 local hover_max_width_ratio = 0.6
 local hover_max_height_ratio = 0.4
 
@@ -23,7 +22,6 @@ return {
 
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify", -- used as the notify backend UI
   },
 
   opts = {
@@ -31,7 +29,6 @@ return {
       -- Use Treesitter/markdown improvements for hover/signature/docs
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-        ["vim.lsp.util.stylize_markdown"] = true,
       },
 
       hover = {
@@ -76,10 +73,9 @@ return {
       lsp_doc_border = true,
     },
 
-    -- Have Noice handle vim.notify and render via nvim-notify
+    -- Have Noice handle vim.notify and render via Snacks.
     notify = {
       enabled = true,
-      backend = "notify",
     },
 
     -- Keep regular messages managed & stored in Noice history
