@@ -450,6 +450,29 @@ checksum = "sha256:124e5c44dd05abd8f2019bb23e31cc32d700e7f2f15f74692afde53b8c30a
 url = "https://github.com/orf/gping/releases/download/gping-v1.20.4/gping-macOS-arm64.tar.gz"
 url_api = "https://api.github.com/repos/orf/gping/releases/assets/456988041"
 
+[[tools.gws]]
+version = "0.22.5"
+backend = "github:googleworkspace/cli"
+
+[tools.gws."platforms.linux-arm64"]
+checksum = "sha256:94490295d9580e1e88574e715a0a162991747d12d62f8c7b8dcc8268b6c1cea0"
+url = "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/googleworkspace/cli/releases/assets/385726970"
+provenance = "github-attestations"
+
+[tools.gws."platforms.linux-x64"]
+checksum = "sha256:de78ecdbd2f1a84cca0063a7ecbc440240fc14b6ebccbb17f4646b792a8c5c1f"
+url = "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/googleworkspace/cli/releases/assets/385726985"
+provenance = "github-attestations"
+
+[tools.gws."platforms.macos-arm64"]
+checksum = "sha256:1d2a9ffd5bc9b2c2c4b48630daf082fad13d9e57d741988a2c248eed562f7dac"
+url = "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/googleworkspace/cli/releases/assets/385726972"
+provenance = "github-attestations"
+provenance_verified = true
+
 [[tools.java]]
 version = "26.0.2"
 backend = "core:java"
