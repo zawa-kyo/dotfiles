@@ -10,7 +10,9 @@ source "$script_dir/../libexec/require.sh"
 
 main() {
 	local abbreviations_file
+	local abbreviation
 	local abbreviation_column_width
+	local expansion
 	local selected
 
 	abbreviations_file="${XDG_CONFIG_HOME:-$HOME/.config}/zsh-abbr/user-abbreviations"
