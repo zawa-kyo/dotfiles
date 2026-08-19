@@ -3,13 +3,8 @@
 
 set -euo pipefail
 
-bootstrap_utils_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../libexec"
-if [ ! -f "$bootstrap_utils_dir/script-path.sh" ] && [ -L "${BASH_SOURCE[0]}" ]; then
-	bootstrap_utils_dir="$(cd "$(dirname "$(readlink "${BASH_SOURCE[0]}")")" && pwd)/../libexec"
-fi
-source "$bootstrap_utils_dir/script-path.sh"
-
-script_dir="$(resolve_script_dir "${BASH_SOURCE[0]}")"
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "$script_path")" && pwd)"
 source "$script_dir/../libexec/log.sh"
 source "$script_dir/../libexec/fzf.sh"
 source "$script_dir/../libexec/require.sh"
@@ -25,7 +20,7 @@ emit_chrome_bookmarks() {
 	local root
 	local path
 	local profile
-	local reader="$script_dir/../libexec/bookmarks.go"
+	local reader="$script_dir/../libexec/bookmarks/main.go"
 
 	root="${CHROME_BOOKMARKS_ROOT:-$HOME/Library/Application Support/Google/Chrome}"
 
@@ -39,7 +34,7 @@ emit_chrome_bookmarks() {
 
 emit_safari_bookmarks() {
 	local plist
-	local reader="$script_dir/../libexec/bookmarks.go"
+	local reader="$script_dir/../libexec/bookmarks/main.go"
 
 	plist="${SAFARI_BOOKMARKS_PLIST:-$HOME/Library/Safari/Bookmarks.plist}"
 	[ -f "$plist" ] || return 0
@@ -95,6 +90,7 @@ main() {
 	local _location
 	local _title
 	local url
+	local BOOKMARK_PREVIEW_SCRIPT
 
 	require_command go
 
@@ -130,25 +126,13 @@ main() {
 		exit 0
 	fi
 
-	# shellcheck disable=SC2016 # Expanded by the nested preview shell.
+	BOOKMARK_PREVIEW_SCRIPT="$script_dir/../libexec/bookmarks/preview.sh"
+	export BOOKMARK_PREVIEW_SCRIPT
+
+	# shellcheck disable=SC2016 # Expanded by the preview shell.
 	selected="$(
 		printf '%s\n' "$bookmarks" |
-			run_fzf_with_preview '
-          /bin/sh -c '"'"'
-            browser="$1"
-            location="$2"
-            title="$3"
-            url="$4"
-            host="${url#*://}"
-            host="${host%%/*}"
-
-            printf "Browser  : %s\n" "$browser"
-            printf "Location : %s\n" "$location"
-            printf "Title    : %s\n" "$title"
-            printf "Host     : %s\n" "${host:-N/A}"
-            printf "URL      : %s\n" "$url"
-          '"'"' sh {1} {2} {3} {4}
-        ' \
+			run_fzf_with_preview '"$BOOKMARK_PREVIEW_SCRIPT" {1} {2} {3} {4}' \
 				--prompt='bookmarks> ' \
 				--delimiter="$(printf '\t')" \
 				--with-nth=1,2,3,4 \

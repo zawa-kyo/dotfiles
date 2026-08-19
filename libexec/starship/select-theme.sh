@@ -4,8 +4,8 @@ set -euo pipefail
 
 script_path="$(realpath "${BASH_SOURCE[0]}")"
 script_dir="$(cd "$(dirname "$script_path")" && pwd)"
-source "$script_dir/fzf.sh"
-source "$script_dir/require.sh"
+source "$script_dir/../fzf.sh"
+source "$script_dir/../require.sh"
 
 main() {
   local themes_dir="${STARSHIP_THEMES_DIR:-$HOME/.config/starship/themes}"

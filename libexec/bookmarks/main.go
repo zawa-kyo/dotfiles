@@ -29,14 +29,14 @@ func main() {
 // Parse the requested browser source and emit stable TSV records.
 func run(args []string, output io.Writer) error {
 	if len(args) == 0 {
-		return errors.New("usage: go run bookmarks.go chrome PROFILE PATH | safari PATH")
+		return errors.New("usage: go run main.go chrome PROFILE PATH | safari PATH")
 	}
 
 	entries := make(map[string]struct{})
 	switch args[0] {
 	case "chrome":
 		if len(args) != 3 {
-			return errors.New("usage: go run bookmarks.go chrome PROFILE PATH")
+			return errors.New("usage: go run main.go chrome PROFILE PATH")
 		}
 		data, err := readJSONFile(args[2])
 		if err != nil {
@@ -45,7 +45,7 @@ func run(args []string, output io.Writer) error {
 		collectChromeBookmarks(data, args[1], entries)
 	case "safari":
 		if len(args) != 2 {
-			return errors.New("usage: go run bookmarks.go safari PATH")
+			return errors.New("usage: go run main.go safari PATH")
 		}
 		data, err := readSafariPlist(args[1])
 		if err != nil {

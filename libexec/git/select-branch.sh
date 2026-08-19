@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$script_dir/fzf.sh"
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/fzf.sh"
 
 # Ensure required Git and fzf commands are available.
 ensure_git_and_fzf() {
-  require_command git
+  require_command git || return 1
   ensure_fzf_command
 }
 
@@ -25,7 +24,8 @@ select_branch_ref() {
       run_fzf_with_preview "$preview_cmd"
     ;;
   *)
-    fail "unsupported branch-ref mode: $mode"
+    printf 'unsupported branch-ref mode: %s\n' "$mode" >&2
+    return 1
     ;;
   esac
 }
@@ -43,13 +43,15 @@ resolve_local_branch_name() {
   remote)
     local_branch="${ref_name#*/}"
     if [ -z "$local_branch" ] || [ "$local_branch" = "$ref_name" ]; then
-      fail "failed to derive local branch name from remote branch: $ref_name"
+      printf 'failed to derive local branch name from remote branch: %s\n' "$ref_name" >&2
+      return 1
     fi
 
     printf '%s\n' "$local_branch"
     ;;
   *)
-    fail "unsupported branch-ref mode: $mode"
+    printf 'unsupported branch-ref mode: %s\n' "$mode" >&2
+    return 1
     ;;
   esac
 }
@@ -65,6 +67,9 @@ require_matching_branch_upstream() {
   )"
 
   if [ "$upstream_branch" != "$ref_name" ]; then
-    fail "local branch already exists with different upstream: $local_branch${upstream_branch:+ -> $upstream_branch}"
+    printf 'local branch already exists with different upstream: %s%s\n' \
+      "$local_branch" \
+      "${upstream_branch:+ -> $upstream_branch}" >&2
+    return 1
   fi
 }

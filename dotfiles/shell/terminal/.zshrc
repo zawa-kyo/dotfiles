@@ -108,21 +108,21 @@ zstyle ":completion:*:commands" rehash 1
 # Reveal a repository by changing into it.
 reveal-repository () {
   local repo
-  repo=$(bash "${DOTFILES_ROOT_DIR}/libexec/select-repository.sh" "$@") || return
+  repo=$(bash "${DOTFILES_ROOT_DIR}/libexec/git/select-repository.sh" "$@") || return
   cd "$repo"
 }
 
 # Reveal a repository with zoxide.
 reveal-repository-with-zoxide () {
   local repo
-  repo=$(bash "${DOTFILES_ROOT_DIR}/libexec/select-repository.sh" "$@") || return
+  repo=$(bash "${DOTFILES_ROOT_DIR}/libexec/git/select-repository.sh" "$@") || return
   z "$repo"
 }
 
 # Switch Starship config for the current shell session.
 search-theme () {
   local selected_config
-  selected_config=$(bash "${DOTFILES_ROOT_DIR}/libexec/select-starship-theme.sh") || return
+  selected_config=$(bash "${DOTFILES_ROOT_DIR}/libexec/starship/select-theme.sh") || return
   export STARSHIP_CONFIG="$selected_config"
   printf 'starship theme: %s\n' "${selected_config:t:r}"
 }
