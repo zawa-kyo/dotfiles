@@ -6,18 +6,11 @@ local keymap = utils.getKeymap
 -- Escape: Close helpers
 --------------------
 
--- Close hover when cursor is in a hover window
-local function close_hover_in_hover()
+-- Dismiss Noice messages before closing floating windows.
+local function dismiss_noice()
   local ok, noice = pcall(require, "noice")
   if ok and noice and noice.cmd then
-    noice.cmd("dismiss")
-  end
-
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    local config = vim.api.nvim_win_get_config(win)
-    if config.relative ~= "" then
-      pcall(vim.api.nvim_win_close, win, true)
-    end
+    pcall(noice.cmd, "dismiss")
   end
 end
 
@@ -53,7 +46,7 @@ local function is_explorer_window(win)
     return false
   end
 
-  for _, picker in ipairs(snacks.picker.get({ source = "explorer" })) do
+  for _, picker in ipairs(snacks.picker.get({ source = "explorer", tab = false })) do
     local layout = picker.layout
     if layout then
       local windows = { layout.root }
@@ -105,8 +98,9 @@ end
 local function close_window()
   local current_win = vim.api.nvim_get_current_win()
 
-  if is_floating_window(current_win) then
-    close_hover_in_hover()
+  if is_closable_floating_window(current_win) then
+    dismiss_noice()
+    close_windows(is_closable_floating_window)
     return
   end
 
