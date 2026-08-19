@@ -4,16 +4,8 @@ local file_exclusions = require("config.file-exclusions")
 local utils = require("config.utils")
 local is_hidden_visible = true
 
--- Resolve the project root using project.nvim or common markers.
+-- Resolve the project root using common project markers.
 local function project_root()
-  local ok, project = pcall(require, "project_nvim.project")
-  if ok then
-    local root = project.get_project_root()
-    if root and root ~= "" then
-      return root
-    end
-  end
-
   local root = vim.fs.root(0, { ".git", "Makefile", "package.json" })
   return root or (vim.uv.cwd() or vim.fn.getcwd())
 end

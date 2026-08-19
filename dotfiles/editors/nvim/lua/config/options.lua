@@ -17,12 +17,8 @@ local options = {
   cursorline = true,
   -- Emphasize only the line number of the cursor line
   cursorlineopt = "number",
-  -- Preferred file encoding
-  encoding = "utf-8",
   -- Convert tabs to spaces
   expandtab = true,
-  -- Encoding written to files
-  fileencoding = "utf-8",
   -- Force Neovim to append a trailing newline when writing files
   fixendofline = true,
   -- Hide fold column for built-in folding
@@ -106,6 +102,6 @@ for k, v in pairs(options) do
 end
 
 -- Move left and right across lines
-vim.cmd("set whichwrap=b,s,h,l,<,>,[,],~")
+vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 
 -- Note: Avoid auto-changing CWD on BufEnter to reduce conflicts
