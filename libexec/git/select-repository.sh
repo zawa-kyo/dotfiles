@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$script_dir/fzf.sh"
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/fzf.sh"
 
+# Select a repository interactively.
 select_repository() {
   local query="${*:-}"
   local preview_cmd
@@ -26,6 +26,7 @@ select_repository() {
   ghq list --full-path | run_fzf_with_preview "$preview_cmd"
 }
 
+# Resolve a repository directly or fall back to interactive selection.
 find_repository() {
   local repo
   local ghq_root
@@ -64,6 +65,7 @@ EOF
   select_repository "$@"
 }
 
+# Print the selected repository path.
 main() {
   find_repository "$@"
 }

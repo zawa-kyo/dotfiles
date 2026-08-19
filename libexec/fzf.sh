@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$script_dir/require.sh"
-
-# Print an fzf-related error and abort the current flow.
-fzf_fail() {
-  local message="$1"
-
-  if command -v fail >/dev/null 2>&1; then
-    fail "$message"
-  else
-    printf '%s\n' "$message" >&2
-    return 1
-  fi
-}
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/require.sh"
 
 # Ensure the fzf command is available.
 ensure_fzf_command() {

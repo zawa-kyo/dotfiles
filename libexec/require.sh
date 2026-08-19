@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-# Print a requirement error and abort the current flow.
+# Print a requirement error and return control to the caller.
 require_fail() {
   local message="$1"
 
-  if command -v fail >/dev/null 2>&1; then
-    fail "$message"
-  else
-    printf '%s\n' "$message" >&2
-    return 1
-  fi
+  printf '%s\n' "$message" >&2
+  return 1
 }
 
 # Ensure the given command is available.

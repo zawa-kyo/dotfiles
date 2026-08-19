@@ -5,7 +5,7 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 dotfiles_dir="${1:-$(cd "$script_dir/../.." && pwd)}"
 source "$script_dir/../../libexec/log.sh"
-source "$script_dir/../../libexec/path.sh"
+source "$script_dir/path.sh"
 
 # Remove links and placeholders owned by superseded layouts.
 cleanup_obsolete_links() {
