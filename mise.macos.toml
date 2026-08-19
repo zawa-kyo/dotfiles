@@ -4,6 +4,24 @@
 "~/Library/Application Support/lazygit/config.yml" = "dotfiles/tools/lazygit/config.yml"
 "~/Library/Preferences/com.github.dalance.procs/config.toml" = "dotfiles/tools/procs/procs.toml"
 "~/.config/borders/bordersrc" = "dotfiles/tools/borders/bordersrc"
+"~/.config/mise/config.macos.toml" = "dotfiles/tools/mise/config.macos.toml"
+
+[tasks.upgrade]
+description = "Upgrade mise-managed tools, Bun globals, and Homebrew packages"
+run = [
+  { task = "upgrade-mise-tools" },
+  { task = "upgrade-apm" },
+  { task = "upgrade-nvim-plugins" },
+  { task = "upgrade-bun" },
+  { task = "upgrade-brew" },
+]
+
+[tasks.upgrade-brew]
+description = "Upgrade Homebrew packages and sync the tracked Brewfile"
+run = [
+  "brew upgrade",
+  "brew bundle dump --file=setup/homebrew/Brewfile --force",
+]
 
 [tasks.install-brew]
 description = "Install missing Homebrew dependencies without upgrading existing packages"

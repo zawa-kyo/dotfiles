@@ -30,7 +30,7 @@ aws-cli = { version = "latest", symlink_bins = "true" }
 bat = "latest"
 ccsession = "latest"
 copilot = "latest"
-container = "latest"
+container = { version = "latest", os = ["macos"] }
 delta = "latest"
 eza = "0.23.4"
 fastfetch = "latest"

@@ -6,14 +6,16 @@ dotfiles の通常の配備には mise の標準機能を使います。この�
 
 ## 役割分担
 
-| 役割                           | 管理場所                          |
-| ------------------------------ | --------------------------------- |
-| 共通の dotfiles 宣言           | `mise.toml` の `[dotfiles]`       |
-| macOS 固有の dotfiles 宣言     | `mise.macos.toml` の `[dotfiles]` |
-| 配備前に必要なデータ移行       | `setup/migrations/`               |
-| 配備後のツールや依存関係の導入 | `mise.toml` の bootstrap タスク   |
-| Homebrew 依存関係の導入        | 明示的な `mise run install-brew`  |
-| 配備と移行の結合テスト         | `tests/` の Go テスト             |
+| 役割                             | 管理場所                                         |
+| -------------------------------- | ------------------------------------------------ |
+| 共通の dotfiles 宣言             | `mise.toml` の `[dotfiles]`                      |
+| macOS 固有の dotfiles 宣言       | `mise.macos.toml` の `[dotfiles]`                |
+| 共通のグローバル mise 設定       | `dotfiles/tools/mise/` の共通設定                |
+| macOS 固有のグローバル mise 設定 | `dotfiles/tools/mise/config.macos.toml`          |
+| 配備前に必要なデータ移行         | `setup/migrations/`                              |
+| 配備後のツールや依存関係の導入   | `mise.toml` の bootstrap タスク                  |
+| Homebrew 依存関係の導入と更新    | `mise.macos.toml` の `install-brew` と `upgrade` |
+| 配備と移行の結合テスト           | `tests/` の Go テスト                            |
 
 初回セットアップには `mise bootstrap` を使います。`mise run install` は同じ処理を呼びます。mise とは別の配備一覧やリンク記録を追加せず、`apply`、`status`、`unapply` も独自に実装しません。
 
@@ -60,7 +62,7 @@ mise は、すべての配備先を一括して記録しているわけではあ
 初回セットアップは `mise trust`、`mise bootstrap --yes` の順に実行します。post-dotfiles hook は、信頼済みのリポジトリから配備したグローバル mise 設定だけを後続処理のために信頼します。
 
 Homebrew の導入は bootstrap に含めません。
-Brewfile は、明示的に実行する `mise run install-brew` と `mise run --continue-on-error upgrade` から扱います。
+Brewfile は、macOS で明示的に実行する `mise run install-brew` と `mise run --continue-on-error upgrade` から扱います。Linux の `upgrade` には Homebrew の更新を含めません。
 これにより、標準セットアップは Homebrew の状態に左右されません。
 
 ## テスト方針
