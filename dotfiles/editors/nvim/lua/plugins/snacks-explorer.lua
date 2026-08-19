@@ -101,10 +101,4 @@ return {
       desc = "Show or reveal in explorer",
     },
   },
-  opts = {
-    explorer = {
-      replace_netrw = false,
-      trash = true,
-    },
-  },
 }

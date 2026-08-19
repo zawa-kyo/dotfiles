@@ -26,10 +26,4 @@ return {
       desc = "Run lazygit with the log of the current file",
     },
   },
-
-  opts = {
-    lazygit = {
-      enabled = true,
-    },
-  },
 }
