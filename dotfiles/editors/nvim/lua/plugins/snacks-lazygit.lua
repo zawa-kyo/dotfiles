@@ -8,7 +8,7 @@ return {
       function()
         require("snacks").lazygit()
       end,
-      mode = { "n", "t" },
+      mode = "n",
       desc = "Toggle lazygit",
     },
     {
@@ -24,12 +24,6 @@ return {
         require("snacks").lazygit.log_file()
       end,
       desc = "Run lazygit with the log of the current file",
-    },
-  },
-
-  opts = {
-    lazygit = {
-      enabled = true,
     },
   },
 }

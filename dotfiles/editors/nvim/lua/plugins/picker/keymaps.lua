@@ -240,13 +240,6 @@ M.keys = {
     desc = "Search Tree-sitter symbols in current buffer",
   },
   {
-    "sT",
-    function()
-      picker().todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
-    end,
-    desc = "Search todo comments (Todo/Fix/Fixme)",
-  },
-  {
     "su",
     function()
       picker().undo()
