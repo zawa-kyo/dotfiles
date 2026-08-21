@@ -76,17 +76,17 @@ keymap("x", "p", '"_dP', opts("Paste without changing register"))
 -- Preserve cursor on yank
 keymap("x", "y", "mzy`z", opts("Yank the selected text"))
 
-local function yank_file_path_range(start_line, end_line)
+-- Yank the relative file path, optionally including a selected line range.
+local function yank_file_reference(start_line, end_line)
   local path = vim.fn.expand("%:.")
   if path == "" then
     path = "No Name"
   end
 
-  local last_line = vim.fn.line("$")
   local text
 
-  -- Entire file selected: path only.
-  if start_line == 1 and end_line == last_line then
+  -- No range or entire file selected: path only.
+  if not start_line or not end_line or (start_line == 1 and end_line == vim.fn.line("$")) then
     text = path
     -- Single line selected: path:line.
   elseif start_line == end_line then
@@ -113,13 +113,12 @@ keymap("x", "Y", function()
   if start_line > end_line then
     start_line, end_line = end_line, start_line
   end
-  yank_file_path_range(start_line, end_line)
+  yank_file_reference(start_line, end_line)
 end, opts("Yank file path and line range"))
 
 keymap("n", "Y", function()
-  local line = vim.fn.line(".")
-  yank_file_path_range(line, line)
-end, opts("Yank file path and line"))
+  yank_file_reference()
+end, opts("Yank relative file path"))
 
 -- Delete selection without yanking
 keymap("x", "<BS>", '"_d', opts("Delete selection with backspace"))
