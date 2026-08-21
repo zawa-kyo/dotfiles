@@ -1,6 +1,8 @@
 return {
   "mvllow/modes.nvim",
 
+  -- Its scheduled WinEnter redraw resets the first character's cursor position in Snacks picker prompts.
+  enabled = false,
   event = "VeryLazy",
   cond = not vim.g.vscode,
 
