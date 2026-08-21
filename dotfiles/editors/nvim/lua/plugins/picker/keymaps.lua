@@ -25,7 +25,7 @@ M.keys = {
   {
     "sB",
     function()
-      picker().grep({ buffers = true })
+      picker().grep_buffers()
     end,
     desc = "Search words in current buffers",
   },
