@@ -20,7 +20,9 @@ printf '%s\n' "$script_dir"
 	command.Env = replaceEnvironment(os.Environ(), map[string]string{
 		"HELPER": filepath.Join(repo, "libexec", "fzf.sh"),
 	})
+
 	output, err := command.CombinedOutput()
+
 	if err != nil {
 		t.Fatalf("source fzf helper: %v\n%s", err, output)
 	}
@@ -47,7 +49,9 @@ printf 'continued\n'
 	command.Env = replaceEnvironment(os.Environ(), map[string]string{
 		"HELPER": filepath.Join(repo, "libexec", "require.sh"),
 	})
+
 	output, err := command.CombinedOutput()
+
 	if err != nil {
 		t.Fatalf("requirement helper exited the caller: %v\n%s", err, output)
 	}
