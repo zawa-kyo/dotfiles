@@ -83,18 +83,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/500652047"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.28"
+version = "2.36.29"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.28.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.29.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.28.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.29.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:7da0920aa124a60a7a5e7095cf91ed4553dbdbbbe2534b56759778f4c51ad3f8"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.28.pkg"
+checksum = "blake3:18dfdf64e4b13d3f3f7b8e0039a6ca0753020149319f74e7455e0e038cf9a5de"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.29.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -816,23 +816,23 @@ url = "https://github.com/charmbracelet/vhs/releases/download/v0.11.0/vhs_0.11.0
 url_api = "https://api.github.com/repos/charmbracelet/vhs/releases/assets/370996182"
 
 [[tools.worktrunk]]
-version = "0.73.0"
+version = "0.74.0"
 backend = "aqua:max-sixty/worktrunk"
 
 [tools.worktrunk."platforms.linux-arm64"]
-checksum = "sha256:71e438393ffb56cc6cdce15549656c49ebe6969292c173b1f92e0727ea6de6a0"
-url = "https://github.com/max-sixty/worktrunk/releases/download/v0.73.0/worktrunk-aarch64-unknown-linux-musl.tar.xz"
-url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/511924347"
+checksum = "sha256:24ad091af9fa3020b54101a4e0dc4ba17870d7e3da11d20f543b1ebd87c730ce"
+url = "https://github.com/max-sixty/worktrunk/releases/download/v0.74.0/worktrunk-aarch64-unknown-linux-musl.tar.xz"
+url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/514671752"
 
 [tools.worktrunk."platforms.linux-x64"]
-checksum = "sha256:75b77cf7dad667dab4a6db91b7ae8e8eb263208514855a6e0fec22ae93f10a42"
-url = "https://github.com/max-sixty/worktrunk/releases/download/v0.73.0/worktrunk-x86_64-unknown-linux-musl.tar.xz"
-url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/511924365"
+checksum = "sha256:28392033912ab0a9027192d9975284787b29f080b4f2fd6298c89fffecf34c1f"
+url = "https://github.com/max-sixty/worktrunk/releases/download/v0.74.0/worktrunk-x86_64-unknown-linux-musl.tar.xz"
+url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/514671796"
 
 [tools.worktrunk."platforms.macos-arm64"]
-checksum = "sha256:4d0d93518cf8a3fb6fb4138511833aab08e3239e7ec539fe324724750b360d94"
-url = "https://github.com/max-sixty/worktrunk/releases/download/v0.73.0/worktrunk-aarch64-apple-darwin.tar.xz"
-url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/511924344"
+checksum = "sha256:d5ac03b8f3df0d144a2c052274b70a6f750a8c1e82b1b2ba348257749fda5ae3"
+url = "https://github.com/max-sixty/worktrunk/releases/download/v0.74.0/worktrunk-aarch64-apple-darwin.tar.xz"
+url_api = "https://api.github.com/repos/max-sixty/worktrunk/releases/assets/514671731"
 
 [[tools.yazi]]
 version = "26.5.6"
