@@ -64,7 +64,7 @@ local options = {
   -- Keep cursor away from left/right edges
   sidescrolloff = 8,
   -- Always show the sign column
-  signcolumn = "yes",
+  signcolumn = "yes:2",
   -- Smart-case search (case-sensitive only when needed)
   smartcase = true,
   -- Maintain indentation on new lines

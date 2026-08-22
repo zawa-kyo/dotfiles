@@ -10,21 +10,6 @@ local servers = {
   "ts_ls", -- TypeScript
 }
 
-local required_executables = {
-  rust_analyzer = { vim.env.RUSTC or "rustc", "cargo" },
-}
-
--- Return whether a server's external runtime dependencies are available.
-local function can_enable(server)
-  for _, executable in ipairs(required_executables[server] or {}) do
-    if vim.fn.executable(executable) == 0 then
-      return false
-    end
-  end
-
-  return true
-end
-
 return {
   {
     "folke/neoconf.nvim",
@@ -75,6 +60,11 @@ return {
       })
 
       local function setup_server(server)
+        -- Mason installs rust-analyzer, but rustaceanvim owns its LSP setup.
+        if server == "rust_analyzer" then
+          return
+        end
+
         local common = require("config.lsp")
         vim.lsp.config(
           server,
@@ -83,9 +73,7 @@ return {
             on_attach = common.on_attach,
           })
         )
-        if can_enable(server) then
-          vim.lsp.enable(server)
-        end
+        vim.lsp.enable(server)
       end
 
       if type(mason_lspconfig.setup_handlers) == "function" then

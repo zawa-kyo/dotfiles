@@ -71,7 +71,7 @@
 | `q` | quickfix                | quickfix                              |
 | `r` | register                | レジスタ                              |
 | `s` | symbol/status           | シンボル、Git status                  |
-| `t` | tab / todo              | タブ、TODO                            |
+| `t` | tab / test / todo       | タブ、テスト、TODO                    |
 | `u` | undo                    | undo 履歴                             |
 | `w` | word / window           | 単語検索、ウィンドウ                  |
 | `z` | zoxide                  | zoxide で管理するディレクトリ         |
@@ -88,33 +88,40 @@
 
 ## サンプルキーバインド
 
-| Group        | Key          | Verb                    | Action                      |
-| ------------ | ------------ | ----------------------- | --------------------------- |
-| `g` (go)     | `gd`         | go definition           | 定義へジャンプ              |
-| `g` (go)     | `gr`         | go references           | 参照へジャンプ              |
-| `g` (go)     | `ge`         | go explorer             | Explorer とエディタ間を移動 |
-| `s` (search) | `sf`         | search file             | ファイル検索                |
-| `s` (search) | `sF`         | search recent           | 最近のファイル検索          |
-| `s` (search) | `sb`         | search buffer           | バッファ検索                |
-| `s` (search) | `sw`         | search word             | ファイル内検索              |
-| `s` (search) | `sW`         | search word workspace   | ワークスペース検索          |
-| `r` (reveal) | `rd`         | reveal diagnostic float | diagnostic float 表示       |
-| `r` (reveal) | `ra`         | reveal code actions     | code action 一覧表示        |
-| `r` (reveal) | `rq`         | reveal quickfix list    | quickfix を開く             |
-| `t` (toggle) | `ta`         | toggle auto-save        | 自動保存の ON/OFF           |
-| `t` (toggle) | `tt`         | toggle terminal         | ターミナルの ON/OFF         |
-| `t` (toggle) | `tq`         | toggle quickfix         | quickfix の ON/OFF          |
-| `t` (toggle) | `tl`         | toggle location list    | loclist の ON/OFF           |
-| `m` (modify) | `mr`         | modify rename           | rename                      |
-| `m` (modify) | `mf`         | modify format           | format                      |
-| `m` (modify) | `mw`         | modify word             | 直前検索を置換              |
-| `m` (modify) | `mW`         | modify word workspace   | quickfix 対象を置換         |
-| `[`, `]`     | `[d`         | cycle prev diagnostic   | 前の diagnostic             |
-| `[`, `]`     | `]d`         | cycle next diagnostic   | 次の diagnostic             |
-| `[`, `]`     | `[t`         | cycle prev tab          | 前のタブ                    |
-| `[`, `]`     | `]t`         | cycle next tab          | 次のタブ                    |
-| `<leader>`   | `<leader>/`  | toggle comment          | コメントの ON/OFF           |
-| `<leader>w`  | `<leader>ws` | window split            | 横分割                      |
-| `<leader>w`  | `<leader>wv` | window vsplit           | 縦分割                      |
-| `z`          | `zz`         | built-in center screen  | 画面中央へ                  |
-| `z`          | `zt`         | built-in top of screen  | 画面上へ移動                |
+| Group         | Key          | Verb                    | Action                      |
+| ------------- | ------------ | ----------------------- | --------------------------- |
+| `g` (go)      | `gd`         | go definition           | 定義へジャンプ              |
+| `g` (go)      | `gr`         | go references           | 参照へジャンプ              |
+| `g` (go)      | `ge`         | go explorer             | Explorer とエディタ間を移動 |
+| `s` (search)  | `sf`         | search file             | ファイル検索                |
+| `s` (search)  | `sF`         | search recent           | 最近のファイル検索          |
+| `s` (search)  | `sb`         | search buffer           | バッファ検索                |
+| `s` (search)  | `sw`         | search word             | ファイル内検索              |
+| `s` (search)  | `sW`         | search word workspace   | ワークスペース検索          |
+| `r` (reveal)  | `rd`         | reveal diagnostic float | diagnostic float 表示       |
+| `r` (reveal)  | `ra`         | reveal code actions     | code action 一覧表示        |
+| `r` (reveal)  | `rq`         | reveal quickfix list    | quickfix を開く             |
+| `t` (toggle)  | `ta`         | toggle auto-save        | 自動保存の ON/OFF           |
+| `t` (toggle)  | `tt`         | toggle terminal         | ターミナルの ON/OFF         |
+| `t` (toggle)  | `tq`         | toggle quickfix         | quickfix の ON/OFF          |
+| `t` (toggle)  | `tl`         | toggle location list    | loclist の ON/OFF           |
+| `m` (modify)  | `mr`         | modify rename           | rename                      |
+| `m` (modify)  | `mf`         | modify format           | format                      |
+| `m` (modify)  | `mw`         | modify word             | 直前検索を置換              |
+| `m` (modify)  | `mW`         | modify word workspace   | quickfix 対象を置換         |
+| `X` (execute) | `Xtn`        | execute test nearest    | 最も近いテストを実行        |
+| `X` (execute) | `Xtf`        | execute test file       | 現在のファイルをテスト      |
+| `X` (execute) | `Xta`        | execute test all        | 作業ディレクトリをテスト    |
+| `X` (execute) | `Xtl`        | execute test last       | 直前のテストを再実行        |
+| `X` (execute) | `Xts`        | execute test stop       | 最も近いテストを停止        |
+| `r` (reveal)  | `rt`         | reveal test output      | テストの出力を表示          |
+| `r` (reveal)  | `rT`         | reveal test summary     | テストツリーを表示          |
+| `[`, `]`      | `[d`         | cycle prev diagnostic   | 前の diagnostic             |
+| `[`, `]`      | `]d`         | cycle next diagnostic   | 次の diagnostic             |
+| `[`, `]`      | `[t`         | cycle prev tab          | 前のタブ                    |
+| `[`, `]`      | `]t`         | cycle next tab          | 次のタブ                    |
+| `<leader>`    | `<leader>/`  | toggle comment          | コメントの ON/OFF           |
+| `<leader>w`   | `<leader>ws` | window split            | 横分割                      |
+| `<leader>w`   | `<leader>wv` | window vsplit           | 縦分割                      |
+| `z`           | `zz`         | built-in center screen  | 画面中央へ                  |
+| `z`           | `zt`         | built-in top of screen  | 画面上へ移動                |
