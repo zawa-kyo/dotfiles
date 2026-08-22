@@ -12,6 +12,7 @@ return {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
     "fredrikaverpil/neotest-golang",
+    "mrcjkb/rustaceanvim",
     "sidlatau/neotest-dart",
   },
   keys = {
@@ -76,6 +77,7 @@ return {
           command = "flutter",
           use_lsp = true,
         }),
+        require("rustaceanvim.neotest"),
       },
     })
 
