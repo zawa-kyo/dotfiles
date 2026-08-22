@@ -30,6 +30,12 @@ func runMise(t *testing.T, repo, home string, env map[string]string, args ...str
 	return string(output)
 }
 
+// Run a mise dotfiles command with the shared bootstrap prefix.
+func runDotfiles(t *testing.T, repo, home string, env map[string]string, args ...string) string {
+	t.Helper()
+	return runMise(t, repo, home, env, append([]string{"bootstrap", "dotfiles"}, args...)...)
+}
+
 // Create a mise process isolated to one temporary home directory.
 func miseCommand(repo, home string, env map[string]string, args ...string) *exec.Cmd {
 	command := exec.Command("mise", args...)
@@ -41,6 +47,11 @@ func miseCommand(repo, home string, env map[string]string, args ...string) *exec
 	}
 	command.Env = replaceEnvironment(os.Environ(), values)
 	return command
+}
+
+// Create a mise dotfiles process with the shared bootstrap prefix.
+func dotfilesCommand(repo, home string, env map[string]string, args ...string) *exec.Cmd {
+	return miseCommand(repo, home, env, append([]string{"bootstrap", "dotfiles"}, args...)...)
 }
 
 // Keep all mise state inside the temporary home.
@@ -90,6 +101,11 @@ func environmentWithout(base []string, keys ...string) []string {
 		result = append(result, entry)
 	}
 	return result
+}
+
+// Prepend one directory to the current process PATH.
+func pathWithPrefix(directory string) string {
+	return directory + string(os.PathListSeparator) + os.Getenv("PATH")
 }
 
 // Create a fixture file and its parent directories.

@@ -25,7 +25,7 @@ func TestDotfilesApply(t *testing.T) {
 	mustWriteFile(t, filepath.Join(home, ".local", "bin", "unrelated"), "user-owned\n", 0o644)
 	mustWriteFile(t, filepath.Join(home, ".apm", "apm_modules", "cached", "data"), "cached\n", 0o644)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	runDotfiles(t, repo, home, nil, "apply", "--yes")
 
 	assertLink(t, filepath.Join(home, ".gitconfig"), filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
 	assertLink(t, filepath.Join(home, ".config", "nvim"), filepath.Join(repo, "dotfiles", "editors", "nvim"))
@@ -98,8 +98,8 @@ func TestDotfilesApply(t *testing.T) {
 
 	before := symlinksUnder(t, home)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	runDotfiles(t, repo, home, nil, "status", "--missing")
+	runDotfiles(t, repo, home, nil, "apply", "--yes")
 	after := symlinksUnder(t, home)
 
 	if !reflect.DeepEqual(before, after) {
@@ -118,10 +118,10 @@ func TestDotfilesUnapply(t *testing.T) {
 
 	mustWriteFile(t, unrelated, "user-owned\n", 0o644)
 	mustWriteFile(t, generated, "cached\n", 0o644)
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	runDotfiles(t, repo, home, nil, "apply", "--yes")
 	mustWriteFile(t, lockFile, "user-modified\n", 0o644)
 
-	output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes").CombinedOutput()
+	output, err := dotfilesCommand(repo, home, nil, "unapply", "--yes").CombinedOutput()
 
 	if err == nil {
 		t.Fatalf("unapply unexpectedly removed a modified copy:\n%s", output)
@@ -135,8 +135,8 @@ func TestDotfilesUnapply(t *testing.T) {
 	}
 	mustWriteFile(t, lockFile, string(sourceLock), 0o644)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "unapply", "--dry-run")
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes")
+	runDotfiles(t, repo, home, nil, "unapply", "--dry-run")
+	runDotfiles(t, repo, home, nil, "unapply", "--yes")
 
 	if _, err := os.Lstat(gitConfig); !os.IsNotExist(err) {
 		t.Fatalf("managed symlink remains after unapply: %v", err)
@@ -150,7 +150,7 @@ func TestDotfilesUnapply(t *testing.T) {
 		t.Fatalf("managed copy remains after unapply: %v", err)
 	}
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.gitconfig", "--yes")
+	runDotfiles(t, repo, home, nil, "apply", "~/.gitconfig", "--yes")
 
 	assertLink(t, gitConfig, filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
 }
@@ -170,7 +170,7 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 "~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each" }
 `, 0o644)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	runDotfiles(t, repo, home, nil, "apply", "--yes")
 
 	assertLinkResolves(t, targetLock, sourceLock)
 
@@ -179,16 +179,16 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 "~/.apm/apm.lock.yaml" = { source = "dotfiles/ai/apm/apm.lock.yaml", mode = "copy" }
 `, 0o644)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+	runDotfiles(t, repo, home, nil, "apply", "--yes")
 
 	assertRegularFile(t, targetLock)
 
 	mustWriteFile(t, targetLock, "version: new\n", 0o644)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "add", "--yes", "~/.apm/apm.lock.yaml")
+	runDotfiles(t, repo, home, nil, "add", "--yes", "~/.apm/apm.lock.yaml")
 
 	assertFileContent(t, sourceLock, "version: new\n")
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
+	runDotfiles(t, repo, home, nil, "status", "--missing")
 }
 
 // The production APM task captures the lock only after completing its update.
@@ -229,7 +229,7 @@ printf '%s\n' '{"Children":[{"WebBookmarkType":"WebBookmarkTypeLeaf","URIDiction
 	env := map[string]string{
 		"CHROME_BOOKMARKS_ROOT":  chromeRoot,
 		"HOME":                   home,
-		"PATH":                   fakeBin + string(os.PathListSeparator) + os.Getenv("PATH"),
+		"PATH":                   pathWithPrefix(fakeBin),
 		"SAFARI_BOOKMARKS_PLIST": safariPlist,
 	}
 
@@ -264,7 +264,7 @@ func TestDotfileConflictSemantics(t *testing.T) {
 		target := filepath.Join(home, ".gitconfig")
 		mustWriteFile(t, target, "user-owned\n", 0o644)
 
-		output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.gitconfig", "--yes").CombinedOutput()
+		output, err := dotfilesCommand(repo, home, nil, "apply", "~/.gitconfig", "--yes").CombinedOutput()
 
 		if err == nil {
 			t.Fatalf("apply unexpectedly replaced a regular file:\n%s", output)
@@ -277,7 +277,7 @@ func TestDotfileConflictSemantics(t *testing.T) {
 		target := filepath.Join(home, ".config", "nvim")
 		mustSymlink(t, t.TempDir(), target)
 
-		runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.config/nvim", "--yes")
+		runDotfiles(t, repo, home, nil, "apply", "~/.config/nvim", "--yes")
 
 		assertLink(t, target, filepath.Join(repo, "dotfiles", "editors", "nvim"))
 	})
@@ -290,7 +290,7 @@ func TestLegacyAPMLinkMigration(t *testing.T) {
 	target := filepath.Join(home, ".apm")
 	mustSymlink(t, filepath.Join(repo, "packages", "apm"), target)
 
-	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.apm", "--yes")
+	runDotfiles(t, repo, home, nil, "apply", "~/.apm", "--yes")
 
 	info, err := os.Lstat(target)
 	if err != nil {
@@ -307,7 +307,7 @@ func TestPlatformDeclarations(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
 
-	output := runMise(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "bootstrap", "dotfiles", "status", "--json")
+	output := runDotfiles(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "status", "--json")
 
 	var status dotfilesStatus
 	if err := json.Unmarshal([]byte(output), &status); err != nil {
@@ -320,7 +320,7 @@ func TestPlatformDeclarations(t *testing.T) {
 	}
 
 	if runtime.GOOS == "darwin" {
-		platformOutput := runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--json")
+		platformOutput := runDotfiles(t, repo, home, nil, "status", "--json")
 
 		if !strings.Contains(platformOutput, "Library/Application Support/Code/User/settings.json") {
 			t.Fatal("macOS declarations were not loaded")
