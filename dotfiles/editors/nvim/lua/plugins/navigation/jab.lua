@@ -9,7 +9,7 @@ return {
 
   keys = {
     {
-      "J",
+      "gw",
       mode = { "n", "x", "o" },
       function()
         return require("jab").jab_win()
