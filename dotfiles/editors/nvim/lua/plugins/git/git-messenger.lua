@@ -11,14 +11,14 @@ local M = {
     {
       "rgm",
       function()
-        require("plugins.git-messenger").git_messenger_simple()
+        require("plugins.git.git-messenger").git_messenger_simple()
       end,
       desc = "Show git commit message",
     },
     {
       "rgM",
       function()
-        require("plugins.git-messenger").git_messenger_with_diff()
+        require("plugins.git.git-messenger").git_messenger_with_diff()
       end,
       desc = "Show git commit message with diff",
     },
