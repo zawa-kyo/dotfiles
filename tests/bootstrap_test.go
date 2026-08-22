@@ -41,7 +41,9 @@ func TestDotfilesApply(t *testing.T) {
 		environmentWithout(os.Environ(), "MISE_GLOBAL_CONFIG_FILE"),
 		isolatedMiseEnvironment(repo, home),
 	)
+
 	configOutputBytes, err := configCommand.CombinedOutput()
+
 	if err != nil {
 		t.Fatalf("load linked global mise configuration: %v\n%s", err, configOutputBytes)
 	}
@@ -65,7 +67,9 @@ func TestDotfilesApply(t *testing.T) {
 		environmentWithout(os.Environ(), "MISE_GLOBAL_CONFIG_FILE"),
 		isolatedMiseEnvironment(repo, home),
 	)
+
 	envOutput, err := envCommand.Output()
+
 	if err != nil {
 		t.Fatalf("load linked global mise environment: %v", err)
 	}
@@ -93,9 +97,11 @@ func TestDotfilesApply(t *testing.T) {
 	}
 
 	before := symlinksUnder(t, home)
+
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
 	after := symlinksUnder(t, home)
+
 	if !reflect.DeepEqual(before, after) {
 		t.Fatalf("second apply changed symlinks\nbefore: %v\nafter:  %v", before, after)
 	}
@@ -115,7 +121,9 @@ func TestDotfilesUnapply(t *testing.T) {
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
 	mustWriteFile(t, lockFile, "user-modified\n", 0o644)
 
-	if output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes").CombinedOutput(); err == nil {
+	output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes").CombinedOutput()
+
+	if err == nil {
 		t.Fatalf("unapply unexpectedly removed a modified copy:\n%s", output)
 	}
 	assertLink(t, gitConfig, filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
@@ -126,6 +134,7 @@ func TestDotfilesUnapply(t *testing.T) {
 		t.Fatalf("read source APM lock: %v", err)
 	}
 	mustWriteFile(t, lockFile, string(sourceLock), 0o644)
+
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "unapply", "--dry-run")
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "unapply", "--yes")
 
@@ -142,6 +151,7 @@ func TestDotfilesUnapply(t *testing.T) {
 	}
 
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.gitconfig", "--yes")
+
 	assertLink(t, gitConfig, filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig"))
 }
 
@@ -161,17 +171,22 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 `, 0o644)
 
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+
 	assertLinkResolves(t, targetLock, sourceLock)
 
 	mustWriteFile(t, filepath.Join(repo, "mise.toml"), `[dotfiles]
 "~/.apm" = { source = "dotfiles/ai/apm", mode = "symlink-each", exclude = ["apm.lock.yaml"] }
 "~/.apm/apm.lock.yaml" = { source = "dotfiles/ai/apm/apm.lock.yaml", mode = "copy" }
 `, 0o644)
+
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "--yes")
+
 	assertRegularFile(t, targetLock)
 
 	mustWriteFile(t, targetLock, "version: new\n", 0o644)
+
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "add", "--yes", "~/.apm/apm.lock.yaml")
+
 	assertFileContent(t, sourceLock, "version: new\n")
 	runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--missing")
 }
@@ -180,6 +195,7 @@ func TestAPMLockCopyRoundTrip(t *testing.T) {
 func TestAPMUpgradeCapturesLockFile(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
+
 	output := runMise(t, repo, home, nil, "run", "--dry-run", "upgrade-apm")
 
 	previous := -1
@@ -231,6 +247,7 @@ printf '%s\n' '{"Children":[{"WebBookmarkType":"WebBookmarkTypeLeaf","URIDiction
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			output := runCommand(t, repo, env, filepath.Join(repo, "bin", test.name), test.args...)
+
 			if !strings.Contains(output, test.expected) {
 				t.Fatalf("%s output does not contain %q:\n%s", test.name, test.expected, output)
 			}
@@ -247,7 +264,9 @@ func TestDotfileConflictSemantics(t *testing.T) {
 		target := filepath.Join(home, ".gitconfig")
 		mustWriteFile(t, target, "user-owned\n", 0o644)
 
-		if output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.gitconfig", "--yes").CombinedOutput(); err == nil {
+		output, err := miseCommand(repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.gitconfig", "--yes").CombinedOutput()
+
+		if err == nil {
 			t.Fatalf("apply unexpectedly replaced a regular file:\n%s", output)
 		}
 		assertFileContent(t, target, "user-owned\n")
@@ -259,6 +278,7 @@ func TestDotfileConflictSemantics(t *testing.T) {
 		mustSymlink(t, t.TempDir(), target)
 
 		runMise(t, repo, home, nil, "bootstrap", "dotfiles", "apply", "~/.config/nvim", "--yes")
+
 		assertLink(t, target, filepath.Join(repo, "dotfiles", "editors", "nvim"))
 	})
 }
@@ -286,6 +306,7 @@ func TestLegacyAPMLinkMigration(t *testing.T) {
 func TestPlatformDeclarations(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
+
 	output := runMise(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "bootstrap", "dotfiles", "status", "--json")
 
 	var status dotfilesStatus
@@ -300,6 +321,7 @@ func TestPlatformDeclarations(t *testing.T) {
 
 	if runtime.GOOS == "darwin" {
 		platformOutput := runMise(t, repo, home, nil, "bootstrap", "dotfiles", "status", "--json")
+
 		if !strings.Contains(platformOutput, "Library/Application Support/Code/User/settings.json") {
 			t.Fatal("macOS declarations were not loaded")
 		}
@@ -310,11 +332,15 @@ func TestPlatformDeclarations(t *testing.T) {
 func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
+
 	output := runMise(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "bootstrap", "--dry-run", "--yes")
+
 	if strings.Contains(output, "install-brew") || strings.Contains(output, "brew bundle install") {
 		t.Fatalf("bootstrap unexpectedly includes Homebrew installation:\n%s", output)
 	}
+
 	upgradeOutput := runMise(t, repo, home, map[string]string{"MISE_AUTO_ENV": "false"}, "run", "--dry-run", "upgrade")
+
 	if strings.Contains(upgradeOutput, "upgrade-brew") || strings.Contains(upgradeOutput, "brew upgrade") {
 		t.Fatalf("common upgrade unexpectedly includes Homebrew:\n%s", upgradeOutput)
 	}
@@ -324,6 +350,7 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	}
 
 	tasks := runMise(t, repo, home, nil, "tasks", "--json")
+
 	var taskList []struct {
 		Name string `json:"name"`
 	}
@@ -333,6 +360,7 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	for _, task := range taskList {
 		if task.Name == "install-brew" {
 			platformUpgradeOutput := runMise(t, repo, home, nil, "run", "--dry-run", "upgrade")
+
 			if !strings.Contains(platformUpgradeOutput, "upgrade-brew") || !strings.Contains(platformUpgradeOutput, "brew upgrade") {
 				t.Fatalf("macOS upgrade does not include Homebrew:\n%s", platformUpgradeOutput)
 			}
@@ -346,12 +374,15 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 func TestBootstrapInstallsMisePreCommitHook(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
+
 	output := runMise(t, repo, home, nil, "bootstrap", "--dry-run", "--yes")
 
 	if !strings.Contains(output, "install-git-hooks") || !strings.Contains(output, "mise generate git-pre-commit --write --task=pre-commit") {
 		t.Fatalf("bootstrap does not install the mise pre-commit hook:\n%s", output)
 	}
+
 	preCommitOutput := runMise(t, repo, home, nil, "run", "--dry-run", "pre-commit")
+
 	if !strings.Contains(preCommitOutput, "lefthook run pre-commit") {
 		t.Fatalf("mise pre-commit task does not run Lefthook:\n%s", preCommitOutput)
 	}

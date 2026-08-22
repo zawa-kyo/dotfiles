@@ -60,7 +60,10 @@ func TestLegacyAPMMigrationRejectsForeignLink(t *testing.T) {
 	command := exec.Command("bash", filepath.Join(repo, miseBootstrapMigration), fixtureRepo)
 	command.Dir = repo
 	command.Env = replaceEnvironment(os.Environ(), migrationEnvironment(home))
-	if output, err := command.CombinedOutput(); err == nil {
+
+	output, err := command.CombinedOutput()
+
+	if err == nil {
 		t.Fatalf("migration unexpectedly replaced an unmanaged APM link:\n%s", output)
 	}
 	assertLink(t, target, foreignSource)
@@ -141,6 +144,7 @@ func TestBunDataMigration(t *testing.T) {
 				previousSource = oldSource
 				legacySource = unusedSource
 			}
+
 			runCommand(t, repo, map[string]string{
 				"DIR_BUN_SOURCE":          source,
 				"DIR_BUN_PREVIOUS_SOURCE": previousSource,

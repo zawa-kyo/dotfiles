@@ -25,10 +25,11 @@ func TestSwitchBranchCommand(t *testing.T) {
 	output := runCommand(t, gitRepo, map[string]string{
 		"PATH": fakeBin + string(os.PathListSeparator) + os.Getenv("PATH"),
 	}, filepath.Join(repo, "bin", "switch-branch"))
+	branch := strings.TrimSpace(runCommand(t, gitRepo, nil, "git", "branch", "--show-current"))
+
 	if !strings.Contains(output, "switched branch: alpha") {
 		t.Fatalf("switch-branch did not report the selected branch:\n%s", output)
 	}
-	branch := strings.TrimSpace(runCommand(t, gitRepo, nil, "git", "branch", "--show-current"))
 	if branch != "alpha" {
 		t.Fatalf("current branch is %q, want alpha", branch)
 	}
