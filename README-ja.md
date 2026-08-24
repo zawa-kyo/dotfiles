@@ -9,6 +9,7 @@
 
 - Neovim と VS Code のエディタ設定
 - Zsh、Starship、Ghostty、WezTerm、Zellij などのターミナル周辺設定
+- Karabiner-Elements で使う macOS のキーボード設定
 - Homebrew、Bun、mise、procs などのローカルツール設定
 - `bin/` で公開する単独実行 CLI コマンド
 - Codex や Claude Code などで使う AI ツール設定

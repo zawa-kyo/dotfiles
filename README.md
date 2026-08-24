@@ -9,6 +9,7 @@ For design and operations, read `docs/`. For agent guidance, read `AGENTS.md`.
 
 - Editor configuration for Neovim and VS Code
 - Terminal-related configuration for Zsh, Starship, Ghostty, WezTerm, and Zellij
+- macOS keyboard configuration for Karabiner-Elements
 - Local tool configuration for Homebrew, Bun, mise, procs, and related tools
 - Standalone workflow CLI commands in `bin/`
 - AI tool configuration for Codex, Claude Code, and related tools

@@ -52,13 +52,17 @@ func TestDotfilesApply(t *testing.T) {
 		t.Fatalf("linked global mise configuration was not loaded:\n%s", configOutput)
 	}
 	macOSConfig := filepath.Join(home, ".config", "mise", "config.macos.toml")
+	karabinerConfig := filepath.Join(home, ".config", "karabiner", "karabiner.json")
 	if runtime.GOOS == "darwin" {
 		assertLink(t, macOSConfig, filepath.Join(repo, "dotfiles", "tools", "mise", "config.macos.toml"))
+		assertLink(t, karabinerConfig, filepath.Join(repo, "dotfiles", "tools", "karabiner", "karabiner.json"))
 		if !strings.Contains(configOutput, macOSConfig) {
 			t.Fatalf("linked macOS mise configuration was not loaded:\n%s", configOutput)
 		}
 	} else if _, err := os.Lstat(macOSConfig); !os.IsNotExist(err) {
 		t.Fatalf("macOS mise configuration was deployed on %s: %v", runtime.GOOS, err)
+	} else if _, err := os.Lstat(karabinerConfig); !os.IsNotExist(err) {
+		t.Fatalf("Karabiner configuration was deployed on %s: %v", runtime.GOOS, err)
 	}
 
 	envCommand := exec.Command("mise", "env", "--json")
