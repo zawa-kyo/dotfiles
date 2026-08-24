@@ -2,7 +2,7 @@
 
 [check]
 description = "Run repository checks on all tracked files"
-run = "lefthook run check"
+run = "hk check --all --check"
 
 [test-deployment]
 description = "Test mise bootstrap deployment in isolated home directories"

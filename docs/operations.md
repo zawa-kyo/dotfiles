@@ -96,7 +96,7 @@ mise bootstrap dotfiles unapply --yes
 
 `unapply` は、現在の `[dotfiles]` 宣言とファイルの状態から mise が管理中と判定できる対象だけを削除します。`symlink-each` の配備先にある管理外の項目は残ります。配備後に内容が変わった `copy` のファイルがある場合は、操作全体が中止されます。必要な変更を配備元へ保存するか、配備元と同じ内容に戻してから再実行します。変更済みのファイルも削除する `--force` は、通常の初期化には使いません。
 
-この操作で解除されるのは dotfiles の配備だけです。bootstrap タスクで導入したツール、パッケージ、生成データ、Git hook は残ります。dotfiles を再配備する場合は `mise bootstrap dotfiles apply --yes`、セットアップ全体を再実行する場合は `mise bootstrap --yes` を使います。
+この操作で解除されるのは dotfiles の配備だけです。bootstrap タスクで導入したツール、パッケージ、生成データは残ります。hk のグローバルな Git hook 定義は `.gitconfig` の配備に含まれるため、`.gitconfig` を配備解除すると一緒に外れます。dotfiles を再配備する場合は `mise bootstrap dotfiles apply --yes`、セットアップ全体を再実行する場合は `mise bootstrap --yes` を使います。
 
 `[dotfiles]` から項目を削除する場合は、宣言を消す前に対象を指定して解除します。
 
@@ -114,7 +114,7 @@ mise run format
 mise run check
 ```
 
-`mise run format` は Go、Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。`mise run check` は Lefthook から各フォーマッタ、`go vet`、ShellCheck、Gitleaks、Git の差分を検査します。Git pre-commit hook ではステージ済みファイル、手動実行では追跡対象ファイル全体を確認します。
+`mise run format` は Go、Lua、shell、JSON、JSONC、Markdown、YAML、TOML を整形します。`mise run check` は hk から各フォーマッタ、`go vet`、ShellCheck、Gitleaks、Git の差分を検査します。Git pre-commit hook ではステージ済みファイル、手動実行では追跡対象ファイル全体を確認します。
 
 ## ドキュメント更新の判断
 

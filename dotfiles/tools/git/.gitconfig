@@ -25,6 +25,10 @@
 [include]
   path = ~/.gitconfig.local
 
+[hook "hk-pre-commit"]
+  command = test "${HK:-1}" = "0" || ~/.local/bin/mise x hk -- hk run pre-commit --from-hook --staged
+  event = pre-commit
+
 [init]
   defaultBranch = main
 
