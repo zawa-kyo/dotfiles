@@ -20,8 +20,54 @@ path=(
   /Library/Apple/usr/bin
 )
 
-# Mise
-eval "$("$HOME/.local/bin/mise" activate zsh)"
+# Animate a status line while mise prepares the shell environment.
+mise_startup_spinner() {
+  local -a frames=(⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏)
+  local frame
+
+  zmodload zsh/zselect 2>/dev/null || return
+
+  while true; do
+    for frame in "${frames[@]}"; do
+      print -n -r -- $'\r\e[2K'"$frame Preparing mise environment…"
+      zselect -t 8 2>/dev/null
+    done
+  done
+}
+
+mise_spinner_pid=""
+if [[ -o interactive && -t 1 && "${TERM:-dumb}" != "dumb" ]]; then
+  mise_bg_nice="$options[BG_NICE]"
+  unsetopt BG_NICE
+  mise_startup_spinner &!
+  mise_spinner_pid=$!
+  [[ "$mise_bg_nice" == "on" ]] && setopt BG_NICE
+  unset mise_bg_nice
+fi
+
+mise_activation="$("$HOME/.local/bin/mise" activate zsh)"
+mise_activation_status=$?
+if ((mise_activation_status == 0)); then
+  eval "$mise_activation"
+  mise_activation_status=$?
+fi
+
+if [[ -n "$mise_spinner_pid" ]]; then
+  kill "$mise_spinner_pid" 2>/dev/null
+  wait "$mise_spinner_pid" 2>/dev/null
+  print -n -r -- $'\r\e[2K'
+fi
+
+unfunction mise_startup_spinner
+unset mise_spinner_pid
+unset mise_activation
+
+if ((mise_activation_status != 0)); then
+  unset mise_activation_status
+  print -u2 -r -- "Failed to prepare the mise environment"
+  return 1
+fi
+unset mise_activation_status
 
 # Sheldon
 eval "$(sheldon source)"
