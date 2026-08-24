@@ -15,7 +15,7 @@
 
 - [command-model.md](command-model.md)
   - 単独実行コマンド / シェル関数 / `mise run` の役割分担
-- [abbreviation-policy.md](abbreviation-policy.md)
+- [abbreviation.md](abbreviation.md)
   - シェルの省略コマンドと Neovim キーバインドに共通する命名原則
 
 ## 運用と確認
@@ -25,7 +25,7 @@
 
 ## 各ツールのポリシー
 
-- [../dotfiles/editors/nvim/lua/policies/keybinds-policy.md](../dotfiles/editors/nvim/lua/policies/keybinds-policy.md)
+- [../dotfiles/editors/nvim/lua/policies/keybinds.md](../dotfiles/editors/nvim/lua/policies/keybinds.md)
   - Neovim キーバインド設計
-- [../dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md](../dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md)
+- [../dotfiles/editors/nvim/lua/policies/tab-buffer.md](../dotfiles/editors/nvim/lua/policies/tab-buffer.md)
   - Neovim タブ/バッファ表示方針

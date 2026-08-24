@@ -127,7 +127,7 @@ The README stays short. Use these documents for design and operations:
 - [docs/architecture.md](docs/architecture.md): repository layout and responsibility boundaries
 - [docs/bootstrap-design.md](docs/bootstrap-design.md): mise bootstrap responsibilities and migration rules
 - [docs/command-model.md](docs/command-model.md): standalone commands, shell functions, and mise tasks
-- [docs/abbreviation-policy.md](docs/abbreviation-policy.md): shared naming policy for shell abbreviations and Neovim keybindings
+- [docs/abbreviation.md](docs/abbreviation.md): shared naming policy for shell abbreviations and Neovim keybindings
 - [docs/ai-tools.md](docs/ai-tools.md): AI tool and apm policy
 - [docs/operations.md](docs/operations.md): verification policy by change type
 

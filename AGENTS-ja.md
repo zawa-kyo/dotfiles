@@ -19,25 +19,25 @@
   - リポジトリ全体の構造と責務分担。
 - `docs/command-model.md`
   - 単独実行コマンド、シェル関数、`mise run` の役割分担。
-- `docs/abbreviation-policy.md`
+- `docs/abbreviation.md`
   - シェルの省略コマンドと Neovim キーバインドに共通する命名規則。
 - `docs/ai-tools.md`
   - AI ツール管理の運用方針。
 - `docs/operations.md`
   - 変更後の確認方針。
-- `dotfiles/editors/nvim/lua/policies/keybinds-policy.md`
+- `dotfiles/editors/nvim/lua/policies/keybinds.md`
   - Neovim キーバインド設計。
-- `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md`
+- `dotfiles/editors/nvim/lua/policies/tab-buffer.md`
   - Neovim のタブ / バッファ表示方針。
 
 ## 変更対象ごとの参照先
 
 - `dotfiles/editors/nvim/` を変更する場合:
   - まず `dotfiles/editors/nvim/lua/policies/` を確認する。
-  - キーバインド変更は `docs/abbreviation-policy.md` と `dotfiles/editors/nvim/lua/policies/keybinds-policy.md` を確認する。
-  - タブ / バッファ表示変更は `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md` を確認する。
+  - キーバインド変更は `docs/abbreviation.md` と `dotfiles/editors/nvim/lua/policies/keybinds.md` を確認する。
+  - タブ / バッファ表示変更は `dotfiles/editors/nvim/lua/policies/tab-buffer.md` を確認する。
 - `bin/`、`setup/`、`libexec/`、`mise.toml`、または `dotfiles/shell/` を変更する場合:
-  - `docs/command-model.md` と `docs/abbreviation-policy.md` を確認する。
+  - `docs/command-model.md` と `docs/abbreviation.md` を確認する。
   - `fzf` を使う処理は `docs/command-model.md` の共通化方針に従う。
 - `setup/homebrew/` を変更する場合:
   - `README.md` の Homebrew 節と `docs/operations.md` を確認する。
