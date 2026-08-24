@@ -16,12 +16,12 @@ brew "git-secrets"
 brew "harfbuzz"
 # TIFF library and utilities
 brew "libtiff"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Color management engine supporting ICC profiles
 brew "little-cms2"
 # Library for JPEG-2000 image manipulation
 brew "openjpeg"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Image processing and image analysis library
 brew "leptonica"
 # Multi-format archive and compression library
