@@ -196,8 +196,8 @@ abbr 'grep'='rg --ignore-case'
 abbr 'rgs'='rg --case-sensitive'
 abbr 'greps'='rg --case-sensitive'
 
-# search-text
-abbr 'sw'='rg --ignore-case'
+# search-lines
+abbr 'sl'='rg --ignore-case'
 
-# search-text-sensitive
-abbr 'sws'='rg --case-sensitive'
+# search-lines-sensitive
+abbr 'sls'='rg --case-sensitive'

@@ -27,7 +27,7 @@ M.keys = {
     function()
       picker().grep_buffers()
     end,
-    desc = "Search words in current buffers",
+    desc = "Search lines in current buffers",
   },
   {
     "sc", -- search colorschemes
@@ -143,17 +143,8 @@ M.keys = {
   },
   {
     "sl",
-    function()
-      picker().loclist()
-    end,
-    desc = "Search loclist",
-  },
-  {
-    "sL",
-    function()
-      picker().lazy()
-    end,
-    desc = "Search for plugin spec",
+    search_buffer_lines,
+    desc = "Search lines in current buffer",
   },
   {
     "sm",
@@ -247,16 +238,11 @@ M.keys = {
     desc = "Search undos",
   },
   {
-    "sw",
-    search_buffer_lines,
-    desc = "Search lines in current buffer",
-  },
-  {
-    "sW",
+    "sL",
     function()
       picker().grep(file_visibility.search_opts())
     end,
-    desc = "Search words in workspace",
+    desc = "Search lines in workspace",
   },
   {
     "sz",
@@ -285,9 +271,9 @@ M.vscode = function()
   local utils = require("config.utils")
 
   utils.vscode_map("sf", "workbench.action.quickOpen", "Search files in workspace (VSCode)")
-  utils.vscode_map("sW", "workbench.action.findInFiles", "Search words in workspace (VSCode)")
-  utils.vscode_map("sw", "actions.find", "Search words in file (VSCode)")
-  utils.vscode_map("/", "actions.find", "Search words in file (VSCode)")
+  utils.vscode_map("sL", "workbench.action.findInFiles", "Search lines in workspace (VSCode)")
+  utils.vscode_map("sl", "actions.find", "Search lines in file (VSCode)")
+  utils.vscode_map("/", "actions.find", "Search lines in file (VSCode)")
 end
 
 return M

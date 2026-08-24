@@ -127,7 +127,7 @@ README は概要に留め、詳しい設計や運用は次のドキュメント�
 - [docs/architecture.md](docs/architecture.md): ディレクトリ構成と責務境界
 - [docs/bootstrap-design.md](docs/bootstrap-design.md): mise bootstrap の責務と移行規則
 - [docs/command-model.md](docs/command-model.md): グローバルコマンド、シェル関数、mise タスクの使い分け
-- [docs/abbreviation-policy.md](docs/abbreviation-policy.md): シェル省略コマンドの設計方針
+- [docs/abbreviation-policy.md](docs/abbreviation-policy.md): シェルの省略コマンドと Neovim キーバインドに共通する命名方針
 - [docs/ai-tools.md](docs/ai-tools.md): AI ツールと apm の運用方針
 - [docs/operations.md](docs/operations.md): 変更内容に応じた確認方法
 
