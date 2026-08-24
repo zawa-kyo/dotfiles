@@ -24,9 +24,7 @@ func TestLegacyAPMDataMigration(t *testing.T) {
 	runCommand(t, repo, migrationEnvironment(home), "bash", filepath.Join(repo, miseBootstrapMigration), fixtureRepo)
 
 	assertFileContent(t, filepath.Join(home, ".apm", "apm_modules", "example", "data"), "cached\n")
-	if _, err := os.Lstat(filepath.Join(legacySource, "apm_modules")); !os.IsNotExist(err) {
-		t.Fatalf("legacy APM modules remain in the repository: %v", err)
-	}
+	assertPathMissing(t, filepath.Join(legacySource, "apm_modules"))
 }
 
 // APM modules also migrate from the former config layout.
@@ -82,9 +80,7 @@ func TestLegacyCommandWrapperCleanup(t *testing.T) {
 
 	runCommand(t, repo, migrationEnvironment(home), "bash", filepath.Join(repo, miseBootstrapMigration), fixtureRepo)
 
-	if _, err := os.Lstat(filepath.Join(tasksDir, "generated")); !os.IsNotExist(err) {
-		t.Fatalf("generated wrapper was not removed: %v", err)
-	}
+	assertPathMissing(t, filepath.Join(tasksDir, "generated"))
 	assertFileContent(t, filepath.Join(tasksDir, "unrelated"), "#!/usr/bin/env bash\n# user-owned\n")
 }
 
@@ -111,9 +107,7 @@ func TestLegacySkillLinkCleanup(t *testing.T) {
 	runCommand(t, repo, migrationEnvironment(home), "bash", filepath.Join(repo, miseBootstrapMigration), fixtureRepo)
 
 	for _, removed := range []string{staleLink, apmLink} {
-		if _, err := os.Lstat(removed); !os.IsNotExist(err) {
-			t.Fatalf("stale managed skill link was not removed: %s: %v", removed, err)
-		}
+		assertPathMissing(t, removed)
 	}
 	assertLink(t, activeLink, activeSource)
 	assertLink(t, foreignLink, filepath.Join(fixtureRepo, "foreign", "stale"))
@@ -156,9 +150,7 @@ func TestBunDataMigration(t *testing.T) {
 
 			assertFileContent(t, filepath.Join(globalDir, "node_modules", ".bin", "example"), "#!/usr/bin/env bash\n")
 			assertLinkResolves(t, filepath.Join(globalBin, "example"), filepath.Join(globalDir, "node_modules", ".bin", "example"))
-			if _, err := os.Lstat(filepath.Join(oldSource, "node_modules")); !os.IsNotExist(err) {
-				t.Fatalf("old Bun modules remain in the repository: %v", err)
-			}
+			assertPathMissing(t, filepath.Join(oldSource, "node_modules"))
 		})
 	}
 }
