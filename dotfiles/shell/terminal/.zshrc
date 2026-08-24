@@ -71,6 +71,9 @@ if ((mise_activation_status != 0)); then
 fi
 unset mise_activation_status
 
+# Refresh mise only when the working directory changes.
+add-zsh-hook -d precmd _mise_hook_precmd
+
 # Sheldon
 eval "$(sheldon source)"
 
