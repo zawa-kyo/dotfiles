@@ -2,9 +2,9 @@
 
 ## 関連ポリシー
 
-- [省略入力の命名ポリシー](../../../../../docs/abbreviation-policy.md)
+- [省略入力の命名ポリシー](../../../../../docs/abbreviation.md)
   - シェルの省略コマンドと共有するキーの命名規則を定める
-- [Neovim キーバインド設計](keybinds-policy.md)
+- [Neovim キーバインド設計](keybinds.md)
   - タブとバッファを操作するキーの設計を定める
 
 ## 目的

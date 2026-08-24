@@ -19,25 +19,25 @@
   - Repository structure and responsibility boundaries.
 - `docs/command-model.md`
   - How standalone commands, shell functions, and `mise run` split responsibilities.
-- `docs/abbreviation-policy.md`
+- `docs/abbreviation.md`
   - Shared naming grammar for shell abbreviations and Neovim keybindings.
 - `docs/ai-tools.md`
   - AI tool management policy.
 - `docs/operations.md`
   - Verification policy after changes.
-- `dotfiles/editors/nvim/lua/policies/keybinds-policy.md`
+- `dotfiles/editors/nvim/lua/policies/keybinds.md`
   - Neovim keybinding design.
-- `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md`
+- `dotfiles/editors/nvim/lua/policies/tab-buffer.md`
   - Neovim tab and buffer display policy.
 
 ## References by Change Area
 
 - When changing `dotfiles/editors/nvim/`:
   - Check `dotfiles/editors/nvim/lua/policies/` first.
-  - For keybindings, read `docs/abbreviation-policy.md` and `dotfiles/editors/nvim/lua/policies/keybinds-policy.md`.
-  - For tab or buffer display, read `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md`.
+  - For keybindings, read `docs/abbreviation.md` and `dotfiles/editors/nvim/lua/policies/keybinds.md`.
+  - For tab or buffer display, read `dotfiles/editors/nvim/lua/policies/tab-buffer.md`.
 - When changing `bin/`, `setup/`, `libexec/`, `mise.toml`, or `dotfiles/shell/`:
-  - Read `docs/command-model.md` and `docs/abbreviation-policy.md`.
+  - Read `docs/command-model.md` and `docs/abbreviation.md`.
   - Follow the shared `fzf` policy in `docs/command-model.md` for scripts that use `fzf`.
 - When changing `setup/homebrew/`:
   - Read the Homebrew section in `README.md` and `docs/operations.md`.
