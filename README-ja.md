@@ -24,17 +24,24 @@ git clone [repository_url]
 cd [cloned_repository_path]
 ```
 
-シェルで `mise` が使えない場合は先にインストールします。
+公式インストーラを使い、最新版の standalone 版 `mise` を導入します。インストーラは `~/.local/bin/mise` にバイナリを配置します。
 
 ```sh
-brew install mise
+curl https://mise.run | sh
+```
+
+Homebrew 版から移行する場合は、standalone 版の導入後にシェルを再起動します。現在のシェルには、`/opt/homebrew/bin/mise` を参照する有効化処理が残っていることがあります。
+
+```sh
+exec zsh -l
+mise --version
 ```
 
 リポジトリを信頼済みにしてから、セットアップを実行します。
 
 ```sh
-mise trust
-mise bootstrap --yes
+~/.local/bin/mise trust
+~/.local/bin/mise bootstrap --yes
 ```
 
 このコマンドでは、次の作業をまとめて行います。
@@ -48,25 +55,41 @@ mise bootstrap --yes
 `mise run install` は `mise bootstrap` の互換入口として残しています。
 どちらのコマンドも Homebrew パッケージはインストールしません。macOS で Brewfile の不足分を導入する場合は、`mise run install-brew` を明示的に実行します。
 
+以前のセットアップで Homebrew 版の mise を導入していた場合は、standalone 版の導入後に Homebrew 版を削除します。
+
+```sh
+brew uninstall mise
+```
+
+standalone 版のバイナリと mise が管理するデータを削除する場合は、対象を確認してから `mise implode` を実行します。`--config` を付けない限り、`~/.config/mise` は残ります。
+
+```sh
+mise implode --dry-run
+mise implode
+```
+
 ## 🛠️ よく使うコマンド
 
-| コマンド                                    | 用途                                                      |
-| ------------------------------------------- | --------------------------------------------------------- |
-| `mise bootstrap`                            | 標準のローカルセットアップを実行する                      |
-| `mise bootstrap dotfiles status`            | ファイルを変更せず、宣言した配備先の状態を確認する        |
-| `mise bootstrap dotfiles apply --dry-run`   | dotfiles の変更と競合を事前に確認する                     |
-| `mise bootstrap dotfiles apply --yes`       | 宣言した dotfiles のリンクを反映する                      |
-| `mise bootstrap dotfiles unapply --dry-run` | dotfiles の配備解除を事前に確認する                       |
-| `mise bootstrap dotfiles unapply --yes`     | mise が管理中と判定できる dotfiles の配備を解除する       |
-| `mise run format`                           | Git の追跡対象ファイルを整形する                          |
-| `mise run check`                            | リポジトリ全体の検査を実行する                            |
-| `mise run install-brew`                     | macOS で Brewfile の不足分をインストールする              |
-| `mise run test-deployment`                  | 一時的なホームディレクトリで bootstrap の動作を確認する   |
-| `mise run --continue-on-error upgrade`      | mise、apm、Neovim、Bun と、macOS では Homebrew を更新する |
-| `mise tasks`                                | 利用できる mise タスクを一覧する                          |
+| コマンド                                    | 用途                                                                 |
+| ------------------------------------------- | -------------------------------------------------------------------- |
+| `mise bootstrap`                            | 標準のローカルセットアップを実行する                                 |
+| `mise bootstrap dotfiles status`            | ファイルを変更せず、宣言した配備先の状態を確認する                   |
+| `mise bootstrap dotfiles apply --dry-run`   | dotfiles の変更と競合を事前に確認する                                |
+| `mise bootstrap dotfiles apply --yes`       | 宣言した dotfiles のリンクを反映する                                 |
+| `mise bootstrap dotfiles unapply --dry-run` | dotfiles の配備解除を事前に確認する                                  |
+| `mise bootstrap dotfiles unapply --yes`     | mise が管理中と判定できる dotfiles の配備を解除する                  |
+| `mise self-update`                          | standalone 版の mise をすぐに更新する                                |
+| `mise run format`                           | Git の追跡対象ファイルを整形する                                     |
+| `mise run check`                            | リポジトリ全体の検査を実行する                                       |
+| `mise run install-brew`                     | macOS で Brewfile の不足分をインストールする                         |
+| `mise run test-deployment`                  | 一時的なホームディレクトリで bootstrap の動作を確認する              |
+| `mise run --continue-on-error upgrade`      | mise 管理ツール、apm、Neovim、Bun と、macOS では Homebrew を更新する |
+| `mise tasks`                                | 利用できる mise タスクを一覧する                                     |
 
 `bin/` のコマンドはグローバルにリンクします。
 このディレクトリには、Git 操作やタスク検索など日常作業で直接使う小さな CLI ツールを置いています。
+
+配備されるグローバル mise 設定では、自動更新を有効にしています。mise は、通信を行える対話的なコマンドの実行前に、新しいリリースがあるか定期的に確認します。一時的に止める場合は `MISE_AUTO_UPDATE=false` を指定します。
 
 ### Bun グローバルパッケージ
 

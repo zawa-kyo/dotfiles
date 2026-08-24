@@ -1,4 +1,5 @@
 glob_matcher: doublestar
+lefthook: '"$HOME/.local/bin/mise" exec -- lefthook'
 
 pre-commit:
   parallel: true
