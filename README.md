@@ -50,7 +50,9 @@ This command:
 - installs mise-managed tools
 - applies apm-managed skills
 - prepares the Bun global environment
-- installs the Git pre-commit hook with Lefthook
+- deploys the global Git pre-commit hook configuration for hk
+
+The hk hook uses Git's config-based hook support and requires Git 2.54 or newer. It exits without doing anything in repositories that do not contain `hk.pkl`.
 
 `mise run install` remains as a compatibility alias for `mise bootstrap`.
 Homebrew packages are not installed by either command. On macOS, run `mise run install-brew` explicitly when you want to install missing Brewfile dependencies.

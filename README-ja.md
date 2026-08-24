@@ -50,7 +50,9 @@ mise --version
 - mise 管理ツールのインストール
 - apm 管理スキルの反映
 - Bun グローバル環境の準備
-- Lefthook による Git pre-commit hook のインストール
+- hk のグローバルな Git pre-commit hook 設定の配備
+
+hk の hook は Git の設定による hook 機能を使うため、Git 2.54 以降が必要です。`hk.pkl` がないリポジトリでは何も実行しません。
 
 `mise run install` は `mise bootstrap` の互換入口として残しています。
 どちらのコマンドも Homebrew パッケージはインストールしません。macOS で Brewfile の不足分を導入する場合は、`mise run install-brew` を明示的に実行します。

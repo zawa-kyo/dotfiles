@@ -9,7 +9,7 @@ rust = "1"
 
 # Repository checks
 gitleaks = "latest"
-lefthook = "2"
+hk = "latest"
 prettier = "latest"
 shellcheck = "latest"
 shfmt = "latest"

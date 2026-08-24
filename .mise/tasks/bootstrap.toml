@@ -21,7 +21,6 @@ run = [
   { task = "install-global-tools" },
   { task = "install-apm" },
   { task = "install-bun" },
-  { task = "install-git-hooks" },
 ]
 
 [bootstrap]
@@ -32,7 +31,3 @@ run = [{ task = "bootstrap-common" }]
 [install-bun]
 description = "Install Bun globals outside the repository"
 file = "setup/install-bun.sh"
-
-[install-git-hooks]
-description = "Install repository Git hooks with Lefthook"
-run = "lefthook install pre-commit"

@@ -1,0 +1,100 @@
+amends "package://github.com/jdx/hk/releases/download/v1.55.0/hk@1.55.0#/Config.pkl"
+
+fail_fast = false
+
+local prettierGlobs =
+  List(
+    "*.json",
+    "**/*.json",
+    "*.jsonc",
+    "**/*.jsonc",
+    "*.md",
+    "**/*.md",
+    "*.yaml",
+    "**/*.yaml",
+    "*.yml",
+    "**/*.yml",
+  )
+
+local prettierExcludes =
+  List(
+    "**/lazy-lock.json",
+    "dotfiles/ai/apm/apm.lock.yaml",
+    "*.lock",
+    "**/*.lock",
+  )
+
+local shellGlobs =
+  List(
+    ".mise/tasks/*",
+    "bin/*",
+    "*.bash",
+    "**/*.bash",
+    "*.sh",
+    "**/*.sh",
+  )
+
+local fileChecks = new Mapping<String, Step> {
+  ["prettier"] {
+    glob = prettierGlobs
+    exclude = prettierExcludes
+    check = new Command { argv = List("prettier", "--check", "--ignore-unknown", "{{files}}") }
+  }
+  ["stylua"] {
+    glob = List("*.lua", "**/*.lua")
+    check = new Command { argv = List("stylua", "--check", "{{files}}") }
+  }
+  ["taplo"] {
+    glob = List("*.toml", "**/*.toml")
+    exclude = List("*.lock", "**/*.lock")
+    check = new Command { argv = List("taplo", "fmt", "--check", "{{files}}") }
+  }
+  ["gofmt"] {
+    glob = List("*.go", "**/*.go")
+    check = #"test -z "$(gofmt -l {{files}})""#
+  }
+  ["shfmt"] {
+    glob = shellGlobs
+    exclude = ".mise/tasks/*.toml"
+    check = new Command { argv = List("shfmt", "-d", "{{files}}") }
+  }
+  ["shellcheck"] {
+    glob = shellGlobs
+    exclude = ".mise/tasks/*.toml"
+    check = new Command { argv = List("shellcheck", "{{files}}") }
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    steps {
+      ["git-whitespace-and-conflict-markers"] {
+        check = "git diff --cached --check"
+      }
+      ["machine-specific-paths"] {
+        check = #"! git grep --cached -nE '(/Users|/home)/kyohei(/|$)' -- {{files}}"#
+      }
+      ...fileChecks
+      ["gitleaks"] {
+        check = "gitleaks git --pre-commit --redact --staged --verbose"
+      }
+    }
+  }
+  ["check"] {
+    steps {
+      ["git-whitespace-and-conflict-markers"] {
+        check = #"! git grep -nIE '([[:blank:]]+$|^(<<<<<<<|=======|>>>>>>>)( |$))' -- {{files}}"#
+      }
+      ["machine-specific-paths"] {
+        check = #"! git grep -nE '(/Users|/home)/kyohei(/|$)' -- {{files}}"#
+      }
+      ...fileChecks
+      ["go-vet"] {
+        check = "go vet ./..."
+      }
+      ["gitleaks"] {
+        check = "gitleaks dir --redact --verbose ."
+      }
+    }
+  }
+}
