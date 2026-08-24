@@ -20,7 +20,7 @@
 - `docs/command-model.md`
   - How standalone commands, shell functions, and `mise run` split responsibilities.
 - `docs/abbreviation-policy.md`
-  - Design principles for shell abbreviations.
+  - Shared naming grammar for shell abbreviations and Neovim keybindings.
 - `docs/ai-tools.md`
   - AI tool management policy.
 - `docs/operations.md`
@@ -34,7 +34,7 @@
 
 - When changing `dotfiles/editors/nvim/`:
   - Check `dotfiles/editors/nvim/lua/policies/` first.
-  - For keybindings, read `dotfiles/editors/nvim/lua/policies/keybinds-policy.md`.
+  - For keybindings, read `docs/abbreviation-policy.md` and `dotfiles/editors/nvim/lua/policies/keybinds-policy.md`.
   - For tab or buffer display, read `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md`.
 - When changing `bin/`, `setup/`, `libexec/`, `mise.toml`, or `dotfiles/shell/`:
   - Read `docs/command-model.md` and `docs/abbreviation-policy.md`.

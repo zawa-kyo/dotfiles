@@ -1,10 +1,17 @@
 # Neovim Keybinding Design Policy
 
+## 関連ポリシー
+
+- [省略入力の命名ポリシー](../../../../../docs/abbreviation-policy.md)
+  - シェルの省略コマンドと共有する `verb + object` の文法を定める
+- [タブ/バッファ表示ポリシー](tab-buffer-policy.md)
+  - タブとバッファの役割および表示方針を定める
+
 ## 基本方針
 
 - 追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計する
   - 動詞（1 打鍵目）は「操作の種類」
-  - 目的語（2 打鍵目以降）は固定された“辞書”に従う
+  - 目的語（2 打鍵目以降）は動詞ごとに定めた辞書に従う
 - Vim 標準操作は尊重する
   - 例：`hjkl` / `d` / `c` / `x` / `y` / `p` / `f/F/t/T` / `w/e/b`
 - プラグイン単位ではなく「操作の意味」で分類する
@@ -24,7 +31,7 @@
 
 ## 運用ルール
 
-- 目的語は固定の辞書で統一する
+- 目的語は同じ動詞の中で辞書を統一する
   - 例：b=buffer, d=diagnostic, f=file/format, s=symbol
 - 動詞の割当は必ず守る
   - `g`=ジャンプ, `s`=一覧/検索 UI, `r`=表示, `t`=状態反転
@@ -64,7 +71,7 @@
 | `i` | info / ignored          | hover 情報、ignored file              |
 | `j` | jumplist                | jumplist                              |
 | `k` | keymap                  | キーマップ                            |
-| `l` | loclist                 | location list                         |
+| `l` | line / loclist          | 検索対象の行、location list           |
 | `m` | markdown                | Markdown 関連の操作                   |
 | `n` | notification            | 通知                                  |
 | `p` | picker / pair / preview | picker 一覧、対応する括弧、プレビュー |
@@ -73,7 +80,7 @@
 | `s` | symbol/status           | シンボル、Git status                  |
 | `t` | tab / test / todo       | タブ、テスト、TODO                    |
 | `u` | undo                    | undo 履歴                             |
-| `w` | word / window           | 単語検索、ウィンドウ                  |
+| `w` | word / window           | 単語単位の操作、ウィンドウ            |
 | `z` | zoxide                  | zoxide で管理するディレクトリ         |
 
 ## Insert Mode Policy
@@ -96,8 +103,8 @@
 | `s` (search)  | `sf`         | search file             | ファイル検索                |
 | `s` (search)  | `sF`         | search recent           | 最近のファイル検索          |
 | `s` (search)  | `sb`         | search buffer           | バッファ検索                |
-| `s` (search)  | `sw`         | search word             | ファイル内検索              |
-| `s` (search)  | `sW`         | search word workspace   | ワークスペース検索          |
+| `s` (search)  | `sl`         | search lines            | 現在のバッファ内の行を検索  |
+| `s` (search)  | `sL`         | search lines workspace  | ワークスペース内の行を検索  |
 | `r` (reveal)  | `rd`         | reveal diagnostic float | diagnostic float 表示       |
 | `r` (reveal)  | `ra`         | reveal code actions     | code action 一覧表示        |
 | `r` (reveal)  | `rq`         | reveal quickfix list    | quickfix を開く             |

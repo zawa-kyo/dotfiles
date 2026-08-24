@@ -16,7 +16,7 @@
 - [command-model.md](command-model.md)
   - 単独実行コマンド / シェル関数 / `mise run` の役割分担
 - [abbreviation-policy.md](abbreviation-policy.md)
-  - シェルの省略コマンド名の命名原則
+  - シェルの省略コマンドと Neovim キーバインドに共通する命名原則
 
 ## 運用と確認
 

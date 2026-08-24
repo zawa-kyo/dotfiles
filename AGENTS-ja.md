@@ -20,7 +20,7 @@
 - `docs/command-model.md`
   - 単独実行コマンド、シェル関数、`mise run` の役割分担。
 - `docs/abbreviation-policy.md`
-  - シェルの省略コマンド名の設計原則。
+  - シェルの省略コマンドと Neovim キーバインドに共通する命名規則。
 - `docs/ai-tools.md`
   - AI ツール管理の運用方針。
 - `docs/operations.md`
@@ -34,7 +34,7 @@
 
 - `dotfiles/editors/nvim/` を変更する場合:
   - まず `dotfiles/editors/nvim/lua/policies/` を確認する。
-  - キーバインド変更は `dotfiles/editors/nvim/lua/policies/keybinds-policy.md` を確認する。
+  - キーバインド変更は `docs/abbreviation-policy.md` と `dotfiles/editors/nvim/lua/policies/keybinds-policy.md` を確認する。
   - タブ / バッファ表示変更は `dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md` を確認する。
 - `bin/`、`setup/`、`libexec/`、`mise.toml`、または `dotfiles/shell/` を変更する場合:
   - `docs/command-model.md` と `docs/abbreviation-policy.md` を確認する。

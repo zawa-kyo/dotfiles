@@ -1,88 +1,69 @@
-# シェルの省略コマンド名ポリシー
+# 省略入力の命名ポリシー
 
 ## 目的
 
-省略コマンド名では、同じ文字を同じ意味で使います。場当たり的な語呂合わせを増やさず、少数の規則で覚えられるようにします。
+シェルの省略コマンドと Neovim の追加キーバインドに共通する命名規則を定めます。異なる環境でも、操作の種類と対象を同じ順序で読めることを目指します。
 
-## 基本原則
+各環境に固有の制約やキー一覧は、実装に近いポリシーで定めます。
+
+- [Neovim キーバインド設計](../dotfiles/editors/nvim/lua/policies/keybinds-policy.md)
+- [Neovim のタブとバッファの表示方針](../dotfiles/editors/nvim/lua/policies/tab-buffer-policy.md)
+
+## 共通文法
 
 - `verb + object` を基本形にする
-- 必要なら短い qualifier を1つ足す
-- 実装詳細ではなく意味で命名する
-- 使用頻度が十分に高いものだけを省略コマンド名にする
+- 必要な場合だけ短い qualifier を加える
+- 実装するツールやプラグインではなく、利用者の操作で命名する
+- 使用頻度が高い操作に短い入力を割り当てる
+- 各環境の標準操作と衝突する場合は、その標準操作を優先する
 
-## 語彙の考え方
+`verb` は操作の種類を表し、後続キーの名前空間になります。`object` と `qualifier` の意味は、文字単独ではなく先行する `verb` と組み合わせて解釈します。同じ環境の同じ名前空間では、同じ文字に一貫した意味を持たせます。
 
-ここでの `verb` は動作、`object` は対象、`qualifier` は補足の意味です。
+たとえば、`sl` は `s`（search）と `l`（line）からなる「行を検索する操作」です。一方、`rl` や `tl` の `l` は Neovim の location list を表せます。異なる操作まで含めて一文字の意味を固定すると、Vim 標準操作や既存の自然な組み合わせと衝突するためです。
 
-### verb
+## 共通する動詞
 
-- `c`: checkout / change
-- `r`: reveal / open
+- `g`: go。現在の文脈から対象へ移動する
+- `s`: search。現在の文脈に依存しない検索または一覧を開く
+- `r`: reveal。対象や現在の文脈に関する情報を表示する
+
+同じ操作をシェルと Neovim の両方で表現できる場合は、Neovim のキーバインド設計を基準に文字を選びます。ただし、各環境で一般的な操作や標準キーを崩してまで表記を揃えません。
+
+小文字と大文字の組み合わせを持つ場合は、小文字を狭い範囲、大文字を広い範囲に割り当てます。たとえば、Neovim の `sl` は現在のバッファ、`sL` はワークスペースを検索します。大文字側に対応する自然な操作がない環境では、対になる入力を無理に追加しません。
+
+## シェルの省略コマンド
+
+シェルでは、共通する動詞に加えて次の動詞を使います。
+
 - `a`: add / create / append
+- `c`: checkout / change
 - `d`: delete / remove
-- `s`: search / select
-- `g`: go / move or open the current context
 
-### object
+対象と修飾子は、同じ動詞から始まる省略コマンドの中で意味を揃えます。
 
-- `w`: worktree
-- `r`: repository
-- `b`: branch
-- `t`: task
+- `rr`: reveal repository
+- `rrb`: reveal repository with browser
+- `rrn`: reveal repository with Neovim
+- `aw`: add worktree
+- `awr`: add worktree from remote branch
+- `cb`: change branch
+- `cbr`: change to remote branch
+- `sf`: search files
+- `sfa`: search all files
+- `sfs`: search files case-sensitively
+- `sl`: search lines
+- `sln`: search lines with Neovim
+- `sls`: search lines case-sensitively
 
-### qualifier
+省略コマンドの展開先には、`mise run ...` のような実行経路ではなく、利用者が呼び出す実コマンドを指定します。
 
-- `b`: browser
-- `c`: VS Code
-- `f`: Fork
-- `l`: lazygit
-- `n`: Neovim
-- `z`: zoxide
+## 例外
 
-## 良い省略コマンド名
+`ls`、`vim`、`grep` など、既存コマンドとの互換性を目的とする省略はこの文法の対象外です。既存の入力を置き換えるものと、独自の操作名として設計するものを区別します。
 
-- 同じ verb は同じ意味を保つ
-- 同じ object は同じ対象を保つ
-- 展開先は `mise run ...` ではなく実コマンドにする
+新しい省略入力を追加するときは、次を確認します。
 
-例を示す。
-
-- `rr` -> `reveal-repository-with-zoxide`
-- `rrb` -> `reveal-repository-with-browser`
-- `rrn` -> `reveal-repository-with-neovim`
-- `rrc` -> `reveal-repository-with-code`
-- `rrf` -> `reveal-repository-with-fork`
-- `rrl` -> `reveal-repository-with-lazygit`
-- `rrz` -> `reveal-repository-with-zoxide`
-- `gd` -> `z $HOME/Desktop`
-- `gdl` -> `z $HOME/Downloads`
-- `gh` -> `z $HOME`
-- `gl` -> `z $DIR_LOCAL_CONFIG`
-- `gr` -> `z $(git rev-parse --show-toplevel)`
-- `grb` -> `gh browse`
-- `aw` -> `wt switch --branches`
-- `awr` -> `wt switch --remotes`
-- `cb` -> `switch-branch`
-- `cbr` -> `switch-branch-remote`
-- `dw` -> `wt remove`
-- `sb` -> `search-bookmarks`
-- `st` -> `search-task`
-- `sT` -> `search-theme`
-
-## 避けるもの
-
-- `mise run ...` という実装詳細を名前に含めること
-- 1 回限りの語呂合わせ
-- 同じ接頭辞に複数の意味を持たせること
-
-## Neovim キーバインドとの関係
-
-この方針は `dotfiles/editors/nvim/lua/policies/keybinds-policy.md` と同じく、同じキーに一貫した意味を持たせます。
-
-ただし対象は異なります。
-
-- Neovim のポリシー
-  - エディタ内の操作
-- シェルの省略コマンド名ポリシー
-  - シェルからのコマンド呼び出し
+- 同じ動詞の名前空間に既存の意味があるか
+- 既存の短い入力と衝突しないか
+- 使用頻度が短縮に見合うか
+- 実装名を変更しても操作名を維持できるか
