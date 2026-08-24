@@ -21,7 +21,7 @@ path=(
 )
 
 # Mise
-eval "$(mise activate zsh)"
+eval "$("$HOME/.local/bin/mise" activate zsh)"
 
 # Sheldon
 eval "$(sheldon source)"
