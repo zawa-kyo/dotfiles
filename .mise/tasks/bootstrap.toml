@@ -35,4 +35,4 @@ file = "setup/install-bun.sh"
 
 [install-git-hooks]
 description = "Install repository Git hooks with Lefthook"
-run = "mise generate git-pre-commit --write --task=pre-commit"
+run = "lefthook install pre-commit"

@@ -35,6 +35,15 @@
 - `bunx --version`
 - `setup/bun/node_modules/` が生成されていないことを確認する
 
+### mise
+
+- グローバル設定の `auto_update = true` で standalone 版を定期的に更新する
+- standalone 版の更新には `mise self-update` を使う
+- 削除前には `mise implode --dry-run` で対象を確認する
+
+> [!NOTE]
+> 対話シェルでは、プロンプトを表示するたびに `mise hook-env` が実行されないよう、mise が登録する `precmd` フックを解除しています。`chpwd` フックは残るため、ディレクトリを移動したときは移動先の設定が反映されます。同じディレクトリで `mise.toml` などを変更した場合は、自動では反映されません。`cd .` を実行するか、`eval "$(mise hook-env --force -s zsh)"` で手動更新してください。
+
 ### Homebrew
 
 - 不足している Brewfile 依存関係を導入する場合は `mise run install-brew`

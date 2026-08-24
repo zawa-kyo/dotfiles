@@ -377,25 +377,69 @@ func TestBootstrapExcludesHomebrewInstall(t *testing.T) {
 	t.Fatalf("explicit Homebrew install task is missing:\n%s", tasks)
 }
 
-// Bootstrap installs a mise entrypoint for Lefthook without Python tooling.
-func TestBootstrapInstallsMisePreCommitHook(t *testing.T) {
+// Bootstrap installs a PATH-independent Lefthook pre-commit hook.
+func TestBootstrapInstallsLefthookPreCommitHook(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
 
 	output := runMise(t, repo, home, nil, "bootstrap", "--dry-run", "--yes")
 
-	if !strings.Contains(output, "install-git-hooks") || !strings.Contains(output, "mise generate git-pre-commit --write --task=pre-commit") {
-		t.Fatalf("bootstrap does not install the mise pre-commit hook:\n%s", output)
+	if !strings.Contains(output, "install-git-hooks") || !strings.Contains(output, "lefthook install pre-commit") {
+		t.Fatalf("bootstrap does not install the Lefthook pre-commit hook:\n%s", output)
 	}
-
-	preCommitOutput := runMise(t, repo, home, nil, "run", "--dry-run", "pre-commit")
-
-	if !strings.Contains(preCommitOutput, "lefthook run pre-commit") {
-		t.Fatalf("mise pre-commit task does not run Lefthook:\n%s", preCommitOutput)
-	}
-	for _, unexpected := range []string{"lefthook install", "install-pre-commit", "uv sync", "pre_commit"} {
+	for _, unexpected := range []string{"mise generate git-pre-commit", "install-pre-commit", "uv sync", "pre_commit"} {
 		if strings.Contains(output, unexpected) {
 			t.Fatalf("bootstrap contains obsolete pre-commit tooling %q:\n%s", unexpected, output)
 		}
+	}
+}
+
+// Lefthook-generated hooks resolve tools through standalone mise without a shell PATH.
+func TestLefthookFindsStandaloneMiseWithoutPath(t *testing.T) {
+	repo := repositoryRoot(t)
+	fixture := t.TempDir()
+	home := t.TempDir()
+	outputPath := filepath.Join(fixture, "mise-output")
+
+	runCommand := func(name string, args ...string) {
+		t.Helper()
+		command := exec.Command(name, args...)
+		command.Dir = fixture
+		if output, err := command.CombinedOutput(); err != nil {
+			t.Fatalf("%s %s failed: %v\n%s", name, strings.Join(args, " "), err, output)
+		}
+	}
+
+	runCommand("git", "init", "--quiet")
+	config, err := os.ReadFile(filepath.Join(repo, "lefthook.yml"))
+	if err != nil {
+		t.Fatalf("read Lefthook configuration: %v", err)
+	}
+	mustWriteFile(t, filepath.Join(fixture, "lefthook.yml"), string(config), 0o644)
+	mustWriteFile(t, filepath.Join(home, ".local", "bin", "mise"), "#!/bin/sh\nprintf '%s\\n' \"$@\" >\"$HOOK_OUTPUT\"\n", 0o755)
+
+	installHook := exec.Command("lefthook", "install")
+	installHook.Dir = fixture
+	if output, err := installHook.CombinedOutput(); err != nil {
+		t.Fatalf("install pre-commit hook: %v\n%s", err, output)
+	}
+
+	hook := exec.Command(filepath.Join(fixture, ".git", "hooks", "pre-commit"))
+	hook.Dir = fixture
+	hook.Env = []string{
+		"HOME=" + home,
+		"HOOK_OUTPUT=" + outputPath,
+		"PATH=/usr/bin:/bin",
+	}
+	if output, err := hook.CombinedOutput(); err != nil {
+		t.Fatalf("run pre-commit hook with restricted PATH: %v\n%s", err, output)
+	}
+
+	output, err := os.ReadFile(outputPath)
+	if err != nil {
+		t.Fatalf("read fake mise output: %v", err)
+	}
+	if string(output) != "exec\n--\nlefthook\nrun\npre-commit\n" {
+		t.Fatalf("pre-commit invoked mise with unexpected arguments:\n%s", output)
 	}
 }
