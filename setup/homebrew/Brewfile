@@ -36,8 +36,6 @@ brew "prettyping"
 brew "rustup"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
-# Prints a steam locomotive if you type sl instead of ls
-brew "sl"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line tool for sharing terminal over the web
