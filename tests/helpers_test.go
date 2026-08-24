@@ -166,6 +166,18 @@ func assertFileContent(t *testing.T, path, expected string) {
 	}
 }
 
+// Require a path to remain absent.
+func assertPathMissing(t *testing.T, path string) {
+	t.Helper()
+	_, err := os.Lstat(path)
+	if err == nil {
+		t.Fatalf("path exists: %s", path)
+	}
+	if !os.IsNotExist(err) {
+		t.Fatalf("stat missing path %s: %v", path, err)
+	}
+}
+
 // Compare canonical targets across platform path aliases.
 func assertLinkResolves(t *testing.T, path string, expected string) {
 	t.Helper()

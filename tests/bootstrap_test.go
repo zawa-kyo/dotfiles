@@ -51,15 +51,7 @@ func TestDotfilesApply(t *testing.T) {
 	if !strings.Contains(configOutput, filepath.Join(home, ".config", "mise", "conf.d", "tools.toml")) {
 		t.Fatalf("linked global mise configuration was not loaded:\n%s", configOutput)
 	}
-	macOSConfig := filepath.Join(home, ".config", "mise", "config.macos.toml")
-	if runtime.GOOS == "darwin" {
-		assertLink(t, macOSConfig, filepath.Join(repo, "dotfiles", "tools", "mise", "config.macos.toml"))
-		if !strings.Contains(configOutput, macOSConfig) {
-			t.Fatalf("linked macOS mise configuration was not loaded:\n%s", configOutput)
-		}
-	} else if _, err := os.Lstat(macOSConfig); !os.IsNotExist(err) {
-		t.Fatalf("macOS mise configuration was deployed on %s: %v", runtime.GOOS, err)
-	}
+	assertPlatformDotfiles(t, repo, home, configOutput)
 
 	envCommand := exec.Command("mise", "env", "--json")
 	envCommand.Dir = home
@@ -138,17 +130,11 @@ func TestDotfilesUnapply(t *testing.T) {
 	runDotfiles(t, repo, home, nil, "unapply", "--dry-run")
 	runDotfiles(t, repo, home, nil, "unapply", "--yes")
 
-	if _, err := os.Lstat(gitConfig); !os.IsNotExist(err) {
-		t.Fatalf("managed symlink remains after unapply: %v", err)
-	}
-	if _, err := os.Lstat(filepath.Join(home, ".local", "bin", "search-google")); !os.IsNotExist(err) {
-		t.Fatalf("managed symlink-each entry remains after unapply: %v", err)
-	}
+	assertPathMissing(t, gitConfig)
+	assertPathMissing(t, filepath.Join(home, ".local", "bin", "search-google"))
 	assertFileContent(t, unrelated, "user-owned\n")
 	assertFileContent(t, generated, "cached\n")
-	if _, err := os.Lstat(lockFile); !os.IsNotExist(err) {
-		t.Fatalf("managed copy remains after unapply: %v", err)
-	}
+	assertPathMissing(t, lockFile)
 
 	runDotfiles(t, repo, home, nil, "apply", "~/.gitconfig", "--yes")
 
@@ -319,12 +305,33 @@ func TestPlatformDeclarations(t *testing.T) {
 		}
 	}
 
-	if runtime.GOOS == "darwin" {
-		platformOutput := runDotfiles(t, repo, home, nil, "status", "--json")
+	if runtime.GOOS != "darwin" {
+		return
+	}
 
-		if !strings.Contains(platformOutput, "Library/Application Support/Code/User/settings.json") {
-			t.Fatal("macOS declarations were not loaded")
-		}
+	platformOutput := runDotfiles(t, repo, home, nil, "status", "--json")
+
+	if !strings.Contains(platformOutput, "Library/Application Support/Code/User/settings.json") {
+		t.Fatal("macOS declarations were not loaded")
+	}
+}
+
+// Verify that only macOS deploys and loads platform-specific dotfiles.
+func assertPlatformDotfiles(t *testing.T, repo, home, configOutput string) {
+	t.Helper()
+	macOSConfig := filepath.Join(home, ".config", "mise", "config.macos.toml")
+	karabinerConfig := filepath.Join(home, ".config", "karabiner", "karabiner.json")
+
+	if runtime.GOOS != "darwin" {
+		assertPathMissing(t, macOSConfig)
+		assertPathMissing(t, karabinerConfig)
+		return
+	}
+
+	assertLink(t, macOSConfig, filepath.Join(repo, "dotfiles", "tools", "mise", "config.macos.toml"))
+	assertLink(t, karabinerConfig, filepath.Join(repo, "dotfiles", "tools", "karabiner", "karabiner.json"))
+	if !strings.Contains(configOutput, macOSConfig) {
+		t.Fatalf("linked macOS mise configuration was not loaded:\n%s", configOutput)
 	}
 }
 
