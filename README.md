@@ -24,17 +24,24 @@ git clone [repository_url]
 cd [cloned_repository_path]
 ```
 
-Install `mise` first if it is not already available in your shell.
+Install the latest standalone `mise` binary with the official installer. It places the binary at `~/.local/bin/mise`.
 
 ```sh
-brew install mise
+curl https://mise.run | sh
+```
+
+If you are migrating from the Homebrew version, restart the shell after installing the standalone binary. The current shell may still have an activation hook that points to `/opt/homebrew/bin/mise`.
+
+```sh
+exec zsh -l
+mise --version
 ```
 
 Trust the repository, then run the standard setup:
 
 ```sh
-mise trust
-mise bootstrap --yes
+~/.local/bin/mise trust
+~/.local/bin/mise bootstrap --yes
 ```
 
 This command:
@@ -48,25 +55,41 @@ This command:
 `mise run install` remains as a compatibility alias for `mise bootstrap`.
 Homebrew packages are not installed by either command. On macOS, run `mise run install-brew` explicitly when you want to install missing Brewfile dependencies.
 
+If an earlier setup installed mise with Homebrew, remove that formula after installing the standalone binary:
+
+```sh
+brew uninstall mise
+```
+
+To remove the standalone binary and mise-managed data, inspect the targets before running `mise implode`. The command keeps `~/.config/mise` unless you pass `--config`.
+
+```sh
+mise implode --dry-run
+mise implode
+```
+
 ## 🛠️ Common Commands
 
-| Command                                     | Purpose                                                   |
-| ------------------------------------------- | --------------------------------------------------------- |
-| `mise bootstrap`                            | Run the standard local setup                              |
-| `mise bootstrap dotfiles status`            | Inspect declared dotfile targets without changing them    |
-| `mise bootstrap dotfiles apply --dry-run`   | Preview dotfile changes and conflicts                     |
-| `mise bootstrap dotfiles apply --yes`       | Apply the declared dotfile links                          |
-| `mise bootstrap dotfiles unapply --dry-run` | Preview removal of managed dotfiles                       |
-| `mise bootstrap dotfiles unapply --yes`     | Remove managed dotfiles that remain unchanged             |
-| `mise run format`                           | Format tracked files                                      |
-| `mise run check`                            | Run all repository checks                                 |
-| `mise run install-brew`                     | Install missing Brewfile dependencies on macOS            |
-| `mise run test-deployment`                  | Test bootstrap behavior in isolated home directories      |
-| `mise run --continue-on-error upgrade`      | Update mise, apm, Neovim, and Bun; also Homebrew on macOS |
-| `mise tasks`                                | List available mise tasks                                 |
+| Command                                     | Purpose                                                                 |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
+| `mise bootstrap`                            | Run the standard local setup                                            |
+| `mise bootstrap dotfiles status`            | Inspect declared dotfile targets without changing them                  |
+| `mise bootstrap dotfiles apply --dry-run`   | Preview dotfile changes and conflicts                                   |
+| `mise bootstrap dotfiles apply --yes`       | Apply the declared dotfile links                                        |
+| `mise bootstrap dotfiles unapply --dry-run` | Preview removal of managed dotfiles                                     |
+| `mise bootstrap dotfiles unapply --yes`     | Remove managed dotfiles that remain unchanged                           |
+| `mise self-update`                          | Update the standalone mise binary immediately                           |
+| `mise run format`                           | Format tracked files                                                    |
+| `mise run check`                            | Run all repository checks                                               |
+| `mise run install-brew`                     | Install missing Brewfile dependencies on macOS                          |
+| `mise run test-deployment`                  | Test bootstrap behavior in isolated home directories                    |
+| `mise run --continue-on-error upgrade`      | Update mise-managed tools, apm, Neovim, and Bun; also Homebrew on macOS |
+| `mise tasks`                                | List available mise tasks                                               |
 
 The setup links commands from `bin/` globally.
 That directory contains small CLI tools for daily work, such as Git operations and task search.
+
+The deployed global mise configuration enables automatic updates. mise checks for a new release periodically before eligible interactive commands. Set `MISE_AUTO_UPDATE=false` temporarily when you need to suppress it.
 
 ### Bun global packages
 

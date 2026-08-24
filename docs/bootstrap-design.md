@@ -59,10 +59,11 @@ mise は、すべての配備先を一括して記録しているわけではあ
 
 各処理は、何度実行しても結果が変わらないようにします。移行済みのデータは変更しません。このリポジトリが作成したと確認できないパスがあれば、移行を中止します。途中で失敗した場合は診断を確認して原因を直し、`mise bootstrap` を再実行します。`--force` で競合を一括上書きする運用は標準手順にしません。
 
-初回セットアップは `mise trust`、`mise bootstrap --yes` の順に実行します。post-dotfiles hook は、信頼済みのリポジトリから配備したグローバル mise 設定だけを後続処理のために信頼します。
+初回セットアップでは、公式インストーラで mise を導入してから `~/.local/bin/mise trust`、`~/.local/bin/mise bootstrap --yes` の順に実行します。post-dotfiles hook は、信頼済みのリポジトリから配備したグローバル mise 設定だけを後続処理のために信頼します。
 
 Homebrew の導入は bootstrap に含めません。
 Brewfile は、macOS で明示的に実行する `mise run install-brew` と `mise run --continue-on-error upgrade` から扱います。Linux の `upgrade` には Homebrew の更新を含めません。
+mise 本体は Brewfile に含めません。配備するグローバル設定で自動更新を有効にし、必要に応じて standalone 版の `mise self-update` で即時更新します。
 これにより、標準セットアップは Homebrew の状態に左右されません。
 
 ## テスト方針

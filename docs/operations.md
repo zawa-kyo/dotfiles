@@ -35,6 +35,12 @@
 - `bunx --version`
 - `setup/bun/node_modules/` が生成されていないことを確認する
 
+### mise
+
+- グローバル設定の `auto_update = true` で standalone 版を定期的に更新する
+- standalone 版の更新には `mise self-update` を使う
+- 削除前には `mise implode --dry-run` で対象を確認する
+
 ### Homebrew
 
 - 不足している Brewfile 依存関係を導入する場合は `mise run install-brew`
