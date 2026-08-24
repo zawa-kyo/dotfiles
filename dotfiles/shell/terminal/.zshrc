@@ -24,12 +24,14 @@ path=(
 mise_startup_spinner() {
   local -a frames=(⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏)
   local frame
+  local spinner_color=$'\e[38;2;208;135;112m'
+  local spinner_reset=$'\e[0m'
 
   zmodload zsh/zselect 2>/dev/null || return
 
   while true; do
     for frame in "${frames[@]}"; do
-      print -n -r -- $'\r\e[2K'"$frame Preparing mise environment…"
+      print -n -r -- $'\r\e[2K'"$spinner_color$frame Preparing mise environment…$spinner_reset"
       zselect -t 8 2>/dev/null
     done
   done
