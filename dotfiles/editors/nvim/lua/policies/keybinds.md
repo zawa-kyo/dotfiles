@@ -1,4 +1,4 @@
-# Neovim Keybinding Design Policy
+# Neovim キーバインド設計
 
 ## 関連ポリシー
 
@@ -83,7 +83,7 @@
 | `w` | word / window           | 単語単位の操作、ウィンドウ            |
 | `z` | zoxide                  | zoxide で管理するディレクトリ         |
 
-## Insert Mode Policy
+## 挿入モードの方針
 
 - Insert mode の `<Tab>` / `<S-Tab>` は補完候補の移動に使わず、indent と snippet 展開/ジャンプに優先的に割り当てる
 - 補完候補の前後移動は `<C-n>` / `<C-p>` を基本とする
