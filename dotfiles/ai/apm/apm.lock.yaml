@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-25T08:32:44.956936+00:00'
+generated_at: '2026-08-25T10:26:38.780380+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: mattpocock/skills
@@ -48,15 +48,6 @@ dependencies:
     .claude/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
     .claude/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
   content_hash: sha256:20e7fba93c7267ba6e3a7b27787ca49191b762dffcfb804b01da9183b1b0c891
-- repo_url: refoundai/lenny-skills
-  name: lenny-skills
-  host: github.com
-  resolved_commit: 13598cc54e09399bc1bc1398b0fca284110efb2f
-  version: unknown
-  package_type: skill_bundle
-  content_hash: sha256:59c93254d90e4cc10ac9f9f35fac8d1f31d38537a24eb806ad28796628abee51
-  skill_subset:
-  - running-decision-processes
 - repo_url: zawa-kyo/skills
   name: zawa-kyo-skills
   host: github.com
