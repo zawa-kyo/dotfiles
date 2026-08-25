@@ -83,18 +83,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/500652047"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.29"
+version = "2.36.30"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.29.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.30.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.29.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.30.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:18dfdf64e4b13d3f3f7b8e0039a6ca0753020149319f74e7455e0e038cf9a5de"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.29.pkg"
+checksum = "blake3:0efe3e7b2891d4b5ea15e393e93404cf937c5d958a4ec87826d3fbbec9b4a7b9"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.30.pkg"
 
 [[tools.bat]]
 version = "0.26.1"

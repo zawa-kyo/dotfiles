@@ -7,7 +7,6 @@ dependencies:
     - git: refoundai/lenny-skills
       skills:
         - running-decision-processes
-    - mattpocock/skills/skills/productivity/grill-me
     - mattpocock/skills/skills/productivity/grilling
     - mizchi/skills/meta/empirical-prompt-tuning
     - zawa-kyo/skills

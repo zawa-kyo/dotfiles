@@ -1,32 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-08-21T14:48:41.368723+00:00'
+generated_at: '2026-08-25T08:32:44.956936+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: mattpocock/skills
-  name: grill-me
-  host: github.com
-  resolved_commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
-  version: unknown
-  virtual_path: skills/productivity/grill-me
-  is_virtual: true
-  package_type: claude_skill
-  deployed_files:
-  - .agents/skills/grill-me
-  - .agents/skills/grill-me/SKILL.md
-  - .agents/skills/grill-me/agents/openai.yaml
-  - .claude/skills/grill-me
-  - .claude/skills/grill-me/SKILL.md
-  - .claude/skills/grill-me/agents/openai.yaml
-  deployed_file_hashes:
-    .agents/skills/grill-me/SKILL.md: sha256:caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637
-    .agents/skills/grill-me/agents/openai.yaml: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
-    .claude/skills/grill-me/SKILL.md: sha256:caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637
-    .claude/skills/grill-me/agents/openai.yaml: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
-  content_hash: sha256:fe33aaa8e8dcd606107b1bfe3109f257b4a7e0f4907afd6506b62ccfb73cd1d3
-- repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: 5b15a47f2d7150f545fbcacbfe381787fc0230dc
+  resolved_commit: 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -81,14 +60,14 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: zawa-kyo-skills
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   package_type: apm_package
-  content_hash: sha256:7b98fea9c4e05d39db5aece27a9ec3d9123f356bc613a0101f6b3a162db8de42
+  content_hash: sha256:06801bfc6ee7fa0f07d5883c9933c5b14beadabd903afafe7c28511920591da2
 - repo_url: zawa-kyo/skills
   name: bootstrap-repo-docs
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: unknown
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
@@ -115,7 +94,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-automated-tests
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: dev/guide-automated-tests
   is_virtual: true
@@ -178,7 +157,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: review-essential-code
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: dev/review-essential-code
   is_virtual: true
@@ -210,7 +189,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: suggest-commit-messages
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: unknown
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
@@ -237,7 +216,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: apply-adversarial-verification
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: unknown
   virtual_path: thinking/apply-adversarial-verification
   is_virtual: true
@@ -262,9 +241,36 @@ dependencies:
     .claude/skills/apply-adversarial-verification/agents/openai.yaml: sha256:5ac3ab5b68a6f4d390e95b42cb6a5c73d47339dc96855161c1ddd191f0cdb8c7
   content_hash: sha256:2339c06d9e063f9d55d5eb9f9706fc4f869e151c939d0b347cff3ce1d1e72c58
 - repo_url: zawa-kyo/skills
+  name: consider-alternatives-first
+  host: github.com
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
+  version: unknown
+  virtual_path: thinking/consider-alternatives-first
+  is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/consider-alternatives-first
+  - .agents/skills/consider-alternatives-first/SKILL-ja.md
+  - .agents/skills/consider-alternatives-first/SKILL.md
+  - .agents/skills/consider-alternatives-first/agents/openai.yaml
+  - .claude/skills/consider-alternatives-first
+  - .claude/skills/consider-alternatives-first/SKILL-ja.md
+  - .claude/skills/consider-alternatives-first/SKILL.md
+  - .claude/skills/consider-alternatives-first/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/consider-alternatives-first/SKILL-ja.md: sha256:91c2f61576d66bc037fb16dcae29f107984bafb26fddedebb2d99f9dbf16ca55
+    .agents/skills/consider-alternatives-first/SKILL.md: sha256:53fb44d67ea2f54399d1b6aa7ef1f952292aaff58cf9c0f28fe24396d9cea212
+    .agents/skills/consider-alternatives-first/agents/openai.yaml: sha256:7aad7fac9ce4badad8e18dbfb905d74130fbe4807e8be5dcc504c63a12bcae22
+    .claude/skills/consider-alternatives-first/SKILL-ja.md: sha256:91c2f61576d66bc037fb16dcae29f107984bafb26fddedebb2d99f9dbf16ca55
+    .claude/skills/consider-alternatives-first/SKILL.md: sha256:53fb44d67ea2f54399d1b6aa7ef1f952292aaff58cf9c0f28fe24396d9cea212
+    .claude/skills/consider-alternatives-first/agents/openai.yaml: sha256:7aad7fac9ce4badad8e18dbfb905d74130fbe4807e8be5dcc504c63a12bcae22
+  content_hash: sha256:02256183cfc3dca4bf7167a32dace0d32a5d042bb04947129fbfb241e50eebc5
+- repo_url: zawa-kyo/skills
   name: refine-reasoning-logic
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: unknown
   virtual_path: thinking/refine-reasoning-logic
   is_virtual: true
@@ -291,7 +297,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: edit-existing-document
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: writing/edit-existing-document
   is_virtual: true
@@ -322,7 +328,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: revise-english-writing
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: writing/revise-english-writing
   is_virtual: true
@@ -353,7 +359,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: revise-japanese-writing
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: unknown
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
@@ -382,9 +388,36 @@ dependencies:
     .claude/skills/revise-japanese-writing/references/idea.md: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
   content_hash: sha256:0bb7d3e0afc3cda35d7a697bc0a7a98179fd4b664f856e642532061bcf346a25
 - repo_url: zawa-kyo/skills
+  name: rewrite-final-plan
+  host: github.com
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
+  version: unknown
+  virtual_path: writing/rewrite-final-plan
+  is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/rewrite-final-plan
+  - .agents/skills/rewrite-final-plan/SKILL-ja.md
+  - .agents/skills/rewrite-final-plan/SKILL.md
+  - .agents/skills/rewrite-final-plan/agents/openai.yaml
+  - .claude/skills/rewrite-final-plan
+  - .claude/skills/rewrite-final-plan/SKILL-ja.md
+  - .claude/skills/rewrite-final-plan/SKILL.md
+  - .claude/skills/rewrite-final-plan/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/rewrite-final-plan/SKILL-ja.md: sha256:12e0d30a83a8963ac7ab81d868fec2b379d3c074be3c6c862ebffdfa3c286637
+    .agents/skills/rewrite-final-plan/SKILL.md: sha256:1ac0f3fc0477f2aa51dfd6022c7a74ad718f91ab35d62c37702364678769d90a
+    .agents/skills/rewrite-final-plan/agents/openai.yaml: sha256:92ebfb6f39846911506adf2c111a1b3d8a63c3baeb17d0771f518be490681d4a
+    .claude/skills/rewrite-final-plan/SKILL-ja.md: sha256:12e0d30a83a8963ac7ab81d868fec2b379d3c074be3c6c862ebffdfa3c286637
+    .claude/skills/rewrite-final-plan/SKILL.md: sha256:1ac0f3fc0477f2aa51dfd6022c7a74ad718f91ab35d62c37702364678769d90a
+    .claude/skills/rewrite-final-plan/agents/openai.yaml: sha256:92ebfb6f39846911506adf2c111a1b3d8a63c3baeb17d0771f518be490681d4a
+  content_hash: sha256:6e9982bf9f9a7d217caa2e1350d90a2dadc4d185d0006383bf84c05b0e323cb4
+- repo_url: zawa-kyo/skills
   name: summarize-discussion-coherently
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: unknown
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
@@ -452,7 +485,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-e2e-tests
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: dev/guide-e2e-tests
   is_virtual: true
@@ -507,7 +540,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-integration-tests
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: dev/guide-integration-tests
   is_virtual: true
@@ -562,7 +595,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-unit-tests
   host: github.com
-  resolved_commit: 382d26857c6762143e47dfeeff2a8181315b8ae0
+  resolved_commit: 8b9d434042bfad68b0dbe140e6f1fc8d769cb927
   version: 0.1.0
   virtual_path: dev/guide-unit-tests
   is_virtual: true
@@ -865,6 +898,42 @@ deployments:
   content_hash: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
 - kind: project-relative
   target: claude
+  value: .claude/skills/consider-alternatives-first
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/consider-alternatives-first/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: sha256:91c2f61576d66bc037fb16dcae29f107984bafb26fddedebb2d99f9dbf16ca55
+- kind: project-relative
+  target: claude
+  value: .claude/skills/consider-alternatives-first/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: sha256:53fb44d67ea2f54399d1b6aa7ef1f952292aaff58cf9c0f28fe24396d9cea212
+- kind: project-relative
+  target: claude
+  value: .claude/skills/consider-alternatives-first/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: sha256:7aad7fac9ce4badad8e18dbfb905d74130fbe4807e8be5dcc504c63a12bcae22
+- kind: project-relative
+  target: claude
   value: .claude/skills/edit-existing-document
   runtime: null
   scope: project
@@ -944,33 +1013,6 @@ deployments:
   - mizchi/skills/meta/empirical-prompt-tuning
   active_owner: mizchi/skills/meta/empirical-prompt-tuning
   content_hash: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
-- kind: project-relative
-  target: claude
-  value: .claude/skills/grill-me
-  runtime: null
-  scope: project
-  owners:
-  - mattpocock/skills/skills/productivity/grill-me
-  active_owner: mattpocock/skills/skills/productivity/grill-me
-  content_hash: null
-- kind: project-relative
-  target: claude
-  value: .claude/skills/grill-me/SKILL.md
-  runtime: null
-  scope: project
-  owners:
-  - mattpocock/skills/skills/productivity/grill-me
-  active_owner: mattpocock/skills/skills/productivity/grill-me
-  content_hash: sha256:caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637
-- kind: project-relative
-  target: claude
-  value: .claude/skills/grill-me/agents/openai.yaml
-  runtime: null
-  scope: project
-  owners:
-  - mattpocock/skills/skills/productivity/grill-me
-  active_owner: mattpocock/skills/skills/productivity/grill-me
-  content_hash: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
 - kind: project-relative
   target: claude
   value: .claude/skills/grilling
@@ -1585,6 +1627,42 @@ deployments:
   content_hash: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
 - kind: project-relative
   target: claude
+  value: .claude/skills/rewrite-final-plan
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/rewrite-final-plan/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: sha256:12e0d30a83a8963ac7ab81d868fec2b379d3c074be3c6c862ebffdfa3c286637
+- kind: project-relative
+  target: claude
+  value: .claude/skills/rewrite-final-plan/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: sha256:1ac0f3fc0477f2aa51dfd6022c7a74ad718f91ab35d62c37702364678769d90a
+- kind: project-relative
+  target: claude
+  value: .claude/skills/rewrite-final-plan/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: sha256:92ebfb6f39846911506adf2c111a1b3d8a63c3baeb17d0771f518be490681d4a
+- kind: project-relative
+  target: claude
   value: .claude/skills/stop-slop
   runtime: null
   scope: project
@@ -1801,6 +1879,42 @@ deployments:
   content_hash: sha256:5a2c53ae45e0a8902d5767933b059c5a9fb8eb9c9a906b89fb353a3e8df9cbfe
 - kind: project-relative
   target: copilot
+  value: .agents/skills/consider-alternatives-first
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/consider-alternatives-first/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: sha256:91c2f61576d66bc037fb16dcae29f107984bafb26fddedebb2d99f9dbf16ca55
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/consider-alternatives-first/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: sha256:53fb44d67ea2f54399d1b6aa7ef1f952292aaff58cf9c0f28fe24396d9cea212
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/consider-alternatives-first/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/thinking/consider-alternatives-first
+  active_owner: zawa-kyo/skills/thinking/consider-alternatives-first
+  content_hash: sha256:7aad7fac9ce4badad8e18dbfb905d74130fbe4807e8be5dcc504c63a12bcae22
+- kind: project-relative
+  target: copilot
   value: .agents/skills/edit-existing-document
   runtime: null
   scope: project
@@ -1880,33 +1994,6 @@ deployments:
   - mizchi/skills/meta/empirical-prompt-tuning
   active_owner: mizchi/skills/meta/empirical-prompt-tuning
   content_hash: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
-- kind: project-relative
-  target: copilot
-  value: .agents/skills/grill-me
-  runtime: null
-  scope: project
-  owners:
-  - mattpocock/skills/skills/productivity/grill-me
-  active_owner: mattpocock/skills/skills/productivity/grill-me
-  content_hash: null
-- kind: project-relative
-  target: copilot
-  value: .agents/skills/grill-me/SKILL.md
-  runtime: null
-  scope: project
-  owners:
-  - mattpocock/skills/skills/productivity/grill-me
-  active_owner: mattpocock/skills/skills/productivity/grill-me
-  content_hash: sha256:caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637
-- kind: project-relative
-  target: copilot
-  value: .agents/skills/grill-me/agents/openai.yaml
-  runtime: null
-  scope: project
-  owners:
-  - mattpocock/skills/skills/productivity/grill-me
-  active_owner: mattpocock/skills/skills/productivity/grill-me
-  content_hash: sha256:c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
 - kind: project-relative
   target: copilot
   value: .agents/skills/grilling
@@ -2519,6 +2606,42 @@ deployments:
   - zawa-kyo/skills/writing/revise-japanese-writing
   active_owner: zawa-kyo/skills/writing/revise-japanese-writing
   content_hash: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rewrite-final-plan
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rewrite-final-plan/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: sha256:12e0d30a83a8963ac7ab81d868fec2b379d3c074be3c6c862ebffdfa3c286637
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rewrite-final-plan/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: sha256:1ac0f3fc0477f2aa51dfd6022c7a74ad718f91ab35d62c37702364678769d90a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/rewrite-final-plan/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/rewrite-final-plan
+  active_owner: zawa-kyo/skills/writing/rewrite-final-plan
+  content_hash: sha256:92ebfb6f39846911506adf2c111a1b3d8a63c3baeb17d0771f518be490681d4a
 - kind: project-relative
   target: copilot
   value: .agents/skills/stop-slop
