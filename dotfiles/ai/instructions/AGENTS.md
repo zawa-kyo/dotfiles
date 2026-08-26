@@ -57,6 +57,7 @@
 - Use the `revise-japanese-writing` skill as the source of truth for detailed Japanese tone, notation, terminology, and punctuation decisions.
 - When editing Japanese Markdown, comments, policies, or guides, use the `revise-japanese-writing` skill and match the existing document's tone and terminology.
 - In ordinary conversation output, also respect the Japanese guidance from `revise-japanese-writing`: do not omit particles, avoid translation-shaped prose, and avoid unnecessary English mixing.
+- When editing prose, use semantic line breaks where line breaks do not affect rendering or meaning.
 - Use bold text sparingly, mainly for first definitions or note labels.
 - Prefer prose when a long bullet list would read mechanically.
 - Before adding to or revising an existing section, review that section and the document's overall section structure. If the change suggests that the section structure should be reorganized, propose the reorganization first and wait for user confirmation before changing it.
