@@ -83,18 +83,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/500652047"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.30"
+version = "2.36.31"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.30.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.31.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.30.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.31.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:0efe3e7b2891d4b5ea15e393e93404cf937c5d958a4ec87826d3fbbec9b4a7b9"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.30.pkg"
+checksum = "blake3:54936dd9cf1da1a771a8bf5fba64829c7123f3d772eabeda53293d245170f8ea"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.31.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -474,23 +474,23 @@ provenance = "github-attestations"
 provenance_verified = true
 
 [[tools.java]]
-version = "26.0.2"
+version = "26.0.2.1"
 backend = "core:java"
 
 [tools.java.options]
 shorthand_vendor = "openjdk"
 
 [tools.java."platforms.linux-arm64"]
-checksum = "sha256:0ce6516c459e635d9f263f9b3492d83ec2c1ee26db128a6d904cae3d3096ceee"
-url = "https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_linux-aarch64_bin.tar.gz"
+checksum = "sha256:b96b265a4a1a36c02454148891aa58ca63303cbc2d1b7979c33b4fe99e09117b"
+url = "https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_linux-aarch64_bin.tar.gz"
 
 [tools.java."platforms.linux-x64"]
-checksum = "sha256:2da09e9db53e5c4f9eeec045f49e7d8fbcd8e4153edbf0c269f520ff82fd4198"
-url = "https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_linux-x64_bin.tar.gz"
+checksum = "sha256:a1489256029b389ce6ee52da0de1d01496c5df1776d6870241fe4823b998ea61"
+url = "https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_linux-x64_bin.tar.gz"
 
 [tools.java."platforms.macos-arm64"]
-checksum = "sha256:c99b35ad3063ef555361a243c44280b048e24e3cbbc4a59ee3b368e5a8958f3a"
-url = "https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_macos-aarch64_bin.tar.gz"
+checksum = "sha256:3a61f9bbfbf2e09308aa4b1a5c044fcbc82f6ba49e074be49a7b7911e1f00efd"
+url = "https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_macos-aarch64_bin.tar.gz"
 
 [[tools.jq]]
 version = "1.8.2"
@@ -793,7 +793,7 @@ url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.12.5"
+version = "0.12.6"
 backend = "asdf:uv"
 
 [[tools.vhs]]
