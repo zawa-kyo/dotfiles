@@ -1,4 +1,3 @@
-tap "arto-app/tap", trusted: true
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -93,6 +92,8 @@ cask "sf-symbols"
 cask "slack"
 # Unpacks archive files
 cask "the-unarchiver"
+# Open-source code editor
+cask "visual-studio-code"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 # Install and switch between multiple versions of Xcode
@@ -196,5 +197,4 @@ vscode "zainchen.json"
 vscode "zignd.html-css-class-completion"
 go "cmd/go"
 go "cmd/gofmt"
-go "golang.org/x/tools/gopls"
 npm "corepack"
