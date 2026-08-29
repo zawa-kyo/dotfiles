@@ -2,6 +2,7 @@ local M = {}
 
 local snippets = require("plugins.picker.snippets")
 local file_visibility = require("config.file-visibility")
+local grep = require("plugins.picker.grep")
 
 local function picker()
   return require("snacks").picker
@@ -240,7 +241,7 @@ M.keys = {
   {
     "sL",
     function()
-      picker().grep(file_visibility.search_opts())
+      grep.open(file_visibility.search_opts())
     end,
     desc = "Search lines in workspace",
   },
