@@ -23,6 +23,14 @@ local function picker_action(open)
   end
 end
 
+--- Open the repository's filtered colorscheme picker.
+---@return PickerAction
+local function search_colorschemes()
+  return function()
+    colorscheme_picker.open(picker)
+  end
+end
+
 --- Open the buffer picker.
 ---@type PickerAction
 M.search_buffers = picker_action(function(value)
@@ -47,11 +55,9 @@ M.search_diagnostics = picker_action(function(value)
   value.diagnostics()
 end)
 
--- Open the repository's filtered colorscheme picker.
+--- Open the repository's filtered colorscheme picker.
 ---@type PickerAction
-M.search_colorschemes = function()
-  colorscheme_picker.open(picker)
-end
+M.search_colorschemes = search_colorschemes()
 
 --- Search lines in open buffers.
 ---@type PickerAction
