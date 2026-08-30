@@ -8,6 +8,24 @@ local picker = require("snacks").picker
 -- Shared LSP capabilities
 M.capabilities = require("blink.cmp").get_lsp_capabilities()
 
+-- Return the Snacks Lua source directory for LuaLS annotations.
+local function snacks_library()
+  local init = vim.api.nvim_get_runtime_file("lua/snacks/picker/init.lua", false)[1]
+  if not init then
+    return {}
+  end
+  return { vim.fn.fnamemodify(init, ":h:h:h") }
+end
+
+M.lua_settings = {
+  Lua = {
+    workspace = {
+      checkThirdParty = false,
+      library = snacks_library(),
+    },
+  },
+}
+
 -- Remove Neovim LSP default keymaps to avoid mini.clue noise.
 do
   local lsp_defaults = { "gra", "gri", "grm", "grr", "grt", "grn" }

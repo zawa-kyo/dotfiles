@@ -1,3 +1,5 @@
+local actions = require("plugins.coding.neotest-config.actions")
+
 return {
   "nvim-neotest/neotest",
 
@@ -18,51 +20,37 @@ return {
   keys = {
     {
       "Xtn",
-      function()
-        require("neotest").run.run()
-      end,
+      actions.run_nearest,
       desc = "Run nearest test",
     },
     {
       "Xtf",
-      function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end,
+      actions.run_file,
       desc = "Run tests in current file",
     },
     {
       "Xta",
-      function()
-        require("neotest").run.run(vim.fn.getcwd())
-      end,
+      actions.run_workspace,
       desc = "Run tests in current working directory",
     },
     {
       "Xtl",
-      function()
-        require("neotest").run.run_last()
-      end,
+      actions.run_last,
       desc = "Run last test",
     },
     {
       "Xts",
-      function()
-        require("neotest").run.stop()
-      end,
+      actions.stop_nearest,
       desc = "Stop nearest test",
     },
     {
       "rto",
-      function()
-        require("neotest").output.open({ enter = true })
-      end,
+      actions.show_output,
       desc = "Show test output",
     },
     {
       "rts",
-      function()
-        require("neotest").summary.toggle()
-      end,
+      actions.toggle_summary,
       desc = "Show test summary",
     },
   },

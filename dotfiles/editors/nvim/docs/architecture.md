@@ -19,6 +19,9 @@ lazy.nvim は `plugins/` 直下の Lua ファイルと、`init.lua` を持つ直
 plugin spec以外の内部モジュールは、`plugins/files/`や`plugins/navigation/mini-files/`のように1階層深いディレクトリへ置く。
 内部モジュールだけを収めるディレクトリには`init.lua`を作らない。
 
+機能別ディレクトリのplugin specに専用の内部モジュールを添える場合は、plugin specを`init.lua`に置く。
+たとえば`plugins/editing/undo-glow-config/init.lua`をplugin spec、`plugins/editing/undo-glow-config/actions.lua`をキーマップから呼ぶ操作として分ける。
+
 同じプラグインを複数の機能から設定する場合は、各機能のplugin specにその機能の`opts`とキーバインドを置く。
 プラグイン全体に関わる初期化だけを、`plugins/`直下のplugin specが担当する。
 

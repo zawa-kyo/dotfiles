@@ -66,13 +66,14 @@ return {
         end
 
         local common = require("config.lsp")
-        vim.lsp.config(
-          server,
-          vim.tbl_deep_extend("force", vim.lsp.config[server] or {}, {
-            capabilities = common.capabilities,
-            on_attach = common.on_attach,
-          })
-        )
+        local options = {
+          capabilities = common.capabilities,
+          on_attach = common.on_attach,
+        }
+        if server == "lua_ls" then
+          options.settings = common.lua_settings
+        end
+        vim.lsp.config(server, vim.tbl_deep_extend("force", vim.lsp.config[server] or {}, options))
         vim.lsp.enable(server)
       end
 
