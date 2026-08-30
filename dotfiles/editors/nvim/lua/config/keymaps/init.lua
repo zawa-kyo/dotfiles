@@ -25,8 +25,9 @@ vim.g.maplocalleader = " "
 --
 -- Prefix design (movement/navigation):
 --   <leader>w … Window action path (split/resize/equalize/close)
---   <leader>t … Tab action path (new/split/close)
 --   <leader>b … Buffer action path (list/delete/reload)
+--   <leader>t … Todo action path (new/toggle/done/ghost text)
+--   <leader>T … Tab action path (new/split/close)
 --   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
 --   [j / ]j   … Jumplist movement
 --   ] / [     … “Next / Previous” cycle UI (window/buffer/tab/diagnostic/quickfix/loclist/…)

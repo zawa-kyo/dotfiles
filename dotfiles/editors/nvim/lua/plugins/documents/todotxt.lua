@@ -78,22 +78,22 @@ return {
 
   keys = {
     {
-      "tn",
+      "<leader>tn",
       "<Cmd>TodoTxt new<CR>",
       desc = "New todo entry",
     },
     {
-      "rT",
+      "<leader>tt",
       "<Cmd>TodoTxt<CR>",
       desc = "Toggle todo.txt",
     },
     {
-      "rC",
+      "<leader>td",
       "<Cmd>DoneTxt<CR>",
       desc = "Toggle done.txt",
     },
     {
-      "tG",
+      "<leader>tg",
       "<Cmd>TodoTxt ghost<CR>",
       desc = "Toggle todo ghost text",
     },
