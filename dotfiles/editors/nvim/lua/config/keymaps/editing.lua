@@ -42,6 +42,7 @@ end, opts("Indent when starting editing on an empty line", nil, nil, true))
 
 -- Override V behavior
 keymap("n", "V", "v$", opts("Select until the end of the line"))
+keymap("n", "vv", "<Cmd>normal! V<CR>", opts("Select the current line"))
 
 -- Toggle comments with Neovim's built-in comment operator.
 keymap("n", "tc", "gcc", { desc = "Toggle comment", remap = true, silent = true })
