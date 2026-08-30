@@ -25,6 +25,7 @@
 - Read the surrounding code and project docs before making non-trivial changes.
 - When checking how a library, SDK, CLI, or similar tool behaves or should be configured, consult its official documentation first. When the goal can be achieved through officially recommended and maintained settings, options, or environment variables, use those. If no official path exists, propose a practical workaround as a compromise.
 - Make code show the processing flow, and make tests show behavior from the user's perspective.
+- Insert blank lines between semantically distinct code blocks when doing so improves readability.
 - Use commit bodies or comments to explain Why or Why not when the context matters.
 - Add comments only when they clarify behavior that is hard to infer from the code itself.
 - Use the repository's formatter and style rules after editing formatter-managed files.
