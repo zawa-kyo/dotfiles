@@ -1,4 +1,4 @@
-local actions = require("plugins.editing.undo-glow.actions")
+local actions = require("plugins.editing.undo-glow-config.actions")
 
 return {
   "y3owk1n/undo-glow.nvim",

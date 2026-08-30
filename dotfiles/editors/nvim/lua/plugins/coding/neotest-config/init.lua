@@ -1,4 +1,4 @@
-local actions = require("plugins.coding.neotest.actions")
+local actions = require("plugins.coding.neotest-config.actions")
 
 return {
   "nvim-neotest/neotest",
