@@ -42,23 +42,23 @@ url = "https://github.com/microsoft/apm/releases/download/v0.28.0/apm-darwin-arm
 url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/503748770"
 
 [[tools.ast-grep]]
-version = "0.45.1"
+version = "0.45.2"
 backend = "aqua:ast-grep/ast-grep"
 
 [tools.ast-grep."platforms.linux-arm64"]
-checksum = "sha256:9ee7ec49aada3dc05135d21977af089a33fc3154ada25bab102daca90b5098f2"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-aarch64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505306241"
+checksum = "sha256:e67ee2f5928b4d77a472114edf6e227d90fefe22fa47e7a78db187c55d206564"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.2/app-aarch64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/526582046"
 
 [tools.ast-grep."platforms.linux-x64"]
-checksum = "sha256:76fb6555be6734fb5057dba8d2fb756430f374bb9e1af694cf1ce00e13238d63"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305291"
+checksum = "sha256:67aff72dd2994bf152fcc3a8a09cf93b13193abe59f39393095167c729af2015"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.2/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/526581269"
 
 [tools.ast-grep."platforms.macos-arm64"]
-checksum = "sha256:6c761afbdc072a7a9006d0dc5c49b3247fef195b8bebe675b4aa385ff872d9c3"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-aarch64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305714"
+checksum = "sha256:1fc21214234bf6f5a3f841d5b2493a4fc4b6087f69b055c9ad5f94f77c0ab76e"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.2/app-aarch64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/526581149"
 
 [[tools.atuin]]
 version = "18.19.0"
@@ -83,18 +83,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/500652047"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.34"
+version = "2.36.36"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.34.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.36.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.34.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.36.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:86b61fc885c8462b50a8d6651d37482dde70a197c2bdfd68ab2ec6e4a65dea78"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.34.pkg"
+checksum = "blake3:69787e283680dc9661951f3c47dd833090b67053ba11c5db7ffd512f09e08abb"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.36.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -167,13 +167,13 @@ url = "https://github.com/sorafujitani/ccsession/releases/download/v1.2.0/ccsess
 url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/500992891"
 
 [[tools.container]]
-version = "1.2.2"
+version = "1.3.0"
 backend = "aqua:apple/container"
 
 [tools.container."platforms.macos-arm64"]
-checksum = "sha256:f4c7e73f7203725a3512676dfd9ec6c6a98a37093b6fd4a1b0fdcfcb227e2118"
-url = "https://github.com/apple/container/releases/download/1.2.2/container-1.2.2-installer-signed.pkg"
-url_api = "https://api.github.com/repos/apple/container/releases/assets/505922768"
+checksum = "sha256:bd156250cb84061367ed4b0eeef52211b6a825c6e0728a9426e57602ddb089c1"
+url = "https://github.com/apple/container/releases/download/1.3.0/container-1.3.0-installer-signed.pkg"
+url_api = "https://api.github.com/repos/apple/container/releases/assets/528358110"
 
 [[tools.copilot]]
 version = "1.0.80"
@@ -280,23 +280,23 @@ version = "3.41.9-stable"
 backend = "asdf:flutter"
 
 [[tools.fvm]]
-version = "4.1.4"
+version = "4.3.0"
 backend = "aqua:leoafarias/fvm"
 
 [tools.fvm."platforms.linux-arm64"]
-checksum = "sha256:855dc4a55898e273018d06ddbe7b9f78d705197dc0a0f6afe3f6fb6b75243174"
-url = "https://github.com/leoafarias/fvm/releases/download/4.1.4/fvm-4.1.4-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/leoafarias/fvm/releases/assets/521129222"
+checksum = "sha256:64050f133cf24fca467af1302d092a8d39429fd1c82261816f7406cf882782ec"
+url = "https://github.com/leoafarias/fvm/releases/download/4.3.0/fvm-4.3.0-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/leoafarias/fvm/releases/assets/527840464"
 
 [tools.fvm."platforms.linux-x64"]
-checksum = "sha256:2f4066f17a4aef4a43cf277c077d87b7912475d458245a64d174510baaffe5fb"
-url = "https://github.com/leoafarias/fvm/releases/download/4.1.4/fvm-4.1.4-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/leoafarias/fvm/releases/assets/521129668"
+checksum = "sha256:33a65e75845c51177f2783e3972edc07dccfa3a6dee0dfa68a518002dec67af3"
+url = "https://github.com/leoafarias/fvm/releases/download/4.3.0/fvm-4.3.0-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/leoafarias/fvm/releases/assets/527840897"
 
 [tools.fvm."platforms.macos-arm64"]
-checksum = "sha256:71fb586a6b332556365ea2971dffa964211351417f0899f8f67551b03c9b27aa"
-url = "https://github.com/leoafarias/fvm/releases/download/4.1.4/fvm-4.1.4-macos-arm64.tar.gz"
-url_api = "https://api.github.com/repos/leoafarias/fvm/releases/assets/521131958"
+checksum = "sha256:b06dcb414f10d1749dd5ab1a053c037825f52eca021029b31debd6cf6bae98ab"
+url = "https://github.com/leoafarias/fvm/releases/download/4.3.0/fvm-4.3.0-macos-arm64.tar.gz"
+url_api = "https://api.github.com/repos/leoafarias/fvm/releases/assets/527843809"
 
 [[tools.fzf]]
 version = "0.74.3"
@@ -566,17 +566,17 @@ url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.8.0/mae
 url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/496651875"
 
 [[tools.neovim]]
-version = "0.12.4"
+version = "0.12.5"
 backend = "vfox:mise-plugins/vfox-neovim"
 
 [tools.neovim."platforms.linux-arm64"]
-url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-arm64.tar.gz"
+url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-arm64.tar.gz"
 
 [tools.neovim."platforms.linux-x64"]
-url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.tar.gz"
+url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86_64.tar.gz"
 
 [tools.neovim."platforms.macos-arm64"]
-url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-macos-arm64.tar.gz"
+url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-macos-arm64.tar.gz"
 
 [[tools.node]]
 version = "24.19.0"
@@ -771,29 +771,29 @@ url = "https://github.com/tmux/tmux-builds/releases/download/v3.7b/tmux-3.7b-mac
 url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/465072864"
 
 [[tools.tree-sitter]]
-version = "0.26.12"
+version = "0.26.13"
 backend = "aqua:tree-sitter/tree-sitter"
 
 [tools.tree-sitter."platforms.linux-arm64"]
-checksum = "sha256:cfbf3d9aad8e326878ab1846885a9c2b782a0333273591616f34bf556d525586"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.12/tree-sitter-linux-arm64.gz"
-url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/506408041"
+checksum = "sha256:088c5ebf4b4b558c8abfd167c9c4f9669c2f9070da3edd9c0157dc051d77ac5d"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.13/tree-sitter-linux-arm64.gz"
+url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/526034724"
 provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.linux-x64"]
-checksum = "sha256:d00ac0daefc4bf8c4b57842a5c0509927232faad1d83157b64fbad4e2e8d9a8b"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.12/tree-sitter-linux-x64.gz"
-url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/506408040"
+checksum = "sha256:c9c8bef027658d60249ca4fc0663578ceb2e2029346bb8702e091e20d7716475"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.13/tree-sitter-linux-x64.gz"
+url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/526034722"
 provenance = "github-attestations"
 
 [tools.tree-sitter."platforms.macos-arm64"]
-checksum = "sha256:a7ddeff2507391ebdfd0b8fa0dfe91babed291ea00d86426cb0e6cfade891697"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.12/tree-sitter-macos-arm64.gz"
-url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/506408052"
+checksum = "sha256:0a13c53d178d4cca22d2da220d5841c76cba0c39c220b789b64d752ae5d31864"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.13/tree-sitter-macos-arm64.gz"
+url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/526034751"
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.12.7"
+version = "0.12.8"
 backend = "asdf:uv"
 
 [[tools.vhs]]
