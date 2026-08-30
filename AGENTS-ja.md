@@ -4,7 +4,7 @@
 
 - `AGENTS-ja.md` は `AGENTS.md` の日本語版。
 - 詳細手順や長い背景説明はここに複製せず、参照先への導線だけを置く。
-- 人向けの利用案内は `README-ja.md`、リポジトリ全体の設計判断は `docs/`、サブシステム固有の詳細規約は各ディレクトリ直下のポリシーを参照する。
+- 人向けの利用案内は `README-ja.md`、設計や運用の文書は `docs/README.md` を起点に参照する。
 
 ## 参照先一覧
 
@@ -13,38 +13,23 @@
   - セットアップ、日常運用、主要コマンド、全体構成の概要。
 - `README-ja.md`
   - `README.md` の日本語版。
-- `docs/index.md`
+- `docs/README.md`
   - 設計文書の目次。
-- `docs/architecture.md`
-  - リポジトリ全体の構造と責務分担。
-- `docs/command-model.md`
-  - 単独実行コマンド、シェル関数、`mise run` の役割分担。
-- `docs/abbreviation.md`
-  - シェルの省略コマンドと Neovim キーバインドに共通する命名規則。
-- `docs/ai-tools.md`
-  - AI ツール管理の運用方針。
-- `docs/operations.md`
-  - 変更後の確認方針。
-- `dotfiles/editors/nvim/lua/policies/keybinds.md`
-  - Neovim キーバインド設計。
-- `dotfiles/editors/nvim/lua/policies/tab-buffer.md`
-  - Neovim のタブ / バッファ表示方針。
+  - 目次から、リポジトリ全体または各ツールの文書をたどる。
 
 ## 変更対象ごとの参照先
 
 - `dotfiles/editors/nvim/` を変更する場合:
-  - まず `dotfiles/editors/nvim/lua/policies/` を確認する。
-  - キーバインド変更は `docs/abbreviation.md` と `dotfiles/editors/nvim/lua/policies/keybinds.md` を確認する。
-  - タブ / バッファ表示変更は `dotfiles/editors/nvim/lua/policies/tab-buffer.md` を確認する。
+  - `docs/README.md` を起点に、Neovim ドキュメントへの導線をたどる。
 - `bin/`、`setup/`、`libexec/`、`mise.toml`、または `dotfiles/shell/` を変更する場合:
-  - `docs/command-model.md` と `docs/abbreviation.md` を確認する。
-  - `fzf` を使う処理は `docs/command-model.md` の共通化方針に従う。
+  - `docs/README.md` を起点に、コマンドモデルと省略入力の文書をたどる。
+  - `fzf` を使う処理は、コマンドモデル記載の共通化方針に従う。
 - `setup/homebrew/` を変更する場合:
-  - `README.md` の Homebrew 節と `docs/operations.md` を確認する。
+  - `README.md` の Homebrew 節を読み、`docs/README.md` から確認方針の文書をたどる。
 - `setup/bun/` を変更する場合:
-  - `README.md` の Bun 節と `docs/operations.md` を確認する。
+  - `README.md` の Bun 節を読み、`docs/README.md` から確認方針の文書をたどる。
 - `dotfiles/ai/` を変更する場合:
-  - `README.md` の AI Tools 節、`docs/architecture.md`、`docs/ai-tools.md` を確認する。
+  - `README.md` の AI Tools 節を読み、`docs/README.md` から全体構成と AI ツールの文書をたどる。
 - セットアップや利用手順の文書を変える場合:
   - `README.md` と `README-ja.md` を更新する。
 - リポジトリ全体に関わる設計判断を変える場合:
@@ -88,7 +73,7 @@
 
 - 新しいセットアップ手順を追加したら `README.md` と `README-ja.md` を更新する。
 - 新しい全体設計の原則を追加したら `docs/` を更新する。
-- 新しい Neovim 規約を追加したら `dotfiles/editors/nvim/lua/policies/` を更新する。
+- 新しい Neovim 規約を追加したら `dotfiles/editors/nvim/docs/` とその目次を更新する。
 - エージェント向けの参照導線が変わったら `AGENTS.md` を更新する。
 
 ## 言語版
@@ -107,5 +92,5 @@
 ## 注意事項
 
 - `README.md` と `AGENTS.md` は英語を基本とする。
-- `README-ja.md`, `AGENTS-ja.md`, `docs/`, ポリシーは日本語を基本とする。
+- `README-ja.md`、`AGENTS-ja.md`、各 `docs/` ディレクトリの文書は日本語を基本とする。
 - `AGENTS.md` は短い入口として保ち、肥大化させない。

@@ -123,14 +123,4 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 
 ## 📚 Documentation
 
-The README stays short. Use these documents for design and operations:
-
-- [docs/index.md](docs/index.md): documentation index
-- [docs/architecture.md](docs/architecture.md): repository layout and responsibility boundaries
-- [docs/bootstrap-design.md](docs/bootstrap-design.md): mise bootstrap responsibilities and migration rules
-- [docs/command-model.md](docs/command-model.md): standalone commands, shell functions, and mise tasks
-- [docs/abbreviation.md](docs/abbreviation.md): shared naming policy for shell abbreviations and Neovim keybindings
-- [docs/ai-tools.md](docs/ai-tools.md): AI tool and apm policy
-- [docs/operations.md](docs/operations.md): verification policy by change type
-
-Neovim-specific policies live in `dotfiles/editors/nvim/lua/policies/`.
+The README stays short. Use [docs/README.md](docs/README.md) as the index for design and operations documentation.

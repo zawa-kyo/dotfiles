@@ -13,38 +13,23 @@
   - Setup, daily usage, major commands, and repository overview.
 - `README-ja.md`
   - Japanese version of `README.md`.
-- `docs/index.md`
+- `docs/README.md`
   - Design document index.
-- `docs/architecture.md`
-  - Repository structure and responsibility boundaries.
-- `docs/command-model.md`
-  - How standalone commands, shell functions, and `mise run` split responsibilities.
-- `docs/abbreviation.md`
-  - Shared naming grammar for shell abbreviations and Neovim keybindings.
-- `docs/ai-tools.md`
-  - AI tool management policy.
-- `docs/operations.md`
-  - Verification policy after changes.
-- `dotfiles/editors/nvim/lua/policies/keybinds.md`
-  - Neovim keybinding design.
-- `dotfiles/editors/nvim/lua/policies/tab-buffer.md`
-  - Neovim tab and buffer display policy.
+  - Follow its table of contents to repository-wide and tool-specific documents.
 
 ## References by Change Area
 
 - When changing `dotfiles/editors/nvim/`:
-  - Check `dotfiles/editors/nvim/lua/policies/` first.
-  - For keybindings, read `docs/abbreviation.md` and `dotfiles/editors/nvim/lua/policies/keybinds.md`.
-  - For tab or buffer display, read `dotfiles/editors/nvim/lua/policies/tab-buffer.md`.
+  - Start from `docs/README.md` and follow its Neovim documentation entry.
 - When changing `bin/`, `setup/`, `libexec/`, `mise.toml`, or `dotfiles/shell/`:
-  - Read `docs/command-model.md` and `docs/abbreviation.md`.
-  - Follow the shared `fzf` policy in `docs/command-model.md` for scripts that use `fzf`.
+  - Start from `docs/README.md` and follow its command model and abbreviation entries.
+  - Follow the command model's shared `fzf` policy for scripts that use `fzf`.
 - When changing `setup/homebrew/`:
-  - Read the Homebrew section in `README.md` and `docs/operations.md`.
+  - Read the Homebrew section in `README.md`, then follow the operations entry in `docs/README.md`.
 - When changing `setup/bun/`:
-  - Read the Bun section in `README.md` and `docs/operations.md`.
+  - Read the Bun section in `README.md`, then follow the operations entry in `docs/README.md`.
 - When changing `dotfiles/ai/`:
-  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-tools.md`.
+  - Read the AI Tools section in `README.md`, then follow the architecture and AI tools entries in `docs/README.md`.
 - When changing setup or usage documentation:
   - Update `README.md` and `README-ja.md`.
 - When changing repository-wide design decisions:
@@ -88,7 +73,7 @@
 
 - When adding new setup instructions, update `README.md` and `README-ja.md`.
 - When adding new repository-wide design principles, update `docs/`.
-- When adding new Neovim rules, update `dotfiles/editors/nvim/lua/policies/`.
+- When adding new Neovim rules, update `dotfiles/editors/nvim/docs/` and its index.
 - When changing agent-facing references, update `AGENTS.md`.
 
 ## Language Versions
@@ -107,5 +92,5 @@ This applies especially to:
 ## Notes
 
 - `README.md` and `AGENTS.md` are English.
-- `README-ja.md`, `AGENTS-ja.md`, `docs/`, and policy files are Japanese by default.
+- `README-ja.md`, `AGENTS-ja.md`, and files under `docs/` directories are Japanese by default.
 - Keep `AGENTS.md` as a short entry point and avoid letting it grow too large.

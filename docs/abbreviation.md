@@ -6,8 +6,8 @@
 
 各環境に固有の制約やキー一覧は、実装に近いポリシーで定めます。
 
-- [Neovim キーバインド設計](../dotfiles/editors/nvim/lua/policies/keybinds.md)
-- [Neovim のタブとバッファの表示方針](../dotfiles/editors/nvim/lua/policies/tab-buffer.md)
+- [Neovim キーバインド設計](../dotfiles/editors/nvim/docs/keybinds.md)
+- [Neovim のタブとバッファの表示方針](../dotfiles/editors/nvim/docs/tab-buffer.md)
 
 ## 共通文法
 

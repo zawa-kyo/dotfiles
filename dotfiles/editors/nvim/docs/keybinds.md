@@ -2,16 +2,19 @@
 
 ## 関連ポリシー
 
-- [省略入力の命名ポリシー](../../../../../docs/abbreviation.md)
+- [省略入力の命名ポリシー](../../../../docs/abbreviation.md)
   - シェルの省略コマンドと共有する `verb + object` の文法を定める
 - [タブ/バッファ表示ポリシー](tab-buffer.md)
   - タブとバッファの役割および表示方針を定める
+- [todo.txt 運用ガイド](todotxt.md)
+  - todo.txt の書式と Neovim での操作方法をまとめる
 
 ## 基本方針
 
-- 追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計する
+- 通常キーから始まる追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計する
   - 動詞（1 打鍵目）は「操作の種類」
-  - 目的語（2 打鍵目以降）は動詞ごとに定めた辞書に従う
+  - 目的語（2 打鍵目以降）は、各動詞の辞書に従う
+- `<leader>` から始まるキーバインドは **対象 (object) + 動作 (action)** の形式で設計する
 - Vim 標準操作は尊重する
   - 例：`hjkl` / `d` / `c` / `x` / `y` / `p` / `f/F/t/T` / `w/e/b`
 - プラグイン単位ではなく「操作の意味」で分類する
@@ -41,13 +44,16 @@
   - カーソル位置に依存する候補表示や詳細表示は `r`、カーソル位置に依存しない検索/一覧 UI は `s`、即時実行は `X` に寄せる
 - 小文字/大文字は使い分ける
   - 小文字=狭い範囲、大文字=広い範囲。近い意味は使用頻度の高い方を小文字にする
-- `<leader>` は、頻繁に使う Vim コア操作の補助パスとして扱う
-  - 意味別の通常キーバインドを妨げず、作成・削除・一覧表示・サイズ変更などの操作を `<leader>` にも置く
-  - `<leader>w` は window 操作、`<leader>b` は buffer 操作、`<leader>t` は tab 操作に固定する
+- `<leader>` は、対象を選んでから動作を選ぶコマンドツリーとして扱う
+  - 頻繁に使い、複数の関連操作をまとめると覚えやすくなる対象だけを追加する
+  - プラグインやツールごとに名前空間を増やさない
+  - `<leader>w` は window 操作、`<leader>b` は buffer 操作、`<leader>t` は todo 操作、`<leader>T` は tab 操作に固定する
+  - 作成、削除、一覧表示、サイズ変更などの動作は、各対象の後続キーに割り当てる
   - window の移動は `<C-h/j/k/l>` に固定し、作成/操作は `<leader>w…` に寄せる
 - 例外/固定ルール
   - 単独の `s` / `S` と `r` / `R` は通常操作に割り当てず、誤入力防止のため `<Nop>` にする
-  - `/` は nvim-hlslens で拡張した Vim 標準の前方検索、`?` は Flash の Tree-sitter 範囲検索、`gw` は表示範囲を対象とする Jab のラベル検索、`J` は Hop の単語ジャンプに割り当てる
+  - `/` は nvim-hlslens で拡張した Vim 標準の前方検索、`?` は Flash の Tree-sitter 範囲検索に割り当てる
+  - `gw` は表示範囲を対象とする Jab のラベル検索、`J` は Hop の単語ジャンプに割り当てる
   - ラベルを直接入力して移動先を選ぶ UI では、Vim 標準の `n/N` や `;/,` を上書きしない
   - picker や補完のように入力欄を含む候補 UI では、候補内の移動を `<C-n>`=次、`<C-p>`=前に寄せる
   - 前後移動を指定してから対象種別を選ぶ巡回操作は `[ ]` に寄せる
@@ -95,7 +101,7 @@
 
 ## サンプルキーバインド
 
-| Group         | Key          | Verb                    | Action                      |
+| Group         | Key          | Reading                 | Action                      |
 | ------------- | ------------ | ----------------------- | --------------------------- |
 | `g` (go)      | `gd`         | go definition           | 定義へジャンプ              |
 | `g` (go)      | `gr`         | go references           | 参照へジャンプ              |
@@ -121,8 +127,8 @@
 | `X` (execute) | `Xta`        | execute test all        | 作業ディレクトリをテスト    |
 | `X` (execute) | `Xtl`        | execute test last       | 直前のテストを再実行        |
 | `X` (execute) | `Xts`        | execute test stop       | 最も近いテストを停止        |
-| `r` (reveal)  | `rt`         | reveal test output      | テストの出力を表示          |
-| `r` (reveal)  | `rT`         | reveal test summary     | テストツリーを表示          |
+| `r` (reveal)  | `rts`        | reveal test summary     | テストツリーを表示          |
+| `r` (reveal)  | `rto`        | reveal test output      | テストの出力を表示          |
 | `[`, `]`      | `[d`         | cycle prev diagnostic   | 前の diagnostic             |
 | `[`, `]`      | `]d`         | cycle next diagnostic   | 次の diagnostic             |
 | `[`, `]`      | `[t`         | cycle prev tab          | 前のタブ                    |
@@ -130,5 +136,12 @@
 | `<leader>`    | `<leader>/`  | toggle comment          | コメントの ON/OFF           |
 | `<leader>w`   | `<leader>ws` | window split            | 横分割                      |
 | `<leader>w`   | `<leader>wv` | window vsplit           | 縦分割                      |
+| `<leader>t`   | `<leader>tn` | todo new                | TODO を追加                 |
+| `<leader>t`   | `<leader>tt` | todo toggle             | `todo.txt` の表示を切り替え |
+| `<leader>t`   | `<leader>td` | todo done               | `done.txt` の表示を切り替え |
+| `<leader>t`   | `<leader>tg` | todo ghost text         | ghost text の ON/OFF        |
+| `<leader>T`   | `<leader>Tn` | tab new                 | タブを作成                  |
+| `<leader>T`   | `<leader>Ts` | tab split               | 現在のバッファをタブへ分割  |
+| `<leader>T`   | `<leader>Tq` | tab quit                | タブを閉じる                |
 | `z`           | `zz`         | built-in center screen  | 画面中央へ                  |
 | `z`           | `zt`         | built-in top of screen  | 画面上へ移動                |

@@ -3,5 +3,6 @@ return {
   require("plugins.documents.nvim-markdown"),
   require("plugins.documents.readermode"),
   require("plugins.documents.render-markdown"),
+  require("plugins.documents.todotxt"),
   require("plugins.documents.vim-jp"),
 }

@@ -23,9 +23,7 @@
 - [operations.md](operations.md)
   - 変更後の確認方針
 
-## 各ツールのポリシー
+## ツール別ドキュメント
 
-- [../dotfiles/editors/nvim/lua/policies/keybinds.md](../dotfiles/editors/nvim/lua/policies/keybinds.md)
-  - Neovim キーバインド設計
-- [../dotfiles/editors/nvim/lua/policies/tab-buffer.md](../dotfiles/editors/nvim/lua/policies/tab-buffer.md)
-  - Neovim タブ/バッファ表示方針
+- [Neovim](../dotfiles/editors/nvim/docs/README.md)
+  - Neovim 固有の設計と運用の目次
