@@ -18,6 +18,17 @@ return {
   "folke/snacks.nvim",
 
   cond = not vim.g.vscode,
+  opts = {
+    terminal = {
+      win = {
+        style = "terminal",
+        position = "float",
+        backdrop = 60,
+        height = 0.9,
+        width = 0.9,
+      },
+    },
+  },
   keys = {
     {
       "tt",

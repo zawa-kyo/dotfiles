@@ -8,5 +8,8 @@ return {
   "folke/snacks.nvim",
 
   cond = not vim.g.vscode,
+  opts = {
+    picker = require("plugins.picker.config"),
+  },
   keys = picker_keymaps.keys,
 }

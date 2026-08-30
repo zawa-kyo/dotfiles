@@ -2,6 +2,11 @@ return {
   "folke/snacks.nvim",
 
   cond = not vim.g.vscode,
+  opts = {
+    lazygit = {
+      enabled = true,
+    },
+  },
   keys = {
     {
       "tg",

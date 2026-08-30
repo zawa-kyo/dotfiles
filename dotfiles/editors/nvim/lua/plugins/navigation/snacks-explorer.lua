@@ -1,5 +1,5 @@
 local utils = require("config.utils")
-local file_visibility = require("plugins.navigation.files.visibility")
+local file_visibility = require("plugins.files.visibility")
 local editor_windows = setmetatable({}, { __mode = "k" })
 
 if vim.g.vscode then
@@ -84,6 +84,12 @@ end
 return {
   "folke/snacks.nvim",
   cond = not vim.g.vscode,
+  opts = {
+    explorer = {
+      replace_netrw = false,
+      trash = true,
+    },
+  },
   keys = {
     {
       "te",

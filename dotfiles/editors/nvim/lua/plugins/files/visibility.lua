@@ -1,5 +1,5 @@
 local M = {}
-local file_exclusions = require("plugins.navigation.files.exclusions")
+local file_exclusions = require("plugins.files.exclusions")
 
 local state = {
   hidden = true,
