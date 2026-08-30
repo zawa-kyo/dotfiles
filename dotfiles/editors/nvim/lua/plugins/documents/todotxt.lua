@@ -60,6 +60,22 @@ local function setup_todotxt()
   end
 end
 
+-- Run a todotxt command only after plugin setup has registered it.
+local function run_todotxt_command(command)
+  return function()
+    local name = command:match("^%S+")
+    if not name or vim.fn.exists(":" .. name) ~= 2 then
+      notify_setup_error(command .. " is unavailable; check DIR_TODO_NOTES and restart Neovim")
+      return
+    end
+
+    local ok, err = pcall(vim.cmd, command)
+    if not ok then
+      notify_setup_error("Failed to run " .. command .. ": " .. tostring(err))
+    end
+  end
+end
+
 return {
   "phrmendes/todotxt.nvim",
 
@@ -79,22 +95,22 @@ return {
   keys = {
     {
       "<leader>tn",
-      "<Cmd>TodoTxt new<CR>",
+      run_todotxt_command("TodoTxt new"),
       desc = "New todo entry",
     },
     {
       "<leader>tt",
-      "<Cmd>TodoTxt<CR>",
+      run_todotxt_command("TodoTxt"),
       desc = "Toggle todo.txt",
     },
     {
       "<leader>td",
-      "<Cmd>DoneTxt<CR>",
+      run_todotxt_command("DoneTxt"),
       desc = "Toggle done.txt",
     },
     {
       "<leader>tg",
-      "<Cmd>TodoTxt ghost<CR>",
+      run_todotxt_command("TodoTxt ghost"),
       desc = "Toggle todo ghost text",
     },
   },
