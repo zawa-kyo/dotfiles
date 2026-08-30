@@ -13,6 +13,7 @@ func TestSwitchBranchCommand(t *testing.T) {
 	fakeBin := t.TempDir()
 	selectedBranch := "alpha"
 
+	// Create a repository with a selectable branch.
 	runCommand(t, gitRepo, nil, "git", "init", "-q", "-b", "main")
 	runCommand(t, gitRepo, nil, "git", "config", "user.name", "Test User")
 	runCommand(t, gitRepo, nil, "git", "config", "user.email", "test@example.com")
@@ -20,8 +21,10 @@ func TestSwitchBranchCommand(t *testing.T) {
 	runCommand(t, gitRepo, nil, "git", "add", "README.md")
 	runCommand(t, gitRepo, nil, "git", "commit", "-q", "-m", "fixture")
 	runCommand(t, gitRepo, nil, "git", "branch", selectedBranch)
+
 	mustWriteFile(t, filepath.Join(fakeBin, "fzf"), "#!/bin/sh\nhead -n 1\n", 0o755)
 
+	// Invoke the published wrapper with the deterministic selector.
 	output := runCommand(t, gitRepo, map[string]string{
 		"PATH": pathWithPrefix(fakeBin),
 	}, filepath.Join(repo, "bin", "switch-branch"))

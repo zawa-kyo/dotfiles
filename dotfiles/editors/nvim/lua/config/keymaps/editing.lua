@@ -2,13 +2,49 @@ local utils = require("config.utils")
 local opts = utils.getOpts
 local keymap = utils.getKeymap
 
+-- Yank the relative file path, optionally including a selected line range.
+local function yank_file_reference(start_line, end_line)
+  local path = vim.fn.expand("%:.")
+  if path == "" then
+    path = "No Name"
+  end
+
+  local text
+
+  -- No range or entire file selected: path only.
+  if not start_line or not end_line or (start_line == 1 and end_line == vim.fn.line("$")) then
+    text = path
+    -- Single line selected: path:line.
+  elseif start_line == end_line then
+    text = string.format("%s:%d", path, start_line)
+    -- Line range selected: path:start-end.
+  else
+    text = string.format("%s:%d-%d", path, start_line, end_line)
+  end
+
+  vim.fn.setreg('"', text)
+  vim.fn.setreg("0", text)
+  if vim.o.clipboard:match("unnamedplus") then
+    vim.fn.setreg("+", text)
+  elseif vim.o.clipboard:match("unnamed") then
+    vim.fn.setreg("*", text)
+  end
+  vim.notify("Yanked: " .. text, vim.log.levels.INFO, { title = "Yank" })
+end
+
+-- Yank the selection without moving the cursor.
+local function yank_preserving_cursor()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  vim.cmd.normal({ args = { "y" }, bang = true })
+  vim.api.nvim_win_set_cursor(0, cursor)
+end
+
 --------------------
 -- Normal Mode
 --------------------
 
 -- Select all
 keymap("n", "<leader>a", "ggVG", opts("Select all"))
-keymap("x", "a", "<Esc>ggVG", opts("Select all"))
 
 -- Delete without yanking
 keymap("n", "x", '"_x', opts("Do not yank with x"))
@@ -40,9 +76,17 @@ keymap("n", "A", function()
   return vim.fn.getline(".") == "" and '"_cc' or "A"
 end, opts("Indent when starting editing on an empty line", nil, nil, true))
 
--- Override V behavior
 keymap("n", "V", "v$", opts("Select until the end of the line"))
-keymap("n", "vv", "<Cmd>normal! V<CR>", opts("Select the current line"))
+
+-- Select count lines in Visual-line mode.
+keymap("n", "vv", function()
+  vim.cmd.normal({ args = { vim.v.count1 .. "V" }, bang = true })
+end, opts("Select current line(s)"))
+
+-- Copy the relative file reference.
+keymap("n", "Y", function()
+  yank_file_reference()
+end, opts("Yank relative file path"))
 
 -- Toggle comments with Neovim's built-in comment operator.
 keymap("n", "tc", "gcc", { desc = "Toggle comment", remap = true, silent = true })
@@ -67,6 +111,9 @@ keymap("i", "<S-Tab>", "<C-d>", opts("Outdent line"))
 -- Visual Mode
 --------------------
 
+-- Select all
+keymap("x", "a", "<Esc>ggVG", opts("Select all"))
+
 -- Indentation
 keymap("x", "<", "<gv", opts("Reduce indentation"))
 keymap("x", ">", ">gv", opts("Add indentation"))
@@ -75,37 +122,7 @@ keymap("x", ">", ">gv", opts("Add indentation"))
 keymap("x", "p", '"_dP', opts("Paste without changing register"))
 
 -- Preserve cursor on yank
-keymap("x", "y", "mzy`z", opts("Yank the selected text"))
-
--- Yank the relative file path, optionally including a selected line range.
-local function yank_file_reference(start_line, end_line)
-  local path = vim.fn.expand("%:.")
-  if path == "" then
-    path = "No Name"
-  end
-
-  local text
-
-  -- No range or entire file selected: path only.
-  if not start_line or not end_line or (start_line == 1 and end_line == vim.fn.line("$")) then
-    text = path
-    -- Single line selected: path:line.
-  elseif start_line == end_line then
-    text = string.format("%s:%d", path, start_line)
-    -- Line range selected: path:start-end.
-  else
-    text = string.format("%s:%d-%d", path, start_line, end_line)
-  end
-
-  vim.fn.setreg('"', text)
-  vim.fn.setreg("0", text)
-  if vim.o.clipboard:match("unnamedplus") then
-    vim.fn.setreg("+", text)
-  elseif vim.o.clipboard:match("unnamed") then
-    vim.fn.setreg("*", text)
-  end
-  vim.notify("Yanked: " .. text, vim.log.levels.INFO, { title = "Yank" })
-end
+keymap("x", "y", yank_preserving_cursor, opts("Yank the selected text"))
 
 -- Yank file path and line range for AI references
 keymap("x", "Y", function()
@@ -116,10 +133,6 @@ keymap("x", "Y", function()
   end
   yank_file_reference(start_line, end_line)
 end, opts("Yank file path and line range"))
-
-keymap("n", "Y", function()
-  yank_file_reference()
-end, opts("Yank relative file path"))
 
 -- Delete selection without yanking
 keymap("x", "<BS>", '"_d', opts("Delete selection with backspace"))

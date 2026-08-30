@@ -35,6 +35,7 @@ func TestDotfilesApply(t *testing.T) {
 	assertFileContent(t, filepath.Join(home, ".local", "bin", "unrelated"), "user-owned\n")
 	assertFileContent(t, filepath.Join(home, ".apm", "apm_modules", "cached", "data"), "cached\n")
 
+	// Verify that the linked global configuration is active.
 	configCommand := exec.Command("mise", "config", "ls")
 	configCommand.Dir = home
 	configCommand.Env = replaceEnvironment(
@@ -53,6 +54,7 @@ func TestDotfilesApply(t *testing.T) {
 	}
 	assertPlatformDotfiles(t, repo, home, configOutput)
 
+	// Verify that the linked environment contains the declared platform values.
 	envCommand := exec.Command("mise", "env", "--json")
 	envCommand.Dir = home
 	envCommand.Env = replaceEnvironment(
@@ -69,6 +71,7 @@ func TestDotfilesApply(t *testing.T) {
 	if err := json.Unmarshal(envOutput, &linkedEnv); err != nil {
 		t.Fatalf("decode linked global mise environment: %v\n%s", err, envOutput)
 	}
+
 	_, hasChromeBookmarks := linkedEnv["CHROME_BOOKMARKS_ROOT"]
 	if runtime.GOOS == "darwin" && !hasChromeBookmarks {
 		t.Fatal("macOS bookmark environment was not loaded")
@@ -88,6 +91,7 @@ func TestDotfilesApply(t *testing.T) {
 		t.Fatalf("macOS PATH entries were loaded outside macOS: %s", linkedPath)
 	}
 
+	// A second apply must not change the deployed symlink set.
 	before := symlinksUnder(t, home)
 
 	runDotfiles(t, repo, home, nil, "status", "--missing")
@@ -205,6 +209,7 @@ func TestPublishedCommandWrappers(t *testing.T) {
 	home := t.TempDir()
 	chromeRoot := filepath.Join(home, "Chrome")
 	safariPlist := filepath.Join(home, "Safari", "Bookmarks.plist")
+
 	mustWriteFile(t, filepath.Join(fakeBin, "procs"), "#!/bin/sh\nprintf 'PID CPU\\n-- ---\\n1 1\\n'\n", 0o755)
 	mustWriteFile(t, filepath.Join(fakeBin, "plutil"), `#!/bin/sh
 printf '%s\n' '{"Children":[{"WebBookmarkType":"WebBookmarkTypeLeaf","URIDictionary":{"title":"Safari Example"},"URLString":"https://safari.example"}]}'
@@ -219,6 +224,7 @@ printf '%s\n' '{"Children":[{"WebBookmarkType":"WebBookmarkTypeLeaf","URIDiction
 		"SAFARI_BOOKMARKS_PLIST": safariPlist,
 	}
 
+	// Each fixture declares the command and an observable part of its output.
 	tests := []struct {
 		name     string
 		args     []string
@@ -274,10 +280,12 @@ func TestLegacyAPMLinkMigration(t *testing.T) {
 	repo := repositoryRoot(t)
 	home := t.TempDir()
 	target := filepath.Join(home, ".apm")
+
 	mustSymlink(t, filepath.Join(repo, "packages", "apm"), target)
 
 	runDotfiles(t, repo, home, nil, "apply", "~/.apm", "--yes")
 
+	// The migration replaces the legacy link with a real managed directory.
 	info, err := os.Lstat(target)
 	if err != nil {
 		t.Fatalf("stat migrated APM directory: %v", err)
@@ -305,6 +313,7 @@ func TestPlatformDeclarations(t *testing.T) {
 		}
 	}
 
+	// The platform configuration is loaded only on macOS.
 	if runtime.GOOS != "darwin" {
 		return
 	}
@@ -319,6 +328,7 @@ func TestPlatformDeclarations(t *testing.T) {
 // Verify that only macOS deploys and loads platform-specific dotfiles.
 func assertPlatformDotfiles(t *testing.T, repo, home, configOutput string) {
 	t.Helper()
+
 	macOSConfig := filepath.Join(home, ".config", "mise", "config.macos.toml")
 	karabinerConfig := filepath.Join(home, ".config", "karabiner", "karabiner.json")
 
@@ -384,6 +394,7 @@ func TestBootstrapUsesDeclarativeHkHook(t *testing.T) {
 
 	output := runMise(t, repo, home, nil, "bootstrap", "--dry-run", "--yes")
 
+	// Deployment is declarative and must not run obsolete hook installers.
 	if !strings.Contains(output, "dotfiles") {
 		t.Fatalf("bootstrap does not deploy the Git configuration:\n%s", output)
 	}
@@ -401,13 +412,16 @@ func TestHkHookFindsStandaloneMiseWithoutPath(t *testing.T) {
 	outputPath := filepath.Join(home, "mise-output")
 	configPath := filepath.Join(repo, "dotfiles", "tools", "git", ".gitconfig")
 
+	// Read the command installed by the Git configuration.
 	command := exec.Command("git", "config", "--file", configPath, "--get", "hook.hk-pre-commit.command")
 	hookCommand, err := command.Output()
 	if err != nil {
 		t.Fatalf("read hk hook command: %v", err)
 	}
+
 	mustWriteFile(t, filepath.Join(home, ".local", "bin", "mise"), "#!/bin/sh\nprintf '%s\\n' \"$@\" >\"$HOOK_OUTPUT\"\n", 0o755)
 
+	// Run the hook with only system paths available.
 	hook := exec.Command("/bin/sh", "-c", strings.TrimSpace(string(hookCommand)))
 	hook.Dir = repo
 	hook.Env = []string{
@@ -419,6 +433,7 @@ func TestHkHookFindsStandaloneMiseWithoutPath(t *testing.T) {
 		t.Fatalf("run pre-commit hook with restricted PATH: %v\n%s", err, output)
 	}
 
+	// Confirm that the standalone mise wrapper received the expected arguments.
 	output, err := os.ReadFile(outputPath)
 	if err != nil {
 		t.Fatalf("read fake mise output: %v", err)

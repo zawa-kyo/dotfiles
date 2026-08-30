@@ -9,9 +9,11 @@ import (
 func TestSearchGoogleCommandEncodesQuery(t *testing.T) {
 	repo := repositoryRoot(t)
 	fakeBin := t.TempDir()
+
 	mustWriteFile(t, filepath.Join(fakeBin, "open"), "#!/bin/sh\nprintf '%s\\n' \"$@\"\n", 0o755)
 	expected := "https://www.google.com/search?q=%E6%97%A5%E6%9C%AC%E8%AA%9E%20%26%20%23%20100%25\n"
 
+	// Run the public command with a fixture opener.
 	output := runCommand(t, repo, map[string]string{
 		"PATH": pathWithPrefix(fakeBin),
 	}, filepath.Join(repo, "bin", "search-google"), "日本語", "&", "#", "100%")
