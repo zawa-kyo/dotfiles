@@ -21,3 +21,10 @@ plugin spec以外の内部モジュールは、`plugins/files/`や`plugins/navig
 
 同じプラグインを複数の機能から設定する場合は、各機能のplugin specにその機能の`opts`とキーバインドを置く。
 プラグイン全体に関わる初期化だけを、`plugins/`直下のplugin specが担当する。
+
+## Picker の操作層
+
+Pickerを開く処理は`plugins/picker/actions.lua`にまとめる。
+`keymaps.lua`はキー、action、説明の対応だけを宣言し、Snacksや検索オプションを直接組み立てない。
+
+ダッシュボードなどキーマップ以外の入口も同じactionを呼び出し、検索方法とオプションを共有する。

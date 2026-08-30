@@ -59,11 +59,7 @@ return {
     -- Set shortcuts
     dashboard.section.buttons.val = {
       dashboard.button("n", "  Create New File", ":ene <BAR> startinsert <CR>"),
-      dashboard.button(
-        "l",
-        "󰱼  Find Lines",
-        ":lua require('plugins.picker.grep').open(require('plugins.files.visibility').search_opts())<CR>"
-      ),
+      dashboard.button("l", "󰱼  Find Lines", ":lua require('plugins.picker.actions').search_workspace_lines()<CR>"),
       dashboard.button(
         "f",
         "󰥨  Find Files",

@@ -1,269 +1,186 @@
 local M = {}
 
-local snippets = require("plugins.picker.snippets")
-local file_visibility = require("plugins.files.visibility")
-local grep = require("plugins.picker.grep")
-
-local function picker()
-  return require("snacks").picker
-end
-
--- Search lines in the current buffer.
-local function search_buffer_lines()
-  picker().lines()
-end
-
-local colorscheme_picker = require("plugins.picker.colorschemes")
+local actions = require("plugins.picker.actions")
 
 M.keys = {
   {
     "sb",
-    function()
-      picker().buffers()
-    end,
+    actions.search_buffers,
     desc = "Search buffers",
   },
   {
     "sB",
-    function()
-      picker().grep_buffers()
-    end,
+    actions.search_current_buffers,
     desc = "Search lines in current buffers",
   },
   {
     "sc", -- search colorschemes
-    function()
-      colorscheme_picker.open(picker)
-    end,
+    actions.search_colorschemes,
     desc = "Search colorschemes",
   },
   {
     "sd",
-    function()
-      picker().diagnostics_buffer()
-    end,
+    actions.search_buffer_diagnostics,
     desc = "Search diagnostics in current buffer",
   },
   {
     "sD",
-    function()
-      picker().diagnostics()
-    end,
+    actions.search_diagnostics,
     desc = "Search diagnostics in workspace",
   },
   {
     "sf",
-    function()
-      picker().files(file_visibility.navigation_opts())
-    end,
+    actions.search_files,
     desc = "Search files in workspace",
   },
   {
     "sF",
-    function()
-      picker().recent()
-    end,
+    actions.search_recent_files,
     desc = "Search recent files",
   },
   {
     "sgb",
-    function()
-      picker().git_branches()
-    end,
+    actions.search_git_branches,
     desc = "Search git branches",
   },
   {
     "sgd",
-    function()
-      picker().git_diff()
-    end,
+    actions.search_git_diff,
     desc = "Search git diffs (hunks)",
   },
   {
     "sgf",
-    function()
-      picker().git_log_file()
-    end,
+    actions.search_git_file_log,
     desc = "Search git log file",
   },
   {
     "sgF",
-    function()
-      picker().git_files()
-    end,
+    actions.search_git_files,
     desc = "Search git files",
   },
   {
     "sgl",
-    function()
-      picker().git_log()
-    end,
+    actions.search_git_log,
     desc = "Search git logs",
   },
   {
     "sgL",
-    function()
-      picker().git_log_line()
-    end,
+    actions.search_git_line_log,
     desc = "Search git log lines",
   },
   {
     "sgs",
-    function()
-      picker().git_status()
-    end,
+    actions.search_git_status,
     desc = "Search git status",
   },
   {
     "sgS",
-    function()
-      picker().git_stash()
-    end,
+    actions.search_git_stash,
     desc = "Search git stash",
   },
   {
     "sh",
-    function()
-      picker().help()
-    end,
+    actions.search_help,
     desc = "Search helps",
   },
   {
     "si",
-    function()
-      picker().icons()
-    end,
+    actions.search_icons,
     desc = "Search icons",
   },
   {
     "sk",
-    function()
-      picker().keymaps()
-    end,
+    actions.search_keymaps,
     desc = "Search keymaps",
   },
   {
     "sl",
-    search_buffer_lines,
+    actions.search_buffer_lines,
     desc = "Search lines in current buffer",
   },
   {
     "sm",
-    function()
-      picker().smart()
-    end,
+    actions.search_smart,
     desc = "Smart search for files and words",
   },
   {
     "sM",
-    function()
-      picker().marks()
-    end,
+    actions.search_marks,
     desc = "Search marks",
   },
   {
     "sn",
-    function()
-      picker().notifications()
-    end,
+    actions.search_notifications,
     desc = "Search notifications",
   },
   {
     "sN", -- search snippets
-    function()
-      snippets.search_snippets()
-    end,
+    actions.search_snippets,
     desc = "Search snippets",
   },
   {
     "sp",
-    function()
-      picker().pickers()
-    end,
+    actions.search_picker_sources,
     desc = "Search pickers",
   },
   {
     "sP",
-    function()
-      picker().projects()
-    end,
+    actions.search_projects,
     desc = "Search projects",
   },
   {
     "sq",
-    function()
-      picker().qflist()
-    end,
+    actions.search_quickfix,
     desc = "Search quickfix list",
   },
   {
     "sr",
-    function()
-      picker().registers()
-    end,
+    actions.search_registers,
     desc = "Search registers",
   },
   {
     "sR",
-    function()
-      picker().resume()
-    end,
+    actions.resume,
     desc = "Resume previous picker",
   },
   {
     "ss",
-    function()
-      picker().lsp_symbols()
-    end,
+    actions.search_symbols,
     desc = "Search LSP symbols in current buffer",
   },
   {
     "sS",
-    function()
-      picker().lsp_workspace_symbols()
-    end,
+    actions.search_workspace_symbols,
     desc = "Search LSP symbols in workspace",
   },
   {
     "st",
-    function()
-      picker().treesitter()
-    end,
+    actions.search_treesitter_symbols,
     desc = "Search Tree-sitter symbols in current buffer",
   },
   {
     "su",
-    function()
-      picker().undo()
-    end,
+    actions.search_undos,
     desc = "Search undos",
   },
   {
     "sL",
-    function()
-      grep.open(file_visibility.search_opts())
-    end,
+    actions.search_workspace_lines,
     desc = "Search lines in workspace",
   },
   {
     "sz",
-    function()
-      picker().zoxide()
-    end,
+    actions.search_directories,
     desc = "Search directories via zoxide",
   },
   {
     "th", -- toggle hidden files
-    function()
-      file_visibility.toggle_hidden()
-    end,
+    actions.toggle_hidden,
     desc = "Toggle dotfiles in file navigation",
   },
   {
     "ti", -- toggle ignored files
-    function()
-      file_visibility.toggle_ignored()
-    end,
+    actions.toggle_ignored,
     desc = "Toggle Git-ignored files in file navigation",
   },
 }
