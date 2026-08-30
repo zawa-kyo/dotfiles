@@ -1,11 +1,11 @@
-# 🏠 dotfiles
+# 🚀 dotfiles
 
 Dotfiles repository for editors, terminals, CLI tools, and the local toolchain.
 
 This README covers initial setup and common commands.
 For design and operations, read `docs/`. For agent guidance, read `AGENTS.md`.
 
-## ✨ Managed Areas
+## Managed Areas
 
 - Editor configuration for Neovim and VS Code
 - Terminal-related configuration for Zsh, Starship, Ghostty, WezTerm, and Zellij
@@ -15,7 +15,7 @@ For design and operations, read `docs/`. For agent guidance, read `AGENTS.md`.
 - AI tool configuration for Codex, Claude Code, and related tools
 - Sample files for editor and LSP checks
 
-## 🚀 Quick Start
+## Quick Start
 
 Clone the repository and enter the working directory:
 
@@ -70,7 +70,7 @@ mise implode --dry-run
 mise implode
 ```
 
-## 🛠️ Common Commands
+## Common Commands
 
 | Command                                     | Purpose                                                                 |
 | ------------------------------------------- | ----------------------------------------------------------------------- |
@@ -110,7 +110,7 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 | `wt list`              | Show worktrees and their status                         |
 | `wt remove`            | Remove the current worktree while preserving its branch |
 
-## 🗂️ Repository Layout
+## Repository Layout
 
 | Path        | Role                                                 |
 | ----------- | ---------------------------------------------------- |
@@ -121,6 +121,6 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 | `tests/`    | Go integration tests using isolated home directories |
 | `docs/`     | Repository-wide design and operations policy         |
 
-## 📚 Documentation
+## Documentation
 
 The README stays short. Use [docs/README.md](./docs/README.md) as the index for design and operations documentation.
