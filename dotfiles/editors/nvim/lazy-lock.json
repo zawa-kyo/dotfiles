@@ -70,6 +70,7 @@
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "6264451f14119d63a52580e5198d6baf8518b0b2" },
   "tinysegmenter.nvim": { "branch": "main", "commit": "64ac8a1b4c074fd032cdc7f1f9167c50447fd8cd" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
+  "todotxt.nvim": { "branch": "main", "commit": "1344867f9c03bb8eb36f0316d03a9ac3951dec78" },
   "tokyonight.nvim": { "branch": "main", "commit": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6" },
   "undo-glow.nvim": { "branch": "main", "commit": "144564492e2d50b732524f5c9a9bc9045f89a69a" },
   "vimdoc-ja": { "branch": "master", "commit": "b1fee81b5c791d95c165a60bdaaf18cd1c52565a" },

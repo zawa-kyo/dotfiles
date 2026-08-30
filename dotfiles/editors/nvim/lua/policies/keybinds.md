@@ -121,8 +121,10 @@
 | `X` (execute) | `Xta`        | execute test all        | 作業ディレクトリをテスト    |
 | `X` (execute) | `Xtl`        | execute test last       | 直前のテストを再実行        |
 | `X` (execute) | `Xts`        | execute test stop       | 最も近いテストを停止        |
-| `r` (reveal)  | `rt`         | reveal test output      | テストの出力を表示          |
-| `r` (reveal)  | `rT`         | reveal test summary     | テストツリーを表示          |
+| `r` (reveal)  | `rts`        | reveal test summary     | テストツリーを表示          |
+| `r` (reveal)  | `rto`        | reveal test output      | テストの出力を表示          |
+| `r` (reveal)  | `rT`         | reveal todo             | `todo.txt` を表示           |
+| `r` (reveal)  | `rC`         | reveal completed todo   | `done.txt` を表示           |
 | `[`, `]`      | `[d`         | cycle prev diagnostic   | 前の diagnostic             |
 | `[`, `]`      | `]d`         | cycle next diagnostic   | 次の diagnostic             |
 | `[`, `]`      | `[t`         | cycle prev tab          | 前のタブ                    |

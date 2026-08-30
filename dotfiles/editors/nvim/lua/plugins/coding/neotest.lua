@@ -52,14 +52,14 @@ return {
       desc = "Stop nearest test",
     },
     {
-      "rt",
+      "rto",
       function()
         require("neotest").output.open({ enter = true })
       end,
       desc = "Show test output",
     },
     {
-      "rT",
+      "rts",
       function()
         require("neotest").summary.toggle()
       end,
