@@ -60,9 +60,9 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button("n", "  Create New File", ":ene <BAR> startinsert <CR>"),
       dashboard.button(
-        "W",
-        "󰱼  Find Texts",
-        ":lua require('snacks').picker.grep(require('plugins.files.visibility').search_opts())<CR>"
+        "l",
+        "󰱼  Find Lines",
+        ":lua require('plugins.picker.grep').open(require('plugins.files.visibility').search_opts())<CR>"
       ),
       dashboard.button(
         "f",
@@ -76,7 +76,7 @@ return {
         ":lua require('snacks').explorer.open(require('plugins.files.visibility').navigation_opts())<CR>"
       ),
       dashboard.button("E", "󰉖  Mini Explorer", ":lua require('mini.files').open()<CR>"),
-      dashboard.button("l", "󰒲  Open Lazy.nvim", ":Lazy<CR>"),
+      dashboard.button("L", "󰒲  Open Lazy.nvim", ":Lazy<CR>"),
       dashboard.button("q", "  Quit", ":qa<CR>"),
     }
 
