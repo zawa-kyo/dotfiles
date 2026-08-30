@@ -1,3 +1,5 @@
+local actions = require("plugins.editing.undo-glow.actions")
+
 return {
   "y3owk1n/undo-glow.nvim",
 
@@ -43,28 +45,14 @@ return {
     },
     {
       "n",
-      function()
-        require("undo-glow").search_next({
-          animation = {
-            animation_type = "strobe",
-          },
-        })
-        require("hlslens").start()
-      end,
+      actions.search_next,
       mode = "n",
       desc = "Search next with glow",
       noremap = true,
     },
     {
       "N",
-      function()
-        require("undo-glow").search_prev({
-          animation = {
-            animation_type = "strobe",
-          },
-        })
-        require("hlslens").start()
-      end,
+      actions.search_previous,
       mode = "n",
       desc = "Search prev with glow",
       noremap = true,
