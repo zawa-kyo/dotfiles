@@ -1,6 +1,7 @@
 package bootstrap_test
 
 import (
+	"maps"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -42,9 +43,7 @@ func miseCommand(repo, home string, env map[string]string, args ...string) *exec
 	command.Dir = repo
 	values := isolatedMiseEnvironment(repo, home)
 	values["MISE_GLOBAL_CONFIG_FILE"] = filepath.Join(home, "global-mise.toml")
-	for key, value := range env {
-		values[key] = value
-	}
+	maps.Copy(values, env)
 	command.Env = replaceEnvironment(os.Environ(), values)
 	return command
 }
