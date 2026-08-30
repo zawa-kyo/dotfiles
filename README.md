@@ -123,4 +123,4 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 
 ## 📚 Documentation
 
-The README stays short. Use [docs/README.md](docs/README.md) as the index for design and operations documentation.
+The README stays short. Use [docs/README.md](./docs/README.md) as the index for design and operations documentation.

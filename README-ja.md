@@ -123,4 +123,4 @@ ghq で取得したリポジトリの worktree は Worktrunk で管理します�
 
 ## 📚 詳細ドキュメント
 
-README は概要に留めます。設計や運用に関するドキュメントは、[docs/README.md](docs/README.md) を目次として参照してください。
+README は概要に留めます。設計や運用に関するドキュメントは、[docs/README.md](./docs/README.md) を目次として参照してください。

@@ -4,23 +4,23 @@
 
 ## 全体設計
 
-- [architecture.md](architecture.md)
+- [architecture.md](./architecture.md)
   - リポジトリ全体の構造とファイルの置き場所
-- [bootstrap-design.md](bootstrap-design.md)
+- [bootstrap-design.md](./bootstrap-design.md)
   - mise bootstrap の役割、競合時の動作、移行とテストの設計
-- [ai-tools.md](ai-tools.md)
+- [ai-tools.md](./ai-tools.md)
   - AI ツールを管理するための運用方針
 
 ## コマンドとタスクの設計
 
-- [command-model.md](command-model.md)
+- [command-model.md](./command-model.md)
   - 単独実行コマンド / シェル関数 / `mise run` の役割分担
-- [abbreviation.md](abbreviation.md)
+- [abbreviation.md](./abbreviation.md)
   - シェルの省略コマンドと Neovim キーバインドに共通する命名原則
 
 ## 運用と確認
 
-- [operations.md](operations.md)
+- [operations.md](./operations.md)
   - 変更後の確認方針
 
 ## ツール別ドキュメント

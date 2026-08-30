@@ -47,7 +47,7 @@ mise は、すべての配備先を一括して記録しているわけではあ
 
 `unapply` は dotfiles の配備だけを解除します。bootstrap タスクが導入した mise ツール、apm の生成データ、Bun パッケージは削除しません。hk のグローバルな Git hook 定義は `.gitconfig` の配備に含まれるため、`.gitconfig` を配備解除すると一緒に外れます。
 
-状態確認、dry-run、適用、管理対象の削除に使うコマンドは、[運用と確認](operations.md)を参照してください。
+状態確認、dry-run、適用、管理対象の削除に使うコマンドは、[運用と確認](./operations.md)を参照してください。
 
 ## bootstrap の実行順序
 
