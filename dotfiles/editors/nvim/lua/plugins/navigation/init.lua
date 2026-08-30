@@ -8,4 +8,5 @@ return {
   require("plugins.navigation.nvim-hlslens"),
   require("plugins.navigation.origami"),
   require("plugins.navigation.overlook"),
+  require("plugins.navigation.snacks-explorer"),
 }

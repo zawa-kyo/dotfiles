@@ -1,7 +1,7 @@
 local M = {}
 
 local snippets = require("plugins.picker.snippets")
-local file_visibility = require("config.file-visibility")
+local file_visibility = require("plugins.navigation.files.visibility")
 local grep = require("plugins.picker.grep")
 
 local function picker()

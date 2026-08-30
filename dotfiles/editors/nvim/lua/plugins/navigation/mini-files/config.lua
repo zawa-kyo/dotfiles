@@ -1,6 +1,6 @@
 local M = {}
 
-local file_exclusions = require("config.file-exclusions")
+local file_exclusions = require("plugins.navigation.files.exclusions")
 local utils = require("config.utils")
 local is_hidden_visible = true
 

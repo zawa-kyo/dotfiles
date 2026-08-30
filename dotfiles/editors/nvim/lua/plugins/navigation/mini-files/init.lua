@@ -1,4 +1,4 @@
-local mini_files = require("config.mini-files")
+local mini_files = require("plugins.navigation.mini-files.config")
 
 return {
   "echasnovski/mini.files",

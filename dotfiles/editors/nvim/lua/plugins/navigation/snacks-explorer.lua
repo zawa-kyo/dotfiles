@@ -1,5 +1,5 @@
 local utils = require("config.utils")
-local file_visibility = require("config.file-visibility")
+local file_visibility = require("plugins.navigation.files.visibility")
 local editor_windows = setmetatable({}, { __mode = "k" })
 
 if vim.g.vscode then
