@@ -1,7 +1,7 @@
 return {
   require("plugins.coding.flutter-tools"),
   require("plugins.coding.lua-snip"),
-  require("plugins.coding.neotest"),
+  require("plugins.coding.neotest.init"),
   require("plugins.coding.nvim-treesitter"),
   require("plugins.coding.rustaceanvim"),
   require("plugins.coding.tiny-code-action"),

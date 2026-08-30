@@ -7,5 +7,5 @@ return {
   require("plugins.editing.mini-pairs"),
   require("plugins.editing.nvim-spider"),
   require("plugins.editing.nvim-surround"),
-  require("plugins.editing.undo-glow"),
+  require("plugins.editing.undo-glow.init"),
 }
