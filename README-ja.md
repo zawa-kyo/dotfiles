@@ -123,14 +123,4 @@ ghq で取得したリポジトリの worktree は Worktrunk で管理します�
 
 ## 📚 詳細ドキュメント
 
-README は概要に留め、詳しい設計や運用は次のドキュメントに分けています。
-
-- [docs/index.md](docs/index.md): ドキュメントの入口
-- [docs/architecture.md](docs/architecture.md): ディレクトリ構成と責務境界
-- [docs/bootstrap-design.md](docs/bootstrap-design.md): mise bootstrap の責務と移行規則
-- [docs/command-model.md](docs/command-model.md): グローバルコマンド、シェル関数、mise タスクの使い分け
-- [docs/abbreviation.md](docs/abbreviation.md): シェルの省略コマンドと Neovim キーバインドに共通する命名方針
-- [docs/ai-tools.md](docs/ai-tools.md): AI ツールと apm の運用方針
-- [docs/operations.md](docs/operations.md): 変更内容に応じた確認方法
-
-Neovim 固有の方針は `dotfiles/editors/nvim/lua/policies/` に置いています。
+README は概要に留めます。設計や運用に関するドキュメントは、[docs/README.md](docs/README.md) を目次として参照してください。
