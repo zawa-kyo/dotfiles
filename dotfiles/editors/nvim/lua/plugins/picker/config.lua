@@ -1,4 +1,4 @@
-local file_visibility = require("config.file-visibility")
+local file_visibility = require("plugins.files.visibility")
 
 -- Synchronize visibility after closing a file-navigation picker.
 local function sync_file_visibility(picker)
