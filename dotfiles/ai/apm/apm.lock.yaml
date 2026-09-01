@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-26T05:53:14.378619+00:00'
+generated_at: '2026-09-01T12:16:57.666275+00:00'
 apm_version: 0.28.0
 dependencies:
 - repo_url: mattpocock/skills
@@ -51,14 +51,14 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: zawa-kyo-skills
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   package_type: apm_package
-  content_hash: sha256:9715bb5ac55c626b6d073dd9207d7145421934df272bd80aa9a77052f29ca610
+  content_hash: sha256:788740b5753fe9f4e3ac4dc6d5320f60cc46625c3ec39a3795414839835f6379
 - repo_url: zawa-kyo/skills
   name: bootstrap-repo-docs
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: dev/bootstrap-repo-docs
   is_virtual: true
@@ -85,7 +85,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-automated-tests
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: dev/guide-automated-tests
   is_virtual: true
@@ -148,7 +148,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: review-essential-code
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: dev/review-essential-code
   is_virtual: true
@@ -180,7 +180,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: suggest-commit-messages
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: dev/suggest-commit-messages
   is_virtual: true
@@ -207,7 +207,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: challenge-completed-work
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: thinking/challenge-completed-work
   is_virtual: true
@@ -234,7 +234,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: compare-distinct-approaches
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: thinking/compare-distinct-approaches
   is_virtual: true
@@ -261,7 +261,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: coordinate-independent-reviews
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: thinking/coordinate-independent-reviews
   is_virtual: true
@@ -288,7 +288,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: refine-developing-reasoning
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: thinking/refine-developing-reasoning
   is_virtual: true
@@ -315,7 +315,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: edit-existing-document
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: writing/edit-existing-document
   is_virtual: true
@@ -344,9 +344,47 @@ dependencies:
     .claude/skills/edit-existing-document/apm.yml: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
   content_hash: sha256:5373d2bcd0b158ebe9604be5cd9ec05b6cf249a1b7124e5890632ba14eab8446
 - repo_url: zawa-kyo/skills
+  name: japanese-writing-lint
+  host: github.com
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
+  version: 0.1.0
+  virtual_path: writing/japanese-writing-lint
+  is_virtual: true
+  depth: 2
+  resolved_by: zawa-kyo/skills
+  package_type: apm_package
+  deployed_files:
+  - .claude/hooks/japanese-writing-lint/runtime/japanese-markdown-lint.ts
+  - .claude/hooks/japanese-writing-lint/runtime/package-lock.json
+  - .claude/hooks/japanese-writing-lint/runtime/package.json
+  - .claude/hooks/japanese-writing-lint/runtime/setup.ts
+  - .claude/hooks/japanese-writing-lint/runtime/textlint/.textlintrc.json
+  - .claude/hooks/japanese-writing-lint/runtime/tsconfig.json
+  - .codex/hooks/japanese-writing-lint/runtime/japanese-markdown-lint.ts
+  - .codex/hooks/japanese-writing-lint/runtime/package-lock.json
+  - .codex/hooks/japanese-writing-lint/runtime/package.json
+  - .codex/hooks/japanese-writing-lint/runtime/setup.ts
+  - .codex/hooks/japanese-writing-lint/runtime/textlint/.textlintrc.json
+  - .codex/hooks/japanese-writing-lint/runtime/tsconfig.json
+  deployed_file_hashes:
+    .claude/hooks/japanese-writing-lint/runtime/japanese-markdown-lint.ts: sha256:54933bf72e3bcd8b6f78cf5978a4fb39823556b5faf3d8a50d1d1adf94d9bdb9
+    .claude/hooks/japanese-writing-lint/runtime/package-lock.json: sha256:b083c8cae97ec91955e44fc324e476e88a2d3ec2345afa2e43eeb9ca9f460674
+    .claude/hooks/japanese-writing-lint/runtime/package.json: sha256:3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a
+    .claude/hooks/japanese-writing-lint/runtime/setup.ts: sha256:c95f521c19100599835af32034d5ae201c7194313682009bfb4cf915bdb3a021
+    .claude/hooks/japanese-writing-lint/runtime/textlint/.textlintrc.json: sha256:6c9360da465e67960132ad7bc4ec9a094d2092ccb3c54ff932ce48fd0f2f62ff
+    .claude/hooks/japanese-writing-lint/runtime/tsconfig.json: sha256:09f55aca71e9b97382185cf2f535a7fda1f2d179d9efa3707ab358ae9187ca79
+    .codex/hooks/japanese-writing-lint/runtime/japanese-markdown-lint.ts: sha256:54933bf72e3bcd8b6f78cf5978a4fb39823556b5faf3d8a50d1d1adf94d9bdb9
+    .codex/hooks/japanese-writing-lint/runtime/package-lock.json: sha256:b083c8cae97ec91955e44fc324e476e88a2d3ec2345afa2e43eeb9ca9f460674
+    .codex/hooks/japanese-writing-lint/runtime/package.json: sha256:3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a
+    .codex/hooks/japanese-writing-lint/runtime/setup.ts: sha256:c95f521c19100599835af32034d5ae201c7194313682009bfb4cf915bdb3a021
+    .codex/hooks/japanese-writing-lint/runtime/textlint/.textlintrc.json: sha256:6c9360da465e67960132ad7bc4ec9a094d2092ccb3c54ff932ce48fd0f2f62ff
+    .codex/hooks/japanese-writing-lint/runtime/tsconfig.json: sha256:09f55aca71e9b97382185cf2f535a7fda1f2d179d9efa3707ab358ae9187ca79
+  content_hash: sha256:600a0b6ee5bb889a5185cdb9bd44d4eaaf9589123a0d166862cf4ce60a64405c
+  declared_license: MIT
+- repo_url: zawa-kyo/skills
   name: revise-english-writing
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: writing/revise-english-writing
   is_virtual: true
@@ -377,7 +415,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: revise-japanese-writing
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: writing/revise-japanese-writing
   is_virtual: true
@@ -396,19 +434,19 @@ dependencies:
   - .claude/skills/revise-japanese-writing/agents/openai.yaml
   - .claude/skills/revise-japanese-writing/references/idea.md
   deployed_file_hashes:
-    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
-    .agents/skills/revise-japanese-writing/SKILL.md: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
+    .agents/skills/revise-japanese-writing/SKILL-ja.md: sha256:dba74b7c43d424c2be963c7b5c91166448f9d8cec92447a3c0b552ba835828ab
+    .agents/skills/revise-japanese-writing/SKILL.md: sha256:026ef119ebeba63c77e98ee071ca97308704f19026f14db71d8b0391a6a5dc80
     .agents/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
     .agents/skills/revise-japanese-writing/references/idea.md: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
-    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
-    .claude/skills/revise-japanese-writing/SKILL.md: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
+    .claude/skills/revise-japanese-writing/SKILL-ja.md: sha256:dba74b7c43d424c2be963c7b5c91166448f9d8cec92447a3c0b552ba835828ab
+    .claude/skills/revise-japanese-writing/SKILL.md: sha256:026ef119ebeba63c77e98ee071ca97308704f19026f14db71d8b0391a6a5dc80
     .claude/skills/revise-japanese-writing/agents/openai.yaml: sha256:9fb8551e2c4c25e3ffb25341614a263b9ac78fc78db208b92574cc0f89a4914d
     .claude/skills/revise-japanese-writing/references/idea.md: sha256:7ad6a17514dbc3ba21c0483cf68af57e00256b26bf717a15e10108f66530f04a
-  content_hash: sha256:0bb7d3e0afc3cda35d7a697bc0a7a98179fd4b664f856e642532061bcf346a25
+  content_hash: sha256:c030d72fba5f19cb54be5e76b8cee20a489151eb7c07602a9c9c89211d4e3b72
 - repo_url: zawa-kyo/skills
   name: rewrite-final-plan
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: writing/rewrite-final-plan
   is_virtual: true
@@ -435,7 +473,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: summarize-discussion-coherently
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: unknown
   virtual_path: writing/summarize-discussion-coherently
   is_virtual: true
@@ -503,7 +541,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-e2e-tests
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: dev/guide-e2e-tests
   is_virtual: true
@@ -558,7 +596,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-integration-tests
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: dev/guide-integration-tests
   is_virtual: true
@@ -613,7 +651,7 @@ dependencies:
 - repo_url: zawa-kyo/skills
   name: guide-unit-tests
   host: github.com
-  resolved_commit: 0ea563df650ad563927b41cb79a9e124653fbefd
+  resolved_commit: 4e51fc21dc7e05fc3e897a6d99f35ae1c7864b47
   version: 0.1.0
   virtual_path: dev/guide-unit-tests
   is_virtual: true
@@ -842,6 +880,60 @@ deployments:
   - zawa-kyo/skills/dev/guide-unit-tests
   active_owner: zawa-kyo/skills/dev/guide-unit-tests
   content_hash: sha256:93597c3e941ad615ee6c22e12d90f38dae841b3c0c756eb2ef530123a17326ab
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/japanese-writing-lint/runtime/japanese-markdown-lint.ts
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:54933bf72e3bcd8b6f78cf5978a4fb39823556b5faf3d8a50d1d1adf94d9bdb9
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/japanese-writing-lint/runtime/package-lock.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:b083c8cae97ec91955e44fc324e476e88a2d3ec2345afa2e43eeb9ca9f460674
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/japanese-writing-lint/runtime/package.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/japanese-writing-lint/runtime/setup.ts
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:c95f521c19100599835af32034d5ae201c7194313682009bfb4cf915bdb3a021
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/japanese-writing-lint/runtime/textlint/.textlintrc.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:6c9360da465e67960132ad7bc4ec9a094d2092ccb3c54ff932ce48fd0f2f62ff
+- kind: project-relative
+  target: claude
+  value: .claude/hooks/japanese-writing-lint/runtime/tsconfig.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:09f55aca71e9b97382185cf2f535a7fda1f2d179d9efa3707ab358ae9187ca79
 - kind: project-relative
   target: claude
   value: .claude/skills/bootstrap-repo-docs
@@ -1651,7 +1743,7 @@ deployments:
   owners:
   - zawa-kyo/skills/writing/revise-japanese-writing
   active_owner: zawa-kyo/skills/writing/revise-japanese-writing
-  content_hash: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
+  content_hash: sha256:dba74b7c43d424c2be963c7b5c91166448f9d8cec92447a3c0b552ba835828ab
 - kind: project-relative
   target: claude
   value: .claude/skills/revise-japanese-writing/SKILL.md
@@ -1660,7 +1752,7 @@ deployments:
   owners:
   - zawa-kyo/skills/writing/revise-japanese-writing
   active_owner: zawa-kyo/skills/writing/revise-japanese-writing
-  content_hash: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
+  content_hash: sha256:026ef119ebeba63c77e98ee071ca97308704f19026f14db71d8b0391a6a5dc80
 - kind: project-relative
   target: claude
   value: .claude/skills/revise-japanese-writing/agents/openai.yaml
@@ -1859,6 +1951,60 @@ deployments:
   - zawa-kyo/skills/writing/summarize-discussion-coherently
   active_owner: zawa-kyo/skills/writing/summarize-discussion-coherently
   content_hash: sha256:1d14c160d7fdeb8cd2d39864643d1bfca7c898963c50845da78c1cb377ada756
+- kind: project-relative
+  target: codex
+  value: .codex/hooks/japanese-writing-lint/runtime/japanese-markdown-lint.ts
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:54933bf72e3bcd8b6f78cf5978a4fb39823556b5faf3d8a50d1d1adf94d9bdb9
+- kind: project-relative
+  target: codex
+  value: .codex/hooks/japanese-writing-lint/runtime/package-lock.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:b083c8cae97ec91955e44fc324e476e88a2d3ec2345afa2e43eeb9ca9f460674
+- kind: project-relative
+  target: codex
+  value: .codex/hooks/japanese-writing-lint/runtime/package.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a
+- kind: project-relative
+  target: codex
+  value: .codex/hooks/japanese-writing-lint/runtime/setup.ts
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:c95f521c19100599835af32034d5ae201c7194313682009bfb4cf915bdb3a021
+- kind: project-relative
+  target: codex
+  value: .codex/hooks/japanese-writing-lint/runtime/textlint/.textlintrc.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:6c9360da465e67960132ad7bc4ec9a094d2092ccb3c54ff932ce48fd0f2f62ff
+- kind: project-relative
+  target: codex
+  value: .codex/hooks/japanese-writing-lint/runtime/tsconfig.json
+  runtime: null
+  scope: project
+  owners:
+  - zawa-kyo/skills/writing/japanese-writing-lint
+  active_owner: zawa-kyo/skills/writing/japanese-writing-lint
+  content_hash: sha256:09f55aca71e9b97382185cf2f535a7fda1f2d179d9efa3707ab358ae9187ca79
 - kind: project-relative
   target: copilot
   value: .agents/skills/bootstrap-repo-docs
@@ -2668,7 +2814,7 @@ deployments:
   owners:
   - zawa-kyo/skills/writing/revise-japanese-writing
   active_owner: zawa-kyo/skills/writing/revise-japanese-writing
-  content_hash: sha256:8257c73238954bfbebb2447f0fc2fb77b4a410be42110282ebdbad67077d342d
+  content_hash: sha256:dba74b7c43d424c2be963c7b5c91166448f9d8cec92447a3c0b552ba835828ab
 - kind: project-relative
   target: copilot
   value: .agents/skills/revise-japanese-writing/SKILL.md
@@ -2677,7 +2823,7 @@ deployments:
   owners:
   - zawa-kyo/skills/writing/revise-japanese-writing
   active_owner: zawa-kyo/skills/writing/revise-japanese-writing
-  content_hash: sha256:53806b056c3edef2aac9c8e30eda172a1b87f8803fb5bd6492e2d324d6350f91
+  content_hash: sha256:026ef119ebeba63c77e98ee071ca97308704f19026f14db71d8b0391a6a5dc80
 - kind: project-relative
   target: copilot
   value: .agents/skills/revise-japanese-writing/agents/openai.yaml
