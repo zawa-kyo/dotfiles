@@ -83,18 +83,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/531543786"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.36.39"
+version = "2.36.40"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.39.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.36.40.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.39.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.36.40.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:415fdb08ed66b7edd2c0284c19d0d6c51ec8e6f53d1f8068ca1b0e7aa1074119"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.39.pkg"
+checksum = "blake3:5db2bdbe1a49c6b544796a62b37aea7452f706f40d8becea3f41088309084812"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.36.40.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -167,13 +167,13 @@ url = "https://github.com/sorafujitani/ccsession/releases/download/v1.2.0/ccsess
 url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/500992891"
 
 [[tools.container]]
-version = "1.3.0"
+version = "1.3.1"
 backend = "aqua:apple/container"
 
 [tools.container."platforms.macos-arm64"]
-checksum = "sha256:bd156250cb84061367ed4b0eeef52211b6a825c6e0728a9426e57602ddb089c1"
-url = "https://github.com/apple/container/releases/download/1.3.0/container-1.3.0-installer-signed.pkg"
-url_api = "https://api.github.com/repos/apple/container/releases/assets/528358110"
+checksum = "sha256:a7c1b9d7927d30875f2f6c7bd1d0cb06c2daa6ca57ce9e90a5144e898fdf54a8"
+url = "https://github.com/apple/container/releases/download/1.3.1/container-1.3.1-installer-signed.pkg"
+url_api = "https://api.github.com/repos/apple/container/releases/assets/534552049"
 
 [[tools.copilot]]
 version = "1.0.81"
@@ -793,7 +793,7 @@ url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.12.9"
+version = "0.12.10"
 backend = "asdf:uv"
 
 [[tools.vhs]]
