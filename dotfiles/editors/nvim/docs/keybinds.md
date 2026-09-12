@@ -2,6 +2,8 @@
 
 ## 関連ポリシー
 
+- [Neovim ドキュメント目次](./README.md)
+  - Neovim 固有の設計と運用の目次
 - [省略入力の命名ポリシー](../../../../docs/abbreviation.md)
   - シェルの省略コマンドと共有する `verb + object` の文法を定義
 - [タブ/バッファ表示ポリシー](./tab-buffer.md)
