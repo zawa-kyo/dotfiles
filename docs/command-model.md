@@ -14,12 +14,29 @@
 - スクリプトファイル名に `.sh` などの拡張子を付けず、公開コマンド名と一致させる
 - 実装言語は shebang で指定し、将来的に実装言語を置き換えても公開名を変更しない
 
-たとえば、次のコマンドが該当します。
+`bin/` 配下の主な公開コマンドは次のとおりです。
 
-- `reveal-repository-with-neovim`
-- `switch-branch`
-- `switch-branch-remote`
-- `search-task`
+| コマンド                         | 用途                                                       |
+| -------------------------------- | ---------------------------------------------------------- |
+| `reveal-process`                 | プロセス一覧を `fzf` でインタラクティブに検索・確認する    |
+| `reveal-process-cpu`             | CPU 使用率順にソートしてプロセス一覧を表示する             |
+| `reveal-process-memory`          | メモリ使用量順にソートしてプロセス一覧を表示する           |
+| `reveal-repository-with-browser` | リポジトリの Web ページをブラウザで開く                    |
+| `reveal-repository-with-code`    | リポジトリを VS Code で開く                                |
+| `reveal-repository-with-fork`    | リポジトリを Fork（Git GUI）で開く                         |
+| `reveal-repository-with-lazygit` | リポジトリで Lazygit を起動する                            |
+| `reveal-repository-with-neovim`  | リポジトリを Neovim で開く                                 |
+| `search-abbreviation`            | シェルの省略コマンド定義を検索・確認する                   |
+| `search-bookmarks`               | ブラウザのブックマークを横断検索する                       |
+| `search-bookmarks-chrome`        | Google Chrome のブックマークを検索する                     |
+| `search-bookmarks-safari`        | Safari のブックマークを検索する                            |
+| `search-file-with-neovim`        | ファイル検索を行い、選択したファイルを Neovim で開く       |
+| `search-google`                  | コマンドラインから Google 検索を実行する                   |
+| `search-line-with-neovim`        | 行検索（grep）を行い、選択箇所を Neovim で開く             |
+| `search-task`                    | `todo.txt` のタスクをインタラクティブに検索する            |
+| `starship-git-context`           | Starship プロンプト用の Git コンテキスト情報を生成する     |
+| `switch-branch`                  | ローカルブランチを一覧から選択して切り替える               |
+| `switch-branch-remote`           | リモートブランチを含めたブランチ一覧から選択して切り替える |
 
 ### `mise bootstrap`
 
