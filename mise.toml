@@ -15,6 +15,7 @@ shellcheck = "latest"
 shfmt = "latest"
 stylua = "latest"
 taplo = "latest"
+antigravity-cli = "latest"
 
 [settings]
 lockfile = true
