@@ -1,29 +1,29 @@
 # ドキュメント目次
 
-この `docs/` ディレクトリは、リポジトリ全体に関わる設計判断と運用方針をまとめる場所です。
+リポジトリ全体に関わる設計方針や運用ポリシーをまとめたドキュメントの目次です。
 
 ## 全体設計
 
 - [architecture.md](./architecture.md)
-  - リポジトリ全体の構造とファイルの置き場所
+  - リポジトリ全体の構造とファイルの配置方針
 - [bootstrap-design.md](./bootstrap-design.md)
-  - mise bootstrap の役割、競合時の動作、移行とテストの設計
+  - `mise bootstrap` の役割、競合発生時の動作、移行処理とテストの設計
 - [ai-tools.md](./ai-tools.md)
-  - AI ツールを管理するための運用方針
+  - AI ツールおよびスキルの管理・運用方針
 
 ## コマンドとタスクの設計
 
 - [command-model.md](./command-model.md)
   - 単独実行コマンド / シェル関数 / `mise run` の役割分担
 - [abbreviation.md](./abbreviation.md)
-  - シェルの省略コマンドと Neovim キーバインドに共通する命名原則
+  - シェルの省略コマンドと Neovim キーバインドに共通する命名規則
 
 ## 運用と確認
 
 - [operations.md](./operations.md)
-  - 変更後の確認方針
+  - 変更内容に応じた動作確認と検証の手順
 
 ## ツール別ドキュメント
 
 - [Neovim](../dotfiles/editors/nvim/docs/README.md)
-  - Neovim 固有の設計と運用の目次
+  - Neovim 固有の設計・設定および運用ドキュメントの目次
