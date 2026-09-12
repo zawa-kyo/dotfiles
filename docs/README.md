@@ -27,3 +27,7 @@
 
 - [Neovim](../dotfiles/editors/nvim/docs/README.md)
   - Neovim 固有の設計・設定および運用ドキュメントの目次
+- [シェル環境（Zsh）](../dotfiles/shell/docs/README.md)
+  - Zsh の起動順序、プラグイン管理、高速化方針
+- [Karabiner-Elements](../dotfiles/tools/karabiner/docs/README.md)
+  - macOS のキーリマップおよび打鍵効率化の設計方針
