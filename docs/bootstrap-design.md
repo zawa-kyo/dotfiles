@@ -51,6 +51,16 @@ mise はすべての配備先を一元的に記録しているわけではあり
 
 ## bootstrap の実行順序
 
+```mermaid
+flowchart TD
+    Start(["mise bootstrap 開始"]) --> PreHook["1. pre-dotfiles hook (APM データ・生成済みラッパーの移行)"]
+    PreHook --> Apply["2. mise dotfiles apply (シンボリックリンク / コピー配備)"]
+    Apply --> PostHook["3. post-dotfiles hook (配備されたグローバル mise 設定を信頼)"]
+    PostHook --> ToolInstall["4. mise install (リポジトリ内ツールのインストール)"]
+    ToolInstall --> BootstrapTask["5. bootstrap タスク (グローバル mise ツール, apm, Bun 準備)"]
+    BootstrapTask --> End(["完了 (冪等性を担保)"])
+```
+
 1. pre-dotfiles hook で APM データと生成済みラッパーを移行する
 2. mise が `[dotfiles]` の宣言に従ってリンクを配備する
 3. post-dotfiles hook で、配備されたグローバル mise 設定のみを信頼する

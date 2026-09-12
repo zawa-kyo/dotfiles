@@ -39,6 +39,28 @@
 
 `node_modules/` や `apm_modules/` などの生成物はリポジトリ内に保持せず、Bun は `~/.bun/install/global`、apm は `~/.apm` にそれぞれ生成します。
 
+```mermaid
+graph TD
+    subgraph Repo["リポジトリ (dotfiles)"]
+        Dotfiles["dotfiles/ (ai, editors, shell, tools)"]
+        Bin["bin/ (単独実行 CLI)"]
+        Setup["setup/ (bun, homebrew, migrations)"]
+        Tasks[".mise/tasks/ (管理タスク)"]
+    end
+
+    subgraph UserHome["ホーム環境 ($HOME)"]
+        HomeConfig["~/.config / 各種配備先 (シンボリックリンク / copy)"]
+        LocalBin["~/.local/bin (symlink-each)"]
+        ApmGlobal["~/.apm (symlink-each / copy)"]
+        BunGlobal["~/.bun/install/global (非管理の依存関係)"]
+    end
+
+    Dotfiles -->|mise dotfiles| HomeConfig
+    Dotfiles -->|symlink-each / copy| ApmGlobal
+    Bin -->|symlink-each| LocalBin
+    Setup -->|mise run install-bun| BunGlobal
+```
+
 ## 設計原則
 
 ### 対象ごとにまとめる
