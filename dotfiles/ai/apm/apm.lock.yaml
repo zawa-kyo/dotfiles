@@ -1,6 +1,6 @@
 lockfile_version: '1'
-generated_at: '2026-09-05T11:16:40.395414+00:00'
-apm_version: 0.28.0
+generated_at: '2026-09-12T14:14:56.708795+00:00'
+apm_version: 0.29.0
 dependencies:
 - repo_url: mattpocock/skills
   name: grilling
@@ -26,7 +26,7 @@ dependencies:
 - repo_url: mizchi/skills
   name: empirical-prompt-tuning
   host: github.com
-  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_commit: 66dadd9613719251c1501ba482c08cbd7f55ffee
   version: unknown
   virtual_path: meta/empirical-prompt-tuning
   is_virtual: true
