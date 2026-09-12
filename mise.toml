@@ -8,6 +8,7 @@ node = "24"
 rust = "1"
 
 # Repository checks
+antigravity-cli = "latest"
 gitleaks = "latest"
 hk = "latest"
 prettier = "latest"
@@ -15,7 +16,6 @@ shellcheck = "latest"
 shfmt = "latest"
 stylua = "latest"
 taplo = "latest"
-antigravity-cli = "latest"
 
 [settings]
 lockfile = true
