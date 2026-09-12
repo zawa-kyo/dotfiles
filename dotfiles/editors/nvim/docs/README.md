@@ -1,9 +1,9 @@
 # Neovim ドキュメント
 
-Neovim 固有の設計と運用をまとめる。
+Neovim の設計方針、キーバインド規約、運用ルールをまとめたドキュメントの目次です。
 
 - [keybinds.md](./keybinds.md)
-  - キーバインドの設計と命名規則
+  - キーバインドの設計方針と命名規則
 - [architecture.md](./architecture.md)
   - Lua モジュールと plugin spec の配置規則
 - [tab-buffer.md](./tab-buffer.md)

@@ -43,7 +43,7 @@
     "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
-    // Android, iOS, Desktop（Flutter）
+    // Android, iOS, Desktop (Flutter)
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
     "**/android/.cxx/**": true,
@@ -117,7 +117,7 @@
     "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
-    // Android, iOS, Desktop（Flutter）
+    // Android, iOS, Desktop (Flutter)
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
     "**/android/.cxx/**": true,
@@ -348,7 +348,7 @@
     "**/.flutter-plugins-dependencies": true,
     "**/build/**": true,
 
-    // Android, iOS, Desktop（Flutter）
+    // Android, iOS, Desktop (Flutter)
     "**/.gradle/**": true,
     "**/android/app/build/**": true,
     "**/android/.cxx/**": true,

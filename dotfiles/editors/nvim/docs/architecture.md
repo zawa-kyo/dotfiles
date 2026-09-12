@@ -1,33 +1,32 @@
 # Neovim 設定の構成
 
+## 関連ドキュメント
+
+- [Neovim ドキュメント目次](./README.md)
+  - Neovim 固有の設計と運用の目次
+
 ## Lua モジュール
 
-`lua/` 配下は、次の責務で分ける。
+`lua/` 配下は、次の責務に基づいてディレクトリを分割します。
 
-- `config/`: Neovim 本体の起動時設定と複数機能で使う基盤
-- `plugins/`: plugin spec と、そのプラグイン機能に固有のモジュール
-- `snippets/`: ファイル形式ごとのスニペット
+- `config/`: Neovim 本体の起動時設定および複数機能から参照される共通基盤
+- `plugins/`: plugin spec 定義および各プラグイン機能に固有のモジュール
+- `snippets/`: ファイル形式別のスニペット定義
 
-`plugins/` の第一階層は、プラグイン名ではなく機能で分類する。
-複数の機能から参照するファイル探索の状態は `plugins/files/` のような中立的な場所に置く。
+`plugins/` の第 1 階層は、プラグイン名ではなく機能カテゴリ (`coding/`、`editing/`、`files/`、`lsp/` など) で分類します。複数の機能から参照されるファイル探索の状態などは、`plugins/files/` のような中立的な場所に配置します。
 
 ## plugin spec の読み込み
 
-lazy.nvim は `plugins/` 直下の Lua ファイルと、`init.lua` を持つ直下のディレクトリをplugin specとして読み込む。
-このため、`plugins/` 直下の`init.lua`はplugin specまたはそのリストを返し、副作用を持たせない。
+lazy.nvim は `plugins/` 直下の Lua ファイル、および `init.lua` を含む直下のディレクトリを plugin spec として読み込みます。そのため、`plugins/` 直下に配置する `init.lua` は plugin spec またはそのリストを返す純粋な定義とし、副作用を持たせないようにします。
 
-plugin spec以外の内部モジュールは、`plugins/files/`や`plugins/navigation/mini-files/`のように1階層深いディレクトリへ置く。
-内部モジュールだけを収めるディレクトリには`init.lua`を作らない。
+plugin spec 以外の内部モジュールは、`plugins/files/` や `plugins/navigation/mini-files/` のように 1 階層深いディレクトリへ配置します。内部モジュールのみを収めるディレクトリには `init.lua` を作成しません。
 
-機能別ディレクトリのplugin specに専用の内部モジュールを添える場合は、plugin specを`init.lua`に置く。
-たとえば`plugins/editing/undo-glow-config/init.lua`をplugin spec、`plugins/editing/undo-glow-config/actions.lua`をキーマップから呼ぶ操作として分ける。
+機能別ディレクトリの plugin spec に専用の内部モジュールを付随させる場合は、plugin spec 本体を `init.lua` に配置します。たとえば `plugins/editing/undo-glow-config/init.lua` を plugin spec とし、`plugins/editing/undo-glow-config/actions.lua` をキーマップから呼び出される操作用モジュールとして分割します。
 
-同じプラグインを複数の機能から設定する場合は、各機能のplugin specにその機能の`opts`とキーバインドを置く。
-プラグイン全体に関わる初期化だけを、`plugins/`直下のplugin specが担当する。
+同一のプラグインを複数の機能カテゴリから設定する場合は、各機能の plugin spec にそれぞれの `opts` とキーバインドを分散して記述します。プラグイン全体に関わる共通の初期化のみを、`plugins/` 直下の plugin spec が担当します。
 
 ## Picker の操作層
 
-Pickerを開く処理は`plugins/picker/actions.lua`にまとめる。
-`keymaps.lua`はキー、action、説明の対応だけを宣言し、Snacksや検索オプションを直接組み立てない。
+Picker を開く処理は `plugins/picker/actions.lua` に集約します。`keymaps.lua` はキー、action、説明文の対応関係のみを宣言し、Snacks などの picker オプションを直接組み立てないようにします。
 
-ダッシュボードなどキーマップ以外の入口も同じactionを呼び出し、検索方法とオプションを共有する。
+ダッシュボードなどのキーマップ以外の入口からも同じ action を呼び出すことで、検索ロジックやオプションの整合性を保ちます。

@@ -8,6 +8,7 @@ node = "24"
 rust = "1"
 
 # Repository checks
+antigravity-cli = "latest"
 gitleaks = "latest"
 hk = "latest"
 prettier = "latest"
