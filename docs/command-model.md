@@ -18,12 +18,12 @@
 
 | コマンド                         | 用途                                                       |
 | -------------------------------- | ---------------------------------------------------------- |
-| `reveal-process`                 | プロセス一覧を `fzf` でインタラクティブに検索・確認する    |
+| `reveal-process`                 | プロセス一覧を `fzf` で検索・確認する                      |
 | `reveal-process-cpu`             | CPU 使用率順にソートしてプロセス一覧を表示する             |
 | `reveal-process-memory`          | メモリ使用量順にソートしてプロセス一覧を表示する           |
 | `reveal-repository-with-browser` | リポジトリの Web ページをブラウザで開く                    |
 | `reveal-repository-with-code`    | リポジトリを VS Code で開く                                |
-| `reveal-repository-with-fork`    | リポジトリを Fork（Git GUI）で開く                         |
+| `reveal-repository-with-fork`    | リポジトリを Fork で開く                                   |
 | `reveal-repository-with-lazygit` | リポジトリで Lazygit を起動する                            |
 | `reveal-repository-with-neovim`  | リポジトリを Neovim で開く                                 |
 | `search-abbreviation`            | シェルの省略コマンド定義を検索・確認する                   |
@@ -32,7 +32,7 @@
 | `search-bookmarks-safari`        | Safari のブックマークを検索する                            |
 | `search-file-with-neovim`        | ファイル検索を行い、選択したファイルを Neovim で開く       |
 | `search-google`                  | コマンドラインから Google 検索を実行する                   |
-| `search-line-with-neovim`        | 行検索（grep）を行い、選択箇所を Neovim で開く             |
+| `search-line-with-neovim`        | 行検索 (grep) を行い、選択箇所を Neovim で開く             |
 | `search-task`                    | `todo.txt` のタスクをインタラクティブに検索する            |
 | `starship-git-context`           | Starship プロンプト用の Git コンテキスト情報を生成する     |
 | `switch-branch`                  | ローカルブランチを一覧から選択して切り替える               |
@@ -66,7 +66,7 @@
 ### 単独実行コマンド
 
 - 日常的に利用する CLI は、単独実行コマンドとしての提供を最優先とする
-- 同一の操作を PATH（`~/.local/bin`）と mise タスクの双方に重複して公開しない
+- 同一の操作を PATH (`~/.local/bin`) と mise タスクの双方に重複して公開しない
 - ユーザーが `~/.local/bin` に他のファイルを配置していても、`symlink-each` の適用時に削除されないようにする
 - ShellCheck や shfmt による検査対象には、拡張子なしの `bin/*` も含める
 - `.sh` 拡張子は `libexec/` や `setup/` 配下の内部実装スクリプトにのみ使用し、公開コマンドには付けない

@@ -139,7 +139,7 @@ setopt share_history            # 全てのセッションで履歴を共有す�
 setopt auto_cd            # ディレクトリ名でcdする
 setopt correct            # コマンドのスペルミスを指摘
 setopt ignoreeof          # Ctrl+d でシェルを終了しない
-setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする（--prefix=/userなど）
+setopt magic_equal_subst  # コマンドラインの引数でも補完を有効にする (例: --prefix=/user)
 setopt no_beep            # ビープ音を鳴らさない
 
 # cd後に自動でlsする

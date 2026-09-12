@@ -42,7 +42,7 @@ x 2026-08-31 2026-08-30 経費精算を提出する @office +admin
 | `<leader>tn` | 新しいタスクを追加する                     |
 | `<leader>tt` | `todo.txt` のウィンドウを開閉する          |
 | `<leader>td` | `done.txt` のウィンドウを開閉する          |
-| `<leader>tg` | 優先度の補助表示（ghost text）を切り替える |
+| `<leader>tg` | 優先度の補助表示 (ghost text) を切り替える |
 | `ra`         | カーソル位置のタスクに対する操作を表示する |
 
 `<leader>tn` でタスク本文を入力すると、現在の日付が作成日として自動付与されます。

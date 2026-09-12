@@ -13,7 +13,7 @@
 - `plugins/`: plugin spec 定義および各プラグイン機能に固有のモジュール
 - `snippets/`: ファイル形式別のスニペット定義
 
-`plugins/` の第 1 階層は、プラグイン名ではなく機能カテゴリ（`coding/`、`editing/`、`files/`、`lsp/` など）で分類します。複数の機能から参照されるファイル探索の状態などは、`plugins/files/` のような中立的な場所に配置します。
+`plugins/` の第 1 階層は、プラグイン名ではなく機能カテゴリ (`coding/`、`editing/`、`files/`、`lsp/` など) で分類します。複数の機能から参照されるファイル探索の状態などは、`plugins/files/` のような中立的な場所に配置します。
 
 ## plugin spec の読み込み
 
