@@ -1,19 +1,19 @@
 # 🚀 dotfiles
 
-Dotfiles repository for editors, terminals, CLI tools, and the local toolchain.
+Dotfiles repository for managing editors, terminals, CLI tools, and the local development toolchain.
 
 This README covers initial setup and common commands.
-For design and operations, read `docs/`. For agent guidance, read `AGENTS.md`.
+For design principles and operational details, refer to `docs/`. For coding agent guidance, see `AGENTS.md`.
 
 ## Managed Areas
 
 - Editor configuration for Neovim and VS Code
 - Terminal-related configuration for Zsh, Starship, Ghostty, WezTerm, and Zellij
 - macOS keyboard configuration for Karabiner-Elements
-- Local tool configuration for Homebrew, Bun, mise, procs, and related tools
+- Local tool configuration for Homebrew, Bun, mise, procs, and related utilities
 - Standalone workflow CLI commands in `bin/`
 - AI tool configuration for Codex, Claude Code, and related tools
-- Sample files for editor and LSP checks
+- Sample test files for editor and LSP verification
 
 ## Quick Start
 
@@ -24,46 +24,46 @@ git clone [repository_url]
 cd [cloned_repository_path]
 ```
 
-Install the latest standalone `mise` binary with the official installer. It places the binary at `~/.local/bin/mise`.
+Install the latest standalone `mise` binary using the official installer, which places it at `~/.local/bin/mise`:
 
 ```sh
 curl https://mise.run | sh
 ```
 
-If you are migrating from the Homebrew version, restart the shell after installing the standalone binary. The current shell may still have an activation hook that points to `/opt/homebrew/bin/mise`.
+If you are migrating from the Homebrew version, restart your shell after installing the standalone binary. The active shell environment may still contain an activation hook pointing to `/opt/homebrew/bin/mise`.
 
 ```sh
 exec zsh -l
 mise --version
 ```
 
-Trust the repository, then run the standard setup:
+Trust the repository, then run the standard bootstrap setup:
 
 ```sh
 ~/.local/bin/mise trust
 ~/.local/bin/mise bootstrap --yes
 ```
 
-This command:
+This command executes the following steps:
 
-- applies the dotfile declarations in `mise.toml` and the platform config
+- applies dotfile declarations in `mise.toml` and platform-specific configurations
 - installs mise-managed tools
 - applies apm-managed skills
 - prepares the Bun global environment
 - deploys the global Git pre-commit hook configuration for hk
 
-The hk hook uses Git's config-based hook support and requires Git 2.54 or newer. It exits without doing anything in repositories that do not contain `hk.pkl`.
+The hk hook relies on Git's config-based hook mechanism and requires Git 2.54 or newer. It exits gracefully without performing any action in repositories that do not contain `hk.pkl`.
 
-`mise run install` remains as a compatibility alias for `mise bootstrap`.
-Homebrew packages are not installed by either command. On macOS, run `mise run install-brew` explicitly when you want to install missing Brewfile dependencies.
+`mise run install` remains available as a backward-compatible alias for `mise bootstrap`.
+Neither command automatically installs Homebrew packages. On macOS, run `mise run install-brew` explicitly when you need to install missing Brewfile dependencies.
 
-If an earlier setup installed mise with Homebrew, remove that formula after installing the standalone binary:
+If mise was previously installed via Homebrew, uninstall that formula after setting up the standalone binary:
 
 ```sh
 brew uninstall mise
 ```
 
-To remove the standalone binary and mise-managed data, inspect the targets before running `mise implode`. The command keeps `~/.config/mise` unless you pass `--config`.
+To remove the standalone binary and data managed by mise, review the targets before running `mise implode`. The command preserves `~/.config/mise` unless you explicitly pass `--config`:
 
 ```sh
 mise implode --dry-run
@@ -75,9 +75,9 @@ mise implode
 | Command                                     | Purpose                                                                 |
 | ------------------------------------------- | ----------------------------------------------------------------------- |
 | `mise bootstrap`                            | Run the standard local setup                                            |
-| `mise bootstrap dotfiles status`            | Inspect declared dotfile targets without changing them                  |
+| `mise bootstrap dotfiles status`            | Inspect declared dotfile targets without modifying them                 |
 | `mise bootstrap dotfiles apply --dry-run`   | Preview dotfile changes and conflicts                                   |
-| `mise bootstrap dotfiles apply --yes`       | Apply the declared dotfile links                                        |
+| `mise bootstrap dotfiles apply --yes`       | Apply declared dotfile symlinks                                         |
 | `mise bootstrap dotfiles unapply --dry-run` | Preview removal of managed dotfiles                                     |
 | `mise bootstrap dotfiles unapply --yes`     | Remove managed dotfiles that remain unchanged                           |
 | `mise self-update`                          | Update the standalone mise binary immediately                           |
@@ -89,19 +89,19 @@ mise implode
 | `mise tasks`                                | List available mise tasks                                               |
 
 The setup links commands from `bin/` globally.
-That directory contains small CLI tools for daily work, such as Git operations and task search.
+That directory contains small CLI tools for daily workflows, such as Git operations and task searches.
 
-The deployed global mise configuration enables automatic updates. mise checks for a new release periodically before eligible interactive commands. Set `MISE_AUTO_UPDATE=false` temporarily when you need to suppress it.
+The deployed global mise configuration enables automatic updates. mise periodically checks for new releases before running eligible interactive commands. Set `MISE_AUTO_UPDATE=false` temporarily if you wish to suppress this behavior.
 
-### Bun global packages
+### Bun Global Packages
 
-The repository tracks the Bun global `package.json`, `bun.lock`, and `bunfig.toml` files in `setup/bun/`.
-`mise run install-bun` copies those files to `~/.bun/install/global` and installs dependencies there, so generated `node_modules/` content stays outside the repository.
-`mise run upgrade-bun` updates the runtime directory and copies the changed manifest and lock file back to `setup/bun/`.
+The repository tracks Bun's global `package.json`, `bun.lock`, and `bunfig.toml` under `setup/bun/`.
+`mise run install-bun` copies these files to `~/.bun/install/global` and installs dependencies there, ensuring generated `node_modules/` artifacts remain outside the repository.
+`mise run upgrade-bun` updates dependencies in the runtime directory and copies the updated manifest and lock file back to `setup/bun/`.
 
-### Git worktrees
+### Git Worktrees
 
-Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are created next to the primary repository, and removing a worktree keeps its branch.
+Worktrunk manages worktrees for repositories cloned via ghq. New worktrees are created alongside the primary repository, and removing a worktree preserves its branch.
 
 | Command                | Purpose                                                 |
 | ---------------------- | ------------------------------------------------------- |
@@ -114,13 +114,13 @@ Worktrunk manages worktrees for repositories cloned with ghq. New worktrees are 
 
 | Path        | Role                                                 |
 | ----------- | ---------------------------------------------------- |
-| `dotfiles/` | Configuration linked into the home directory         |
+| `dotfiles/` | Configuration symlinked into the home directory      |
 | `bin/`      | Standalone CLI commands published to `~/.local/bin`  |
 | `libexec/`  | Private helpers used by published commands           |
 | `setup/`    | Machine setup declarations, scripts, and migrations  |
 | `tests/`    | Go integration tests using isolated home directories |
-| `docs/`     | Repository-wide design and operations policy         |
+| `docs/`     | Repository-wide design and operational policies      |
 
 ## Documentation
 
-The README stays short. Use [docs/README.md](./docs/README.md) as the index for design and operations documentation.
+This README provides a high-level overview. Refer to [docs/README.md](./docs/README.md) as the index for detailed design decisions and operational procedures.
