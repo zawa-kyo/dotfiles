@@ -11,6 +11,8 @@
   - When instructions conflict, articulate the conflict and follow the more specific instruction.
 - Keep changes scoped to the user's request and avoid unrelated refactoring.
 - Prefer the project's existing patterns, tools, and helper APIs over introducing new conventions.
+- Treat a requested approach as one possible means, not the objective itself. Evaluate it against the stated goal and confirmed preferences. Before acting, present an alternative with its rationale and tradeoffs if it materially improves effectiveness, cost, safety, or feasibility.
+- Do not override explicit constraints or authority based on assumptions about underlying intent. Obtain confirmation before changing the objective, scope, or material constraints. Proceed without unnecessary confirmation for minor, reversible improvements within scope.
 
 ## Interaction
 
@@ -25,6 +27,9 @@
 - Read surrounding code and project documentation before making non-trivial changes.
 - When checking how a library, SDK, CLI, or similar tool behaves or should be configured, consult its official documentation first. When the goal can be achieved through officially recommended and maintained settings, options, or environment variables, use those. If no official path exists, propose a practical workaround as a compromise.
 - Ensure code clearly reflects the processing flow, and write tests that demonstrate behavior from the user's perspective.
+- Favor root-cause fixes over changes that merely minimize the patch or mask symptoms.
+- If a root-cause fix would require a materially broader scope or is otherwise impractical, explain the limitation and proposed temporary mitigation, then obtain user approval before implementing it.
+- Root-cause fixes are often simple. If an implementation substantially increases the amount of code, reconsider whether a simpler design can meet the need.
 - Insert blank lines between semantically distinct code blocks to enhance readability.
 - Use commit message bodies or comments to explain Why or Why not when context is important.
 - Add comments only when they clarify behavior that is difficult to infer directly from the code.
