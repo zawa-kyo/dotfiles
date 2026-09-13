@@ -24,7 +24,6 @@ keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false,
 
 -- File operations
 keymap("n", "<leader>s", "<Cmd>write<CR>", opts("Write current buffer"))
-keymap("n", "<leader>q", "<Cmd>quit<CR>", opts("Quit window"))
 
 -- Window navigation (Ctrl+h/j/k/l)
 keymap("n", "<C-h>", "<C-w>h", opts("Go to left window"))
@@ -34,30 +33,43 @@ keymap("n", "<C-l>", "<C-w>l", opts("Go to right window"))
 keymap("n", "[w", "<C-w>W", opts("Go to previous window"))
 keymap("n", "]w", "<C-w>w", opts("Go to next window"))
 
--- Window operations (<leader>w…)
-keymap("n", "<leader>ws", ":split<CR><C-w>w", opts("Split window horizontally"))
-keymap("n", "<leader>wv", ":vsplit<CR><C-w>w", opts("Split window vertically"))
+-- Create editor objects (<leader>n…)
+keymap("n", "<leader>nb", "<Cmd>enew<CR>", opts("Create a new buffer"))
+-- Create a tab page without leaving an unused blank buffer behind Alpha.
+keymap("n", "<leader>nt", function()
+  if vim.fn.exists(":Alpha") == 2 then
+    vim.cmd("tab split")
+    vim.cmd("Alpha")
+    return
+  end
+
+  vim.cmd("tabnew")
+end, opts("Create a new tab page with Alpha"))
+keymap("n", "<leader>nwh", "<Cmd>split<CR>", opts("Create a horizontal window split"))
+keymap("n", "<leader>nwv", "<Cmd>vsplit<CR>", opts("Create a vertical window split"))
+
+-- Quit editor objects (<leader>q…)
+keymap("n", "<leader>qw", "<Cmd>close<CR>", opts("Close the current window"))
+keymap("n", "<leader>qW", "<Cmd>only<CR>", opts("Close other windows"))
+keymap("n", "<leader>qt", "<Cmd>tabclose<CR>", opts("Close the current tab page"))
+-- Delete the current buffer without changing the window layout.
+keymap("n", "<leader>qb", function()
+  require("snacks").bufdelete()
+end, opts("Delete the current buffer"))
+
+-- Window layout operations (<leader>w…)
 keymap("n", "<leader>w=", "<C-w>=", opts("Equalize window sizes"))
-keymap("n", "<leader>wq", "<C-w>q", opts("Close the current window"))
-keymap("n", "<leader>wo", "<C-w>o", opts("Close other windows"))
 keymap("n", "<leader>wx", "<C-w>x", opts("Swap with adjacent window"))
 keymap("n", "<leader>w<", "5<C-w><", opts("Decrease window width"))
 keymap("n", "<leader>w>", "5<C-w>>", opts("Increase window width"))
 keymap("n", "<leader>w-", "5<C-w>-", opts("Decrease window height"))
 keymap("n", "<leader>w+", "5<C-w>+", opts("Increase window height"))
 
--- Buffer operations (<leader>b…)
-keymap("n", "<leader>bb", "<Cmd>ls<CR>", opts("Browse buffers"))
-keymap("n", "<leader>bd", "<Cmd>bdelete<CR>", opts("Delete buffer"))
-keymap("n", "<leader>bq", "<Cmd>bdelete<CR>", opts("Delete buffer"))
-keymap("n", "<leader>br", "<Cmd>edit!<CR>", opts("Reload buffer"))
+-- Buffer navigation
 keymap("n", "]b", "<Cmd>bnext<CR>", opts("Go to next buffer"))
 keymap("n", "[b", "<Cmd>bprevious<CR>", opts("Go to previous buffer"))
 
--- Tab operations (<leader>T…)
-keymap("n", "<leader>Tn", "<Cmd>tabnew<CR>", opts("Open new tab"))
-keymap("n", "<leader>Ts", "<Cmd>tab split<CR>", opts("Split to new tab"))
-keymap("n", "<leader>Tq", "<Cmd>tabclose<CR>", opts("Close tab"))
+-- Tab page navigation
 keymap("n", "]t", "gt", opts("Go to next tab"))
 keymap("n", "[t", "gT", opts("Go to previous tab"))
 

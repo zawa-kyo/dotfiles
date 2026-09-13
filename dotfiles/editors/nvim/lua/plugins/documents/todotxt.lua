@@ -94,22 +94,22 @@ return {
 
   keys = {
     {
-      "<leader>tn",
+      "<leader>nT",
       run_todotxt_command("TodoTxt new"),
       desc = "New todo entry",
     },
     {
-      "<leader>tt",
+      "<leader>tTm",
       run_todotxt_command("TodoTxt"),
       desc = "Toggle todo.txt",
     },
     {
-      "<leader>td",
+      "<leader>tTd",
       run_todotxt_command("DoneTxt"),
       desc = "Toggle done.txt",
     },
     {
-      "<leader>tg",
+      "<leader>tTg",
       run_todotxt_command("TodoTxt ghost"),
       desc = "Toggle todo ghost text",
     },

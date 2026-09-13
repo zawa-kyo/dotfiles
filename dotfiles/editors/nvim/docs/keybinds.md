@@ -6,8 +6,8 @@
   - Neovim 固有の設計と運用の目次
 - [省略入力の命名ポリシー](../../../../docs/abbreviation.md)
   - シェルの省略コマンドと共有する `verb + object` の文法を定義
-- [タブ/バッファ表示ポリシー](./tab-buffer.md)
-  - タブとバッファの役割および表示方針を定義
+- [バッファ・ウィンドウ・タブ設計](./tab-buffer.md)
+  - バッファ、ウィンドウ、タブの関係と操作方針を定義
 - [todo.txt 運用ガイド](./todotxt.md)
   - todo.txt の書式と Neovim での操作方法を解説
 
@@ -16,7 +16,8 @@
 - 通常キーから始まる追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計する
   - 動詞 (1 打鍵目) は「操作の種類」を表す
   - 目的語 (2 打鍵目以降) は、各動詞の名前空間に対応する辞書に従う
-- `<leader>` から始まるキーバインドは **対象 (object) + 動作 (action)** の形式で設計する
+- `<leader>` から始まるキーバインドも **動詞 (verb) + 目的語 (object)** を基本とする
+  - 向きや範囲を指定する場合は、目的語の後に短い修飾子を付ける
 - Vim の標準キーバインドを尊重する
   - 例: `hjkl` / `d` / `c` / `x` / `y` / `p` / `f/F/t/T` / `w/e/b`
   - キーを再定義する場合であっても、削除、貼り付け、挿入、選択、ヤンクといった元の役割を崩さない
@@ -36,6 +37,13 @@
 | `[ , ]` | cycle      | diagnostics/quickfix/buffer/hunk/todo などの前後移動                    |
 | `z`     | (built-in) | 画面位置・表示範囲の移動、折りたたみ、スクロールなど (Vim 標準機能)     |
 
+`<leader>` 配下では、生成と終了の対象を区別するために次の動詞も使用します。
+
+| Key | Verb | 意味/用途                            |
+| --- | ---- | ------------------------------------ |
+| `n` | new  | バッファ、ウィンドウ、タブなどの生成 |
+| `q` | quit | ウィンドウ、タブ、バッファを終了する |
+
 ## 運用ルール
 
 - 目的語は同じ動詞の中で辞書を統一する
@@ -48,13 +56,16 @@
   - カーソル位置に依存する候補表示や詳細表示は `r`、カーソル位置に依存しない検索・一覧 UI は `s`、即時実行は `X` に寄せる
 - 小文字と大文字を使い分ける
   - 小文字=狭い範囲 (ローカル)、大文字=広い範囲 (グローバル)。似た意味を持つ操作は利用頻度の高い方を小文字にする
-- `<leader>` は、対象を選択してから動作を選ぶコマンドツリーとして扱う
-  - 頻繁に利用し、関連する操作をまとめることで記憶しやすくなる対象に限定して追加する
+- `<leader>` は、動詞を選択してから目的語を選ぶコマンドツリーとして扱う
+  - 頻繁に利用する操作に限定して追加する
   - プラグインや外部ツールごとに名前空間を無暗に増やさない
-  - `<leader>w` はウィンドウ操作、`<leader>b` はバッファ操作、`<leader>t` は TODO 操作、`<leader>T` はタブ操作に固定する
-  - 作成、削除、一覧表示、サイズ変更などの動作は、各対象の後続キーに割り当てる
-  - ウィンドウ間の移動は `<C-h/j/k/l>` に固定し、作成や配置変更などの操作は `<leader>w…` に寄せる
+  - `n` は生成、`q` は終了に使用する
+  - `qw` と `qt` は close、`qb` は delete を実行し、対象の寿命の違いを表す
+  - 生成と終了の操作では、`b` をバッファ、`w` をウィンドウ、`t` をタブに固定する
+  - ウィンドウ間の方向移動は `<C-h/j/k/l>`、同種の対象間の前後移動は `[` と `]` に寄せる
+  - ウィンドウのサイズ変更や入れ替えは、`<leader>w…` の配置操作として扱う
 - 例外および固定ルール
+  - Neovim 全体を終了する `:qall` は `<leader>` へ割り当てない
   - 単独の `s` / `S` および `r` / `R` は通常操作に割り当てず、誤入力防止のため `<Nop>` とする
   - `/` は nvim-hlslens で拡張した Vim 標準の前方検索、`?` は Flash の Tree-sitter 範囲検索に割り当てる
   - `gw` は表示範囲を対象とする Jab のラベル検索、`J` は Hop の単語ジャンプに割り当てる
@@ -89,7 +100,8 @@
 | `q` | quickfix                | quickfix                              |
 | `r` | register                | レジスタ                              |
 | `s` | symbol/status           | シンボル、Git status                  |
-| `t` | tab / test / todo       | タブ、テスト、TODO                    |
+| `t` | tab / test              | タブ、テスト                          |
+| `T` | todo                    | todo.txt のタスク                     |
 | `u` | undo                    | undo 履歴                             |
 | `w` | word / window           | 単語単位の操作、ウィンドウ            |
 | `z` | zoxide                  | zoxide で管理するディレクトリ         |
@@ -106,47 +118,51 @@
 
 ## サンプルキーバインド
 
-| Group         | Key          | Reading                 | Action                      |
-| ------------- | ------------ | ----------------------- | --------------------------- |
-| `g` (go)      | `gd`         | go definition           | 定義へジャンプ              |
-| `g` (go)      | `gr`         | go references           | 参照へジャンプ              |
-| `g` (go)      | `ge`         | go explorer             | Explorer とエディタ間を移動 |
-| `s` (search)  | `sf`         | search file             | ファイル検索                |
-| `s` (search)  | `sF`         | search recent           | 最近のファイル検索          |
-| `s` (search)  | `sb`         | search buffer           | バッファ検索                |
-| `s` (search)  | `sl`         | search lines            | 現在のバッファ内の行を検索  |
-| `s` (search)  | `sL`         | search lines workspace  | ワークスペース内の行を検索  |
-| `r` (reveal)  | `rd`         | reveal diagnostic float | diagnostic float 表示       |
-| `r` (reveal)  | `ra`         | reveal code actions     | code action 一覧表示        |
-| `r` (reveal)  | `rq`         | reveal quickfix list    | quickfix を開く             |
-| `t` (toggle)  | `ta`         | toggle auto-save        | 自動保存の ON/OFF           |
-| `t` (toggle)  | `tt`         | toggle terminal         | ターミナルの ON/OFF         |
-| `t` (toggle)  | `tq`         | toggle quickfix         | quickfix の ON/OFF          |
-| `t` (toggle)  | `tl`         | toggle location list    | loclist の ON/OFF           |
-| `m` (modify)  | `mr`         | modify rename           | rename                      |
-| `m` (modify)  | `mf`         | modify format           | format                      |
-| `m` (modify)  | `mw`         | modify word             | 直前検索を置換              |
-| `m` (modify)  | `mW`         | modify word workspace   | quickfix 対象を置換         |
-| `X` (execute) | `Xtn`        | execute test nearest    | 最も近いテストを実行        |
-| `X` (execute) | `Xtf`        | execute test file       | 現在のファイルをテスト      |
-| `X` (execute) | `Xta`        | execute test all        | 作業ディレクトリをテスト    |
-| `X` (execute) | `Xtl`        | execute test last       | 直前のテストを再実行        |
-| `X` (execute) | `Xts`        | execute test stop       | 最も近いテストを停止        |
-| `r` (reveal)  | `rts`        | reveal test summary     | テストツリーを表示          |
-| `r` (reveal)  | `rto`        | reveal test output      | テストの出力を表示          |
-| `[`, `]`      | `[d`         | cycle prev diagnostic   | 前の diagnostic             |
-| `[`, `]`      | `]d`         | cycle next diagnostic   | 次の diagnostic             |
-| `[`, `]`      | `[t`         | cycle prev tab          | 前のタブ                    |
-| `[`, `]`      | `]t`         | cycle next tab          | 次のタブ                    |
-| `<leader>`    | `<leader>/`  | toggle comment          | コメントの ON/OFF           |
-| `<leader>w`   | `<leader>ws` | window split            | 横分割                      |
-| `<leader>w`   | `<leader>wv` | window vsplit           | 縦分割                      |
-| `<leader>t`   | `<leader>tn` | todo new                | TODO を追加                 |
-| `<leader>t`   | `<leader>tt` | todo toggle             | `todo.txt` の表示を切り替え |
-| `<leader>t`   | `<leader>td` | todo done               | `done.txt` の表示を切り替え |
-| `<leader>t`   | `<leader>tg` | todo ghost text         | ghost text の ON/OFF        |
-| `<leader>T`   | `<leader>Tn` | tab new                 | タブを作成                  |
-| `<leader>T`   | `<leader>Ts` | tab split               | 現在のバッファをタブへ分割  |
-| `<leader>T`   | `<leader>Tq` | tab quit                | タブを閉じる                |
-| `z`           | `zz`         | built-in center screen  | 画面中央へ                  |
-| `z`           | `zt`         | built-in top of screen  | 画面上へ移動                |
+| Group         | Key           | Reading                 | Action                       |
+| ------------- | ------------- | ----------------------- | ---------------------------- |
+| `g` (go)      | `gd`          | go definition           | 定義へジャンプ               |
+| `g` (go)      | `gr`          | go references           | 参照へジャンプ               |
+| `g` (go)      | `ge`          | go explorer             | Explorer とエディタ間を移動  |
+| `s` (search)  | `sf`          | search file             | ファイル検索                 |
+| `s` (search)  | `sF`          | search recent           | 最近のファイル検索           |
+| `s` (search)  | `sb`          | search buffer           | バッファ検索                 |
+| `s` (search)  | `sl`          | search lines            | 現在のバッファ内の行を検索   |
+| `s` (search)  | `sL`          | search lines workspace  | ワークスペース内の行を検索   |
+| `r` (reveal)  | `rd`          | reveal diagnostic float | diagnostic float 表示        |
+| `r` (reveal)  | `ra`          | reveal code actions     | code action 一覧表示         |
+| `r` (reveal)  | `rq`          | reveal quickfix list    | quickfix を開く              |
+| `t` (toggle)  | `ta`          | toggle auto-save        | 自動保存の ON/OFF            |
+| `t` (toggle)  | `tt`          | toggle terminal         | ターミナルの ON/OFF          |
+| `t` (toggle)  | `tq`          | toggle quickfix         | quickfix の ON/OFF           |
+| `t` (toggle)  | `tl`          | toggle location list    | loclist の ON/OFF            |
+| `t` (toggle)  | `tB`          | toggle tab line         | タブラインの表示を切り替え   |
+| `m` (modify)  | `mr`          | modify rename           | rename                       |
+| `m` (modify)  | `mf`          | modify format           | format                       |
+| `m` (modify)  | `mw`          | modify word             | 直前検索を置換               |
+| `m` (modify)  | `mW`          | modify word workspace   | quickfix 対象を置換          |
+| `X` (execute) | `Xtn`         | execute test nearest    | 最も近いテストを実行         |
+| `X` (execute) | `Xtf`         | execute test file       | 現在のファイルをテスト       |
+| `X` (execute) | `Xta`         | execute test all        | 作業ディレクトリをテスト     |
+| `X` (execute) | `Xtl`         | execute test last       | 直前のテストを再実行         |
+| `X` (execute) | `Xts`         | execute test stop       | 最も近いテストを停止         |
+| `r` (reveal)  | `rts`         | reveal test summary     | テストツリーを表示           |
+| `r` (reveal)  | `rto`         | reveal test output      | テストの出力を表示           |
+| `[`, `]`      | `[d`          | cycle prev diagnostic   | 前の diagnostic              |
+| `[`, `]`      | `]d`          | cycle next diagnostic   | 次の diagnostic              |
+| `[`, `]`      | `[t`          | cycle prev tab          | 前のタブ                     |
+| `[`, `]`      | `]t`          | cycle next tab          | 次のタブ                     |
+| `<leader>`    | `<leader>/`   | toggle comment          | コメントの ON/OFF            |
+| `<leader>n`   | `<leader>nb`  | new buffer              | バッファを作成               |
+| `<leader>n`   | `<leader>nt`  | new tab                 | Alpha を表示するタブを作成   |
+| `<leader>n`   | `<leader>nwh` | new window horizontal   | ウィンドウを横分割           |
+| `<leader>n`   | `<leader>nwv` | new window vertical     | ウィンドウを縦分割           |
+| `<leader>q`   | `<leader>qw`  | quit window             | 現在のウィンドウを閉じる     |
+| `<leader>q`   | `<leader>qW`  | quit other windows      | 現在以外のウィンドウを閉じる |
+| `<leader>q`   | `<leader>qt`  | quit tab                | 現在のタブを閉じる           |
+| `<leader>q`   | `<leader>qb`  | quit buffer             | 現在のバッファを削除する     |
+| `<leader>n`   | `<leader>nT`  | new todo                | TODO を追加                  |
+| `<leader>tT`  | `<leader>tTm` | toggle todo main        | `todo.txt` の表示を切り替え  |
+| `<leader>tT`  | `<leader>tTd` | toggle todo done        | `done.txt` の表示を切り替え  |
+| `<leader>tT`  | `<leader>tTg` | toggle todo ghost text  | ghost text の ON/OFF         |
+| `z`           | `zz`          | built-in center screen  | 画面中央へ                   |
+| `z`           | `zt`          | built-in top of screen  | 画面上へ移動                 |

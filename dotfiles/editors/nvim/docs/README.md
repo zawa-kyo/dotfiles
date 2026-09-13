@@ -7,6 +7,6 @@ Neovim の設計方針、キーバインド規約、運用ルールをまとめ�
 - [architecture.md](./architecture.md)
   - Lua モジュールと plugin spec の配置規則
 - [tab-buffer.md](./tab-buffer.md)
-  - タブとバッファの役割および表示方針
+  - バッファ、ウィンドウ、タブの関係、状態および操作方針
 - [todotxt.md](./todotxt.md)
   - todo.txt の書式と Neovim での操作方法
