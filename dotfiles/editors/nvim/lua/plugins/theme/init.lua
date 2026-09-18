@@ -4,6 +4,7 @@ return {
   require("plugins.theme.nord"),
   require("plugins.theme.nordfox"),
   require("plugins.theme.nordic"),
+  require("plugins.theme.onenord"),
   require("plugins.theme.onedark"),
   require("plugins.theme.snacks-diff"),
   require("plugins.theme.tokyonight"),
