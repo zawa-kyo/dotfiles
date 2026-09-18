@@ -33,6 +33,8 @@ local options = {
   foldmethod = "indent",
   -- GUI font setting for GUIs like Neovide
   guifont = "UDEV Gothic NF:h17",
+  -- Keep abandoned buffers loaded independently of window and tab page lifetimes
+  hidden = true,
   -- Highlight search matches
   hlsearch = true,
   -- Ignore case when searching by default

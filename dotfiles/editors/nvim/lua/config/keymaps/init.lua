@@ -24,13 +24,14 @@ vim.g.maplocalleader = " "
 --   command_mode = 'c',
 --
 -- Prefix design (movement/navigation):
---   <leader>w … Window action path (split/resize/equalize/close)
---   <leader>b … Buffer action path (list/delete/reload)
---   <leader>t … Todo action path (new/toggle/done/ghost text)
---   <leader>T … Tab action path (new/split/close)
+--   <leader>n … Create an editor object (buffer/window/tab page)
+--   <leader>c … Close a container (window/tab page)
+--   <leader>d … Delete an editor object (buffer)
+--   <leader>tT… Toggle Todo views and presentation
+--   <leader>w … Window layout path (resize/equalize/swap)
 --   g*        … “Jump” semantics (jumplist/marks) — keep gp/gP
 --   [j / ]j   … Jumplist movement
---   ] / [     … “Next / Previous” cycle UI (window/buffer/tab/diagnostic/quickfix/loclist/…)
+--   ] / [     … “Next / Previous” cycle UI (window/buffer/tab page/diagnostic/quickfix/loclist/…)
 --   /         … Native forward search enhanced by nvim-hlslens
 --   ?         … Tree-sitter range search handled in flash.nvim config
 --   n/N       … Repeat native search with undo-glow and nvim-hlslens
