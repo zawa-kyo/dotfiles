@@ -20,16 +20,16 @@
 ## References by Change Area
 
 - When changing `dotfiles/editors/nvim/`:
-  - Start from `docs/README.md` and follow the Neovim documentation link.
+  - Read `dotfiles/editors/nvim/docs/README.md` and any linked documents relevant to the change.
 - When changing `bin/`, `setup/`, `libexec/`, `mise.toml`, or `dotfiles/shell/`:
-  - Start from `docs/README.md` and follow the command model and abbreviation guides.
+  - Read `docs/command-model.md` and, for abbreviated input, `docs/abbreviation.md`.
   - Follow the shared `fzf` policy outlined in the command model for scripts using `fzf`.
 - When changing `setup/homebrew/`:
-  - Read the Homebrew section in `README.md`, then consult the operations guide in `docs/README.md`.
+  - Read the Homebrew section in `README.md` and the relevant section of `docs/operations.md`.
 - When changing `setup/bun/`:
-  - Read the Bun section in `README.md`, then consult the operations guide in `docs/README.md`.
+  - Read the Bun section in `README.md` and the relevant section of `docs/operations.md`.
 - When changing `dotfiles/ai/`:
-  - Read the AI Tools section in `README.md`, then follow the architecture and AI tools guides in `docs/README.md`.
+  - Read the AI Tools section in `README.md`, `docs/architecture.md`, and `docs/ai-tools.md` as relevant to the change.
 - When changing setup or usage documentation:
   - Update both `README.md` and `README-ja.md`.
 - When changing repository-wide design decisions:
@@ -45,7 +45,7 @@
 - Follow `.stylua.toml` for Lua code.
 - Match existing shell script styles and maintain POSIX compatibility where practical.
 - Use `rg` for text searches. Use `ast-grep` when a search or rewrite depends on syntactic code structure rather than exact text.
-- Add a concise English comment when introducing a new function so its purpose is clear at a glance.
+- Add a concise English comment for a new function when its purpose or constraints are not evident from the code.
 - Match existing formatting conventions for JSON, JSONC, TOML, and Markdown.
 - Do not commit machine-specific values or secrets.
 - Maintain AI skill definitions in external apm package repositories by default. In this repository, keep only `dotfiles/ai/apm/apm.yml` dependencies and `dotfiles/ai/apm/apm.lock.yaml`.
