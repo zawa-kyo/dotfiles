@@ -13,14 +13,14 @@
 
 ## キー体系
 
-通常キーと `<leader>` 配下では、異なる体系を使います。
+通常キーと `<leader>` 配下とで、それぞれに適した設計体系を採用しています。
 
-通常キーから始まる追加キーバインドは **動詞 (prefix) + 目的語 (object)** の形式で設計します。
-動詞は 1 打鍵目で操作の種類を表し、以降のキーはその動詞の名前空間で解釈します。
+通常キーから始まる追加キーバインドは、**動詞 (prefix) + 目的語 (object)** の形式で設計します。
+動詞は 1 打鍵目で操作の種類を表し、以降のキーはその動詞の名前空間の中で解釈します。
 
-`<leader>` 配下では、`<leader>` を操作用の明示的な入口として扱います。
-`<leader> + 動詞 + 目的語 + 修飾子` を基本形としますが、ウィンドウ配置のように対象から始まる専用の操作群も置けます。
-通常キーの同じ文字と意味を揃える必要はありません。各 `<leader>` 操作群の先頭キーが作る名前空間の中で、語順と略記を揃えます。
+`<leader>` 配下は、明示的な操作ツリーへの入口として扱います。
+基本形は `<leader> + 動詞 + 目的語 [+ 修飾子]` ですが、ウィンドウの配置調整 (`<leader>w…`) のように操作対象を起点とするグループも設けます。
+通常キーと同じ文字であっても同一の意味に縛られる必要はなく、各 `<leader>` 操作群の先頭キーが定義する名前空間の中で語順や略記の一貫性を保ちます。
 
 - Vim の標準キーバインドを尊重する
   - 例: `hjkl` / `d` / `c` / `x` / `y` / `p` / `f/F/t/T` / `w/e/b`
@@ -41,7 +41,7 @@
 | `[ , ]` | cycle      | diagnostics/quickfix/buffer/hunk/todo などの前後移動                    |
 | `z`     | (built-in) | 画面位置・表示範囲の移動、折りたたみ、スクロールなど (Vim 標準機能)     |
 
-`<leader>` 配下では、次の動詞を使用します。
+バッファ・ウィンドウ・タブなどのライフサイクル管理では、`<leader>` 配下に次の動詞を使用します。
 
 | Key | Verb   | 意味/用途                                |
 | --- | ------ | ---------------------------------------- |
@@ -63,13 +63,13 @@
   - 小文字=狭い範囲 (ローカル)、大文字=広い範囲 (グローバル)。似た意味を持つ操作は利用頻度の高い方を小文字にする
 - `<leader>` は、操作群を選択してから対象を選ぶコマンドツリーとして扱う
   - 頻繁に利用する操作に限定して追加する
-  - プラグインや外部ツールごとに名前空間を無暗に増やさない
+  - プラグインや外部ツールごとに名前空間をむやみに増やさない
   - `n` は生成、`c` は表示領域の close、`d` は編集対象の delete に使用する
-  - `cw` と `ct` は close、`db` は delete を実行し、対象の寿命の違いを表す
+  - `cw` と `ct` は close (表示領域を閉じる)、`db` は delete (バッファを削除する) を実行し、対象のライフサイクルの違いを反映する
   - 生成と終了の操作では、`b` をバッファ、`w` をウィンドウ、`t` をタブに固定する
-  - ウィンドウ間の方向移動は `<C-h/j/k/l>` と `<leader>gwh/j/k/l`、同種の対象間の前後移動は `[` と `]` に寄せる
+  - ウィンドウ間の方向移動は `<C-h/j/k/l>`、`hw/jw/kw/lw`、`<leader>gwh/j/k/l`、同種の対象間の前後移動は `[` と `]` に寄せる
   - ウィンドウのサイズ変更や入れ替えは、`<leader>w…` の配置操作として扱う
-  - Todo 操作では `t`=toggle、`T`=todo.txt、`m`=main の `todo.txt`、`d`=done.txt、`g`=ghost text と読む
+  - Todo 操作では `t`=toggle、`T`=todo.txt、末尾の `m`=メイン (`todo.txt`)、`d`=完了 (`done.txt`)、`g`=補助表示 (ghost text) を表す
 - 例外および固定ルール
   - Neovim 全体を終了する `:qall` は `<leader>` へ割り当てない
   - 単独の `s` / `S` および `r` / `R` は通常操作に割り当てず、誤入力防止のため `<Nop>` とする
@@ -162,6 +162,7 @@
 | `<leader>n`   | `<leader>nt`  | new tab                 | Alpha を表示するタブを作成   |
 | `<leader>n`   | `<leader>nwh` | new window horizontal   | ウィンドウを横分割           |
 | `<leader>n`   | `<leader>nwv` | new window vertical     | ウィンドウを縦分割           |
+| `<leader>n`   | `<leader>nT`  | new todo                | TODO を追加                  |
 | `h`           | `hw`          | go window left          | 左のウィンドウへ移動         |
 | `j`           | `jw`          | go window below         | 下のウィンドウへ移動         |
 | `k`           | `kw`          | go window above         | 上のウィンドウへ移動         |
@@ -174,7 +175,6 @@
 | `<leader>c`   | `<leader>cW`  | close other windows     | 現在以外のウィンドウを閉じる |
 | `<leader>c`   | `<leader>ct`  | close tab               | 現在のタブを閉じる           |
 | `<leader>d`   | `<leader>db`  | delete buffer           | 現在のバッファを削除する     |
-| `<leader>n`   | `<leader>nT`  | new todo                | TODO を追加                  |
 | `<leader>tT`  | `<leader>tTm` | toggle todo main        | `todo.txt` の表示を切り替え  |
 | `<leader>tT`  | `<leader>tTd` | toggle todo done        | `done.txt` の表示を切り替え  |
 | `<leader>tT`  | `<leader>tTg` | toggle todo ghost text  | ghost text の ON/OFF         |
