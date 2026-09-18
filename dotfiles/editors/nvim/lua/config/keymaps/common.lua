@@ -107,6 +107,25 @@ keymap("n", "[j", "<C-o>", opts("Jump to previous jumplist location"))
 keymap("n", "]]", "<C-i>", opts("Jump to next location"))
 keymap("n", "[[", "<C-o>", opts("Jump to previous location"))
 
+local jumplist_keymaps = vim.api.nvim_create_augroup("JumplistKeymaps", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = jumplist_keymaps,
+  callback = function(event)
+    keymap("n", "[[", "<C-o>", {
+      buffer = event.buf,
+      desc = "Jump to previous location",
+      noremap = true,
+      silent = true,
+    })
+    keymap("n", "]]", "<C-i>", {
+      buffer = event.buf,
+      desc = "Jump to next location",
+      noremap = true,
+      silent = true,
+    })
+  end,
+})
+
 -- Sections
 keymap("n", "]s", "<Cmd>normal! ]]<CR>", opts("Go to next section"))
 keymap("n", "[s", "<Cmd>normal! [[<CR>", opts("Go to previous section"))
