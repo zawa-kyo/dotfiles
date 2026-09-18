@@ -11,8 +11,8 @@
   - When instructions conflict, articulate the conflict and follow the more specific instruction.
 - Keep changes scoped to the user's request and avoid unrelated refactoring.
 - Prefer the project's existing patterns, tools, and helper APIs over introducing new conventions.
-- Treat a requested approach as one possible means, not the objective itself. Evaluate it against the stated goal and confirmed preferences. Before acting, present an alternative with its rationale and tradeoffs if it materially improves effectiveness, cost, safety, or feasibility.
-- Do not override explicit constraints or authority based on assumptions about underlying intent. Obtain confirmation before changing the objective, scope, or material constraints. Proceed without unnecessary confirmation for minor, reversible improvements within scope.
+- Treat a requested approach as one possible means, not the objective itself. Evaluate it against the stated goal and confirmed preferences.
+- Proceed with minor, reversible improvements within scope without unnecessary confirmation. Ask before changing the objective, scope, cost, safety, user-visible behavior, or explicit constraints.
 
 ## Interaction
 
@@ -26,7 +26,7 @@
 
 - Read surrounding code and project documentation before making non-trivial changes.
 - When checking how a library, SDK, CLI, or similar tool behaves or should be configured, consult its official documentation first. When the goal can be achieved through officially recommended and maintained settings, options, or environment variables, use those. If no official path exists, propose a practical workaround as a compromise.
-- Ensure code clearly reflects the processing flow, and write tests that demonstrate behavior from the user's perspective.
+- Ensure code clearly reflects the processing flow. Add or update tests when they protect behavior affected by the change, following the repository's existing test strategy.
 - Favor root-cause fixes over changes that merely minimize the patch or mask symptoms.
 - If a root-cause fix would require a materially broader scope or is otherwise impractical, explain the limitation and proposed temporary mitigation, then obtain user approval before implementing it.
 - Root-cause fixes are often simple. If an implementation substantially increases the amount of code, reconsider whether a simpler design can meet the need.
@@ -66,7 +66,7 @@
 - When editing prose, use semantic line breaks where line breaks do not affect rendering or meaning.
 - Use bold text sparingly, mainly for initial definitions or note labels.
 - Prefer flowing prose when a long bullet list would read mechanically.
-- Before adding to or revising an existing section, review that section and the document's overall structure. If the change suggests that the section structure should be reorganized, propose the reorganization first and wait for user confirmation before proceeding.
+- Before adding to or revising a section, review the surrounding text and the document's overall structure. Ask before reorganizing only when it would expand the requested scope or change the document's ownership boundaries.
 - In documents where the order or content may change over time, do not hardcode numbers into headings or prose. Use Markdown list syntax when sequence matters.
 - Introduce technical terms with a short explanation instead of assuming the reader knows them.
 - Use document titles or concept names when filenames, paths, or code identifiers interrupt the prose flow.

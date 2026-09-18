@@ -20,16 +20,16 @@
 ## 変更対象ごとの参照先
 
 - `dotfiles/editors/nvim/` を変更する場合:
-  - `docs/README.md` を起点に、Neovim ドキュメントへの導線をたどる。
+  - `dotfiles/editors/nvim/docs/README.md` と、変更に関連するリンク先ドキュメントを参照する。
 - `bin/`、`setup/`、`libexec/`、`mise.toml`、または `dotfiles/shell/` を変更する場合:
-  - `docs/README.md` を起点に、コマンドモデルと省略入力のドキュメントをたどる。
+  - `docs/command-model.md` を参照し、省略入力に関わる変更では `docs/abbreviation.md` もあわせて確認する。
   - `fzf` を利用する処理は、コマンドモデルに記載されている共通化方針に従う。
 - `setup/homebrew/` を変更する場合:
-  - `README.md` の Homebrew セクションを確認し、`docs/README.md` から運用・確認方針のドキュメントをたどる。
+  - `README.md` の Homebrew セクションおよび `docs/operations.md` の該当箇所を参照する。
 - `setup/bun/` を変更する場合:
-  - `README.md` の Bun セクションを確認し、`docs/README.md` から運用・確認方針のドキュメントをたどる。
+  - `README.md` の Bun セクションおよび `docs/operations.md` の該当箇所を参照する。
 - `dotfiles/ai/` を変更する場合:
-  - `README.md` の AI Tools セクションを確認し、`docs/README.md` から全体構成および AI ツールのドキュメントをたどる。
+  - `README.md` の AI Tools セクション、`docs/architecture.md`、`docs/ai-tools.md` のうち、変更に関連する箇所を参照する。
 - セットアップや利用手順のドキュメントを変更する場合:
   - `README.md` と `README-ja.md` の双方を更新する。
 - リポジトリ全体の設計判断を変更する場合:
@@ -45,7 +45,7 @@
 - Lua コードは `.stylua.toml` の規約に従う。
 - シェルスクリプトは既存のスタイルに合わせ、実用上無理のない範囲で POSIX 準拠を意識する。
 - 文字列検索には `rg` を使用する。コード構造に基づく検索や置換には `ast-grep` を使用する。
-- 新しい関数を追加する場合は、役割がひと目で把握できる簡潔な英語コメントを付与する。
+- 新しい関数の目的や制約がコードから自明でない場合は、簡潔な英語コメントを付与する。
 - JSON、JSONC、TOML、Markdown は既存のフォーマット規則に合わせる。
 - マシン固有の値や機密情報はコミットしない。
 - AI スキル本体は、原則として外部の apm パッケージリポジトリで管理する。本リポジトリには `dotfiles/ai/apm/apm.yml` の依存関係定義と `dotfiles/ai/apm/apm.lock.yaml` のみを配置する。
