@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-09-27T15:16:16.786967+00:00'
+generated_at: '2026-10-01T01:43:54.641447+00:00'
 apm_version: 0.31.0
 dependencies:
 - repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: c55ee46073ed923f86ce59a5eb3b6d895095d1b7
+  resolved_commit: d81f3a183412e71a5b1e84ca21bc1a35eea03a60
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -26,7 +26,7 @@ dependencies:
 - repo_url: mizchi/skills
   name: empirical-prompt-tuning
   host: github.com
-  resolved_commit: f03585cd8a41aac91b46ba15456a56c291595de3
+  resolved_commit: f1dfda26e4a86c75037497f5922cae42b86aa83c
   version: unknown
   virtual_path: empirical-prompt-tuning
   is_virtual: true
