@@ -19,6 +19,7 @@ hide = true
 description = "Finish cross-platform setup not covered by declarative bootstrap steps"
 run = [
   { task = "install-global-tools" },
+  { task = "init-fnox" },
   { task = "install-apm" },
   { task = "install-bun" },
 ]
@@ -31,3 +32,8 @@ run = [{ task = "bootstrap-common" }]
 [install-bun]
 description = "Install Bun globals outside the repository"
 file = "setup/install-bun.sh"
+
+[init-fnox]
+hide = true
+description = "Initialize machine-specific fnox configuration and age key"
+run = "bash setup/init-fnox.sh"

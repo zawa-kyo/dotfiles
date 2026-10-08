@@ -48,6 +48,7 @@ mise --version
 
 - `mise.toml` と OS 別設定に宣言された dotfiles の反映
 - mise 管理ツールのインストール
+- 端末固有の fnox 設定と age 鍵の初期化
 - apm 管理スキルの反映
 - Bun グローバル環境の準備
 - hk によるグローバルな Git pre-commit hook 設定の配備
@@ -98,6 +99,30 @@ mise implode
 Bun のグローバル環境で使う `package.json`、`bun.lock`、`bunfig.toml` は `setup/bun/` で管理します。
 `mise run install-bun` はこれらのファイルを `~/.bun/install/global` へコピーした上で依存関係をインストールするため、生成される `node_modules/` がリポジトリ内に混入することはありません。
 `mise run upgrade-bun` は実行用ディレクトリで依存関係を更新し、更新されたパッケージ定義と lock ファイルを `setup/bun/` へ書き戻します。
+
+### fnox によるローカルシークレットの管理
+
+bootstrap は、端末ごとに `~/.config/fnox/config.toml` と固有の age 鍵 `~/.config/fnox/age.txt` を初期化します。
+設定ファイルでは age プロバイダーとして `local` を定義し、`env = "exec"` によって fnox 経由で起動したコマンドにのみ秘密情報を環境変数として渡します。
+設定ディレクトリの配置先を変更したい場合は `FNOX_CONFIG_DIR` を指定します。
+既存の鍵や設定ファイルは上書きされず保持されます。なお、設定ファイルが存在するにもかかわらず `age.txt` が見つからない場合は安全のため処理を中断します。その際は元の鍵を復元するか、設定内容を確認してください。
+
+鍵や設定ファイルは Git 管理に含めず、安全な保存先にバックアップしてください（鍵を紛失すると暗号化した値を復号できなくなります）。仕事用 PC では勤務先が認めた保存先を使用します。
+私用 PC と仕事用 PC で鍵や秘密情報は共有せず、bootstrap 完了後に各端末で必要な値を登録してください。
+
+```sh
+# 値をシェル履歴に残さないよう、非表示プロンプトから登録する
+fnox set GITHUB_TOKEN --global --provider local
+
+# 復号した秘密情報を環境変数に渡してコマンドを実行する
+fnox exec -- gh auth status
+
+# 不要になった秘密情報を削除する（例: テスト用シークレット）
+fnox remove FNOX_DEMO --global
+```
+
+`~/local.d` から秘密情報を移行する際は、値を 1 件ずつ登録し、呼び出し側を `fnox exec` 経由に変更して動作を確認した上で、元の平文定義を削除してください。
+初期化処理のみを単体で再実行する場合は、このリポジトリで `mise run init-fnox` を実行します。
 
 ### Git worktree
 
