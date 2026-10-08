@@ -8,6 +8,8 @@
   - リポジトリ全体の構造とファイルの配置方針
 - [bootstrap-design.md](./bootstrap-design.md)
   - `mise bootstrap` の役割、競合発生時の動作、移行処理とテストの設計
+- [secrets.md](./secrets.md)
+  - 通常設定と秘密情報の分離、fnox と age による暗号化管理、環境変数の別名解決と初期化の設計
 - [ai-tools.md](./ai-tools.md)
   - AI ツールおよびスキルの管理・運用方針
 
