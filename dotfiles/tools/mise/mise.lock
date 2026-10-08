@@ -22,6 +22,28 @@ url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_
 url_api = "https://api.github.com/repos/rhysd/actionlint/releases/assets/384924893"
 provenance = "github-attestations"
 
+[[tools.age]]
+version = "1.3.2"
+backend = "aqua:FiloSottile/age"
+
+[tools.age."platforms.linux-arm64"]
+checksum = "sha256:6b8dc4333c53a5a57c9e5834e3a48f92605d7154014cd07269ff3327db5d37f4"
+url = "https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/FiloSottile/age/releases/assets/535541932"
+provenance = "github-attestations"
+
+[tools.age."platforms.linux-x64"]
+checksum = "sha256:cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10"
+url = "https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/FiloSottile/age/releases/assets/535541903"
+provenance = "github-attestations"
+
+[tools.age."platforms.macos-arm64"]
+checksum = "sha256:e2020b073c44f692685a24d6abc378817eb81ffaaf49fd0531ef8565f767f2f5"
+url = "https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/FiloSottile/age/releases/assets/535541897"
+provenance = "github-attestations"
+
 [[tools.apm]]
 version = "0.32.0"
 backend = "github:microsoft/apm"
@@ -278,6 +300,25 @@ backend = "asdf:ffmpeg"
 [[tools.flutter]]
 version = "3.41.9-stable"
 backend = "asdf:flutter"
+
+[[tools.fnox]]
+version = "1.36.0"
+backend = "packslip:github.com/jdx/fnox"
+
+[tools.fnox."platforms.linux-arm64"]
+checksum = "sha256:a479fc6cdf52db7ec5fab8027e62debbbe7ee18f2829bcdcc4766c9dc3ef123e"
+url = "https://github.com/jdx/fnox/releases/download/v1.36.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
+
+[tools.fnox."platforms.linux-x64"]
+checksum = "sha256:9c4f4dd2ae9b704016798eef18e74fecb61f954cabb8ec4b97f848332954463d"
+url = "https://github.com/jdx/fnox/releases/download/v1.36.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
+
+[tools.fnox."platforms.macos-arm64"]
+checksum = "sha256:b1de28349089d62b24518f1a6103005f9f3c82aaf5ca7872e65bf3fc349e4166"
+url = "https://github.com/jdx/fnox/releases/download/v1.36.0/fnox-aarch64-apple-darwin.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [[tools.fvm]]
 version = "4.3.1"
