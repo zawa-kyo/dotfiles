@@ -121,7 +121,7 @@ fnox exec -- gh auth status
 fnox remove FNOX_DEMO --global
 ```
 
-`~/local.d` から秘密情報を移行する際は、値を 1 件ずつ登録し、呼び出し側を `fnox exec` 経由に変更して動作を確認した上で、元の平文定義を削除してください。
+`~/.config/local` から秘密情報を移行する際は、値を 1 件ずつ登録し、呼び出し側を `fnox exec` 経由に変更して動作を確認した上で、元の平文定義を削除してください。
 初期化処理のみを単体で再実行する場合は、このリポジトリで `mise run init-fnox` を実行します。
 
 ### Git worktree

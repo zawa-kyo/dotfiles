@@ -121,7 +121,7 @@ fnox exec -- gh auth status
 fnox remove FNOX_DEMO --global
 ```
 
-When migrating secrets from `~/local.d`, register one value at a time, update its callers to use `fnox exec`, and verify that the command succeeds before removing the original plaintext definition.
+When migrating secrets from `~/.config/local`, register one value at a time, update its callers to use `fnox exec`, and verify that the command succeeds before removing the original plaintext definition.
 To rerun only the fnox initialization step from this repository, run `mise run init-fnox`.
 
 ### Git Worktrees
