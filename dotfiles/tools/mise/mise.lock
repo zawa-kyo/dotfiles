@@ -83,18 +83,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/580134148"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.37.9"
+version = "2.37.10"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.37.9.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.37.10.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.37.9.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.37.10.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:e3ae5d7f3c5fe6939761fe1dbb3f8b608279b98652e5b94022e87fc530951d14"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.37.9.pkg"
+checksum = "blake3:bcdb3a4fe6935247ed593b5c2d240fc8b067edc60670c357f5479fbe734ce9c1"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.37.10.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -148,51 +148,51 @@ checksum = "sha256:90987a3a16d7db556d886ac3d551e7b6d3edf0a1cf43acaed622e8676be1d
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-darwin-aarch64.zip"
 
 [[tools.ccsession]]
-version = "1.3.0"
+version = "1.4.0"
 backend = "github:sorafujitani/ccsession"
 
 [tools.ccsession."platforms.linux-arm64"]
-checksum = "sha256:5b16e0166d0d4d47c4910b197a2e31c4c0f3c06342179705d432da576d98779b"
-url = "https://github.com/sorafujitani/ccsession/releases/download/v1.3.0/ccsession_1.3.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/539281782"
+checksum = "sha256:ba56ac32b216f5d5725fe9e94beb92c4df922aa6608c5b6cc85a6db53f61e225"
+url = "https://github.com/sorafujitani/ccsession/releases/download/v1.4.0/ccsession_1.4.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/600556801"
 
 [tools.ccsession."platforms.linux-x64"]
-checksum = "sha256:7d80cc592d34cd9edf30c87e41484d7da2358dcb066bd5e246ab6b7cee8845e1"
-url = "https://github.com/sorafujitani/ccsession/releases/download/v1.3.0/ccsession_1.3.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/539281778"
+checksum = "sha256:7bdf54491198b006a46eb529d772f6081456103a4dd2f1ebfbe74e3e76f118af"
+url = "https://github.com/sorafujitani/ccsession/releases/download/v1.4.0/ccsession_1.4.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/600556797"
 
 [tools.ccsession."platforms.macos-arm64"]
-checksum = "sha256:27ec0deb6d103729a79927df1f899ce9bc53e7d53713c619a491fea4b9029096"
-url = "https://github.com/sorafujitani/ccsession/releases/download/v1.3.0/ccsession_1.3.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/539281780"
+checksum = "sha256:2dc6db647566d4b59674586d6c5b7d32f288fb93ce1852c4c7d40f5a6c0a6c3b"
+url = "https://github.com/sorafujitani/ccsession/releases/download/v1.4.0/ccsession_1.4.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/sorafujitani/ccsession/releases/assets/600556798"
 
 [[tools.container]]
-version = "1.4.1"
+version = "1.5.0"
 backend = "aqua:apple/container"
 
 [tools.container."platforms.macos-arm64"]
-checksum = "sha256:c0d2716afefbb194c93fae662e9cae7cc186bcbcf746816608ec673dd648a6a4"
-url = "https://github.com/apple/container/releases/download/1.4.1/container-1.4.1-installer-signed.pkg"
-url_api = "https://api.github.com/repos/apple/container/releases/assets/551745110"
+checksum = "sha256:a24808cb202318fa1c3bbee0c6c6887fe1225fe899d7b687a0ddd939bd6573f8"
+url = "https://github.com/apple/container/releases/download/1.5.0/container-1.5.0-installer-signed.pkg"
+url_api = "https://api.github.com/repos/apple/container/releases/assets/597136570"
 
 [[tools.copilot]]
-version = "1.0.88"
+version = "1.0.90"
 backend = "aqua:github/copilot-cli"
 
 [tools.copilot."platforms.linux-arm64"]
-checksum = "sha256:e263f5f9eb0db5dddf5775ac98c437e27743857ce0ba310f08f2338aebd1107d"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.88/copilot-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/582143726"
+checksum = "sha256:860eeaccd067a18e60cf7585fdeb682035ff94c075283ad752ec4c3b836a5b27"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.90/copilot-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/601842778"
 
 [tools.copilot."platforms.linux-x64"]
-checksum = "sha256:42f40c08ff8a8ff78522161e4b5e2b86340ad8bb0853a5f1aa64ce65b48d007b"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.88/copilot-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/582143848"
+checksum = "sha256:7ebcce0f8a76b826e34c76f214361916b130ca9cf1571adf267fbda38f92b4b6"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.90/copilot-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/601842892"
 
 [tools.copilot."platforms.macos-arm64"]
-checksum = "sha256:55c3c6b581080cf613f0b25788d133dad4265bcb15cfb2e7acf80b2ff2ec5d67"
-url = "https://github.com/github/copilot-cli/releases/download/v1.0.88/copilot-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/582143724"
+checksum = "sha256:d9baf683fcc830bbf95bfa7a45be4515b98613ccf86ea13ee194f1d49b33da18"
+url = "https://github.com/github/copilot-cli/releases/download/v1.0.90/copilot-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/copilot-cli/releases/assets/601842779"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -337,45 +337,45 @@ url = "https://github.com/koki-develop/gat/releases/download/v0.31.0/gat_Darwin_
 url_api = "https://api.github.com/repos/koki-develop/gat/releases/assets/558304079"
 
 [[tools.gh]]
-version = "2.101.0"
+version = "2.102.0"
 backend = "aqua:cli/cli"
 
 [tools.gh."platforms.linux-arm64"]
-checksum = "sha256:b57e8063f18862647c9d22727c32e9da1b963f8bf9db648fe123a6975695640f"
-url = "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/565857147"
+checksum = "sha256:7862c86c72f43df3a2d93ddde6f473285b4e2af61b494849846827e513ef6484"
+url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854680"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:9bca2d1c16825f109907a23307628a2f0698fbf99662b73a5cf0b020293072b8"
-url = "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/565857134"
+checksum = "sha256:bb766f710eef8ede859c18578c72c327597cd4c8a85b06001b1f3843c6019386"
+url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854672"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-arm64"]
-checksum = "sha256:e4303e39d8f07141c4bad4b99b01079f05029c59b27076e8fbc825c985ecdd8b"
-url = "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_macOS_arm64.zip"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/565857200"
+checksum = "sha256:da922c20d1792e5b2cbf375593d7a658acf034c12c84e007e71c76ef959c337e"
+url = "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_macOS_arm64.zip"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/599854720"
 provenance = "github-attestations"
 
 [[tools.ghq]]
-version = "1.10.1"
+version = "1.11.2"
 backend = "aqua:x-motemen/ghq"
 
 [tools.ghq."platforms.linux-arm64"]
-checksum = "sha256:7ed154f62751e91c8a2d415280caeeba3d114050d01e39f3d0f4aa1be15f3954"
-url = "https://github.com/x-motemen/ghq/releases/download/v1.10.1/ghq_linux_arm64.zip"
-url_api = "https://api.github.com/repos/x-motemen/ghq/releases/assets/394135805"
+checksum = "sha256:0a083c5d5b214dd0f4f693cf8839b15f6b5cc4e2d91b0cb4abb8748dcdb353c9"
+url = "https://github.com/x-motemen/ghq/releases/download/v1.11.2/ghq_linux_arm64.zip"
+url_api = "https://api.github.com/repos/x-motemen/ghq/releases/assets/598741476"
 
 [tools.ghq."platforms.linux-x64"]
-checksum = "sha256:32e380aa8ac76fdd58758cc06174d9ee5db7270bd0cbcc18138b5d36def91b6b"
-url = "https://github.com/x-motemen/ghq/releases/download/v1.10.1/ghq_linux_amd64.zip"
-url_api = "https://api.github.com/repos/x-motemen/ghq/releases/assets/394135802"
+checksum = "sha256:efa5c1de4e763565b71649229449d8123ceb7131a8d0ed25755aaee73969cdf1"
+url = "https://github.com/x-motemen/ghq/releases/download/v1.11.2/ghq_linux_amd64.zip"
+url_api = "https://api.github.com/repos/x-motemen/ghq/releases/assets/598741424"
 
 [tools.ghq."platforms.macos-arm64"]
-checksum = "sha256:5e3100de0c5a248eebe6ab176ad94d6e12386af70a58c535368a4301861b1398"
-url = "https://github.com/x-motemen/ghq/releases/download/v1.10.1/ghq_darwin_arm64.zip"
-url_api = "https://api.github.com/repos/x-motemen/ghq/releases/assets/394135804"
+checksum = "sha256:8317f8ea5671bccb31e7747eb0a892a77a472dbc7c988f9d47cdfc969a59e242"
+url = "https://github.com/x-motemen/ghq/releases/download/v1.11.2/ghq_darwin_arm64.zip"
+url_api = "https://api.github.com/repos/x-motemen/ghq/releases/assets/598741463"
 
 [[tools.git-lfs]]
 version = "3.8.0"
@@ -547,23 +547,23 @@ url = "https://www.lua.org/ftp/lua-5.5.1.tar.gz"
 url = "https://www.lua.org/ftp/lua-5.5.1.tar.gz"
 
 [[tools.maestro]]
-version = "cli-2.10.0"
+version = "cli-2.11.0"
 backend = "github:mobile-dev-inc/maestro"
 
 [tools.maestro."platforms.linux-arm64"]
-checksum = "sha256:29b675e10cc12080e445e9bfb2e2b4e4dfb9c0f2e30d5884120d258b5e1cd991"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.10.0/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/538294003"
+checksum = "sha256:5384593cb4e7a106489e75a821d157dd43f4e438df6bc308b72e82c685e1283a"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.11.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/598310672"
 
 [tools.maestro."platforms.linux-x64"]
-checksum = "sha256:29b675e10cc12080e445e9bfb2e2b4e4dfb9c0f2e30d5884120d258b5e1cd991"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.10.0/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/538294003"
+checksum = "sha256:5384593cb4e7a106489e75a821d157dd43f4e438df6bc308b72e82c685e1283a"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.11.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/598310672"
 
 [tools.maestro."platforms.macos-arm64"]
-checksum = "sha256:29b675e10cc12080e445e9bfb2e2b4e4dfb9c0f2e30d5884120d258b5e1cd991"
-url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.10.0/maestro.zip"
-url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/538294003"
+checksum = "sha256:5384593cb4e7a106489e75a821d157dd43f4e438df6bc308b72e82c685e1283a"
+url = "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.11.0/maestro.zip"
+url_api = "https://api.github.com/repos/mobile-dev-inc/Maestro/releases/assets/598310672"
 
 [[tools.neovim]]
 version = "0.12.5"
@@ -628,22 +628,22 @@ url = "https://github.com/dalance/procs/releases/download/v0.14.12/procs-v0.14.1
 url_api = "https://api.github.com/repos/dalance/procs/releases/assets/457525354"
 
 [[tools.python]]
-version = "3.14.7"
+version = "3.14.8"
 backend = "core:python"
 
 [tools.python."platforms.linux-arm64"]
-checksum = "sha256:86dfb106b303fa6a1991f7da42ced3e11576f777be299b3162e06617b6d22542"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.14.7+20260814-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "sha256:ece2bf3d4b47c80c2403c5f32fa51a9458abaee93c10def8acafb5f45163e77d"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [tools.python."platforms.linux-x64"]
-checksum = "sha256:cefba034445d2875408d1fd4d5700ae6731563aeb54dcb39fd8164ab5c457533"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.14.7+20260814-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "sha256:d9ec7a6935ade8b671a57ebaf111083d7314eab8dae5071d167054dadd2b97d6"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [tools.python."platforms.macos-arm64"]
-checksum = "sha256:423717c485b9ee7822590b9d973c1b5fb2cda0fe43448ab82a3d44f823bd329c"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.14.7+20260814-aarch64-apple-darwin-install_only_stripped.tar.gz"
+checksum = "blake3:0a72ba8ed087eddcee1f3270a66817cff3f022677f97edbfc8ed406027683fbd"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-aarch64-apple-darwin-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [[tools.ripgrep]]
