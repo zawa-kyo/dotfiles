@@ -26,10 +26,6 @@ keymap("n", "<leader><leader>", ":", opts("Show command-line mode", true, false,
 keymap("n", "<leader>s", "<Cmd>write<CR>", opts("Write current buffer"))
 
 -- Window navigation (Ctrl+h/j/k/l)
-keymap("n", "hw", "<C-w>h", opts("Go to left window"))
-keymap("n", "jw", "<C-w>j", opts("Go to bottom window"))
-keymap("n", "kw", "<C-w>k", opts("Go to top window"))
-keymap("n", "lw", "<C-w>l", opts("Go to right window"))
 keymap("n", "<C-h>", "<C-w>h", opts("Go to left window"))
 keymap("n", "<C-j>", "<C-w>j", opts("Go to bottom window"))
 keymap("n", "<C-k>", "<C-w>k", opts("Go to top window"))
