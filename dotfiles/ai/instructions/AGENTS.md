@@ -45,10 +45,12 @@
 - Treat any command that modifies the Git index as a staging or unstaging operation, even when it also alters the working tree. This includes `git add`, `git mv`, `git rm`, `git restore --staged`, and similar commands. Do not execute them unless the user explicitly requests that Git operation.
 - When moving, renaming, or deleting tracked files without an explicit staging request, use standard filesystem operations such as `mv` and verify with `git status --short` that the changes remain unstaged.
 - Do not revert or overwrite changes you did not author unless explicitly requested.
-- Keep generated values, machine-specific values, secrets, local paths, and credentials out of commits.
-- Do not inspect secrets unless the user explicitly requests that specific file or value.
-- When a command requires secrets managed by fnox, run it through `fnox exec -- <command>`.
-- Do not print secret values or write them in plaintext to files, logs, or shell configuration.
+
+## Running Commands That Access Secrets
+
+- Before running a CLI command that may authenticate or use credentials (for example, `gh auth status`), run `fnox list` without `--values` to check whether fnox manages the relevant secret. Do this even when the user does not name a variable.
+- If fnox manages the variable, run the command through `fnox exec -- <command>` instead of relying on the inherited environment.
+- Do not inspect a secret unless the user explicitly requests that specific file or value. Do not print secret values or write them in plaintext to files, logs, or shell configuration.
 
 ## Review and Reporting
 
