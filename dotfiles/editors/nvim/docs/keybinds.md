@@ -67,7 +67,7 @@
   - `n` は生成、`c` は表示領域の close、`d` は編集対象の delete に使用する
   - `cw` と `ct` は close (表示領域を閉じる)、`db` は delete (バッファを削除する) を実行し、対象のライフサイクルの違いを反映する
   - 生成と終了の操作では、`b` をバッファ、`w` をウィンドウ、`t` をタブに固定する
-  - ウィンドウ間の方向移動は `<C-h/j/k/l>`、`hw/jw/kw/lw`、`<leader>gwh/j/k/l`、同種の対象間の前後移動は `[` と `]` に寄せる
+  - ウィンドウ間の方向移動は `<C-h/j/k/l>`、`<leader>gwh/j/k/l`、同種の対象間の前後移動は `[` と `]` に寄せる
   - ウィンドウのサイズ変更や入れ替えは、`<leader>w…` の配置操作として扱う
   - Todo 操作では `t`=toggle、`T`=todo.txt、末尾の `m`=メイン (`todo.txt`)、`d`=完了 (`done.txt`)、`g`=補助表示 (ghost text) を表す
 - 例外および固定ルール
@@ -163,10 +163,6 @@
 | `<leader>n`   | `<leader>nwh` | new window horizontal   | ウィンドウを横分割           |
 | `<leader>n`   | `<leader>nwv` | new window vertical     | ウィンドウを縦分割           |
 | `<leader>n`   | `<leader>nT`  | new todo                | TODO を追加                  |
-| `h`           | `hw`          | go window left          | 左のウィンドウへ移動         |
-| `j`           | `jw`          | go window below         | 下のウィンドウへ移動         |
-| `k`           | `kw`          | go window above         | 上のウィンドウへ移動         |
-| `l`           | `lw`          | go window right         | 右のウィンドウへ移動         |
 | `<leader>g`   | `<leader>gwh` | go window left          | 左のウィンドウへ移動         |
 | `<leader>g`   | `<leader>gwj` | go window below         | 下のウィンドウへ移動         |
 | `<leader>g`   | `<leader>gwk` | go window above         | 上のウィンドウへ移動         |
