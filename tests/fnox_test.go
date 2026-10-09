@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -55,6 +56,9 @@ func TestFnoxConfigDirectory(t *testing.T) {
 	if _, err := exec.LookPath("age-keygen"); err != nil {
 		t.Skip("age-keygen is required")
 	}
+	if _, err := exec.LookPath("fnox"); err != nil {
+		t.Skip("fnox is required")
+	}
 	for _, explicit := range []bool{false, true} {
 		name := "xdg"
 		if explicit {
@@ -71,8 +75,12 @@ func TestFnoxConfigDirectory(t *testing.T) {
 				env["FNOX_CONFIG_DIR"] = dir
 			}
 			runCommand(t, repo, env, "bash", filepath.Join(repo, "setup", "init-fnox.sh"))
-			assertRegularFile(t, filepath.Join(dir, "config.toml"))
+			configPath := filepath.Join(dir, "config.toml")
+			assertRegularFile(t, configPath)
 			assertRegularFile(t, filepath.Join(dir, "age.txt"))
+			if output := runCommand(t, repo, env, "fnox", "config-files"); !strings.Contains(output, configPath) {
+				t.Fatalf("fnox did not discover the generated configuration:\n%s", output)
+			}
 			if explicit {
 				assertPathMissing(t, filepath.Join(xdg, "fnox"))
 			}
