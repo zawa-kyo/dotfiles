@@ -5,7 +5,7 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$script_dir/../libexec/log.sh"
 
-config_dir="${FNOX_CONFIG_DIR:-$HOME/.config/fnox}"
+config_dir="${FNOX_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/fnox}"
 config_file="$config_dir/config.toml"
 key_file="$config_dir/age.txt"
 

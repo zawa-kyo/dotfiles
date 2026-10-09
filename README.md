@@ -104,7 +104,7 @@ The repository tracks Bun's global `package.json`, `bun.lock`, and `bunfig.toml`
 
 Bootstrap initializes `~/.config/fnox/config.toml` and a dedicated age key at `~/.config/fnox/age.txt` on each machine.
 The configuration defines a `local` age provider and sets `env = "exec"`, passing resolved secrets as environment variables only to commands launched through fnox.
-Set `FNOX_CONFIG_DIR` to override the configuration directory path.
+The configuration directory follows `FNOX_CONFIG_DIR`, then `$XDG_CONFIG_HOME/fnox`, and defaults to `~/.config/fnox`.
 Existing keys and configuration files are preserved without being overwritten. If a configuration file exists without `age.txt`, setup halts as a safety measure so you can restore the original key or review the configuration.
 
 Keep the key and configuration files outside Git and back them up to a secure location (losing the key makes encrypted values unrecoverable). On work machines, use an employer-approved storage location.
