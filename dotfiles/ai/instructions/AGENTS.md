@@ -47,6 +47,8 @@
 - Do not revert or overwrite changes you did not author unless explicitly requested.
 - Keep generated values, machine-specific values, secrets, local paths, and credentials out of commits.
 - Do not inspect secrets unless the user explicitly requests that specific file or value.
+- When a command requires secrets managed by fnox, run it through `fnox exec -- <command>`.
+- Do not print secret values or write them in plaintext to files, logs, or shell configuration.
 
 ## Review and Reporting
 

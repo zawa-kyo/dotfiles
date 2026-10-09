@@ -48,6 +48,7 @@ This command executes the following steps:
 
 - applies dotfile declarations in `mise.toml` and platform-specific configurations
 - installs mise-managed tools
+- initializes a machine-specific fnox configuration and age key
 - applies apm-managed skills
 - prepares the Bun global environment
 - deploys the global Git pre-commit hook configuration for hk
@@ -98,6 +99,30 @@ The deployed global mise configuration enables automatic updates. mise periodica
 The repository tracks Bun's global `package.json`, `bun.lock`, and `bunfig.toml` under `setup/bun/`.
 `mise run install-bun` copies these files to `~/.bun/install/global` and installs dependencies there, ensuring generated `node_modules/` artifacts remain outside the repository.
 `mise run upgrade-bun` updates dependencies in the runtime directory and copies the updated manifest and lock file back to `setup/bun/`.
+
+### Local Secrets with fnox
+
+Bootstrap initializes `~/.config/fnox/config.toml` and a dedicated age key at `~/.config/fnox/age.txt` on each machine.
+The configuration defines a `local` age provider and sets `env = "exec"`, passing resolved secrets as environment variables only to commands launched through fnox.
+The configuration directory follows `FNOX_CONFIG_DIR`, then `$XDG_CONFIG_HOME/fnox`, and defaults to `~/.config/fnox`.
+Existing keys and configuration files are preserved without being overwritten. If a configuration file exists without `age.txt`, setup halts as a safety measure so you can restore the original key or review the configuration.
+
+Keep the key and configuration files outside Git and back them up to a secure location (losing the key makes encrypted values unrecoverable). On work machines, use an employer-approved storage location.
+Do not share keys or secrets between personal and work machines; register the required values on each machine after bootstrapping.
+
+```sh
+# Enter the secret via a hidden prompt to keep it out of shell history
+fnox set GITHUB_TOKEN --global --provider local
+
+# Run a command with resolved secrets injected into its environment
+fnox exec -- gh auth status
+
+# Remove a secret when no longer needed (e.g., a test secret)
+fnox remove FNOX_DEMO --global
+```
+
+When migrating secrets from `~/.config/local`, register one value at a time, update its callers to use `fnox exec`, and verify that the command succeeds before removing the original plaintext definition.
+To rerun only the fnox initialization step from this repository, run `mise run init-fnox`.
 
 ### Git Worktrees
 
