@@ -7,6 +7,7 @@ dependencies:
     - mattpocock/skills/skills/productivity/grilling
     - mizchi/skills/empirical-prompt-tuning
     - zawa-kyo/skills
+    - ayghri/i-have-adhd/skills/i-have-adhd
   mcp: []
 includes: auto
 scripts: {}
