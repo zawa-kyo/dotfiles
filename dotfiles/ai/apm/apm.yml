@@ -8,6 +8,7 @@ dependencies:
     - mizchi/skills/empirical-prompt-tuning
     - zawa-kyo/skills
     - ayghri/i-have-adhd/skills/i-have-adhd
+    - DreambigOu/ELI5/skills/eli5
   mcp: []
 includes: auto
 scripts: {}
