@@ -4,11 +4,11 @@ description: APM project for kyohei
 author: Kyohei Ozawa
 dependencies:
   apm:
+    - ayghri/i-have-adhd/skills/i-have-adhd
+    - DreambigOu/ELI5/skills/eli5
     - mattpocock/skills/skills/productivity/grilling
     - mizchi/skills/empirical-prompt-tuning
     - zawa-kyo/skills
-    - ayghri/i-have-adhd/skills/i-have-adhd
-    - DreambigOu/ELI5/skills/eli5
   mcp: []
 includes: auto
 scripts: {}
