@@ -2,80 +2,49 @@
 
 ## Core Principles
 
-- This file provides global, user-level guidance for coding agents.
-- When a project-specific instruction file or explicit user request provides more specific guidance, follow that instead.
-- Use the following priority order:
-  - Follow explicit user requests first.
-  - Then follow the nearest project- or directory-level instruction file.
-  - Treat this global file as the default unless more specific guidance overrides it.
-  - When instructions conflict, articulate the conflict and follow the more specific instruction.
-- Keep changes scoped to the user's request and avoid unrelated refactoring.
-- Prefer the project's existing patterns, tools, and helper APIs over introducing new conventions.
-- Treat a requested approach as one possible means, not the objective itself. Evaluate it against the stated goal and confirmed preferences.
-- Proceed with minor, reversible improvements within scope without unnecessary confirmation. Ask before changing the objective, scope, cost, safety, user-visible behavior, or explicit constraints.
+- Follow explicit user requests first, then the nearest project- or directory-level instructions, falling back to this global guide.
+- Keep changes scoped to the request; avoid unrelated refactoring.
+- Prefer existing project patterns, tools, and helper APIs over introducing new conventions.
+- Before making non-trivial changes, read surrounding code or prose and relevant project documentation to understand the existing structure.
+- Proceed with minor, reversible improvements without confirmation. Ask before changing objectives, scope, costs, safety, user-visible behavior, or explicit constraints.
 
 ## Interaction
 
-- Respond in the user's request language unless the requested artifact has its own specific language requirement.
-  - Reply in Japanese when the user asks in Japanese, and in English when the user asks in English.
-- Keep progress updates and final answers concise, concrete, and focused on the current task.
-- Explicitly state assumptions that affect the implementation or review result; do not leave them implicit.
-- Ask questions when missing information blocks progress or when guessing would introduce risks.
+- Respond in the request language (e.g., Japanese for Japanese, English for English).
+- Keep updates and answers concise, concrete, and focused on the task.
+- Explicitly state assumptions that affect implementation or review.
 
 ## Implementation Practice
 
-- Read surrounding code and project documentation before making non-trivial changes.
-- When checking how a library, SDK, CLI, or similar tool behaves or should be configured, consult its official documentation first. When the goal can be achieved through officially recommended and maintained settings, options, or environment variables, use those. If no official path exists, propose a practical workaround as a compromise.
-- Ensure code clearly reflects the processing flow. Add or update tests when they protect behavior affected by the change, following the repository's existing test strategy.
-- Favor root-cause fixes over changes that merely minimize the patch or mask symptoms.
-- If a root-cause fix would require a materially broader scope or is otherwise impractical, explain the limitation and proposed temporary mitigation, then obtain user approval before implementing it.
-- Root-cause fixes are often simple. If an implementation substantially increases the amount of code, reconsider whether a simpler design can meet the need.
-- Insert blank lines between semantically distinct code blocks to enhance readability.
-- Use commit message bodies or comments to explain Why or Why not when context is important.
-- Add comments only when they clarify behavior that is difficult to infer directly from the code.
-- Follow the repository's formatter and style rules when modifying formatter-managed files.
-- If tests or checks are skipped, explain why and describe any remaining limitations.
+- Consult official documentation first when checking or configuring library, SDK, or tool behavior. Prefer recommended and maintained settings; propose workarounds only when no official path exists.
+- Prioritize root-cause fixes over superficial patches. If a root-cause fix requires a substantially broader scope, explain the trade-offs and confirm before implementing.
+- Add or update tests for affected behavior following the project's testing conventions. Explain if tests or checks are skipped.
+- Follow the repository's formatter and style rules.
+- Add comments only when the intent is difficult to infer directly from the code.
 
 ## Safety and Ownership
 
-- Ask for confirmation before performing destructive operations, broad filesystem changes, external publication, or actions that may incur costs.
-- If a task requires installing dependencies, modifying global tools, or altering machine-level configurations, ask the user before proceeding.
-- Do not use destructive commands unless the user explicitly requests them.
-- Do not stage, unstage, commit, push, or publish changes unless the user explicitly asks for that Git operation.
-- Treat any command that modifies the Git index as a staging or unstaging operation, even when it also alters the working tree. This includes `git add`, `git mv`, `git rm`, `git restore --staged`, and similar commands. Do not execute them unless the user explicitly requests that Git operation.
-- When moving, renaming, or deleting tracked files without an explicit staging request, use standard filesystem operations such as `mv` and verify with `git status --short` that the changes remain unstaged.
-- Do not revert or overwrite changes you did not author unless explicitly requested.
+- Ask before performing destructive operations, broad filesystem changes, external publishing, or actions that incur costs or modify machine-level configuration.
+- Ask before installing dependencies or modifying global tools.
+- Do not stage, unstage, commit, push, or publish changes unless explicitly requested.
+- Treat commands modifying the Git index as staging operations (`git add`, `git mv`, `git rm`, `git restore --staged`). When moving or deleting tracked files without a staging request, use filesystem operations (e.g., `mv`) and verify unstaged status with `git status --short`.
+- Do not revert or overwrite unauthored changes unless requested.
 
 ## Running Commands That Access Secrets
 
-- Before running a CLI command that may authenticate or use credentials (for example, `gh auth status`), run `fnox list` without `--values` to check whether fnox manages the relevant secret. Do this even when the user does not name a variable.
-- If fnox manages the variable, run the command through `fnox exec -- <command>` instead of relying on the inherited environment.
-- Do not inspect a secret unless the user explicitly requests that specific file or value. Do not print secret values or write them in plaintext to files, logs, or shell configuration.
+- Before running commands that may use credentials (e.g., `gh auth status`), run `fnox list` (without `--values`) to check whether fnox manages the secret.
+- If managed by fnox, run via `fnox exec -- <command>`.
+- Never print, log, inspect, or write secrets to files or configuration unless explicitly requested.
 
 ## Review and Reporting
 
-- In code reviews, present concrete findings ordered by severity.
-- Prioritize quality issues, regressions, missing test coverage, data loss, security risks, and maintainability concerns.
-- If no blocking issues are found, state so clearly and mention any remaining verification gaps.
-- Summarize what changed, what was verified, and any residual risks.
-- Mention modified files when that helps the user review the work.
-- Do not claim that tests passed unless they were actually executed.
+- Order findings by severity, prioritizing regressions, test gaps, data loss, security risks, and maintainability.
+- Summarize changes, verification performed, and any residual risks.
+- Do not claim tests passed unless they were actually executed.
 
-## Prose and Maintenance
+## Prose and Japanese Writing
 
-- When writing Japanese, compose thoughts directly in Japanese rather than drafting in English and translating. Translationese often leads to excessive katakana or awkward sentence structures.
-- Use the `revise-japanese-writing` skill as the source of truth for detailed Japanese tone, notation, terminology, and punctuation decisions.
-- When editing Japanese Markdown, comments, policies, or guides, apply the `revise-japanese-writing` skill and match the existing document's tone and terminology.
-- In regular conversation output, also respect the Japanese guidance from `revise-japanese-writing`: do not omit particles, avoid translationese, and avoid unnecessary English mixing.
-- When editing prose, use semantic line breaks where line breaks do not affect rendering or meaning.
-- Use bold text sparingly, mainly for initial definitions or note labels.
-- Prefer flowing prose when a long bullet list would read mechanically.
-- Before adding to or revising a section, review the surrounding text and the document's overall structure. Ask before reorganizing only when it would expand the requested scope or change the document's ownership boundaries.
-- In documents where the order or content may change over time, do not hardcode numbers into headings or prose. Use Markdown list syntax when sequence matters.
-- Introduce technical terms with a short explanation instead of assuming the reader knows them.
-- Use document titles or concept names when filenames, paths, or code identifiers interrupt the prose flow.
-- When illustrating complex structures, use maintainable diagram notation such as Mermaid instead of ASCII art.
-- Avoid overusing callout boxes or note blocks when the point fits naturally in the surrounding prose.
-- Organize this file from abstract principles to concrete practices, and keep it under 300 lines.
-- Move task-specific or tool-specific workflows into skills, commands, or project-level documentation.
-- Limit the contents of this file to guidance that broadly applies across most repositories.
+- When writing Japanese, refer to the `revise-japanese-writing` skill for tone, terminology, and notation (e.g., avoid translationese and unnecessary English mixing).
+- Use semantic line breaks where they do not affect rendering.
+- Avoid hardcoding sequence numbers in headings or prose where content may shift. Use Mermaid for complex diagrams.
+- Keep this file general and concise. Move task- or tool-specific workflows into skills, commands, or project documentation.
