@@ -1,11 +1,54 @@
 lockfile_version: '1'
-generated_at: '2026-10-08T13:32:25.298141+00:00'
-apm_version: 0.32.0
+generated_at: '2026-10-10T12:11:52.621712+00:00'
+apm_version: 0.33.0
 dependencies:
+- repo_url: ayghri/i-have-adhd
+  name: i-have-adhd
+  host: github.com
+  resolved_commit: 723af7d9afaf43eb871dbcce6129e2bf80de90d5
+  version: unknown
+  virtual_path: skills/i-have-adhd
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/i-have-adhd
+  - .agents/skills/i-have-adhd/SKILL.md
+  - .agents/skills/i-have-adhd/agents/gemini.toml
+  - .agents/skills/i-have-adhd/agents/openai.yaml
+  - .claude/skills/i-have-adhd
+  - .claude/skills/i-have-adhd/SKILL.md
+  - .claude/skills/i-have-adhd/agents/gemini.toml
+  - .claude/skills/i-have-adhd/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/i-have-adhd/SKILL.md: sha256:88955c019bbb1419ff4b49dbb1f80a867467de6233d7865af2e06a7d7b76c7d3
+    .agents/skills/i-have-adhd/agents/gemini.toml: sha256:5108a6123beb9df24846e0dd3f902c652d18522dfbc56e5762032ea383041c62
+    .agents/skills/i-have-adhd/agents/openai.yaml: sha256:2c51291283dcefdca43ca6b0c08172f225c7c26a9783ec444d6bdfa51ca96f8f
+    .claude/skills/i-have-adhd/SKILL.md: sha256:88955c019bbb1419ff4b49dbb1f80a867467de6233d7865af2e06a7d7b76c7d3
+    .claude/skills/i-have-adhd/agents/gemini.toml: sha256:5108a6123beb9df24846e0dd3f902c652d18522dfbc56e5762032ea383041c62
+    .claude/skills/i-have-adhd/agents/openai.yaml: sha256:2c51291283dcefdca43ca6b0c08172f225c7c26a9783ec444d6bdfa51ca96f8f
+  content_hash: sha256:9eabae642eff3104ecd1be7a1f28881bb84548ffe28159481e684bf2e69c1d71
+- repo_url: dreambigou/eli5
+  materialization_repo_url: DreambigOu/ELI5
+  name: eli5
+  host: github.com
+  resolved_commit: a766623b062331fdde53467001379b4ddf3acc2f
+  version: unknown
+  virtual_path: skills/eli5
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/eli5
+  - .agents/skills/eli5/SKILL.md
+  - .claude/skills/eli5
+  - .claude/skills/eli5/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/eli5/SKILL.md: sha256:a671efd44a818aee7dbe4ea2ec634079401c3f578c08cb634c2b6181ced2dbe9
+    .claude/skills/eli5/SKILL.md: sha256:a671efd44a818aee7dbe4ea2ec634079401c3f578c08cb634c2b6181ced2dbe9
+  content_hash: sha256:ebe7a298b60d28ac26da8aa505d28dc97d124882abc7f33eddeb0d01e9852058
 - repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: b0618bc436ad893b3c5e84e55fba86586d34a404
+  resolved_commit: 49dd158d1076134a641b33efb035946536778336
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -1125,6 +1168,24 @@ deployments:
   content_hash: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
 - kind: project-relative
   target: claude
+  value: .claude/skills/eli5
+  runtime: null
+  scope: project
+  owners:
+  - dreambigou/eli5/skills/eli5
+  active_owner: dreambigou/eli5/skills/eli5
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/eli5/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dreambigou/eli5/skills/eli5
+  active_owner: dreambigou/eli5/skills/eli5
+  content_hash: sha256:a671efd44a818aee7dbe4ea2ec634079401c3f578c08cb634c2b6181ced2dbe9
+- kind: project-relative
+  target: claude
   value: .claude/skills/empirical-prompt-tuning
   runtime: null
   scope: project
@@ -1600,6 +1661,42 @@ deployments:
   - zawa-kyo/skills/dev/guide-unit-tests
   active_owner: zawa-kyo/skills/dev/guide-unit-tests
   content_hash: sha256:4192b02d188ab4d0a18be2cd1e2cf83ffc672326a3e55d2b29304d181baf634d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/i-have-adhd
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/i-have-adhd/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: sha256:88955c019bbb1419ff4b49dbb1f80a867467de6233d7865af2e06a7d7b76c7d3
+- kind: project-relative
+  target: claude
+  value: .claude/skills/i-have-adhd/agents/gemini.toml
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: sha256:5108a6123beb9df24846e0dd3f902c652d18522dfbc56e5762032ea383041c62
+- kind: project-relative
+  target: claude
+  value: .claude/skills/i-have-adhd/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: sha256:2c51291283dcefdca43ca6b0c08172f225c7c26a9783ec444d6bdfa51ca96f8f
 - kind: project-relative
   target: claude
   value: .claude/skills/refine-developing-reasoning
@@ -2196,6 +2293,24 @@ deployments:
   content_hash: sha256:cc46bd6f9fb10bd552a18952c387e927d419898e528bf4fe96f7bd0d369fc205
 - kind: project-relative
   target: copilot
+  value: .agents/skills/eli5
+  runtime: null
+  scope: project
+  owners:
+  - dreambigou/eli5/skills/eli5
+  active_owner: dreambigou/eli5/skills/eli5
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/eli5/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dreambigou/eli5/skills/eli5
+  active_owner: dreambigou/eli5/skills/eli5
+  content_hash: sha256:a671efd44a818aee7dbe4ea2ec634079401c3f578c08cb634c2b6181ced2dbe9
+- kind: project-relative
+  target: copilot
   value: .agents/skills/empirical-prompt-tuning
   runtime: null
   scope: project
@@ -2671,6 +2786,42 @@ deployments:
   - zawa-kyo/skills/dev/guide-unit-tests
   active_owner: zawa-kyo/skills/dev/guide-unit-tests
   content_hash: sha256:4192b02d188ab4d0a18be2cd1e2cf83ffc672326a3e55d2b29304d181baf634d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/i-have-adhd
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/i-have-adhd/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: sha256:88955c019bbb1419ff4b49dbb1f80a867467de6233d7865af2e06a7d7b76c7d3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/i-have-adhd/agents/gemini.toml
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: sha256:5108a6123beb9df24846e0dd3f902c652d18522dfbc56e5762032ea383041c62
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/i-have-adhd/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - ayghri/i-have-adhd/skills/i-have-adhd
+  active_owner: ayghri/i-have-adhd/skills/i-have-adhd
+  content_hash: sha256:2c51291283dcefdca43ca6b0c08172f225c7c26a9783ec444d6bdfa51ca96f8f
 - kind: project-relative
   target: copilot
   value: .agents/skills/refine-developing-reasoning
