@@ -45,23 +45,23 @@ url_api = "https://api.github.com/repos/FiloSottile/age/releases/assets/53554189
 provenance = "github-attestations"
 
 [[tools.apm]]
-version = "0.32.0"
+version = "0.33.0"
 backend = "github:microsoft/apm"
 
 [tools.apm."platforms.linux-arm64"]
-checksum = "sha256:d994ed49dba2c32ee33bddcc1fd956b6f32b576b51aaa3948dda94630a585cb8"
-url = "https://github.com/microsoft/apm/releases/download/v0.32.0/apm-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/588884265"
+checksum = "sha256:ac40dd0efd1af35a56847beedde96854530d2f54851e026728da017d3af827f8"
+url = "https://github.com/microsoft/apm/releases/download/v0.33.0/apm-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/606234095"
 
 [tools.apm."platforms.linux-x64"]
-checksum = "sha256:85b9c57d252168c7efaee75cdfe552c17bf84bead8d14ba7bfb02844c5693aee"
-url = "https://github.com/microsoft/apm/releases/download/v0.32.0/apm-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/588884266"
+checksum = "sha256:e6374402c74318f7c8bef97a90d8572d049fdab0dc3871492c6b0647ae9e881f"
+url = "https://github.com/microsoft/apm/releases/download/v0.33.0/apm-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/606234092"
 
 [tools.apm."platforms.macos-arm64"]
-checksum = "sha256:22e30ef3d9ee495d798f467bd30627dcb2f17a64a60ecfcaa15ca6ceaa238c56"
-url = "https://github.com/microsoft/apm/releases/download/v0.32.0/apm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/588884270"
+checksum = "sha256:312002dca9e1410557bc0da414b7d9bc8438c905c6573e81c06370fde9910857"
+url = "https://github.com/microsoft/apm/releases/download/v0.33.0/apm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/microsoft/apm/releases/assets/606234085"
 
 [[tools.ast-grep]]
 version = "0.45.3"
@@ -105,18 +105,18 @@ url_api = "https://api.github.com/repos/atuinsh/atuin/releases/assets/580134148"
 provenance = "github-attestations"
 
 [[tools.aws-cli]]
-version = "2.37.11"
+version = "2.37.12"
 backend = "aqua:aws/aws-cli"
 
 [tools.aws-cli."platforms.linux-arm64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.37.11.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.37.12.zip"
 
 [tools.aws-cli."platforms.linux-x64"]
-url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.37.11.zip"
+url = "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.37.12.zip"
 
 [tools.aws-cli."platforms.macos-arm64"]
-checksum = "blake3:37712a81d8ff59f96b9df57dff23c690b4c6103e154d8fd8641c97ba28ab31d6"
-url = "https://awscli.amazonaws.com/AWSCLIV2-2.37.11.pkg"
+checksum = "blake3:2bb2d828c9e31a2d79f4db60fde7232af0b252b9e7d3a3b3c4c1e29998e14bf7"
+url = "https://awscli.amazonaws.com/AWSCLIV2-2.37.12.pkg"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -669,22 +669,22 @@ url = "https://github.com/dalance/procs/releases/download/v0.14.12/procs-v0.14.1
 url_api = "https://api.github.com/repos/dalance/procs/releases/assets/457525354"
 
 [[tools.python]]
-version = "3.14.8"
+version = "3.15.0"
 backend = "core:python"
 
 [tools.python."platforms.linux-arm64"]
-checksum = "sha256:ece2bf3d4b47c80c2403c5f32fa51a9458abaee93c10def8acafb5f45163e77d"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "sha256:00345e47b7f42d10ec60d28b2ccad6b1f33c40697f0ae57ee15d70896efad0b5"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261009/cpython-3.15.0+20261009-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [tools.python."platforms.linux-x64"]
-checksum = "sha256:d9ec7a6935ade8b671a57ebaf111083d7314eab8dae5071d167054dadd2b97d6"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "sha256:46edc8f6fccade47dc38001ef2d4094d9cedd21a1863d9b44b2a02c1ee76b94d"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261009/cpython-3.15.0+20261009-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [tools.python."platforms.macos-arm64"]
-checksum = "blake3:0a72ba8ed087eddcee1f3270a66817cff3f022677f97edbfc8ed406027683fbd"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-aarch64-apple-darwin-install_only_stripped.tar.gz"
+checksum = "blake3:ff3be1b4abd91b029c71fafa0fd485bec57e5110430bb633319b84e066a65749"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261009/cpython-3.15.0+20261009-aarch64-apple-darwin-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [[tools.ripgrep]]
@@ -834,7 +834,7 @@ url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.12.24"
+version = "0.13.0"
 backend = "asdf:uv"
 
 [[tools.vhs]]

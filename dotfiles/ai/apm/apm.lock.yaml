@@ -1,6 +1,6 @@
 lockfile_version: '1'
-generated_at: '2026-10-10T12:07:22.960755+00:00'
-apm_version: 0.32.0
+generated_at: '2026-10-10T12:11:52.621712+00:00'
+apm_version: 0.33.0
 dependencies:
 - repo_url: ayghri/i-have-adhd
   name: i-have-adhd
@@ -48,7 +48,7 @@ dependencies:
 - repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: b0618bc436ad893b3c5e84e55fba86586d34a404
+  resolved_commit: 49dd158d1076134a641b33efb035946536778336
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
