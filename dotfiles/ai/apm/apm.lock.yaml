@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-10-10T12:11:52.621712+00:00'
+generated_at: '2026-10-15T12:49:31.038697+00:00'
 apm_version: 0.33.0
 dependencies:
 - repo_url: ayghri/i-have-adhd
   name: i-have-adhd
   host: github.com
-  resolved_commit: 723af7d9afaf43eb871dbcce6129e2bf80de90d5
+  resolved_commit: 1ecea1993b7fce257ffbd686c070948b5e07eda6
   version: unknown
   virtual_path: skills/i-have-adhd
   is_virtual: true
