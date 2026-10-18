@@ -88,6 +88,8 @@ cask "popclip"
 cask "postman"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Email client
+cask "readdle-spark"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # Team communication and collaboration software
