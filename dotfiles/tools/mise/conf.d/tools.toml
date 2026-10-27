@@ -23,6 +23,7 @@ uv = "0"
 
 # CLI tools
 age = "latest"
+antigravity-cli = "latest"
 actionlint = "latest"
 apm = "latest"
 ast-grep = "latest"
