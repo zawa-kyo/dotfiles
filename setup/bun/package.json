@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@anthropic-ai/claude-code": "^2.1.302",
+    "@anthropic-ai/claude-code": "^2.1.303",
     "@google/gemini-cli": "^0.64.0",
     "@openai/codex": "^0.163.0",
     "typescript": "^7.0.2"
