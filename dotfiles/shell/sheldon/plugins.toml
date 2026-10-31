@@ -52,10 +52,12 @@ inline = """
 function zvm_after_init() {
   zvm_bindkey viins '^N' autosuggest-accept
   zvm_bindkey viins '^F' forward-word
+  zvm_bindkey viins '^R' atuin-search-viins
 }
 
 function zvm_after_lazy_keybindings() {
   bindkey -M vicmd ':' undefined-key
+  zvm_bindkey vicmd '^R' atuin-search-vicmd
 }
 """
 
