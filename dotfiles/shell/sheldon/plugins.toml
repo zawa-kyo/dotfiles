@@ -11,11 +11,6 @@ fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-# Auto-suggestions
-[plugins.zsh-autosuggestions]
-apply = ["defer"]
-github = "zsh-users/zsh-autosuggestions"
-
 # Completions
 [plugins.zsh-completions]
 apply = ["defer", "fpath"]
@@ -25,6 +20,11 @@ github = "zsh-users/zsh-completions"
 [plugins.F-Sy-H]
 apply = ["defer"]
 github = "z-shell/F-Sy-H"
+
+# Auto-suggestions
+[plugins.zsh-autosuggestions]
+apply = ["defer"]
+github = "zsh-users/zsh-autosuggestions"
 
 # History Manager
 [plugins.atuin]
