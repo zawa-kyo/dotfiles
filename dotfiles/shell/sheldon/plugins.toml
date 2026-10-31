@@ -39,6 +39,7 @@ github = "jeffreytse/zsh-vi-mode"
 inline = """
 function zvm_after_init() {
   zvm_bindkey viins '^N' autosuggest-accept
+  zvm_bindkey viins '^F' forward-word
 }
 
 function zvm_after_lazy_keybindings() {
