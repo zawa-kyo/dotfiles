@@ -2,6 +2,11 @@ shell = "zsh"
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+abbr-defer = """
+{% for file in files %}fpath+=("${${:-"{{ file }}"}:h}/completions")
+zsh-defer source "{{ file }}"
+{% endfor %}
+"""
 # Source all matched script files, integrating them into the shell environment.
 fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 
@@ -11,20 +16,27 @@ fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-# Auto-suggestions
-[plugins.zsh-autosuggestions]
-apply = ["defer"]
-github = "zsh-users/zsh-autosuggestions"
-
 # Completions
 [plugins.zsh-completions]
-apply = ["defer", "fpath"]
 github = "zsh-users/zsh-completions"
+
+# Abbreviations
+[plugins.zsh-abbr]
+apply = ["abbr-defer"]
+github = "olets/zsh-abbr"
+
+[plugins.completion-init]
+inline = 'autoload -Uz compinit && compinit'
 
 # Syntax highlighting
 [plugins.F-Sy-H]
 apply = ["defer"]
 github = "z-shell/F-Sy-H"
+
+# Auto-suggestions
+[plugins.zsh-autosuggestions]
+apply = ["defer"]
+github = "zsh-users/zsh-autosuggestions"
 
 # History Manager
 [plugins.atuin]
@@ -34,11 +46,18 @@ inline = 'eval "$(atuin init zsh)"'
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
 
-# Disable command mode
+# Vim mode key bindings
 [plugins.zsh-vi-mode-config]
 inline = """
+function zvm_after_init() {
+  zvm_bindkey viins '^N' autosuggest-accept
+  zvm_bindkey viins '^F' forward-word
+  zvm_bindkey viins '^R' atuin-search-viins
+}
+
 function zvm_after_lazy_keybindings() {
   bindkey -M vicmd ':' undefined-key
+  zvm_bindkey vicmd '^R' atuin-search-vicmd
 }
 """
 
@@ -46,11 +65,6 @@ function zvm_after_lazy_keybindings() {
 [plugins.fzf]
 apply = ["fzf-source"]
 github = 'junegunn/fzf'
-
-# Alias
-[plugins.zsh-abbr]
-apply = ["defer"]
-github = "olets/zsh-abbr"
 
 # History search
 [plugins.zoxide]
