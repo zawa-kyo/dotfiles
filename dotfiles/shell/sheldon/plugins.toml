@@ -2,6 +2,11 @@ shell = "zsh"
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+abbr-defer = """
+{% for file in files %}fpath+=("${${:-"{{ file }}"}:h}/completions")
+zsh-defer source "{{ file }}"
+{% endfor %}
+"""
 # Source all matched script files, integrating them into the shell environment.
 fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 
@@ -13,8 +18,15 @@ github = "romkatv/zsh-defer"
 
 # Completions
 [plugins.zsh-completions]
-apply = ["defer", "fpath"]
 github = "zsh-users/zsh-completions"
+
+# Abbreviations
+[plugins.zsh-abbr]
+apply = ["abbr-defer"]
+github = "olets/zsh-abbr"
+
+[plugins.completion-init]
+inline = 'autoload -Uz compinit && compinit'
 
 # Syntax highlighting
 [plugins.F-Sy-H]
@@ -51,11 +63,6 @@ function zvm_after_lazy_keybindings() {
 [plugins.fzf]
 apply = ["fzf-source"]
 github = 'junegunn/fzf'
-
-# Alias
-[plugins.zsh-abbr]
-apply = ["defer"]
-github = "olets/zsh-abbr"
 
 # History search
 [plugins.zoxide]
