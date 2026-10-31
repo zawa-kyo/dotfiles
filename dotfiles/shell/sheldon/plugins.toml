@@ -34,9 +34,13 @@ inline = 'eval "$(atuin init zsh)"'
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
 
-# Disable command mode
+# Vim mode key bindings
 [plugins.zsh-vi-mode-config]
 inline = """
+function zvm_after_init() {
+  zvm_bindkey viins '^N' autosuggest-accept
+}
+
 function zvm_after_lazy_keybindings() {
   bindkey -M vicmd ':' undefined-key
 }
