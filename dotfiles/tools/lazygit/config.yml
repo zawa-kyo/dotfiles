@@ -5,16 +5,13 @@ gui:
   showRandomTip: false
   showCommandLog: false
   showPanelJumps: false
-
 git:
   autoFetch: true
-  pagers:
-    - pager: delta --paging=never
+  diffRenderers:
+    - command: delta --paging=never
       colorArg: always
-
 refresher:
   fetchInterval: 60
-
 keybinding:
   universal:
     pushFiles: "<disabled>"
