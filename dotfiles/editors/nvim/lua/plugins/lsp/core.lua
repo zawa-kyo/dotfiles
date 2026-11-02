@@ -56,7 +56,7 @@ return {
         automatic_installation = false,
       })
 
-      local sources = require("plugins.lsp.formatting")()
+      local sources = require("plugins.lsp.formatter")()
       vim.list_extend(sources, require("plugins.lsp.linter")())
       require("null-ls").setup({
         sources = sources,
