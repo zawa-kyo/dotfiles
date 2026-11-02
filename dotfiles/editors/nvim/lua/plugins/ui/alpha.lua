@@ -13,6 +13,15 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
 
+    -- Drop closed windows before alpha redraws after a resize.
+    local draw = alpha.draw
+    alpha.draw = function(conf, state)
+      state.windows = vim.tbl_filter(function(win)
+        return vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_buf(win) == state.buffer
+      end, state.windows)
+      return draw(conf, state)
+    end
+
     -- Set header
     dashboard.section.header.val = {
       "                                                     ",
