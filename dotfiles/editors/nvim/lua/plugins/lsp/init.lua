@@ -2,7 +2,6 @@
 local sections = {
   require("plugins.lsp.core"),
   require("plugins.lsp.completion"),
-  require("plugins.lsp.formatting"),
 }
 
 local spec = {}
