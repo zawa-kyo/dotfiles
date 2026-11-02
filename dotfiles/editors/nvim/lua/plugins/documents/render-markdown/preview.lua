@@ -1,3 +1,5 @@
+local M = {}
+
 local preview_windows = {}
 local markdown_filetypes = {
   markdown = true,
@@ -32,7 +34,7 @@ local function clear_preview_window(tabpage, bufnr)
   end
 end
 
-local function toggle_split_preview()
+function M.toggle_split_preview()
   local tabpage = vim.api.nvim_get_current_tabpage()
   local source_buf = vim.api.nvim_get_current_buf()
   if not is_markdown_buffer(source_buf) then
@@ -66,54 +68,28 @@ local function toggle_split_preview()
   end
 end
 
-return {
-  "delphinus/md-render.nvim",
-  version = "*",
-  ft = { "markdown", "markdown.mdx" },
-  cmd = { "MdRender" },
-  cond = not vim.g.vscode,
+function M.setup()
+  local group = vim.api.nvim_create_augroup("markdown_preview_preferences", { clear = true })
 
-  dependencies = {
-    "DaikyXendo/nvim-material-icon",
-    "delphinus/budoux.lua",
-  },
-
-  init = function()
-    local group = vim.api.nvim_create_augroup("markdown_preview_preferences", { clear = true })
-
-    vim.api.nvim_create_autocmd("BufWipeout", {
-      group = group,
-      callback = function(args)
-        for tabpage, tab_windows in pairs(preview_windows) do
-          if tab_windows[args.buf] ~= nil then
-            clear_preview_window(tabpage, args.buf)
-          end
+  vim.api.nvim_create_autocmd("BufWipeout", {
+    group = group,
+    callback = function(args)
+      for tabpage, tab_windows in pairs(preview_windows) do
+        if tab_windows[args.buf] ~= nil then
+          clear_preview_window(tabpage, args.buf)
         end
-      end,
-      desc = "Clear cached Markdown preview window ids",
-    })
+      end
+    end,
+    desc = "Clear cached Markdown preview window ids",
+  })
 
-    vim.api.nvim_create_autocmd("TabClosedPre", {
-      group = group,
-      callback = function()
-        preview_windows[vim.api.nvim_get_current_tabpage()] = nil
-      end,
-      desc = "Clear cached Markdown preview windows for closed tabs",
-    })
-  end,
+  vim.api.nvim_create_autocmd("TabClosedPre", {
+    group = group,
+    callback = function()
+      preview_windows[vim.api.nvim_get_current_tabpage()] = nil
+    end,
+    desc = "Clear cached Markdown preview windows for closed tabs",
+  })
+end
 
-  keys = {
-    {
-      "tmp",
-      toggle_split_preview,
-      desc = "Toggle Markdown split preview",
-    },
-    {
-      "tmr",
-      function()
-        vim.cmd("MdRender toggle")
-      end,
-      desc = "Toggle Markdown rendering in the current window",
-    },
-  },
-}
+return M
