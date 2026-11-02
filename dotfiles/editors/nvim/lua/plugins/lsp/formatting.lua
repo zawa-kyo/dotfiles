@@ -1,4 +1,4 @@
--- Formatter integration via mason-null-ls + null-ls
+-- Formatter and diagnostics integration via mason-null-ls + null-ls
 return {
   {
     "jay-babu/mason-null-ls.nvim",
@@ -27,6 +27,7 @@ return {
           formatting.prettierd.with({
             filetypes = { "markdown", "mdx" },
           }),
+          null_ls.builtins.diagnostics.textlint,
         },
         on_attach = common.on_attach,
       })
