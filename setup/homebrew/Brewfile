@@ -27,6 +27,8 @@ brew "leptonica"
 brew "libarchive"
 # Mac App Store command-line interface
 brew "mas"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Wrapper to colorize and simplify ping's output
