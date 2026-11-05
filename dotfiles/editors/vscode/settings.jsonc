@@ -769,8 +769,6 @@
   },
 
   // ──  Bun ────────────────────────────
-  // Bunのパス
-  "bun.runtime": "~/.local/share/mise/shims/bun",
   // デバッグターミナルに登録
   "bun.debugTerminal.enabled": true,
   // デバッガーがプログラムの最初の行で停止するか
