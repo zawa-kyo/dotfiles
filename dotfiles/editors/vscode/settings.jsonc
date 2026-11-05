@@ -769,8 +769,6 @@
   },
 
   // ──  Bun ────────────────────────────
-  // Bunのパス
-  "bun.runtime": "~/.local/share/mise/shims/bun",
   // デバッグターミナルに登録
   "bun.debugTerminal.enabled": true,
   // デバッガーがプログラムの最初の行で停止するか
@@ -939,6 +937,12 @@
     "editor.snippetSuggestions": "top",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+
+  // Mermaid
+  // 匿名の利用状況データの送信を無効化
+  "mermaidChart.showGenerateDiagramCodeLens": false,
+  // 「チャットを開く」を非表示
+  "markdown-mermaid.controls.show": "never",
 
   // markdownlint
   "markdownlint.config": {
