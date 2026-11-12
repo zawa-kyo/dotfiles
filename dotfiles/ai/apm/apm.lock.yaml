@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-11-02T03:08:33.813130+00:00'
+generated_at: '2026-11-12T15:28:18.334555+00:00'
 apm_version: 0.35.0
 dependencies:
 - repo_url: ayghri/i-have-adhd
@@ -24,7 +24,7 @@ dependencies:
 - repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d
+  resolved_commit: 5863806dd4e15c63174bee4e7515a4256792ecfa
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -33,7 +33,7 @@ dependencies:
 - repo_url: mizchi/skills
   name: empirical-prompt-tuning
   host: github.com
-  resolved_commit: ab4eb2f7a92a13fb37c225ab427f2f492143ace1
+  resolved_commit: 195bb34cb5220c3610ec4ba49007cae2fb10373e
   version: unknown
   virtual_path: empirical-prompt-tuning
   is_virtual: true
