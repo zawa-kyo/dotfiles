@@ -67,7 +67,7 @@ cask "font-jetbrains-mono"
 cask "font-moralerspace"
 cask "font-symbols-only-nerd-font"
 cask "font-udev-gothic-nf"
-# GIT client
+# Git client
 cask "fork"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
