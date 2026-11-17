@@ -20,6 +20,7 @@ local prettierExcludes =
   List(
     "**/lazy-lock.json",
     "dotfiles/ai/apm/apm.lock.yaml",
+    "dotfiles/tools/tinycast/settings.json",
     "*.lock",
     "**/*.lock",
   )

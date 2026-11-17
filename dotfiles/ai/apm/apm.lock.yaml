@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-11-12T15:28:18.334555+00:00'
+generated_at: '2026-11-17T13:18:13.921797+00:00'
 apm_version: 0.35.0
 dependencies:
 - repo_url: ayghri/i-have-adhd
@@ -33,12 +33,12 @@ dependencies:
 - repo_url: mizchi/skills
   name: empirical-prompt-tuning
   host: github.com
-  resolved_commit: 195bb34cb5220c3610ec4ba49007cae2fb10373e
+  resolved_commit: 5a51332694840551613e4cb3812a2c3929bb738c
   version: unknown
   virtual_path: empirical-prompt-tuning
   is_virtual: true
   package_type: claude_skill
-  content_hash: sha256:26042612e2d8b6ee1deebcdfc556da494640488e03471aaae74da587ae84fa2b
+  content_hash: sha256:2b864d197ac10283265fd7b881075278c84a9bf22267a5f704b2f7e3df449cd8
 - repo_url: zawa-kyo/skills
   name: zawa-kyo-skills
   host: github.com
